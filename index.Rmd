@@ -1,0 +1,62 @@
+--- 
+title: "R på kursen Tillämpad statistik (A5)"
+author: "Ronnie Pingel"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+documentclass: book
+output:
+  bookdown::gitbook: default
+bibliography: [references.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
+# Förord
+
+## Statistiska program
+Det finns **etiska** och **praktiska** skäl att lära sig programmera i statistikprogram.
+
++ Det är nödvändigt att kunna replikera en analys. Inom forskning ska andra forskare erhålla samma resultat givet samma data och analys. Inom näringsliv, på myndigheter och i organisationer ska kolleger kunna genomföra och/eller ta över data och tillhörande analyser. 
++ Programmering spar tid om analyser ska repeteras (med eller utan ändringar).
++ Programmering ger tillgång avancerade analyser samt frihet att utforma egna analyser.
++ Programmering bidrar till ökad förståelse för dataanalys
+
+Kruxet? Tar tid att lära sig! 
+
+Nedan stående är min personliga syn på ett antal vanliga statistikprogram.
+
++ Minitab -- Mycket enkelt att lära sig. Används främst inom kvalitetskontroll i industri samt planering av randomiserade försök. Billigt. Begränsat urval av statistiska metoder.
++ SPSS -- Enkelt att lära sig. Stor spridning bland samhällsvetare och utredare. Ganska stort urval av statistiska metoder. Krånglig programkod. Rörigt.
++ Stata -- Enkelt att lära sig och enkel programkod. Spridning bland forskare inom ekonometri och epidemiologi.  Stort urval av, även de senaste, statistiska metoderna..
++ SAS -- Medelsvårt att lära sig, med en föråldrad programkod. Kan hantera stora dataset. Används av myndigheter, industri och forskare inom alla områden. Standard för läkemdelsbolag. Stort urval av statistiska metoder, men inte de allra senaste. Dyrt. Svårt att göra bra figurer.
++ R -- Svårt att lära sig. Gratis. Flexibelt. Mycket stor spridning inom alla områden.
++ Python -- Mycket svårt att lära sig. Gratis. Flexibelt.  Stor spridning inom maskininlärning och AI.
++ Excel -- Är inget statistikprogram!
+
+
+
+## Om R
+
++ Gratisprogrammet är kommer att användas på kursen.
++ ''R is a free software environment for statistical computing and graphics.''
++  Genom att använda R får du fri tillgång till avancerade verktyg för dataanalys och datavisualisering.
+
+
+## Allmänna tips om R på kursen
++ R kommer användas löpande under kursens gång så se till	att snabbt få grunderna på plats. Även om det vissa avseenden kan kännas tungt och frustrerande inledningsvis att programmera i R vinner man inget på att skjuta upp att påbörja arbetet med R.
++ Det krävs många timmar av aktivt arbete med R för att lära sig det. Om du arbeta aktivt och löser till exempel uppgifter även från bildspel så bygger du på antalet timmar vilket innebär att du lär dig R.
++ De flesta lösningar till uppgifter på kursen har tillhörande R-kod. Mitt förslag är att ni löser uppgifterna på följande vis: 1.Lös uppgifterna för hand (precis som tiden före R). 2. Studera sedan R-koden och se hur uppgiften har lösts med hjälp R. 3. Ändra och laborera i R-koden för att se vad som händer. 3. Målet är att småningom arbeta med R direkt för att lösa uppgifterna, men inledningsvis löses uppgifter för hand för begripa uppgiften rent statistiskt. Därefter, i takt med att R alltmer blir verktyget för statistiska analyser, används R för att lösa uppgifter. 
++ Var inte rädd för att använda resurser på nätet. Ett känt forum för programmeringsrelaterade frågor är https://stackexchange.com/. 
+
+**Det tar tid att lära sig R. Det kan vara frustrerande och programmering är inte förlåtande vad gäller fel. Men misströsta inte, i slutändan är det värt det.** 
+
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+knitr::opts_chunk$set(echo = TRUE)
+```

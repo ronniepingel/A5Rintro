@@ -1,0 +1,209 @@
+# Hantera data
+Ett viktigt steg i en analysprocess är förändring/transformation av variabler. Detta är i regel en nödvändig del före nästan alla analyser. Vi ska gå igenom fyra av de mest frekvent använda variabeltransformationerna:
+
++ kvantitativ $\rightarrow$ variabel
++ kvantitativ $\rightarrow$ binär variabel
++ kvantitativ $\rightarrow$ kategorivariabel
++ kategorivariabel $\rightarrow$ kategorivariabel
+
+I praktiken kan man stöta på även andra typet av transformationer, till exempel transformation till variabler med tid/datum-värden eller summering av variabler. Vi börjar emellertid med att fokusera på de vanligaste transformationerna.
+
+## Kvantitativ $\rightarrow$ kvantitativ
+
+### 
+Målet med denna uppgift är att koda om de kvantitativa variablerna längd (height) och vikt (weight) till den nya variabeln body mass index (bmi), där
+$$BMI = \frac{Weight (kg)}{(Height (m))^2}$$
+**Det är viktigt att variabelernas datanivå är *scale* för att följande beräkning ska göras. Kontrollera i *Data View*.**  
+
+
+1. Öppna SPSS. Välj *File > Open > Syntax*. Öppna syntax-filen *conscription.sps* och läs in *conscriptiondata.csv* genom att klicka på *Run Selection*. 
+
+2. Välj i menyn *Transform > Compute variable*.
+
+3. Skriv i *Target Variable* in *bmi*, dvs namnet på den nya variabeln. Skriv i *Numeric Expression* in formeln för bmi.  
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/fig311.jpg")
+```
+
+Notera att *height* i datamaterialet är i centimeter, medan height i bmi-formeln anges i meter. Tryck *Paste* för att klistra in kommandot för variabeln in i syntax-filen.
+
+4. Du ska nu ha en två nya rader adderade till din syntax-fil som se ut som nedan.
+
+```
+SET DECIMAL COMMA.
+
+GET DATA  /TYPE=TXT
+  /FILE="C:\Users\ronpi764\Dropbox\Teaching\Dataanalyser\Dataanalys2\conscriptiondata.csv"
+  /DELIMITERS=";"
+  /QUALIFIER='"'
+  /FIRSTCASE=2
+  /VARIABLES=
+  id AUTO
+  year AUTO
+  height AUTO
+  weight AUTO
+  psych AUTO
+  muscle AUTO
+  armstrength AUTO
+  physical AUTO
+  gripstrength AUTO
+  legstrength AUTO
+  sbp AUTO
+  dbp AUTO
+  officer AUTO
+  testa AUTO
+  testb AUTO
+  testc AUTO
+  testd AUTO.
+
+COMPUTE bmi=weight / ( (height/100)*(height/100) ).
+EXECUTE.
+```
+Syntaxen för att genomföra en variabeltransformation från en numerisk variabel till en annan numerisk är enkel. Kommandot **COMPUTE** meddelar SPSS att en numerisk beräkning ska göras. Sedan följer formeln för vad som ska beräknas. Raden avslutas med *.*. På nästa rad står **EXECUTE.** som anger för SPSS var beräkningskommandot slutar (eftersom beräkningar kan genomföras för många variabler).
+
+5. Markera i syntax-filen enbart de två sista raderna. Tryck på *Run Selection*. Nu utförs kommandot
+
+6.  I *Data View* ska nu variabeln bmi finnas adderad till de övriga 17. 
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/fig312.jpg")
+```
+
+7.  Även i *Variable View* finns variablen bmi. 
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/fig313.jpg")
+```
+
+8. Spara syntax-filen genom att klicka *File > Save*. Du har en nu en fil som läser in ditt ursprungliga datamaterial och sedan skapar en variabel när du kör hela syntax-filen. Stäng SPSS.
+
+
+
+**Kommentarer om COMPUTE**
+
++ **COMPUTE** används för många typer av variabeltransformationer, t ex om en ny variabel definieras som summan av längd och vikt används **heightweightsum=MEAN(height, weight)**. En annan variant är högsta värdet av variablerna längd och vikt, **heightweightmax=MAX(height, weight)**.  Om du vill göra en z-transformation med känt medelvärde och känd standardavvikelse kan man därför enkelt tillämpa formeln $z=(x-\mu)/\sigma^2$. 
++ **COMPUTE** hanterar inte standardisering baserat på stickprovskvantiteterna $\bar{x}$ och $s^2$. Då används kommandot, **DESCRIPTIVES**, vilket vi återkommer till.
++ Vid variabeltransformationer måste man vara uppmärksam på variabler med bortfall. Bortfallet kan ha olika konsekvenser beroende på typ av transformation. Vi återkommer till detta.
+
+
+
+## Kvantitativ $\rightarrow$  binär variabel
+Vi ska nu skapa en ny variabel som indikerar övervikt, vilket enligt WHO definieras som $BMI \geq 25$. Vi bestämmer oss för att skapa en ny variabel som heter *overweight* som tar värdet 1 om $bmi \geq 25$ och 0 annars. 
+
+1. Öppna SPSS. Välj *File > Open > Syntax*. Öppna syntax-filen *conscription.sps*. 
+
+2. Tryck *Run Selection*. Det innebär att du läser in data samt skapar variabeln *bmi* enligt tidigare instruktioner.
+
+3. Välj *Transform > Recode into Different Variables*. Skriv overweight i *Name*. Detta är namnet på den nya variabeln. Tryck sedan *Change*. 
+
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/fig321.jpg")
+```
+
+4. *Välj Old and New Values...*. Välj *Range, value through HIGHEST:* och skriv 25. Skriv sedan siffan 1 i *New Value*. Klicka *Add* bredvid rutan *Old -> New*. Klicka sedan i knappen *All other values*. Skriv sedan siffan 0 i *New Value*. Klicka *Add* bredvid rutan *Old -> New*.  
+
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/fig322.jpg")
+```
+
+I rutan under *Old -> New* står nu den beskrivna variabeltransformationen, dvs värdena i variabeln bmi som är från 25 till det högsta i variabeln i datamaterialet kodas till 1, annars tilldelas värdet 0. Tryck *Continue*. 
+
+5. Tryck *Paste* när du är tillbaka i föregående dialogruta för att kopiera kommandot till syntax-filen.
+
+6. Syntax-filen ska nu ha följande utseende, med ytterligare 2 rader adderade.
+
+```
+SET DECIMAL COMMA.
+
+GET DATA  /TYPE=TXT
+  /FILE="C:\Users\ronpi764\Dropbox\Teaching\Dataanalyser\Dataanalys2\conscriptiondata.csv"
+  /DELIMITERS=";"
+  /QUALIFIER='"'
+  /FIRSTCASE=2
+  /VARIABLES=
+  id AUTO
+  year AUTO
+  height AUTO
+  weight AUTO
+  psych AUTO
+  muscle AUTO
+  armstrength AUTO
+  physical AUTO
+  gripstrength AUTO
+  legstrength AUTO
+  sbp AUTO
+  dbp AUTO
+  officer AUTO
+  testa AUTO
+  testb AUTO
+  testc AUTO
+  testd AUTO.
+
+COMPUTE bmi=weight / ( (height/100)*(height/100) ).
+EXECUTE.
+
+RECODE bmi (SYSMIS=SYSMIS) (25 thru Highest=1) (ELSE=0) INTO overweight.
+EXECUTE.
+```
+
+7. Spara syntax-filen. Markera de två sista raderna, tryck *Run Selection* och skapa den nya variabeln *overweight*. 
+
+8. Notera att variabeln eventuellt är på nominalskala. Vi ska återkomma till detta. 
+
+9. 
+
+## Kvantitativ $\rightarrow$  kategorivariabel
+Även om det går att använda *Transform > Recode into Different Variables* för att skapa en skapa en kategorivariabel, är det enklast är att anvönda syntaxen direkt. 
+
+1. Öppna SPSS. Välj *File > Open > Syntax*. Öppna syntax-filen *conscription.sps*. 
+
+2. Tryck *Run Selection*. Det innebär att du läser in data samt skapar variabeln *bmi* enligt tidigare instruktioner.
+
+3. Målet är att skapa en variabel, som vi kallar för *bmicat4*, utifrån följande indelning
+\[
+bmicat4=\begin{cases}
+1 & om\,\:bmi<18.5\\
+2 & om\,\:18.5\leq bmi<25\\
+3 & om\,\:25\leq bmi<30\\
+4 & om\,\:bmi\geq30
+\end{cases}
+\]
+
+4. Skriv in följande kod. Den första raden anger att om (IF) *bmi* saknas (missing) så ska *bmicat* ha ett missing-värde enligt SPSS. I vårt datamaterial finns inget missing, men man gör ofta detta förAnnars om (ELSE IF) bmi är mindre än 18.5 ska *bmicat4* anta värdet 1, annars om (ELSE IF) bmi är större än eller lika med 18.5 och mindre än 25 så ska *bmicat4* ha värdet 2, osv. **END IF.** avlutar de logiska testen, och **EXECUTE.** indikerar att kommandot **DO** avslutas. 
+
+```
+DO IF(MISSING(bmi)).
+COMPUTE bmicat4=$SYSMIS.
+ELSE IF (bmi < 18.5).
+COMPUTE bmicat4 = 1.
+ELSE IF (bmi >= 18.5 AND bmi < 25).
+COMPUTE bmicat4 = 2.
+ELSE IF (bmi >= 25 AND bmi < 30).
+COMPUTE bmicat4 = 3.
+ELSE IF (bmi >= 30).
+COMPUTE bmicat4 = 4.
+END IF.
+EXECUTE.
+```
+
+5. Markera och kör *Run Selection*. Du ska nu ha en variabel som heter bmicat, med fyra kategorier. 
+
+6. Det är möjligt att tilldela namn till de olika kategorierna, men vi återkommer till detta. I vår syntax-fil hur kategorierna är definierade.
+
+**Övriga kommentarer**
+
+Notera att ovanstående schema även gäller om vi önskar generara binära variabler. För binära variabler blir det dock mindre kod om vi använder oss av **recode**.
+
+
+## Kategori $\rightarrow$  kategorivariabel
+1. Om vi önskar skapa en nya kategorivariabel baserat på en annan kategorivariabel är det enklast att använd *recode*. 
+
+2. Anta att vi i *bmicat* vill skapa en gemensam kategori av 1 och 2, men behålla 3 och 4 som de är. Skriv in nedananstående kod i syntaxen.
+
+```
+RECODE bmicat (SYSMIS=SYSMIS) (1=1) (2=1) (3=2) (4=3) INTO bmicat3
+EXECUTE.
+```
+
+3. Markera koden och tryck *Run Selection*. Du ska nu ha en ny variabel som heter *bmicat3*.
+
+4. Notera att *recode* även går att genomför via menyn, men syntaxen är här mycket enkel. Vi börjar även koden med SYSMIS för att hantera eventuellt bortfall. Vi återkommer till detta.
+

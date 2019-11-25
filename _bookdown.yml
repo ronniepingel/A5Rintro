@@ -1,0 +1,6 @@
+book_filename: "dpk"
+language:
+  ui:
+    chapter_name: "Kapitel "
+output_dir: docs
+delete_merged_file: true

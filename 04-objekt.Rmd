@@ -1,0 +1,243 @@
+# Objekt 
+
+Data är grundläggande för nästan allt arbete i R. Data hanteras som objekt och objekten måste namnges. Objektnamn måste inledas med en bokstav och får endast innehålla bokstäver, siffror, _ och ..
+Dessutom skiljer R på versaler och gemener. Det är inte alltid enkelt att namnge objekt, men det
+viktigaste är att vara konsekvent. Som förslag kan följande principer tillämpas för objektnamn: 
+
++ Använd endast **gemener**.
++ Använd **korta** och **logiska** namn, t ex kan objektet **population** förkortas till **pop**.
++ Använd gärna _ för sammanbinda långa objektnamn. Objektet ålder för kvinnor skulle kunna betecknas **age_women** och motsvarande för män är då **age_men**.
++ Använd inte namn som redan är upptagna i R, t ex **exp**.
+
+För att skapa ett objekt används **assignment**-operatorn **<-**. Ett skapat objekt sparas i minnet, men inget resultat redovisas i Console. För att redovisa objektet i Console måste objektet användas på något vis.
+
+Det tre vanligaste objekten för hantering av data är:
+
++ vektorer,
++ matriser,
++ data frames. 
+
+
+## Vektorer 
+Objektet vektor är ett dataobjekt som är endimensionellt. En vektor skapas med **c()** (''Combine Values into a Vector'').  Nedanstående kod skapar ett antal vektorer som sparas som objekt. Genom att spara vektorerna kan dessa användas för andra beräkningar. 
+
+Skapa ett script som heter **dataobjects.R**, skriv koden nedan och spara. Studera koden och se hur vektorerna är skapade.
+
+```{r, eval=TRUE}
+# Skapar två numeriska vektorer
+x <- c(3, 1, 1, 5, 0)
+y <- c(2, 3, 5, 6, 9)
+# Kombinera vektorer till en ny vektor
+z <- c(x, y)
+# Skapar en vektor med värden från 1:5
+v <- 1:5
+# Skapar en vektor med endast ett element
+n <- 150
+# Skapar en vektor med ord
+nordic_countries <- c("Denmark", "Finland", "Iceland", "Norway", "Sweden")
+# Skapar en vektor med ett bortfall. 
+ymis <- c(3, NA, 6, 3, 6)
+
+```
+
+Det finns nu ett antal sparade vektorer. Skriv in nedanstående kod i scriptet, spara och kör. 
+
+```{r, eval=FALSE}
+x
+y
+z
+v
+n
+nordic_countries
+ymis
+```
+
+I Console presenteras resultaten. Det finns numeriska vektorer som enbart innehåller siffror och det finns vektorer som enbart innehåller bokstäver. Det finns vektorer som skapats genom räkneoperationer eller sekvenser. Vidare finns exempel på att bortfall anges med `NA` har även skapat en vektorer som innehåller bortfall.
+
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+x
+y
+z
+v
+n
+nordic_countries
+ymis
+```
+
+I praktiken måste man nästan alltid på olika sätt anpassa data för planerade analyser. Detta kräver  åtkomst till data som är lagrade i ett objekt. 
+
+En vektor består av ett antal element och varje element har en position. Med hakparenteser `[]` erhålls åtkomst till element i vektorn,  antingen genom att direkt identifiera positionen i vektorn med en siffra eller genom logiska operatorer. Några logiska operatorer är:
+
+1. `<` är mindre än.
+2. `>` är mindre än.
+3. `>=` större än eller lika med	
+4. `<=` mindre än eller lika med	
+5. `==` exakt lika med.
+
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa element 2 i vektorn x 
+x[2]
+# Visa element 2 och 3 i vektorn x
+y[c(2,3)]
+# Visa element i vektor y som är större än eller lika med 4
+y[y >= 4]
+# Visa element i vektor y från positioner där x har värden lika med 0. (Kräver att x och y har lika många element) 
+y[x == 1]
+# Visa element i vektor y från positioner där nordic_countries == "Denmark"
+y[nordic_countries == "Denmark"]
+
+```
+
+Efter det att åtkomst till element i vektorn har erhållit kan dessa elements sparas eller förändras.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Spara element 2, 3, 4 i en ny vektor ysub och visa vektorn
+ysub <- y[c(2,3,4)]
+ysub
+# Sätt värdet 0 i vektorn y där y är större än eller lika med 6
+ysub[ysub >= 6] <- 0
+# Sätt värdet 99 i vektorn y på positioner där nordic_countries är "Denmark"
+ysub[nordic_countries == "Finland"] <- 99
+```
+
+Nya vektorer kan skapas med räkneoperationer. Beräkningarna sker då elementvis, till exempel adderas elementvärden i en vektor till elementvärden i en annan vektor som har motsvarade position. Nedan presenteras några vanliga räkneoperationer.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Addition av x och y
+x + y
+# Multiplikation av x och y
+x * y
+# Potenser skrivs med a^b
+y^2
+# En konstant adderas till alla element i vektorn
+x + n 
+# Räkneoperationer med NA ger NA
+x + ymis 
+# Addera delar av vektorer
+x[c(2,3)] + y[c(2,3)]
+# Division med 0 är ej definierat. R anger det som Inf (infinity) eller NaN (Not a Number) om det är 0/0.
+x/0
+# Exempel på längre räkneoperationer
+z <- x + (y^2 - n)/v
+z
+```
+
+Spara **dataobjects.R**.
+
+## Matriser
+En matris är ett tvådimensionellt dataobjekt bestående av **rader** och **kolumn**. Analogt med **c()**, som kombinerar element till en vektor, används **rbind()**
+och **cbind()** för att binda ihop vektorer radvis eller kolumnvis till matriser. Det går **inte** att binda ihop numeriska vektorer som med vektorer som innehåller bokstäver. En matrix kan även skapas direkt med **matrix()** som transformerar en vektor till ett antal rader och kolumner. Skriv nedanstående kod i **dataobjects.R**. 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en matrix genom att binda samman x och y radvis. Matrisen får 2 rader och 5 kolumner
+m1 <- rbind(x, y)
+m1
+# Skapa en matrix genom att binda samman x, y, n och x radvis. Matrisen får 5 rader och 4 kolumner. 
+m2 <- cbind(x, y, n, x)
+m2
+# Skapa en matrix genom att binda samman x och ymis radvis. Matrisen får 5 rader och 2 kolumner. 
+m3 <- rbind(x, ymis)
+m3
+```
+
+För åtkomst till element krävs nu, eftersom matriser består av rader och kolumner, att bägge dimensioner anges.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa element på rad 2 och kolumn 3
+m1[2,3]
+# Visa element på rad 2 och alla kolumner
+m1[2,]
+# Visa element på alla rader och kolumner 3
+m1[,3]
+# Visa 
+m2[c(1,2),]
+```
+
+
+Det går att utföra elementvisa beräkningar, vilket kräver att matriserna har samma antal rader och kolumner. Observera att elementvis multiplikation inte är samma som det som vanligtvis betecknas matrismultiplikation.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Addera element i matris 1 med element i matris 3
+m1 + m3
+# Multiplicera element i matris 1 med element i matris 3. OBS! Detta är inte matrismultiplikation!
+m1 * m3
+# Dividera element i matris 1 med en konstant n
+m1 / n
+
+```
+
+Spara **dataobjects.R**. 
+
+Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Därför introduceras en tredje typ av dataobjekt som är enklare att arbeta med.
+
+
+## Data frames
+En **data frame** är det absolut vanligaste objektet för dataanlys. En data frame har likheter med matriser eftersom den har två dimensioner (rader och kolumner), men kan innehålla både numeriska värden och bokstäver. Vidare innehåller en data frame ytterligare information som **variabelnamn** och **variabeltyp**.
+
+För att skapa en data frame används **data.frame()** och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.
+
+Skriv nedanstående kod i **dataobjects.R**. 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en data frame genom att ange vektorer 
+df <- data.frame(x, y, nordic_countries)
+df
+# Skapa en data frame genom ange transformera en matris.
+data.frame(m1)
+```
+
+
+För åtkomst till element finns nu flera alternativ. Dels kan används precis som förut ´[]´, dels finns nu möjlighet att använda `$` för att komma åt data genom att använda variabelnamn. I nedanstående kod jämförs de bägge metoderna.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa kolumn 3 
+df[2,1]
+df$x[2]
+# Visa värdet i rad 2 och kolumn 1 
+df[,3]
+df$nordic_countries
+```
+
+Vi kan enkelt addera nya kolumner till en data frame.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Ursprungligt data frame
+df
+# Skapa variabeln sample_size baserat på n som bara har ett värde
+df$sample_size <- n
+df
+# Skapa en variabel som heter ysq baserat på y i samma data frame.
+df$ysq <- df$y^2
+df
+# Skapa en tom variabel som heter x_cat
+df$x_cat <- NA
+df
+```
+
+Genom att kombinera `$` förenklas användningen av de logiska operatorerna och det är enkelt att transformera variabler och även skapa mindre data frames.  
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Ändra värdet på sample_size för Danmark från 150 till 300
+df$sample_size[df$nordic_countries == "Denmark"] <- 300
+df
+# Ändra värden från NA till 1 i x_cat om x är större än 2
+df$x_cat[x > 2] <- 1
+df
+# Ändra värden från NA till 0 i x_cat om x är mindre än eller lika 2
+df$x_cat[x <= 2] <- 0
+df
+# Skapa ett nytt data frame bestående av bara rader där x_cat är lika med 1
+df1 <- df[df$x_cat == 1, ]
+df1
+```
+
+Spara **dataobjects.R**. 
+
+Det finns alternativa sätt arbeta med data i R och ofta kan samma resultat erhållas med olika lösningar. Vad som presentas här är är ett alternativ.  Datahanteringen är ofta en tidskrävande del i statistisk undersökning och stor noggrannhet är viktigt. Det går inte att tillräckligt betona hur betydelsefull datahanteringen är i en undersökning. En korrekt analys kräver ju korrekt data. 
+
+
+
+
+

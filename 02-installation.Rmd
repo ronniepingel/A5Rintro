@@ -1,0 +1,117 @@
+# Installation 
+
+Vid progammering är det mycket viktigt att noga följa instruktioner. 
+
+1. Installera R
+2. Installera RSTudio
+
+## Installation av R
+
+### Installation av R på MacOS
+
+1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/.
+2. Ladda ner pkg-filen under *Latest release*. Öppna den nedladdade .pkg-filen och installera R.
+
+### Installation av R på Windows
+1. Gå till hemsidan https://cran.r-project.org/bin/windows/base/.
+
+2. Klicka på ''Download R 3.6.0 for Windows'' (om det är den senaste versionen)
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/installR.png")
+```
+
+3. Dubbelklicka på ''R installer'' för att starta installationen.
+
+4. Välj språk och tryck **OK**.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/languageR.png")
+```
+
+5. Välj **Next**.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/licenseR.png")
+```
+
+6. Välj sökväg för din installation. Låt default vara. Klicka **Next**.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/destinationR.png")
+```
+
+7. För att förenkla, välj alla komponenter för installation. Klicka **Next**.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/componentsR.png")
+```
+
+8. Klicka **No (accept defaults)**.
+
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/customizeR.png")
+```
+
+9. För att lägga till R i Startmenyn, klicka bort kryssrutan nedan. Klicka **Next**.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/startmenuR.png")
+```
+
+10. Välj om du vill ha genvägar. Klicka **Next**. 
+
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/tasksR.png")
+```
+
+11. Installation börjar! Starta R när den är klar.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/installingR.png")
+```
+
+12. Starta R för första gången.
+På Windows ser det ut så här.
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/firstR.png")
+```
+
+```{r, echo = FALSE, out.width = "70%", dpi = 72}
+knitr::include_graphics("images/firstR2.png")
+```
+
+## Installation av RStudio
+Av olika anledningar väljer vi att inte arbeta i R Editor utan vi väljer RStudio. Stäng därför ner R. 
+
++ Gå till https://rstudio.com/products/rstudio/download/}. 
++ Välj RStudio Desktop Free. 
++ Välj sedan den version stämmer överens med ditt operativsystem.
++ Installera (på Windows) genom att klicka **Next->Next->Install**
+
+Starta RStudio. Till vänster finns Console där resultat presenteras. De övriga två panelerna till höger kommer vi återkomma till när det är aktuellt.
+
+```{r, echo = FALSE, out.width = "80%", dpi = 72}
+knitr::include_graphics("images/Rstudio1.png")
+```
+
+## Paket
+En viktig styrka med R är det stora antalet tillgängliga paket utvecklade av användare. Grundinstallationen av R är nämligen tämligen begränsad vad gäller funktionalitet, men med alla paket utvidgas den statistiska verktygslådan, de grafiska möjligheterna och förmågan att hantera olika typer av data rejält. Det finns ungefär 15000 paket på "The Comprehensive R Archive Network" (CRAN) som är Rs arkiv för paket:
+
+https://cran.r-project.org/web/packages/available_packages_by_name.html
+
+Det finns ytterligare tusentals andra paket som dock inte genomgått samma granskning som paketen på CRAN, till exempel på github. Eftersom antalet paket är överväldigande för nybörjaren kan det vara ett stöd att känna till de vanligaste paketen. Ett förslag på en lista över viktiga paket finns här:
+
+https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
+
+För att installera ett paket skriver man in paketnamnet med ett kommando alternativt använda menyn i RStudio under *Tools > Install Packages**.
+
+Vi exemplifierar nu med ett paket som hjälper oss att läsa data från Excel-filer. Funktionalitet för inläsning från Excel-filer finns inte i basversionen av R, därför är detta paket nödvändigt om data är sparat i en Excelfil. 
+
+Vi installerar paketet **readxl** genom att i Console skriva in `install.packages("readxl")` och trycka enter.
+Som tidigare nämnt går det även att installera paket via menyn. 
+Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva `library("readxl")` och trycka enter aktiveras paketet.
+Nu kan analyser i R utnyttja paketets funktionalitet. 
+
+Observera att ett paket måste aktiveras på nytt varje gång RStudio öppnas. Dock behövs det bara installeras en enda gång.
