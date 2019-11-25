@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 3 Första sessionen | Tillämpad statistik</title>
-  <meta name="description" content="Kapitel 3 Första sessionen | Tillämpad statistik" />
+  <title>Kapitel 3 Första sessionen | R på kursen Tillämpad statistik (A5)</title>
+  <meta name="description" content="Kapitel 3 Första sessionen | R på kursen Tillämpad statistik (A5)" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 3 Första sessionen | Tillämpad statistik" />
+  <meta property="og:title" content="Kapitel 3 Första sessionen | R på kursen Tillämpad statistik (A5)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 3 Första sessionen | Tillämpad statistik" />
+  <meta name="twitter:title" content="Kapitel 3 Första sessionen | R på kursen Tillämpad statistik (A5)" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-11-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -102,20 +102,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
 <li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
 <li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
 <li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
 <li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
-<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#dataframes"><i class="fa fa-check"></i><b>4.3</b> Dataframes</a></li>
-<li class="chapter" data-level="4.4" data-path="objekt.html"><a href="objekt.html#övningar"><i class="fa fa-check"></i><b>4.4</b> Övningar</a></li>
+<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
+<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
 </ul></li>
 </ul>
 
@@ -126,7 +136,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
           </h1>
         </div>
 
@@ -138,7 +148,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Kapitel 3</span> Första sessionen</h1>
 <p>Starta RStudio. Välj <strong>File &gt; New File &gt; R Script</strong>. Ett nytt fönster (Untitled1) öppnas.</p>
 <p><img src="images/Rstudio2.png" width="80%" /></p>
-<p>Detta är ett script-fönster eller en <strong>editor</strong>. I scriptet (editorn) skrivs kommandon som utvärderas av R som sedan redovisar resultaten i R Console. Det är möjligt att skriva kod direkt i R console, men rekommenderas inte. En script-fil är en textfil (med tillägget .R) med kommandon. Det är viktigt att spara script eftersom det är önskvärt att inte förlora texten. Skapa en mapp som heter <strong>A5Rkod</strong>. Välj <strong>File &gt; Save As…</strong> och spara i <strong>A5Rkod</strong> scriptet Untitled med namnet <strong>myfirstscript.R</strong>.</p>
+<p>Detta är ett script-fönster eller en <strong>editor</strong>. I scriptet (editorn) skrivs kommandon som utvärderas av R som sedan redovisar resultaten i R Console. Det är möjligt att skriva kod direkt i R Console, men rekommenderas inte. En script-fil är en textfil (med tillägget .R) med kommandon. Det är viktigt att spara script eftersom det är önskvärt att inte förlora texten. Skapa en mapp som heter <strong>A5Rkod</strong>. Välj <strong>File &gt; Save As…</strong> och spara i <strong>A5Rkod</strong> scriptet Untitled med namnet <strong>myfirstscript.R</strong>.</p>
 <p>Kommandon i scriptfilen körs (exekveras) på följande vis:</p>
 <ol style="list-style-type: decimal">
 <li>En rad: Raden där markören är placerad körs med Ctrl+Enter (command + Enter på Mac) eller Run ovanför scriptet.</li>
@@ -160,44 +170,54 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ol start="2" style="list-style-type: decimal">
 <li>Använd R som miniräknare genom att prova alla <strong>tre</strong> sätt att köra kod. Det är nödvändigt att bekanta sig med hur kod körs för att bli bekväm med att simultant arbeta i script-fönstret och se resultat i Console.</li>
 </ol>
-<pre><code>## [1] 2</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre><code>## [1] -5</code></pre>
-<pre><code>## [1] 6</code></pre>
-<pre><code>## [1] 0.8</code></pre>
-<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span>
+[<span class="dv">1</span>] <span class="dv">2</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">4</span>
+<span class="dv">2</span><span class="op">-</span><span class="dv">7</span>
+[<span class="dv">1</span>] <span class="op">-</span><span class="dv">5</span>
+<span class="dv">2</span><span class="op">*</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">6</span>
+<span class="dv">4</span><span class="op">/</span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="fl">0.8</span>
+<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>
+[<span class="dv">1</span>] <span class="dv">9</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
-<li>Matematiska funktioner, t ex kvadratroten, finns implementerade i R. Skriv följande i scriptet, spara och kör.</li>
+<li>Matematiska funktioner, t ex kvadratroten, finns implementerade i R. Skriv <code>sqrt(6)</code> i scriptet och spara. Kör koden och erhåll följande i Console.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Kvadratroten</span>
-<span class="kw">sqrt</span>(<span class="dv">6</span>)</code></pre></div>
-<pre><code>## [1] 2.44949</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">2.44949</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>Även exponentialfunktionen <span class="math inline">\(exp(x)\)</span> finns i R. Skriv följande rader i scriptet, spara och kör.</li>
+<li>Även exponentialfunktionen <span class="math inline">\(\exp(x)\)</span> finns i R. Skriv <code>exp(3)</code> i script-filen, spara och kör.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Exponentialfunktionen </span>
-<span class="kw">exp</span>(<span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 20.08554</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="dv">3</span>)
+[<span class="dv">1</span>] <span class="fl">20.08554</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
-<li>Konstanten <span class="math inline">\(\pi\)</span> finns i R. Skriv följande rader i scriptet, spara och kör.</li>
+<li>Konstanten <span class="math inline">\(\pi\)</span> finns i R. Skriv <code>pi</code> i script-filen, spara och kör.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pi </span>
-pi</code></pre></div>
-<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi
+[<span class="dv">1</span>] <span class="fl">3.141593</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
-<li>Kod finns ofta på flera rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör.</li>
+<li>Kod finns ofta på flera rader. Anta att vi önskar beräkna <span class="math inline">\(2 + 2+ 3+ 5\)</span> men att koden inte får plats på en rad utan måste delas upp på två rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Kod över 2 rader</span>
 <span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
 <span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<p>Följande resultat ska presenteras i Console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Kod över 2 rader</span>
+<span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">12</span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Kod finns ofta på flera rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör. Jämför resultatet med punkt 6!</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> 
+<span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
+<p>Nu utvärderas raderna var för sig, vilket inte var avsikten med analysen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> 
+[<span class="dv">1</span>] <span class="dv">4</span>
+<span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">8</span></code></pre></div>
 <p><strong>Grattis!</strong> Du har nu genomfört din första session i R. Scriptet ska se ut enligt nedan. Spara och stäng R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># myfirstscript.R</span>
 <span class="co">#  R som miniräknare</span>
