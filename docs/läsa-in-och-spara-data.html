@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 6 Läsa in och spara data | R på kursen Tillämpad statistik (A5)</title>
+  <meta name="description" content="Kapitel 6 Läsa in och spara data | R på kursen Tillämpad statistik (A5)" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 6 Läsa in och spara data | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 6 Läsa in och spara data | R på kursen Tillämpad statistik (A5)" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2019-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="funktioner.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
+<li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
+<li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
+<li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
+<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
+<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="läsa-in-och-spara-data" class="section level1">
+<h1><span class="header-section-number">Kapitel 6</span> Läsa in och spara data</h1>
+<p>Det finns många typer av dataformat och avsikten här är att beskriva principerna för hur datamaterial är organiserade, ge tips på hur dessa bör se ut, samt presentera de vanligaste sätten att läsa in och spara data. För nybörjaren kan det vara uppmuntrande att känna till att datainläsning i en del fall kan vara omständligt och frustrerande om data från början inte organiserat på ett korrekt sätt. Misströsta därför inte ifall det dyker upp svårigheter.</p>
+<p>Det ofta bästa sättet att importera och spara data är i en <strong>textfil</strong>. Genom att spara data i textformat blir datamaterialet dessutom program- och plattformsoberoende, vilket i högsta grad är önskvärt. Det är viktigt att organisera data på ett bra sätt och nedan följer några allmänna tips:</p>
+<ul>
+<li>Många program (t ex Excel) gör det möjligt att spara data som ren text istället för i progammets eget format. Spara alltid en kopia i textformat.</li>
+<li>Organisera data med kolumner som korresponderar till olika variabler.</li>
+<li>Använd semi-kolon för att avgränsa kolumner. Eftersom komma används som decimaltecken på svenska och avstånd eller TAB är svåra att se i en textfil eftersom de påminner om blanksteg undviks enkla problem.</li>
+<li>Försök att inte ändra något i ursprungsfilen. Det är bättre att, om möjligt, importera till R och göra ändringarna där.</li>
+</ul>
+<div id="text--och-csv-filer" class="section level2">
+<h2><span class="header-section-number">6.1</span> Text- och CSV-filer</h2>
+<p>CSV står för “comma separated values”, vilket även referar till semi-kolon eftersom många länder använder komma som decimaltecken. De två funktionerna som används för att läsa in CSV-filer är <strong>read.csv()</strong> och <strong>read.csv2()</strong>. CSV.filer är textfiler och mer generellt kan text-filer läsas in med <strong>read.table()</strong>. De bägge <strong>read.csv()</strong> och <strong>read.csv2()</strong> baseras nämligen på <strong>read.table()</strong>, men med förspecificerade argument. Funktionernas vanligaste argument presenteras nedan, men det går att specificera funktionerna i stor detalj beroende på hur datafilen ser ut.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)
+<span class="kw">read.csv2</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">read.table</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</code></pre></div>
+<ul>
+<li><strong>file</strong> anger filnamnet</li>
+<li><strong>header</strong> om variablerna har variabelnamn på första raden</li>
+<li><strong>sep</strong> anger typ av separarering mellan kolumner.</li>
+<li><strong>quote</strong> anger citationstecken för text-variabler</li>
+<li><strong>dec</strong> anger typ av decimal-tecken</li>
+</ul>
+<p>För att läsa in nedanstående text-fil <strong>animals1.csv</strong> som kan vi använda <strong>read.csv()</strong>. Skriv in <code>df1 &lt;- read.csv(file=&quot;D:/animals1.csv&quot;)</code> Eftersom det är en textfil kan filen öppnas i Notepad eller Textredigerare (eller mosvarande). Då är det tydligt att kolumnerna är separerade med komma och att decimaltecken används punkt. Raden längst till vänster är radnamn, vilket är default. Citationstecken hanterar textvariabler.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;&quot;</span>,<span class="st">&quot;animal&quot;</span>,<span class="st">&quot;body&quot;</span>,<span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;1&quot;</span>,<span class="st">&quot;Lesser short-tailed shrew&quot;</span>,<span class="fl">0.005</span>,<span class="fl">0.14</span>
+<span class="st">&quot;2&quot;</span>,<span class="st">&quot;Little brown bat&quot;</span>,<span class="fl">0.01</span>,<span class="fl">0.25</span>
+<span class="st">&quot;3&quot;</span>,<span class="st">&quot;Big brown bat&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.3</span>
+<span class="st">&quot;4&quot;</span>,<span class="st">&quot;Mouse&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.4</span>
+<span class="st">&quot;5&quot;</span>,<span class="st">&quot;Musk shrew&quot;</span>,<span class="fl">0.048</span>,<span class="fl">0.33</span>
+<span class="st">&quot;6&quot;</span>,<span class="st">&quot;Star-nosed mole&quot;</span>,<span class="fl">0.06</span>,<span class="dv">1</span>
+<span class="st">&quot;7&quot;</span>,<span class="st">&quot;E. American mole&quot;</span>,<span class="fl">0.075</span>,<span class="fl">1.2</span>
+<span class="st">&quot;8&quot;</span>,<span class="st">&quot;Ground squirrel&quot;</span>,<span class="fl">0.101</span>,<span class="dv">4</span>
+<span class="st">&quot;9&quot;</span>,<span class="st">&quot;Tree shrew&quot;</span>,<span class="fl">0.104</span>,<span class="fl">2.5</span>
+<span class="st">&quot;10&quot;</span>,<span class="st">&quot;Golden hamster&quot;</span>,<span class="fl">0.12</span>,<span class="dv">1</span>
+<span class="st">&quot;11&quot;</span>,<span class="st">&quot;Mole&quot;</span>,<span class="fl">0.122</span>,<span class="dv">3</span>
+<span class="st">&quot;12&quot;</span>,<span class="st">&quot;Galago&quot;</span>,<span class="fl">0.2</span>,<span class="dv">5</span>
+<span class="st">&quot;13&quot;</span>,<span class="st">&quot;Rat&quot;</span>,<span class="fl">0.28</span>,<span class="fl">1.9</span>
+<span class="st">&quot;14&quot;</span>,<span class="st">&quot;Chinchilla&quot;</span>,<span class="fl">0.425</span>,<span class="fl">6.4</span>
+<span class="st">&quot;15&quot;</span>,<span class="st">&quot;Owl monkey&quot;</span>,<span class="fl">0.48</span>,<span class="fl">15.5</span>
+<span class="st">&quot;16&quot;</span>,<span class="st">&quot;Desert hedgehog&quot;</span>,<span class="fl">0.55</span>,<span class="fl">2.4</span>
+<span class="st">&quot;17&quot;</span>,<span class="st">&quot;Rockhyraxa&quot;</span>,<span class="fl">0.75</span>,<span class="fl">12.3</span>
+<span class="st">&quot;18&quot;</span>,<span class="st">&quot;European hedgehog&quot;</span>,<span class="fl">0.785</span>,<span class="fl">3.5</span>
+<span class="st">&quot;19&quot;</span>,<span class="st">&quot;Tenrec&quot;</span>,<span class="fl">0.9</span>,<span class="fl">2.6</span>
+<span class="st">&quot;20&quot;</span>,<span class="st">&quot;Arctic ground squirrel&quot;</span>,<span class="fl">0.92</span>,<span class="fl">5.7</span>
+<span class="st">&quot;21&quot;</span>,<span class="st">&quot;African giant pouched rat&quot;</span>,<span class="dv">1</span>,<span class="fl">6.6</span>
+<span class="st">&quot;22&quot;</span>,<span class="st">&quot;Guinea pig&quot;</span>,<span class="fl">1.04</span>,<span class="fl">5.5</span>
+<span class="st">&quot;23&quot;</span>,<span class="st">&quot;Mountain beaver&quot;</span>,<span class="fl">1.35</span>,<span class="fl">8.1</span>
+<span class="st">&quot;24&quot;</span>,<span class="st">&quot;Slow loris&quot;</span>,<span class="fl">1.4</span>,<span class="fl">12.5</span>
+<span class="st">&quot;25&quot;</span>,<span class="st">&quot;Genet&quot;</span>,<span class="fl">1.41</span>,<span class="fl">17.5</span>
+<span class="st">&quot;26&quot;</span>,<span class="st">&quot;Phalanger&quot;</span>,<span class="fl">1.62</span>,<span class="fl">11.4</span>
+<span class="st">&quot;27&quot;</span>,<span class="st">&quot;N.A. opossum&quot;</span>,<span class="fl">1.7</span>,<span class="fl">6.3</span>
+<span class="st">&quot;28&quot;</span>,<span class="st">&quot;Tree hyrax&quot;</span>,<span class="dv">2</span>,<span class="fl">12.3</span>
+<span class="st">&quot;29&quot;</span>,<span class="st">&quot;Rabbit&quot;</span>,<span class="fl">2.5</span>,<span class="fl">12.1</span>
+<span class="st">&quot;30&quot;</span>,<span class="st">&quot;Echidna&quot;</span>,<span class="dv">3</span>,<span class="dv">25</span>
+<span class="st">&quot;31&quot;</span>,<span class="st">&quot;Cat&quot;</span>,<span class="fl">3.3</span>,<span class="fl">25.6</span>
+<span class="st">&quot;32&quot;</span>,<span class="st">&quot;Arctic fox&quot;</span>,<span class="fl">3.385</span>,<span class="fl">44.5</span>
+<span class="st">&quot;33&quot;</span>,<span class="st">&quot;Water opossum&quot;</span>,<span class="fl">3.5</span>,<span class="fl">3.9</span>
+<span class="st">&quot;34&quot;</span>,<span class="st">&quot;Nine-banded armadillo&quot;</span>,<span class="fl">3.5</span>,<span class="fl">10.8</span>
+<span class="st">&quot;35&quot;</span>,<span class="st">&quot;Rock yrax-b&quot;</span>,<span class="fl">3.6</span>,<span class="dv">21</span>
+<span class="st">&quot;36&quot;</span>,<span class="st">&quot;Yellow-bellied marmot&quot;</span>,<span class="fl">4.05</span>,<span class="dv">17</span>
+<span class="st">&quot;37&quot;</span>,<span class="st">&quot;Verbet&quot;</span>,<span class="fl">4.19</span>,<span class="dv">58</span>
+<span class="st">&quot;38&quot;</span>,<span class="st">&quot;Red fox&quot;</span>,<span class="fl">4.235</span>,<span class="fl">50.4</span>
+<span class="st">&quot;39&quot;</span>,<span class="st">&quot;Raccoon&quot;</span>,<span class="fl">4.288</span>,<span class="fl">39.2</span>
+<span class="st">&quot;40&quot;</span>,<span class="st">&quot;Rhesus monkey&quot;</span>,<span class="fl">6.8</span>,<span class="dv">179</span>
+<span class="st">&quot;41&quot;</span>,<span class="st">&quot;Potarmonkey&quot;</span>,<span class="dv">10</span>,<span class="dv">115</span>
+<span class="st">&quot;42&quot;</span>,<span class="st">&quot;Baboon&quot;</span>,<span class="fl">10.55</span>,<span class="fl">179.5</span>
+<span class="st">&quot;43&quot;</span>,<span class="st">&quot;Roe deer&quot;</span>,<span class="fl">14.83</span>,<span class="fl">98.2</span>
+<span class="st">&quot;44&quot;</span>,<span class="st">&quot;Goat&quot;</span>,<span class="fl">27.66</span>,<span class="dv">115</span>
+<span class="st">&quot;45&quot;</span>,<span class="st">&quot;Kangaroo&quot;</span>,<span class="dv">35</span>,<span class="dv">56</span>
+<span class="st">&quot;46&quot;</span>,<span class="st">&quot;Grey wolf&quot;</span>,<span class="fl">36.33</span>,<span class="fl">119.5</span>
+<span class="st">&quot;47&quot;</span>,<span class="st">&quot;Chimpanzee&quot;</span>,<span class="fl">52.16</span>,<span class="dv">440</span>
+<span class="st">&quot;48&quot;</span>,<span class="st">&quot;Sheep&quot;</span>,<span class="fl">55.5</span>,<span class="dv">175</span>
+<span class="st">&quot;49&quot;</span>,<span class="st">&quot;Giantarmadillo&quot;</span>,<span class="dv">60</span>,<span class="dv">81</span>
+<span class="st">&quot;50&quot;</span>,<span class="st">&quot;Human&quot;</span>,<span class="dv">62</span>,<span class="dv">1320</span>
+<span class="st">&quot;51&quot;</span>,<span class="st">&quot;Grey seal&quot;</span>,<span class="dv">85</span>,<span class="dv">325</span>
+<span class="st">&quot;52&quot;</span>,<span class="st">&quot;Jaguar&quot;</span>,<span class="dv">100</span>,<span class="dv">157</span>
+<span class="st">&quot;53&quot;</span>,<span class="st">&quot;Brazilian tapir&quot;</span>,<span class="dv">160</span>,<span class="dv">169</span>
+<span class="st">&quot;54&quot;</span>,<span class="st">&quot;Donkey&quot;</span>,<span class="fl">187.1</span>,<span class="dv">419</span>
+<span class="st">&quot;55&quot;</span>,<span class="st">&quot;Pig&quot;</span>,<span class="dv">192</span>,<span class="dv">180</span>
+<span class="st">&quot;56&quot;</span>,<span class="st">&quot;Gorilla&quot;</span>,<span class="dv">207</span>,<span class="dv">406</span>
+<span class="st">&quot;57&quot;</span>,<span class="st">&quot;Okapi&quot;</span>,<span class="dv">250</span>,<span class="dv">490</span>
+<span class="st">&quot;58&quot;</span>,<span class="st">&quot;Cow&quot;</span>,<span class="dv">465</span>,<span class="dv">423</span>
+<span class="st">&quot;59&quot;</span>,<span class="st">&quot;Horse&quot;</span>,<span class="dv">521</span>,<span class="dv">655</span>
+<span class="st">&quot;60&quot;</span>,<span class="st">&quot;Giraffe&quot;</span>,<span class="dv">529</span>,<span class="dv">680</span>
+<span class="st">&quot;61&quot;</span>,<span class="st">&quot;Asian elephant&quot;</span>,<span class="dv">2547</span>,<span class="dv">4603</span>
+<span class="st">&quot;62&quot;</span>,<span class="st">&quot;African elephant&quot;</span>,<span class="dv">6654</span>,<span class="dv">5712</span>
+<span class="st">&quot;63&quot;</span>,<span class="st">&quot;Triceratops&quot;</span>,<span class="dv">9400</span>,<span class="dv">70</span>
+<span class="st">&quot;64&quot;</span>,<span class="st">&quot;Dipliodocus&quot;</span>,<span class="dv">11700</span>,<span class="dv">50</span>
+<span class="st">&quot;65&quot;</span>,<span class="st">&quot;Brachiosaurus&quot;</span>,<span class="dv">87000</span>,<span class="fl">154.5</span></code></pre></div>
+<p>Läs nu in <strong>animals2.csv</strong> med <strong>read.csv2()</strong>, det skriv in <code>df2 &lt;- read.csv2(file=&quot;D:/animals2.csv&quot;)</code>. I denna textfilen är kolumnerna separerade med semi-kolon och komma är decimaltecken.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;&quot;</span>;<span class="st">&quot;animal&quot;</span>;<span class="st">&quot;body&quot;</span>;<span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;1&quot;</span>;<span class="st">&quot;Lesser short-tailed shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">005</span>;<span class="dv">0</span>,<span class="dv">14</span>
+<span class="st">&quot;2&quot;</span>;<span class="st">&quot;Little brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">01</span>;<span class="dv">0</span>,<span class="dv">25</span>
+<span class="st">&quot;3&quot;</span>;<span class="st">&quot;Big brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">3</span>
+<span class="st">&quot;4&quot;</span>;<span class="st">&quot;Mouse&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">4</span>
+<span class="st">&quot;5&quot;</span>;<span class="st">&quot;Musk shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">048</span>;<span class="dv">0</span>,<span class="dv">33</span>
+<span class="st">&quot;6&quot;</span>;<span class="st">&quot;Star-nosed mole&quot;</span>;<span class="dv">0</span>,<span class="dv">06</span>;<span class="dv">1</span>
+<span class="st">&quot;7&quot;</span>;<span class="st">&quot;E. American mole&quot;</span>;<span class="dv">0</span>,<span class="dv">075</span>;<span class="dv">1</span>,<span class="dv">2</span>
+<span class="st">&quot;8&quot;</span>;<span class="st">&quot;Ground squirrel&quot;</span>;<span class="dv">0</span>,<span class="dv">101</span>;<span class="dv">4</span>
+<span class="st">&quot;9&quot;</span>;<span class="st">&quot;Tree shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">104</span>;<span class="dv">2</span>,<span class="dv">5</span>
+<span class="st">&quot;10&quot;</span>;<span class="st">&quot;Golden hamster&quot;</span>;<span class="dv">0</span>,<span class="dv">12</span>;<span class="dv">1</span>
+<span class="st">&quot;11&quot;</span>;<span class="st">&quot;Mole&quot;</span>;<span class="dv">0</span>,<span class="dv">122</span>;<span class="dv">3</span>
+<span class="st">&quot;12&quot;</span>;<span class="st">&quot;Galago&quot;</span>;<span class="dv">0</span>,<span class="dv">2</span>;<span class="dv">5</span>
+<span class="st">&quot;13&quot;</span>;<span class="st">&quot;Rat&quot;</span>;<span class="dv">0</span>,<span class="dv">28</span>;<span class="dv">1</span>,<span class="dv">9</span>
+<span class="st">&quot;14&quot;</span>;<span class="st">&quot;Chinchilla&quot;</span>;<span class="dv">0</span>,<span class="dv">425</span>;<span class="dv">6</span>,<span class="dv">4</span>
+<span class="st">&quot;15&quot;</span>;<span class="st">&quot;Owl monkey&quot;</span>;<span class="dv">0</span>,<span class="dv">48</span>;<span class="dv">15</span>,<span class="dv">5</span>
+<span class="st">&quot;16&quot;</span>;<span class="st">&quot;Desert hedgehog&quot;</span>;<span class="dv">0</span>,<span class="dv">55</span>;<span class="dv">2</span>,<span class="dv">4</span>
+<span class="st">&quot;17&quot;</span>;<span class="st">&quot;Rockhyraxa&quot;</span>;<span class="dv">0</span>,<span class="dv">75</span>;<span class="dv">12</span>,<span class="dv">3</span>
+<span class="st">&quot;18&quot;</span>;<span class="st">&quot;European hedgehog&quot;</span>;<span class="dv">0</span>,<span class="dv">785</span>;<span class="dv">3</span>,<span class="dv">5</span>
+<span class="st">&quot;19&quot;</span>;<span class="st">&quot;Tenrec&quot;</span>;<span class="dv">0</span>,<span class="dv">9</span>;<span class="dv">2</span>,<span class="dv">6</span>
+<span class="st">&quot;20&quot;</span>;<span class="st">&quot;Arctic ground squirrel&quot;</span>;<span class="dv">0</span>,<span class="dv">92</span>;<span class="dv">5</span>,<span class="dv">7</span>
+<span class="st">&quot;21&quot;</span>;<span class="st">&quot;African giant pouched rat&quot;</span>;<span class="dv">1</span>;<span class="dv">6</span>,<span class="dv">6</span>
+<span class="st">&quot;22&quot;</span>;<span class="st">&quot;Guinea pig&quot;</span>;<span class="dv">1</span>,<span class="dv">04</span>;<span class="dv">5</span>,<span class="dv">5</span>
+<span class="st">&quot;23&quot;</span>;<span class="st">&quot;Mountain beaver&quot;</span>;<span class="dv">1</span>,<span class="dv">35</span>;<span class="dv">8</span>,<span class="dv">1</span>
+<span class="st">&quot;24&quot;</span>;<span class="st">&quot;Slow loris&quot;</span>;<span class="dv">1</span>,<span class="dv">4</span>;<span class="dv">12</span>,<span class="dv">5</span>
+<span class="st">&quot;25&quot;</span>;<span class="st">&quot;Genet&quot;</span>;<span class="dv">1</span>,<span class="dv">41</span>;<span class="dv">17</span>,<span class="dv">5</span>
+<span class="st">&quot;26&quot;</span>;<span class="st">&quot;Phalanger&quot;</span>;<span class="dv">1</span>,<span class="dv">62</span>;<span class="dv">11</span>,<span class="dv">4</span>
+<span class="st">&quot;27&quot;</span>;<span class="st">&quot;N.A. opossum&quot;</span>;<span class="dv">1</span>,<span class="dv">7</span>;<span class="dv">6</span>,<span class="dv">3</span>
+<span class="st">&quot;28&quot;</span>;<span class="st">&quot;Tree hyrax&quot;</span>;<span class="dv">2</span>;<span class="dv">12</span>,<span class="dv">3</span>
+<span class="st">&quot;29&quot;</span>;<span class="st">&quot;Rabbit&quot;</span>;<span class="dv">2</span>,<span class="dv">5</span>;<span class="dv">12</span>,<span class="dv">1</span>
+<span class="st">&quot;30&quot;</span>;<span class="st">&quot;Echidna&quot;</span>;<span class="dv">3</span>;<span class="dv">25</span>
+<span class="st">&quot;31&quot;</span>;<span class="st">&quot;Cat&quot;</span>;<span class="dv">3</span>,<span class="dv">3</span>;<span class="dv">25</span>,<span class="dv">6</span>
+<span class="st">&quot;32&quot;</span>;<span class="st">&quot;Arctic fox&quot;</span>;<span class="dv">3</span>,<span class="dv">385</span>;<span class="dv">44</span>,<span class="dv">5</span>
+<span class="st">&quot;33&quot;</span>;<span class="st">&quot;Water opossum&quot;</span>;<span class="dv">3</span>,<span class="dv">5</span>;<span class="dv">3</span>,<span class="dv">9</span>
+<span class="st">&quot;34&quot;</span>;<span class="st">&quot;Nine-banded armadillo&quot;</span>;<span class="dv">3</span>,<span class="dv">5</span>;<span class="dv">10</span>,<span class="dv">8</span>
+<span class="st">&quot;35&quot;</span>;<span class="st">&quot;Rock yrax-b&quot;</span>;<span class="dv">3</span>,<span class="dv">6</span>;<span class="dv">21</span>
+<span class="st">&quot;36&quot;</span>;<span class="st">&quot;Yellow-bellied marmot&quot;</span>;<span class="dv">4</span>,<span class="dv">05</span>;<span class="dv">17</span>
+<span class="st">&quot;37&quot;</span>;<span class="st">&quot;Verbet&quot;</span>;<span class="dv">4</span>,<span class="dv">19</span>;<span class="dv">58</span>
+<span class="st">&quot;38&quot;</span>;<span class="st">&quot;Red fox&quot;</span>;<span class="dv">4</span>,<span class="dv">235</span>;<span class="dv">50</span>,<span class="dv">4</span>
+<span class="st">&quot;39&quot;</span>;<span class="st">&quot;Raccoon&quot;</span>;<span class="dv">4</span>,<span class="dv">288</span>;<span class="dv">39</span>,<span class="dv">2</span>
+<span class="st">&quot;40&quot;</span>;<span class="st">&quot;Rhesus monkey&quot;</span>;<span class="dv">6</span>,<span class="dv">8</span>;<span class="dv">179</span>
+<span class="st">&quot;41&quot;</span>;<span class="st">&quot;Potarmonkey&quot;</span>;<span class="dv">10</span>;<span class="dv">115</span>
+<span class="st">&quot;42&quot;</span>;<span class="st">&quot;Baboon&quot;</span>;<span class="dv">10</span>,<span class="dv">55</span>;<span class="dv">179</span>,<span class="dv">5</span>
+<span class="st">&quot;43&quot;</span>;<span class="st">&quot;Roe deer&quot;</span>;<span class="dv">14</span>,<span class="dv">83</span>;<span class="dv">98</span>,<span class="dv">2</span>
+<span class="st">&quot;44&quot;</span>;<span class="st">&quot;Goat&quot;</span>;<span class="dv">27</span>,<span class="dv">66</span>;<span class="dv">115</span>
+<span class="st">&quot;45&quot;</span>;<span class="st">&quot;Kangaroo&quot;</span>;<span class="dv">35</span>;<span class="dv">56</span>
+<span class="st">&quot;46&quot;</span>;<span class="st">&quot;Grey wolf&quot;</span>;<span class="dv">36</span>,<span class="dv">33</span>;<span class="dv">119</span>,<span class="dv">5</span>
+<span class="st">&quot;47&quot;</span>;<span class="st">&quot;Chimpanzee&quot;</span>;<span class="dv">52</span>,<span class="dv">16</span>;<span class="dv">440</span>
+<span class="st">&quot;48&quot;</span>;<span class="st">&quot;Sheep&quot;</span>;<span class="dv">55</span>,<span class="dv">5</span>;<span class="dv">175</span>
+<span class="st">&quot;49&quot;</span>;<span class="st">&quot;Giantarmadillo&quot;</span>;<span class="dv">60</span>;<span class="dv">81</span>
+<span class="st">&quot;50&quot;</span>;<span class="st">&quot;Human&quot;</span>;<span class="dv">62</span>;<span class="dv">1320</span>
+<span class="st">&quot;51&quot;</span>;<span class="st">&quot;Grey seal&quot;</span>;<span class="dv">85</span>;<span class="dv">325</span>
+<span class="st">&quot;52&quot;</span>;<span class="st">&quot;Jaguar&quot;</span>;<span class="dv">100</span>;<span class="dv">157</span>
+<span class="st">&quot;53&quot;</span>;<span class="st">&quot;Brazilian tapir&quot;</span>;<span class="dv">160</span>;<span class="dv">169</span>
+<span class="st">&quot;54&quot;</span>;<span class="st">&quot;Donkey&quot;</span>;<span class="dv">187</span>,<span class="dv">1</span>;<span class="dv">419</span>
+<span class="st">&quot;55&quot;</span>;<span class="st">&quot;Pig&quot;</span>;<span class="dv">192</span>;<span class="dv">180</span>
+<span class="st">&quot;56&quot;</span>;<span class="st">&quot;Gorilla&quot;</span>;<span class="dv">207</span>;<span class="dv">406</span>
+<span class="st">&quot;57&quot;</span>;<span class="st">&quot;Okapi&quot;</span>;<span class="dv">250</span>;<span class="dv">490</span>
+<span class="st">&quot;58&quot;</span>;<span class="st">&quot;Cow&quot;</span>;<span class="dv">465</span>;<span class="dv">423</span>
+<span class="st">&quot;59&quot;</span>;<span class="st">&quot;Horse&quot;</span>;<span class="dv">521</span>;<span class="dv">655</span>
+<span class="st">&quot;60&quot;</span>;<span class="st">&quot;Giraffe&quot;</span>;<span class="dv">529</span>;<span class="dv">680</span>
+<span class="st">&quot;61&quot;</span>;<span class="st">&quot;Asian elephant&quot;</span>;<span class="dv">2547</span>;<span class="dv">4603</span>
+<span class="st">&quot;62&quot;</span>;<span class="st">&quot;African elephant&quot;</span>;<span class="dv">6654</span>;<span class="dv">5712</span>
+<span class="st">&quot;63&quot;</span>;<span class="st">&quot;Triceratops&quot;</span>;<span class="dv">9400</span>;<span class="dv">70</span>
+<span class="st">&quot;64&quot;</span>;<span class="st">&quot;Dipliodocus&quot;</span>;<span class="dv">11700</span>;<span class="dv">50</span>
+<span class="st">&quot;65&quot;</span>;<span class="st">&quot;Brachiosaurus&quot;</span>;<span class="dv">87000</span>;<span class="dv">154</span>,<span class="dv">5</span></code></pre></div>
+<p>Läs nu in <strong>animals.txt</strong> med <strong>read.table()</strong>, dvs använd <code>df3 &lt;- read.table(file=&quot;D:/animals.txt&quot;, header=TRUE)</code> Kolumnerna är i denna textfil är separerade med mellanslag och punkt används som decimaltecken. Här finns inga radnamn.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;animal&quot;</span> <span class="st">&quot;body&quot;</span> <span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;Lesser short-tailed shrew&quot;</span> <span class="fl">0.005</span> <span class="fl">0.14</span>
+<span class="st">&quot;Little brown bat&quot;</span> <span class="fl">0.01</span> <span class="fl">0.25</span>
+<span class="st">&quot;Big brown bat&quot;</span> <span class="fl">0.023</span> <span class="fl">0.3</span>
+<span class="st">&quot;Mouse&quot;</span> <span class="fl">0.023</span> <span class="fl">0.4</span>
+<span class="st">&quot;Musk shrew&quot;</span> <span class="fl">0.048</span> <span class="fl">0.33</span>
+<span class="st">&quot;Star-nosed mole&quot;</span> <span class="fl">0.06</span> <span class="dv">1</span>
+<span class="st">&quot;E. American mole&quot;</span> <span class="fl">0.075</span> <span class="fl">1.2</span>
+<span class="st">&quot;Ground squirrel&quot;</span> <span class="fl">0.101</span> <span class="dv">4</span>
+<span class="st">&quot;Tree shrew&quot;</span> <span class="fl">0.104</span> <span class="fl">2.5</span>
+<span class="st">&quot;Golden hamster&quot;</span> <span class="fl">0.12</span> <span class="dv">1</span>
+<span class="st">&quot;Mole&quot;</span> <span class="fl">0.122</span> <span class="dv">3</span>
+<span class="st">&quot;Galago&quot;</span> <span class="fl">0.2</span> <span class="dv">5</span>
+<span class="st">&quot;Rat&quot;</span> <span class="fl">0.28</span> <span class="fl">1.9</span>
+<span class="st">&quot;Chinchilla&quot;</span> <span class="fl">0.425</span> <span class="fl">6.4</span>
+<span class="st">&quot;Owl monkey&quot;</span> <span class="fl">0.48</span> <span class="fl">15.5</span>
+<span class="st">&quot;Desert hedgehog&quot;</span> <span class="fl">0.55</span> <span class="fl">2.4</span>
+<span class="st">&quot;Rockhyraxa&quot;</span> <span class="fl">0.75</span> <span class="fl">12.3</span>
+<span class="st">&quot;European hedgehog&quot;</span> <span class="fl">0.785</span> <span class="fl">3.5</span>
+<span class="st">&quot;Tenrec&quot;</span> <span class="fl">0.9</span> <span class="fl">2.6</span>
+<span class="st">&quot;Arctic ground squirrel&quot;</span> <span class="fl">0.92</span> <span class="fl">5.7</span>
+<span class="st">&quot;African giant pouched rat&quot;</span> <span class="dv">1</span> <span class="fl">6.6</span>
+<span class="st">&quot;Guinea pig&quot;</span> <span class="fl">1.04</span> <span class="fl">5.5</span>
+<span class="st">&quot;Mountain beaver&quot;</span> <span class="fl">1.35</span> <span class="fl">8.1</span>
+<span class="st">&quot;Slow loris&quot;</span> <span class="fl">1.4</span> <span class="fl">12.5</span>
+<span class="st">&quot;Genet&quot;</span> <span class="fl">1.41</span> <span class="fl">17.5</span>
+<span class="st">&quot;Phalanger&quot;</span> <span class="fl">1.62</span> <span class="fl">11.4</span>
+<span class="st">&quot;N.A. opossum&quot;</span> <span class="fl">1.7</span> <span class="fl">6.3</span>
+<span class="st">&quot;Tree hyrax&quot;</span> <span class="dv">2</span> <span class="fl">12.3</span>
+<span class="st">&quot;Rabbit&quot;</span> <span class="fl">2.5</span> <span class="fl">12.1</span>
+<span class="st">&quot;Echidna&quot;</span> <span class="dv">3</span> <span class="dv">25</span>
+<span class="st">&quot;Cat&quot;</span> <span class="fl">3.3</span> <span class="fl">25.6</span>
+<span class="st">&quot;Arctic fox&quot;</span> <span class="fl">3.385</span> <span class="fl">44.5</span>
+<span class="st">&quot;Water opossum&quot;</span> <span class="fl">3.5</span> <span class="fl">3.9</span>
+<span class="st">&quot;Nine-banded armadillo&quot;</span> <span class="fl">3.5</span> <span class="fl">10.8</span>
+<span class="st">&quot;Rock yrax-b&quot;</span> <span class="fl">3.6</span> <span class="dv">21</span>
+<span class="st">&quot;Yellow-bellied marmot&quot;</span> <span class="fl">4.05</span> <span class="dv">17</span>
+<span class="st">&quot;Verbet&quot;</span> <span class="fl">4.19</span> <span class="dv">58</span>
+<span class="st">&quot;Red fox&quot;</span> <span class="fl">4.235</span> <span class="fl">50.4</span>
+<span class="st">&quot;Raccoon&quot;</span> <span class="fl">4.288</span> <span class="fl">39.2</span>
+<span class="st">&quot;Rhesus monkey&quot;</span> <span class="fl">6.8</span> <span class="dv">179</span>
+<span class="st">&quot;Potarmonkey&quot;</span> <span class="dv">10</span> <span class="dv">115</span>
+<span class="st">&quot;Baboon&quot;</span> <span class="fl">10.55</span> <span class="fl">179.5</span>
+<span class="st">&quot;Roe deer&quot;</span> <span class="fl">14.83</span> <span class="fl">98.2</span>
+<span class="st">&quot;Goat&quot;</span> <span class="fl">27.66</span> <span class="dv">115</span>
+<span class="st">&quot;Kangaroo&quot;</span> <span class="dv">35</span> <span class="dv">56</span>
+<span class="st">&quot;Grey wolf&quot;</span> <span class="fl">36.33</span> <span class="fl">119.5</span>
+<span class="st">&quot;Chimpanzee&quot;</span> <span class="fl">52.16</span> <span class="dv">440</span>
+<span class="st">&quot;Sheep&quot;</span> <span class="fl">55.5</span> <span class="dv">175</span>
+<span class="st">&quot;Giantarmadillo&quot;</span> <span class="dv">60</span> <span class="dv">81</span>
+<span class="st">&quot;Human&quot;</span> <span class="dv">62</span> <span class="dv">1320</span>
+<span class="st">&quot;Grey seal&quot;</span> <span class="dv">85</span> <span class="dv">325</span>
+<span class="st">&quot;Jaguar&quot;</span> <span class="dv">100</span> <span class="dv">157</span>
+<span class="st">&quot;Brazilian tapir&quot;</span> <span class="dv">160</span> <span class="dv">169</span>
+<span class="st">&quot;Donkey&quot;</span> <span class="fl">187.1</span> <span class="dv">419</span>
+<span class="st">&quot;Pig&quot;</span> <span class="dv">192</span> <span class="dv">180</span>
+<span class="st">&quot;Gorilla&quot;</span> <span class="dv">207</span> <span class="dv">406</span>
+<span class="st">&quot;Okapi&quot;</span> <span class="dv">250</span> <span class="dv">490</span>
+<span class="st">&quot;Cow&quot;</span> <span class="dv">465</span> <span class="dv">423</span>
+<span class="st">&quot;Horse&quot;</span> <span class="dv">521</span> <span class="dv">655</span>
+<span class="st">&quot;Giraffe&quot;</span> <span class="dv">529</span> <span class="dv">680</span>
+<span class="st">&quot;Asian elephant&quot;</span> <span class="dv">2547</span> <span class="dv">4603</span>
+<span class="st">&quot;African elephant&quot;</span> <span class="dv">6654</span> <span class="dv">5712</span>
+<span class="st">&quot;Triceratops&quot;</span> <span class="dv">9400</span> <span class="dv">70</span>
+<span class="st">&quot;Dipliodocus&quot;</span> <span class="dv">11700</span> <span class="dv">50</span>
+<span class="st">&quot;Brachiosaurus&quot;</span> <span class="dv">87000</span> <span class="fl">154.5</span></code></pre></div>
+<p>Prova nedanstående kod. Vad händer?</p>
+<p><code>df4 &lt;- read.table(file=&quot;D:/animals1.csv&quot;, header=TRUE, sep=&quot;,&quot;, dec=&quot;.&quot;)</code></p>
+</div>
+<div id="excel-filer" class="section level2">
+<h2><span class="header-section-number">6.2</span> Excel-filer</h2>
+<p>I praktiken är det nödvändigt att importera av Excel-dokument. Nedan följer ett antal tips för när data matas in i Excel.</p>
+<ul>
+<li>Första raden ska bestå av variabelnamn</li>
+<li>Första kolumnen bör bestå av observationsid</li>
+<li>Undvik namn och värden med mellanslag. Risken är att det tolkas som två olika kolumner.</li>
+<li>Korta variabelnamn är bättre än långa.</li>
+<li>Undvik tecken som ?, $,%, ^, &amp;, *, (, ),-,#, ?,,,&lt;,&gt;, /, |, , [ ,] ,{, and };</li>
+<li>Radera kommentarer som du har i Excelfilen så att dessa inte tolkas som extra data.</li>
+</ul>
+<p>Målet är nu att läsa in Excel-filerna <strong>animal3.xlsx</strong> och <strong>animal4.xlsx</strong>. För att läsa in data från Excel-filer krävs ett paket som heter <strong>readxl</strong>. Installera paketet med att i Console skriv <code>install.packages(&quot;readxl&quot;)</code> och trycka enter. Skriv nu ett script</p>
+<pre><code># Läser in nödvändigt paket
+library(&quot;readxl)
+df5 &lt;- read_excel(&quot;animal3.xlsx&quot;)
+df6 &lt;- read_excel(&quot;animal4.xlsx&quot;)</code></pre>
+<p>Titta på data frames. Data frame <code>df5</code> ser ok ut, men för <code>df6</code> är det något som inte stämmer. Öppnar filen med Excel. Då ser du att Excel-dokumentet består av flera kalkylblad och data finns i blad 2. Dessutom börjar inte data från toppen, utan det finns även annan text i blad två. Genom att vara mer specifik i inläsningen av data väljs exakt varifrån Excel-filen data hämtas.</p>
+<p><code>df7 &lt;- read_excel(&quot;animal4.xlsx&quot;, sheet = &quot;Blad2&quot;, range = &quot;A3:D68&quot;)</code> Titta på data frame <code>df7</code> (som nu förhoppningsvis ska se ok ut).</p>
+</div>
+<div id="övriga-format" class="section level2">
+<h2><span class="header-section-number">6.3</span> Övriga format</h2>
+<p>Det finns ett många specialfall som vi inte tar upp. Främst gäller det:</p>
+<ul>
+<li>import av andra format (t ex SAS-format, SPSS-format, Minitab). Detta kan lösas med exempelvis paket som <strong>foreign</strong>.</li>
+<li>import av stora dataset, där till exempel paketet <strong>data.table</strong> kan vara till hjälp.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="funktioner.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
