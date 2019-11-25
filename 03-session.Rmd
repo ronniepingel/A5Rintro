@@ -2,7 +2,7 @@
 Starta RStudio. Välj **File > New File > R Script**. Ett nytt fönster (Untitled1) öppnas. 
 
 ```{r, echo = FALSE, out.width = "80%", dpi = 72}
-knitr::include_graphics("images/Rstudio2.png")
+knitr::include_graphics("images/Rstudio2.PNG")
 ```
 
 Detta är ett script-fönster eller en **editor**. I scriptet (editorn) skrivs kommandon som utvärderas av R som sedan redovisar resultaten i R Console. Det är möjligt att skriva kod direkt i R Console, men rekommenderas inte. En script-fil är en textfil (med tillägget .R) med kommandon. Det är viktigt att spara script eftersom det är önskvärt att inte förlora texten. Skapa en mapp som heter **A5Rkod**. Välj **File > Save As...** och spara i  **A5Rkod** scriptet Untitled med namnet **myfirstscript.R**.
