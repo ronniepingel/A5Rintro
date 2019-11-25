@@ -1,0 +1,98 @@
+# Tabeller
+
+**table()** används för att skapa tabeller i R. Vi exemplifierar med data
+
+```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'}
+# Skapa en population och urval
+
+# Läs in data. Vi ska välja ut födda 1961 och födda 1975.
+insark <- read.csv2("D:/conscriptiondata.csv")
+# Välja ut insark för födda 1961
+insark1 <- insark[insark$year == 1961,]
+# Välj ut INSARK för födda 1975
+insark2 <- insark[insark$year == 1975,]
+# Skapa ett dataset av INSARK 1961 och 1975. 
+insark3 <- rbind(insark1, insark2)
+# Skapa nytt rad id baserat på delpopulationen 1961 och 1975
+insark3$newid <-  1:length(insark3$id) 
+
+# Dra urval
+n <- 1000
+set.seed(12345)
+df <- insark3[sample(insark3$newid, n), ]
+```
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
+df$psych_cat <- factor(df$psych, ordered=TRUE)
+df$muscle_cat <- factor(df$muscle, ordered=TRUE)
+```
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
+table(df$muscle_cat)
+```
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
+table1 <- table(df$muscle_cat, df$year)
+str(table1)
+table1
+table2 <- addmargins(table1)
+table2
+```
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
+prop.table(table1)
+prop.table(table1, 1)
+prop.table(table1, 2)
+```
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
+library("descr")
+library("xtable")
+tableA <- CrossTable(df$muscle_cat, df$year)
+tableA
+tableA <- CrossTable(df$muscle_cat, df$year)
+A <- CrossTable(df$muscle_cat, df$year, prop.r = FALSE, prop.c = TRUE, 
+                prop.t = FALSE, chisq=FALSE)
+print(xtable(A), type="html", file="D:/tableA.html")
+
+```
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
+n <- 4000
+n1 <- 2000
+n0 <- 2000
+p1 <- 0.075
+p0 <- 0.09
+d1 <- p1*n1
+d0 <- p0*n0
+y <- c(rep(1, d1), rep(0, n1-d1), rep(1, d0), rep(0, n0-d0))
+x <- c(rep(1, n1), rep(0, n0))
+table1 <- table(x,y)
+```
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
+table1 <- table(df$year, df$muscle)
+ptable1 <- prop.table(table1)
+chisq.test(df$year, df$muscle)
+wilcox.test(df$muscle ~ df$year) 
+barplot(ptable1, beside=TRUE, xlab="Medicinsk kapacitet (Muskelkraft)", 
+        ylab="Andel (%)", col=c("lightblue", "darkblue"))
+legend("topleft", c("1961","1975"), cex=1.3, bty="n", fill=c("lightblue", "darkblue"))
+```
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
+# Fall 3 Kx2 tabeller
+table2 <- table(df$muscle, df$year)
+ptable2 <- prop.table(table2)
+chisq.test(df$year, df$muscle)
+wilcox.test(df$muscle ~ df$year) 
+barplot(ptable2, beside=TRUE, xlab="Medicinsk kapacitet (Muskelkraft)", 
+        ylab="Andel (%)", col=c("lightblue", "darkblue"))
+legend("topleft", c("1961","1975"), cex=1.3, bty="n", fill=c("lightblue", "darkblue"))
+
+```
+
+
