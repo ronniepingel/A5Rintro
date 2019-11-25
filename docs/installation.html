@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 2 Installation | R på kursen Tillämpad statistik (A5)</title>
   <meta name="description" content="Kapitel 2 Installation | R på kursen Tillämpad statistik (A5)" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 2 Installation | R på kursen Tillämpad statistik (A5)" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-11-24" />
+<meta name="date" content="2019-11-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,18 +84,11 @@
 <li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
 <li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a><ul>
-<li class="chapter" data-level="5.1" data-path="funktioner.html"><a href="funktioner.html#om-funktioner"><i class="fa fa-check"></i><b>5.1</b> Om funktioner</a></li>
-<li class="chapter" data-level="5.2" data-path="funktioner.html"><a href="funktioner.html#läsa-in-och-spara-data"><i class="fa fa-check"></i><b>5.2</b> Läsa in och spara data</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="funktioner.html"><a href="funktioner.html#csv-filer"><i class="fa fa-check"></i><b>5.2.1</b> CSV-filer</a></li>
-<li class="chapter" data-level="5.2.2" data-path="funktioner.html"><a href="funktioner.html#excel-filer"><i class="fa fa-check"></i><b>5.2.2</b> Excel-filer</a></li>
-<li class="chapter" data-level="5.2.3" data-path="funktioner.html"><a href="funktioner.html#övriga-format"><i class="fa fa-check"></i><b>5.2.3</b> Övriga format</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data-1.html"><a href="läsa-in-och-spara-data-1.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
-<li class="chapter" data-level="6.0.1" data-path="läsa-in-och-spara-data-1.html"><a href="läsa-in-och-spara-data-1.html#csv-filer-1"><i class="fa fa-check"></i><b>6.0.1</b> CSV-filer</a></li>
-<li class="chapter" data-level="6.0.2" data-path="läsa-in-och-spara-data-1.html"><a href="läsa-in-och-spara-data-1.html#excel-filer-1"><i class="fa fa-check"></i><b>6.0.2</b> Excel-filer</a></li>
-<li class="chapter" data-level="6.0.3" data-path="läsa-in-och-spara-data-1.html"><a href="läsa-in-och-spara-data-1.html#övriga-format-1"><i class="fa fa-check"></i><b>6.0.3</b> Övriga format</a></li>
+<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
+<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
 </ul></li>
 </ul>
 
@@ -171,8 +164,7 @@
 </ol>
 <p><img src="images/installingR.png" width="70%" /></p>
 <ol start="12" style="list-style-type: decimal">
-<li>Starta R för första gången.
-På Windows ser det ut så här.</li>
+<li>Starta R för första gången. På Windows ser det ut så här.</li>
 </ol>
 <p><img src="images/firstR.png" width="70%" /></p>
 <p><img src="images/firstR2.png" width="70%" /></p>
@@ -198,10 +190,7 @@ På Windows ser det ut så här.</li>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages" class="uri">https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages</a></p>
 <p>För att installera ett paket skriver man in paketnamnet med ett kommando alternativt använda menyn i RStudio under *Tools &gt; Install Packages**.</p>
 <p>Vi exemplifierar nu med ett paket som hjälper oss att läsa data från Excel-filer. Funktionalitet för inläsning från Excel-filer finns inte i basversionen av R, därför är detta paket nödvändigt om data är sparat i en Excelfil.</p>
-<p>Vi installerar paketet <strong>readxl</strong> genom att i Console skriva in <code>install.packages(&quot;readxl&quot;)</code> och trycka enter.
-Som tidigare nämnt går det även att installera paket via menyn.
-Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva <code>library(&quot;readxl&quot;)</code> och trycka enter aktiveras paketet.
-Nu kan analyser i R utnyttja paketets funktionalitet.</p>
+<p>Vi installerar paketet <strong>readxl</strong> genom att i Console skriva in <code>install.packages(&quot;readxl&quot;)</code> och trycka enter. Som tidigare nämnt går det även att installera paket via menyn. Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva <code>library(&quot;readxl&quot;)</code> och trycka enter aktiveras paketet. Nu kan analyser i R utnyttja paketets funktionalitet.</p>
 <p>Observera att ett paket måste aktiveras på nytt varje gång RStudio öppnas. Dock behövs det bara installeras en enda gång.</p>
 
 </div>
@@ -231,11 +220,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -247,10 +237,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
