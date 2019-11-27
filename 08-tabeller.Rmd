@@ -1,11 +1,16 @@
 # Tabeller
 
-**table()** används för att skapa tabeller i R. Vi exemplifierar med data
+Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med
++ Frekvenstabeller i R, med och utan paket
++ Korstabeller i R, med och utan paket
++ Export av tabeller till Word.
+
+## Frekvenstabeller
+
+### Frekvenstabeller med table()
 
 ```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'}
-# Skapa en population och urval
-
-# Läs in data. Vi ska välja ut födda 1961 och födda 1975.
+# Läs in data. Välj ut födda 1961 och födda 1975 
 insark <- read.csv2("D:/conscriptiondata.csv")
 # Välja ut insark för födda 1961
 insark1 <- insark[insark$year == 1961,]
@@ -13,86 +18,151 @@ insark1 <- insark[insark$year == 1961,]
 insark2 <- insark[insark$year == 1975,]
 # Skapa ett dataset av INSARK 1961 och 1975. 
 insark3 <- rbind(insark1, insark2)
-# Skapa nytt rad id baserat på delpopulationen 1961 och 1975
+# Skapa nytt radid baserat på delpopulationen 1961 och 1975
 insark3$newid <-  1:length(insark3$id) 
+```
 
-# Dra urval
+Vi ska nu  dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt,
+dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig!
+Beträffade funktionen **set.seed()** så används denna för att ange vilket
+slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
 n <- 1000
 set.seed(12345)
 df <- insark3[sample(insark3$newid, n), ]
 ```
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
-df$psych_cat <- factor(df$psych, ordered=TRUE)
-df$muscle_cat <- factor(df$muscle, ordered=TRUE)
-```
+Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både **absoluta** och **relativa** frekvenser.
+För att skapa tabeller används funktionen 
+
++ **table()** och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att **table()** enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas.
++  **prop.table()** tillämpad på ett objekt från **table()** och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.   
++ **addmargins()** ger marginalerna i ett tabellobjeket. Med argumentet **margins** anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas.
+
+Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln **pych**, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Det använda **colnames()** och **rownames()** går det att namnge kolumner och rader i tabellen.
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
-table(df$muscle_cat)
+# Univariat tabell med frekvenser och proportioner 
+freqtable_psych <- table(df$psych)
+proptable_psych <- prop.table(freqtable_psych)
+table_psych <- cbind(freqtable_psych, 100*proptable_psych)
+table_psych <- addmargins(table_psych, margin = 1)
+colnames(table_psych) <- c("Frekvens", "%")
+rownames(table_psych) <- c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9")
+freqtable_psych 
+proptable_psych 
+table_psych
 ```
+
+Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen **round()**. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen avrundning ske.
+
+`table_psych <- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)`
+
+
+
+För att namnge raderna i tabellen går det även att skapa en faktor av **psych**, där nivåern namnges med funktionen **levels()**. 
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
-table1 <- table(df$muscle_cat, df$year)
-str(table1)
-table1
-table2 <- addmargins(table1)
-table2
+# För att namnge raderna kan göra om psych-variabeln till en faktor som namnges. 
+df$psych_cat <- factor(df$psych, ordered = TRUE)
+levels(df$psych_cat) = c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9")
+freqtable_psych_cat <- table(df$psych_cat)
+proptable_psych_cat <- prop.table(freqtable_psych_cat)
+table_psych_cat <- cbind(round(freqtable_psych_cat), round(100*proptable_psych_cat, 1))
+table_psych_cat <- addmargins(table_psych_cat, 1)
+colnames(table_psych_cat) <- c("Frekvens", "%")
+table_psych_cat
 ```
 
+Något som är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data.  Default-inställningen för **table()** är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet `useNA = "ifany"`. 
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
-prop.table(table1)
-prop.table(table1, 1)
-prop.table(table1, 2)
+# Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych
+df$psych_mis <- df$psych
+df$psych_mis[c(3,4)] <- NA
+table_psych_mis <- table(df$psych_mis, useNA = "ifany")
+table_psych_mis
 ```
 
+### Frekvenstabeller med freq()
+Även om **table()** är väldigt flexibelt och användbart finns det också färdiga funktioner som kan förenkla koden.
+Ett R-paket för beskriva och summera data är **summarytools*. Skriv därför `install.packages("summarytools")`. 
+
+På MacOS krävs eventuellt även av ett program som heter *XQuartz*, som görs externt från
+https://www.xquartz.org/releases/index.html. 
+
+När programmet är installerat kan följande kod användas för att enkelt skapa en frekvenstabell. Funktionen **freq()** används för att skapa en frekvens och för att replikera tabellerna ovan används följande kod.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
+library("summarytools")
+tab_psych <- freq(df$psych, report.nas = FALSE, cumul = FALSE)
+tab_psych_cat <- freq(df$psych_cat, report.nas = FALSE, cumul = FALSE)
+tab_psych_mis <- freq(df$psych_cat, report.nas = TRUE, cumul = FALSE)
+tab_psych
+tab_psych_cat 
+tab_psych_mis
+```
+
+Som vanligt har funktioner i R ofta många argument där man anger exakt vad funktionen ska göra. I exemplen
+redogörs bara för ett fåtal av dessa och ofta krävs att det att man använder sig av hälpfilen för en funktion, i detta fall  **help(freq)**, eller att man provar ändra i den kod som finns.
+
+
+## Korstabeller
+
+### Korstabeller med table()
+
+Flera variabler kan korstabuleras i **table()**. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip.
+
+Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad
+gäller att konstruera tabellen.
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
-library("descr")
+
+freqtable_psych_year <- table(df$psych, df$year)
+freqtable_psych_year 
+proptable_psych_year <- 100*prop.table(freqtable_psych_year, margin = 2 )  # 2 är kolumnprocent
+# Bind ihop frekvenser och relative frekvenser
+table_psych_year_bind <- cbind(freqtable_psych_year[,1], round(proptable_psych_year[,1], 1),
+                         freqtable_psych_year[,2],  round(proptable_psych_year[,2], 1))
+table_psych_year <- addmargins(table_psych_year_bind, 1)
+colnames(table_psych_year) <- c("1961", "%", "1975", "%")
+table_psych_year 
+```
+
+Alternativt kan vi använda funktionen **ctable()** från paketet summarytoools.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
+tab_psych_year <- ctable(df$psych, df$year, prop = "c")
+tab_psych_year
+```
+
+
+## Exportera tabeller till html
+Det kan vara omständligt att exportera data från R till Word. En smidigt lösning är att spara tabellerna i html-format, vilket gör tabellerna plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart.
+
+
+För att exportera tabeller gjorda med **table()** används paketet **xtable** och funktionen **xtable()** tillsammans med funktionen **print()** (som finns i basversionen av R).
+Installera därför nödvändigt paket
+
+`install.packages("xtable")`
+
+och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
 library("xtable")
-tableA <- CrossTable(df$muscle_cat, df$year)
-tableA
-tableA <- CrossTable(df$muscle_cat, df$year)
-A <- CrossTable(df$muscle_cat, df$year, prop.r = FALSE, prop.c = TRUE, 
-                prop.t = FALSE, chisq=FALSE)
-print(xtable(A), type="html", file="D:/tableA.html")
-
+print(xtable(table_psych_cat), type="html", file="D:/table1.html")
+print(xtable(table_psych_year), type="html", file="D:/table2.html")
 ```
 
+För exportera tabeller gjorda i summarytools kan vi använda funktionen **print()** direkt.
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
-n <- 4000
-n1 <- 2000
-n0 <- 2000
-p1 <- 0.075
-p0 <- 0.09
-d1 <- p1*n1
-d0 <- p0*n0
-y <- c(rep(1, d1), rep(0, n1-d1), rep(1, d0), rep(0, n0-d0))
-x <- c(rep(1, n1), rep(0, n0))
-table1 <- table(x,y)
+print(tab_psych_cat, headings = FALSE, file="D:/tab1.html")
+print(tab_psych_year, headings = FALSE,  file="D:/tab2.html")
 ```
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
-table1 <- table(df$year, df$muscle)
-ptable1 <- prop.table(table1)
-chisq.test(df$year, df$muscle)
-wilcox.test(df$muscle ~ df$year) 
-barplot(ptable1, beside=TRUE, xlab="Medicinsk kapacitet (Muskelkraft)", 
-        ylab="Andel (%)", col=c("lightblue", "darkblue"))
-legend("topleft", c("1961","1975"), cex=1.3, bty="n", fill=c("lightblue", "darkblue"))
-```
+För att klistra in tabellerna i ordbehandlingsprogram så högerklickar du någonstans i webläsaren, välj sedan **markera all**, kopiera, och klistra in. 
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE}
-# Fall 3 Kx2 tabeller
-table2 <- table(df$muscle, df$year)
-ptable2 <- prop.table(table2)
-chisq.test(df$year, df$muscle)
-wilcox.test(df$muscle ~ df$year) 
-barplot(ptable2, beside=TRUE, xlab="Medicinsk kapacitet (Muskelkraft)", 
-        ylab="Andel (%)", col=c("lightblue", "darkblue"))
-legend("topleft", c("1961","1975"), cex=1.3, bty="n", fill=c("lightblue", "darkblue"))
-
-```
 
 

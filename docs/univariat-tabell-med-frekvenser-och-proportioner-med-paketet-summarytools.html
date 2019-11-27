@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 5 Funktioner | R på kursen Tillämpad statistik (A5)</title>
-  <meta name="description" content="Kapitel 5 Funktioner | R på kursen Tillämpad statistik (A5)" />
+  <title>Kapitel 9 Univariat tabell med frekvenser och proportioner med paketet summarytools | R på kursen Tillämpad statistik (A5)</title>
+  <meta name="description" content="Kapitel 9 Univariat tabell med frekvenser och proportioner med paketet summarytools | R på kursen Tillämpad statistik (A5)" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 5 Funktioner | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:title" content="Kapitel 9 Univariat tabell med frekvenser och proportioner med paketet summarytools | R på kursen Tillämpad statistik (A5)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 5 Funktioner | R på kursen Tillämpad statistik (A5)" />
+  <meta name="twitter:title" content="Kapitel 9 Univariat tabell med frekvenser och proportioner med paketet summarytools | R på kursen Tillämpad statistik (A5)" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="objekt.html"/>
-<link rel="next" href="läsa-in-och-spara-data.html"/>
+<link rel="prev" href="tabeller.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -137,13 +137,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
 <li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
-<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-summarytools"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller summarytools</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
-</ul></li>
+<li class="chapter" data-level="9" data-path="univariat-tabell-med-frekvenser-och-proportioner-med-paketet-summarytools.html"><a href="univariat-tabell-med-frekvenser-och-proportioner-med-paketet-summarytools.html"><i class="fa fa-check"></i><b>9</b> Univariat tabell med frekvenser och proportioner med paketet summarytools</a></li>
 </ul>
 
       </nav>
@@ -161,73 +158,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="funktioner" class="section level1">
-<h1><span class="header-section-number">Kapitel 5</span> Funktioner</h1>
-<p>En funktion utför operationer på objekt. Oftast sparas sedan resultatet som ett nytt objekt. Genom att ändra argument kan man anpassa vad funktionen gör. Börja med att skriva in nedanstående tre vektorer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapar två numeriska vektorer</span>
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">0</span>)
-y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>)
-ymis &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">6</span>)</code></pre></div>
-<p>Skriv därefter in nedanstående kod, spara och kör.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Funktion för att summera värdera i en vektor</span>
-<span class="kw">sum</span>(x)</code></pre></div>
-<pre><code>[1] 10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># length() beräknar antalet element i en vektor och spara i objektet n</span>
-n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
-n</code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Beräkna medelvärdet av en vektor</span>
-xbar &lt;-<span class="st"> </span><span class="kw">sum</span>(x)<span class="op">/</span>n
-xbar
+<div id="univariat-tabell-med-frekvenser-och-proportioner-med-paketet-summarytools" class="section level1">
+<h1><span class="header-section-number">Kapitel 9</span> Univariat tabell med frekvenser och proportioner med paketet summarytools</h1>
+<p>library(“summarytools”) tab_psych &lt;- freq(df$psych, report.nas = FALSE, cumul = FALSE, style=“simple”) tab_psych</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">4000</span>
+n1 &lt;-<span class="st"> </span><span class="dv">2000</span>
+n0 &lt;-<span class="st"> </span><span class="dv">2000</span>
+p1 &lt;-<span class="st"> </span><span class="fl">0.075</span>
+p0 &lt;-<span class="st"> </span><span class="fl">0.09</span>
+d1 &lt;-<span class="st"> </span>p1<span class="op">*</span>n1
+d0 &lt;-<span class="st"> </span>p0<span class="op">*</span>n0
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, d1), <span class="kw">rep</span>(<span class="dv">0</span>, n1<span class="op">-</span>d1), <span class="kw">rep</span>(<span class="dv">1</span>, d0), <span class="kw">rep</span>(<span class="dv">0</span>, n0<span class="op">-</span>d0))
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n1), <span class="kw">rep</span>(<span class="dv">0</span>, n0))
+table1 &lt;-<span class="st"> </span><span class="kw">table</span>(x,y)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1 &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
+ptable1 &lt;-<span class="st"> </span><span class="kw">prop.table</span>(table1)
+<span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
+Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation may be
+incorrect
 
-<span class="co"># Beräkna stickprovsvarians s^2</span>
-s2 &lt;-<span class="st"> </span><span class="kw">sum</span>( (x <span class="op">-</span><span class="st"> </span>xbar)<span class="op">^</span><span class="dv">2</span> )<span class="op">/</span>(n <span class="op">-</span><span class="dv">1</span>)
-s2
+    Pearson<span class="st">&#39;s Chi-squared test</span>
 
-<span class="co"># Funktioner för medelvärdet och stickprovsvarians. Jämfört med resultat ovan</span>
-<span class="kw">mean</span>(x)
-<span class="kw">var</span>(x)
+<span class="st">data:  df$year and df$muscle</span>
+<span class="st">X-squared = 31.052, df = 7, p-value = 6.082e-05</span>
+<span class="st">wilcox.test(df$muscle ~ df$year) </span>
 
-<span class="co"># Skapa en vektor som repeterar ett värde </span>
-z &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">5</span>)
-z
+<span class="st">    Wilcoxon rank sum test with continuity correction</span>
 
-<span class="co"># Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25</span>
-w &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">by =</span> <span class="fl">0.25</span>)
-w
+<span class="st">data:  df$muscle by df$year</span>
+<span class="st">W = 105225, p-value = 1.652e-05</span>
+<span class="st">alternative hypothesis: true location shift is not equal to 0</span>
+<span class="st">barplot(ptable1, beside=TRUE, xlab=&quot;Medicinsk kapacitet (Muskelkraft)&quot;, </span>
+<span class="st">        ylab=&quot;Andel (%)&quot;, col=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span>
+<span class="st">legend(&quot;topleft&quot;, c(&quot;1961&quot;,&quot;1975&quot;), cex=1.3, bty=&quot;n&quot;, fill=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fall 3 Kx2 tabeller</span>
+table2 &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>muscle, df<span class="op">$</span>year)
+ptable2 &lt;-<span class="st"> </span><span class="kw">prop.table</span>(table2)
+<span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
+Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation may be
+incorrect
 
-<span class="co"># Skapa en en vektor av element som repeterats </span>
-r &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="dv">9</span>, <span class="dv">10</span>))
-r
+    Pearson<span class="st">&#39;s Chi-squared test</span>
 
-<span class="co"># Summan av ymis blir NA eftersom 3 + NA + 6 + 3 + 6 blir NA.</span>
-<span class="kw">sum</span>(ymis) 
+<span class="st">data:  df$year and df$muscle</span>
+<span class="st">X-squared = 31.052, df = 7, p-value = 6.082e-05</span>
+<span class="st">wilcox.test(df$muscle ~ df$year) </span>
 
-<span class="co"># Funktionen help() ger en beskrivning av vad en funktion gör</span>
-<span class="kw">help</span>(sum)</code></pre></div>
-<pre><code>## starting httpd help server ... done</code></pre>
-<p>I hjälpfilen står under <em>Usage</em> <code>sum(..., na.rm = FALSE)</code>. och under <em>Arguments</em> <code>...  numeric or complex or logical vectors.</code> samt <code>na.rm  logical. Should missing values (including NaN) be removed?</code>. Grundinställningen (default) är FALSE, det vill säga <code>NA</code> inkluderas i funktionen. För ta bort missing valus väljs <code>na.rm=TRUE</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Genom att använda argumentet na.rm exkluderas NA</span>
-<span class="kw">sum</span>(ymis, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) 
-[<span class="dv">1</span>] <span class="dv">18</span></code></pre></div>
-<p>Hjälpfilerna är ofta svår att förstå, men exemplen längst ner i hjälpfilerna är i regel klargörande.</p>
-<p>Funktioner smo är vanliga att använda är funker</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">hist</span>(x)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(x, y)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
-<p>Det är enkelt att skapa egna funktioner i R och vilket är styrka.</p>
-<p>Avslutningsvis finns det par viktiga funktioner för att hantera dataobjekt.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Funktionen ls() listar alla objekt i minnet</span>
-<span class="kw">ls</span>()
-[<span class="dv">1</span>] <span class="st">&quot;n&quot;</span>    <span class="st">&quot;r&quot;</span>    <span class="st">&quot;s2&quot;</span>   <span class="st">&quot;w&quot;</span>    <span class="st">&quot;x&quot;</span>    <span class="st">&quot;xbar&quot;</span> <span class="st">&quot;y&quot;</span>    <span class="st">&quot;ymis&quot;</span> <span class="st">&quot;z&quot;</span>   
-<span class="co"># Funktionen rm() raderar ett objekt</span>
-<span class="kw">rm</span>(y)
-<span class="co"># Se om objektet y finns kvar</span>
-<span class="kw">ls</span>()
-[<span class="dv">1</span>] <span class="st">&quot;n&quot;</span>    <span class="st">&quot;r&quot;</span>    <span class="st">&quot;s2&quot;</span>   <span class="st">&quot;w&quot;</span>    <span class="st">&quot;x&quot;</span>    <span class="st">&quot;xbar&quot;</span> <span class="st">&quot;ymis&quot;</span> <span class="st">&quot;z&quot;</span>   </code></pre></div>
-<p>Spara återigen scriptet. Stäng R.</p>
-<p>För att <strong>radera alla objekt</strong> används kommandot <code>rm(list = ls())</code>. Var försiktig med denna funktion eftersom allt försvinner! Emellertid kan det vara en god idé inleda en dataanlys med denna kod för att säkerställa att minnet är tomt innan data läses in och analyser görs så att konflkter mellan objekt inte uppstår.</p>
+<span class="st">    Wilcoxon rank sum test with continuity correction</span>
+
+<span class="st">data:  df$muscle by df$year</span>
+<span class="st">W = 105225, p-value = 1.652e-05</span>
+<span class="st">alternative hypothesis: true location shift is not equal to 0</span>
+<span class="st">barplot(ptable2, beside=TRUE, xlab=&quot;Medicinsk kapacitet (Muskelkraft)&quot;, </span>
+<span class="st">        ylab=&quot;Andel (%)&quot;, col=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span>
+<span class="st">legend(&quot;topleft&quot;, c(&quot;1961&quot;,&quot;1975&quot;), cex=1.3, bty=&quot;n&quot;, fill=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 
 </div>
             </section>
@@ -235,8 +221,8 @@ r
           </div>
         </div>
       </div>
-<a href="objekt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="läsa-in-och-spara-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tabeller.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

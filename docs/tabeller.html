@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-11-25" />
+<meta name="date" content="2019-11-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -134,7 +134,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
 <li class="chapter" data-level="7.3" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-kodade-som-numriska-variabler"><i class="fa fa-check"></i><b>7.3</b> Faktorer kodade som numriska variabler</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a></li>
+<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
+<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -154,10 +163,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="tabeller" class="section level1">
 <h1><span class="header-section-number">Kapitel 8</span> Tabeller</h1>
-<p><strong>table()</strong> används för att skapa tabeller i R. Vi exemplifierar med data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa en population och urval</span>
-
-<span class="co"># Läs in data. Vi ska välja ut födda 1961 och födda 1975.</span>
+<p>Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med + Frekvenstabeller i R, med och utan paket + Korstabeller i R, med och utan paket + Export av tabeller till Word.</p>
+<div id="frekvenstabeller" class="section level2">
+<h2><span class="header-section-number">8.1</span> Frekvenstabeller</h2>
+<div id="frekvenstabeller-med-table" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Frekvenstabeller med table()</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Läs in data. Välj ut födda 1961 och födda 1975 </span>
 insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)
 <span class="co"># Välja ut insark för födda 1961</span>
 insark1 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1961</span>,]
@@ -165,214 +176,232 @@ insark1 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year
 insark2 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>,]
 <span class="co"># Skapa ett dataset av INSARK 1961 och 1975. </span>
 insark3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(insark1, insark2)
-<span class="co"># Skapa nytt rad id baserat på delpopulationen 1961 och 1975</span>
-insark3<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark3<span class="op">$</span>id) 
-
-<span class="co"># Dra urval</span>
-n &lt;-<span class="st"> </span><span class="dv">1000</span>
+<span class="co"># Skapa nytt radid baserat på delpopulationen 1961 och 1975</span>
+insark3<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark3<span class="op">$</span>id) </code></pre></div>
+<p>Vi ska nu dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt, dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig! Beträffade funktionen <strong>set.seed()</strong> så används denna för att ange vilket slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">1000</span>
 <span class="kw">set.seed</span>(<span class="dv">12345</span>)
 df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<span class="op">$</span>newid, n), ]</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered=</span><span class="ot">TRUE</span>)
-df<span class="op">$</span>muscle_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>muscle, <span class="dt">ordered=</span><span class="ot">TRUE</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>muscle_cat)
+<p>Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både <strong>absoluta</strong> och <strong>relativa</strong> frekvenser. För att skapa tabeller används funktionen</p>
+<ul>
+<li><strong>table()</strong> och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att <strong>table()</strong> enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas.</li>
+<li><strong>prop.table()</strong> tillämpad på ett objekt från <strong>table()</strong> och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.<br />
+</li>
+<li><strong>addmargins()</strong> ger marginalerna i ett tabellobjeket. Med argumentet <strong>margins</strong> anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas.</li>
+</ul>
+<p>Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln <strong>pych</strong>, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Det använda <strong>colnames()</strong> och <strong>rownames()</strong> går det att namnge kolumner och rader i tabellen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Univariat tabell med frekvenser och proportioner </span>
+freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)
+proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)
+table_psych &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych, <span class="dv">100</span><span class="op">*</span>proptable_psych)
+table_psych &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych, <span class="dt">margin =</span> <span class="dv">1</span>)
+<span class="kw">colnames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)
+<span class="kw">rownames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>)
+<span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">dimnames</span>(x) &lt;-<span class="st"> </span>dn<span class="op">:</span><span class="st"> </span>length of <span class="st">&#39;dimnames&#39;</span> [<span class="dv">1</span>] not equal to array extent
+freqtable_psych 
 <span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">   </span><span class="dv">2</span>   <span class="dv">3</span>   <span class="dv">4</span>   <span class="dv">5</span>   <span class="dv">6</span>   <span class="dv">7</span>   <span class="dv">8</span>   <span class="dv">9</span> 
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span>  <span class="dv">88</span> <span class="dv">189</span> <span class="dv">181</span> <span class="dv">193</span> <span class="dv">107</span>  <span class="dv">82</span> <span class="dv">154</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1 &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>muscle_cat, df<span class="op">$</span>year)
-<span class="kw">str</span>(table1)
-<span class="op">&gt;</span><span class="st">  &#39;table&#39;</span> int [<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="dv">3</span> <span class="dv">59</span> <span class="dv">103</span> <span class="dv">73</span> <span class="dv">98</span> <span class="dv">44</span> <span class="dv">35</span> <span class="dv">57</span> <span class="dv">3</span> <span class="dv">29</span> ...
-<span class="op">&gt;</span><span class="st">  </span><span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dimnames&quot;</span>)=List of <span class="dv">2</span>
-<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>] <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span> <span class="st">&quot;4&quot;</span> <span class="st">&quot;5&quot;</span> ...
-<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;1961&quot;</span> <span class="st">&quot;1975&quot;</span>
-table1
-<span class="op">&gt;</span><span class="st">    </span>
-<span class="er">&gt;</span><span class="st">     </span><span class="dv">1961</span> <span class="dv">1975</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">3</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">3</span>   <span class="dv">59</span>   <span class="dv">29</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">4</span>  <span class="dv">103</span>   <span class="dv">86</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">5</span>   <span class="dv">73</span>  <span class="dv">108</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span>   <span class="dv">98</span>   <span class="dv">95</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">7</span>   <span class="dv">44</span>   <span class="dv">63</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">8</span>   <span class="dv">35</span>   <span class="dv">47</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">9</span>   <span class="dv">57</span>   <span class="dv">97</span>
-table2 &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table1)
-table2
-<span class="op">&gt;</span><span class="st">      </span>
-<span class="er">&gt;</span><span class="st">       </span><span class="dv">1961</span> <span class="dv">1975</span>  Sum
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">2</span>      <span class="dv">3</span>    <span class="dv">3</span>    <span class="dv">6</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">3</span>     <span class="dv">59</span>   <span class="dv">29</span>   <span class="dv">88</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">4</span>    <span class="dv">103</span>   <span class="dv">86</span>  <span class="dv">189</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">5</span>     <span class="dv">73</span>  <span class="dv">108</span>  <span class="dv">181</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span>     <span class="dv">98</span>   <span class="dv">95</span>  <span class="dv">193</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">7</span>     <span class="dv">44</span>   <span class="dv">63</span>  <span class="dv">107</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">8</span>     <span class="dv">35</span>   <span class="dv">47</span>   <span class="dv">82</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">9</span>     <span class="dv">57</span>   <span class="dv">97</span>  <span class="dv">154</span>
-<span class="op">&gt;</span><span class="st">   </span>Sum  <span class="dv">472</span>  <span class="dv">528</span> <span class="dv">1000</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.table</span>(table1)
-<span class="op">&gt;</span><span class="st">    </span>
-<span class="er">&gt;</span><span class="st">      </span><span class="dv">1961</span>  <span class="dv">1975</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">2</span> <span class="fl">0.003</span> <span class="fl">0.003</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">3</span> <span class="fl">0.059</span> <span class="fl">0.029</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">4</span> <span class="fl">0.103</span> <span class="fl">0.086</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">5</span> <span class="fl">0.073</span> <span class="fl">0.108</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span> <span class="fl">0.098</span> <span class="fl">0.095</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">7</span> <span class="fl">0.044</span> <span class="fl">0.063</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">8</span> <span class="fl">0.035</span> <span class="fl">0.047</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">9</span> <span class="fl">0.057</span> <span class="fl">0.097</span>
-<span class="kw">prop.table</span>(table1, <span class="dv">1</span>)
-<span class="op">&gt;</span><span class="st">    </span>
-<span class="er">&gt;</span><span class="st">          </span><span class="dv">1961</span>      <span class="dv">1975</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">2</span> <span class="fl">0.5000000</span> <span class="fl">0.5000000</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">3</span> <span class="fl">0.6704545</span> <span class="fl">0.3295455</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">4</span> <span class="fl">0.5449735</span> <span class="fl">0.4550265</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">5</span> <span class="fl">0.4033149</span> <span class="fl">0.5966851</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span> <span class="fl">0.5077720</span> <span class="fl">0.4922280</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">7</span> <span class="fl">0.4112150</span> <span class="fl">0.5887850</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">8</span> <span class="fl">0.4268293</span> <span class="fl">0.5731707</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">9</span> <span class="fl">0.3701299</span> <span class="fl">0.6298701</span>
-<span class="kw">prop.table</span>(table1, <span class="dv">2</span>)
-<span class="op">&gt;</span><span class="st">    </span>
-<span class="er">&gt;</span><span class="st">            </span><span class="dv">1961</span>        <span class="dv">1975</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">2</span> <span class="fl">0.006355932</span> <span class="fl">0.005681818</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">3</span> <span class="fl">0.125000000</span> <span class="fl">0.054924242</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">4</span> <span class="fl">0.218220339</span> <span class="fl">0.162878788</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">5</span> <span class="fl">0.154661017</span> <span class="fl">0.204545455</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">6</span> <span class="fl">0.207627119</span> <span class="fl">0.179924242</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">7</span> <span class="fl">0.093220339</span> <span class="fl">0.119318182</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">8</span> <span class="fl">0.074152542</span> <span class="fl">0.089015152</span>
-<span class="op">&gt;</span><span class="st">   </span><span class="dv">9</span> <span class="fl">0.120762712</span> <span class="fl">0.183712121</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;descr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)
-tableA &lt;-<span class="st"> </span><span class="kw">CrossTable</span>(df<span class="op">$</span>muscle_cat, df<span class="op">$</span>year)
-Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(tab, <span class="dt">correct =</span> <span class="ot">FALSE</span>, ...)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation
-may be incorrect
-tableA
-   Cell Contents 
-<span class="op">|-------------------------</span><span class="er">|</span>
-<span class="er">|</span><span class="st">                       </span>N <span class="op">|</span><span class="st"> </span>
-<span class="er">|</span><span class="st"> </span>Chi<span class="op">-</span>square contribution <span class="op">|</span><span class="st"> </span>
-<span class="er">|</span><span class="st">           </span>N <span class="op">/</span><span class="st"> </span>Row Total <span class="op">|</span><span class="st"> </span>
-<span class="er">|</span><span class="st">           </span>N <span class="op">/</span><span class="st"> </span>Col Total <span class="op">|</span><span class="st"> </span>
-<span class="er">|</span><span class="st">         </span>N <span class="op">/</span><span class="st"> </span>Table Total <span class="op">|</span><span class="st"> </span>
-<span class="er">|</span><span class="op">-------------------------</span><span class="er">|</span>
+<span class="er">&gt;</span><span class="st">   </span><span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">3</span>   <span class="dv">4</span>   <span class="dv">5</span>   <span class="dv">6</span>   <span class="dv">7</span>   <span class="dv">8</span>   <span class="dv">9</span> 
+<span class="op">&gt;</span><span class="st">  </span><span class="dv">19</span>  <span class="dv">67</span> <span class="dv">122</span> <span class="dv">150</span> <span class="dv">220</span> <span class="dv">200</span> <span class="dv">145</span>  <span class="dv">65</span>  <span class="dv">12</span>
+proptable_psych 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">     </span><span class="dv">1</span>     <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">4</span>     <span class="dv">5</span>     <span class="dv">6</span>     <span class="dv">7</span>     <span class="dv">8</span>     <span class="dv">9</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">0.019</span> <span class="fl">0.067</span> <span class="fl">0.122</span> <span class="fl">0.150</span> <span class="fl">0.220</span> <span class="fl">0.200</span> <span class="fl">0.145</span> <span class="fl">0.065</span> <span class="fl">0.012</span>
+table_psych
+<span class="op">&gt;</span><span class="st">     </span>Frekvens     %
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>         <span class="dv">19</span>   <span class="fl">1.9</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>         <span class="dv">67</span>   <span class="fl">6.7</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>        <span class="dv">122</span>  <span class="fl">12.2</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>        <span class="dv">150</span>  <span class="fl">15.0</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>        <span class="dv">220</span>  <span class="fl">22.0</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>        <span class="dv">200</span>  <span class="fl">20.0</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>        <span class="dv">145</span>  <span class="fl">14.5</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span>         <span class="dv">65</span>   <span class="fl">6.5</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">9</span>         <span class="dv">12</span>   <span class="fl">1.2</span>
+<span class="op">&gt;</span><span class="st"> </span>Sum     <span class="dv">1000</span> <span class="fl">100.0</span></code></pre></div>
+<p>Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen <strong>round()</strong>. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen avrundning ske.</p>
+<p><code>table_psych &lt;- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)</code></p>
+<p>För att namnge raderna i tabellen går det även att skapa en faktor av <strong>psych</strong>, där nivåern namnges med funktionen <strong>levels()</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># För att namnge raderna kan göra om psych-variabeln till en faktor som namnges. </span>
+df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
+<span class="kw">levels</span>(df<span class="op">$</span>psych_cat) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>)
+freqtable_psych_cat &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_cat)
+proptable_psych_cat &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych_cat)
+table_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">round</span>(freqtable_psych_cat), <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>proptable_psych_cat, <span class="dv">1</span>))
+table_psych_cat &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_cat, <span class="dv">1</span>)
+<span class="kw">colnames</span>(table_psych_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)
+table_psych_cat
+<span class="op">&gt;</span><span class="st">       </span>Frekvens     %
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">1</span>       <span class="dv">19</span>   <span class="fl">1.9</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">2</span>       <span class="dv">67</span>   <span class="fl">6.7</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">3</span>      <span class="dv">122</span>  <span class="fl">12.2</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">4</span>      <span class="dv">150</span>  <span class="fl">15.0</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">5</span>      <span class="dv">220</span>  <span class="fl">22.0</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">6</span>      <span class="dv">200</span>  <span class="fl">20.0</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">7</span>      <span class="dv">145</span>  <span class="fl">14.5</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">8</span>       <span class="dv">65</span>   <span class="fl">6.5</span>
+<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">9</span>       <span class="dv">12</span>   <span class="fl">1.2</span>
+<span class="op">&gt;</span><span class="st"> </span>Sum       <span class="dv">1000</span> <span class="fl">100.0</span></code></pre></div>
+<p>Något som är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data. Default-inställningen för <strong>table()</strong> är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet <code>useNA = &quot;ifany&quot;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych</span>
+df<span class="op">$</span>psych_mis &lt;-<span class="st"> </span>df<span class="op">$</span>psych
+df<span class="op">$</span>psych_mis[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
+table_psych_mis &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_mis, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)
+table_psych_mis
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">    </span><span class="dv">1</span>    <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">4</span>    <span class="dv">5</span>    <span class="dv">6</span>    <span class="dv">7</span>    <span class="dv">8</span>    <span class="dv">9</span> <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">   </span><span class="dv">19</span>   <span class="dv">67</span>  <span class="dv">121</span>  <span class="dv">150</span>  <span class="dv">219</span>  <span class="dv">200</span>  <span class="dv">145</span>   <span class="dv">65</span>   <span class="dv">12</span>    <span class="dv">2</span></code></pre></div>
+</div>
+<div id="frekvenstabeller-med-freq" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Frekvenstabeller med freq()</h3>
+<p>Även om <strong>table()</strong> är väldigt flexibelt och användbart finns det också färdiga funktioner som kan förenkla koden. Ett R-paket för beskriva och summera data är **summarytools*. Skriv därför <code>install.packages(&quot;summarytools&quot;)</code>.</p>
+<p>På MacOS krävs eventuellt även av ett program som heter <em>XQuartz</em>, som görs externt från <a href="https://www.xquartz.org/releases/index.html" class="uri">https://www.xquartz.org/releases/index.html</a>.</p>
+<p>När programmet är installerat kan följande kod användas för att enkelt skapa en frekvenstabell. Funktionen <strong>freq()</strong> används för att skapa en frekvens och för att replikera tabellerna ovan används följande kod.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;summarytools&quot;</span>)
+<span class="op">&gt;</span><span class="st"> </span>Registered S3 method overwritten by <span class="st">&#39;pryr&#39;</span><span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>method      from
+<span class="op">&gt;</span><span class="st">   </span>print.bytes Rcpp
+tab_psych &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
+tab_psych_cat &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
+tab_psych_mis &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">TRUE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
+tab_psych
+<span class="op">&gt;</span><span class="st"> </span>Frequencies  
+<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych  
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">               </span>Freq        %
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span>
+<span class="er">&gt;</span><span class="st">           </span><span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span>
+<span class="op">&gt;</span><span class="st">           </span><span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span>
+<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span>
+tab_psych_cat 
+<span class="op">&gt;</span><span class="st"> </span>Frequencies  
+<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  
+<span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">               </span>Freq        %
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span>
+<span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span>
+<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span>
+tab_psych_mis
+<span class="op">&gt;</span><span class="st"> </span>Frequencies  
+<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  
+<span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">               </span>Freq   <span class="op">% Valid   %</span><span class="st"> </span>Total
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">---------</span><span class="st"> </span><span class="op">---------</span>
+<span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>      <span class="fl">1.90</span>      <span class="fl">1.90</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>      <span class="fl">6.70</span>      <span class="fl">6.70</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>     <span class="fl">12.20</span>     <span class="fl">12.20</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>     <span class="fl">15.00</span>     <span class="fl">15.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>     <span class="fl">22.00</span>     <span class="fl">22.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>     <span class="fl">20.00</span>     <span class="fl">20.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>     <span class="fl">14.50</span>     <span class="fl">14.50</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>      <span class="fl">6.50</span>      <span class="fl">6.50</span>
+<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>      <span class="fl">1.20</span>      <span class="fl">1.20</span>
+<span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st">      </span><span class="dv">0</span>                <span class="fl">0.00</span>
+<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>    <span class="fl">100.00</span>    <span class="fl">100.00</span></code></pre></div>
+<p>Som vanligt har funktioner i R ofta många argument där man anger exakt vad funktionen ska göra. I exemplen redogörs bara för ett fåtal av dessa och ofta krävs att det att man använder sig av hälpfilen för en funktion, i detta fall <strong>help(freq)</strong>, eller att man provar ändra i den kod som finns.</p>
+</div>
+</div>
+<div id="korstabeller" class="section level2">
+<h2><span class="header-section-number">8.2</span> Korstabeller</h2>
+<div id="korstabeller-med-table" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Korstabeller med table()</h3>
+<p>Flera variabler kan korstabuleras i <strong>table()</strong>. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip.</p>
+<p>Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad gäller att konstruera tabellen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych, df<span class="op">$</span>year)
+freqtable_psych_year 
+   
+    <span class="dv">1961</span> <span class="dv">1975</span>
+  <span class="dv">1</span>   <span class="dv">10</span>    <span class="dv">9</span>
+  <span class="dv">2</span>   <span class="dv">29</span>   <span class="dv">38</span>
+  <span class="dv">3</span>   <span class="dv">64</span>   <span class="dv">58</span>
+  <span class="dv">4</span>   <span class="dv">78</span>   <span class="dv">72</span>
+  <span class="dv">5</span>  <span class="dv">112</span>  <span class="dv">108</span>
+  <span class="dv">6</span>   <span class="dv">91</span>  <span class="dv">109</span>
+  <span class="dv">7</span>   <span class="dv">55</span>   <span class="dv">90</span>
+  <span class="dv">8</span>   <span class="dv">27</span>   <span class="dv">38</span>
+  <span class="dv">9</span>    <span class="dv">6</span>    <span class="dv">6</span>
+proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> )  <span class="co"># 2 är kolumnprocent</span>
+<span class="co"># Bind ihop frekvenser och relative frekvenser</span>
+table_psych_year_bind &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych_year[,<span class="dv">1</span>], <span class="kw">round</span>(proptable_psych_year[,<span class="dv">1</span>], <span class="dv">1</span>),
+                         freqtable_psych_year[,<span class="dv">2</span>],  <span class="kw">round</span>(proptable_psych_year[,<span class="dv">2</span>], <span class="dv">1</span>))
+table_psych_year &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_year_bind, <span class="dv">1</span>)
+<span class="kw">colnames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;1975&quot;</span>, <span class="st">&quot;%&quot;</span>)
+table_psych_year 
+    <span class="dv">1961</span>     <span class="op">% 1975    %</span>
+<span class="dv">1</span>     <span class="dv">10</span>   <span class="fl">2.1</span>    <span class="dv">9</span>  <span class="fl">1.7</span>
+<span class="dv">2</span>     <span class="dv">29</span>   <span class="fl">6.1</span>   <span class="dv">38</span>  <span class="fl">7.2</span>
+<span class="dv">3</span>     <span class="dv">64</span>  <span class="fl">13.6</span>   <span class="dv">58</span> <span class="fl">11.0</span>
+<span class="dv">4</span>     <span class="dv">78</span>  <span class="fl">16.5</span>   <span class="dv">72</span> <span class="fl">13.6</span>
+<span class="dv">5</span>    <span class="dv">112</span>  <span class="fl">23.7</span>  <span class="dv">108</span> <span class="fl">20.5</span>
+<span class="dv">6</span>     <span class="dv">91</span>  <span class="fl">19.3</span>  <span class="dv">109</span> <span class="fl">20.6</span>
+<span class="dv">7</span>     <span class="dv">55</span>  <span class="fl">11.7</span>   <span class="dv">90</span> <span class="fl">17.0</span>
+<span class="dv">8</span>     <span class="dv">27</span>   <span class="fl">5.7</span>   <span class="dv">38</span>  <span class="fl">7.2</span>
+<span class="dv">9</span>      <span class="dv">6</span>   <span class="fl">1.3</span>    <span class="dv">6</span>  <span class="fl">1.1</span>
+Sum  <span class="dv">472</span> <span class="fl">100.0</span>  <span class="dv">528</span> <span class="fl">99.9</span></code></pre></div>
+<p>Alternativt kan vi använda funktionen <strong>ctable()</strong> från paketet summarytoools.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab_psych_year &lt;-<span class="st"> </span><span class="kw">ctable</span>(df<span class="op">$</span>psych, df<span class="op">$</span>year, <span class="dt">prop =</span> <span class="st">&quot;c&quot;</span>)
+tab_psych_year
+Cross<span class="op">-</span>Tabulation, Column Proportions  
+psych <span class="op">*</span><span class="st"> </span>year  
+Data Frame<span class="op">:</span><span class="st"> </span>df  
 
-<span class="er">======================================</span>
-<span class="st">                 </span>df<span class="op">$</span>year
-df<span class="op">$</span>muscle_cat     <span class="dv">1961</span>    <span class="dv">1975</span>   Total
-<span class="op">--------------------------------------</span>
-<span class="dv">2</span>                    <span class="dv">3</span>       <span class="dv">3</span>       <span class="dv">6</span>
-                 <span class="fl">0.010</span>   <span class="fl">0.009</span>        
-                 <span class="fl">0.500</span>   <span class="fl">0.500</span>   <span class="fl">0.006</span>
-                 <span class="fl">0.006</span>   <span class="fl">0.006</span>        
-                 <span class="fl">0.003</span>   <span class="fl">0.003</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">3</span>                   <span class="dv">59</span>      <span class="dv">29</span>      <span class="dv">88</span>
-                 <span class="fl">7.343</span>   <span class="fl">6.564</span>        
-                 <span class="fl">0.670</span>   <span class="fl">0.330</span>   <span class="fl">0.088</span>
-                 <span class="fl">0.125</span>   <span class="fl">0.055</span>        
-                 <span class="fl">0.059</span>   <span class="fl">0.029</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">4</span>                  <span class="dv">103</span>      <span class="dv">86</span>     <span class="dv">189</span>
-                 <span class="fl">2.132</span>   <span class="fl">1.906</span>        
-                 <span class="fl">0.545</span>   <span class="fl">0.455</span>   <span class="fl">0.189</span>
-                 <span class="fl">0.218</span>   <span class="fl">0.163</span>        
-                 <span class="fl">0.103</span>   <span class="fl">0.086</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">5</span>                   <span class="dv">73</span>     <span class="dv">108</span>     <span class="dv">181</span>
-                 <span class="fl">1.809</span>   <span class="fl">1.617</span>        
-                 <span class="fl">0.403</span>   <span class="fl">0.597</span>   <span class="fl">0.181</span>
-                 <span class="fl">0.155</span>   <span class="fl">0.205</span>        
-                 <span class="fl">0.073</span>   <span class="fl">0.108</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">6</span>                   <span class="dv">98</span>      <span class="dv">95</span>     <span class="dv">193</span>
-                 <span class="fl">0.523</span>   <span class="fl">0.468</span>        
-                 <span class="fl">0.508</span>   <span class="fl">0.492</span>   <span class="fl">0.193</span>
-                 <span class="fl">0.208</span>   <span class="fl">0.180</span>        
-                 <span class="fl">0.098</span>   <span class="fl">0.095</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">7</span>                   <span class="dv">44</span>      <span class="dv">63</span>     <span class="dv">107</span>
-                 <span class="fl">0.838</span>   <span class="fl">0.749</span>        
-                 <span class="fl">0.411</span>   <span class="fl">0.589</span>   <span class="fl">0.107</span>
-                 <span class="fl">0.093</span>   <span class="fl">0.119</span>        
-                 <span class="fl">0.044</span>   <span class="fl">0.063</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">8</span>                   <span class="dv">35</span>      <span class="dv">47</span>      <span class="dv">82</span>
-                 <span class="fl">0.354</span>   <span class="fl">0.317</span>        
-                 <span class="fl">0.427</span>   <span class="fl">0.573</span>   <span class="fl">0.082</span>
-                 <span class="fl">0.074</span>   <span class="fl">0.089</span>        
-                 <span class="fl">0.035</span>   <span class="fl">0.047</span>        
-<span class="op">--------------------------------------</span>
-<span class="dv">9</span>                   <span class="dv">57</span>      <span class="dv">97</span>     <span class="dv">154</span>
-                 <span class="fl">3.386</span>   <span class="fl">3.027</span>        
-                 <span class="fl">0.370</span>   <span class="fl">0.630</span>   <span class="fl">0.154</span>
-                 <span class="fl">0.121</span>   <span class="fl">0.184</span>        
-                 <span class="fl">0.057</span>   <span class="fl">0.097</span>        
-<span class="op">--------------------------------------</span>
-Total              <span class="dv">472</span>     <span class="dv">528</span>    <span class="dv">1000</span>
-                 <span class="fl">0.472</span>   <span class="fl">0.528</span>        
-<span class="op">==</span><span class="er">====================================</span>
-tableA &lt;-<span class="st"> </span><span class="kw">CrossTable</span>(df<span class="op">$</span>muscle_cat, df<span class="op">$</span>year)
-Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(tab, <span class="dt">correct =</span> <span class="ot">FALSE</span>, ...)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation
-may be incorrect
-A &lt;-<span class="st"> </span><span class="kw">CrossTable</span>(df<span class="op">$</span>muscle_cat, df<span class="op">$</span>year, <span class="dt">prop.r =</span> <span class="ot">FALSE</span>, <span class="dt">prop.c =</span> <span class="ot">TRUE</span>, 
-                <span class="dt">prop.t =</span> <span class="ot">FALSE</span>, <span class="dt">chisq=</span><span class="ot">FALSE</span>)
-Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(tab, <span class="dt">correct =</span> <span class="ot">FALSE</span>, ...)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation
-may be incorrect
-<span class="kw">print</span>(<span class="kw">xtable</span>(A), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/tableA.html&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">4000</span>
-n1 &lt;-<span class="st"> </span><span class="dv">2000</span>
-n0 &lt;-<span class="st"> </span><span class="dv">2000</span>
-p1 &lt;-<span class="st"> </span><span class="fl">0.075</span>
-p0 &lt;-<span class="st"> </span><span class="fl">0.09</span>
-d1 &lt;-<span class="st"> </span>p1<span class="op">*</span>n1
-d0 &lt;-<span class="st"> </span>p0<span class="op">*</span>n0
-y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, d1), <span class="kw">rep</span>(<span class="dv">0</span>, n1<span class="op">-</span>d1), <span class="kw">rep</span>(<span class="dv">1</span>, d0), <span class="kw">rep</span>(<span class="dv">0</span>, n0<span class="op">-</span>d0))
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n1), <span class="kw">rep</span>(<span class="dv">0</span>, n0))
-table1 &lt;-<span class="st"> </span><span class="kw">table</span>(x,y)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1 &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
-ptable1 &lt;-<span class="st"> </span><span class="kw">prop.table</span>(table1)
-<span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
-Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation may be
-incorrect
+<span class="op">-------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span>
+<span class="st">          </span>year           <span class="dv">1961</span>           <span class="dv">1975</span>           Total
+  psych                                                     
+      <span class="dv">1</span>           <span class="dv">10</span> (  <span class="fl">2.1</span><span class="op">%)     9 (  1.7%</span>)     <span class="dv">19</span> (  <span class="fl">1.9</span>%)
+      <span class="dv">2</span>           <span class="dv">29</span> (  <span class="fl">6.1</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">67</span> (  <span class="fl">6.7</span>%)
+      <span class="dv">3</span>           <span class="dv">64</span> ( <span class="fl">13.6</span><span class="op">%)    58 ( 11.0%</span>)    <span class="dv">122</span> ( <span class="fl">12.2</span>%)
+      <span class="dv">4</span>           <span class="dv">78</span> ( <span class="fl">16.5</span><span class="op">%)    72 ( 13.6%</span>)    <span class="dv">150</span> ( <span class="fl">15.0</span>%)
+      <span class="dv">5</span>          <span class="dv">112</span> ( <span class="fl">23.7</span><span class="op">%)   108 ( 20.5%</span>)    <span class="dv">220</span> ( <span class="fl">22.0</span>%)
+      <span class="dv">6</span>           <span class="dv">91</span> ( <span class="fl">19.3</span><span class="op">%)   109 ( 20.6%</span>)    <span class="dv">200</span> ( <span class="fl">20.0</span>%)
+      <span class="dv">7</span>           <span class="dv">55</span> ( <span class="fl">11.7</span><span class="op">%)    90 ( 17.0%</span>)    <span class="dv">145</span> ( <span class="fl">14.5</span>%)
+      <span class="dv">8</span>           <span class="dv">27</span> (  <span class="fl">5.7</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">65</span> (  <span class="fl">6.5</span>%)
+      <span class="dv">9</span>            <span class="dv">6</span> (  <span class="fl">1.3</span><span class="op">%)     6 (  1.1%</span>)     <span class="dv">12</span> (  <span class="fl">1.2</span>%)
+  Total          <span class="dv">472</span> (<span class="fl">100.0</span><span class="op">%)   528 (100.0%</span>)   <span class="dv">1000</span> (<span class="fl">100.0</span>%)
+<span class="op">-------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span></code></pre></div>
+</div>
+</div>
+<div id="exportera-tabeller-till-html" class="section level2">
+<h2><span class="header-section-number">8.3</span> Exportera tabeller till html</h2>
+<p>Det kan vara omständligt att exportera data från R till Word. En smidigt lösning är att spara tabellerna i html-format, vilket gör tabellerna plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart.</p>
+<p>För att exportera tabeller gjorda med <strong>table()</strong> används paketet <strong>xtable</strong> och funktionen <strong>xtable()</strong> tillsammans med funktionen <strong>print()</strong> (som finns i basversionen av R). Installera därför nödvändigt paket</p>
+<p><code>install.packages(&quot;xtable&quot;)</code></p>
+<p>och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)
 
-    Pearson<span class="st">&#39;s Chi-squared test</span>
+Attaching package<span class="op">:</span><span class="st"> &#39;xtable&#39;</span>
+The following objects are masked from <span class="st">&#39;package:summarytools&#39;</span><span class="op">:</span>
 
-<span class="st">data:  df$year and df$muscle</span>
-<span class="st">X-squared = 31.052, df = 7, p-value = 6.082e-05</span>
-<span class="st">wilcox.test(df$muscle ~ df$year) </span>
+<span class="st">    </span>label, label&lt;-
+<span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_cat), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1.html&quot;</span>)
+<span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_year), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table2.html&quot;</span>)</code></pre></div>
+<p>För exportera tabeller gjorda i summarytools kan vi använda funktionen <strong>print()</strong> direkt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(tab_psych_cat, <span class="dt">headings =</span> <span class="ot">FALSE</span>, <span class="dt">file=</span><span class="st">&quot;D:/tab1.html&quot;</span>)
+Switching method to <span class="st">&#39;browser&#39;</span>
+Output file written<span class="op">:</span><span class="st"> </span>D<span class="op">:</span>\tab1.html
+<span class="kw">print</span>(tab_psych_year, <span class="dt">headings =</span> <span class="ot">FALSE</span>,  <span class="dt">file=</span><span class="st">&quot;D:/tab2.html&quot;</span>)
+Switching method to <span class="st">&#39;browser&#39;</span>
+Output file written<span class="op">:</span><span class="st"> </span>D<span class="op">:</span>\tab2.html</code></pre></div>
+<p>För att klistra in tabellerna i ordbehandlingsprogram så högerklickar du någonstans i webläsaren, välj sedan <strong>markera all</strong>, kopiera, och klistra in.</p>
 
-<span class="st">    Wilcoxon rank sum test with continuity correction</span>
-
-<span class="st">data:  df$muscle by df$year</span>
-<span class="st">W = 105225, p-value = 1.652e-05</span>
-<span class="st">alternative hypothesis: true location shift is not equal to 0</span>
-<span class="st">barplot(ptable1, beside=TRUE, xlab=&quot;Medicinsk kapacitet (Muskelkraft)&quot;, </span>
-<span class="st">        ylab=&quot;Andel (%)&quot;, col=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span>
-<span class="st">legend(&quot;topleft&quot;, c(&quot;1961&quot;,&quot;1975&quot;), cex=1.3, bty=&quot;n&quot;, fill=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span></code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fall 3 Kx2 tabeller</span>
-table2 &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>muscle, df<span class="op">$</span>year)
-ptable2 &lt;-<span class="st"> </span><span class="kw">prop.table</span>(table2)
-<span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)
-Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(df<span class="op">$</span>year, df<span class="op">$</span>muscle)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation may be
-incorrect
-
-    Pearson<span class="st">&#39;s Chi-squared test</span>
-
-<span class="st">data:  df$year and df$muscle</span>
-<span class="st">X-squared = 31.052, df = 7, p-value = 6.082e-05</span>
-<span class="st">wilcox.test(df$muscle ~ df$year) </span>
-
-<span class="st">    Wilcoxon rank sum test with continuity correction</span>
-
-<span class="st">data:  df$muscle by df$year</span>
-<span class="st">W = 105225, p-value = 1.652e-05</span>
-<span class="st">alternative hypothesis: true location shift is not equal to 0</span>
-<span class="st">barplot(ptable2, beside=TRUE, xlab=&quot;Medicinsk kapacitet (Muskelkraft)&quot;, </span>
-<span class="st">        ylab=&quot;Andel (%)&quot;, col=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span>
-<span class="st">legend(&quot;topleft&quot;, c(&quot;1961&quot;,&quot;1975&quot;), cex=1.3, bty=&quot;n&quot;, fill=c(&quot;lightblue&quot;, &quot;darkblue&quot;))</span></code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-
+</div>
 </div>
             </section>
 
