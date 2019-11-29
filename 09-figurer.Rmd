@@ -1,4 +1,4 @@
-# Tabeller
+# Figurer
 
 Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med
 
