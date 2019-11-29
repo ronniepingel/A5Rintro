@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-11-27" />
+<meta name="date" content="2019-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.1.1</b> Faktorer på ordinalskala</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
-<li class="chapter" data-level="7.3" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-kodade-som-numriska-variabler"><i class="fa fa-check"></i><b>7.3</b> Faktorer kodade som numriska variabler</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
 <li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
@@ -143,6 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>8.5</b> Statistisk inferens baserat på korstabeller</a></li>
 </ul></li>
 </ul>
 
@@ -165,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Kapitel 7</span> Variabeltyper</h1>
 <p>I statistik skiljer vi på kvantitativa variabler (intervall- eller kvotskola) och kategorivariabler (nominal eller ordinalskala).</p>
 <p>Dessutom kan kvantiativa variabler vara antingen kontinuerliga eller diskreta.</p>
-<p>I R korresponderar detta till numeriska variabler. Notera att även kvantitaiva variabler kan hanteras som kategorivariabler om vi har få få kategorier.</p>
+<p>I R korresponderar detta till numeriska variabler. Notera att en kvantitativ variabl kan hanteras som en kategorivariabel om den har få kategorier.</p>
 <ul>
 <li>Det finns två typer av kvantitativa variabler i R: <strong>numeric</strong> eller <strong>integer</strong> (heltal)</li>
 <li>Kategorivariabler finns som två typer: <strong>factor</strong> och <strong>ordered factor</strong>.</li>
@@ -212,11 +215,18 @@ df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<
 <p>I <code>df</code> finns variabler som är heltal<code>int</code> och numeriska <code>num</code>. I allra flesta fall har denna distinktion ingen betydelse, utan detta hur R sparat data. Integer är nämligen inte lika minneskrävande jämfört med numeric. Statistiskt är dock bägge kvantativa variabler.</p>
 <div id="faktorer" class="section level2">
 <h2><span class="header-section-number">7.1</span> Faktorer</h2>
-<p>Faktorer är beteckningen som R använder för kategorivariabler. Faktorer är generellt sett besvärligare att arbeta än numeriska variabler, men oerhört viktigt att vara bekvämt med vid datahantering. Det som inledningsvis är kan vara förvirrande är att finns olika alternativ med hur man arbetar med kategorivariabler. Vi ska titta på ett par sätt.</p>
+<p>Faktorer är beteckningen som R använder för kategorivariabler. Faktorer är generellt sett besvärligare att arbeta än numeriska variabler och som kan vara förvirrande är att det finns två alternativ beträffande hur man arbetar med kategorivariabler. Det går nämligen att använda kategorivariabler</p>
+<ul>
+<li>definierade som kategorivariabler (faktorer) i R</li>
+<li>som numeriska variabler om de är kodade till 0-1 variabler (eller annan typ av numerisk kodning som ger en tolkning av intresse.)</li>
+</ul>
+<p>Vi kommer utgå ifrån att vi alltid försöker ha <strong>bägge typerna</strong> av kodning för en kategorivariabel i vårt dataset, där kategorivariabler kodade som faktorer kallas <strong>variabelnamn_cat</strong> och numeriska kategorivariabler kallas för <strong>variabelnamn_bin</strong> pm den är kodad 0-1 eller enbart <strong>variabelnamn</strong> om den innehåller numeriska värden.</p>
+<p>Vid arbete med data det av stor vikt att vara bekväm med kategorivariabler!</p>
 <div id="faktorer-på-ordinalskala" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Faktorer på ordinalskala</h3>
 <p>Vi börjar med att titta på variabler vars kategorier går att rangordna.</p>
-<p>Variablen <em>psych</em> i INSARK mäter psykisk funktionsförmåga under stressade förhållande på en skala från från 1-9. Värdet är satt av en psykolog och kan betraktas som en variabel på ordinalskala. Därför skapar vi en ny variabel <code>psych_cat</code> som R använder som ordinalskala. För att skapa en kategorivariabel används funktiontn <strong>factor()</strong> och i detta fall lägger vi till argumentet <strong>ordered = TRUE</strong> eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden.</p>
+<p>Variablen <em>psych</em> i INSARK mäter psykisk funktionsförmåga under stressade förhållande på en skala från från 1-9. Värdet är satt av en psykolog och kan betraktas som en variabel på ordinalskala. Därför skapar vi en ny variabel <code>psych_cat</code> som R använder som ordinalskala.</p>
+<p>För att skapa en kategorivariabel används funktionen <strong>factor()</strong> och i detta fall lägger vi till argumentet <strong>ordered = TRUE</strong> eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych
 <span class="op">&gt;</span><span class="st">    </span>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">5</span>
 <span class="op">&gt;</span><span class="st">   </span>[<span class="dv">35</span>] <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">6</span>
@@ -344,9 +354,6 @@ df<span class="op">$</span>psych_cat
 <div id="faktorer-på-nominalskala" class="section level2">
 <h2><span class="header-section-number">7.2</span> Faktorer på nominalskala</h2>
 <p>Faktorer på nominalskala innebär att kategorierna inte går att rangordna.</p>
-</div>
-<div id="faktorer-kodade-som-numriska-variabler" class="section level2">
-<h2><span class="header-section-number">7.3</span> Faktorer kodade som numriska variabler</h2>
 
 </div>
 </div>

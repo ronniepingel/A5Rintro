@@ -6,12 +6,11 @@ I statistik skiljer vi på kvantitativa variabler (intervall- eller kvotskola) o
 
 Dessutom kan kvantiativa variabler vara antingen kontinuerliga eller diskreta.
 
-I R korresponderar detta till numeriska variabler. Notera att även kvantitaiva variabler kan hanteras som kategorivariabler om vi har få få kategorier.
+I R korresponderar detta till numeriska variabler. Notera att en kvantitativ variabl kan hanteras som en kategorivariabel om den har få kategorier.
 
 
 + Det finns två typer av kvantitativa variabler i R: **numeric** eller **integer** (heltal)
 + Kategorivariabler finns som två typer: **factor** och **ordered factor**.  
-
 
 För att exemplifiera tittar vi på ett datamaterial. 
 
@@ -44,14 +43,22 @@ str(df)
 I `df` finns variabler som är heltal`int` och numeriska `num`. I allra flesta fall har denna distinktion ingen betydelse, utan detta hur R sparat data. Integer är nämligen inte lika minneskrävande jämfört med numeric. Statistiskt är dock bägge kvantativa variabler.
 
 ## Faktorer
-Faktorer är beteckningen som R använder för kategorivariabler. Faktorer är generellt sett besvärligare att arbeta än numeriska variabler, men oerhört viktigt att vara bekvämt med vid datahantering. Det som inledningsvis är kan vara förvirrande är att finns olika alternativ med hur man arbetar med kategorivariabler. Vi ska titta på ett par sätt.
+Faktorer är beteckningen som R använder för kategorivariabler. Faktorer är generellt sett besvärligare att arbeta än numeriska variabler och som kan vara förvirrande är att det finns två alternativ beträffande hur man arbetar med kategorivariabler. Det går nämligen att använda kategorivariabler
+
++ definierade som kategorivariabler (faktorer) i R
++ som numeriska variabler om de är kodade till 0-1 variabler (eller annan typ av numerisk kodning som ger en tolkning av intresse.)
+
+Vi kommer utgå ifrån att vi alltid försöker ha **bägge typerna** av kodning för en kategorivariabel i vårt dataset, där kategorivariabler kodade som faktorer kallas **variabelnamn_cat** och numeriska kategorivariabler kallas för  **variabelnamn_bin** pm den är kodad 0-1 eller enbart **variabelnamn** om den innehåller numeriska värden.
+
+Vid arbete med data det av stor vikt att vara bekväm med kategorivariabler! 
+
 
 ### Faktorer på ordinalskala
 Vi börjar med att titta på variabler vars kategorier går att rangordna.
 
 Variablen *psych* i INSARK mäter psykisk funktionsförmåga under stressade förhållande på en skala från från 1-9. Värdet är satt av en psykolog och kan betraktas som en variabel på ordinalskala. Därför skapar vi en ny variabel `psych_cat` som R använder som ordinalskala.
-För att skapa en kategorivariabel används funktiontn **factor()** och i detta fall lägger vi till argumentet **ordered = TRUE** eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden.
 
+För att skapa en kategorivariabel används funktionen **factor()** och i detta fall lägger vi till argumentet **ordered = TRUE** eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden.
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE}
 df$psych
@@ -103,7 +110,7 @@ Faktorer på nominalskala innebär att kategorierna inte går att rangordna.
 
 
 
-## Faktorer kodade som numriska variabler
+
 
 
 
