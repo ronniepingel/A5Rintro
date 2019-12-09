@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 12 Multipel linjär regression | R på kursen Tillämpad statistik (A5)</title>
+  <meta name="description" content="Kapitel 12 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 12 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 12 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2019-12-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="enkel-linjär-regression.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
+<li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
+<li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
+<li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
+<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
+<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>7</b> Variabeltyper</a><ul>
+<li class="chapter" data-level="7.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer"><i class="fa fa-check"></i><b>7.1</b> Faktorer</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.1.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
+<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>8.5</b> Statistisk inferens baserat på korstabeller</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>9</b> Figurer</a><ul>
+<li class="chapter" data-level="9.1" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>9.1</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>9.1.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>9.2</b> Lådagram</a></li>
+<li class="chapter" data-level="9.3" data-path="figurer.html"><a href="figurer.html#histogram"><i class="fa fa-check"></i><b>9.3</b> Histogram</a></li>
+<li class="chapter" data-level="9.4" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>9.4</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="9.5" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>9.5</b> Några frekvent förekommande diagram.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="regressionsanalys.html"><a href="regressionsanalys.html"><i class="fa fa-check"></i><b>10</b> Regressionsanalys</a><ul>
+<li class="chapter" data-level="10.1" data-path="regressionsanalys.html"><a href="regressionsanalys.html#inläsning-och-kodning-av-data"><i class="fa fa-check"></i><b>10.1</b> Inläsning och kodning av data</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html"><i class="fa fa-check"></i><b>11</b> Enkel linjär regression</a><ul>
+<li class="chapter" data-level="11.1" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regression-och-lm"><i class="fa fa-check"></i><b>11.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="11.2" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regressions-resultat"><i class="fa fa-check"></i><b>11.2</b> Regressions resultat</a></li>
+<li class="chapter" data-level="11.3" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#konfidensintervall"><i class="fa fa-check"></i><b>11.3</b> Konfidensintervall</a></li>
+<li class="chapter" data-level="11.4" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#residualanalys"><i class="fa fa-check"></i><b>11.4</b> Residualanalys</a></li>
+<li class="chapter" data-level="11.5" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#skattning-av-betingade-medelvärden"><i class="fa fa-check"></i><b>11.5</b> Skattning av betingade medelvärden</a></li>
+<li class="chapter" data-level="11.6" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#prediktion"><i class="fa fa-check"></i><b>11.6</b> Prediktion</a></li>
+<li class="chapter" data-level="11.7" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#binära-oberoende-variabler"><i class="fa fa-check"></i><b>11.7</b> Binära oberoende variabler</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html"><i class="fa fa-check"></i><b>12</b> Multipel linjär regression</a><ul>
+<li class="chapter" data-level="12.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#regression-och-lm-1"><i class="fa fa-check"></i><b>12.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>12.2</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
+<li class="chapter" data-level="12.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#variabler-med-flera-än-två-kategorier."><i class="fa fa-check"></i><b>12.3</b> Variabler med flera än två kategorier.</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummy-variabler"><i class="fa fa-check"></i><b>12.3.1</b> Dummy-variabler</a></li>
+<li class="chapter" data-level="12.3.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#faktor-variabler"><i class="fa fa-check"></i><b>12.3.2</b> Faktor-variabler</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multipel-linjär-regression" class="section level1">
+<h1><span class="header-section-number">Kapitel 12</span> Multipel linjär regression</h1>
+<p>I en multipel linjär regressionsanalys inkorporeras flera oberoende variabel. Beroende på syftet väljer vi olika typer av modeller:</p>
+<ul>
+<li>Deskriptivt syfte: Målet är att beskriva samband och strukturer för att öka förståelsen för data. Här kan vi inkludera variabler som är relevanta utifrån ett beskrivande syfte, till exempel om vi studerar hur kriminalitet varierar mellan socio-ekonomiska kategorier.</li>
+<li>Prediktivt syfte: Målet är att inkludera variabler som ger god prediktionsförmåga. Koefficienterna för enskilda variabler är ej av intresse. Vi är inte intresserade av att förstå en struktur.</li>
+<li>Kausalt syfte: Målet är att studera den kausala effekten av en behandlingsvariabel på ett utfall. Övriga variabler som inkluderas är så kallade kontrollvariabler. Det är endast behandlingsvariabelns koefficient som är av intresse.</li>
+</ul>
+<p>Allmänt så kan modellen vid multipel linjär regression skriva <span class="math display">\[y_i = \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots \beta_k x_k + \varepsilon_i.\]</span></p>
+<div id="regression-och-lm-1" class="section level2">
+<h2><span class="header-section-number">12.1</span> Regression och <strong>lm()</strong></h2>
+<p>Med minstakvadrat-metoden ska vi nu anpassas ett regressionsplan som beskriver sambandet mellan benstyrka och längd.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</code></pre></div>
+<p>Den linjära regressionsanalysen är sparad i <strong>m1</strong> som ger en högst kortfattad resultatredovisning, i princip enbart koefficienterna redovisas.</p>
+</div>
+<div id="f-test-och-anova" class="section level2">
+<h2><span class="header-section-number">12.2</span> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></h2>
+<p>Vi ska nu testa göra <span class="math inline">\(F\)</span>-test i R. Ett test av nestade modeller är</p>
+<p><span class="math display">\[F_{obs} = \dfrac{(SSE_R - SSE_C)/(k-g)}{SSE_C/(n-k)}\]</span> där <span class="math inline">\(SSE_R\)</span> är residualkvadratsumman i den reducerade modellen och <span class="math inline">\(SSE_C\)</span> är residualkvadratsumman i den fulla modellen. Denna teststatistiska är <span class="math inline">\(F\)</span>-fördelad med <span class="math inline">\(k-g\)</span> respektive <span class="math inline">\(n-k\)</span> frihetsgrader där <span class="math inline">\(k\)</span> och <span class="math inline">\(g\)</span> är antalet skattade parametrar i den fulla respektive reducerade modellen. Notera att differensen mellan residualkvadratsummorna alltid är positiv efterom den fulla modellen per definition innehåller fler variabler och således minskar alltid residualspridningen. Huruvida denna sänkning är tillräckligt stor för att vara relevant är en annan fråga.</p>
+<p>Anta nu att vi vill jämföra modellen <span class="math display">\[legstrength = \beta_0 + \beta_1 height\]</span> med <span class="math display">\[legstrength = \beta_0 + \beta_1 height + \beta_2 weight + \beta_3 armstrength\]</span> Det innebär att vi testar <span class="math display">\[H_0: \beta_2 = \beta_3 = 0\]</span> vs <span class="math display">\[H_1:\text{Minst en av}\,\,\, \beta_2, \beta_3\neq 0\]</span></p>
+<p>I R är proceduren att vi skattade en reducerad modell <strong>m_r</strong> och en full modell <strong>m_c</strong>. Därefter används funktionen <strong>anova()</strong> som genomför en så kallad variansanalys (analysis of variance) för ett eller flera regressionsobjekt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,]
+m_r &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)
+m_c &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength, <span class="dt">data=</span>df)
+Nested_F_test_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">anova</span>(m_r, m_c)
+Nested_F_test_<span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength
+<span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">48</span> <span class="dv">998734</span>                                  
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">46</span> <span class="dv">701529</span>  <span class="dv">2</span>    <span class="dv">297206</span> <span class="fl">9.7441</span> <span class="fl">0.0002963</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre></div>
+<p>I utskriften ges följande information: Antal frihetsgrader respektive residualkvadratsumman i den reducerade modellen (Model 1) 48 och 998734.3670512. Antal frihetsgrader respektive residualkvadratsumman i den fula modellen (Model 1) 46 och 701528.6153138. Differensen mellan modellernas frihetsgrader och residualkvadratsummor 2 och 297205.7517374. Slutligen presenteras <span class="math inline">\(F_{obs}\)</span> 9.7440534 och <span class="math inline">\(p\)</span>-värdet 0.0002963.</p>
+<p>Som illustration relaterar vi detta till den manuella beräkningen. I praktiken används dock anova-funktionen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Residualkvadratsumma i reducerad modell</span>
+SSER &lt;-<span class="st"> </span><span class="kw">sum</span>(m_r<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)
+<span class="co"># Residualkvadratsumma i full modell</span>
+SSEC &lt;-<span class="st"> </span><span class="kw">sum</span>(m_c<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)
+<span class="co"># Skillnad i frihetsgrader mellan modellerna </span>
+df1 &lt;-<span class="st"> </span>m_r<span class="op">$</span>df <span class="op">-</span><span class="st"> </span>m_c<span class="op">$</span>df
+<span class="co"># Antal frihetsgrader mellan modellerna </span>
+df2 &lt;-<span class="st"> </span>m_c<span class="op">$</span>df
+<span class="co"># Observerat F-värde</span>
+Fobs &lt;-<span class="st"> </span>((SSER <span class="op">-</span><span class="st"> </span>SSEC)<span class="op">/</span>df1) <span class="op">/</span><span class="st"> </span>(SSEC<span class="op">/</span>df2)
+Fobs
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">9.744053</span>
+<span class="co"># P-värde från F-fördelningen under nollhypotesen</span>
+pvalue &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fobs, df1, df2))
+pvalue
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.0002962744</span></code></pre></div>
+</div>
+<div id="variabler-med-flera-än-två-kategorier." class="section level2">
+<h2><span class="header-section-number">12.3</span> Variabler med flera än två kategorier.</h2>
+<p>Vi har tidigare sett på binära variabler, men nu ska vi undersöka hur kategorivariabler med fler än 2 kategorier kan inkluderas i en analys.</p>
+<ol style="list-style-type: decimal">
+<li>Koda om till dummy-variabler (0-1), där dummy-variabel indikerar en kategori. Om en variabel har 3 kategorier således 3 dummy-variabler. Dummy-variabeln som indikerar referenskategorin inkluderas INTE i regressionsmodellen.</li>
+<li>Använd psych_cat som är en faktor-variabel.</li>
+</ol>
+<div id="dummy-variabler" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Dummy-variabler</h3>
+<p>vi ska börja med att metoden med omkodning till dummy-variabler och väljer sedan den lägsta kategorin som referens. Det finns en numerisk variabel som heter <code>psych3</code>bestående av värdena 1,2,3 som vi nu kodar som vill binära dummy-variabler.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych_d1 &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>psych_d1[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+df<span class="op">$</span>psych_d1[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>psych_d1[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>psych_d2 &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>psych_d2[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>psych_d2[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+df<span class="op">$</span>psych_d2[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">0</span>            
+df<span class="op">$</span>psych_d3 &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>psych_d3[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>psych_d3[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>psych_d3[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">1</span>   
+m_psychd &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>psych_d2 <span class="op">+</span><span class="st"> </span>psych_d3, <span class="dt">data =</span> df)
+sum_m_psychd &lt;-<span class="st"> </span><span class="kw">summary</span>(m_psychd)
+sum_m_psychd
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>psych_d2 <span class="op">+</span><span class="st"> </span>psych_d3, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="fl">302.87</span>  <span class="op">-</span><span class="fl">60.02</span>  <span class="op">-</span><span class="fl">14.07</span>   <span class="fl">83.16</span>  <span class="fl">362.73</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value      <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)   <span class="fl">509.65</span>      <span class="fl">68.03</span>   <span class="fl">7.491</span> <span class="fl">0.00000000148</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>psych_d2       <span class="fl">66.62</span>      <span class="fl">71.06</span>   <span class="fl">0.938</span>       <span class="fl">0.35328</span>    
+<span class="op">&gt;</span><span class="st"> </span>psych_d3      <span class="fl">332.40</span>     <span class="fl">117.83</span>   <span class="fl">2.821</span>       <span class="fl">0.00699</span> <span class="op">**</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">136.1</span> on <span class="dv">47</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1534</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1173</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">4.257</span> on <span class="dv">2</span> and <span class="dv">47</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">0.01999</span></code></pre></div>
+<p>I ser att referenskategorin är de med lägst psykologisk bedömningsförmåga. Tolkningen är att jämfört med de med låg psykologisk bedömningsföråga så har de med medium psykologisk bedömningsförmåga i genomsnitt 66.6 Newton högre benstyrka. De med hög psykologisk bedömningsförmåga i genomsnitt 332.4 Newton högre benstyrka jämfört med låg psykologiskt bedömningsförmåga. Observera att alla jämförelser görs mot referenskategorin!</p>
+<p>Alla jämförelser görs mot referenskategorin, men hur avgöra om variabeln psykologiskt bedömning har betydelse överhuvudtaget? När vi använder dummy-variabler är det uppenbart att <strong>lm()</strong> hanterar kategorierna som olika variabler, till exempel skattar vi inte en parameter utan 2 om variabeln består av tre kategorier.</p>
+<p>Notera att utskrifterna är i princip identiska och modellen ger oss ett <span class="math inline">\(F\)</span>-värde och ett p-värde 0.01999. Detta är ett resultatet från ett nestat <span class="math inline">\(F\)</span>-test där den reducerade modellen enbart består av interceptet.</p>
+<p>Om vi har flera variabler i modellen och vi önskar att testa om kategorivariabel används därefter <span class="math inline">\(F\)</span>-test analoigt med tidigare</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2_r &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength, <span class="dt">data=</span>df)
+m2_c &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength <span class="op">+</span><span class="st"> </span>psych_d2 <span class="op">+</span><span class="st"> </span>psych_d3, <span class="dt">data=</span>df)
+Nested_F_test_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">anova</span>(m2_r, m2_c)
+Nested_F_test_<span class="dv">2</span>
+<span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength <span class="op">+</span><span class="st"> </span>psych_d2 <span class="op">+</span><span class="st"> </span>psych_d3
+<span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq     F  <span class="kw">Pr</span>(<span class="op">&gt;</span>F)  
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">46</span> <span class="dv">701529</span>                             
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">44</span> <span class="dv">602077</span>  <span class="dv">2</span>     <span class="dv">99452</span> <span class="fl">3.634</span> <span class="fl">0.03462</span> <span class="op">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre></div>
+</div>
+<div id="faktor-variabler" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Faktor-variabler</h3>
+<p>I data frame finns dock redan variabeln <code>psych3_cat</code> som är psykologisk bedömning kodat faktorvariabel. Jämför med <code>psych3</code> och <code>psych3_cat</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m_psychcat &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
+m_psychcat
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">            </span>(Intercept)     <span class="kw">psych3_catLow</span> (<span class="dv">1</span><span class="op">-</span><span class="dv">2</span>)  <span class="kw">psych3_catMedium</span> (<span class="dv">3</span><span class="op">-</span><span class="dv">7</span>)  
+<span class="op">&gt;</span><span class="st">                  </span><span class="fl">842.1</span>                  <span class="op">-</span><span class="fl">332.4</span>                  <span class="op">-</span><span class="fl">265.8</span></code></pre></div>
+<p>Vi ser att resultatet skiljer sig åt jämfört med analysen med dummy-variabel. Det beror på att referensvariabeln i en faktor-variabel i detta fall är bestämt till den högsta psykolisk bedömningen. Tolkningen är att jämfört med de med hög psykologisk bedömningsföråga så har de med låg psykologisk bedömningsförmåga i genomsnitt -332.4 Newton lägre benstyrka.</p>
+<p>Vi använder <strong>revel()</strong> för att ändra faktorns referens.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych3_cat &lt;-<span class="st"> </span><span class="kw">relevel</span>(df<span class="op">$</span>psych3_cat, <span class="dt">ref =</span> <span class="st">&quot;Low (1-2)&quot;</span>)
+m2_psychcat &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
+m2_psychcat 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">            </span>(Intercept)     <span class="kw">psych3_catHigh</span> (<span class="dv">8</span><span class="op">-</span><span class="dv">9</span>  <span class="kw">psych3_catMedium</span> (<span class="dv">3</span><span class="op">-</span><span class="dv">7</span>)  
+<span class="op">&gt;</span><span class="st">                 </span><span class="fl">509.65</span>                  <span class="fl">332.40</span>                   <span class="fl">66.62</span></code></pre></div>
+<p>Visserligen ordningen på parameterskattningarna annorlunda i resultatet, men vi ser att värdena nu är samma som med dummy-varabler.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="enkel-linjär-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

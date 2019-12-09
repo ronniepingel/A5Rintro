@@ -1,0 +1,160 @@
+# Multipel linjär regression 
+
+I en multipel linjär regressionsanalys inkorporeras flera oberoende variabel. Beroende på syftet väljer vi olika typer av modeller:
+
++ Deskriptivt syfte: Målet är att beskriva samband och strukturer för att öka förståelsen för data. Här kan vi inkludera variabler som är relevanta utifrån ett beskrivande syfte, till exempel om vi studerar hur kriminalitet varierar mellan socio-ekonomiska kategorier. 
++ Prediktivt syfte: Målet är att inkludera variabler som ger god prediktionsförmåga. Koefficienterna för enskilda variabler är ej av intresse. Vi är inte intresserade av att förstå en struktur.
++ Kausalt syfte: Målet är att studera den kausala effekten av en behandlingsvariabel på ett utfall. Övriga variabler som inkluderas är så kallade kontrollvariabler. Det är endast behandlingsvariabelns koefficient som är av intresse. 
+
+Allmänt så kan modellen vid multipel linjär regression skriva 
+$$y_i = \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots \beta_k x_k + \varepsilon_i.$$
+
+## Regression och **lm()**
+
+Med minstakvadrat-metoden ska vi nu anpassas ett regressionsplan som beskriver sambandet mellan benstyrka och längd. 
+
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='>'}
+rm(list=ls())
+df <- read.csv2("D:/conscriptiondata_sample_final.csv")
+m1 <- lm(legstrength ~ height, data=df)
+```
+
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='>'}
+rm(list=ls())
+df <- read.csv2("D:/conscriptiondata_sample_final.csv")
+m1 <- lm(legstrength ~ height, data=df)
+```
+
+
+
+Den linjära regressionsanalysen är sparad i **m1** som ger en högst kortfattad resultatredovisning, i princip enbart koefficienterna redovisas. 
+
+
+```{r, echo=FALSE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+options(scipen=999)
+```
+
+
+## $F$-test och **anova()**
+
+Vi ska nu testa göra $F$-test i R. Ett test av nestade modeller är 
+
+$$F_{obs} = \dfrac{(SSE_R - SSE_C)/(k-g)}{SSE_C/(n-k)}$$
+där $SSE_R$ är residualkvadratsumman i den reducerade modellen och  $SSE_C$ är residualkvadratsumman i den fulla modellen. Denna teststatistiska är $F$-fördelad med $k-g$ respektive $n-k$ frihetsgrader där $k$ och $g$ är antalet skattade parametrar i den fulla respektive reducerade modellen. Notera att differensen mellan residualkvadratsummorna alltid är positiv efterom den fulla modellen per definition innehåller fler variabler och således minskar alltid residualspridningen. Huruvida denna sänkning är tillräckligt stor för att vara relevant är en annan fråga.
+
+Anta nu att vi vill jämföra modellen
+$$legstrength = \beta_0 + \beta_1 height$$
+med 
+$$legstrength = \beta_0 + \beta_1 height + \beta_2 weight + \beta_3 armstrength$$
+Det innebär att vi testar 
+$$H_0: \beta_2 = \beta_3 = 0$$
+vs
+$$H_1:\text{Minst en av}\,\,\, \beta_2, \beta_3\neq 0$$
+
+I R är proceduren att vi skattade en reducerad modell **m_r** och en full modell **m_c**. Därefter används funktionen **anova()** som genomför en så kallad variansanalys (analysis of variance) för ett eller flera regressionsobjekt.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+rm(list=ls())
+df <- read.csv2("D:/conscriptiondata_sample_final.csv")[1:50,]
+m_r <- lm(legstrength ~ height, data=df)
+m_c <- lm(legstrength ~ height + weight + armstrength, data=df)
+Nested_F_test_1 <- anova(m_r, m_c)
+Nested_F_test_1
+```
+
+
+I utskriften ges följande information:
+Antal frihetsgrader respektive residualkvadratsumman i den reducerade modellen (Model 1) `r Nested_F_test_1$Res.Df[1]` och `r Nested_F_test_1$RSS[1]`. Antal frihetsgrader respektive residualkvadratsumman i den fula modellen (Model 1) `r Nested_F_test_1$Res.Df[2]` och `r Nested_F_test_1$RSS[2]`. Differensen mellan modellernas frihetsgrader och residualkvadratsummor  `r Nested_F_test_1$Df[2]` och `r Nested_F_test_1$"Sum of Sq"[2]`. Slutligen presenteras 
+$F_{obs}$ `r Nested_F_test_1$F[2]` och $p$-värdet `r Nested_F_test_1$"Pr(>F)"[2]`. 
+
+
+Som illustration relaterar vi detta till den manuella beräkningen. I praktiken används dock anova-funktionen.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+# Residualkvadratsumma i reducerad modell
+SSER <- sum(m_r$residuals^2)
+# Residualkvadratsumma i full modell
+SSEC <- sum(m_c$residuals^2)
+# Skillnad i frihetsgrader mellan modellerna 
+df1 <- m_r$df - m_c$df
+# Antal frihetsgrader mellan modellerna 
+df2 <- m_c$df
+# Observerat F-värde
+Fobs <- ((SSER - SSEC)/df1) / (SSEC/df2)
+Fobs
+# P-värde från F-fördelningen under nollhypotesen
+pvalue <- (1 - pf(Fobs, df1, df2))
+pvalue
+```
+
+## Variabler med flera än två kategorier.
+Vi har tidigare sett på binära variabler, men nu ska vi undersöka hur kategorivariabler med fler än 2 kategorier kan inkluderas i en analys.  
+
+1. Koda om till dummy-variabler (0-1), där  dummy-variabel indikerar en kategori. Om en variabel har 3 kategorier således 3 dummy-variabler. Dummy-variabeln som indikerar referenskategorin inkluderas INTE i regressionsmodellen.
+2. Använd psych_cat som är en faktor-variabel.
+
+### Dummy-variabler
+
+vi ska börja med att metoden med omkodning till dummy-variabler och väljer sedan den lägsta kategorin som referens. Det finns en numerisk variabel som heter `psych3`bestående av värdena 1,2,3 som vi nu kodar som vill binära dummy-variabler.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+df$psych_d1 <- NA
+df$psych_d1[df$psych3 == 1] <- 1
+df$psych_d1[df$psych3 == 2] <- 0
+df$psych_d1[df$psych3 == 3] <- 0
+df$psych_d2 <- NA
+df$psych_d2[df$psych3 == 1] <- 0
+df$psych_d2[df$psych3 == 2] <- 1
+df$psych_d2[df$psych3 == 3] <- 0            
+df$psych_d3 <- NA
+df$psych_d3[df$psych3 == 1] <- 0
+df$psych_d3[df$psych3 == 2] <- 0
+df$psych_d3[df$psych3 == 3] <- 1   
+m_psychd <- lm(legstrength ~ psych_d2 + psych_d3, data = df)
+sum_m_psychd <- summary(m_psychd)
+sum_m_psychd
+```
+
+I ser att referenskategorin är de med lägst psykologisk bedömningsförmåga. Tolkningen är att jämfört med de med låg psykologisk bedömningsföråga så har de med medium psykologisk bedömningsförmåga i genomsnitt `r round(m_psychd$coefficients[2], 1)` Newton högre benstyrka. De med hög psykologisk bedömningsförmåga i genomsnitt `r round(m_psychd$coefficients[3], 1)` Newton högre benstyrka jämfört med låg psykologiskt bedömningsförmåga. Observera att alla jämförelser görs mot referenskategorin!
+
+
+Alla jämförelser görs mot referenskategorin, men hur avgöra om variabeln psykologiskt bedömning har betydelse överhuvudtaget? När vi använder dummy-variabler är det uppenbart att **lm()** hanterar kategorierna som olika variabler, till exempel skattar vi inte en parameter utan 2 om variabeln består av tre kategorier. 
+
+Notera att utskrifterna är i princip identiska och modellen ger oss ett $F$-värde och ett p-värde
+0.01999. Detta är ett resultatet från ett nestat $F$-test där den reducerade modellen enbart består av interceptet. 
+
+Om vi har flera variabler i modellen och vi önskar att testa om kategorivariabel används därefter $F$-test analoigt med tidigare
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+m2_r <- lm(legstrength ~ height + weight + armstrength, data=df)
+m2_c <- lm(legstrength ~ height + weight + armstrength + psych_d2 + psych_d3, data=df)
+Nested_F_test_2 <- anova(m2_r, m2_c)
+Nested_F_test_2
+```
+
+### Faktor-variabler
+
+
+I data frame finns dock redan variabeln `psych3_cat` som är psykologisk bedömning kodat faktorvariabel. Jämför med `psych3` och `psych3_cat`. 
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+m_psychcat <- lm(legstrength ~ psych3_cat, data = df)
+m_psychcat
+```
+
+Vi ser att resultatet skiljer sig åt jämfört med analysen med dummy-variabel.  Det beror på att referensvariabeln i en faktor-variabel i detta fall är bestämt till den högsta psykolisk bedömningen. Tolkningen är att jämfört med de med hög psykologisk bedömningsföråga så har de med låg psykologisk bedömningsförmåga i genomsnitt `r round(m_psychcat$coefficients[2], 1)` Newton lägre benstyrka. 
+
+Vi använder **revel()** för att ändra faktorns referens.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'}
+df$psych3_cat <- relevel(df$psych3_cat, ref = "Low (1-2)")
+m2_psychcat <- lm(legstrength ~ psych3_cat, data = df)
+m2_psychcat 
+```
+
+Visserligen ordningen på parameterskattningarna annorlunda i resultatet, men vi ser att värdena nu är samma som med dummy-varabler. 
+
+
+

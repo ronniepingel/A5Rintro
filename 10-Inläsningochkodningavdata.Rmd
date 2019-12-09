@@ -1,0 +1,124 @@
+# Regressionsanalys
+
+Detta avsnitt inleds med exempel på datainläsning följt av regressionsanalys. Det rekommenderas att ni använder samma eller snarlik kodning som den som används här, exempelvis kod för kodning av variabler, transformationer av variabler, hur data används i funktioner, objektnamn osv.
+
+Detta innebär dock inte att koden som presenteras här är ''bättre'' än all annan kod. Till exempel är koden i vissa avseenden något omständlig och skulle kunna förenklas och förbättras. I programmering gäller emellertid att innan man ger sig i kast med att effektivisera kod bör man  vara helt säker på det man gör. Vänta därför med att skapa ditt eget sätt att strukturera upp en analys. 
+
+## Inläsning och kodning av data
+Vi läser nu in data.
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'}
+# Rensa minnet
+rm(list=ls())
+# Bestäm working directory. Det minskar sökvägarna och resultat/figurer sparas automatiskt i denna mapp.
+setwd("~/Dropbox/A5HT19/Lectures/Data")
+df <- read.csv2("conscriptiondata_sample.csv")
+
+## 1. DATATVÄTT + KODNING AV VARIABLER
+# Skapa (numeriska) kategorier för födelseår (femårsintervall)
+df$year5 <- NA
+df$year5[(df$year >= 1961) & (df$year < 1966)] <- 1
+df$year5[(df$year >= 1966) & (df$year < 1970)] <- 2
+df$year5[(df$year >= 1971) & (df$year < 1975)] <- 3
+# Skapa en faktorvariabel för födelseår 
+# Beroende på analys kan en eller andra alternativet för variabelkodning var användbart och 
+# vi har därför båda versionerna i data frame
+df$year5_cat  <-  factor(df$year5)
+levels(df$year5_cat) <- c("1961-1965", "1966-1970", "1970-1975")
+
+# Skapa 4 (numeriska) kategorier för Test A 
+df$testa4 <- NA
+df$testa4[df$testa < 10] <- 1
+df$testa4[(df$testa >= 10) & (df$testa < 20)] <- 2
+df$testa4[(df$testa >= 20) & (df$testa < 30)] <- 3  
+df$testa4[(df$testa >= 30)] <- 4  
+# Skapa en faktorvariabel för Testa A 4 kategorier
+df$testa_cat <- factor(df$testa4)
+
+# Skapa 4 (numeriska) kategorier för Test B 
+df$testb4 <- NA
+df$testb4[df$testb < 10] <- 1
+df$testb4[(df$testb >= 10) & (df$testb < 20)] <- 2
+df$testb4[(df$testb >= 20) & (df$testb < 30)] <- 3  
+df$testb4[(df$testb >= 30)] <- 4  
+# Skapa en faktorvariabel för Testa B 4 kategorier
+df$testb4 <- factor(df$testb4)
+
+# Skapa 4 (numeriska) kategorier för Test C 
+df$testc4 <- NA
+df$testc4[df$testc < 10] <- 1
+df$testc4[(df$testc >= 10) & (df$testc < 20)] <- 2
+df$testc4[(df$testc >= 20) & (df$testc < 30)] <- 3  
+df$testc4[(df$testc >= 30)] <- 4 
+# Skapa en faktorvariabel för Testa C 4 kategorier
+df$testc_cat <- factor(df$testc4)
+
+# Skapa 4 (numeriska) kategorier för Test D 
+df$testd4 <- NA
+df$testd4[df$testd < 10] <- 1
+df$testd4[(df$testd >= 10) & (df$testd < 20)] <- 2
+df$testd4[(df$testd >= 20) & (df$testd < 30)] <- 3  
+df$testd4[(df$testd >= 30)] <- 4  
+# Skapa en faktorvariabel för Testa C 4 kategorier
+df$testd_cat <- factor(df$testd4)
+
+# Skapa en indikator för Test A 30 poäng eller mer
+df$testa30 <- NA
+df$testa30[df$testa >= 30] <- 1
+df$testa30[df$testa < 30] <- 0
+# Skapa en faktorvariabel för höga poäng på test A
+df$testa30_cat <-  factor(df$testa30)
+levels(df$testa30_cat) <- c("< 30", ">= 30") 
+
+# Skapa en indikator för Test B 30 poäng eller mer
+df$testb30 <- NA
+df$testb30[df$testb >= 30] <- 1
+df$testb30[df$testb < 30] <- 0
+# Skapa en faktorvariabel för höga poäng på test B
+df$testb30_cat <-  factor(df$testb30)
+levels(df$testb30_cat) <- c("< 30", ">= 30") 
+
+# Skapa en indikator för Test C 30 poäng eller mer
+df$testc30 <- NA
+df$testc30[df$testc >= 30] <- 1
+df$testc30[df$testc < 30] <- 0
+# Skapa en faktorvariabel för höga poäng på test C
+df$testc30_cat <-  factor(df$testc30)
+levels(df$testc30_cat) <- c("< 30", ">= 30") 
+
+# Skapa en indikator för Test D 30 poäng eller mer
+df$testc30 <- NA
+df$testc30[df$testc >= 30] <- 1
+df$testc30[df$testc < 30] <- 0
+# Skapa en faktorvariabel för höga poäng på test C
+df$testc30_cat <-  factor(df$testc30)
+levels(df$testc30_cat) <- c("< 30", ">= 30") 
+
+# Skapa en variabel som indikerar högt systoliskt blodtryck 1 och annat 0
+df$sbp130 <- NA
+df$sbp130[df$sbp >= 130] <- 1
+df$sbp130[df$sbp < 130] <- 0
+# Skapa en faktorvariabel för högt systoliskt blodtryck 
+df$sbphigh <-  factor(df$sbp130)
+levels(df$sbphigh) <- c("< 130", ">= 130") 
+
+# Skapa en variabel som indikerar högt diastoliskt blodtryck 1 och annat 0
+df$dbp80 <- NA
+df$dbp80[df$dbp >= 80] <- 1
+df$dbp80[df$dbp < 80] <- 0
+# Skapa en faktorvariabel för högt diastoliskt blodtryck 
+df$dbphigh <-  factor(df$dbp80)
+levels(df$dbphigh) <- c("< 80", ">= 80") 
+
+# Skapa en variabel som indikerar psykologisk bedömning i tre nivåer
+df$psych3 <- NA
+df$psych3[df$psych <= 2] <- 1
+df$psych3[(df$psych > 2) & (df$psych <= 7)] <- 2
+df$psych3[df$psych >= 8] <- 3
+# Skapa en faktorvariabel för psykologisk bedömning i tre nivåer
+df$psych3_cat <- factor(df$psych3)
+levels(df$psych3_cat)  <- c("Low (1-2)", "Medium (3-7)", "High (8-9")
+
+write.csv2(df, "~/Dropbox/A5HT19/Lectures/Data/conscriptiondata_sample_final.csv")
+```

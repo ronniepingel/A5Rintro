@@ -1,58 +1,260 @@
 # Figurer
 
-Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med
+R ger tillgång till omfattande möjligheter för datavisualisering.
+Dels ger basversionen i R stor frihet, dels finns det paket (exempelvis **ggplot2** och **lattice**) som ger ytterligare  funktioner, men som också förenklar skapandet av figurer.  
 
-+ Frekvenstabeller i R, med och utan paket
-+ Korstabeller i R, med och utan paket
-+ Export av tabeller till Word.
+Det går att klassificera syftet med figurer enligt följande:
 
-## Frekvenstabeller
++ Figurer primärt avsedda för dataanalytikern, där syftet är att studera data explorativt, kontrollera att förutsättningar är uppfyllda och förmedla preliminära resultat. Estetiska och pedagogiska aspekter hos sådana figurer är sekundär eftersom det  
++ Figurer avsedda att presenteras för en publik och ska finnas med i en rapport, vetenskaplig artikel eller ett bildspel. En sådan figur ska på ett tydligt och korrekt redovisa det väsentliga i en analys och den ska även vara estetiskt fullgod.
 
-### Frekvenstabeller med table()
+Beroende på syfte tar det olika lång tid att skapa figurer. Det finns komplicerade figurer
+som kan ta flera timmar att skapa.
+
+Wilke delar in figurer i
+
++ Oestetisk. Figurer är i många avseenden korrekt
++ Dålig
++ Fel
+
 
 ```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'}
-# Läs in data. Välj ut födda 1961 och födda 1975 
 insark <- read.csv2("D:/conscriptiondata.csv")
-# Välja ut insark för födda 1961
-insark1 <- insark[insark$year == 1961,]
-# Välj ut INSARK för födda 1975
-insark2 <- insark[insark$year == 1975,]
-# Skapa ett dataset av INSARK 1961 och 1975. 
-insark3 <- rbind(insark1, insark2)
-# Skapa nytt radid baserat på delpopulationen 1961 och 1975
-insark3$newid <-  1:length(insark3$id) 
-```
-
-Vi ska nu  dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt,
-dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig!
-Beträffade funktionen **set.seed()** så används denna för att ange vilket
-slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()
-
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE, message =FALSE}
-n <- 1000
+n <- 10000
 set.seed(12345)
-df <- insark3[sample(insark3$newid, n), ]
+df <- insark[sample(insark$id, n), ]
+names(insark)
+df$year_cat <- NA
+df$year_cat[(df$year >= 1961) & (df$year < 1966)] <- 1
+df$year_cat[(df$year >= 1966) & (df$year < 1970)] <- 2
+df$year_cat[(df$year >= 1971) & (df$year < 1975)] <- 3
+df$year_cat <-  factor(df$year_cat)
+levels(df$year_cat) <- c("1961-1965", "1966-1970", "1970-1975")
+
+df$testa_cat[df$testa < 10] <- 1
+df$testa_cat[(df$testa >= 10) & (df$testa < 20)] <- 2
+df$testa_cat[(df$testa >= 20) & (df$testa < 30)] <- 3  
+df$testa_cat[(df$testa >= 30)] <- 4  
+df$testa_cat <- factor(df$testa_cat)
+
+df$testa_cat <- NA
+df$testa_cat[df$testa < 10] <- 1
+df$testa_cat[(df$testa >= 10) & (df$testa < 20)] <- 2
+df$testa_cat[(df$testa >= 20) & (df$testa < 30)] <- 3  
+df$testa_cat[(df$testa >= 30)] <- 4  
+df$testa_cat <- factor(df$testa_cat)
+
+df$testb_cat <- NA
+df$testb_cat[df$testb < 10] <- 1
+df$testb_cat[(df$testb >= 10) & (df$testb < 20)] <- 2
+df$testb_cat[(df$testb >= 20) & (df$testb < 30)] <- 3  
+df$testb_cat[(df$testb >= 30)] <- 4  
+df$testb_cat <- factor(df$testb_cat)
+
+df$testc_cat <- NA
+df$testc_cat[df$testc < 10] <- 1
+df$testc_cat[(df$testc >= 10) & (df$testc < 20)] <- 2
+df$testc_cat[(df$testc >= 20) & (df$testc < 30)] <- 3  
+df$testc_cat[(df$testc >= 30)] <- 4  
+df$testc_cat <- factor(df$testc_cat)
+
+df$testd_cat <- NA
+df$testd_cat[df$testd < 10] <- 1
+df$testd_cat[(df$testd >= 10) & (df$testd < 20)] <- 2
+df$testd_cat[(df$testd >= 20) & (df$testd < 30)] <- 3  
+df$testd_cat[(df$testd >= 30)] <- 4  
+df$testd_cat <- factor(df$testd_cat)
+
+par(mfrow=c(2,2))
+freqtable_testa <- table(df$testa_cat)
+barplot(freqtable_testa, col="lightblue", main="OK", 
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"))
+grid(nx=NA, ny=NULL)
+barplot(freqtable_testa, col="lightblue", main="OK", 
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"), add=TRUE)
+barplot(freqtable_testa, main="Oestetisk", 
+        col=c(4,7,5,2),
+        xlab = "Poäng test A", ylab="Antal",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"))
+grid(nx=NA, ny=NULL)
+barplot(freqtable_testa, main="Dålig", 
+        col="lightblue",
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,20000), border="white",
+        )
+barplot(freqtable_testa, main="Felaktig", 
+        col="lightblue",
+        ylab="", xlab = "Test",
+        ylim=c(0,10000), border="white", 
+        xaxt='n', yaxt='n')
 ```
 
 
-## Stapeldiagram
-Ofta presenteras kategoridata i stapeldiagram. Stapeldiagram illustrerar 
-värden som även kan presenteras i en tabell, men som med grafisk presentation blir enklare att avläsa. På grund av relationen mellan stapeldiagram och tabeller används i R ett skapat tabellobjekt i stapeldiagramsfunktionen **barplot** för att skapa stapeldiagram.
+```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'}
+insark <- read.csv2("D:/conscriptiondata.csv")
+n <- 10000
+set.seed(12345)
+df <- insark[sample(insark$id, n), ]
+names(insark)
+df$year_cat <- NA
+df$year_cat[(df$year >= 1961) & (df$year < 1966)] <- 1
+df$year_cat[(df$year >= 1966) & (df$year < 1970)] <- 2
+df$year_cat[(df$year >= 1971) & (df$year < 1975)] <- 3
+df$year_cat <-  factor(df$year_cat)
+levels(df$year_cat) <- c("1961-1965", "1966-1970", "1970-1975")
+
+df$testa_cat[df$testa < 10] <- 1
+df$testa_cat[(df$testa >= 10) & (df$testa < 20)] <- 2
+df$testa_cat[(df$testa >= 20) & (df$testa < 30)] <- 3  
+df$testa_cat[(df$testa >= 30)] <- 4  
+df$testa_cat <- factor(df$testa_cat)
+
+df$testa_cat <- NA
+df$testa_cat[df$testa < 10] <- 1
+df$testa_cat[(df$testa >= 10) & (df$testa < 20)] <- 2
+df$testa_cat[(df$testa >= 20) & (df$testa < 30)] <- 3  
+df$testa_cat[(df$testa >= 30)] <- 4  
+df$testa_cat <- factor(df$testa_cat)
+
+df$testb_cat <- NA
+df$testb_cat[df$testb < 10] <- 1
+df$testb_cat[(df$testb >= 10) & (df$testb < 20)] <- 2
+df$testb_cat[(df$testb >= 20) & (df$testb < 30)] <- 3  
+df$testb_cat[(df$testb >= 30)] <- 4  
+df$testb_cat <- factor(df$testb_cat)
+
+df$testc_cat <- NA
+df$testc_cat[df$testc < 10] <- 1
+df$testc_cat[(df$testc >= 10) & (df$testc < 20)] <- 2
+df$testc_cat[(df$testc >= 20) & (df$testc < 30)] <- 3  
+df$testc_cat[(df$testc >= 30)] <- 4  
+df$testc_cat <- factor(df$testc_cat)
+
+df$testd_cat <- NA
+df$testd_cat[df$testd < 10] <- 1
+df$testd_cat[(df$testd >= 10) & (df$testd < 20)] <- 2
+df$testd_cat[(df$testd >= 20) & (df$testd < 30)] <- 3  
+df$testd_cat[(df$testd >= 30)] <- 4  
+df$testd_cat <- factor(df$testd_cat)
+
+par(mfrow=c(2,2))
+freqtable_testa <- table(df$testa_cat)
+barplot(freqtable_testa, col="lightblue", main="OK", 
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"))
+grid(nx=NA, ny=NULL)
+barplot(freqtable_testa, col="lightblue", main="OK", 
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"), add=TRUE)
+barplot(freqtable_testa, main="Oestetisk", 
+        col=c(4,7,5,2),
+        xlab = "Poäng test A", ylab="Antal",
+        ylim=c(0,5000), border="white",
+        names.arg = c("0-9", "10-19", "20-29", "30-40"))
+grid(nx=NA, ny=NULL)
+barplot(freqtable_testa, main="Dålig", 
+        col="lightblue",
+        ylab="Antal", xlab = "Poäng test A",
+        ylim=c(0,20000), border="white",
+        )
+barplot(freqtable_testa, main="Felaktig", 
+        col="lightblue",
+        ylab="", xlab = "Test",
+        ylim=c(0,10000), border="white", 
+        xaxt='n', yaxt='n')
+```
+
+Den första figuren är OK eftersom den redovisar stapeldiagramen utan felaktigheter. Den andra figuren har oestetisk beträffande färgval och har hjälplinjer som löper över staplarna istället för bakom. Figuren som klassas som dålig är korrekt, men det är svårt att urskilja detaljer i den. Den felaktiga figuren visar staplarna men ingen övrigr information som gör figuren möjlig att tolka. 
+
+Notera att distinktionen oestetisk-dålig-felaktig är flytande. Färgvalet kan innebär att faktiskt är dålig eftersom . Att ha olika färger på staplar innebär att tolkningen av innebär att läsaren kan föranledas att tro att det ytterligare information som inte finns.  En korrekt figur som är dålig, kanske är så dålig att den misstolkasm vilket innebär att den egentligen är felaktig.
+
+## Typer av figurer
+
+### Presentation av aggregerade data
+
+Aggregerade data (summor, antal, medelvärden, andelar) presenteras ofta i 
+
++ stapeldiagram, där R använder funktionen **barplot()**.
++ punktdiagram, där R använder funktionen **dotchart()**.
+
+I princip redovisas grafiskt värden presenteras i en tabell, men en grafisk presentation blir enklare att avläsa. På grund av relationen mellan stapeldiagram och tabeller används i R ett skapat tabellobjekt i stapeldiagramsfunktionen **barplot** för att skapa stapeldiagram.
+
+
+Det finns olika typer av stapeldiagram.
+
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>', fig.width=5, fig.height=8}
+library("WDI")
+wdi_dat <- WDI(indicator = c("SP.POP.TOTL", "NY.GDP.PCAP.KD",  "SP.DYN.IMRT.IN"), 
+               start = 2018, end = 2018, extra = TRUE) 
+wdieu <- subset(wdi_dat, 
+country %in% c("Denmark", "Finland", "Iceland", "Norway", 
+            "Sweden"))
+dotchart(wdieu$SP.POP.TOTL, labels = wdieu$country, cex=1.1)
+dotchart(sort(wdieu$SP.POP.TOTL/1000000), 
+         labels = wdieu$country[order(wdieu$SP.POP.TOTL)],
+         xlab = "Population (million)")
+```
+
 
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE, message=FALSE}
+help(t.test)
+
 freqtable_psych <- table(df$psych)
-proptable_psych <- prop.table(freqtable_psych)
-barplot(freqtable_psych)
-barplot(proptable_psych)
+kable(freqtable_psych, format ="html")
+barplot(freqtable_psych, colnames = c("Kategori", "Antal"))
+barplot(freqtable_psych, horiz = TRUE)
+dotchart(freqtable_psych)
 ```
 
+
+```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>', fig.width=5, fig.height=8}
+library("WDI")
+wdi_dat <- WDI(indicator = c("SP.POP.TOTL", "NY.GDP.PCAP.KD",  "SP.DYN.IMRT.IN"), 
+               start = 2018, end = 2018, extra = TRUE) 
+wdieu <- subset(wdi_dat, 
+country %in% c("Belgium", "Bulgaria", "Czech Republic", "Denmark", 
+            "Germany", "Estonia", "Ireland", "Greece", "Spain", 
+            "France", "Croatia", "Italy", "Cyprus", "Latvia", 
+            "Lithuania", "Luxembourg", "Hungary", "Malta", 
+            "Netherlands", "Austria", "Poland", "Portugal", "Romania", 
+            "Slovenia", "Slovakia", "Finland", "Sweden", "United Kingdom"))
+dotchart(wdieu$SP.POP.TOTL, labels = wdieu$country, cex=1.1)
+dotchart(sort(wdieu$SP.POP.TOTL/1000000), 
+         labels = wdieu$country[order(wdieu$SP.POP.TOTL)],
+         xlab = "Population (million)")
+```
+
+
+Det finns lite riktlinjer
+
+
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE, message=FALSE}
-freqtable_psych_year <- table(factor(df$psych), df$year)
+proptable_psych <- prop.table(freqtable_psych)
+freqtable_psych_year <- table(factor(df$testa_cat), df$year_cat)
 barplot(freqtable_psych_year, beside=TRUE, ylab="Antal")
 proptable_psych_year <- 100*prop.table(freqtable_psych_year, margin = 2 ) 
 barplot(proptable_psych_year, beside=TRUE, ylab="Procent (%)")
 ```
+
+
+Some key rules for table layout are the following:
+
+Do not use vertical lines.
+Do not use horizontal lines between data rows. (Horizontal lines as separator between the title row and the first data row or as frame for the entire table are fine.)
+Text columns should be left aligned.
+Number columns should be right aligned and should use the same number of decimal digits throughout.
+Columns containing single characters are centered.
+The header fields are aligned with their data, i.e., the heading for a text column will be left aligned and the heading for a number column will be right aligned.
 
 
 ## Lådagram
