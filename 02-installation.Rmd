@@ -17,6 +17,7 @@ Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska n
 1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/.Notera att versionen
 måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS
 om du har en äldre Mac.
+
 2. Ladda ner pkg-filen under *Latest release*. Öppna den nedladdade .pkg-filen och installera R.
 
 ### Installation av R på Windows
