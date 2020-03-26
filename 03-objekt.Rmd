@@ -1,0 +1,895 @@
+# Data, objekt och funktioner
+
+För att kunna arbeta med statistik och dataanalys är det viktigt att inte enbart förstå den statistiska metoden och kunna lösa problem med hjälp av en miniräknare. I praktiken är det även nödvändigt att förstå hur data hanteras, lagras och struktureras. I detta kapitel introduceras typer av data som normalt hanteras i R, sedan följer avsnitt om de olika typer av objekt som finns i R. Kapitlet avslutas med se på vad en funktion i R är för något och hur funkioner kan användas för att hantera objekt.
+
+## Data
+Utan data är statistik innehållslöst. På samma sätt är data grundläggande för arbete i R. De vanligaste datatyperna i R är
+
++ character (text), som anges med citationstecken t ex "a", "3".
++ numeric (decimaltal), t ex är 3, 32.1. Notera att 3 kan skriva 3.0.
++ integer (heltal). 3, 32. Skillnaden mellan numeric och integer är att inga decimaler sparas, vilket spar minne. 
++ logical (data indikerar om något är sant eller falskt, TRUE/FALSE).
+
+Observera att dessa datatyper beskriver hur data är lagrad och hur R ska tolka data. Det säger sig kanske självt att det inte går att använda räkneoperation om data är character (text). 
+
+Datatyper ska inte förväxlas med de datanivåer (nominal, ordinal, intervall och kvotskala) som man normalt förknippar med statistiska analyser. Datatyper ska inte heller förväxlas med om data är diskreta, kontinuerliga, kategorier eller kvantitativa. 
+
+Det är **mycket viktigt** för alla som arbetar med statistiska analyser av data att kunna tillämpa alla ovanstående begrepp på rätt situation. Ofta överlappar begreppen, men det är vanligt att begreppen inte gör det. Detta måste man ha en förståelse för.
+
+
+## Objekt
+Data hanteras och sparas som **objekt**. För att skapa ett objekt används **assignment**-operatorn **<-**. Objektet sparas därmed i minnet i R, men inget resultat redovisas i Console. Om R stängs ner måste objektet skapas på nytt såvida användaren inte har angett att objektet ska sparas.
+
+I regel arbetar man i R med flera olika objekt samtidigt. Objekten måste därför 
+namnges och precis som Vid all programmering är noggrannhet a och o. Objektnamn inleds med en bokstav och får endast innehålla bokstäver, siffror, _ och ..
+Dessutom skiljer R på versaler och gemener. Det är inte alltid enkelt att namnge objekt, men det
+viktigaste är att vara konsekvent. På denna kurs rekommenderas följande principer för namngivning av objekt. Använd 
+
++ endast **gemener**.
++ **korta** och **logiska** namn, t ex kan objektet **population** förkortas till **pop**.
++ gärna understreck _ för sammanbinda långa objektnamn. Objektet ålder för kvinnor skulle kunna betecknas **age_women** och motsvarande för män är då **age_men**.
++ Använd inte å, ä och ö.
++ inte namn som redan är upptagna i R, t ex **exp** eller **log**.
+
+Det tre vanligaste objekten för hantering av data är:
+
++ vektorer,
++ matriser,
++ data frames. 
+
+
+### Vektorer 
+En vektor är ett dataobjekt som är endimensionellt och består av $n$ element. En vektor skapas med kommandot **c()** (''Combine Values into a Vector''). Anta att vi observerar värdena $3,-1,1,5,0$. Med hjälp av nedanstående kod skapas ett vektor-objekt med med 5 element:
+
+```{r, eval=TRUE}
+# Skapa din första numeriska vektor
+my__first_vec <- c(3, -1, 1, 5, 0)
+
+```
+
+Notera att inget visas i Console, men att objektet finns sparat i minnet upptäcker man i RStudio genom att observera den övre högra panelen under fliken **Environment**. Där listas alla objekt som finns sparade i minnet i R. För att titta på objektet exekveras objektet genom att köra nedanstående kod. 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa din första numeriska vektor
+my__first_vec 
+
+```
+
+
+Du ska nu skapa ett antal vektorobjekt som sedan på olika sätt ska manipuleras. 
+
+1. Skapa ett script som heter **kap3_objekt_och_funktioner.R** genom att välja *File > New File > R Script* och sedan direkt spara scriptet med *File > Save As* i mappen **A5Rkod**.  
+2. Skriv in koden nedan i scriptet och spara med *File > Save*. Det är bra att få rutin på att ofta spara sitt script så att inte kod råkar försvinna.
+
+```{r, eval=TRUE}
+# Skapar två numeriska vektorer
+x <- c(3, 1, 1, 5, 0)
+y <- c(2, 3, 5, 6, 9)
+# Kombinera vektorer till en ny vektor
+z <- c(x, y)
+```
+
+Generellt gäller i R att om $x$ är en vektor bestående av $k$ element
+$$x = (x_1,x_2,\ldots,x_k)$$
+och $y$ är en vektor bestående av $l$ element
+$$y = (y_1,y_2,y_3,y_4,y_5)$$
+så skapar kommandot 
+
+```{r, eval=FALSE} 
+z <- c(x,y)
+``` 
+
+en vektor med $k + l$ element, 
+$$z= (x_1,x_2,\ldots,x_k,y_1,y_2,\ldots,y_l)=(z_1,z_2,\ldots,z_{k+l}).$$
+För att se om detta stämmer tittar vi på objekten genom att exekvera dem. 
+
+3. Fortsätter scriptet genom att skriva in nedanstående kod. Spara och kör koden.
+
+```{r, eval = FALSE}
+x
+y
+z
+```
+
+I Console ser du då följande: 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+x
+y
+z
+```
+
+Både $x$, $y$ och $z$ är numeriska vektorer. Det går även att skapa en vektor bestående av bokstäver. För att skapa en sådan vektor (character vector) sätts de enskilda elementen inom citationstecken.
+
+4. Fortsätt scriptet och skriv in nedanstående kod i scriptet, spara och kör koden.
+
+```{r, eval=FALSE}
+# Skapar en vektor med ord
+nordic_countries <- c("Denmark", "Finland", "Iceland", "Norway", "Sweden")
+nordic_countries
+```
+
+I Console ser du då följande resultat.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapar en vektor med ord
+nordic_countries <- c("Denmark", "Finland", "Iceland", "Norway", "Sweden")
+nordic_countries
+```
+
+Kombineras en numerisk och en character-vektor blir hela vektorn en character-vector.  
+
+5. Skriv följande kod i scriptet, spara och kör koden.
+
+
+```{r, eval=FALSE}
+# Skapar en vektor med ord
+x_nordic_countries <- c(x, nordic_countries )
+x_nordic_countries
+```
+
+I Console erhålls följande output och vi ser att de tidigare numeriska värdena nu omges av citationstecken.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en vektor med en numerisk och en vektor med ord
+x_nordic_countries <- c(x, nordic_countries )
+x_nordic_countries
+```
+
+
+7. Vi ska nu se introducera hur man på andra sätt kan skapa vektorer typer av vektorer.
+
+```{r, eval=FALSE}
+# Skapar en vektor med värdena 1,2,3,4,5
+v <- 1:5
+# Skapar en vektor med endast ett element
+n <- 150
+# Skapar en vektor med ett bortfall. 
+ymis <- c(3, NA, 6, 3, 6)
+```
+
+I Console får vi 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapar en vektor med värdena 1,2,3,4,5
+v <- 1:5
+# Skapar en vektor med endast ett element
+n <- 150
+# Skapar en vektor med ett bortfall. 
+ymis <- c(3, NA, 6, 3, 6)
+```
+
+4. Som svar på 3. ovan ser vi att koden, om den exekveras, skapar numeriska vektorer som enbart innehåller siffror, vektorer som enbart innehåller bokstäver, vektorer som skapats genom räkneoperationer eller sekvenser. Vidare finns vektorer med bortfall anges med `NA` (Not Available).
+
+
+En vektor som innehåller enbart en datatyp kallas för **atomic**. Detta kan vara värt att känna till eftersom eftersom det är vanligt att felmeddelande referar till just att en vektor inte är atomic. 
+
+
+
+
+Här ser du även exempel på hur `r # ` används för att kommentera kod. Vid all programmering är det viktigt att förklara koden så att du själv och andra enkelt förstår vad koden gör. *Kommentera alltid kod på denna kurs!*. Även om det i triviala fall kan tyckas meningslöst är detta viktigt för att få rutin på att kommentera.
+5. Exekvera koden. Vektor-objekten ska nu vara adderade till fliken Environment och återigen så visas inget i Console. 
+6. Fortsätt scriptet genom att skriva in nedanstående kod. Spara scriptet och kör koden. 
+
+```{r, eval=FALSE}
+x
+y
+z
+v
+n
+nordic_countries
+ymis
+x_nordic_countries 
+```
+
+I Console presenteras vektorerna.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+x
+y
+z
+v
+n
+nordic_countries
+ymis
+x_nordic_countries 
+```
+
+
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+
+ <font size="5">  </font>
+```{r, echo = FALSE, out.width = "5%", dpi = 72}
+knitr::include_graphics("docs/images/important.png")
+```
+
+
+En viktig detla ser att kombinerar vi en vektor med numerisk vektor och en vektor med bokstäver så betraktas siffrorna som bokstäver. Det ser vi genom att 
+det finns finns citationstecken kring siffrorna. 
+
+</div>
+
+
+
+
+I praktiken måste data anpassas och manipuleras för planerade analyser. Vi börjar med att konstatera att varje element har en position. Med hakparenteser `[]` erhålls åtkomst till ett eller flera element,  antingen genom att direkt identifiera positionen i vektorn med en siffra eller med **logiska operatorer**. Några vanliga och viktiga logiska operatorer är:
+
++ `<` är mindre än.
++ `>` är mindre än.
++ `>=` större än eller lika med	
++ `<=` mindre än eller lika med	
++ `==` lika med.
+
+Genom att använda positioner och logiska operator kan användaren direkt hantera  data i vektorn. Skriv in nedanstående kod i scriptet.
+
+7. Fortsätt scriptet genom att skriva in nedanstående kod.
+8. Läs scriptet och förstå vad koden gör.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa element 2 i vektorn x 
+x[2]
+# Visa med negativ indexering inte element 2 i vektorn x 
+x[-2]
+# Visa element 2, 3 och 4 i vektorn x
+y[c(2,3,4)]
+# Visa med negativ indexering element 1 och 5 i vektorn x
+y[-c(2,3,4)]
+# Visa element i vektor y som är större än eller lika med 4
+y[y >= 6]
+# Visa element i vektor y från positioner där x har värden lika med 1. 
+# (Kräver att x och y har lika många element) 
+y[x == 1]
+# Visa element i vektor y från positioner där nordic_countries == "Finland"
+y[nordic_countries == "Finland"]
+
+```
+
+Efter det att åtkomst till element i vektorn har erhållit kan dessa elements sparas eller förändras.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Spara element 2, 3, 4 i en ny vektor ysub och visa vektorn
+ysub <- y[c(2,3,4)]
+ysub
+# Sätt värdet 0 i vektorn y där y är större än eller lika med 6
+ysub[ysub >= 6] <- 0
+# Sätt värdet 99 i vektorn y på positioner där nordic_countries är "Denmark"
+ysub[nordic_countries == "Finland"] <- 99
+```
+
+Nya vektorer kan skapas med räkneoperationer. Beräkningarna sker då elementvis, till exempel adderas elementvärden i en vektor till elementvärden i en annan vektor som har motsvarade position. Nedan presenteras några vanliga räkneoperationer.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Addition av x och y
+x + y
+# Multiplikation av x och y
+x * y
+# Potenser skrivs med a^b
+y^2
+# En konstant adderas till alla element i vektorn
+x + n 
+# Räkneoperationer med NA ger NA
+x + ymis 
+# Addera delar av vektorer
+x[c(2,3,4)] + y[c(2,3,4)]
+# Division med 0 är ej definierat. R anger det som Inf (infinity) 
+# eller NaN (Not a Number) om det är 0/0.
+x/0
+# Exempel på längre räkneoperationer. 
+# Notera att alla beräkningar är elementvisa.
+w <- x + (y^2 - n)/v
+w
+```
+
+Spara scriptet **kap3_objekt_och_funktioner.R**.
+
+
+### Matriser
+En matris är ett tvådimensionellt dataobjekt bestående av **rader** och **kolumn**. Analogt med **c()**, som kombinerar element till en vektor, används **rbind()** och **cbind()** för att binda ihop vektorer radvis eller kolumnvis till matriser. Det går **inte** att binda ihop numeriska vektorer som med vektorer som innehåller bokstäver, utan en matris måste innehålla element av samma datatyp. En matris kan även skapas direkt med **matrix()** som transformerar en vektor till ett antal rader och kolumner. 
+
+Fortsätt scriptet **kap3_objekt_och_funktioner.R** och skriv in nedanstående kod. 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en matris genom att binda samman x och y radvis. Matrisen får 2 rader och 5 kolumner
+m1 <- rbind(x, y)
+m1
+# Skapa en matris genom att binda samman x, y, n och x radvis. Matrisen får 5 rader och 4 kolumner. 
+m2 <- cbind(x, y, n, x)
+m2
+# Skapa en matris genom att binda samman x och ymis radvis. Matrisen får 5 rader och 2 kolumner. 
+m3 <- rbind(x, ymis)
+m3
+# Skapa med matrix() en matris med två rader och 5 kolumner. 
+# Matrisen fylls på kolumnvis och notera att detta inte blir samma som m1. 
+m4 <- matrix(z, 2, 5)
+m4
+# Skapa med matrix() en matris med fem rader och 2 kolumner.
+# I detta fall är de två första kolumnerna i m2 samma som m5.
+m5 <- matrix(z, 5, 2)
+m5
+```
+
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+
+ <font size="5">  </font>
+
+```{r, echo = FALSE, out.width = "5%", dpi = 72}
+knitr::include_graphics("docs/images/tip.png")
+```
+
+Använd **rbind()** och **cbind()** vid skapande av matriser eftersom det är mindre risk för
+för missförstånd var elementen hamnar i matrisen.
+
+</div>
+
+För åtkomst till element krävs nu, eftersom matriser består av rader och kolumner, att bägge dimensionerna anges. Först anges
+radnummer, sedan kolumnnummer.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa element på rad 2 och kolumn 3
+m1[2,3]
+# Visa element på rad 2 och alla kolumner
+m1[2,]
+# Visa element på alla rader och kolumner 3
+m1[,3]
+# Visa 
+m2[c(1,2),]
+```
+
+Det går att utföra elementvisa beräkningar, vilket kräver att matriserna har samma antal rader och kolumner. Observera att elementvis multiplikation **inte** är samma som det som betecknas matrismultiplikation. Det är naturligtvis inga problem att i R använda matrismultiplikation, men detta går utöver kursens mål.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Addera element i matris 1 med element i matris 3
+m1 + m3
+# Multiplicera element i matris 1 med element i matris 3. OBS! Detta är inte matrismultiplikation!
+m1 * m3
+# Dividera element i matris 1 med en konstant n
+m1 / n
+
+```
+
+Spara **dataobjects.R**. 
+
+Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Därför introduceras en tredje typ av dataobjekt som är enklare att arbeta med.
+
+
+### Data frames
+En **data frame** är det vanligaste objektet för dataanlys. En data frame har likheter med matriser eftersom den har två dimensioner (rader och kolumner), men kan innehålla element med olika datatyper, t ex både numeriska värden och bokstäver. Vidare innehåller en data frame ytterligare information som **variabelnamn** och **variabeltyp**.
+
+För att skapa en data frame används **data.frame()** och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.
+
+Skriv nedanstående kod i **dataobjects.R**. 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en data frame genom att ange vektorer 
+df <- data.frame(x, y, nordic_countries)
+df
+# Skapa en data frame genom ange transformera en matris.
+data.frame(m1)
+```
+
+
+För åtkomst till element finns nu flera alternativ. Dels kan används precis som förut ´[]´, dels finns nu möjlighet att använda `$` för att komma åt data genom att använda variabelnamn. I nedanstående kod jämförs de bägge metoderna.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa kolumn 3 
+df[2,1]
+df$x[2]
+# Visa värdet i rad 2 och kolumn 1 
+df[,3]
+df$nordic_countries
+```
+
+Vi kan enkelt addera nya kolumner till en data frame.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Ursprungligt data frame
+df
+# Skapa variabeln sample_size baserat på n som bara har ett värde
+df$sample_size <- n
+df
+# Skapa en variabel som heter ysq baserat på y i samma data frame.
+df$ysq <- df$y^2
+df
+# Skapa en tom variabel som heter x_cat
+df$x_cat <- NA
+df
+```
+
+Genom att kombinera `$` förenklas användningen av de logiska operatorerna och det är enkelt att transformera variabler och även skapa mindre data frames.  
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Ändra värdet på sample_size för Danmark från 150 till 300
+df$sample_size[df$nordic_countries == "Denmark"] <- 300
+df
+# Ändra värden från NA till 1 i x_cat om x är större än 2
+df$x_cat[x > 2] <- 1
+df
+# Ändra värden från NA till 0 i x_cat om x är mindre än eller lika 2
+df$x_cat[x <= 2] <- 0
+df
+# Skapa ett nytt data frame bestående av bara rader där x_cat är lika med 1
+df1 <- df[df$x_cat == 1, ]
+df1
+```
+
+Spara **dataobjects.R**. 
+
+
+
+
+
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+
+ <font size="5">  </font>
+```{r, echo = FALSE, out.width = "5%", dpi = 72}
+knitr::include_graphics("docs/images/important.png")
+```
+
+Det  är ett moment som är väldigt viktigt i R och som inledningsvis tar tid att lära. Det är av förklarliga skäl ett oerhört viktigt moment i dataanalys och något varje användare måste vara trygg med. Det finns alternativa sätt arbeta med data i R och ofta kan samma resultat erhållas med olika lösningar. Vad som presentas här är är ett alternativ.  Datahanteringen är ofta en tidskrävande del i statistisk undersökning och stor noggrannhet är viktigt. Det går inte att tillräckligt betona hur betydelsefull datahanteringen är i en undersökning. En korrekt analys kräver ju korrekt data. 
+
+Det är viktigt att arbeta med data och lära sig hantera data. 
+DEt finns ofta flera lösningar, men på denna kurs rekommenderas starkt att ni följer de lösingar som presenteras här. Visserligen är de inte effektivast, varken i termer av beräkningstid eller längd på kod, men det är ett transparent sätt att jobba. Ni minimerar även risken för att det blir. 
+
+Exemplen här täcker även inte alla fall som ni kan tänkas stöta på när ni arbetar med komplicerade datamängder antingen i senare studier eller i arbetslivet. Men ni kan hantera de vanligaste typerna av datahantering som man stöter på.
+
+
+</div>
+
+## Funktioner 
+
+En funktion utför operationer på objekt. Oftast sparas sedan resultatet som ett nytt objekt. Genom att ändra argument kan man anpassa vad funktionen gör. Börja med att skriva in nedanstående tre vektorer.
+
+```{r, collapse=FALSE, prompt=FALSE, results = "hide"}
+# Skapar två numeriska vektorer
+x <- c(3, 1, 1, 5, 0)
+y <- c(2, 3, 5, 6, 9)
+ymis <- c(3, NA, 6, 3, 6)
+```
+
+Skriv därefter in nedanstående kod, spara och kör.
+```{r, collapse=FALSE, prompt=FALSE, comment=''}
+# Funktion för att summera värdera i en vektor
+sum(x)
+```
+
+
+```{r, collapse=FALSE, prompt=FALSE}
+# length() beräknar antalet element i en vektor och spara i objektet n
+n <- length(x)
+n
+```
+
+
+```{r, collapse=FALSE, prompt=FALSE, results = "hide"}
+# Beräkna medelvärdet av en vektor
+xbar <- sum(x)/n
+xbar
+
+# Beräkna stickprovsvarians s^2
+s2 <- sum( (x - xbar)^2 )/(n -1)
+s2
+
+# Funktioner för medelvärdet och stickprovsvarians. Jämfört med resultat ovan
+mean(x)
+var(x)
+
+# Skapa en vektor som repeterar ett värde 
+z <- rep(3, 5)
+z
+
+# Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25
+w <- seq(from = 2, to = 3, by = 0.25)
+w
+
+# Skapa en en vektor av element som repeterats 
+r <- c(rep(1, 3), rep(4, 2), rep(9, 10))
+r
+
+# Summan av ymis blir NA eftersom 3 + NA + 6 + 3 + 6 blir NA.
+sum(ymis) 
+
+# Funktionen help() ger en beskrivning av vad en funktion gör
+help(sum)
+```
+
+I hjälpfilen står under *Usage* `sum(..., na.rm = FALSE)`.  och under *Arguments* `...	numeric or complex or logical vectors.` samt `na.rm	 logical. Should missing values (including NaN) be removed?`. Grundinställningen (default) är FALSE, det vill säga `NA` inkluderas i funktionen. För ta bort missing valus väljs `na.rm=TRUE`
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Genom att använda argumentet na.rm exkluderas NA
+sum(ymis, na.rm = TRUE) 
+
+```
+
+Hjälpfilerna är ofta svår att förstå, men exemplen längst ner i hjälpfilerna är i regel klargörande.
+
+Funktioner smo är vanliga att använda är funker
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+hist(x)
+plot(x, y)
+```
+
+Det är enkelt att skapa egna funktioner i R och vilket är styrka. 
+
+Avslutningsvis finns det par viktiga funktioner för att hantera dataobjekt. 
+
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Funktionen ls() listar alla objekt i minnet
+ls()
+# Funktionen rm() raderar ett objekt
+rm(y)
+# Se om objektet y finns kvar
+ls()
+```
+
+Spara återigen scriptet. Stäng R.
+
+För att **radera alla objekt** används kommandot `rm(list = ls())`. Var försiktig med denna funktion eftersom allt försvinner! Emellertid kan det vara en god idé inleda en dataanlys med denna kod för att säkerställa att  minnet är tomt innan data läses in och analyser görs så att konflkter mellan objekt inte uppstår.
+
+
+
+
+***
+
+## Sammanfattning
+
+<style>
+div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "red">
+
+ <font size="5">  </font>
+Du ska kunna
+
+- installera R och Rstudio och starta det utan felmeddelanden. 
+- använda R som miniräknare och använda de olika metoderna för att exekvera kod i editorn.
+- installera ett R-paket och aktivera det. 
+
+</div>
+
+***
+
+## Övningar
+
+### Övning 2.1 {-}
+Du har ett stickprov betående av observationerna $4,-2,5,6,8$. 
+
+a) Beräkna medelvärdet.
+b) Beräkna standardavvikelsen.
+c) Beräkna variationsbredden.
+d) Beräkna det geometriska medelvärdet för de positiva värden $4, 5, 6, 8$.
+e) Beräkna det geometriska medelvärdet för alla värden $4, -2, 5, 6, 8$.
+
+### Svar 2.1 {-}
+a)
+
+```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+x <- c(4,-2,5,6,8)
+mean(x)
+```
+
+* Svar: Medelvärdet är `r 
+x <- c(4,-2,5,6,8)
+mean(x)`
+
+b) Standardavvikelsen $s$ beräknas i R i editorn antingen genom att direkt tillämpa formeln för stickprovets standardavvikelse
+
+$$s=\sqrt{\dfrac{\sum_{i=1}^n (x_i -\bar{x})^2}{n-1}}$$
+
+```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+sd(x)
+```
+
+* Svar: Standardavvikelsen är `r 
+round(sd(x), 3)`
+
+c) Variationsbredden, dvs skillnaden mellan det största och det minsta värdet är
+
+```{r}
+max(x) - min(x)
+```
+
+
+* Svar: Variationsbredden är är `r max(x) - min(x)`.
+
+d) Det geometriska medelvärdet $$\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}$$ kan i R beräknas med 
+
+```{r}
+# Välj enbart positiva värden
+xpos <- NA
+xpos[x > 0] <- x[x > 0] 
+# Du kan beräkna det geometriska medelvärdet med
+exp( mean(log(xpos)) )
+# Alternativt kan du funktionen geometric.mean() 
+# i paketet psych. Aktivera paketet och beräkna.
+library("psych")
+geometric.mean(xpos)
+```
+
+* Svar: Det geometriska medelvärdet är `r round( (4 * 5 * 6 * 8)^(1/5), 2)`.
+
+e) Det geometriska medelvärdet $$\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}$$ kan i R beräknas med 
+
+```{r}
+(4  * (-2) * 5 * 6 * 8)^(1/5)
+```
+
+* Svar: Eftersom en observation är negativ   blir `r (4  * (-2) * 5 * 6 * 8)^(1/5)`, vilket betyder ''Not a Number''. Det går alltså inte att beräkna. 
+
+
+
+### Övning 2.2 {-}
+Ett slumpmässigt urval ger följande observationer $0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1$,där $1=Arbetslös$ och $0=Förvärvsarbetande$.
+Beräkna andelen arbetslösa i stickprovet.
+
+
+### Svar 2.2 {-}
+Andelen arbetslösa beräkna i R med
+```{r} 
+(0 + 1 + 1 + 0 + 0 + 0 + 0 + 0 + 1 + 0 + 1 + 0 + 1)/13 
+
+```
+
+* Svar: Andelen arbetslösa i stickprovet är `r round((0 + 1 + 1 + 0 + 0 + 0 + 0 + 0 + 1 + 0 + 1 + 0 + 1)/13, 2)`.
+
+
+
+### Övning 2.3 {-}
+Kosumentpriset 2006-2011  är 
+
+```{r,  echo = FALSE}
+knitr::kable(
+  cbind(c(2006, 2007, 2008, 2009, 2010, 2011),
+        c(284.22, 290.51, 300.61, 299.66, 303.46, 311.423)), digits = c(0, 1), caption = "Konsumentprisindex (KPI) 2006-2011")  
+```
+
+Med hur många procent har prisnivån förändrats från 2007 till 2010?
+
+### Svar 2.3 {-}
+Beräkning i R ger
+```{r} 
+303.46/290.51
+```
+
+* Svar: Prisnivån har ökat med `r 100*round(303.46/290.51, 3)-100`%.
+
+
+
+### Övning 2.4  {-}
+Denna övningar handlar om potentslagarna. Då $x$ och $y$ är reella och $a,b>0$ gäller följande likheter:
+
+1. $a^x\cdot a^y=a^{x+y}$
+2. $(a^x)^y=a^{xy}$
+3. $\left(\frac{a}{b}\right)^x=\frac{a^x}{b^x}$
+4. $\frac{a^x}{a^y}=a^{x-y}$
+5. $a^x \cdot b^x=(ab)^x$
+6. $a^0=1$
+
+Beräkna nedanstående uttryck relatera svaren till potenslagarna.
+
+a) $4^2 + 4^3$
+b) $4^2*4^3$
+c) $4^5$
+d) $(4^2)^3$
+e) $4^15$
+f) $4^2/4^3$
+g) $4^{-1}$
+h) $4^{-2}$
+i) $1/(4^2)$
+j) $1/16$
+k) $3^4*4^4$
+l) $12^4$
+
+
+### Svar 2.4 {-}
+I R kan uttrycken enkelt beräknas.
+```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+4^2 + 4^3
+4^2*4^3
+4^5
+(4^2)^3
+4^15
+4^2/4^3
+4^{-1}
+4^{-2}
+1/(4^2)
+1/16
+3^4*4^4
+12^4
+```
+
+
+Vi ser att för $b= c$ pga  1. $d= e$  pga 2. $k=l$ pga 5. Vidare gäller...
+
+### Övning 2.5  {-}
+Den naturliga logaritmen, dvs logaritmen med
+basen $e \approx 2.718282$, används ofta i statistiska beräkningar. Några logaratimlagar som gäller för naturliga logaritmen är:
+
+1. $\ln\, \left (x\cdot y \right )=\ln\,x+\ln\,y$
+2. $\ln\, \left (x/ y \right )=\ln\,x-\ln\,y$
+3. $\ln\,x^{a}=a\cdot \ln\,x$
+4. $\ln e = 1$
+5. $e^{\ln x} = x$
+6. $\ln^{e^x} = x$
+
+Beräkna nedanstående uttryck och relatera svaren till logaritmlagarna
+
+a) $\ln(3*4)$
+b) $\ln(3) + \ln(4)$
+c) $\ln(3/4)$
+d) $\ln(3) - \ln(4)$
+e) $\ln e$
+f) $\ln e^5$
+g) $e^{5+6}$
+h) $e^5*e^6$
+i) $5 \ln 5 + 6 \ln 6
+
+
+### Svar 2.5 {-}
+I R kan uttrycken enkelt beräknas.
+
+```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+log(3*4)
+log(3) + log(4)
+log(3/4)
+log(3) - log(4)
+log(exp(1))
+log(exp(5))
+exp(5+6)
+exp(5)*exp(6)
+5*log(5) + 6*log(6)
+```
+
+
+### Övning 2.6  {-}
+Låt observationerna $4,-2,5,6,8$ vara obundet slumpmässigt urval från en normalfördelad population. Genomför en hypotesprövning på 5\% signifikansnivå för att testa medelvärdet i population är skild från 1.
+
+
+### Svar 2.6 {-}
+1. Vi observerar $x=\{4,-2,5,6,8\}.$
+2. Hypoteser: $H_0:\mu=0$ vs $H_1:\mu \neq 0$ 
+3. Antaganden: Variabeln $x$ är normalfördelad i populationen. Populationsvariansen $\sigma^2$ är okänd i populationen. Vi har ett litet stickprov, $n=5$.
+4. Testfunktionen ges av $t=\dfrac{\bar{x}-\mu}{\sqrt{s^2/n}}$. Denna teststatistika är $t$-fördelad med $n-1$ frihetsgrader om nollhypotesen är sann. 
+5. Beslutregel: $\alpha=0.05$. Tvåsidigt test, förkasta därför $H_0$ om $|t_{obs}| > t_{krit} = t_{4,\alpha/2=0.025} = 2.776$
+
+```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+( (4 + (-2) + 5 + 6 + 8)/5 - 1 )/sqrt( ( 4^2 + (-2)^2 + 5^2 + 6^2 + 8^2 - (4 + (-2) + 5 + 6 + 8)^2/5 )/ (5-1)/5 )
+
+```
+
+Eftersom $t_{obs}=$ `r ( (4 + (-2) + 5 + 6 + 8)/5 - 1 )/sqrt( ( 4^2 + (-2)^2 + 5^2 + 6^2 + 8^2 - (4 + (-2) + 5 + 6 + 8)^2/5 )/ (5-1)/5 )` $< 2.776 = t_{krit}$ kan vi inte förkasta nollhypotesen.
+
+* Svar: Vi kan  på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta **inte** innebär att vi visar att medelvärdet är 1.
+
+### Övning 2.7  {-}
+Du observerar följande datapunkter $x = \{4,7,2,4,6\}$ och $y=\{7,3, 2, 5,6}\$.
+
+```{r, echo=FALSE}
+x <- c(4,7,2,4,6)
+y <- c(7,3, 2, 5,6)
+plot(x,y, xlim = c(0, 10), ylim=c(0,10))
+
+```
+
+
+
+a) Använd minsta-kvadratmetoden och beräkna koefficienterna $a$ och $b$ i regressionslinjen $y=a + bx$.
+b) Använd koefficienterna och ge en prediktion för $y$ givet att $x=7$.
+c) Beräkna residualen för $x=7$
+d) Beräkna residualspridningen.
+
+
+### Svar 2.7  {-}
+a) Riktningskoefficienten ges av
+$$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Direkt tillämpning av formeln ger 
+( (4 - (4 + 7 + 2 + 4 + 6)/5) * (7 - (7 + 3 + 2 + 5 + 6)/5) + 
+  (7 - (4 + 7 + 2 + 4 + 6)/5) * (3 - (7 + 3 + 2 + 5 + 6)/5) +
+  (2 - (4 + 7 + 2 + 4 + 6)/5) * (2 - (7 + 3 + 2 + 5 + 6)/5) +
+  (4 - (4 + 7 + 2 + 4 + 6)/5) * (5 - (7 + 3 + 2 + 5 + 6)/5) +
+  (6 - (4 + 7 + 2 + 4 + 6)/5) * (6 - (7 + 3 + 2 + 5 + 6)/5) ) /
+( (4 - (4 + 7 + 2 + 4 + 6)/5)^2 + 
+  (7 - (4 + 7 + 2 + 4 + 6)/5)^2 +
+  (2 - (4 + 7 + 2 + 4 + 6)/5)^2 + 
+  (4 - (4 + 7 + 2 + 4 + 6)/5)^2 +
+  (6 - (4 + 7 + 2 + 4 + 6)/5)^2 )
+# Det går att räkna ut detta i flera steg genom att 
+# t ex beräkna täljare och nämnare separat. 
+# Alternativt använda beräkningsformeln
+
+( 4*7 + 7*3 + 2*2 + 4*5 + 6*6 - (4+7+2+4+6)*(7+3+2+5+6)/5 )/
+( (4^2 + 7^2 + 2^2 + 4^2 + 6^2) -  (4 + 7 + 2 + 4 + 6)^2/5 )  
+
+# En kommentar: Dessa beräkningar kommer förenklas betydligt i R, vilket vi ska se senare.
+
+```
+
+
+Interceptet är $a=\bar{y} - b\bar{x}$
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+(7 + 3 + 2 + 5 + 6)/5 - 0.2105*(4 + 7 + 2 + 4 + 6)/5  
+```
+
+* Svar: Riktningskoefficienten beräknas till $b=0.2105$, vilket tolkas som att om $x$ ökar en enhet så ökar $y$ i *genomsnitt* med $0.2105$ 
+enheter. Interceptet beräknas till $a=3.632$, vilket tolkas som medelvärdet för $y$ när $x=0$.
+
+b) Använd koefficienterna från regressionslinjen och sätt in värdet $x=7$.
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+3.6316   +    0.2105*7  
+```
+
+* Svar: Prediktionen $\hat{y}=$ `r 3.6316   +    0.2105*7`. Detta är punkten på regressionslinjen när $x=7$ och vår bästa gissning för det $y$-värde en individ med värdet $x=7$ kommer att ha.   
+
+
+c) En residual är skillnaden mellan ett predicerat värde och det faktiska observerade värdet, $\hat{\varepsilon}=y_i - \hat{y}$.
+Eftersom $y=3$ när $x=7$ så residualen  
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+3 - (3.6316   +    0.2105*7) 
+```
+
+* Svar: Residualen för $x=7$ är `r 3 - (3.6316   +    0.2105*7)`.
+
+d)
+Residualspridningen ges av $$s_\varepsilon=\sqrt{\dfrac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2}}= \sqrt{\dfrac{\sum_{i=1}^n\hat{\varepsilon}_i^2}{n-2}}$$. Vi beräknar på samma sätt som i c) övriga residualer, kvadrerar och summerar. 
+
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+sqrt(
+( (7 - (3.6316   +    0.2105*4))^2 +
+  (3 - (3.6316   +    0.2105*7))^2 +
+  (2 - (3.6316   +    0.2105*2))^2 +
+  (5 - (3.6316   +    0.2105*4))^2 +
+  (6 - (3.6316   +    0.2105*6))^2 ) / 
+  (5 - 2) )
+```
+
+* Svar: Residualspridningen är `r round( sqrt(
+( (7 - (3.6316   +    0.2105*4))^2 +
+  (3 - (3.6316   +    0.2105*7))^2 +
+  (2 - (3.6316   +    0.2105*2))^2 +
+  (5 - (3.6316   +    0.2105*4))^2 +
+  (6 - (3.6316   +    0.2105*6))^2 ) / 
+  (5 - 2) ), 3)`
+  
+(Notera att $\sum_{i=1}^n \varepsilon_i^2$ kallas för *residualkvadratsumman*.)
+
+
+### Övning 2.8  {-}
+
+1. Installera paketet **MASS** som innehåller funktioner som kan vara användbara senare på kursen.
+2. Aktivera det installerade paketet **MASS**.
+
+### Svar 2.8  {-}
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
+# Installera paket
+install.packages("MASS")
+# Aktivera paket
+library("MASS")
+```
+
+
+
+
+
+
+class() - what kind of object is it (high-level)?
+typeof() - what is the object’s data type (low-level)?
+length() - how long is it? What about two dimensional objects?
+attributes() - does it have any metadata?
+
+
+
+

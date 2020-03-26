@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 2 Om statistisk programmering med R | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 2 Om statistisk programmering med R | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 2 Om statistisk programmering med R | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 2 Om statistisk programmering med R | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2020-03-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="om-statistisk-programmering-med-r-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a></li>
+<li class="chapter" data-level="2" data-path="om-statistisk-programmering-med-r.html"><a href="om-statistisk-programmering-med-r.html"><i class="fa fa-check"></i><b>2</b> Om statistisk programmering med R</a><ul>
+<li class="chapter" data-level="2.1" data-path="om-statistisk-programmering-med-r.html"><a href="om-statistisk-programmering-med-r.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>2.1</b> Allmänna tips om R på kursen</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html"><i class="fa fa-check"></i><b>3</b> Om statistisk programmering med R</a><ul>
+<li class="chapter" data-level="3.1" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#allmänna-tips-om-r-på-kursen-1"><i class="fa fa-check"></i><b>3.1</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="3.2" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>3.2.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="3.2.2" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>3.2.2</b> Installation av R på Windows</a></li>
+<li class="chapter" data-level="3.2.3" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#installation-av-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> Installation av RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#paket"><i class="fa fa-check"></i><b>3.3</b> Paket</a></li>
+<li class="chapter" data-level="3.4" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#övningar"><i class="fa fa-check"></i><b>3.4</b> Övningar</a></li>
+<li class="chapter" data-level="3.5" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#sammanfattning"><i class="fa fa-check"></i><b>3.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.6" data-path="om-statistisk-programmering-med-r-1.html"><a href="om-statistisk-programmering-med-r-1.html#referenser"><i class="fa fa-check"></i><b>3.6</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>4</b> Första sessionen</a></li>
+<li class="chapter" data-level="5" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>5</b> Objekt</a><ul>
+<li class="chapter" data-level="5.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>5.1</b> Vektorer</a></li>
+<li class="chapter" data-level="5.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>5.2</b> Matriser</a></li>
+<li class="chapter" data-level="5.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>5.3</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>6</b> Funktioner</a></li>
+<li class="chapter" data-level="7" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>7</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="7.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>7.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="7.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>7.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="7.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>7.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>8</b> Variabeltyper</a><ul>
+<li class="chapter" data-level="8.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer"><i class="fa fa-check"></i><b>8.1</b> Faktorer</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>8.1.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>8.2</b> Faktorer på nominalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>9</b> Tabeller</a><ul>
+<li class="chapter" data-level="9.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>9.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>9.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>9.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>9.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>9.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>9.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="9.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>9.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>9.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>9.5</b> Statistisk inferens baserat på korstabeller</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>10</b> Figurer</a><ul>
+<li class="chapter" data-level="10.1" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>10.1</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>10.1.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>10.2</b> Lådagram</a></li>
+<li class="chapter" data-level="10.3" data-path="figurer.html"><a href="figurer.html#histogram"><i class="fa fa-check"></i><b>10.3</b> Histogram</a></li>
+<li class="chapter" data-level="10.4" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>10.4</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="10.5" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>10.5</b> Några frekvent förekommande diagram.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inläsning-tvätt-och-kodning-av-data.html"><a href="inläsning-tvätt-och-kodning-av-data.html"><i class="fa fa-check"></i><b>11</b> Inläsning, tvätt och kodning av data</a></li>
+<li class="chapter" data-level="12" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html"><i class="fa fa-check"></i><b>12</b> Enkel linjär regression</a><ul>
+<li class="chapter" data-level="12.1" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regression-och-lm"><i class="fa fa-check"></i><b>12.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regressions-resultat"><i class="fa fa-check"></i><b>12.2</b> Regressions resultat</a></li>
+<li class="chapter" data-level="12.3" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#konfidensintervall"><i class="fa fa-check"></i><b>12.3</b> Konfidensintervall</a></li>
+<li class="chapter" data-level="12.4" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#residualanalys"><i class="fa fa-check"></i><b>12.4</b> Residualanalys</a></li>
+<li class="chapter" data-level="12.5" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#skattning-av-betingade-medelvärden"><i class="fa fa-check"></i><b>12.5</b> Skattning av betingade medelvärden</a></li>
+<li class="chapter" data-level="12.6" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#prediktion"><i class="fa fa-check"></i><b>12.6</b> Prediktion</a></li>
+<li class="chapter" data-level="12.7" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#binära-oberoende-variabler"><i class="fa fa-check"></i><b>12.7</b> Binära oberoende variabler</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html"><i class="fa fa-check"></i><b>13</b> Multipel linjär regression</a><ul>
+<li class="chapter" data-level="13.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#multipel-linjär-regression-och-lm"><i class="fa fa-check"></i><b>13.1</b> Multipel linjär regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="13.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#multipel-linjär-regression-och-summary"><i class="fa fa-check"></i><b>13.2</b> Multipel linjär regression och <strong>summary()</strong></a></li>
+<li class="chapter" data-level="13.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>13.3</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
+<li class="chapter" data-level="13.4" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#variabler-med-flera-än-två-kategorier."><i class="fa fa-check"></i><b>13.4</b> Variabler med flera än två kategorier.</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummy-variabler"><i class="fa fa-check"></i><b>13.4.1</b> Dummy-variabler</a></li>
+<li class="chapter" data-level="13.4.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#faktor-variabler"><i class="fa fa-check"></i><b>13.4.2</b> Faktor-variabler</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html"><i class="fa fa-check"></i><b>14</b> Regression med binära utfall</a><ul>
+<li class="chapter" data-level="14.1" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html#regression-och-lm-1"><i class="fa fa-check"></i><b>14.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="14.2" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html#logistisk-regression"><i class="fa fa-check"></i><b>14.2</b> Logistisk regression</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="om-statistisk-programmering-med-r" class="section level1">
+<h1><span class="header-section-number">Kapitel 2</span> Om statistisk programmering med R</h1>
+<p>På denna kurs arbetar vi med R, som är ett programspråk och en miljö för statistisk dataanalys (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>) som fungerar på UNIX plattformar, Windows och MacOS. Det finns flera anledningar till att vi valt R:</p>
+<ul>
+<li>R är gratis och har en öppen källkod.</li>
+<li>R ger tillgång till avancerade verktyg för dataanalys och datavisualisering.</li>
+<li>Användare av R bidrar ofta med egen programkod och egna paket, vilket innebär att en omfattande mängd funktioner enkelt går att implementera.</li>
+<li>Många läroböcker skrivs med utgångspunkt från R.</li>
+<li>Online-resurserna är mycket stora. Det finns många forum där användare av R kan få hjälp (t ex <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a>).</li>
+<li>R är ett av de absolut vanligaste programmen för statistisk dataanalys. (<a href="http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/" class="uri">http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/</a>)</li>
+</ul>
+<p>Finns det anledningar till att inte välja R?</p>
+<ul>
+<li>Det finns ingen officiell support.</li>
+<li>Eftersom R bygger på användarnas bidrag finns ingen garanti att funktioner fungerar som de ska.</li>
+<li>Jämfört med andra programspråk kan R uppfattas som långsamt.</li>
+</ul>
+<p>För den som van vid menybaserade system (sk point-and-click) kan dessutom kodning uppfattas som en nackdel. Det finns emellertid <strong>etiska</strong> och <strong>praktiska</strong> skäl att lära sig programmera i statistikprogram (dvs att i kod skriva ange hur data ska hanteras och analyseras), och inte förlita sig på menyer. Programmering</p>
+<ul>
+<li>är nödvändig för att tillförlitligt upprepa (replikera) dataanalyser. På företag och på myndigheter ska kolleger kunna ta över datamaterial och tillhörande analyser och på nytt genomföra dessa med samma resultat. Samma sak gäller inom forskning, där andra forskare ska erhålla samma resultat givet samma data och analys. Notera att detta även gäller för dig själv, dvs det är inte ovanligt att som analytiker på nytt upprepa en analys.</li>
+<li>spar tid för repetativa moment, t ex om många liknande analyser ska genomföras.<br />
+</li>
+<li>ger möjlighet till avancerade analyser samt frihet att utforma egna analyser.</li>
+<li>bidrar till ökad förståelse för dataanalys.</li>
+</ul>
+<p>Kruxet? Statistisk programmering tar längre tid att lära sig jämfört med att lära sig menybaserad datahantering och analyser! Tabell 2.1 redovisar några reflektioner över ett antal vanliga statistikprogram.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 2.1: </span>En jämförelse av några vanliga statistikprogram</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Minitab</td>
+<td align="left">Mycket enkelt att lära sig. Används främst inom kvalitetskontroll i industri samt planering av randomiserade försök. Billigt. Begränsat urval av statistiska metoder</td>
+</tr>
+<tr class="even">
+<td align="left">SPSS</td>
+<td align="left">Enkelt att lära sig. Stor spridning bland samhällsvetare och utredare. Ganska stort urval av statistiska metoder som är organiserade på ett något rörigt sätt. Krånglig programkod.</td>
+</tr>
+<tr class="odd">
+<td align="left">Stata</td>
+<td align="left">Enkelt att lära sig och mycket enkel programkod. Spridning bland forskare inom ekonometri och epidemiologi. Stort urval av, även de senaste, statistiska metoderna</td>
+</tr>
+<tr class="even">
+<td align="left">SAS</td>
+<td align="left">Medelsvårt att lära sig, med en föråldrad programkod. Kan hantera stora dataset. Används av myndigheter, industri och forskare inom alla områden. Standard för läkemdelsbolag. Stort urval av statistiska metoder, men inte de allra senaste. Dyrt. Svårt att göra bra figurer.</td>
+</tr>
+<tr class="odd">
+<td align="left">R</td>
+<td align="left">Svårt att lära sig. Gratis. Flexibelt. Mycket stor spridning inom alla områden för dataanalys. Enkel programkod.</td>
+</tr>
+<tr class="even">
+<td align="left">Python</td>
+<td align="left">Mycket svårt att lära sig. Gratis. Flexibelt. Stor spridning inom maskininlärning och AI.</td>
+</tr>
+</tbody>
+</table>
+<p>Varför är inte Excel, Open Office Calc, Google Docs och andra kalkylprogram inkluderade i jämförelsen? SVaret är enkelt. Dessa är nämligen inga statistikprogram! Ofta saknas i sådana program viktiga statistiska funktioner och dessutom är den numeriska tillförlitligheten lägre än för konventionella statistiskprogram (Keeling, K. B., &amp; Pavur, R. J., 2011).</p>
+<div id="allmänna-tips-om-r-på-kursen" class="section level2">
+<h2><span class="header-section-number">2.1</span> Allmänna tips om R på kursen</h2>
+<p>Det tar tid att lära sig R. Det kan vara frustrerande och programmering är inte förlåtande vad gäller fel. Men misströsta inte, i slutändan är det värt det. Här kommer några tips om hur du kan tänka vad gäller inlärningen och användandet av R under kursens gång:</p>
+<ul>
+<li>Se till att snabbt få grunderna på plats. R kommer användas löpande under kursens gång och du vinner inget på att skjuta upp arbetet med R.</li>
+<li>Arbeta aktivt med R. Det krävs många timmar av aktivt arbete med R för att lära sig det. Använd R till att lösa övningsuppgifter och gå igenom exempel från föreläsningar så bygger du på antalet timmar som du arbetar vilket bidrar till rutin.</li>
+<li>De flesta lösningar till uppgifter på kursen har tillhörande R-kod. Mitt förslag till Lös först uppgifterna på följande vis: 1.Lös uppgifterna för hand (precis som tiden före R). 2. Studera sedan R-koden och se hur uppgiften har lösts med hjälp R. 3. Ändra och laborera i R-koden för att se vad som händer. 3. Målet är att småningom arbeta med R direkt för att lösa uppgifterna, men inledningsvis löses uppgifter för hand för begripa uppgiften rent statistiskt. Därefter, i takt med att R alltmer blir verktyget för statistiska analyser, används R för att lösa uppgifter.</li>
+<li>Var inte rädd för att använda resurser på nätet. Se ovan.</li>
+<li>Kontakta lärare och lärarassistenter på kursen om ni fastnar och har frågor. Utnyttja de lärarledda sessioner.</li>
+<li>Samarbeta och skapa forum där ni studenter hjälps åt.</li>
+<li>Använd kod som presenterats på kursen!</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="om-statistisk-programmering-med-r-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

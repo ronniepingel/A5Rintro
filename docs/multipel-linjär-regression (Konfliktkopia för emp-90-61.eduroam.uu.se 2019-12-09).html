@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 14 Multipel linjär regression | R på kursen Tillämpad statistik (A5)</title>
+  <meta name="description" content="Kapitel 14 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 14 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 14 Multipel linjär regression | R på kursen Tillämpad statistik (A5)" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2019-12-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="enkel-linjär-regression-1.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
+<li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
+<li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
+<li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
+<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
+<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>7</b> Variabeltyper</a><ul>
+<li class="chapter" data-level="7.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer"><i class="fa fa-check"></i><b>7.1</b> Faktorer</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.1.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
+<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>8.5</b> Statistisk inferens baserat på korstabeller</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>9</b> Figurer</a><ul>
+<li class="chapter" data-level="9.1" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>9.1</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>9.1.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>9.2</b> Lådagram</a></li>
+<li class="chapter" data-level="9.3" data-path="figurer.html"><a href="figurer.html#histogram"><i class="fa fa-check"></i><b>9.3</b> Histogram</a></li>
+<li class="chapter" data-level="9.4" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>9.4</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="9.5" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>9.5</b> Några frekvent förekommande diagram.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="regressionsanalys.html"><a href="regressionsanalys.html"><i class="fa fa-check"></i><b>10</b> Regressionsanalys</a><ul>
+<li class="chapter" data-level="10.1" data-path="regressionsanalys.html"><a href="regressionsanalys.html#inläsning-och-kodning-av-data"><i class="fa fa-check"></i><b>10.1</b> Inläsning och kodning av data</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="regressionsanalys-1.html"><a href="regressionsanalys-1.html"><i class="fa fa-check"></i><b>11</b> Regressionsanalys</a><ul>
+<li class="chapter" data-level="11.1" data-path="regressionsanalys-1.html"><a href="regressionsanalys-1.html#inläsning-och-kodning-av-data-1"><i class="fa fa-check"></i><b>11.1</b> Inläsning och kodning av data</a></li>
+<li class="chapter" data-level="11.2" data-path="regressionsanalys-1.html"><a href="regressionsanalys-1.html#enkel-linjär-regression-och-lm"><i class="fa fa-check"></i><b>11.2</b> Enkel linjär regression och <strong>lm()</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html"><i class="fa fa-check"></i><b>12</b> Enkel linjär regression</a><ul>
+<li class="chapter" data-level="12.1" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#funktionen-lm"><i class="fa fa-check"></i><b>12.1</b> Funktionen <strong>lm()</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regression-och-summary"><i class="fa fa-check"></i><b>12.2</b> Regression och summary()</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html"><i class="fa fa-check"></i><b>13</b> Enkel linjär regression</a><ul>
+<li class="chapter" data-level="13.1" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#regression-och-lm"><i class="fa fa-check"></i><b>13.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="13.2" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#regressions-resultat"><i class="fa fa-check"></i><b>13.2</b> Regressions resultat</a></li>
+<li class="chapter" data-level="13.3" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#konfidensintervall"><i class="fa fa-check"></i><b>13.3</b> Konfidensintervall</a></li>
+<li class="chapter" data-level="13.4" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#residualanalys"><i class="fa fa-check"></i><b>13.4</b> Residualanalys</a></li>
+<li class="chapter" data-level="13.5" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#skattning-av-betingade-medelvärden"><i class="fa fa-check"></i><b>13.5</b> Skattning av betingade medelvärden</a></li>
+<li class="chapter" data-level="13.6" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#prediktion"><i class="fa fa-check"></i><b>13.6</b> Prediktion</a></li>
+<li class="chapter" data-level="13.7" data-path="enkel-linjär-regression-1.html"><a href="enkel-linjär-regression-1.html#binära-oberoende-variabler"><i class="fa fa-check"></i><b>13.7</b> Binära oberoende variabler</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html"><i class="fa fa-check"></i><b>14</b> Multipel linjär regression</a><ul>
+<li class="chapter" data-level="14.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#regression-och-lm-1"><i class="fa fa-check"></i><b>14.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="14.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>14.2</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
+<li class="chapter" data-level="14.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummary-variabler"><i class="fa fa-check"></i><b>14.3</b> Dummary-variabler</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multipel-linjär-regression" class="section level1">
+<h1><span class="header-section-number">Kapitel 14</span> Multipel linjär regression</h1>
+<p>I en multipel linjär regressionsanalys inkorporeras flera oberoende variabel. Beroende på syftet väljer vi olika typer av modeller:</p>
+<ul>
+<li>Deskriptivt syfte: Målet är att beskriva samband och strukturer för att öka förståelsen för data. Här kan vi inkludera variabler som är relevanta utifrån ett beskrivande syfte, till exempel om vi studerar hur kriminalitet varierar mellan socio-ekonomiska kategorier.</li>
+<li>Prediktivt syfte: Målet är att inkludera variabler som ger god prediktionsförmåga. Koefficienterna för enskilda variabler är ej av intresse. Vi är inte intresserade av att förstå en struktur.</li>
+<li>Kausalt syfte: Målet är att studera den kausala effekten av en behandlingsvariabel på ett utfall. Övriga variabler som inkluderas är så kallade kontrollvariabler. Det är endast behandlingsvariabelns koefficient som är av intresse.</li>
+</ul>
+<p>Allmänt så kan modellen vid multipel linjär regression skriva
+<span class="math display">\[y_i = \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots \beta_k x_k + \varepsilon_i.\]</span></p>
+<div id="regression-och-lm-1" class="section level2">
+<h2><span class="header-section-number">14.1</span> Regression och <strong>lm()</strong></h2>
+<p>Med minstakvadrat-metoden ska vi nu anpassas ett regressionsplan som beskriver sambandet mellan benstyrka och längd.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</a></code></pre></div>
+<p>Den linjära regressionsanalysen är sparad i <strong>m1</strong> som ger en högst kortfattad resultatredovisning, i princip enbart koefficienterna redovisas.</p>
+<pre><code>&gt; 
+&gt; Call:
+&gt; lm(formula = legstrength ~ height, data = df)
+&gt; 
+&gt; Residuals:
+&gt;     Min      1Q  Median      3Q     Max 
+&gt; -332.85  -71.46    1.11   75.96  337.04 
+&gt; 
+&gt; Coefficients:
+&gt;             Estimate Std. Error t value Pr(&gt;|t|)
+&gt; (Intercept) -182.060    646.909  -0.281    0.780
+&gt; height         4.284      3.628   1.181    0.243
+&gt; 
+&gt; Residual standard error: 144.2 on 48 degrees of freedom
+&gt; Multiple R-squared:  0.02824, Adjusted R-squared:  0.007993 
+&gt; F-statistic: 1.395 on 1 and 48 DF,  p-value: 0.2434</code></pre>
+</div>
+<div id="f-test-och-anova" class="section level2">
+<h2><span class="header-section-number">14.2</span> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></h2>
+<p>Vi ska nu testa göra <span class="math inline">\(F\)</span>-test i R.</p>
+<p><span class="math display">\[F_{obs} = \dfrac{(SSE_R - SSE_C)/(k-g)}{SSE_C/(n-k)}\]</span>
+där <span class="math inline">\(SSE_R\)</span> är residualkvadratsumman i den reducerade modellen och <span class="math inline">\(SSE_C\)</span> är residualkvadratsumman i den fulla modellen. Notera att denna skillnad alltid är positiv då den fulla modellen alltid innehåller fler variabler och således förklarar med. <span class="math inline">\(k\)</span> och <span class="math inline">\(g\)</span> är antalet skattade parametrar i den fulla respektive reducerade modellen.</p>
+<p>Anta nu att vi vill jämföra
+<span class="math display">\[legstrength = \beta_0 + \beta_1 height\]</span>
+med
+<span class="math display">\[legstrength = \beta_0 + \beta_1 height + \beta_2 weight + \beta_3 armstrength\]</span>
+Det innebär att vi testa
+<span class="math display">\[H_0: \beta_2 = \beta_3 = 0\]</span>
+vs
+<span class="math display">\[H_1:\text{Minst en av}\,\,\, \beta_2, \beta_3\neq 0\]</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;~/Dropbox/A5HT19/Lectures/Data/conscriptiondata_sample_final.csv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,]</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength, <span class="dt">data=</span>df)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">anova</span>(m1, m2)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    </a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">48</span> <span class="dv">998734</span>                                  </a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">46</span> <span class="dv">701529</span>  <span class="dv">2</span>    <span class="dv">297206</span> <span class="fl">9.7441</span> <span class="fl">0.0002963</span> <span class="op">**</span><span class="er">*</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="er">&gt;</span><span class="st"> </span><span class="op">---</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Residualkvadratsumma i reducerad modell</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">SSER &lt;-<span class="st"> </span><span class="kw">sum</span>(m1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># Residualkvadratsumma i full modell</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">SSEC &lt;-<span class="st"> </span><span class="kw">sum</span>(m2<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># Skillnad i frihetsgrader mellan modellerna </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">df1 &lt;-<span class="st"> </span>m1<span class="op">$</span>df <span class="op">-</span><span class="st"> </span>m2<span class="op">$</span>df</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># Antal frihetsgrader mellan modellerna </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">df2 &lt;-<span class="st"> </span>m2<span class="op">$</span>df</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co"># Observerat F-värde</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">Fobs &lt;-<span class="st"> </span>((SSER <span class="op">-</span><span class="st"> </span>SSEC)<span class="op">/</span>df1) <span class="op">/</span><span class="st"> </span>(SSEC<span class="op">/</span>df2)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">Fobs</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">9.744053</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co"># P-värde från F-fördelningen under nollhypotesen</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">pvalue &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fobs, df1, df2))</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">pvalue</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.0002962744</span></a></code></pre></div>
+</div>
+<div id="dummary-variabler" class="section level2">
+<h2><span class="header-section-number">14.3</span> Dummary-variabler</h2>
+<p>Vi har tidigare sett på binära variabler, men nu ska vi ser på dummry-variabler, En dummy-variabel är en indikaktorvariabler som representerar en kategori. Vi har sedan tidigare kodat om psych3 till tre kategorier. Nu kodar vi den till tre variabler</p>
+<p>``{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment=‘&gt;’}
+df<span class="math inline">\(psych_d1 &lt;- NA df\)</span>psych_d1[df$psych == 1] &lt;- 1
+df<span class="math inline">\(psych_d1[(df\)</span>psych == 2) | (df<span class="math inline">\(psych == 3)] &lt;- 0 df\)</span>psych_d2 &lt;- NA
+df<span class="math inline">\(psych_d2[df\)</span>psych == 2] &lt;- 1
+df<span class="math inline">\(psych_d2[(df\)</span>psych == 1) | (df<span class="math inline">\(psych == 3)] &lt;- 0 df\)</span>psych_d3 &lt;- NA
+df<span class="math inline">\(psych_d3[df\)</span>psych == 3] &lt;- 1
+df<span class="math inline">\(psych_d3[(df\)</span>psych == 1) | (df$psych == 2)] &lt;- 0</p>
+<p>```</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="enkel-linjär-regression-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-12-09" />
+<meta name="date" content="2019-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="enkel-linjär-regression.html"/>
-
+<link rel="next" href="regression-med-binära-utfall.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -156,9 +156,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>9.4</b> Spridningsdiagram</a></li>
 <li class="chapter" data-level="9.5" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>9.5</b> Några frekvent förekommande diagram.</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="regressionsanalys.html"><a href="regressionsanalys.html"><i class="fa fa-check"></i><b>10</b> Regressionsanalys</a><ul>
-<li class="chapter" data-level="10.1" data-path="regressionsanalys.html"><a href="regressionsanalys.html#inläsning-och-kodning-av-data"><i class="fa fa-check"></i><b>10.1</b> Inläsning och kodning av data</a></li>
-</ul></li>
+<li class="chapter" data-level="10" data-path="inläsning-tvätt-och-kodning-av-data.html"><a href="inläsning-tvätt-och-kodning-av-data.html"><i class="fa fa-check"></i><b>10</b> Inläsning, tvätt och kodning av data</a></li>
 <li class="chapter" data-level="11" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html"><i class="fa fa-check"></i><b>11</b> Enkel linjär regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regression-och-lm"><i class="fa fa-check"></i><b>11.1</b> Regression och <strong>lm()</strong></a></li>
 <li class="chapter" data-level="11.2" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regressions-resultat"><i class="fa fa-check"></i><b>11.2</b> Regressions resultat</a></li>
@@ -169,12 +167,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.7" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#binära-oberoende-variabler"><i class="fa fa-check"></i><b>11.7</b> Binära oberoende variabler</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html"><i class="fa fa-check"></i><b>12</b> Multipel linjär regression</a><ul>
-<li class="chapter" data-level="12.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#regression-och-lm-1"><i class="fa fa-check"></i><b>12.1</b> Regression och <strong>lm()</strong></a></li>
-<li class="chapter" data-level="12.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>12.2</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
-<li class="chapter" data-level="12.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#variabler-med-flera-än-två-kategorier."><i class="fa fa-check"></i><b>12.3</b> Variabler med flera än två kategorier.</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummy-variabler"><i class="fa fa-check"></i><b>12.3.1</b> Dummy-variabler</a></li>
-<li class="chapter" data-level="12.3.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#faktor-variabler"><i class="fa fa-check"></i><b>12.3.2</b> Faktor-variabler</a></li>
+<li class="chapter" data-level="12.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#multipel-linjär-regression-och-lm"><i class="fa fa-check"></i><b>12.1</b> Multipel linjär regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#multipel-linjär-regression-och-summary"><i class="fa fa-check"></i><b>12.2</b> Multipel linjär regression och <strong>summary()</strong></a></li>
+<li class="chapter" data-level="12.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>12.3</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
+<li class="chapter" data-level="12.4" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#variabler-med-flera-än-två-kategorier."><i class="fa fa-check"></i><b>12.4</b> Variabler med flera än två kategorier.</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummy-variabler"><i class="fa fa-check"></i><b>12.4.1</b> Dummy-variabler</a></li>
+<li class="chapter" data-level="12.4.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#faktor-variabler"><i class="fa fa-check"></i><b>12.4.2</b> Faktor-variabler</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html"><i class="fa fa-check"></i><b>13</b> Regression med binära utfall</a><ul>
+<li class="chapter" data-level="13.1" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html#regression-och-lm-1"><i class="fa fa-check"></i><b>13.1</b> Regression och <strong>lm()</strong></a></li>
+<li class="chapter" data-level="13.2" data-path="regression-med-binära-utfall.html"><a href="regression-med-binära-utfall.html#logistisk-regression"><i class="fa fa-check"></i><b>13.2</b> Logistisk regression</a></li>
 </ul></li>
 </ul>
 
@@ -195,33 +198,498 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="multipel-linjär-regression" class="section level1">
 <h1><span class="header-section-number">Kapitel 12</span> Multipel linjär regression</h1>
-<p>I en multipel linjär regressionsanalys inkorporeras flera oberoende variabel. Beroende på syftet väljer vi olika typer av modeller:</p>
+<p>I en multipel linjär regression inkluderas flera oberoende variabler i en modell som formuleras <span class="math display">\[y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots \beta_k x_k + \varepsilon,\]</span> där <span class="math inline">\(\varepsilon\)</span> är feltermen, <span class="math inline">\(\beta_0,\ldots, \beta_k\)</span> är parametrar, <span class="math inline">\(x_1, \ldots,x_k\)</span> oberoende variabler och <span class="math inline">\(y\)</span> den beroende variabeln.</p>
+<p>Till skillnad från enkel linjär regression innebär multipel linjär regression att beslut måste fattas gällande vilka variabler som ska inkluderas i modellen. Inte sällan är det just valet av variabler den svåraste delen i regressionsanalys och beroende på syfte väljs variabler på olika sätt.</p>
 <ul>
-<li>Deskriptivt syfte: Målet är att beskriva samband och strukturer för att öka förståelsen för data. Här kan vi inkludera variabler som är relevanta utifrån ett beskrivande syfte, till exempel om vi studerar hur kriminalitet varierar mellan socio-ekonomiska kategorier.</li>
-<li>Prediktivt syfte: Målet är att inkludera variabler som ger god prediktionsförmåga. Koefficienterna för enskilda variabler är ej av intresse. Vi är inte intresserade av att förstå en struktur.</li>
-<li>Kausalt syfte: Målet är att studera den kausala effekten av en behandlingsvariabel på ett utfall. Övriga variabler som inkluderas är så kallade kontrollvariabler. Det är endast behandlingsvariabelns koefficient som är av intresse.</li>
+<li><strong>Deskriptivt syfte:</strong> Målet är att beskriva samband och strukturer. Modellen bör innehålla variabler som är relevanta utifrån ett beskrivande syfte. Ett annat typiskt exempel är studiet av löneskillnader mellan kvinnor och män där man inkluderar (och därmed i ett visst avseende håller konstant) variabler som man anser är relevanta för förklaringen av variationen lön, till exempel utbildning och bransch. Ett annat exempel på en beskrivande studie är studiet av sambandet mellan benstyrka och armstyrka bland unga män, där sambandet i sig kan vara intressant utan att för den skull vara kausalt. Deskriptiva syften är vanliga i myndighetsrapporter av typen Nationella trygghetsundersökningen.</li>
+<li><strong>Prediktivt syfte:</strong> I studier med prediktivt syfte inkluderas variabler som ger god prediktionsförmåga. Koefficienterna för enskilda variabler är ej av intresse att tolka utan modellerna utvärderas primärt utifrån hur väl de presterar.</li>
+<li><strong>Kausalt syfte:</strong> Målet är att studera den kausala effekten av en behandlingsvariabel på ett utfall. Övriga variabler som inkluderas är så kallade kontrollvariabler. Det är <strong>endast</strong> behandlingsvariabelns koefficient som tolkas.</li>
 </ul>
-<p>Allmänt så kan modellen vid multipel linjär regression skriva <span class="math display">\[y_i = \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots \beta_k x_k + \varepsilon_i.\]</span></p>
-<div id="regression-och-lm-1" class="section level2">
-<h2><span class="header-section-number">12.1</span> Regression och <strong>lm()</strong></h2>
-<p>Med minstakvadrat-metoden ska vi nu anpassas ett regressionsplan som beskriver sambandet mellan benstyrka och längd.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
-df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)
-m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
-df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)
-m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)</code></pre></div>
-<p>Den linjära regressionsanalysen är sparad i <strong>m1</strong> som ger en högst kortfattad resultatredovisning, i princip enbart koefficienterna redovisas.</p>
+<p>Det går att betrakta analyser av regressionsmodeller som enbart består av ett polynom eller en oberoende kategorivariabler variabler med fler än 3 kategorier som multipel linjär regression, trots att man utifrån en mer vardaglig definition begreppet variabel enbart har att göra med två variabler.</p>
+<div id="multipel-linjär-regression-och-lm" class="section level2">
+<h2><span class="header-section-number">12.1</span> Multipel linjär regression och <strong>lm()</strong></h2>
+<p>Istället som i fallet med enkel linjär regression, där en rät linje anpassas till data, innebär minstakvadrat-metoden att ett regressionsplan anpassas till data.</p>
+<p>Formeln utökas med att de oberoende variablerna inkluderas additivt <code>y ~ x1 + x2 + ...</code>.</p>
+<p>För exemplifiera undersöks sambandet mellan den beroende variabeln benstyrka och de två oberoende variablerna längd och vikt, dvs vi ställer upp och skattar modellen</p>
+<p><span class="math display">\[Benstyrka = \beta_0 + \beta_1 Längd + \beta_2 Vikt + \varepsilon\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight, <span class="dt">data =</span> df)
+mod1
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span>(Intercept)       height       weight  
+<span class="op">&gt;</span><span class="st">     </span><span class="fl">838.334</span>       <span class="op">-</span><span class="fl">3.852</span>        <span class="fl">6.143</span>
+<span class="kw">str</span>(mod1)
+<span class="op">&gt;</span><span class="st"> </span>List of <span class="dv">12</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>coefficients <span class="op">:</span><span class="st"> </span>Named num [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="fl">838.33</span> <span class="op">-</span><span class="fl">3.85</span> <span class="fl">6.14</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;(Intercept)&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>residuals    <span class="op">:</span><span class="st"> </span>Named num [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="op">-</span><span class="fl">33.3</span> <span class="op">-</span><span class="fl">153.6</span> <span class="fl">265.5</span> <span class="op">-</span><span class="fl">16.4</span> <span class="op">-</span><span class="fl">120.5</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span> <span class="st">&quot;4&quot;</span> ...
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>effects      <span class="op">:</span><span class="st"> </span>Named num [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="op">-</span><span class="fl">11580.8</span> <span class="fl">107.95</span> <span class="op">-</span><span class="fl">1123.37</span> <span class="op">-</span><span class="fl">6.74</span> <span class="op">-</span><span class="fl">117.9</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="st">&quot;(Intercept)&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span> <span class="st">&quot;&quot;</span> ...
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>rank         <span class="op">:</span><span class="st"> </span>int <span class="dv">3</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>fitted.values<span class="op">:</span><span class="st"> </span>Named num [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="dv">669</span> <span class="dv">578</span> <span class="dv">614</span> <span class="dv">575</span> <span class="dv">590</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span> <span class="st">&quot;4&quot;</span> ...
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>assign       <span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>qr           <span class="op">:</span>List of <span class="dv">5</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>qr   <span class="op">:</span><span class="st"> </span>num [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="op">-</span><span class="dv">20</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> <span class="fl">0.05</span> ...
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dimnames&quot;</span>)=List of <span class="dv">2</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span> <span class="st">&quot;4&quot;</span> ...
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;(Intercept)&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;assign&quot;</span>)=<span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>qraux<span class="op">:</span><span class="st"> </span>num [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="fl">1.05</span> <span class="fl">1.15</span> <span class="fl">1.03</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>pivot<span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>tol  <span class="op">:</span><span class="st"> </span>num <span class="fl">1e-07</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>rank <span class="op">:</span><span class="st"> </span>int <span class="dv">3</span>
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;class&quot;</span>)=<span class="st"> </span>chr <span class="st">&quot;qr&quot;</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>df.residual  <span class="op">:</span><span class="st"> </span>int <span class="dv">397</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>xlevels      <span class="op">:</span><span class="st"> </span>Named <span class="kw">list</span>()
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>call         <span class="op">:</span><span class="st"> </span>language <span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>terms        <span class="op">:</span>Classes <span class="st">&#39;terms&#39;</span>, <span class="st">&#39;formula&#39;</span>  language legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;variables&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(legstrength, height, weight)
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;factors&quot;</span>)=<span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dimnames&quot;</span>)=List of <span class="dv">2</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;legstrength&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;term.labels&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;order&quot;</span>)=<span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="dv">1</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;intercept&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;response&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>R_GlobalEnv<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;predvars&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(legstrength, height, weight)
+<span class="op">&gt;</span><span class="st">   </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dataClasses&quot;</span>)=<span class="st"> </span>Named chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;legstrength&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>model        <span class="op">:</span><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">    </span><span class="dv">400</span> obs. of  <span class="dv">3</span> variables<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>legstrength<span class="op">:</span><span class="st"> </span>num [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="dv">635</span> <span class="dv">425</span> <span class="dv">880</span> <span class="dv">559</span> <span class="dv">470</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>height     <span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="dv">178</span> <span class="dv">160</span> <span class="dv">173</span> <span class="dv">172</span> <span class="dv">176</span> <span class="dv">176</span> <span class="dv">182</span> <span class="dv">179</span> <span class="dv">173</span> <span class="dv">183</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">$</span><span class="st"> </span>weight     <span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>] <span class="dv">84</span> <span class="dv">58</span> <span class="dv">72</span> <span class="dv">65</span> <span class="dv">70</span> <span class="dv">62</span> <span class="dv">56</span> <span class="dv">71</span> <span class="dv">78</span> <span class="dv">99</span> ...
+<span class="op">&gt;</span><span class="st">   </span>..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;terms&quot;</span>)=Classes <span class="st">&#39;terms&#39;</span>, <span class="st">&#39;formula&#39;</span>  language legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;variables&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(legstrength, height, weight)
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;factors&quot;</span>)=<span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dimnames&quot;</span>)=List of <span class="dv">2</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;legstrength&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. .. ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;term.labels&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;order&quot;</span>)=<span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="dv">1</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;intercept&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;response&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>R_GlobalEnv<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;predvars&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(legstrength, height, weight)
+<span class="op">&gt;</span><span class="st">   </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dataClasses&quot;</span>)=<span class="st"> </span>Named chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span>
+<span class="op">&gt;</span><span class="st">   </span>.. .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="st">&quot;legstrength&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;weight&quot;</span>
+<span class="op">&gt;</span><span class="st">  </span><span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;class&quot;</span>)=<span class="st"> </span>chr <span class="st">&quot;lm&quot;</span></code></pre></div>
+<p>Precis som i fallet med enkel linjär regression så är resultatbeskrivningen avskalad samt med relativt få komponenter i objektet <code>mod1</code>. De mest relevanta komponenterna är:</p>
+<ul>
+<li>koefficienterna: <code>mod1$coefficients</code> som nu är 3 stycken.</li>
+<li>residualerna: <code>m1$residuals</code> som äger ner mer generellt definieras som avvikelserna mellan <span class="math inline">\(\hat{hat}(y) - y_i\)</span>.</li>
+<li><p>kvarvarande frihetsgrader, <span class="math inline">\(n-k\)</span> där <span class="math inline">\(n\)</span> antal observationer och <span class="math inline">\(k\)</span> är antalet skattade parametrar: <code>m1$df.residual</code>.</p></li>
+<li><p><code>mod1$coefficients$coefficients</code></p></li>
+</ul>
+<hr />
+<style>
+div.blue { background-color:#D1F2EB; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<p><font size="5"> Tolkning </font></p>
+<ul>
+<li><strong>Koefficienterna:</strong> I genomsnitt minskar benstyrkan med -3.9Newton om längden ökar med en cm samtidigt som vikten hålls konstant. I genomsnitt ökar benstyrkan med 6.1Newton om vikten ökar med ett kg samtidigt som längden hålls konstant. Interceptet 838.3 saknar en praktisk tolkning eftersom det är den genomsnittliga benstyrkan (Newton) när längd och vikt är noll.</li>
+</ul>
+</div>
+<hr />
+<style>
+div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
+</style>
+<div class="red">
+<p><font size="5"> Kommer du ihåg? </font></p>
+<ul>
+<li>Riktningskoefficienterna <span class="math inline">\(\hat{\beta}_1\)</span> och <span class="math inline">\(\hat{\beta}_2\)</span></li>
+<li>Residualspridningen (residualstandardavvikelsen) <span class="math inline">\(\sqrt{s_{\varepsilon}^2}\)</span> är ett mått på i vilken utsträckning regressionsplanet är anpassad till observationerna.</li>
+<li>Residualspridningen definieras utifrån residualvariansen <span class="math inline">\(s_{\varepsilon}^2 =\dfrac{\sum_{i=1}^n (\hat{\varepsilon} - \bar{\hat{\varepsilon}})_i^2}{n-k}\)</span> där det alltid gäller att <span class="math inline">\(\bar{\hat{\varepsilon}} = 0\)</span>, <span class="math inline">\(n\)</span> är antalet observationer och <span class="math inline">\(k\)</span> är antalet skattade parametrar i modellen. Differensen <span class="math inline">\(n-k\)</span> är modellens kvarvarande frihetsgrader (residual degrees of freedom).</li>
+<li>Frihetsgrader kan intuitivt förstås som antalet obereonde bitar av information som tillgänglig för att estimatera ytterligare en bit information. I statistik kan översättas till att frihetsgrader är antalet oberoende observationer som är tillgängliga för att skatta en parameter i populationen.</li>
+<li>Minstakvadrat-metoden kan alltid användas som en rent numerisk metod för att analysera data i ett stickprov. Det är först när vid inferens som ytterligare antaganden krävs.</li>
+</ul>
+</div>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load package</span>
+<span class="kw">library</span>(sjPlot)</code></pre></div>
+<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjmisc)</code></pre></div>
+<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjlabelled)
+<span class="kw">tab_model</span>(mod1, <span class="dt">show.df=</span><span class="ot">TRUE</span>, 
+     <span class="dt">string.pred=</span><span class="st">&quot;Oberoende&quot;</span>, <span class="dt">string.est =</span> <span class="st">&quot;Koefficienter&quot;</span>, <span class="dt">string.ci =</span> <span class="st">&quot;95% KI&quot;</span>, <span class="dt">show.fstat=</span><span class="ot">TRUE</span>, <span class="dt">show.r2 =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+legstrength
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Oberoende
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Koefficienter
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+95% KI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+838.33
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+517.23 – 1159.43
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+height
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-3.85
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-5.82 – -1.89
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+weight
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+6.14
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+4.94 – 7.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+400
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.205 / 0.201
+</td>
+</tr>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tab_df</span>(<span class="kw">anova</span>(mod1))</code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; text-align:left; ">
+Df
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Sum Sq
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Mean Sq
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+F value
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Pr(&gt;F)
+</th>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+11652.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+11652.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.93
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.33
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1261970.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1261970.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+101.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.00
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; border-bottom: double; ">
+397
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+4952819.29
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+12475.62
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+NA
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+NA
+</td>
+</tr>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tab_model</span>(mod1,  
+          <span class="dt">show.df=</span><span class="ot">TRUE</span>, 
+          <span class="dt">string.pred=</span><span class="st">&quot;Oberoende&quot;</span>, 
+          <span class="dt">string.est =</span> <span class="st">&quot;Koefficienter&quot;</span>, 
+          <span class="dt">show.r2 =</span> <span class="ot">TRUE</span>, 
+          <span class="dt">file =</span> <span class="st">&quot;regtab.html&quot;</span>)</code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+legstrength
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Oberoende
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Koefficienter
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+838.33
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+517.23 – 1159.43
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+height
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-3.85
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-5.82 – -1.89
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+weight
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+6.14
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+4.94 – 7.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+400
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.205 / 0.201
+</td>
+</tr>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tab_df</span>(<span class="kw">anova</span>(mod1), <span class="dt">file =</span> <span class="st">&quot;anovatab.html&quot;</span>)</code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; text-align:left; ">
+Df
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Sum Sq
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Mean Sq
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+F value
+</th>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; ">
+Pr(&gt;F)
+</th>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+11652.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+11652.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.93
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.33
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+1
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1261970.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+1261970.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+101.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
+0.00
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; border-bottom: double; ">
+397
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+4952819.29
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+12475.62
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+NA
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
+NA
+</td>
+</tr>
+</table>
+<hr />
+<style>
+div.blue { background-color:#D1F2EB; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<p><font size="5"> Tolkning </font></p>
+<ul>
+<li><strong>Koefficienterna:</strong> I genomsnitt minskar benstyrkan med -3.9Newton om längden ökar med en cm samtidigt som vikten hålls konstant. I genomsnitt ökar benstyrkan med 6.1Newton om vikten ökar med ett kg samtidigt som längden hålls konstant. Interceptet 838.3 saknar en praktisk tolkning eftersom det är den genomsnittliga benstyrkan (Newton) när längd och vikt är noll.</li>
+</ul>
+</div>
+<hr />
+<style>
+div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
+</style>
+<div class="red">
+<p><font size="5"> Kommer du ihåg? </font></p>
+<ul>
+<li>Riktningskoefficienterna <span class="math inline">\(\hat{\beta}_1\)</span> och <span class="math inline">\(\hat{\beta}_2\)</span></li>
+<li>Residualspridningen (residualstandardavvikelsen) <span class="math inline">\(\sqrt{s_{\varepsilon}^2}\)</span> är ett mått på i vilken utsträckning regressionsplanet är anpassad till observationerna.</li>
+<li>Residualspridningen definieras utifrån residualvariansen <span class="math inline">\(s_{\varepsilon}^2 =\dfrac{\sum_{i=1}^n (\hat{\varepsilon} - \bar{\hat{\varepsilon}})_i^2}{n-k}\)</span> där det alltid gäller att <span class="math inline">\(\bar{\hat{\varepsilon}} = 0\)</span>, <span class="math inline">\(n\)</span> är antalet observationer och <span class="math inline">\(k\)</span> är antalet skattade parametrar i modellen. Differensen <span class="math inline">\(n-k\)</span> är modellens kvarvarande frihetsgrader (residual degrees of freedom).</li>
+<li>Frihetsgrader kan intuitivt förstås som antalet obereonde bitar av information som tillgänglig för att estimatera ytterligare en bit information. I statistik kan översättas till att frihetsgrader är antalet oberoende observationer som är tillgängliga för att skatta en parameter i populationen.</li>
+<li>Minstakvadrat-metoden kan alltid användas som en rent numerisk metod för att analysera data i ett stickprov. Det är först när vid inferens som ytterligare antaganden krävs.</li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="multipel-linjär-regression-och-summary" class="section level2">
+<h2><span class="header-section-number">12.2</span> Multipel linjär regression och <strong>summary()</strong></h2>
+<p>Med <strong>summary()</strong> erhålls ytterligare information från regressionsobjektet.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sum_mod1 &lt;-<span class="st"> </span><span class="kw">summary</span>(mod1)
+sum_mod1
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight, <span class="dt">data =</span> df)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="fl">292.30</span>  <span class="op">-</span><span class="fl">74.98</span>   <span class="op">-</span><span class="fl">8.64</span>   <span class="fl">71.33</span>  <span class="fl">394.40</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">838.3345</span>   <span class="fl">163.3299</span>   <span class="fl">5.133</span> <span class="fl">4.48e-07</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>height       <span class="op">-</span><span class="fl">3.8523</span>     <span class="fl">0.9984</span>  <span class="op">-</span><span class="fl">3.859</span> <span class="fl">0.000133</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>weight        <span class="fl">6.1435</span>     <span class="fl">0.6108</span>  <span class="fl">10.058</span>  <span class="op">&lt;</span><span class="st"> </span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">111.7</span> on <span class="dv">397</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.2046</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.2005</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">51.04</span> on <span class="dv">2</span> and <span class="dv">397</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre></div>
 </div>
 <div id="f-test-och-anova" class="section level2">
-<h2><span class="header-section-number">12.2</span> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></h2>
+<h2><span class="header-section-number">12.3</span> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></h2>
 <p>Vi ska nu testa göra <span class="math inline">\(F\)</span>-test i R. Ett test av nestade modeller är</p>
 <p><span class="math display">\[F_{obs} = \dfrac{(SSE_R - SSE_C)/(k-g)}{SSE_C/(n-k)}\]</span> där <span class="math inline">\(SSE_R\)</span> är residualkvadratsumman i den reducerade modellen och <span class="math inline">\(SSE_C\)</span> är residualkvadratsumman i den fulla modellen. Denna teststatistiska är <span class="math inline">\(F\)</span>-fördelad med <span class="math inline">\(k-g\)</span> respektive <span class="math inline">\(n-k\)</span> frihetsgrader där <span class="math inline">\(k\)</span> och <span class="math inline">\(g\)</span> är antalet skattade parametrar i den fulla respektive reducerade modellen. Notera att differensen mellan residualkvadratsummorna alltid är positiv efterom den fulla modellen per definition innehåller fler variabler och således minskar alltid residualspridningen. Huruvida denna sänkning är tillräckligt stor för att vara relevant är en annan fråga.</p>
 <p>Anta nu att vi vill jämföra modellen <span class="math display">\[legstrength = \beta_0 + \beta_1 height\]</span> med <span class="math display">\[legstrength = \beta_0 + \beta_1 height + \beta_2 weight + \beta_3 armstrength\]</span> Det innebär att vi testar <span class="math display">\[H_0: \beta_2 = \beta_3 = 0\]</span> vs <span class="math display">\[H_1:\text{Minst en av}\,\,\, \beta_2, \beta_3\neq 0\]</span></p>
 <p>I R är proceduren att vi skattade en reducerad modell <strong>m_r</strong> och en full modell <strong>m_c</strong>. Därefter används funktionen <strong>anova()</strong> som genomför en så kallad variansanalys (analysis of variance) för ett eller flera regressionsobjekt.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
-df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata_sample_final.csv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,]
-m_r &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m_r &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>df)
 m_c &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength, <span class="dt">data=</span>df)
 Nested_F_test_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">anova</span>(m_r, m_c)
 Nested_F_test_<span class="dv">1</span>
@@ -229,12 +697,12 @@ Nested_F_test_<span class="dv">1</span>
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height
 <span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength
-<span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">48</span> <span class="dv">998734</span>                                  
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">46</span> <span class="dv">701529</span>  <span class="dv">2</span>    <span class="dv">297206</span> <span class="fl">9.7441</span> <span class="fl">0.0002963</span> <span class="op">**</span><span class="er">*</span>
+<span class="op">&gt;</span><span class="st">   </span>Res.Df     RSS Df Sum of Sq      F                <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>    <span class="dv">398</span> <span class="dv">6214790</span>                                              
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>    <span class="dv">396</span> <span class="dv">4132111</span>  <span class="dv">2</span>   <span class="dv">2082679</span> <span class="fl">99.796</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.00000000000000022</span> <span class="op">**</span><span class="er">*</span>
 <span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre></div>
-<p>I utskriften ges följande information: Antal frihetsgrader respektive residualkvadratsumman i den reducerade modellen (Model 1) 48 och 998734.3670512. Antal frihetsgrader respektive residualkvadratsumman i den fula modellen (Model 1) 46 och 701528.6153138. Differensen mellan modellernas frihetsgrader och residualkvadratsummor 2 och 297205.7517374. Slutligen presenteras <span class="math inline">\(F_{obs}\)</span> 9.7440534 och <span class="math inline">\(p\)</span>-värdet 0.0002963.</p>
+<p>I utskriften ges följande information: Antal frihetsgrader respektive residualkvadratsumman i den reducerade modellen (Model 1) 398 och 6214789.5207873. Antal frihetsgrader respektive residualkvadratsumman i den fula modellen (Model 1) 396 och 4132110.9815166. Differensen mellan modellernas frihetsgrader och residualkvadratsummor 2 och 2082678.5392707. Slutligen presenteras <span class="math inline">\(F_{obs}\)</span> 99.7965332 och <span class="math inline">\(p\)</span>-värdet 0.</p>
 <p>Som illustration relaterar vi detta till den manuella beräkningen. I praktiken används dock anova-funktionen.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Residualkvadratsumma i reducerad modell</span>
 SSER &lt;-<span class="st"> </span><span class="kw">sum</span>(m_r<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)
@@ -247,21 +715,21 @@ df2 &lt;-<span class="st"> </span>m_c<span class="op">$</span>df
 <span class="co"># Observerat F-värde</span>
 Fobs &lt;-<span class="st"> </span>((SSER <span class="op">-</span><span class="st"> </span>SSEC)<span class="op">/</span>df1) <span class="op">/</span><span class="st"> </span>(SSEC<span class="op">/</span>df2)
 Fobs
-<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">9.744053</span>
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">99.79653</span>
 <span class="co"># P-värde från F-fördelningen under nollhypotesen</span>
 pvalue &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fobs, df1, df2))
 pvalue
-<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.0002962744</span></code></pre></div>
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">0</span></code></pre></div>
 </div>
 <div id="variabler-med-flera-än-två-kategorier." class="section level2">
-<h2><span class="header-section-number">12.3</span> Variabler med flera än två kategorier.</h2>
+<h2><span class="header-section-number">12.4</span> Variabler med flera än två kategorier.</h2>
 <p>Vi har tidigare sett på binära variabler, men nu ska vi undersöka hur kategorivariabler med fler än 2 kategorier kan inkluderas i en analys.</p>
 <ol style="list-style-type: decimal">
 <li>Koda om till dummy-variabler (0-1), där dummy-variabel indikerar en kategori. Om en variabel har 3 kategorier således 3 dummy-variabler. Dummy-variabeln som indikerar referenskategorin inkluderas INTE i regressionsmodellen.</li>
 <li>Använd psych_cat som är en faktor-variabel.</li>
 </ol>
 <div id="dummy-variabler" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> Dummy-variabler</h3>
+<h3><span class="header-section-number">12.4.1</span> Dummy-variabler</h3>
 <p>vi ska börja med att metoden med omkodning till dummy-variabler och väljer sedan den lägsta kategorin som referens. Det finns en numerisk variabel som heter <code>psych3</code>bestående av värdena 1,2,3 som vi nu kodar som vill binära dummy-variabler.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych_d1 &lt;-<span class="st"> </span><span class="ot">NA</span>
 df<span class="op">$</span>psych_d1[df<span class="op">$</span>psych3 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
@@ -284,20 +752,20 @@ sum_m_psychd
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
 <span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
-<span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="fl">302.87</span>  <span class="op">-</span><span class="fl">60.02</span>  <span class="op">-</span><span class="fl">14.07</span>   <span class="fl">83.16</span>  <span class="fl">362.73</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="fl">308.62</span>  <span class="op">-</span><span class="fl">81.50</span>   <span class="op">-</span><span class="fl">7.67</span>   <span class="fl">74.36</span>  <span class="fl">435.28</span> 
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
-<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value      <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
-<span class="op">&gt;</span><span class="st"> </span>(Intercept)   <span class="fl">509.65</span>      <span class="fl">68.03</span>   <span class="fl">7.491</span> <span class="fl">0.00000000148</span> <span class="op">**</span><span class="er">*</span>
-<span class="er">&gt;</span><span class="st"> </span>psych_d2       <span class="fl">66.62</span>      <span class="fl">71.06</span>   <span class="fl">0.938</span>       <span class="fl">0.35328</span>    
-<span class="op">&gt;</span><span class="st"> </span>psych_d3      <span class="fl">332.40</span>     <span class="fl">117.83</span>   <span class="fl">2.821</span>       <span class="fl">0.00699</span> <span class="op">**</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value             <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)   <span class="fl">532.64</span>      <span class="fl">23.60</span>  <span class="fl">22.574</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.0000000000000002</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>psych_d2       <span class="fl">43.88</span>      <span class="fl">24.49</span>   <span class="fl">1.792</span>               <span class="fl">0.0739</span> .  
+<span class="op">&gt;</span><span class="st"> </span>psych_d3      <span class="fl">139.25</span>      <span class="fl">34.79</span>   <span class="fl">4.003</span>            <span class="fl">0.0000747</span> <span class="op">**</span><span class="er">*</span>
 <span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
 <span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">136.1</span> on <span class="dv">47</span> degrees of freedom
-<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1534</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1173</span> 
-<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">4.257</span> on <span class="dv">2</span> and <span class="dv">47</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">0.01999</span></code></pre></div>
-<p>I ser att referenskategorin är de med lägst psykologisk bedömningsförmåga. Tolkningen är att jämfört med de med låg psykologisk bedömningsföråga så har de med medium psykologisk bedömningsförmåga i genomsnitt 66.6 Newton högre benstyrka. De med hög psykologisk bedömningsförmåga i genomsnitt 332.4 Newton högre benstyrka jämfört med låg psykologiskt bedömningsförmåga. Observera att alla jämförelser görs mot referenskategorin!</p>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">122.6</span> on <span class="dv">397</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.04154</span>, Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.03671</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">8.604</span> on <span class="dv">2</span> and <span class="dv">397</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">0.0002199</span></code></pre></div>
+<p>I ser att referenskategorin är de med lägst psykologisk bedömningsförmåga. Tolkningen är att jämfört med de med låg psykologisk bedömningsföråga så har de med medium psykologisk bedömningsförmåga i genomsnitt 43.9 Newton högre benstyrka. De med hög psykologisk bedömningsförmåga i genomsnitt 139.3 Newton högre benstyrka jämfört med låg psykologiskt bedömningsförmåga. Observera att alla jämförelser görs mot referenskategorin!</p>
 <p>Alla jämförelser görs mot referenskategorin, men hur avgöra om variabeln psykologiskt bedömning har betydelse överhuvudtaget? När vi använder dummy-variabler är det uppenbart att <strong>lm()</strong> hanterar kategorierna som olika variabler, till exempel skattar vi inte en parameter utan 2 om variabeln består av tre kategorier.</p>
 <p>Notera att utskrifterna är i princip identiska och modellen ger oss ett <span class="math inline">\(F\)</span>-värde och ett p-värde 0.01999. Detta är ett resultatet från ett nestat <span class="math inline">\(F\)</span>-test där den reducerade modellen enbart består av interceptet.</p>
 <p>Om vi har flera variabler i modellen och vi önskar att testa om kategorivariabel används därefter <span class="math inline">\(F\)</span>-test analoigt med tidigare</p>
@@ -309,14 +777,14 @@ Nested_F_test_<span class="dv">2</span>
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength
 <span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>legstrength <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>armstrength <span class="op">+</span><span class="st"> </span>psych_d2 <span class="op">+</span><span class="st"> </span>psych_d3
-<span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq     F  <span class="kw">Pr</span>(<span class="op">&gt;</span>F)  
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">46</span> <span class="dv">701529</span>                             
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">44</span> <span class="dv">602077</span>  <span class="dv">2</span>     <span class="dv">99452</span> <span class="fl">3.634</span> <span class="fl">0.03462</span> <span class="op">*</span>
+<span class="op">&gt;</span><span class="st">   </span>Res.Df     RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>    <span class="dv">396</span> <span class="dv">4132111</span>                                  
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>    <span class="dv">394</span> <span class="dv">3968475</span>  <span class="dv">2</span>    <span class="dv">163636</span> <span class="fl">8.1231</span> <span class="fl">0.0003491</span> <span class="op">**</span><span class="er">*</span>
 <span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre></div>
 </div>
 <div id="faktor-variabler" class="section level3">
-<h3><span class="header-section-number">12.3.2</span> Faktor-variabler</h3>
+<h3><span class="header-section-number">12.4.2</span> Faktor-variabler</h3>
 <p>I data frame finns dock redan variabeln <code>psych3_cat</code> som är psykologisk bedömning kodat faktorvariabel. Jämför med <code>psych3</code> och <code>psych3_cat</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m_psychcat &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
 m_psychcat
@@ -326,8 +794,8 @@ m_psychcat
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
 <span class="er">&gt;</span><span class="st">            </span>(Intercept)     <span class="kw">psych3_catLow</span> (<span class="dv">1</span><span class="op">-</span><span class="dv">2</span>)  <span class="kw">psych3_catMedium</span> (<span class="dv">3</span><span class="op">-</span><span class="dv">7</span>)  
-<span class="op">&gt;</span><span class="st">                  </span><span class="fl">842.1</span>                  <span class="op">-</span><span class="fl">332.4</span>                  <span class="op">-</span><span class="fl">265.8</span></code></pre></div>
-<p>Vi ser att resultatet skiljer sig åt jämfört med analysen med dummy-variabel. Det beror på att referensvariabeln i en faktor-variabel i detta fall är bestämt till den högsta psykolisk bedömningen. Tolkningen är att jämfört med de med hög psykologisk bedömningsföråga så har de med låg psykologisk bedömningsförmåga i genomsnitt -332.4 Newton lägre benstyrka.</p>
+<span class="op">&gt;</span><span class="st">                 </span><span class="fl">671.90</span>                 <span class="op">-</span><span class="fl">139.25</span>                  <span class="op">-</span><span class="fl">95.38</span></code></pre></div>
+<p>Vi ser att resultatet skiljer sig åt jämfört med analysen med dummy-variabel. Det beror på att referensvariabeln i en faktor-variabel i detta fall är bestämt till den högsta psykolisk bedömningen. Tolkningen är att jämfört med de med hög psykologisk bedömningsföråga så har de med låg psykologisk bedömningsförmåga i genomsnitt -139.3 Newton lägre benstyrka.</p>
 <p>Vi använder <strong>revel()</strong> för att ändra faktorns referens.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>psych3_cat &lt;-<span class="st"> </span><span class="kw">relevel</span>(df<span class="op">$</span>psych3_cat, <span class="dt">ref =</span> <span class="st">&quot;Low (1-2)&quot;</span>)
 m2_psychcat &lt;-<span class="st"> </span><span class="kw">lm</span>(legstrength <span class="op">~</span><span class="st"> </span>psych3_cat, <span class="dt">data =</span> df)
@@ -338,7 +806,7 @@ m2_psychcat
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
 <span class="er">&gt;</span><span class="st">            </span>(Intercept)     <span class="kw">psych3_catHigh</span> (<span class="dv">8</span><span class="op">-</span><span class="dv">9</span>  <span class="kw">psych3_catMedium</span> (<span class="dv">3</span><span class="op">-</span><span class="dv">7</span>)  
-<span class="op">&gt;</span><span class="st">                 </span><span class="fl">509.65</span>                  <span class="fl">332.40</span>                   <span class="fl">66.62</span></code></pre></div>
+<span class="op">&gt;</span><span class="st">                 </span><span class="fl">532.64</span>                  <span class="fl">139.25</span>                   <span class="fl">43.88</span></code></pre></div>
 <p>Visserligen ordningen på parameterskattningarna annorlunda i resultatet, men vi ser att värdena nu är samma som med dummy-varabler.</p>
 
 </div>
@@ -349,8 +817,8 @@ m2_psychcat
           </div>
         </div>
       </div>
-<a href="enkel-linjär-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="enkel-linjär-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression-med-binära-utfall.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
