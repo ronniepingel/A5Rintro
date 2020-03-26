@@ -14,7 +14,9 @@ Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska n
 
 ### Installation av R på MacOS
 
-1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/.Notera att versionen
+1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/. 
+
+Notera att versionen
 måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS
 om du har en äldre Mac.
 
@@ -23,7 +25,7 @@ om du har en äldre Mac.
 ### Installation av R på Windows
 1. Gå till hemsidan https://cran.r-project.org/bin/windows/base/.
 
-2. Klicka på ''Download R (versionnummer) for Windows''. Det kan vara så att den senaste versionen inte fungerar på ditt Windows. Prova då en tidigare version. Ditt versionnummer kan även skilja sig åt från den som används i detta exempel eftersom det kan ha kommit senare versioner, men för din del saknar just detta praktisk betydelse.
+2. Klicka på ''Download R (versionnummer) for Windows''. Eventuellt fungerar inte den senaste versionen ditt Window om du har en äldre Windows-versions. Prova då en tidigare version av R. Du kanske även upptäcker att senaste versionnummer på Rs hemsida inte är samma som används i detta exempel eftersom det kan ha kommit senare versioner. För din del saknar just detta praktisk betydelse.
 
 ```{r, echo = FALSE, out.width = "70%", dpi = 72}
 knitr::include_graphics("docs/images/installR.png")
