@@ -14,13 +14,15 @@ Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska n
 
 ### Installation av R på MacOS
 
-1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/.
+1. Ladda ner den senaste versionen från https://cran.r-project.org/bin/macosx/.Notera att versionen
+måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS
+om du har en äldre Mac.
 2. Ladda ner pkg-filen under *Latest release*. Öppna den nedladdade .pkg-filen och installera R.
 
 ### Installation av R på Windows
 1. Gå till hemsidan https://cran.r-project.org/bin/windows/base/.
 
-2. Klicka på ''Download R (versionnummer) for Windows''. Ditt versionnummer kan skilja sig åt det som används i detta exempel eftersom det kan ha kommit senare versioner, men för din del saknar detta någon praktisk betydelse.
+2. Klicka på ''Download R (versionnummer) for Windows''. Det kan vara så att den senaste versionen inte fungerar på ditt Windows. Prova då en tidigare version. Ditt versionnummer kan även skilja sig åt från den som används i detta exempel eftersom det kan ha kommit senare versioner, men för din del saknar just detta praktisk betydelse.
 
 ```{r, echo = FALSE, out.width = "70%", dpi = 72}
 knitr::include_graphics("docs/images/installR.png")
@@ -584,7 +586,7 @@ sqrt(
   (6 - (3.6316   +    0.2105*6))^2 ) / 
   (5 - 2) ), 3)`
   
-(Notera att $\sum_{i=1}^n \varepsilon_i^2$ kallas för *residualkvadratsumman*.)
+(Notera att $\sum_{i=1}^n \hat{\varepsilon}_i^2$ kallas för *residualkvadratsumman*.)
 
 
 ### Övning 2.8  {-}
