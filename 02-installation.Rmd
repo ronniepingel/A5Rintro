@@ -111,19 +111,13 @@ knitr::include_graphics("docs/images/Rstudio1.png")
 
 
 
-<style>
-div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-
- <font size="5">  </font>
 ```{r, echo = FALSE, out.width = "5%", dpi = 72}
 knitr::include_graphics("docs/images/tip.png")
 ```
 
-Om du mot förmodan inte skulle lyckas installera R och RStudio, så finns möjligheten att koppla upp sig till Statistiska institutionsn datorer via fjärrskrivbordet och på så sätt få tillgång nödvändig programvara.
+Om du mot förmodan inte skulle lyckas installera R och RStudio, så finns möjligheten att koppla upp sig till Statistiska institutionens datorer via fjärrskrivbordet och på så sätt få tillgång nödvändig programvara.
 
-</div>
+
 
 
 ## Första sessionen 
