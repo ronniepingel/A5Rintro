@@ -189,6 +189,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -333,11 +337,11 @@ För att se om detta stämmer tittar vi på objekten genom att exekvera dem.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Skriv följande kod i scriptet, spara och kör koden.</li>
 </ol>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># Skapar en vektor med ord</span></a>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># Kombinera en numerisk vektor med en vektor med ord</span></a>
 <a class="sourceLine" id="cb43-2" title="2">x_nordic_countries &lt;-<span class="st"> </span><span class="kw">c</span>(x, nordic_countries )</a>
 <a class="sourceLine" id="cb43-3" title="3">x_nordic_countries</a></code></pre></div>
 <p>I Console erhålls följande output och vi ser att de tidigare numeriska värdena nu omges av citationstecken.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Skapa en vektor med en numerisk och en vektor med ord</span></a>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Kombinera en numerisk vektor med en vektor med ord</span></a>
 <a class="sourceLine" id="cb44-2" title="2"><span class="er">&gt;</span><span class="st"> </span>x_nordic_countries &lt;-<span class="st"> </span><span class="kw">c</span>(x, nordic_countries )</a>
 <a class="sourceLine" id="cb44-3" title="3"><span class="op">&gt;</span><span class="st"> </span>x_nordic_countries</a>
 <a class="sourceLine" id="cb44-4" title="4"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">1</span>] <span class="st">&quot;3&quot;</span>       <span class="st">&quot;1&quot;</span>       <span class="st">&quot;1&quot;</span>       <span class="st">&quot;5&quot;</span>       <span class="st">&quot;0&quot;</span>       <span class="st">&quot;Denmark&quot;</span> <span class="st">&quot;Finland&quot;</span></a>
@@ -388,8 +392,8 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb47-4" title="4">x <span class="op">*</span><span class="st"> </span>y</a>
 <a class="sourceLine" id="cb47-5" title="5"><span class="co"># Potenser skrivs med a^b</span></a>
 <a class="sourceLine" id="cb47-6" title="6">y<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb47-7" title="7"><span class="co"># En konstant adderas till alla element i vektorn</span></a>
-<a class="sourceLine" id="cb47-8" title="8">x <span class="op">+</span><span class="st"> </span>v </a>
+<a class="sourceLine" id="cb47-7" title="7"><span class="co"># En konstant u adderas till alla element i vektorn</span></a>
+<a class="sourceLine" id="cb47-8" title="8">x <span class="op">+</span><span class="st"> </span>u </a>
 <a class="sourceLine" id="cb47-9" title="9"><span class="co"># Räkneoperationer med NA ger NA</span></a>
 <a class="sourceLine" id="cb47-10" title="10">x <span class="op">+</span><span class="st"> </span>ymis </a>
 <a class="sourceLine" id="cb47-11" title="11"><span class="co"># Division med 0 är ej definierat. R anger det som Inf (infinity) </span></a>
@@ -398,9 +402,7 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb47-14" title="14"><span class="co"># Exempel på längre räkneoperationer. </span></a>
 <a class="sourceLine" id="cb47-15" title="15"><span class="co"># Notera att alla beräkningar är elementvisa.</span></a>
 <a class="sourceLine" id="cb47-16" title="16">w &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>(y<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>u)<span class="op">/</span>v</a>
-<a class="sourceLine" id="cb47-17" title="17">w</a>
-<a class="sourceLine" id="cb47-18" title="18"><span class="co"># Addera x vektor med en vektor med 3 element</span></a>
-<a class="sourceLine" id="cb47-19" title="19">x <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb47-17" title="17">w</a></code></pre></div>
 <p>I Console visas</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Addition av x och y</span></a>
 <a class="sourceLine" id="cb48-2" title="2"><span class="er">&gt;</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</a>
@@ -411,7 +413,7 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb48-7" title="7"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Potenser skrivs med a^b</span></a>
 <a class="sourceLine" id="cb48-8" title="8"><span class="er">&gt;</span><span class="st"> </span>y<span class="op">^</span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb48-9" title="9"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">25</span> <span class="dv">36</span> <span class="dv">81</span></a>
-<a class="sourceLine" id="cb48-10" title="10"><span class="op">&gt;</span><span class="st"> </span><span class="co"># En konstant adderas till alla element i vektorn</span></a>
+<a class="sourceLine" id="cb48-10" title="10"><span class="op">&gt;</span><span class="st"> </span><span class="co"># En konstant u adderas till alla element i vektorn</span></a>
 <a class="sourceLine" id="cb48-11" title="11"><span class="er">&gt;</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>u </a>
 <a class="sourceLine" id="cb48-12" title="12"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">153</span> <span class="dv">151</span> <span class="dv">151</span> <span class="dv">155</span> <span class="dv">150</span></a>
 <a class="sourceLine" id="cb48-13" title="13"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Räkneoperationer med NA ger NA</span></a>
@@ -434,7 +436,7 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb50-2" title="2"><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> x <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)<span class="op">:</span><span class="st"> </span>longer object length is not a multiple of shorter</a>
 <a class="sourceLine" id="cb50-3" title="3"><span class="op">&gt;</span><span class="st"> </span>object length</a>
 <a class="sourceLine" id="cb50-4" title="4"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span></a></code></pre></div>
-<p>Resultatet är alltså att om en vektorn <span class="math inline">\(x\)</span> adderas till en vektor bestående av 3 element, dvs antalet element skiljer sig åt, så erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn <span class="math inline">\(u\)</span> ovan, så fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.</p>
+<p>Resultatet är alltså att om vektorn <span class="math inline">\(x\)</span> adderas till en vektor bestående av 3 element, dvs antalet element skiljer sig åt, erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn <span class="math inline">\(u\)</span> ovan, fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.</p>
 <p>Vi ska nu studera hur vektorer, och följaktligen data, kan hanteras. I praktiken måste data anpassas och manipuleras för planerade analyser. Det mest grundläggande i denna process är att konstatera att varje element har en position. Med hakparenteser <code>[]</code> erhålls åtkomst till ett eller flera element, antingen genom att direkt identifiera positionen i vektorn med en siffra eller med <strong>logiska operatorer</strong>. Några vanliga och viktiga logiska operatorer är:</p>
 <ul>
 <li><code>&lt;</code> är mindre än.</li>
@@ -442,8 +444,11 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <li><code>&gt;=</code> större än eller lika med</li>
 <li><code>&lt;=</code> mindre än eller lika med</li>
 <li><code>==</code> lika med.</li>
+<li><code>!=</code> är ej lika med</li>
+<li><code>x|y</code> <span class="math inline">\(x\)</span> eller <span class="math inline">\(y\)</span></li>
+<li><code>x &amp; y</code> <span class="math inline">\(x\)</span> och <span class="math inline">\(y\)</span></li>
 </ul>
-<p>Genom att använda positioner och logiska operator kan användaren direkt hantera data i vektorn. Skriv in nedanstående kod i scriptet.</p>
+<p>Genom att använda positioner och logiska operator kan användaren direkt hantera data i vektorn.</p>
 <ol start="8" style="list-style-type: decimal">
 <li>Fortsätt scriptet genom att skriva in nedanstående kod. Spara och kör koden.</li>
 </ol>
@@ -451,9 +456,9 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb51-2" title="2">x[<span class="dv">2</span>]</a>
 <a class="sourceLine" id="cb51-3" title="3"><span class="co"># Visa med negativ indexering alla element i x men inte element 2</span></a>
 <a class="sourceLine" id="cb51-4" title="4">x[<span class="op">-</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="co"># Visa element 2, 3 och 4 i vektorn x</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="co"># Visa element 2, 3 och 4 i vektorn y</span></a>
 <a class="sourceLine" id="cb51-6" title="6">y[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</a>
-<a class="sourceLine" id="cb51-7" title="7"><span class="co"># Visa med negativ indexering element 1 och 5 i vektorn x</span></a>
+<a class="sourceLine" id="cb51-7" title="7"><span class="co"># Visa med negativ indexering element 1 och 5 i vektorn y</span></a>
 <a class="sourceLine" id="cb51-8" title="8">y[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</a>
 <a class="sourceLine" id="cb51-9" title="9"><span class="co"># Visa element i vektor y som är större än 6</span></a>
 <a class="sourceLine" id="cb51-10" title="10">y[y <span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>]</a>
@@ -471,10 +476,10 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb52-4" title="4"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa med negativ indexering alla element i x men inte element 2</span></a>
 <a class="sourceLine" id="cb52-5" title="5"><span class="er">&gt;</span><span class="st"> </span>x[<span class="op">-</span><span class="dv">2</span>]</a>
 <a class="sourceLine" id="cb52-6" title="6"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb52-7" title="7"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa element 2, 3 och 4 i vektorn x</span></a>
+<a class="sourceLine" id="cb52-7" title="7"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa element 2, 3 och 4 i vektorn y</span></a>
 <a class="sourceLine" id="cb52-8" title="8"><span class="er">&gt;</span><span class="st"> </span>y[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</a>
 <a class="sourceLine" id="cb52-9" title="9"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span></a>
-<a class="sourceLine" id="cb52-10" title="10"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa med negativ indexering element 1 och 5 i vektorn x</span></a>
+<a class="sourceLine" id="cb52-10" title="10"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa med negativ indexering element 1 och 5 i vektorn y</span></a>
 <a class="sourceLine" id="cb52-11" title="11"><span class="er">&gt;</span><span class="st"> </span>y[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</a>
 <a class="sourceLine" id="cb52-12" title="12"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">9</span></a>
 <a class="sourceLine" id="cb52-13" title="13"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa element i vektor y som är större än 6</span></a>
@@ -490,8 +495,7 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <a class="sourceLine" id="cb52-23" title="23"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Visa element i vektor y från positioner där nordic_countries == &quot;Finland&quot;</span></a>
 <a class="sourceLine" id="cb52-24" title="24"><span class="er">&gt;</span><span class="st"> </span>y[nordic_countries <span class="op">==</span><span class="st"> &quot;Finland&quot;</span>]</a>
 <a class="sourceLine" id="cb52-25" title="25"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">3</span></a></code></pre></div>
-<p>Du ser nu att med hjälp av indexering på ett enkelt sätt kan välja element i vektorer. Du ska nu med hjälp av indexering
-förändra värd</p>
+<p>Du ser nu att med hjälp av indexering på ett enkelt sätt kan välja element i vektorer. Du ska nu med hjälp av indexering</p>
 <ul>
 <li>skapa en ny vektor som en är delmängd av den ursprungliga vektorn.</li>
 <li>förändra element i en numerisk vektor</li>
@@ -1406,6 +1410,94 @@ bli längre än 0.05 procentenheter.</p>
 <a class="sourceLine" id="cb109-3" title="3">some_letters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;A&quot;</span>)</a>
 <a class="sourceLine" id="cb109-4" title="4"><span class="kw">length</span>( some_letters[some_letters <span class="op">==</span><span class="st"> &quot;B&quot;</span>] )</a>
 <a class="sourceLine" id="cb109-5" title="5">[<span class="dv">1</span>] <span class="dv">2</span></a></code></pre></div>
+</div>
+<div id="övning-3.10" class="section level3 unnumbered">
+<h3>Övning 3.10</h3>
+<p>Betrakta nedanstående vektorer:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;3&quot;</span>)</a>
+<a class="sourceLine" id="cb110-2" title="2">some_numbers_and_letters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;-1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>)</a></code></pre></div>
+<p>Använd R för att summera alla värdena i respektive vektor. Tips: Använd funktionen <em>as.numeric()</em>.</p>
+</div>
+<div id="svar-3.10" class="section level3 unnumbered">
+<h3>Svar 3.10</h3>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># Töm minnet inför uppgift 3.10</span></a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb111-3" title="3">some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;3&quot;</span>)</a>
+<a class="sourceLine" id="cb111-4" title="4">some_numerics &lt;-<span class="st"> </span><span class="kw">as.numeric</span>( some_numbers )</a>
+<a class="sourceLine" id="cb111-5" title="5"><span class="kw">class</span>(some_numbers)</a>
+<a class="sourceLine" id="cb111-6" title="6">[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></a>
+<a class="sourceLine" id="cb111-7" title="7"><span class="kw">class</span>(some_numerics)</a>
+<a class="sourceLine" id="cb111-8" title="8">[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></a>
+<a class="sourceLine" id="cb111-9" title="9"><span class="kw">sum</span>(some_numerics)</a>
+<a class="sourceLine" id="cb111-10" title="10">[<span class="dv">1</span>] <span class="dv">11</span></a>
+<a class="sourceLine" id="cb111-11" title="11"></a>
+<a class="sourceLine" id="cb111-12" title="12">some_numbers_and_letters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;-1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>)</a>
+<a class="sourceLine" id="cb111-13" title="13">some_numerics_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(some_numbers_and_letters)</a>
+<a class="sourceLine" id="cb111-14" title="14">Warning<span class="op">:</span><span class="st"> </span>NAs introduced by coercion</a>
+<a class="sourceLine" id="cb111-15" title="15"><span class="kw">sum</span>(some_numerics_<span class="dv">2</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb111-16" title="16">[<span class="dv">1</span>] <span class="dv">12</span></a></code></pre></div>
+</div>
+<div id="övning-3.11" class="section level3 unnumbered">
+<h3>Övning 3.11</h3>
+<p>Betrakta nedanstående vektorer.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.39</span>,  <span class="fl">0.76</span>, <span class="fl">-1.25</span>,  <span class="fl">0.28</span>,  <span class="fl">0.60</span>,  <span class="fl">0.66</span>,  <span class="fl">0.94</span>, <span class="fl">-0.18</span>, <span class="fl">-0.26</span>, <span class="fl">-1.83</span>, <span class="fl">-1.13</span>,  <span class="fl">0.45</span>,  <span class="fl">0.11</span>, <span class="fl">-1.03</span>,  <span class="fl">1.06</span>, <span class="fl">-0.08</span>,  <span class="fl">1.68</span>, <span class="fl">-1.02</span>,  <span class="fl">1.36</span>,  <span class="fl">1.58</span>)</a>
+<a class="sourceLine" id="cb112-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">1.0</span>,  <span class="fl">1.5</span>,  <span class="fl">0.2</span>, <span class="fl">-0.5</span>, <span class="fl">-1.1</span>, <span class="fl">-0.2</span>, <span class="fl">-1.0</span>, <span class="fl">-1.3</span>, <span class="fl">-1.6</span>, <span class="fl">-1.2</span>, <span class="fl">-0.4</span>, <span class="fl">-1.3</span>, <span class="fl">-0.3</span>, <span class="fl">-0.7</span>,  <span class="fl">0.7</span>, <span class="fl">-2.5</span>, <span class="fl">-1.0</span>,  <span class="fl">2.1</span>,  <span class="fl">1.3</span>, <span class="fl">-1.3</span>)</a>
+<a class="sourceLine" id="cb112-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.94</span>, <span class="fl">-2.38</span>, <span class="fl">-0.16</span>, <span class="fl">0.44</span>, <span class="fl">0.70</span>, <span class="fl">2.54</span>, <span class="fl">2.12</span>, <span class="fl">8.33</span>, <span class="fl">0.57</span>, <span class="fl">1.24</span>, <span class="fl">0.05</span>, <span class="fl">-1.78</span>, <span class="fl">2.53</span>, <span class="fl">-1.60</span>, <span class="fl">2.77</span>, <span class="fl">0.26</span>, <span class="fl">1.48</span>, <span class="fl">1.10</span>, <span class="fl">-8.00</span>, <span class="fl">4.57</span>)</a></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Skapa variabeln <span class="math inline">\(x = x_1 + x_2 + x_3\)</span>.</li>
+<li>Skapa variabeln <span class="math inline">\(z\)</span>, där <span class="math inline">\(z=1\)</span> om <span class="math inline">\(x &lt; 0\)</span>, <span class="math inline">\(z=2\)</span> om <span class="math inline">\(0 \leq x &lt; 5\)</span> och <span class="math inline">\(z=3\)</span> om <span class="math inline">\(x \geq 5\)</span>.</li>
+<li>Skapa de binära variblerna <span class="math inline">\(v_1\)</span> som är 1 om <span class="math inline">\(x1 &gt; 0\)</span> och 0 annars, <span class="math inline">\(v_2\)</span> som är 1 om <span class="math inline">\(x2 &gt; 0\)</span> och 0 annars, och <span class="math inline">\(v_3\)</span> som är 1 om <span class="math inline">\(x3 &gt; 0\)</span> och 0 annars</li>
+<li>Skapa variabeln <span class="math inline">\(v = v_1 + v_2 + v_3\)</span> som är en summa av de binära variablerna.</li>
+<li>Skapa en frekvenstabell för <span class="math inline">\(v\)</span>.</li>
+</ol>
+</div>
+<div id="svar-3.11" class="section level3 unnumbered">
+<h3>Svar 3.11</h3>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># Töm minnet inför uppgift 3.10</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb113-3" title="3">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.39</span>,  <span class="fl">0.76</span>, <span class="fl">-1.25</span>,  <span class="fl">0.28</span>,  <span class="fl">0.60</span>,  <span class="fl">0.66</span>,  <span class="fl">0.94</span>, <span class="fl">-0.18</span>, <span class="fl">-0.26</span>, <span class="fl">-1.83</span>, <span class="fl">-1.13</span>,  <span class="fl">0.45</span>,  <span class="fl">0.11</span>, <span class="fl">-1.03</span>,  <span class="fl">1.06</span>, <span class="fl">-0.08</span>,  <span class="fl">1.68</span>, <span class="fl">-1.02</span>,  <span class="fl">1.36</span>,  <span class="fl">1.58</span>)</a>
+<a class="sourceLine" id="cb113-4" title="4">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">1.0</span>,  <span class="fl">1.5</span>,  <span class="fl">0.2</span>, <span class="fl">-0.5</span>, <span class="fl">-1.1</span>, <span class="fl">-0.2</span>, <span class="fl">-1.0</span>, <span class="fl">-1.3</span>, <span class="fl">-1.6</span>, <span class="fl">-1.2</span>, <span class="fl">-0.4</span>, <span class="fl">-1.3</span>, <span class="fl">-0.3</span>, <span class="fl">-0.7</span>,  <span class="fl">0.7</span>, <span class="fl">-2.5</span>, <span class="fl">-1.0</span>,  <span class="fl">2.1</span>,  <span class="fl">1.3</span>, <span class="fl">-1.3</span>)</a>
+<a class="sourceLine" id="cb113-5" title="5">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.94</span>, <span class="fl">-2.38</span>, <span class="fl">-0.16</span>, <span class="fl">0.44</span>, <span class="fl">0.70</span>, <span class="fl">2.54</span>, <span class="fl">2.12</span>, <span class="fl">8.33</span>, <span class="fl">0.57</span>, <span class="fl">1.24</span>, <span class="fl">0.05</span>, <span class="fl">-1.78</span>, <span class="fl">2.53</span>, <span class="fl">-1.60</span>, <span class="fl">2.77</span>, <span class="fl">0.26</span>, <span class="fl">1.48</span>, <span class="fl">1.10</span>, <span class="fl">-8.00</span>, <span class="fl">4.57</span>)</a>
+<a class="sourceLine" id="cb113-6" title="6"></a>
+<a class="sourceLine" id="cb113-7" title="7"><span class="co"># a)</span></a>
+<a class="sourceLine" id="cb113-8" title="8">x &lt;-<span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span>x3</a>
+<a class="sourceLine" id="cb113-9" title="9"><span class="co"># b)</span></a>
+<a class="sourceLine" id="cb113-10" title="10"><span class="co"># Skapa en variabeln som består av NA som är lika lång som x</span></a>
+<a class="sourceLine" id="cb113-11" title="11">z &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(x))</a>
+<a class="sourceLine" id="cb113-12" title="12">z[x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-13" title="13">z[(x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>)  ] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb113-14" title="14">z[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb113-15" title="15">z</a>
+<a class="sourceLine" id="cb113-16" title="16"> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb113-17" title="17"><span class="co"># c)</span></a>
+<a class="sourceLine" id="cb113-18" title="18">v1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(x1))</a>
+<a class="sourceLine" id="cb113-19" title="19">v1[x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-20" title="20">v1[x1 <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb113-21" title="21">v2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(x1))</a>
+<a class="sourceLine" id="cb113-22" title="22">v2[x2 <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-23" title="23">v2[x2 <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb113-24" title="24">v3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(x1))</a>
+<a class="sourceLine" id="cb113-25" title="25">v3[x3 <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-26" title="26">v3[x3 <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb113-27" title="27"><span class="co"># d)</span></a>
+<a class="sourceLine" id="cb113-28" title="28">v &lt;-<span class="st"> </span>v1 <span class="op">+</span><span class="st"> </span>v2 <span class="op">+</span><span class="st"> </span>v3</a>
+<a class="sourceLine" id="cb113-29" title="29">v</a>
+<a class="sourceLine" id="cb113-30" title="30"> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">0</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb113-31" title="31"><span class="co"># e)</span></a>
+<a class="sourceLine" id="cb113-32" title="32">sumv0 &lt;-<span class="st"> </span><span class="kw">sum</span>(v <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb113-33" title="33">sumv1 &lt;-<span class="st"> </span><span class="kw">sum</span>(v <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb113-34" title="34">sumv2 &lt;-<span class="st"> </span><span class="kw">sum</span>(v <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb113-35" title="35">sumv3 &lt;-<span class="st"> </span><span class="kw">sum</span>(v <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb113-36" title="36">frequencies &lt;-<span class="st"> </span><span class="kw">c</span>(sumv0, sumv1, sumv2, sumv3)</a>
+<a class="sourceLine" id="cb113-37" title="37">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb113-38" title="38">frequency.table &lt;-<span class="st"> </span><span class="kw">cbind</span>(values, frequencies)</a>
+<a class="sourceLine" id="cb113-39" title="39">frequency.table </a>
+<a class="sourceLine" id="cb113-40" title="40">     values frequencies</a>
+<a class="sourceLine" id="cb113-41" title="41">[<span class="dv">1</span>,]      <span class="dv">0</span>           <span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-42" title="42">[<span class="dv">2</span>,]      <span class="dv">1</span>           <span class="dv">7</span></a>
+<a class="sourceLine" id="cb113-43" title="43">[<span class="dv">3</span>,]      <span class="dv">2</span>          <span class="dv">11</span></a>
+<a class="sourceLine" id="cb113-44" title="44">[<span class="dv">4</span>,]      <span class="dv">3</span>           <span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-45" title="45"><span class="co"># Det finns i R också en inbyggd funktion table(), som vi ska använda oss av senare på kursen.</span></a></code></pre></div>
 
 </div>
 </div>

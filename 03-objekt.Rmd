@@ -130,7 +130,7 @@ Kombineras en numerisk och en character-vektor blir hela vektorn en character-ve
 
 
 ```{r, eval=FALSE}
-# Skapar en vektor med ord
+# Kombinera en numerisk vektor med en vektor med ord
 x_nordic_countries <- c(x, nordic_countries )
 x_nordic_countries
 ```
@@ -138,7 +138,7 @@ x_nordic_countries
 I Console erhålls följande output och vi ser att de tidigare numeriska värdena nu omges av citationstecken.
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
-# Skapa en vektor med en numerisk och en vektor med ord
+# Kombinera en numerisk vektor med en vektor med ord
 x_nordic_countries <- c(x, nordic_countries )
 x_nordic_countries
 ```
@@ -204,8 +204,8 @@ x + y
 x * y
 # Potenser skrivs med a^b
 y^2
-# En konstant adderas till alla element i vektorn
-x + v 
+# En konstant u adderas till alla element i vektorn
+x + u 
 # Räkneoperationer med NA ger NA
 x + ymis 
 # Division med 0 är ej definierat. R anger det som Inf (infinity) 
@@ -215,8 +215,6 @@ x/0
 # Notera att alla beräkningar är elementvisa.
 w <- x + (y^2 - u)/v
 w
-# Addera x vektor med en vektor med 3 element
-x + c(2,5,6)
 
 ```
 
@@ -229,7 +227,7 @@ x + y
 x * y
 # Potenser skrivs med a^b
 y^2
-# En konstant adderas till alla element i vektorn
+# En konstant u adderas till alla element i vektorn
 x + u 
 # Räkneoperationer med NA ger NA
 x + ymis 
@@ -257,7 +255,7 @@ x + c(2,5,6)
 ```
 
 
-Resultatet är alltså att om en vektorn $x$ adderas till en vektor bestående av 3 element, dvs antalet element skiljer sig åt, så erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn $u$ ovan, så fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.
+Resultatet är alltså att om vektorn $x$ adderas till en vektor bestående av 3 element, dvs antalet element skiljer sig åt, erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn $u$ ovan, fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.
 
 Vi ska nu studera hur vektorer, och följaktligen data, kan hanteras. I praktiken måste data anpassas och manipuleras för planerade analyser. Det mest grundläggande i denna process  är att konstatera att varje element har en position. Med hakparenteser `[]` erhålls åtkomst till ett eller flera element,  antingen genom att direkt identifiera positionen i vektorn med en siffra eller med **logiska operatorer**. Några vanliga och viktiga logiska operatorer är:
 
@@ -266,8 +264,11 @@ Vi ska nu studera hur vektorer, och följaktligen data, kan hanteras. I praktike
 + `>=` större än eller lika med	
 + `<=` mindre än eller lika med	
 + `==` lika med.
++ `!=` är ej lika med
++ `x|y` $x$ eller $y$
++ `x & y` $x$ och $y$
 
-Genom att använda positioner och logiska operator kan användaren direkt hantera  data i vektorn. Skriv in nedanstående kod i scriptet.
+Genom att använda positioner och logiska operator kan användaren direkt hantera  data i vektorn. 
 
 8. Fortsätt scriptet genom att skriva in nedanstående kod. Spara och kör koden.
 
@@ -277,9 +278,9 @@ Genom att använda positioner och logiska operator kan användaren direkt hanter
 x[2]
 # Visa med negativ indexering alla element i x men inte element 2
 x[-2]
-# Visa element 2, 3 och 4 i vektorn x
+# Visa element 2, 3 och 4 i vektorn y
 y[c(2,3,4)]
-# Visa med negativ indexering element 1 och 5 i vektorn x
+# Visa med negativ indexering element 1 och 5 i vektorn y
 y[-c(2,3,4)]
 # Visa element i vektor y som är större än 6
 y[y > 6]
@@ -300,9 +301,9 @@ I Console visas
 x[2]
 # Visa med negativ indexering alla element i x men inte element 2
 x[-2]
-# Visa element 2, 3 och 4 i vektorn x
+# Visa element 2, 3 och 4 i vektorn y
 y[c(2,3,4)]
-# Visa med negativ indexering element 1 och 5 i vektorn x
+# Visa med negativ indexering element 1 och 5 i vektorn y
 y[-c(2,3,4)]
 # Visa element i vektor y som är större än 6
 y[y > 6]
@@ -317,7 +318,6 @@ y[nordic_countries == "Finland"]
 ```
 
 Du ser nu att med hjälp av indexering på ett enkelt sätt kan välja element i vektorer. Du ska nu med hjälp av indexering
-förändra värd
 
 + skapa en ny vektor som en är delmängd av den ursprungliga vektorn.
 + förändra element i en numerisk vektor
@@ -1216,4 +1216,96 @@ rm(list = ls())
 some_letters <- c("A", "B", "C", "B", "D", "A", "D", "A")
 length( some_letters[some_letters == "B"] )
 ```
+
+### Övning 3.10  {-}
+Betrakta nedanstående vektorer:
+
+```{r, eval = FALSE}
+some_numbers <- c("1", "3", "1", "3", "3")
+some_numbers_and_letters <- c("2", "4", "-1", "3", "3", "A", "D")
+```
+
+Använd R för att summera alla värdena i respektive vektor. Tips: Använd funktionen *as.numeric()*.
+ 
+
+### Svar 3.10  {-}
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Töm minnet inför uppgift 3.10
+rm(list = ls())
+some_numbers <- c("1", "3", "1", "3", "3")
+some_numerics <- as.numeric( some_numbers )
+class(some_numbers)
+class(some_numerics)
+sum(some_numerics)
+
+some_numbers_and_letters <- c("2", "5", "-1", "3", "3", "A", "D")
+some_numerics_2 <- as.numeric(some_numbers_and_letters)
+sum(some_numerics_2, na.rm = TRUE)
+```
+
+
+
+### Övning 3.11  {-}
+Betrakta nedanstående vektorer.
+
+```{r, eval = FALSE}
+x1 <- c(0.39,  0.76, -1.25,  0.28,  0.60,  0.66,  0.94, -0.18, -0.26, -1.83, -1.13,  0.45,  0.11, -1.03,  1.06, -0.08,  1.68, -1.02,  1.36,  1.58)
+x2 <- c(-1.0,  1.5,  0.2, -0.5, -1.1, -0.2, -1.0, -1.3, -1.6, -1.2, -0.4, -1.3, -0.3, -0.7,  0.7, -2.5, -1.0,  2.1,  1.3, -1.3)
+x3 <- c(5.94, -2.38, -0.16, 0.44, 0.70, 2.54, 2.12, 8.33, 0.57, 1.24, 0.05, -1.78, 2.53, -1.60, 2.77, 0.26, 1.48, 1.10, -8.00, 4.57)
+```
+
+a) Skapa variabeln $x = x_1 + x_2 + x_3$.
+b) Skapa variabeln $z$, där $z=1$ om $x < 0$, $z=2$ om $0 \leq x  < 5$ och $z=3$ om $x \geq 5$.
+c) Skapa de binära variblerna $v_1$ som är 1 om $x1 > 0$ och 0 annars,  $v_2$ som är 1 om $x2 > 0$ och 0 annars, och $v_3$ som är 1 om $x3 > 0$ och 0 annars
+d) Skapa variabeln $v = v_1 + v_2 + v_3$ som är en summa av de binära variablerna.
+e) Skapa en frekvenstabell för $v$.
+
+
+### Svar 3.11  {-}
+
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Töm minnet inför uppgift 3.10
+rm(list = ls())
+x1 <- c(0.39,  0.76, -1.25,  0.28,  0.60,  0.66,  0.94, -0.18, -0.26, -1.83, -1.13,  0.45,  0.11, -1.03,  1.06, -0.08,  1.68, -1.02,  1.36,  1.58)
+x2 <- c(-1.0,  1.5,  0.2, -0.5, -1.1, -0.2, -1.0, -1.3, -1.6, -1.2, -0.4, -1.3, -0.3, -0.7,  0.7, -2.5, -1.0,  2.1,  1.3, -1.3)
+x3 <- c(5.94, -2.38, -0.16, 0.44, 0.70, 2.54, 2.12, 8.33, 0.57, 1.24, 0.05, -1.78, 2.53, -1.60, 2.77, 0.26, 1.48, 1.10, -8.00, 4.57)
+
+# a)
+x <- x1 + x2 + x3
+# b)
+# Skapa en variabeln som består av NA som är lika lång som x
+z <- rep(NA, length(x))
+z[x < 0] <- 1
+z[(x >= 0) & (x < 10)  ] <- 2
+z[x > 10] <- 3
+z
+# c)
+v1 <- rep(NA, length(x1))
+v1[x1 > 0] <- 1
+v1[x1 <= 0] <- 0
+v2 <- rep(NA, length(x1))
+v2[x2 > 0] <- 1
+v2[x2 <= 0] <- 0
+v3 <- rep(NA, length(x1))
+v3[x3 > 0] <- 1
+v3[x3 <= 0] <- 0
+# d)
+v <- v1 + v2 + v3
+v
+# e)
+sumv0 <- sum(v == 0)
+sumv1 <- sum(v == 1)
+sumv2 <- sum(v == 2)
+sumv3 <- sum(v == 3)
+frequencies <- c(sumv0, sumv1, sumv2, sumv3)
+values <- c(0, 1, 2, 3)
+frequency.table <- cbind(values, frequencies)
+frequency.table 
+# Det finns i R också en inbyggd funktion table(), som vi ska använda oss av senare på kursen.
+```
+
+
+
+
 
