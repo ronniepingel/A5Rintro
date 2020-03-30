@@ -107,7 +107,7 @@ Du ska nu fått upp nedanstående. Vi ska i detalj beskriva vad de olika paneler
 knitr::include_graphics("docs/images/Rstudio1.png")
 ```
 
-6. Avluta RStudio.
+6. Avsluta RStudio.
 
 
 
