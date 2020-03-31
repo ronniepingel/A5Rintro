@@ -1,0 +1,299 @@
+# Läsa in och spara data
+
+Det finns många typer av dataformat och avsikten här är att beskriva principerna för hur datamaterial är organiserade och hur man bör organisera data.  Vi ska även presentera de vanligaste formaten för att att läsa in och spara data. För nybörjaren kan det vara uppmuntrande att känna till att datainläsning i en del fall kan vara omständligt och frustrerande, framförallt om datamaterialet inte är organiserat på ett korrekt sätt. Misströsta därför inte ifall det dyker upp svårigheter. 
+
+På denna kurs rekommenderas två sätt att arbeta med data är i något av följande format: 
+
++ **textfil** som innebär att data sparas i textformat. På så vis ärr datamaterialet program- och plattformsoberoende.
++ **R Data format***, som är en fil med tillägget **.RDS**.  Det är filformat som R använder för att spara objekt. Fördelarna är att det är mindre minneskrävande än R och filen innehåller samma information om objektet som när det fanns som inläst data frame i R.
+
+I praktiken är det emellertid också nödvändigt att kunna importera och exporertera filer i 
+
++ Excel-format.
+
+
+
+
+Vi ska därför fokusera på dessa två format. Det finns ett många specialfall som vi inte tar upp. Främst gäller det:
+
++ import av andra format (t ex SAS-format, SPSS-format, Minitab). Detta kan lösas med exempelvis paket som **foreign**.
++ import av stora dataset, där till exempel paketet **data.table** kan vara till hjälp.
+
+
+Det är viktigt att organisera data på ett bra sätt och nedan följer några allmänna tips:
+
+
+
+
+
+
++ Många program (t ex Excel) gör det möjligt att spara data som ren text istället för i progammets eget format. Spara alltid en kopia i textformat.
++ Organisera data med kolumner som korresponderar till olika variabler.
++ Använd semi-kolon för att avgränsa kolumner. Eftersom komma används som decimaltecken på svenska och avstånd eller TAB är svåra att se i en textfil eftersom de påminner om blanksteg undviks enkla problem. 
++ Försök att inte ändra något i ursprungsfilen. Det är bättre att, om möjligt, importera till R och göra ändringarna där.
+
+## Text- och CSV-filer
+CSV står för "comma separated values", vilket även referar till semi-kolon eftersom många länder använder komma som decimaltecken. De två funktionerna som används för att läsa in CSV-filer är
+**read.csv()** och **read.csv2()**. CSV.filer är textfiler och mer generellt kan text-filer läsas in med **read.table()**. De bägge **read.csv()** och **read.csv2()** baseras nämligen på **read.table()**, men med förspecificerade argument. Funktionernas vanligaste argument presenteras nedan, men det går att specificera funktionerna i stor detalj beroende på hur datafilen ser ut.
+
+```{r, eval=FALSE}
+read.csv(file, header = TRUE, sep = ",", quote = "\"", dec = ".")
+read.csv2(file, header = TRUE, sep = ";", quote = "\"", dec = ",")
+read.table(file, header = TRUE, sep=" ", quote = "\"", dec = ".")
+```
+
++ **file** anger filnamnet
++ **header** om variablerna har variabelnamn på första raden
++ **sep** anger typ av separarering mellan kolumner.
++ **quote** anger citationstecken för text-variabler 
++ **dec** anger typ av decimal-tecken
+
+För att läsa in nedanstående text-fil **animals1.csv** som kan vi använda **read.csv()**. Skriv in `df1 <- read.csv(file="D:/animals1.csv")` Eftersom det är en textfil kan filen öppnas i Notepad eller Textredigerare (eller mosvarande). Då är det tydligt att kolumnerna är separerade med komma och att decimaltecken används punkt. Raden längst till vänster är radnamn, vilket är default. Citationstecken hanterar textvariabler.
+
+```{r, eval=FALSE}
+"","animal","body","brain"
+"1","Lesser short-tailed shrew",0.005,0.14
+"2","Little brown bat",0.01,0.25
+"3","Big brown bat",0.023,0.3
+"4","Mouse",0.023,0.4
+"5","Musk shrew",0.048,0.33
+"6","Star-nosed mole",0.06,1
+"7","E. American mole",0.075,1.2
+"8","Ground squirrel",0.101,4
+"9","Tree shrew",0.104,2.5
+"10","Golden hamster",0.12,1
+"11","Mole",0.122,3
+"12","Galago",0.2,5
+"13","Rat",0.28,1.9
+"14","Chinchilla",0.425,6.4
+"15","Owl monkey",0.48,15.5
+"16","Desert hedgehog",0.55,2.4
+"17","Rockhyraxa",0.75,12.3
+"18","European hedgehog",0.785,3.5
+"19","Tenrec",0.9,2.6
+"20","Arctic ground squirrel",0.92,5.7
+"21","African giant pouched rat",1,6.6
+"22","Guinea pig",1.04,5.5
+"23","Mountain beaver",1.35,8.1
+"24","Slow loris",1.4,12.5
+"25","Genet",1.41,17.5
+"26","Phalanger",1.62,11.4
+"27","N.A. opossum",1.7,6.3
+"28","Tree hyrax",2,12.3
+"29","Rabbit",2.5,12.1
+"30","Echidna",3,25
+"31","Cat",3.3,25.6
+"32","Arctic fox",3.385,44.5
+"33","Water opossum",3.5,3.9
+"34","Nine-banded armadillo",3.5,10.8
+"35","Rock yrax-b",3.6,21
+"36","Yellow-bellied marmot",4.05,17
+"37","Verbet",4.19,58
+"38","Red fox",4.235,50.4
+"39","Raccoon",4.288,39.2
+"40","Rhesus monkey",6.8,179
+"41","Potarmonkey",10,115
+"42","Baboon",10.55,179.5
+"43","Roe deer",14.83,98.2
+"44","Goat",27.66,115
+"45","Kangaroo",35,56
+"46","Grey wolf",36.33,119.5
+"47","Chimpanzee",52.16,440
+"48","Sheep",55.5,175
+"49","Giantarmadillo",60,81
+"50","Human",62,1320
+"51","Grey seal",85,325
+"52","Jaguar",100,157
+"53","Brazilian tapir",160,169
+"54","Donkey",187.1,419
+"55","Pig",192,180
+"56","Gorilla",207,406
+"57","Okapi",250,490
+"58","Cow",465,423
+"59","Horse",521,655
+"60","Giraffe",529,680
+"61","Asian elephant",2547,4603
+"62","African elephant",6654,5712
+"63","Triceratops",9400,70
+"64","Dipliodocus",11700,50
+"65","Brachiosaurus",87000,154.5
+```
+
+Läs nu in **animals2.csv** med **read.csv2()**, det skriv in `df2 <- read.csv2(file="D:/animals2.csv")`. I denna textfilen är kolumnerna separerade med semi-kolon och komma är decimaltecken.
+
+```{r, eval=FALSE}
+"";"animal";"body";"brain"
+"1";"Lesser short-tailed shrew";0,005;0,14
+"2";"Little brown bat";0,01;0,25
+"3";"Big brown bat";0,023;0,3
+"4";"Mouse";0,023;0,4
+"5";"Musk shrew";0,048;0,33
+"6";"Star-nosed mole";0,06;1
+"7";"E. American mole";0,075;1,2
+"8";"Ground squirrel";0,101;4
+"9";"Tree shrew";0,104;2,5
+"10";"Golden hamster";0,12;1
+"11";"Mole";0,122;3
+"12";"Galago";0,2;5
+"13";"Rat";0,28;1,9
+"14";"Chinchilla";0,425;6,4
+"15";"Owl monkey";0,48;15,5
+"16";"Desert hedgehog";0,55;2,4
+"17";"Rockhyraxa";0,75;12,3
+"18";"European hedgehog";0,785;3,5
+"19";"Tenrec";0,9;2,6
+"20";"Arctic ground squirrel";0,92;5,7
+"21";"African giant pouched rat";1;6,6
+"22";"Guinea pig";1,04;5,5
+"23";"Mountain beaver";1,35;8,1
+"24";"Slow loris";1,4;12,5
+"25";"Genet";1,41;17,5
+"26";"Phalanger";1,62;11,4
+"27";"N.A. opossum";1,7;6,3
+"28";"Tree hyrax";2;12,3
+"29";"Rabbit";2,5;12,1
+"30";"Echidna";3;25
+"31";"Cat";3,3;25,6
+"32";"Arctic fox";3,385;44,5
+"33";"Water opossum";3,5;3,9
+"34";"Nine-banded armadillo";3,5;10,8
+"35";"Rock yrax-b";3,6;21
+"36";"Yellow-bellied marmot";4,05;17
+"37";"Verbet";4,19;58
+"38";"Red fox";4,235;50,4
+"39";"Raccoon";4,288;39,2
+"40";"Rhesus monkey";6,8;179
+"41";"Potarmonkey";10;115
+"42";"Baboon";10,55;179,5
+"43";"Roe deer";14,83;98,2
+"44";"Goat";27,66;115
+"45";"Kangaroo";35;56
+"46";"Grey wolf";36,33;119,5
+"47";"Chimpanzee";52,16;440
+"48";"Sheep";55,5;175
+"49";"Giantarmadillo";60;81
+"50";"Human";62;1320
+"51";"Grey seal";85;325
+"52";"Jaguar";100;157
+"53";"Brazilian tapir";160;169
+"54";"Donkey";187,1;419
+"55";"Pig";192;180
+"56";"Gorilla";207;406
+"57";"Okapi";250;490
+"58";"Cow";465;423
+"59";"Horse";521;655
+"60";"Giraffe";529;680
+"61";"Asian elephant";2547;4603
+"62";"African elephant";6654;5712
+"63";"Triceratops";9400;70
+"64";"Dipliodocus";11700;50
+"65";"Brachiosaurus";87000;154,5
+```
+
+Läs nu in **animals.txt** med **read.table()**, dvs använd `df3 <- read.table(file="D:/animals.txt", header=TRUE)` Kolumnerna är i denna textfil är separerade med mellanslag och punkt används som decimaltecken. Här finns inga radnamn.
+
+```{r, eval=FALSE}
+"animal" "body" "brain"
+"Lesser short-tailed shrew" 0.005 0.14
+"Little brown bat" 0.01 0.25
+"Big brown bat" 0.023 0.3
+"Mouse" 0.023 0.4
+"Musk shrew" 0.048 0.33
+"Star-nosed mole" 0.06 1
+"E. American mole" 0.075 1.2
+"Ground squirrel" 0.101 4
+"Tree shrew" 0.104 2.5
+"Golden hamster" 0.12 1
+"Mole" 0.122 3
+"Galago" 0.2 5
+"Rat" 0.28 1.9
+"Chinchilla" 0.425 6.4
+"Owl monkey" 0.48 15.5
+"Desert hedgehog" 0.55 2.4
+"Rockhyraxa" 0.75 12.3
+"European hedgehog" 0.785 3.5
+"Tenrec" 0.9 2.6
+"Arctic ground squirrel" 0.92 5.7
+"African giant pouched rat" 1 6.6
+"Guinea pig" 1.04 5.5
+"Mountain beaver" 1.35 8.1
+"Slow loris" 1.4 12.5
+"Genet" 1.41 17.5
+"Phalanger" 1.62 11.4
+"N.A. opossum" 1.7 6.3
+"Tree hyrax" 2 12.3
+"Rabbit" 2.5 12.1
+"Echidna" 3 25
+"Cat" 3.3 25.6
+"Arctic fox" 3.385 44.5
+"Water opossum" 3.5 3.9
+"Nine-banded armadillo" 3.5 10.8
+"Rock yrax-b" 3.6 21
+"Yellow-bellied marmot" 4.05 17
+"Verbet" 4.19 58
+"Red fox" 4.235 50.4
+"Raccoon" 4.288 39.2
+"Rhesus monkey" 6.8 179
+"Potarmonkey" 10 115
+"Baboon" 10.55 179.5
+"Roe deer" 14.83 98.2
+"Goat" 27.66 115
+"Kangaroo" 35 56
+"Grey wolf" 36.33 119.5
+"Chimpanzee" 52.16 440
+"Sheep" 55.5 175
+"Giantarmadillo" 60 81
+"Human" 62 1320
+"Grey seal" 85 325
+"Jaguar" 100 157
+"Brazilian tapir" 160 169
+"Donkey" 187.1 419
+"Pig" 192 180
+"Gorilla" 207 406
+"Okapi" 250 490
+"Cow" 465 423
+"Horse" 521 655
+"Giraffe" 529 680
+"Asian elephant" 2547 4603
+"African elephant" 6654 5712
+"Triceratops" 9400 70
+"Dipliodocus" 11700 50
+"Brachiosaurus" 87000 154.5
+```
+
+Prova nedanstående kod. Vad händer? 
+
+`df4 <- read.table(file="D:/animals1.csv", header=TRUE, sep=",", dec=".")`
+
+## Excel-filer
+I praktiken är det nödvändigt att importera av Excel-dokument. Nedan följer ett antal tips för när data matas in i Excel.
+
++ Första raden ska bestå av variabelnamn
++ Första kolumnen bör bestå av observationsid 
++ Undvik namn och värden med mellanslag. Risken är att det tolkas som två olika kolumner.
++ Korta variabelnamn är bättre än långa.
++ Undvik tecken som ?, $,%, ^, &, *, (, ),-,#, ?,,,<,>, /, |, \, [ ,] ,{, and };
++ Radera kommentarer som du har i Excelfilen så att dessa inte tolkas som extra data. 
+
+Målet är nu att läsa in Excel-filerna **animal3.xlsx** och **animal4.xlsx**. För att läsa in data från Excel-filer krävs ett paket som heter **readxl**. Installera paketet med att i Console skriv `install.packages("readxl")` och trycka enter.
+Skriv nu ett script
+
+```
+# Läser in nödvändigt paket
+library("readxl)
+df5 <- read_excel("animal3.xlsx")
+df6 <- read_excel("animal4.xlsx")
+```
+
+Titta på data frames. Data frame `df5` ser ok ut, men för `df6`
+är det något som inte stämmer. Öppnar filen med Excel. Då ser du att Excel-dokumentet består av flera kalkylblad och data finns i blad 2. Dessutom börjar inte data från toppen, utan det finns även annan text i blad två. Genom att vara mer specifik i inläsningen av data väljs exakt varifrån Excel-filen data hämtas.
+
+ ```
+df7 <- read_excel("animal4.xlsx", sheet = "Blad2", range = "A3:D68")
+```
+Titta på data frame `df7` (som nu förhoppningsvis ska se ok ut).
+
+## Övriga format
+
+
+ 
