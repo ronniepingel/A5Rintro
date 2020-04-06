@@ -461,6 +461,7 @@ scandinavia[nordic_countries == "Iceland"] <- "Not scandinavia"
 scandinavia
   
 ```
+
 OVanstående moment är **viktigt**. Här illustreras nämligen en grundläggande princip för skapandet av nya variabel, dvs först skapa en tom vektor som sedans fylls med information. Även om det finns alternativa kompaktare sätt att koda om vektorer (och följaktligen variabler), är det ovanstående tillvägagångssätt som rekommenderas starkt på denna kurs.
 
 Nästa steg är att använda den logiska operatorn *&*.
@@ -537,10 +538,10 @@ z3
 ```
 
 
-Några viktiga punkter att komma ihåg är 
+Ett par viktiga punkter att komma ihåg är 
 
-+ Arbetsgången är att en ny vektor skapas, vilken sedan fylls på. För en binär variabel skulle vi teoretiskt kunna använda operatorn *!=*, men detta kan dels leda till att NA i en vektor kodas till 0, dels att datatvätten blir mindre noggrann.
-+ Parenteser ska användas, som till exempel var fallet med *(z > 1) & (z <= 5)*. 
++ Arbetsgången är att en ny vektor skapas, vilken sedan fylls på. För en binär variabel skulle vi teoretiskt kunna använda operatorn *!=*, men detta kan dels leda till att NA i en vektor kodas till 0, dels att datatvätten blir mindre noggrann. Ovanstående metodik för att skapa ny variabler är transparent.
++ Använd parenteser för att undvika eventuella fel, som till exempel var fallet med *(z > 1) & (z <= 5)*. 
 
 Avslutningsvis ska vi använda den logiska operatorn *|*.
 
@@ -743,7 +744,7 @@ Det går att tillämpa logiska operatorer även på matriser, men den extra dime
 
 
 ### Data frames
-En **data frame** är i praktiken det vanligaste objektet för dataanalys. En data frame har två dimensioner (rader och kolumner), men kan till skillnad från matrisen innehålla element med olika datatyper, t ex både numeriska värden och bokstäver. Vidare innehåller en data frame detaljerad information om exempelvis **variabelnamn** och **variabeltyp**. 
+En **data frame** är i praktiken det vanligaste objektet för dataanalys. En data frame har två dimensioner (rader och kolumner), men kan till skillnad från matrisen måste inte kolumnerna ha samma datatyp. Vad som dock krävs är att en kolumn består av en och samma datatyp.  Vidare innehåller en data frame detaljerad information om exempelvis **variabelnamn** och **variabeltyp**. 
 
 För att skapa en data frame används **data.frame()** och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.
 
@@ -769,10 +770,10 @@ df
 data.frame(m3)
 ```
 
-För åtkomst till element finns nu flera alternativ.
+För åtkomst till element finns nu flera alternati och vi ska se på de två vanligaste:
 
-+ Dels kan används precis som förut hakparenteserna ´[]´ 
-+ Dels finns nu möjlighet att använda `$` för att komma åt data genom att använda variabelnamn. 
++ Precis som för matriser kan användaren använda hakparenteserna ´[]´ 
++ Genom att använda `$` väljs en variabel i en dataframe. Det går sedan att använda hakparentes för att välja ett element i denna variabel.
 
 Nedanstående kod illustrerar de bägge metoderna.
 
@@ -782,9 +783,11 @@ Nedanstående kod illustrerar de bägge metoderna.
 ```{r, eval = FALSE}
 # Visa kolumn 3 
 df[,3]
+# Visa variabeln nordic countries, dvs kolumn 3 
 df$nordic_countries
 # Visa värdet i rad 2 och kolumn 1 
 df[2,1]
+# Visa värdet för element 2 i variabeln x.
 df$x[2]
 ```
 
@@ -799,9 +802,11 @@ df[2,1]
 df$x[2]
 ```
 
-Anvädning av enbart hakparentes är alltså ekvivalent med datahantering med hjälp av `$` och sedan position.
+Användning av enbart hakparentes är alltså ekvivalent med datahantering med hjälp av `$` och sedan position. 
 
-Vi kan med  `$` även enkelt addera nya kolumner, dvs variabler, till en data frame.
+Även om koden med `$` ofta blir längre, så blir koden mer lättförståelig jämfört med indexering för kolumn. Dessutom slipper man problemet med att indexeringen kan ändras om nya variabler adderas till det data frame man arbetar med eller om det på något annat sätt förändras.
+
+Med `$` går det även enkelt att addera nya variabler till en data frame.
 
 3. Skriv nedanstående kod i **kap3_objekt_och_funktioner.R**, spara och kör.
 
@@ -826,12 +831,12 @@ df
 # Skapa en variabel som heter ysq baserat på y i samma data frame.
 df$ysq <- df$y^2
 df
-# Skapa en tom variabel som heter x_cat
-df$x_cat <- NA
+# Skapa en tom variabel som heter x_bin
+df$x_bin <- NA
 df
 ```
 
-Med `$` förenklas även användningen av de logiska operatorerna och det är enkelt att transformera variabler och även skapa mindre data frames.  
+Med `$` förenklas även användningen av de logiska operatorerna och det blir enkelt att transformera variabler och även skapa mindre data frames.  
 
 4. Skriv nedanstående kod i **kap3_objekt_och_funktioner.R**, spara och kör.
 
@@ -845,9 +850,9 @@ df
 # Ändra värden från NA till 0 i x_cat om x är mindre än eller lika 2
 df$x_cat[x <= 2] <- 0
 df
-# Skapa ett nytt data frame som vi kallas dfsub bestående av bara rader där x_cat är lika med 1
-dfsub <- df[df$x_cat == 1, ]
-dfsub
+# Skapa ett nytt data frame som vi kallas df_sweden bestående av bara rader för Sverige
+df_sweden <- df[df$nordic_countries== "Sweden", ]
+df_sweden
 ```
 
 I Console visas nedanstående.
@@ -862,12 +867,35 @@ df
 # Ändra värden från NA till 0 i x_cat om x är mindre än eller lika 2
 df$x_cat[x <= 2] <- 0
 df
-# Skapa ett nytt data frame som vi kallas dfsub bestående av bara rader där x_cat är lika med 1
-dfsub <- df[df$x_cat == 1, ]
-dfsub
+# Skapa ett nytt data frame som vi kallas df_sweden bestående av bara rader för Sverige
+df_sweden <- df[df$nordic_countries== "Sweden", ]
+df_sweden
 ```
 
 Vi kommer senare under kursen gång upprepade gånger att återkomma till data frames och titta närmare olika typer av sätt att hantera detta objekt.
+
+Vi avslutar med några grundläggande för att hatnera data frame.
+
+5. Skriv in nedanstående i scriptet **kap3_objekt_och_funktioner.R**. Spara och kör.
+
+```{r, eval = FALSE}
+# Med names() anges namnen i ett dataframe. 
+names(df)
+# Med colnames() namnges variablerna i en data frame
+colnames(df) <- c("age", "income", "nordic_countries")
+names(df)
+```
+
+Vi ser nu i Console att variabelnamnen har ändrats.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Med names() anges namnen i ett dataframe. 
+names(df)
+# Med colnames() namnges variablerna i en data frame
+colnames(df) <- c("age", "income", "nordic_countries")
+names(df)
+```
+
 
 
 <style>
@@ -880,7 +908,7 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 knitr::include_graphics("docs/images/important.png")
 ```
 
-Hantering av dataobjekt är moment som av förklarliga skäl är väldigt viktigt i R. Det tar inledningsvis tid att lära, men är samtidigt något som varje användare måste vara trygg med. Värt att nämna är att nästan alltid finns alternativa sätt arbeta med data i R och vad som presentas här är är endast ett alternativ. På denna kurs **rekommenderas starkt **att ni följer den metodik som presenteras här. Visserligen är den inte effektivast, varken i termer av beräkningstid eller längd på kod, men det är ett transparent och minimerar risken för att fel uppkommer. 
+Hantering av data är av lättförklarliga skäl väldigt viktigt i R. Det tar inledningsvis tid att lära, men är samtidigt något som varje användare måste vara trygg med. Värt att nämna är att nästan alltid finns alternativa sätt arbeta med data i R och vad som presentas här är är endast ett alternativ. På denna kurs **rekommenderas starkt **att ni följer den metodik som presenteras här. Visserligen är den inte effektivast, varken i termer av beräkningstid eller längd på kod, men det är ett transparent arbetssätt som minimerar risken för att fel uppkommer. 
 
 Datahanteringen är ofta en tidskrävande del i statistisk undersökning och stor noggrannhet är viktigt. Det går inte att tillräckligt betona hur betydelsefull datahanteringen är i en undersökning. En korrekt analys kräver ju korrekt data. 
 
@@ -888,7 +916,7 @@ Datahanteringen är ofta en tidskrävande del i statistisk undersökning och sto
 
 ## Funktioner 
 
-En funktion utför operationer på objekt. Exakt vad funktionen gör beror på funktionen. Det vara allt från att utföra enkla räknaoperationer på data i en vektor, till komplicerade beräkningar och förändringar av data. Oftast sparas resultatet från en funktion som ett nytt objekt. En funktion har i regel också olika argument som gör det möjligt för användaren att anpassa vad funktionen gör. Den något mer avancerade R-användaren kan även enkelt skapa egna funktioner,  vilket är styrka eftersom R då blir väldigt flexibelt. Att skapa egna funktioner ingår emellertid inte på denna kurs utan analyserna som utförs på kurser kommer hanteras av redan implementerade funktioner i R. Denna introduktionen till funktioner är därför relativt kortfattad och det enklaste sättet att introducera funktion blir med hjälp av exempel.  
+En funktion utför operationer på objekt. Exakt vad funktionen gör beror på funktionen. Det vara allt från att utföra enkla räkneoperationer på data i en vektor, till komplicerade beräkningar och förändringar av data. Oftast sparas resultatet från en funktion som ett nytt objekt. En funktion har i regel också olika argument som gör det möjligt för användaren att anpassa vad funktionen gör. Den något mer avancerade R-användaren kan även enkelt skapa egna funktioner,  vilket är styrka eftersom R då blir väldigt flexibelt. Att skapa egna funktioner ingår emellertid inte på denna kurs utan analyserna som utförs på kurser kommer hanteras av redan implementerade funktioner i R. Denna introduktionen till funktioner är därför relativt kortfattad och det enklaste sättet att introducera funktion blir med hjälp av exempel.  
 
 1. Skriv in nedanstående kod i scriptet **kap3_objekt_och_funktioner.R**, spara och kör. 
 
@@ -913,10 +941,10 @@ n <- length(x)
 n
 ```
 
-Du har nu tillämpad funktionen *sum()* som helt enkelt summerar alla elementvärden i en vektor, dvs $\sum_{i=1}^n x_i=x_1 + x_2 + \cdots + x_k$. Funktionen *length()* räknar antalet element.
+Du har nu tillämpat funktionen *sum()* som summerar alla elementvärden i en vektor, dvs $\sum_{i=1}^n x_i=x_1 + x_2 + \cdots + x_k$. Funktionen *length()* räknar antalet element.
 
 Med hjälp av dessa funktioner går det nu att på enkelt sätt att beräkna 
- medelvärde, $\bar{x}=\dfrac{1}{n}\sum_{i=1}^n x_i$, och stickprovsvarians, $s^2=\dfrac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2$. Notera att standardavvikelsen är $s=\sqrt{s^2}$.
+ medelvärdet, $\bar{x}=\dfrac{1}{n}\sum_{i=1}^n x_i$, och stickprovsvarians, $s^2=\dfrac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2$. Notera att standardavvikelsen är $s=\sqrt{s^2}$.
 
 2. Skriv in nedanstående kod i scriptet **kap3_objekt_och_funktioner.R**, spara och kör. 
 
@@ -1016,6 +1044,9 @@ Vi börjar här med några grundläggande funktioner som är användbara.
 # Skapa en vektor som repeterar värde 3 fem gånger
 x1 <- rep(3, 5)
 x1
+# Skapa en vektor som repeterar NA 10 fem gånger
+xNA <- rep(NA, 5)
+xNA
 # Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25
 x2 <- seq(from = 2, to = 3, by = 0.25)
 x2
@@ -1028,7 +1059,6 @@ summary(ymis)
 hist(x)
 # Funktion som skapar ett spridningsdiagram
 plot(x, y)
-
 ```
 
 I Console visas
@@ -1037,6 +1067,9 @@ I Console visas
 # Skapa en vektor som repeterar värde 3 fem gånger
 x1 <- rep(3, 5)
 x1
+# Skapa en vektor som repeterar NA 10 fem gånger
+xNA <- rep(NA, 5)
+xNA
 # Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25
 x2 <- seq(from = 2, to = 3, by = 0.25)
 x2
@@ -1049,12 +1082,10 @@ summary(ymis)
 hist(x)
 # Funktion som skapar ett spridningsdiagram
 plot(x, y)
-
 ```
 
 
-Avslutningsvis finns det ett antal viktiga funktioner för dataobjekt. Bekanta dig med dessa. 
-
+Avslutningsvis finns det ett antal frekvent använda samt viktiga funktioner för dataobjekt. Bekanta dig med dessa. 
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
 # Funktion för att beskriva datatyp 
@@ -1083,16 +1114,15 @@ Avslutningsvis finns en viktig funktion som används för att **radera alla obje
 
 + `rm(list = ls())`. 
 
-Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda en dataanlys med denna kod för att säkerställa att  minnet är tomt innan data läses in. På så vis undviker vi konflkter mellan objekt. Förslagsvis används denna funktion inför **varje ny** övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.
+Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda ett script för en dataanlys med denna kod för att säkerställa att  minnet är tomt innan ny data läses in. På så vis undviker vi konflkter mellan objekt. Förslagsvis används denna funktion inför **varje ny** övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.
 
 
 ## Avslutande kommentarer
 
-+ Bortfall är speciellt och hanteras separat i kapitlet om bortfall.
-+ På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade *tidyverse()*. Här finns paket med funktioner som kan förenkla en del datahantering betydligt och som också följer en logik som många uppskattar.  
-+ Kategorivariabler kallas faktorer och faktorer kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.
++ Bortfall komplicerar analyser och kodas på olika sätt. Det hanteras separat i kapitlet om bortfall.
++ På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade *tidyverse()*. Här finns paket med en mängd funktioner som förenklar avancerad datahantering betydligt och som också följer en logik som många uppskattar. På denna kurs och för de flesta användare är dock baspaketen i R fullt tillräckligt.
++ Kategorivariabler kallas faktorer och kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.
 + I R används även typiska programmeringssatser innehållande *for*, *if*, *else*, *while*. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.
-
 
 ***
 
@@ -1106,12 +1136,12 @@ div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
  <font size="5">  </font>
 Du ska kunna
 
-- känna till de viktigaste datatyper som R arbetar med.
+- känna till de viktigaste datatyperna som R arbetar med.
 - känna till de tre olika typerna av dataobjekt.
-- genomföra enklare datahantering, till exempel förändra ett specifikt elements värde i ett dataobjekt eller att med logiska operationer välja ut data från ett objekt 
+- genomföra enklare datahantering, till exempel förändra ett specifikt elements värde i ett dataobjekt eller att med logiska operationer välja ut data från ett objekt.
+- genomföra logiska operationer på vektorer och data frames.
 - använda `$` i data frames.
-- tillämpa en funktion i R samt informera dig om vad en funktion gör genom att använda hjälp-filen.
-- känna till viktiga funktioner i R som beskriver dataobjekt.
+- tillämpa några vanliga funktioner i R samt även informera dig om vad en funktion gör genom att använda hjälp-filen.
 
 </div>
 
@@ -1302,18 +1332,10 @@ zsub
 
 
 
-### Svar 3.5  {-}
-a) Riktningskoefficienten ges av
-$$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
-och interceptet ges av
-$$ a = \bar{y} - b \bar{x}$$. Vi tillämpar formlerna i R.
 
 
 
-
-
-
-### Övning 3.5  {-}
+### Övning 3.6  {-}
 Du observerar följande datapunkter $x = \{4,7,2,4,6\}$ och $y=\{7,3, 2, 5,6\}$.
 
 ```{r, echo=FALSE}
@@ -1331,7 +1353,7 @@ c) Beräkna residualen för $x=7$
 d) Beräkna residualspridningen.
 
 
-### Svar 3.5  {-}
+### Svar 3.6 {-}
 a) Riktningskoefficienten ges av
 $$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
 och interceptet ges av
@@ -1389,7 +1411,7 @@ residual_spridning
 
 
 
-### Övning 3.6  {-}
+### Övning 3.7  {-}
 Du observerar följande data frame
 
 
@@ -1401,7 +1423,7 @@ df <- data.frame(income, education)
 
 Skapa en ny variabel som heter high_edu som tar värdet 1 om education är "High" och 0 annars.
 
-### Svar 3.6  {-}
+### Svar 3.7  {-}
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.6
@@ -1418,13 +1440,13 @@ df
 ```
 
 
-### Övning 3.7  {-}
+### Övning 3.8  {-}
 Ett oljebolag är intresserat av att för ett äldre bostadsområde med $2\,000$ hus skatta andelen hus utan oljeeldning. Sakkunskapen säger att det sanna antalet hus utan oljeeldning är mellan 300 och 800 stycken. Precisionskravet är formulerat så att ett 95\% konfidensintervall för andelen hus utan oljeeldning inte får
 bli längre än 0.05 procentenheter.
 
 a) Beräkna urvalsstorleken vid OSU om dragningen sker med återläggning.
 
-### Svar 3.7  {-}
+### Svar 3.8  {-}
 
 * Mål: Beräkna den nödvändiga stickprovsstorleken $n$ om längden för ett 95\% konfidensintervall för andelen i populationen får vara maximalt 0.05.
 
@@ -1463,7 +1485,7 @@ min( n[KIlength < 0.05] )
 * Svar: För att uppnå precisionskravet behövs ett stickprov med minst 1476 hus. Glöm inte att kontrollera CGS: $np(1-p)=1476\cdot 0.4(1-0.4)=354.24 > 5$ så antagandet är uppfyllt. Det går även att lösa denna uppgift algebraiskt, genom att lösa ut $n i formeln ovan.
 
 
-### Övning 3.8  {-}
+### Övning 3.9  {-}
 En rikstäckande butikskedja säljer bland annat kompletta datorpaket. För ett visst paket tillåter man butikscheferna att själva sätta priset. För att centralt i företaget få en uppfattning om hur efterfrågan påverkas av priset gör man ett slumpmässigt urval om åtta butiker och inhämtar uppgifter om pris och försäljning under den närmast föregående månaden:
 
 ```{r}
@@ -1473,7 +1495,7 @@ antal <- c(41, 38, 35, 40, 44, 38, 45, 42)
 
 Beräkna korrelationskoefficienten. 
 
-### Svar 3.8  {-}
+### Svar 3.9  {-}
 Korrelationskoefficentens ges av
 
 $$r=\dfrac{\sum_{i=1}^n(x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_i - \bar{x})^2 \sum_{i=1}^n(y_i - \bar{y})^2}}.$$
@@ -1496,7 +1518,7 @@ r
 * Svar: Pearsons produktmomentkorrelationskoefficient är $-0.94$, vilket tyder på ett mkt starkt negativt samband mellan pris och antal.
 
 
-### Övning 3.9  {-}
+### Övning 3.10  {-}
 Betrakta nedanstående vektor:
 
 ```{r, eval = FALSE}
@@ -1506,7 +1528,7 @@ some_letters <- c("A", "B", "C", "B", "D", "A", "D", "A")
 Använd R för att räkna hur många B det finns i vektorn.
  
 
-### Svar 3.9  {-}
+### Svar 3.10  {-}
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.8
@@ -1515,7 +1537,7 @@ some_letters <- c("A", "B", "C", "B", "D", "A", "D", "A")
 length( some_letters[some_letters == "B"] )
 ```
 
-### Övning 3.10  {-}
+### Övning 3.11  {-}
 Betrakta nedanstående vektorer:
 
 ```{r, eval = FALSE}
@@ -1526,7 +1548,7 @@ some_numbers_and_letters <- c("2", "4", "-1", "3", "3", "A", "D")
 Använd R för att summera alla värdena i respektive vektor. Tips: Använd funktionen *as.numeric()*.
  
 
-### Svar 3.10  {-}
+### Svar 3.11  {-}
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.10
@@ -1544,7 +1566,7 @@ sum(some_numerics_2, na.rm = TRUE)
 
 
 
-### Övning 3.11  {-}
+### Övning 3.12  {-}
 Betrakta nedanstående vektorer.
 
 ```{r, eval = FALSE}
@@ -1560,7 +1582,7 @@ d) Skapa variabeln $v = v_1 + v_2 + v_3$ som är en summa av de binära variable
 e) Skapa en frekvenstabell för $v$.
 
 
-### Svar 3.11  {-}
+### Svar 3.12  {-}
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.10
