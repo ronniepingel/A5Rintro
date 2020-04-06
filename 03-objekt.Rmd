@@ -78,7 +78,7 @@ z <- c(x, y)
 Generellt gäller i R att om $x$ är en vektor bestående av $k$ element
 $$x = (x_1,x_2,\ldots,x_k)$$
 och $y$ är en vektor bestående av $l$ element
-$$y = (y_1,y_2,y_3,y_4,y_5)$$
+$$y = (y_1,y_2,\ldots,y_l)$$
 så skapar kommandot 
 
 ```{r, eval=FALSE} 
@@ -617,7 +617,7 @@ Det bör nämnas att det naturligtvis finns mycket mer att lära sig om hur logi
 Spara scriptet **kap3_objekt_och_funktioner.R**.
 
 
-### Matriser
+## Matriser
 En matris är ett tvådimensionellt dataobjekt bestående av **rader** och **kolumner**. Notera ordningen, dvs en matris storlek anges **först** med rader, **sedan** med kolumner. Analogt med **c()**, som kombinerar element till en vektor, används **rbind()** och **cbind()** för att binda ihop vektorer radvis eller kolumnvis till matriser. En matris måste innehålla element av samma datatyp, vilket innebär att det **inte**  går att binda samman numeriska vektorer som med vektorer som innehåller bokstäver. En matris kan även skapas direkt med kommandot **matrix()** som transformerar en vektor med $k$ antal element till en matris bestående motsvarande antal element fördelat på antal rader och kolumner. 
 
 1. Fortsätt scriptet **kap3_objekt_och_funktioner.R** och skriv in nedanstående kod. Spara scriptet och kör.
@@ -743,7 +743,7 @@ Spara scriptet **kap3_objekt_och_funktioner.R**.
 Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Dessutom konstaterade vi att matrisen endast kan hantera en datatyp. Därför introduceras en tredje typ av dataobjekt som bättre sätt hanterar datamaterial. Det är dock bra att känna till att vid mer avancerad användning av R är matriser dock ett mycket viktigt verktyg. 
 
 
-### Data frames
+## Data frames
 En **data frame** är i praktiken det vanligaste objektet för dataanalys. En data frame har två dimensioner (rader och kolumner), men kan till skillnad från matrisen måste inte kolumnerna ha samma datatyp. Vad som dock krävs är att en kolumn består av en och samma datatyp.  Vidare innehåller en data frame detaljerad information om exempelvis **variabelnamn** och **variabeltyp**. 
 
 För att skapa en data frame används **data.frame()** och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.
@@ -1117,13 +1117,6 @@ Avslutningsvis finns en viktig funktion som används för att **radera alla obje
 Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda ett script för en dataanlys med denna kod för att säkerställa att  minnet är tomt innan ny data läses in. På så vis undviker vi konflkter mellan objekt. Förslagsvis används denna funktion inför **varje ny** övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.
 
 
-## Avslutande kommentarer
-
-+ Bortfall komplicerar analyser och kodas på olika sätt. Det hanteras separat i kapitlet om bortfall.
-+ På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade *tidyverse()*. Här finns paket med en mängd funktioner som förenklar avancerad datahantering betydligt och som också följer en logik som många uppskattar. På denna kurs och för de flesta användare är dock baspaketen i R fullt tillräckligt.
-+ Kategorivariabler kallas faktorer och kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.
-+ I R används även typiska programmeringssatser innehållande *for*, *if*, *else*, *while*. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.
-
 ***
 
 ## Sammanfattning
@@ -1142,6 +1135,26 @@ Du ska kunna
 - genomföra logiska operationer på vektorer och data frames.
 - använda `$` i data frames.
 - tillämpa några vanliga funktioner i R samt även informera dig om vad en funktion gör genom att använda hjälp-filen.
+
+</div>
+
+
+***
+
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+
+ <font size="5">  </font>
+```{r, echo = FALSE, out.width = "5%", dpi = 72}
+knitr::include_graphics("docs/images/note.png")
+```
+
++ Bortfall komplicerar analyser och kodas på olika sätt. Det hanteras separat i kapitlet om bortfall.
++ På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade *tidyverse()*. Här finns paket med en mängd funktioner som förenklar avancerad datahantering betydligt och som också följer en logik som många uppskattar. På denna kurs och för de flesta användare är dock baspaketen i R fullt tillräckligt.
++ Kategorivariabler kallas faktorer och kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.
++ I R används även typiska programmeringssatser innehållande *for*, *if*, *else*, *while*. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.
 
 </div>
 

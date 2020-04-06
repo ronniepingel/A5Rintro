@@ -166,13 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
 <li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.2.3</b> Matriser</a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.2.4</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.3</b> Funktioner</a></li>
-<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#avslutande-kommentarer"><i class="fa fa-check"></i><b>3.4</b> Avslutande kommentarer</a></li>
-<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.5</b> Sammanfattning</a></li>
-<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.6</b> Övningar</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
 <li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
@@ -310,7 +309,7 @@ viktigaste är att vara konsekvent. På denna kurs rekommenderas följande princ
 <p>Generellt gäller i R att om <span class="math inline">\(x\)</span> är en vektor bestående av <span class="math inline">\(k\)</span> element
 <span class="math display">\[x = (x_1,x_2,\ldots,x_k)\]</span>
 och <span class="math inline">\(y\)</span> är en vektor bestående av <span class="math inline">\(l\)</span> element
-<span class="math display">\[y = (y_1,y_2,y_3,y_4,y_5)\]</span>
+<span class="math display">\[y = (y_1,y_2,\ldots,y_l)\]</span>
 så skapar kommandot</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(x,y)</a></code></pre></div>
 <p>en vektor med <span class="math inline">\(k + l\)</span> element,
@@ -758,8 +757,9 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <pre><code>## [1] 0 0 0 4 0</code></pre>
 <p>Spara scriptet <strong>kap3_objekt_och_funktioner.R</strong>.</p>
 </div>
-<div id="matriser" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Matriser</h3>
+</div>
+<div id="matriser" class="section level2">
+<h2><span class="header-section-number">3.3</span> Matriser</h2>
 <p>En matris är ett tvådimensionellt dataobjekt bestående av <strong>rader</strong> och <strong>kolumner</strong>. Notera ordningen, dvs en matris storlek anges <strong>först</strong> med rader, <strong>sedan</strong> med kolumner. Analogt med <strong>c()</strong>, som kombinerar element till en vektor, används <strong>rbind()</strong> och <strong>cbind()</strong> för att binda ihop vektorer radvis eller kolumnvis till matriser. En matris måste innehålla element av samma datatyp, vilket innebär att det <strong>inte</strong> går att binda samman numeriska vektorer som med vektorer som innehåller bokstäver. En matris kan även skapas direkt med kommandot <strong>matrix()</strong> som transformerar en vektor med <span class="math inline">\(k\)</span> antal element till en matris bestående motsvarande antal element fördelat på antal rader och kolumner.</p>
 <ol style="list-style-type: decimal">
 <li>Fortsätt scriptet <strong>kap3_objekt_och_funktioner.R</strong> och skriv in nedanstående kod. Spara scriptet och kör.</li>
@@ -895,8 +895,8 @@ radnummer, sedan kolumnnummer.</p>
 <p>Spara scriptet <strong>kap3_objekt_och_funktioner.R</strong>.</p>
 <p>Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Dessutom konstaterade vi att matrisen endast kan hantera en datatyp. Därför introduceras en tredje typ av dataobjekt som bättre sätt hanterar datamaterial. Det är dock bra att känna till att vid mer avancerad användning av R är matriser dock ett mycket viktigt verktyg.</p>
 </div>
-<div id="data-frames" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Data frames</h3>
+<div id="data-frames" class="section level2">
+<h2><span class="header-section-number">3.4</span> Data frames</h2>
 <p>En <strong>data frame</strong> är i praktiken det vanligaste objektet för dataanalys. En data frame har två dimensioner (rader och kolumner), men kan till skillnad från matrisen måste inte kolumnerna ha samma datatyp. Vad som dock krävs är att en kolumn består av en och samma datatyp. Vidare innehåller en data frame detaljerad information om exempelvis <strong>variabelnamn</strong> och <strong>variabeltyp</strong>.</p>
 <p>För att skapa en data frame används <strong>data.frame()</strong> och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.</p>
 <ol style="list-style-type: decimal">
@@ -1074,9 +1074,8 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <p>Datahanteringen är ofta en tidskrävande del i statistisk undersökning och stor noggrannhet är viktigt. Det går inte att tillräckligt betona hur betydelsefull datahanteringen är i en undersökning. En korrekt analys kräver ju korrekt data.</p>
 </div>
 </div>
-</div>
 <div id="funktioner" class="section level2">
-<h2><span class="header-section-number">3.3</span> Funktioner</h2>
+<h2><span class="header-section-number">3.5</span> Funktioner</h2>
 <p>En funktion utför operationer på objekt. Exakt vad funktionen gör beror på funktionen. Det vara allt från att utföra enkla räkneoperationer på data i en vektor, till komplicerade beräkningar och förändringar av data. Oftast sparas resultatet från en funktion som ett nytt objekt. En funktion har i regel också olika argument som gör det möjligt för användaren att anpassa vad funktionen gör. Den något mer avancerade R-användaren kan även enkelt skapa egna funktioner, vilket är styrka eftersom R då blir väldigt flexibelt. Att skapa egna funktioner ingår emellertid inte på denna kurs utan analyserna som utförs på kurser kommer hanteras av redan implementerade funktioner i R. Denna introduktionen till funktioner är därför relativt kortfattad och det enklaste sättet att introducera funktion blir med hjälp av exempel.</p>
 <ol style="list-style-type: decimal">
 <li>Skriv in nedanstående kod i scriptet <strong>kap3_objekt_och_funktioner.R</strong>, spara och kör.</li>
@@ -1275,19 +1274,10 @@ medelvärdet, <span class="math inline">\(\bar{x}=\dfrac{1}{n}\sum_{i=1}^n x_i\)
 <li><code>rm(list = ls())</code>.</li>
 </ul>
 <p>Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda ett script för en dataanlys med denna kod för att säkerställa att minnet är tomt innan ny data läses in. På så vis undviker vi konflkter mellan objekt. Förslagsvis används denna funktion inför <strong>varje ny</strong> övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.</p>
-</div>
-<div id="avslutande-kommentarer" class="section level2">
-<h2><span class="header-section-number">3.4</span> Avslutande kommentarer</h2>
-<ul>
-<li>Bortfall komplicerar analyser och kodas på olika sätt. Det hanteras separat i kapitlet om bortfall.</li>
-<li>På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade <em>tidyverse()</em>. Här finns paket med en mängd funktioner som förenklar avancerad datahantering betydligt och som också följer en logik som många uppskattar. På denna kurs och för de flesta användare är dock baspaketen i R fullt tillräckligt.</li>
-<li>Kategorivariabler kallas faktorer och kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.</li>
-<li>I R används även typiska programmeringssatser innehållande <em>for</em>, <em>if</em>, <em>else</em>, <em>while</em>. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.</li>
-</ul>
 <hr />
 </div>
 <div id="sammanfattning-2" class="section level2">
-<h2><span class="header-section-number">3.5</span> Sammanfattning</h2>
+<h2><span class="header-section-number">3.6</span> Sammanfattning</h2>
 <style>
 div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
 </style>
@@ -1304,9 +1294,23 @@ Du ska kunna</p>
 </ul>
 </div>
 <hr />
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class="green">
+<p><font size="5"> </font>
+<img src="docs/images/note.png" width="5%" /></p>
+<ul>
+<li>Bortfall komplicerar analyser och kodas på olika sätt. Det hanteras separat i kapitlet om bortfall.</li>
+<li>På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade <em>tidyverse()</em>. Här finns paket med en mängd funktioner som förenklar avancerad datahantering betydligt och som också följer en logik som många uppskattar. På denna kurs och för de flesta användare är dock baspaketen i R fullt tillräckligt.</li>
+<li>Kategorivariabler kallas faktorer och kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.</li>
+<li>I R används även typiska programmeringssatser innehållande <em>for</em>, <em>if</em>, <em>else</em>, <em>while</em>. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.</li>
+</ul>
+</div>
+<hr />
 </div>
 <div id="övningar-1" class="section level2">
-<h2><span class="header-section-number">3.6</span> Övningar</h2>
+<h2><span class="header-section-number">3.7</span> Övningar</h2>
 <div id="övning-3.1" class="section level3 unnumbered">
 <h3>Övning 3.1</h3>
 <p>Du har ett stickprov betående av observationerna <span class="math inline">\(4,-2,5,6,8\)</span>.</p>
@@ -1396,7 +1400,7 @@ Beräkna andelen arbetslösa i stickprovet.</p>
 <h3>Övning 3.3</h3>
 <p>Kosumentpriset 2006-2011 är</p>
 <table>
-<caption><span id="tab:unnamed-chunk-119">Table 3.1: </span>Konsumentprisindex (KPI) 2006-2011</caption>
+<caption><span id="tab:unnamed-chunk-120">Table 3.1: </span>Konsumentprisindex (KPI) 2006-2011</caption>
 <tbody>
 <tr class="odd">
 <td align="right">2006</td>
@@ -1528,7 +1532,7 @@ Beräkna andelen arbetslösa i stickprovet.</p>
 <div id="övning-3.6" class="section level3 unnumbered">
 <h3>Övning 3.6</h3>
 <p>Du observerar följande datapunkter <span class="math inline">\(x = \{4,7,2,4,6\}\)</span> och <span class="math inline">\(y=\{7,3, 2, 5,6\}\)</span>.</p>
-<p><img src="dpk_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>Använd minsta-kvadratmetoden och beräkna koefficienterna <span class="math inline">\(a\)</span> och <span class="math inline">\(b\)</span> i regressionslinjen <span class="math inline">\(y=a + bx\)</span>.</li>
 <li>Använd koefficienterna och ge en prediktion för <span class="math inline">\(y\)</span> givet att <span class="math inline">\(x=7\)</span>.</li>
@@ -1658,7 +1662,7 @@ bli längre än 0.05 procentenheter.</p>
 <a class="sourceLine" id="cb125-8" title="8">KIlength &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(  ( p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)  ) <span class="op">/</span><span class="st"> </span>n   )</a>
 <a class="sourceLine" id="cb125-9" title="9"><span class="co"># Illustration över olika KIlength för olika värden stickprovsstorlekar n </span></a>
 <a class="sourceLine" id="cb125-10" title="10"><span class="kw">plot</span>(n, KIlength, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="co"># Välj den minsta stickprovsstorleken som uppfyller precisionskravet KIlength &lt; 0.05</span></a>
 <a class="sourceLine" id="cb126-2" title="2"><span class="kw">min</span>( n[KIlength <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span>] )</a>
 <a class="sourceLine" id="cb126-3" title="3">[<span class="dv">1</span>] <span class="dv">1476</span></a></code></pre></div>
