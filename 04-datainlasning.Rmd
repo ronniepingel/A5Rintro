@@ -1,36 +1,71 @@
 # Läsa in och spara data
 
-Det finns många typer av dataformat och avsikten här är att beskriva principerna för hur datamaterial är organiserade och hur man bör organisera data.  Vi ska även presentera de vanligaste formaten för att att läsa in och spara data. För nybörjaren kan det vara uppmuntrande att känna till att datainläsning i en del fall kan vara omständligt och frustrerande, framförallt om datamaterialet inte är organiserat på ett korrekt sätt. Misströsta därför inte ifall det dyker upp svårigheter. 
+Avsikten är att beskriva principerna för hur datamaterial är organiserade, hur datamaterial bör organiseras samt presentera de vanligaste formaten för att att importera och exportera data. För nybörjaren i R kan det vara uppmuntrande att känna till att datainläsning i en del fall kan vara omständligt och frustrerande, framförallt om datamaterialet inte är organiserat på ett konsekvent sätt. Misströsta därför inte ifall det dyker upp svårigheter. Det krävs mycket erfarenhet för att blir trygg med att arbeta med data.
 
-På denna kurs rekommenderas två sätt att arbeta med data är i något av följande format: 
+På denna kurs rekommenderas två format för att importera och spara datamaterial:
 
-+ **textfil** som innebär att data sparas i textformat. På så vis ärr datamaterialet program- och plattformsoberoende.
-+ **R Data format***, som är en fil med tillägget **.RDS**.  Det är filformat som R använder för att spara objekt. Fördelarna är att det är mindre minneskrävande än R och filen innehåller samma information om objektet som när det fanns som inläst data frame i R.
++ **textfiler** (**.txt** eller **.csv**), vilket innebär att data sparas i textformat.
++ **R Data format** (**.RDS**), vilket är det dataformat som R använder.
 
-I praktiken är det emellertid också nödvändigt att kunna importera och exporertera filer i 
+I praktiken, på grund av att många icke-statistiker använder det, är det dock nödvändigt att kunna importera och spara filer i 
 
-+ Excel-format.
++ Excel-format (**.xlsx** eller motsvarande).
 
-
-
-
-Vi ska därför fokusera på dessa två format. Det finns ett många specialfall som vi inte tar upp. Främst gäller det:
-
-+ import av andra format (t ex SAS-format, SPSS-format, Minitab). Detta kan lösas med exempelvis paket som **foreign**.
-+ import av stora dataset, där till exempel paketet **data.table** kan vara till hjälp.
-
-
-Det är viktigt att organisera data på ett bra sätt och nedan följer några allmänna tips:
+Vad gäller import och export av andra dataformat som är kopplade till andra statistikprogram (SAS, SPSS, Minitab) finns R-paket (t ex **foreign** och **haven**) avsedda för detta. Likaså, vad gäller hantering av stora dataset ($>10$ Gigabyte i storlek) kan paket som **data.table** vara till hjälp.
 
 
 
 
 
+## Principer ska
+
+HAdley Wickham (https://twitter.com/hadleywickham?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
+
+En bra princip för att dataset är att skapa en tidy 
+There are three interrelated rules which make a dataset tidy:
+
++ Varje variabel måste ha en egen kolumn.  Each variable must have its own column.
++ Varje observation måste ha sin egen rad
++ Varje värde måste ha sin egen cell. 
+
+
+
+Data är organiserat i kolumner, där kolumner anger variabler. På rader har vi
+
+Observera att internminnet i datorn sätter en begränsning för hur stora dataset användaren kan hantera i 
 
 + Många program (t ex Excel) gör det möjligt att spara data som ren text istället för i progammets eget format. Spara alltid en kopia i textformat.
 + Organisera data med kolumner som korresponderar till olika variabler.
 + Använd semi-kolon för att avgränsa kolumner. Eftersom komma används som decimaltecken på svenska och avstånd eller TAB är svåra att se i en textfil eftersom de påminner om blanksteg undviks enkla problem. 
 + Försök att inte ändra något i ursprungsfilen. Det är bättre att, om möjligt, importera till R och göra ändringarna där.
+
++ Undvik namn med blanksteg. 
+Avoid names with blank spaces. Good column names: Long_jump or Long.jump. Bad column name: Long jump.
+Avoid names with special symbols: ?, $, *, +, #, (, ), -, /, }, {, |, >, < etc. Only underscore can be used.
+Avoid beginning variable names with a number. Use letter instead. Good column names: sport_100m or x100m. Bad column name: 100m
+Column names must be unique. Duplicated names are not allowed.
+R is case sensitive. This means that Name is different from Name or NAME.
+Avoid blank rows in your data
+Delete any comments in your file
+Replace missing values by NA (for not available)
+If you have a column containing date, use the four digit format. Good format: 01/01/2016. Bad format: 01/01/16
+
+
+Although this book focuses almost exclusively on data analysis, data management is also an important part of data science. As explained in the introduction, we do not cover this topic. However, quite often data analysts needs to collect data, or work with others collecting data, in a way that is most conveniently stored in a spreadsheet. Although filling out a spreadsheet by hand is a practice we highly discourage, we instead recommend the process be automatized as much as possible, sometimes you just have to do it. Therefore, in this section, we provide recommendations on how to organize data in a spreadsheet. Although there are R packages designed to read Microsoft Excel spreadsheets, we generally want to avoid this format. Instead, we recommend Google Sheets as a free software tool. Below we summarize the recommendations made in paper by Karl Broman and Kara Woo18. Please read the paper for important details.
+
+Be Consistent - Before you commence entering data, have a plan. Once you have a plan, be consistent and stick to it.
+Choose Good Names for Things - You want the names you pick for objects, files, and directories to be memorable, easy to spell, and descriptive. This is actually a hard balance to achieve and it does require time and thought. One important rule to follow is do not use spaces, use underscores _ or dashes instead -. Also, avoid symbols; stick to letters and numbers.
+Write Dates as YYYY-MM-DD - To avoid confusion, we strongly recommend using this global ISO 8601 standard.
+No Empty Cells - Fill in all cells and use some common code for missing data.
+Put Just One Thing in a Cell - It is better to add columns to store the extra information rather than having more than one piece of information in one cell.
+Make It a Rectangle - The spreadsheet should be a rectangle.
+Create a Data Dictionary - If you need to explain things, such as what the columns are or what the labels used for categorical variables are, do this in a separate file.
+No Calculations in the Raw Data Files - Excel permits you to perform calculations. Do not make this part of your spreadsheet. Code for calculations should be in a script.
+Do Not Use Font Color or Highlighting as Data - Most import functions are not able to import this information. Encode this information as a variable instead.
+Make Backups - Make regular backups of your data.
+Use Data Validation to Avoid Errors - Leverage the tools in your spreadsheet software so that the process is as error-free and repetitive-stress-injury-free as possible.
+Save the Data as Text Files - Save files for sharing in comma or tab delimited format.
+
 
 ## Text- och CSV-filer
 CSV står för "comma separated values", vilket även referar till semi-kolon eftersom många länder använder komma som decimaltecken. De två funktionerna som används för att läsa in CSV-filer är
@@ -294,6 +329,11 @@ df7 <- read_excel("animal4.xlsx", sheet = "Blad2", range = "A3:D68")
 Titta på data frame `df7` (som nu förhoppningsvis ska se ok ut).
 
 ## Övriga format
+Det är viktigt att organisera data på ett bra sätt och nedan följer några allmänna tips:
 
+
+På så vis är datamaterialet program- och plattformsoberoende. Nackdelen är att man vid inläsning av denna typ av data ofta måste ange 
+
+ I princip är detta en fil som innehåller objektet som fanns i Rs minne spara objekt. Fördelarna med att arbeta i detta format är att det är mindre minneskrävande än R och filen innehåller samma information om objektet som när det fanns som inläst data frame i R. Nackdelen är att det kräver att andra användare också använder R.
 
  

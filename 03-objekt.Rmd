@@ -1,8 +1,8 @@
 # Data, objekt och funktioner
 
-För att kunna arbeta med statistik och dataanalys är det viktigt att inte enbart förstå den statistiska metoden och kunna lösa problem med hjälp av en miniräknare. I praktiken är det även nödvändigt att förstå hur data hanteras, lagras och struktureras. I detta kapitel introduceras typer av data som normalt hanteras i R, sedan följer avsnitt om de olika typer av objekt som finns i R. Kapitlet avslutas med se på vad en funktion i R är för något och hur funkioner kan användas för att hantera objekt.
+För att kunna arbeta med statistik och dataanalys är det viktigt att inte enbart förstå den statistiska metoden och kunna lösa problem med hjälp av en miniräknare. I praktiken är det även nödvändigt att förstå hur data hanteras, lagras och struktureras. I detta kapitel introduceras typer av data som normalt hanteras i R, sedan följer avsnitt om de olika typer av objekt som finns i R. Kapitlet avslutas med se på vad en funktion i R är för något och hur funkioner kan användas för att hantera objekt. Detta är ett omfattande kapitel, men det är viktigt att du kan hantera *allt* som presenteras. Avsikten med kaptitlet är nämligen att ta upp de allra vanligaste. 
 
-## Data
+## Data och objekt
 Utan data är statistik innehållslöst. På samma sätt är data grundläggande för arbete i R. De vanligaste datatyperna i R är
 
 + character (text), som anges med citationstecken t ex "a", "3".
@@ -24,7 +24,6 @@ Det är **mycket viktigt** för alla som arbetar med statistiska analyser av dat
 | Kvot      | Kvantitativ, kontinuerlig, heltal, diskret  | Numeric, integer                      |
 
 
-## Objekt
 Data hanteras och sparas som **objekt**. För att skapa ett objekt används **assignment**-operatorn **<-**. Objektet sparas därmed i minnet i R, men inget resultat redovisas i Console. Om R stängs ner måste objektet skapas på nytt såvida användaren inte har angett att objektet ska sparas.
 
 I regel arbetar man i R med flera olika objekt samtidigt. Objekten måste därför 
@@ -45,7 +44,7 @@ Det tre vanligaste objekten för hantering av data är:
 + data frames. 
 
 
-### Vektorer 
+## Vektorer 
 En vektor är ett dataobjekt som är endimensionellt och består av $n$ element. En vektor skapas med kommandot **c()** (''Combine Values into a Vector''). Anta att vi observerar värdena $3,-1,1,5,0$. Med hjälp av nedanstående kod skapas ett vektor-objekt med med 5 element:
 
 ```{r, eval=TRUE}
@@ -186,9 +185,8 @@ knitr::include_graphics("docs/images/important.png")
 ```
 
 + En vektor som innehåller enbart en datatyp kallas för **atomic**. Detta kan vara värt att känna till eftersom eftersom det är vanligt att felmeddelande referar till just att en vektor inte är atomic.  
-+ Använd `r # ` används för att kommentera kod. *Kommentera alltid kod!*. Vid all programmering är det viktigt att förklara koden så att du själv och andra snabbt förstår vad koden gör.  Det är viktigt att få rutin på att kommentera, så kommentera även enkel kod.
++ Inled en rad med # för att kommentera kod. *Kommentera alltid kod!*. Vid all programmering är det viktigt att förklara kod så att du själv och andra snabbt förstår vad koden gör.  Det är viktigt att få rutin på att kommentera, kommentera därför även enkel kod.
 </div>
-
 
 Nya vektorer kan skapas med räkneoperationer. Beräkningarna sker då **elementvis**, till exempel adderas elementvärden i en vektor till elementvärden i en annan vektor som har motsvarade position. Vektorerna måste
 
@@ -255,9 +253,116 @@ x + c(2,5,6)
 ```
 
 
-Resultatet är alltså att om vektorn $x$ adderas till en vektor bestående av 3 element, dvs antalet element skiljer sig åt, erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn $u$ ovan, fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.
+Detta innebär att om vektorn $x$ (innehållande 5 element) adderas till en vektor bestående av endast 3 element, dvs antalet element skiljer sig åt, erhålls ett felmeddelande. Det gäller oavsett räknesätt. Om däremot den ena vektorn är en konstant, som i exemplet med vektorn $u$ ovan, fungerar beräkningarna genom att konstanten beräknas för alla element i den större vektorn.
 
-Vi ska nu studera hur vektorer, och följaktligen data, kan hanteras. I praktiken måste data anpassas och manipuleras för planerade analyser. Det mest grundläggande i denna process  är att konstatera att varje element har en position. Med hakparenteser `[]` erhålls åtkomst till ett eller flera element,  antingen genom att direkt identifiera positionen i vektorn med en siffra eller med **logiska operatorer**. Några vanliga och viktiga logiska operatorer är:
+### Vektorer och indexering
+
+Vi ska nu presentera hur enskilda element kan väljas ut i vektorer. Eftersom data i praktiken alltid måste anpassas för planerade analyser är detta nödvändigt. Det mest grundläggande i hantering av vektorer  är att konstatera att varje element i en vektor har en position. Med hakparenteser `[]` erhålls åtkomst till ett eller flera element.
+
+1. Skriv in nedanstående i ditt script, spara och kör.
+
+
+```{r, eval=FALSE}
+# Visa element nummer 2 i vektorn x 
+x[2]
+# Visa element 2, 3 och 4 i vektorn y
+y[c(2,3,4)]
+```
+
+I Console redovisas 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Visa element nummer 2 i vektorn x 
+x[2]
+# Visa element 2, 3 och 4 i vektorn y
+y[c(2,3,4)]
+```
+
+Det går även att spara utvalda element till en ny vektor. 
+
+2. Skriv in nedanstående i ditt script.
+
+```{r, eval=FALSE}
+# Spara element nummer 2 i vektorn x2 
+x2 <- x[2]
+x2
+# Visa element 2, 3 och 4 i vektorn y234
+y234 <- y[c(2,3,4)]
+y234
+```
+
+I Console redovisas 
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Spara element nummer 2 till vektorn x2 
+x2 <- x[2]
+x2
+# Spara element 2, 3 och 4 till vektorn y234
+y234 <- y[c(2,3,4)]
+y234
+```
+
+Det går att tillämpa **negativ indexering** för att **exkludera** angivna element. Resterande element i en vektor behålls då.
+
+3. Skriv in nedanstående i scriptet, spara, och kör.
+
+```{r, eval=FALSE}
+# Spara element nummer 1,3,4,5 till vektorn x1345 
+x1345 <- x[-2]
+x1345
+# Spara element 1 och 5 till vektorn y15
+y15 <- y[-c(2,3,4)]
+y15
+```
+
+I Console redovisas nedanstående.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Spara element nummer 1,3,4,5 till vektorn x1345 
+x1345 <- x[-2]
+x1345
+# Spara element 1 och 5 till vektorn y15
+y15 <- y[-c(2,3,4)]
+y15
+```
+
+En viktigt skäl till att identifiera element är att användaren då på ett enkelt sätt kan hantera värden som identifierade element har.
+
+4. Skriv i nedanstående i scriptet, spara och kör.
+
+```{r, eval=FALSE}
+# Ändra element 3 från 1 till 4
+x_new <- x
+x_new[3] <- 4
+x_new 
+# Ändra element 3 från "Iceland" till 4
+nordic_countries_new <- nordic_countries
+nordic_countries_new[3] <- 4
+nordic_countries_new 
+```
+
+I Console redovisas nedanstående.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Ändra element 3 från 1 till 4
+x_new <- x
+x_new[3] <- 4
+x_new 
+# Ändra element 3 från "Iceland" till 4
+nordic_countries_new <- nordic_countries
+nordic_countries_new[3] <- 4
+nordic_countries_new 
+```
+
+
+Ovanstående kod illustrerar två vanliga företeelser: 
+
++ Vektorerna *x_new* och *nordic_countries_new* skapas på grund av att användaren ofta önskar behålla originalvektorerna *x* och  *nordic_countries*. Detta är ofta önskvärt.
++ Om ett numeriskt värde läggs till en vektor med bokstäver så tolkas det numeriska värdet som ett tecken, dvs *"4"*. Det illustrerar vikten av vara noga med om vektorerna är *numeriska* eller *character*
+
+
+### Vektorer och logiska operatorer
+Istället för att  direkt identifiera positionen i vektorn kan man använda **logiska operatorer**. Några vanliga och viktiga logiska operatorer är:
 
 + `<` är mindre än.
 + `>` är mindre än.
@@ -268,20 +373,11 @@ Vi ska nu studera hur vektorer, och följaktligen data, kan hanteras. I praktike
 + `x|y` $x$ eller $y$
 + `x & y` $x$ och $y$
 
-Genom att använda positioner och logiska operator kan användaren direkt hantera  data i vektorn. 
+Genom att använda dessa kan användaren direkt hantera  data i vektorn. 
 
-8. Fortsätt scriptet genom att skriva in nedanstående kod. Spara och kör koden.
-
+1. Fortsätt scriptet genom att skriva in nedanstående kod. Spara och kör koden.
 
 ```{r, eval=FALSE}
-# Visa element nummer 2 i vektorn x 
-x[2]
-# Visa med negativ indexering alla element i x men inte element 2
-x[-2]
-# Visa element 2, 3 och 4 i vektorn y
-y[c(2,3,4)]
-# Visa med negativ indexering element 1 och 5 i vektorn y
-y[-c(2,3,4)]
 # Visa element i vektor y som är större än 6
 y[y > 6]
 # Visa element i vektor y som är större än eller lika med 6
@@ -289,6 +385,8 @@ y[y >= 6]
 # Visa element i vektor y från positioner där x har värden lika med 1. 
 # (Kräver att x och y har lika många element) 
 y[x == 1]
+# Visa element i vektor där x är ej lika med 1.
+y[x != 1]
 # Visa element i vektor y från positioner där nordic_countries == "Finland"
 y[nordic_countries == "Finland"]
 
@@ -297,14 +395,6 @@ y[nordic_countries == "Finland"]
 I Console visas 
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
-# Visa element nummer 2 i vektorn x 
-x[2]
-# Visa med negativ indexering alla element i x men inte element 2
-x[-2]
-# Visa element 2, 3 och 4 i vektorn y
-y[c(2,3,4)]
-# Visa med negativ indexering element 1 och 5 i vektorn y
-y[-c(2,3,4)]
 # Visa element i vektor y som är större än 6
 y[y > 6]
 # Visa element i vektor y som är större än eller lika med 6
@@ -312,28 +402,28 @@ y[y >= 6]
 # Visa element i vektor y från positioner där x har värden lika med 1. 
 # (Kräver att x och y har lika många element) 
 y[x == 1]
+# Visa element i vektor där x är ej lika med 1.
+y[x != 1]
 # Visa element i vektor y från positioner där nordic_countries == "Finland"
 y[nordic_countries == "Finland"]
 
 ```
 
-Du ser nu att med hjälp av indexering på ett enkelt sätt kan välja element i vektorer. Du ska nu med hjälp av indexering
+Precis som förut skapas i regel nya vektorer när logiska operatorer tillämpas.
 
-+ skapa en ny vektor som en är delmängd av den ursprungliga vektorn.
-+ förändra element i en numerisk vektor
-+ förändra element i en character-vektor.
-
-9. Skriv in nedanstående kod och spara scriptet. Kör sedan scriptet.
-
+2. Skriv in nedanstående i scriptet, spara och kör koden.
 
 ```{r, eval=FALSE}
-# Spara element 2, 3, 4 i en ny vektor ysub och visa vektorn
-ysub <- y[c(2,3,4)]
-ysub
-# Sätt värdet 0 i vektorn y där y är större än eller lika med 6
-ysub[ysub >= 6] <- 0
-# Sätt värdet 99 i vektorn ysub på positionen där nordic_countries är "Finland"
-ysub[nordic_countries == "Finland"] <- 99
+# Välj vektorn som är större än eller lika med 6
+ysub <- y[y >= 6] 
+
+# Skapa en binär vektor x_bin som är 1 om x är större än eller lika med 3 och 0
+# om x är mindre än 3. Börja med att skapa en tom vektor med motsvarande antal element
+# och fyll sedan denna med saknade värden.
+x_bin <- c(NA, NA, NA, NA, NA)
+x_bin[x >=3] <- 1
+x_bin[x < 3] <- 0
+
 # Skapa en tom vektor med 5 element och fyll därefter denna vektor med
 # data om landet är skandinaviskt eller ej
 scandinavia <- c(NA, NA, NA, NA, NA) 
@@ -349,13 +439,17 @@ scandinavia
 I Console visas 
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
-# Spara element 2, 3, 4 i en ny vektor ysub och visa vektorn
-ysub <- y[c(2,3,4)]
-ysub
-# Sätt värdet 0 i vektorn y där y är större än eller lika med 6
-ysub[ysub >= 6] <- 0
-# Sätt värdet 99 i vektorn ysub på positionen där nordic_countries är "Finland"
-ysub[nordic_countries == "Finland"] <- 99
+# Välj vektorn som är större än eller lika med 6
+ysub <- y[y >= 6] 
+
+# Skapa en binär vektor x_bin som är 1 om x är större än eller lika med 3 och 0
+# om x är mindre än 3. Börja med att skapa en tom vektor med motsvarande antal element
+# och fyll sedan denna med saknade värden.
+x_bin <- c(NA, NA, NA, NA, NA)
+x_bin[x >=3] <- 1
+x_bin[x < 3] <- 0
+x
+x_bin
 # Skapa en tom vektor med 5 element och fyll därefter denna vektor med
 # data om landet är skandinaviskt eller ej
 scandinavia <- c(NA, NA, NA, NA, NA) 
@@ -367,16 +461,163 @@ scandinavia[nordic_countries == "Iceland"] <- "Not scandinavia"
 scandinavia
   
 ```
+OVanstående moment är **viktigt**. Här illustreras nämligen en grundläggande princip för skapandet av nya variabel, dvs först skapa en tom vektor som sedans fylls med information. Även om det finns alternativa kompaktare sätt att koda om vektorer (och följaktligen variabler), är det ovanstående tillvägagångssätt som rekommenderas starkt på denna kurs.
 
-Ovanstående sätt att skapa nya vektorer och förändra element används **mycket ofta** i R. 
+Nästa steg är att använda den logiska operatorn *&*.
+
+3. Skriv in nedanstående i scriptet, spara och kör koden.
+
+
+```{r, eval=FALSE}
+# Skapa en vektor z_trinary som är
+# 1 om z är mindre än eller lika med 1
+# 2 om z är större än 1 eller mindre än eller lika med 5 
+# 3 om z är större än 5 
+z_trinary <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z_trinary[z <= 1] <- 1
+z_trinary[(z > 1) & (z <=5)] <- 2
+z_trinary[z > 5] <- 3
+z
+z_trinary
+
+# Skapa en binära variabler z1, z2 och z3
+z1 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z1[z_trinary == 1] <- 1
+z1[z_trinary == 2] <- 0
+z1[z_trinary == 3] <- 0
+
+z2 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z2[z_trinary == 1] <- 0
+z2[z_trinary == 2] <- 1
+z2[z_trinary == 3] <- 0
+
+z3 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z3[z_trinary == 1] <- 0
+z3[z_trinary == 2] <- 0
+z3[z_trinary == 3] <- 1
+z1
+z2
+z3
+
+```
+
+I Console redovisas följande.
+
+```{r, collapse=TRUE, prompt=TRUE, comment='>'}
+# Skapa en vektor z_trinary som är
+# 1 om z är mindre än eller lika med 1
+# 2 om z är större än 1 eller mindre än eller lika med 5 
+# 3 om z är större än 5 
+z_trinary <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z_trinary[z <= 1] <- 1
+z_trinary[(z > 1) & (z <= 5)] <- 2
+z_trinary[z > 5] <- 3
+z
+z_trinary
+
+# Skapa en binära variabler z1, z2 och z3
+z1 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z1[z_trinary == 1] <- 1
+z1[z_trinary == 2] <- 0
+z1[z_trinary == 3] <- 0
+
+z2 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z2[z_trinary == 1] <- 0
+z2[z_trinary == 2] <- 1
+z2[z_trinary == 3] <- 0
+
+z3 <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+z3[z_trinary == 1] <- 0
+z3[z_trinary == 2] <- 0
+z3[z_trinary == 3] <- 1
+z1
+z2
+z3
+
+```
+
+
+Några viktiga punkter att komma ihåg är 
+
++ Arbetsgången är att en ny vektor skapas, vilken sedan fylls på. För en binär variabel skulle vi teoretiskt kunna använda operatorn *!=*, men detta kan dels leda till att NA i en vektor kodas till 0, dels att datatvätten blir mindre noggrann.
++ Parenteser ska användas, som till exempel var fallet med *(z > 1) & (z <= 5)*. 
+
+Avslutningsvis ska vi använda den logiska operatorn *|*.
+
+4. Skriv in nedanstående i scriptet, spara och kör koden.
+
+
+```{r, eval=FALSE}
+# Om z1 = 1 eller z3 = 1, så ska w_bin = 1.
+# Om z2 = 1 så ska d_bin = 0.
+
+# Skapa en tom vektor w_bin
+d_bin <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+d_bin[(z1 == 1) | (z3 == 1)] <- 1
+d_bin[z2 == 1] <- 0
+z1
+z2
+z3
+w_bin
+
+
+# Om landet är Norge eller Island och x > 4 eller w > -50 så ska vi sätta NA
+y_new <- y
+y_new[( (nordic_countries == "Iceland") | (nordic_countries == "Norway") ) & 
+        ( (x > 4) | (w > -50) ) ] <- NA
+nordic_countries
+x
+w
+y_new
+
+```
+
+I Console ser vi utskrifterna. Om du inte har förstått koden, så kan du jämföra vektorerna och se varför *w_bin* och *y_new* har fått de värden som de har.
+
+```{r, eval=FALSE}
+# Om z1 = 1 eller z3 = 1, så ska w_bin = 1.
+# Om z2 = 1 så ska d_bin = 0.
+
+# Skapa en tom vektor w_bin
+d_bin <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA)
+d_bin[(z1 == 1) | (z3 == 1)] <- 1
+d_bin[z2 == 1] <- 0
+z1
+z2
+z3
+w_bin
+
+
+# Om landet är Norge eller Island och x > 4 eller w > -50 så ska vi sätta NA
+y_new <- y
+y_new[( (nordic_countries == "Iceland") | (nordic_countries == "Norway") ) & 
+        ( (x > 4) | (w > -50) ) ] <- NA
+nordic_countries
+x
+w
+y_new
+
+```
+
+Ovanstående sätt att förändra och skapa vektorer används **mycket ofta** i R och kan hantera mycket av den praktiska datahantering som du kommer att stöta på under denna kurs, men också ute i arbetslivet. Som tidigare nämnts  finns andra sätt att åstadkomma samma resultat, som kanske till och med i specifika avseenden bättre, men utgå på denna kurs från kod som presenteras här. 
+
+Det bör nämnas att det naturligtvis finns mycket mer att lära sig om hur logiska operatorer fungerar. Till exempel skapar nedanstående kod den sista datatypen som nämndes inledningsvis, dvs logical data. 
+
+5. Skriv in nedanstående i scriptet, spara och kör koden.
+
+```{r eval=TRUE}
+# Ger en logisk vektor
+(x > 4) 
+# Multiplikation med en logisk vektor
+1*(x > 4) 
+4*(x > 4) 
+```
 
 Spara scriptet **kap3_objekt_och_funktioner.R**.
 
 
-
-
 ### Matriser
-En matris är ett tvådimensionellt dataobjekt bestående av **rader** och **kolumn**. Notera ordningen att vid beskrivningen av en matris storlek så så anges anges **först** rader, **sedan** kolumner. Analogt med **c()**, som kombinerar element till en vektor, används **rbind()** och **cbind()** för att binda ihop vektorer radvis eller kolumnvis till matriser. En matris måste innehålla element av samma datatyp, vilket innebär att det **inte**  går att binda samman numeriska vektorer som med vektorer som innehåller bokstäver. En matris kan även skapas direkt med kommandot **matrix()** som transformerar en vektor med $k$ antal element till en matris bestående motsvarande antal element fördelat på antal rader och kolumner. 
+En matris är ett tvådimensionellt dataobjekt bestående av **rader** och **kolumner**. Notera ordningen, dvs en matris storlek anges **först** med rader, **sedan** med kolumner. Analogt med **c()**, som kombinerar element till en vektor, används **rbind()** och **cbind()** för att binda ihop vektorer radvis eller kolumnvis till matriser. En matris måste innehålla element av samma datatyp, vilket innebär att det **inte**  går att binda samman numeriska vektorer som med vektorer som innehåller bokstäver. En matris kan även skapas direkt med kommandot **matrix()** som transformerar en vektor med $k$ antal element till en matris bestående motsvarande antal element fördelat på antal rader och kolumner. 
 
 1. Fortsätt scriptet **kap3_objekt_och_funktioner.R** och skriv in nedanstående kod. Spara scriptet och kör.
 
@@ -468,7 +709,7 @@ m1[,3]
 m2[c(1,2),]
 ```
 
-Precis som vad gäller vektorer går det att utföra elementvisa beräkningar. Det kräver att matriserna har samma antal rader och kolumner. Det går även att utföra räkneoperationer med en konstant. Observera att elementvis multiplikation **inte** är samma som det som betecknas **matrismultiplikation**. Det är naturligtvis inga problem att i R använda matrismultiplikation, men detta går utöver kursens mål.
+Precis som vad gäller vektorer går det att utföra elementvisa beräkningar. Det kräver att matriserna har samma antal rader och kolumner. Det går även att utföra räkneoperationer med en konstant. Observera att elementvis multiplikation **inte** är detsamma som matematikens **matrismultiplikation**. Det är naturligtvis inga problem att i R använda matrismultiplikation, men detta går utanför kursens avgränsning.
 
 3. För att exemplfiera räkneoperationer med matriser, skriv in nedanstående kod i scriptet, spara och kör. 
 
@@ -498,11 +739,11 @@ m1 / u
 
 Spara scriptet **kap3_objekt_och_funktioner.R**.
 
-Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Dessutom konstaterade vi att matrisern endast kan hantera en datatyp. Därför introduceras en tredje typ av dataobjekt som är enklare att arbeta med.
+Det går att tillämpa logiska operatorer även på matriser, men den extra dimensionen gör detta omständligt. Dessutom konstaterade vi att matrisen endast kan hantera en datatyp. Därför introduceras en tredje typ av dataobjekt som bättre sätt hanterar datamaterial. Det är dock bra att känna till att vid mer avancerad användning av R är matriser dock ett mycket viktigt verktyg. 
 
 
 ### Data frames
-En **data frame** är i praktiken det vanligaste objektet för dataanlys. Liksom matrisen har en data frame två dimensioner (rader och kolumner), men kan till skillnad från matrisen innehålla element med olika datatyper, t ex både numeriska värden och bokstäver. Vidare innehåller en data frame detaljerad information om exempelvis **variabelnamn** och **variabeltyp**. 
+En **data frame** är i praktiken det vanligaste objektet för dataanalys. En data frame har två dimensioner (rader och kolumner), men kan till skillnad från matrisen innehålla element med olika datatyper, t ex både numeriska värden och bokstäver. Vidare innehåller en data frame detaljerad information om exempelvis **variabelnamn** och **variabeltyp**. 
 
 För att skapa en data frame används **data.frame()** och vi ska nu se på några exempel. Observera att en data frame även anger information om radnummer. Dessa nummer är dock inte definierade som en sepearat kolumn.
 
@@ -558,7 +799,8 @@ df[2,1]
 df$x[2]
 ```
 
-Man alltså använd enbart hakparentes, men oftast använder man vid datahantering `$` eftersom det är transparent. 
+Anvädning av enbart hakparentes är alltså ekvivalent med datahantering med hjälp av `$` och sedan position.
+
 Vi kan med  `$` även enkelt addera nya kolumner, dvs variabler, till en data frame.
 
 3. Skriv nedanstående kod i **kap3_objekt_och_funktioner.R**, spara och kör.
@@ -741,7 +983,6 @@ ymisbar
 
 I Console presenteras följande.
 
-
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
 # Beräkna medelvärdet av ymis, en vektor med att bortfall
 ymis.mean <- mean(ymis)
@@ -755,7 +996,6 @@ ymisbar
 
 Eftersom R ger att $y_1 + y_2 + NA + \cdots + y_k = NA$  blir även medelvärdet NA. Vi kan dock använda ett argument i funktionen som heter *na.rm* som vi sätter till *TRUE*. Om detta argument sätts till *TRUE* så tar funktionen före beräkning bort saknade värden. Default-inställningen är dock att detta argument är satt till *FALSE*. Det innebär att medelvärdet *ymisbar* är beräknat på de fyra värden som har observationer.
 
-
 För att veta vilka argument en funktion har skriver använd funktionen **help()**. I exemplet med medelvärdet så skriver du `help(mean)`. I nedre högra panelen i Rstudio under fliken *Help* visas nu information om den funktion som vi ville veta mer om.
 
 ```{r, echo = FALSE, out.width = "100%", dpi = 72}
@@ -764,13 +1004,16 @@ knitr::include_graphics("docs/images/helpmean.png")
 
 I hjälpfilen står under *Usage* hur funktionen kan användas `mean(x, trim = 0, na.rm = FALSE)`  och under *Arguments* hittar beskrivs vad argumenten betyder. Till exempel står det  `na.rm	 a logical value indicating whether NA values should be stripped before the computation proceeds.`. Grundinställningen (default) satt till FALSE efter detta är angivet i *Usage*. Hjälpfilerna är ofta svåra att förstå, men exemplen längst ner i hjälpfilerna är i regel klargörande.
 
-Det är ingen mening med att lista alla viktiga funktioner, utan på denna kurs kommer funktioner att introduceras efterhand.
-Men några funktioner som är är bra att känna till och som 
+På denna kurs kommer funktioner att introduceras efterhand. Funktioner är nämligen något som man lär sig genom tillämpning och inte genom att lära sig utantill i förväg. Dock kan det vara bra att ha en lista över alla de vanliga funktionerna så man vet vilka möjligheter som finns.
+
+https://cran.r-project.org/doc/contrib/Short-refcard.pdf
+
+Vi börjar här med några grundläggande funktioner som är användbara.
 
 5. Skriv in nedanstående kod i scriptet **kap3_objekt_och_funktioner.R**, spara och kör. 
 
 ```{r, eval = FALSE}
-# Skapa en vektor som repeterar ett värde 
+# Skapa en vektor som repeterar värde 3 fem gånger
 x1 <- rep(3, 5)
 x1
 # Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25
@@ -791,7 +1034,7 @@ plot(x, y)
 I Console visas
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
-# Skapa en vektor som repeterar ett värde 
+# Skapa en vektor som repeterar värde 3 fem gånger
 x1 <- rep(3, 5)
 x1
 # Funktion som skapar en sekvens från 2 till 3 med steglängd 0.25
@@ -811,6 +1054,7 @@ plot(x, y)
 
 
 Avslutningsvis finns det ett antal viktiga funktioner för dataobjekt. Bekanta dig med dessa. 
+
 
 ```{r, collapse=TRUE, prompt=TRUE, comment='>'}
 # Funktion för att beskriva datatyp 
@@ -839,7 +1083,16 @@ Avslutningsvis finns en viktig funktion som används för att **radera alla obje
 
 + `rm(list = ls())`. 
 
-Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda en dataanlys med denna kod för att säkerställa att  minnet är tomt innan data läses in och analyser görs så att konflkter mellan objekt inte uppstår.Förslagsvis används denna funktion inför varje ny övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.
+Var försiktig med denna funktion eftersom alla objekt i minnet försvinner! Emellertid är god idé inleda en dataanlys med denna kod för att säkerställa att  minnet är tomt innan data läses in. På så vis undviker vi konflkter mellan objekt. Förslagsvis används denna funktion inför **varje ny** övningsuppgift, såvida inte uppgiftern bygger på information från tidigare uppgifter.
+
+
+## Avslutande kommentarer
+
++ Bortfall är speciellt och hanteras separat i kapitlet om bortfall.
++ På denna kurs används baspaketen i R för datahantering. I R-universumet finns även en uppsättning paket som tillhör det så kallade *tidyverse()*. Här finns paket med funktioner som kan förenkla en del datahantering betydligt och som också följer en logik som många uppskattar.  
++ Kategorivariabler kallas faktorer och faktorer kommer att hanteras utförligt i kapitlet om faktorer. Att ha en förståelse för hur man hanterar faktorer är nödvändigt inom all dataanlys.
++ I R används även typiska programmeringssatser innehållande *for*, *if*, *else*, *while*. Detta är emellertid inte något som vi kommer att arbeta med på denna kurs.
+
 
 ***
 
@@ -1014,6 +1267,51 @@ t.test(x, mu = 1)$p.value
 ```
 
 * Svar: Efterom $p=0.13$ kan vi  på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta **inte** innebär att vi visar att medelvärdet är 1.
+
+
+### Övning 3.5  {-}
+Du observerar följande vektorer $x = \{4,7,2,4,6,NA,89\}$ och $y=\{7,3, 2, 5,6, 5 , 7\}$ och $z=\{Alfa, bravo, Charlie, delta, Echo, Foxtrot, Golf\}$
+
+a) Använd indexering för att summera element 2 och 3 i $x$ med element 6 och 7 i $y$.
+b) Använd indexering för att ändra NA i $x$ till 999.
+c) Använd indexering för att korrigera så att bravo och delta inleds med versaler.
+d) Exkludera Echo och Foxtrot från $z$.
+
+### Svar 3.5  {-}
+```{r, collapse=TRUE, prompt=FALSE, comment=''}
+# Töm minnet inför uppgift 3.5 
+rm(list = ls())
+# a)
+x <- c(4,7,2,4,6,NA,89)
+y <- c(7,3,2,5,6,5,7)
+sumxy <- x[c(2,3)] + y[c(6,7)]
+sumxy
+# b)
+x[6] <- 999
+x
+# c)
+z <- c("Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf")
+z[2] <- "Bravo"
+z[4] <- "Delta"
+z
+# d)
+zsub <- z[-c(5,6)]
+zsub
+```
+
+
+
+
+### Svar 3.5  {-}
+a) Riktningskoefficienten ges av
+$$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
+och interceptet ges av
+$$ a = \bar{y} - b \bar{x}$$. Vi tillämpar formlerna i R.
+
+
+
+
+
 
 ### Övning 3.5  {-}
 Du observerar följande datapunkter $x = \{4,7,2,4,6\}$ och $y=\{7,3, 2, 5,6\}$.
