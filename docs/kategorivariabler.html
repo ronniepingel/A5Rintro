@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 6 Kategorivariabler | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 6 Kategorivariabler | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 6 Kategorivariabler | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 6 Kategorivariabler | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2020-04-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="urvalsmetoder.html"/>
+<link rel="next" href="kategorivariabler-och-tabeller.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.1"><i class="fa fa-check"></i>Svar 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.2"><i class="fa fa-check"></i>Svar 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.3"><i class="fa fa-check"></i>Svar 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.4"><i class="fa fa-check"></i>Svar 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.5"><i class="fa fa-check"></i>Svar 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.6"><i class="fa fa-check"></i>Svar 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.7"><i class="fa fa-check"></i>Svar 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.8"><i class="fa fa-check"></i>Svar 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.2"><i class="fa fa-check"></i>Svar 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.3"><i class="fa fa-check"></i>Svar 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.4"><i class="fa fa-check"></i>Svar 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.5"><i class="fa fa-check"></i>Svar 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.6"><i class="fa fa-check"></i>Svar 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.7"><i class="fa fa-check"></i>Svar 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.12"><i class="fa fa-check"></i>Svar 3.12</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-ska"><i class="fa fa-check"></i><b>4.1</b> Principer ska</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.2</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.4</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>5</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="5.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>5.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>5.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-p"><i class="fa fa-check"></i><b>5.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-tau"><i class="fa fa-check"></i><b>5.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>5.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>5.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>5.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>5.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>5.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>5.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="5.2.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>5.2.5</b> Efterstratifiering</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-2"><i class="fa fa-check"></i><b>5.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-1"><i class="fa fa-check"></i>Övning 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-1"><i class="fa fa-check"></i>Svar 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-2"><i class="fa fa-check"></i>Övning 2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kategorivariabler" class="section level1">
+<h1><span class="header-section-number">Kapitel 6</span> Kategorivariabler</h1>
+<p>I princip alla datamaterial innehåller kategorivariabler och finns inga sådana från början är det vanligt att på olika sätt omkoda kvantitativa variabler till kategorier. Dessutom hanteras diskreta kvantitativa variabler med få värden ofta som en kategorivariabel.</p>
+<p>Kategorivariabler är generellt sett besvärligare att arbeta med jämfört med kvantitativa variabler. Något som kan vara förvirrande inledningsvis är att det finns två alternativ beträffande hur man väljer att arbeta med kategorivariabler, som bägge är viktiga för en dataanlytiker att hantera.</p>
+<ul>
+<li>Det går att definiera variabeln som datatypen <strong>faktor</strong> (nominal eller ordinal, dvs med eller utan ordning). Detta görs med funktionen <strong>factor()</strong>. En faktors kategorier benämns i R för <strong>levels</strong> (nivåer) och med funktionen <strong>factor()</strong> kan användaren även kan ange om nivåerna går att rangordna eller inte. Det går även att ange referensnivå samt tilldela nivåerna namn. Genom att använda datatypen faktor använder R information om kategorivariabeln i analyser. Till exempel kan namnen på olika kategorierna skrivas ut i resultat eller så man på ett enkelt sätt ändra rangordningen på kategorierna.
+Det går dock inte att utföra några räkneoperationer på en faktor.</li>
+<li>Det går att tilldela variabeln numeriska värden till de olika kategorierna, till exempel 0-1 till en variabel med två kategorier. Hur dessa värden sedan används beror på analysmetod.</li>
+</ul>
+<p>Eftersom bägge varianterna har för- och nackdelar finns oftast <strong>bägge typerna</strong> av kodning för en och samma kategorivariabel i ett dataset, där kategorivariabler kodade som faktorer kallas <strong>variabelnamn_cat</strong> och numeriska kategorivariabler kallas för <strong>variabelnamn_bin</strong> om den är kodad 0-1.</p>
+<div id="binära-variabler" class="section level2">
+<h2><span class="header-section-number">6.1</span> Binära variabler</h2>
+<p>Binära variabler har enbart två kategorier och det är den absolut vanligaste typen av kategorivariabel. Oavsett om en binär variabel har kategorier som inte går att rangordna (till exempel <span class="math inline">\(kön\)</span> med kategorierna <span class="math inline">\(kvinna\)</span> och <span class="math inline">\(man\)</span>) eller har kategorier som går att rangordna (till exempel <span class="math inline">\(utbildning\)</span> med kategorierna <span class="math inline">\(låg\)</span> och <span class="math inline">\(hög\)</span>) hanteras och analyseras en binär variabel på samma sätt. Som tidigare nämnt arbetar vi i praktiskt i R på två sätt:</p>
+<ul>
+<li>De två kategorierna i den binära variabeln tilldelas numeriska värden och variabeln analyseras sedan som en numerisk variabel. Vanligast är att ge kategorierna värdena 0 och 1. Anledningen är tolkningen blir i termer av andelar av den kategori som är kodad 1. Dessutom förenklas tolkning i sambandsanalyser, vilket vi ska komma att se senare. Exemplet nedan illustrerar.</li>
+</ul>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Ursprungsvariabel</span></a>
+<a class="sourceLine" id="cb144-2" title="2"><span class="er">&gt;</span><span class="st">   </span>education &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb144-3" title="3"><span class="op">+</span><span class="st">                &quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb144-4" title="4"><span class="op">+</span><span class="st">                &quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, </a>
+<a class="sourceLine" id="cb144-5" title="5"><span class="op">+</span><span class="st">                &quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>,  </a>
+<a class="sourceLine" id="cb144-6" title="6"><span class="op">+</span><span class="st">                &quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>)</a>
+<a class="sourceLine" id="cb144-7" title="7"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(education)</a>
+<a class="sourceLine" id="cb144-8" title="8"><span class="op">&gt;</span><span class="st">  </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">40</span>] <span class="st">&quot;high&quot;</span> <span class="st">&quot;high&quot;</span> <span class="st">&quot;low&quot;</span> <span class="st">&quot;high&quot;</span> <span class="st">&quot;high&quot;</span> <span class="st">&quot;low&quot;</span> <span class="st">&quot;high&quot;</span> <span class="st">&quot;low&quot;</span> <span class="st">&quot;low&quot;</span> ...</a>
+<a class="sourceLine" id="cb144-9" title="9"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Numerisk kodning: 0 = low, 1 = high</span></a>
+<a class="sourceLine" id="cb144-10" title="10"><span class="er">&gt;</span><span class="st">   </span>edu_bin &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(education))</a>
+<a class="sourceLine" id="cb144-11" title="11"><span class="op">&gt;</span><span class="st">   </span>edu_bin[education <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb144-12" title="12"><span class="op">&gt;</span><span class="st">   </span>edu_bin[education <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb144-13" title="13"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(edu_bin)</a>
+<a class="sourceLine" id="cb144-14" title="14"><span class="op">&gt;</span><span class="st">  </span>num [<span class="dv">1</span><span class="op">:</span><span class="dv">40</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> ...</a>
+<a class="sourceLine" id="cb144-15" title="15"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Numerisk kodning: 1 = low, 2 = high</span></a>
+<a class="sourceLine" id="cb144-16" title="16"><span class="er">&gt;</span><span class="st">   </span>edu_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(education))</a>
+<a class="sourceLine" id="cb144-17" title="17"><span class="op">&gt;</span><span class="st">   </span>edu_<span class="dv">12</span>[education <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb144-18" title="18"><span class="op">&gt;</span><span class="st">   </span>edu_<span class="dv">12</span>[education <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb144-19" title="19"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(edu_<span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb144-20" title="20"><span class="op">&gt;</span><span class="st">  </span>num [<span class="dv">1</span><span class="op">:</span><span class="dv">40</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> ...</a>
+<a class="sourceLine" id="cb144-21" title="21"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Beräkna medelvärdet (andelen)</span></a>
+<a class="sourceLine" id="cb144-22" title="22"><span class="er">&gt;</span><span class="st">   </span><span class="kw">mean</span>(edu_bin)</a>
+<a class="sourceLine" id="cb144-23" title="23"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.725</span></a>
+<a class="sourceLine" id="cb144-24" title="24"><span class="op">&gt;</span><span class="st">   </span><span class="kw">mean</span>(edu_<span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb144-25" title="25"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">1.725</span></a></code></pre></div>
+<p>Medelvärdet när variabelns kategorier är kodade 1-2 inte är tolkningsbart på samma uppenbara sätt som vid kodningen 0-1. Med kommandot <strong>str()</strong> undersöker vi datatypen och vi ser att education är av typen <em>character</em> medan <em>edu_01</em> och <em>edu_12</em> är av datatypen <em>numeric</em>. Det är viktigt att undersöka datatyp, emellertid är detta ingen kod man vanligtvis sparar i scriptet. Efter datatypen är undersökt kan dessa rader tas bort.</p>
+<ul>
+<li>Den binära variabeln definieras som datatypen faktor med funktionen <strong>factor()</strong> Med argumentet <strong>levels</strong> kan vi ändra nivåerna. Vidare kan vi använda funktionen <strong>levels</strong> kan vi ändra kategorinamn. Vi nedan illusterar med R.</li>
+</ul>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Skapa en faktorvariabel  </span></a>
+<a class="sourceLine" id="cb145-2" title="2"><span class="er">&gt;</span><span class="st">   </span>education_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(education)</a>
+<a class="sourceLine" id="cb145-3" title="3"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(education_cat)</a>
+<a class="sourceLine" id="cb145-4" title="4"><span class="op">&gt;</span><span class="st">  </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;high&quot;</span>,<span class="st">&quot;low&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> ...</a>
+<a class="sourceLine" id="cb145-5" title="5"><span class="op">&gt;</span><span class="st">   </span><span class="kw">summary</span>(education_cat)</a>
+<a class="sourceLine" id="cb145-6" title="6"><span class="op">&gt;</span><span class="st"> </span>high  low </a>
+<a class="sourceLine" id="cb145-7" title="7"><span class="op">&gt;</span><span class="st">   </span><span class="dv">29</span>   <span class="dv">11</span></a>
+<a class="sourceLine" id="cb145-8" title="8"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Test att utföra en räkneoperation på en faktorvariabel</span></a>
+<a class="sourceLine" id="cb145-9" title="9"><span class="er">&gt;</span><span class="st">   </span><span class="kw">mean</span>(education_cat)</a>
+<a class="sourceLine" id="cb145-10" title="10"><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> <span class="kw">mean.default</span>(education_cat)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span></a>
+<a class="sourceLine" id="cb145-11" title="11"><span class="er">&gt;</span><span class="st"> </span>returning <span class="ot">NA</span></a>
+<a class="sourceLine" id="cb145-12" title="12"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="ot">NA</span></a></code></pre></div>
+<p>Vi har nu definierat en faktor-variabel med två kategorier <em>“high”</em> and <em>“low”</em>. Vi kan även se att R även tilldelat kategorierna nivåer, där “high” är level 1 och “low” är level 2. Nivåernas ordning bestäms utifrån ordning de först dyker upp i objektet <em>såvida inte vi gör om en numerisk variabel till en faktor</em>. Även om vi nu arbetar med en binär variabel där nominal- eller ordinalskala teoretiskt saknar betydelse, är det viktigt att se till att ordningen stämmer eftersom med sin tänkta analys eftersom ordningen påverkar analyser i R. I detta exempel är det dessutom förmodligen förvirrande för användaren att “high” har tilldelats nivå 1 medan “low” är nivå 2. Av dessa skäl ändras därför ordningen med hjälp av argumentet <em>levels</em>.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Ändra ordningen på nivåerna </span></a>
+<a class="sourceLine" id="cb146-2" title="2"><span class="er">&gt;</span><span class="st">   </span>education_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(education, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>))</a>
+<a class="sourceLine" id="cb146-3" title="3"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(education_cat)</a>
+<a class="sourceLine" id="cb146-4" title="4"><span class="op">&gt;</span><span class="st">  </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;low&quot;</span>,<span class="st">&quot;high&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> ...</a>
+<a class="sourceLine" id="cb146-5" title="5"><span class="op">&gt;</span><span class="st">   </span><span class="kw">summary</span>(education_cat)</a>
+<a class="sourceLine" id="cb146-6" title="6"><span class="op">&gt;</span><span class="st">  </span>low high </a>
+<a class="sourceLine" id="cb146-7" title="7"><span class="op">&gt;</span><span class="st">   </span><span class="dv">11</span>   <span class="dv">29</span></a>
+<a class="sourceLine" id="cb146-8" title="8"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms</span></a>
+<a class="sourceLine" id="cb146-9" title="9"><span class="er">&gt;</span><span class="st"> </span><span class="co"># av ordningen i vektorn utan av de numeriska värdens storlek.</span></a>
+<a class="sourceLine" id="cb146-10" title="10"><span class="er">&gt;</span><span class="st">   </span>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb146-11" title="11"><span class="op">&gt;</span><span class="st">   </span>x_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(x)</a>
+<a class="sourceLine" id="cb146-12" title="12"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(x_cat)</a>
+<a class="sourceLine" id="cb146-13" title="13"><span class="op">&gt;</span><span class="st">  </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;1&quot;</span>,<span class="st">&quot;3&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span></a></code></pre></div>
+<p>Avslutningsvis illustrerar vi nu att vi ändrar namn från <em>low</em> till <em>L</em> samt <em>high</em> till <em>H</em>. OBS! Nedanstående kod är inget som är uppenbart för nybörjaren och det går att mer kompakt ändra namn på kategorier i en faktor-variabel med hjälp av argumentet <em>labels</em>. Dock gäller det då att vara nogrann med ordningen och därför rekommenderas den kod som presenteras här. Enklast är att kopiera koden och klistra in och ändra.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Funktionen levels() skapar en character-vektor med namn på kategorierna</span></a>
+<a class="sourceLine" id="cb147-2" title="2"><span class="er">&gt;</span><span class="st">   </span><span class="kw">levels</span>(education_cat)</a>
+<a class="sourceLine" id="cb147-3" title="3"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="st">&quot;low&quot;</span>  <span class="st">&quot;high&quot;</span></a>
+<a class="sourceLine" id="cb147-4" title="4"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Ändra för valt element namn i vektor levels(education_cat)  </span></a>
+<a class="sourceLine" id="cb147-5" title="5"><span class="er">&gt;</span><span class="st">   </span><span class="kw">levels</span>(education_cat)[<span class="kw">levels</span>(education_cat) <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> &quot;L&quot;</span></a>
+<a class="sourceLine" id="cb147-6" title="6"><span class="op">&gt;</span><span class="st">   </span><span class="kw">levels</span>(education_cat)[<span class="kw">levels</span>(education_cat) <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> &quot;H&quot;</span></a>
+<a class="sourceLine" id="cb147-7" title="7"><span class="op">&gt;</span><span class="st">   </span>education_cat</a>
+<a class="sourceLine" id="cb147-8" title="8"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">1</span>] H H L H H L H L L H H H H H H L H H H H H H H H H L H H H L H H L H H H L L</a>
+<a class="sourceLine" id="cb147-9" title="9"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">39</span>] H L</a>
+<a class="sourceLine" id="cb147-10" title="10"><span class="op">&gt;</span><span class="st"> </span>Levels<span class="op">:</span><span class="st"> </span>L H</a></code></pre></div>
+<div id="binära-variabler-med-missing" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Binära variabler med missing</h3>
+<p>Om en variabel har bortfall krävs viss försiktighet.Nedanstående kodschema för att koda om high till 1 och low till 0</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Tömmer minnet</span></a>
+<a class="sourceLine" id="cb148-2" title="2"><span class="er">&gt;</span><span class="st">  </span><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb148-3" title="3"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Ursprungsvariabel fast nu med missing data (NA)</span></a>
+<a class="sourceLine" id="cb148-4" title="4"><span class="er">&gt;</span><span class="st">  </span>education &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;high&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb148-5" title="5"><span class="op">+</span><span class="st">                      &quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb148-6" title="6"><span class="op">+</span><span class="st">                      &quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, </a>
+<a class="sourceLine" id="cb148-7" title="7"><span class="op">+</span><span class="st">                      &quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>,  </a>
+<a class="sourceLine" id="cb148-8" title="8"><span class="op">+</span><span class="st">                      &quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>)</a>
+<a class="sourceLine" id="cb148-9" title="9"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Numerisk kodning: 0 = low, 1 = high</span></a>
+<a class="sourceLine" id="cb148-10" title="10"><span class="er">&gt;</span><span class="st">   </span>edu_bin &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(  education))</a>
+<a class="sourceLine" id="cb148-11" title="11"><span class="op">&gt;</span><span class="st">   </span>edu_bin[education  <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb148-12" title="12"><span class="op">&gt;</span><span class="st">   </span>edu_bin[education  <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb148-13" title="13"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Genom att ta summary ser vi om det finns 3 missing i edu_bin  </span></a>
+<a class="sourceLine" id="cb148-14" title="14"><span class="er">&gt;</span><span class="st">   </span><span class="kw">summary</span>(edu_bin)</a>
+<a class="sourceLine" id="cb148-15" title="15"><span class="op">&gt;</span><span class="st">    </span>Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA<span class="st">&#39;s </span></a>
+<a class="sourceLine" id="cb148-16" title="16"><span class="st">&gt;  0.0000  0.0000  1.0000  0.7027  1.0000  1.0000       3</span></a>
+<a class="sourceLine" id="cb148-17" title="17"><span class="st">&gt; # Medelvärdet (andelen) beräknas med argumentet na.rm = TRUE</span></a>
+<a class="sourceLine" id="cb148-18" title="18"><span class="st">&gt;   mean(edu_bin)</span></a>
+<a class="sourceLine" id="cb148-19" title="19"><span class="st">&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb148-20" title="20"><span class="st">&gt;   mean(edu_bin, na.rm = TRUE)</span></a>
+<a class="sourceLine" id="cb148-21" title="21"><span class="st">&gt; [1] 0.7027027</span></a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># Skapa en faktorvariabel  </span></a>
+<a class="sourceLine" id="cb149-2" title="2"><span class="er">&gt;</span><span class="st">   </span>education_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(education)</a>
+<a class="sourceLine" id="cb149-3" title="3"><span class="op">&gt;</span><span class="st">   </span><span class="kw">str</span>(education_cat)</a>
+<a class="sourceLine" id="cb149-4" title="4"><span class="op">&gt;</span><span class="st">  </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;high&quot;</span>,<span class="st">&quot;low&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="ot">NA</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> ...</a>
+<a class="sourceLine" id="cb149-5" title="5"><span class="op">&gt;</span><span class="st">   </span><span class="kw">summary</span>(education_cat)</a>
+<a class="sourceLine" id="cb149-6" title="6"><span class="op">&gt;</span><span class="st"> </span>high  low NA<span class="st">&#39;s </span></a>
+<a class="sourceLine" id="cb149-7" title="7"><span class="st">&gt;   26   11    3</span></a></code></pre></div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="urvalsmetoder.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kategorivariabler-och-tabeller.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

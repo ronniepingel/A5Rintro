@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 8 Tabeller | R på kursen Tillämpad statistik (A5)</title>
-  <meta name="description" content="Kapitel 8 Tabeller | R på kursen Tillämpad statistik (A5)" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <title>Kapitel 6 Tabeller | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 6 Tabeller | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 8 Tabeller | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:title" content="Kapitel 6 Tabeller | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 8 Tabeller | R på kursen Tillämpad statistik (A5)" />
+  <meta name="twitter:title" content="Kapitel 6 Tabeller | Tillämpad statistik med R" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-11-29" />
+<meta name="date" content="2020-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variabeltyper.html"/>
-<link rel="next" href="tabeller-1.html"/>
+<link rel="prev" href="urvalsmetoder.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,45 +50,69 @@
 
 
 
-<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -103,60 +127,111 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
-<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
-<li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
-<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.1"><i class="fa fa-check"></i>Svar 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.2"><i class="fa fa-check"></i>Svar 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.3"><i class="fa fa-check"></i>Svar 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.4"><i class="fa fa-check"></i>Svar 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.5"><i class="fa fa-check"></i>Svar 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.6"><i class="fa fa-check"></i>Svar 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.7"><i class="fa fa-check"></i>Svar 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.8"><i class="fa fa-check"></i>Svar 2.8</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
-<li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
-<li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
-<li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
-<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
-<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
-<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
-<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
-<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>7</b> Variabeltyper</a><ul>
-<li class="chapter" data-level="7.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer"><i class="fa fa-check"></i><b>7.1</b> Faktorer</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.1.1</b> Faktorer på ordinalskala</a></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.2"><i class="fa fa-check"></i>Svar 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.3"><i class="fa fa-check"></i>Svar 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.4"><i class="fa fa-check"></i>Svar 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.5"><i class="fa fa-check"></i>Svar 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.6"><i class="fa fa-check"></i>Svar 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.7"><i class="fa fa-check"></i>Svar 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.12"><i class="fa fa-check"></i>Svar 3.12</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
-<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
-<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-ska"><i class="fa fa-check"></i><b>4.1</b> Principer ska</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.2</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.4</b> Övriga format</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+<li class="chapter" data-level="5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>5</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="5.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>5.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>5.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-p"><i class="fa fa-check"></i><b>5.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-tau"><i class="fa fa-check"></i><b>5.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>5.1.4</b> Beräkningar av stickprovstorlek</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
-<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+<li class="chapter" data-level="5.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>5.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>5.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>5.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>5.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>5.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="5.2.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>5.2.5</b> Efterstratifiering</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>8.5</b> Statistisk inferens baserat på korstabeller</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="tabeller-1.html"><a href="tabeller-1.html"><i class="fa fa-check"></i><b>9</b> Tabeller</a><ul>
-<li class="chapter" data-level="9.1" data-path="tabeller-1.html"><a href="tabeller-1.html#frekvenstabeller-1"><i class="fa fa-check"></i><b>9.1</b> Frekvenstabeller</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="tabeller-1.html"><a href="tabeller-1.html#frekvenstabeller-med-table-1"><i class="fa fa-check"></i><b>9.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="6" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>6</b> Tabeller</a><ul>
+<li class="chapter" data-level="6.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>6.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>6.1.1</b> Frekvenstabeller med table()</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="tabeller-1.html"><a href="tabeller-1.html#stapeldiagram"><i class="fa fa-check"></i><b>9.2</b> Stapeldiagram</a></li>
-<li class="chapter" data-level="9.3" data-path="tabeller-1.html"><a href="tabeller-1.html#lådagram"><i class="fa fa-check"></i><b>9.3</b> Lådagram</a></li>
-<li class="chapter" data-level="9.4" data-path="tabeller-1.html"><a href="tabeller-1.html#histogram"><i class="fa fa-check"></i><b>9.4</b> Histogram</a></li>
-<li class="chapter" data-level="9.5" data-path="tabeller-1.html"><a href="tabeller-1.html#spridningsdiagram"><i class="fa fa-check"></i><b>9.5</b> Spridningsdiagram</a></li>
-<li class="chapter" data-level="9.6" data-path="tabeller-1.html"><a href="tabeller-1.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>9.6</b> Några frekvent förekommande diagram.</a></li>
+<li class="chapter" data-level="6.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>6.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>6.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>6.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="6.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>6.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>6.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tabeller.html"><a href="tabeller.html#x-2-tabeller-för-statistisk-analys"><i class="fa fa-check"></i><b>6.5</b> 2 x 2 tabeller för statistisk analys</a></li>
+<li class="chapter" data-level="6.6" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>6.6</b> Statistisk inferens baserat på korstabeller</a></li>
 </ul></li>
 </ul>
 
@@ -167,7 +242,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
           </h1>
         </div>
 
@@ -176,31 +251,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="tabeller" class="section level1">
-<h1><span class="header-section-number">Kapitel 8</span> Tabeller</h1>
+<h1><span class="header-section-number">Kapitel 6</span> Tabeller</h1>
 <p>Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med</p>
 <ul>
-<li>Frekvenstabeller i R, med och utan paket</li>
-<li>Korstabeller i R, med och utan paket</li>
-<li>Export av tabeller till Word.</li>
+<li>Frekvenstabeller i R</li>
+<li>Korstabeller i R</li>
+<li>Export av tabeller till HTML (som sedan kan importeras till ordbehandlingsprogram)</li>
 </ul>
+<p>Notera att det finns många paket i R för att skapa tabeller exempelvis <em>summarytools</em> och <em>table1</em>.</p>
 <div id="frekvenstabeller" class="section level2">
-<h2><span class="header-section-number">8.1</span> Frekvenstabeller</h2>
+<h2><span class="header-section-number">6.1</span> Frekvenstabeller</h2>
 <div id="frekvenstabeller-med-table" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Frekvenstabeller med table()</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Läs in data. Välj ut födda 1961 och födda 1975 </span>
-insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)
-<span class="co"># Välja ut insark för födda 1961</span>
-insark1 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1961</span>,]
-<span class="co"># Välj ut INSARK för födda 1975</span>
-insark2 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>,]
-<span class="co"># Skapa ett dataset av INSARK 1961 och 1975. </span>
-insark3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(insark1, insark2)
-<span class="co"># Skapa nytt radid baserat på delpopulationen 1961 och 1975</span>
-insark3<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark3<span class="op">$</span>id) </code></pre></div>
-<p>Vi ska nu dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt, dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig! Beträffade funktionen <strong>set.seed()</strong> så används denna för att ange vilket slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">1000</span>
-<span class="kw">set.seed</span>(<span class="dv">12345</span>)
-df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<span class="op">$</span>newid, n), ]</code></pre></div>
+<h3><span class="header-section-number">6.1.1</span> Frekvenstabeller med table()</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Läs in data. Välj ut födda 1961 och födda 1975 </span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;~/Dropbox/A5VT20/Lectures/Data/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># Välja ut insark för födda 1961 och 1975</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">insark1 &lt;-<span class="st"> </span>insark[(insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1961</span>) <span class="op">|</span><span class="st"> </span>(insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>),]</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># Skapa nytt radid baserat på delpopulationen 1961 och 1975</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">insark1<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark1<span class="op">$</span>id) </a></code></pre></div>
+<p>Vi ska nu dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt,
+dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig!
+Beträffade funktionen <strong>set.seed()</strong> så används denna för att ange vilket
+slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<span class="op">$</span>newid, n), ]</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;insark3&#39;</span> not found</a></code></pre></div>
 <p>Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både <strong>absoluta</strong> och <strong>relativa</strong> frekvenser. För att skapa tabeller används funktionerna</p>
 <ul>
 <li><strong>table()</strong> och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att <strong>table()</strong> enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas.</li>
@@ -209,448 +285,211 @@ df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<
 <li><strong>addmargins()</strong> ger marginalerna i ett tabellobjeket. Med argumentet <strong>margins</strong> anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas.</li>
 </ul>
 <p>Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln <strong>psych</strong>, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Vi börjar med att titta på exemplet där variabeln <strong>psych</strong> används som numerisk variabel. Med funktionerna <strong>colnames()</strong> och <strong>rownames()</strong> går det att namnge kolumner och rader i tabellobjektet.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Univariat tabell med frekvenser och proportioner </span>
-freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)
-proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)
-table_psych &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych, <span class="dv">100</span><span class="op">*</span>proptable_psych)
-table_psych &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych, <span class="dt">margin =</span> <span class="dv">1</span>)
-<span class="kw">colnames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)
-<span class="kw">rownames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)
-freqtable_psych 
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">   </span><span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">3</span>   <span class="dv">4</span>   <span class="dv">5</span>   <span class="dv">6</span>   <span class="dv">7</span>   <span class="dv">8</span>   <span class="dv">9</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">19</span>  <span class="dv">67</span> <span class="dv">122</span> <span class="dv">150</span> <span class="dv">220</span> <span class="dv">200</span> <span class="dv">145</span>  <span class="dv">65</span>  <span class="dv">12</span>
-proptable_psych 
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">     </span><span class="dv">1</span>     <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">4</span>     <span class="dv">5</span>     <span class="dv">6</span>     <span class="dv">7</span>     <span class="dv">8</span>     <span class="dv">9</span> 
-<span class="op">&gt;</span><span class="st"> </span><span class="fl">0.019</span> <span class="fl">0.067</span> <span class="fl">0.122</span> <span class="fl">0.150</span> <span class="fl">0.220</span> <span class="fl">0.200</span> <span class="fl">0.145</span> <span class="fl">0.065</span> <span class="fl">0.012</span>
-table_psych
-<span class="op">&gt;</span><span class="st">       </span>Frekvens     %
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">1</span>       <span class="dv">19</span>   <span class="fl">1.9</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">2</span>       <span class="dv">67</span>   <span class="fl">6.7</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">3</span>      <span class="dv">122</span>  <span class="fl">12.2</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">4</span>      <span class="dv">150</span>  <span class="fl">15.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">5</span>      <span class="dv">220</span>  <span class="fl">22.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">6</span>      <span class="dv">200</span>  <span class="fl">20.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">7</span>      <span class="dv">145</span>  <span class="fl">14.5</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">8</span>       <span class="dv">65</span>   <span class="fl">6.5</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">9</span>       <span class="dv">12</span>   <span class="fl">1.2</span>
-<span class="op">&gt;</span><span class="st"> </span>Total     <span class="dv">1000</span> <span class="fl">100.0</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Univariat tabell med frekvenser och proportioner </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> df<span class="op">$</span>psych<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">prop.table</span>(freqtable_psych)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">table_psych &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych, <span class="dv">100</span><span class="op">*</span>proptable_psych)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">cbind</span>(freqtable_psych, <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>proptable_psych)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">table_psych &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych, <span class="dt">margin =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">addmargins</span>(table_psych, <span class="dt">margin =</span> <span class="dv">1</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="kw">colnames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">colnames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">rownames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">rownames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">freqtable_psych </a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">proptable_psych </a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;proptable_psych&#39;</span> not found</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">table_psych</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych&#39;</span> not found</a></code></pre></div>
 <p>Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen <strong>round()</strong>. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen dock avrundning ske.</p>
 <p><code>table_psych &lt;- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)</code></p>
 <p>Alternativet är nu att skapa en variabel som heter <strong>psych_cat</strong> och sedan använda funktionen <strong>levels()</strong> för att ange nivåerna i faktorn. Som vanligt när vi skapar en ny variabel adderas vi den till datamaterialet.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># För att namnge raderna kan göra om psych-variabeln till en faktor som namnges. </span>
-df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
-<span class="kw">levels</span>(df<span class="op">$</span>psych_cat) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>)
-freqtable_psych_cat &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_cat)
-proptable_psych_cat &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych_cat)
-table_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">round</span>(freqtable_psych_cat), <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>proptable_psych_cat, <span class="dv">1</span>))
-table_psych_cat &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_cat, <span class="dv">1</span>)
-<span class="kw">colnames</span>(table_psych_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)
-table_psych_cat
-<span class="op">&gt;</span><span class="st">       </span>Frekvens     %
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">1</span>       <span class="dv">19</span>   <span class="fl">1.9</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">2</span>       <span class="dv">67</span>   <span class="fl">6.7</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">3</span>      <span class="dv">122</span>  <span class="fl">12.2</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">4</span>      <span class="dv">150</span>  <span class="fl">15.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">5</span>      <span class="dv">220</span>  <span class="fl">22.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">6</span>      <span class="dv">200</span>  <span class="fl">20.0</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">7</span>      <span class="dv">145</span>  <span class="fl">14.5</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">8</span>       <span class="dv">65</span>   <span class="fl">6.5</span>
-<span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">9</span>       <span class="dv">12</span>   <span class="fl">1.2</span>
-<span class="op">&gt;</span><span class="st"> </span>Sum       <span class="dv">1000</span> <span class="fl">100.0</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># För att namnge raderna kan göra om psych-variabeln till en faktor som namnges. </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> df<span class="op">$</span>psych<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>psych_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">freqtable_psych_cat &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_cat)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> df<span class="op">$</span>psych_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">proptable_psych_cat &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych_cat)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">prop.table</span>(freqtable_psych_cat)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych_cat&#39;</span> not found</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">table_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">round</span>(freqtable_psych_cat), <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>proptable_psych_cat, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">cbind</span>(<span class="kw">round</span>(freqtable_psych_cat), <span class="kw">round</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span>proptable_psych_cat, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych_cat&#39;</span> not found</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">table_psych_cat &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_cat, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">addmargins</span>(table_psych_cat, <span class="dv">1</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_cat&#39;</span> not found</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw">colnames</span>(table_psych_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">colnames</span>(table_psych_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_cat&#39;</span> not found</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">table_psych_cat</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_cat&#39;</span> not found</a></code></pre></div>
 <p>Du har nu konstruerat en frekvenstabell utifrån bägge tillvägagångsätten.</p>
 <p>Det är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data. Default-inställningen för <strong>table()</strong> är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet <code>useNA = &quot;ifany&quot;</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych</span>
-df<span class="op">$</span>psych_mis &lt;-<span class="st"> </span>df<span class="op">$</span>psych
-df<span class="op">$</span>psych_mis[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
-table_psych_mis &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_mis, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)
-table_psych_mis
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">    </span><span class="dv">1</span>    <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">4</span>    <span class="dv">5</span>    <span class="dv">6</span>    <span class="dv">7</span>    <span class="dv">8</span>    <span class="dv">9</span> <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">   </span><span class="dv">19</span>   <span class="dv">67</span>  <span class="dv">121</span>  <span class="dv">150</span>  <span class="dv">219</span>  <span class="dv">200</span>  <span class="dv">145</span>   <span class="dv">65</span>   <span class="dv">12</span>    <span class="dv">2</span></code></pre></div>
-</div>
-<div id="frekvenstabeller-med-freq" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Frekvenstabeller med freq()</h3>
-<p>Även om <strong>table()</strong> är väldigt flexibelt och användbart finns det också färdiga funktioner som kan förenkla koden.</p>
-<p>Ett smidigt R-paket för beskriva och summera data är **summarytools*. Skriv därför <code>install.packages(&quot;summarytools&quot;)</code>.</p>
-<p>På MacOS krävs eventuellt även av ett program som heter <em>XQuartz</em>, som görs externt från <a href="https://www.xquartz.org/releases/index.html" class="uri">https://www.xquartz.org/releases/index.html</a>.</p>
-<p>När programmet är installerat kan följande kod användas för att enkelt skapa en frekvenstabell. Funktionen <strong>freq()</strong> används för att skapa en frekvens och för att replikera tabellerna ovan används följande kod.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;summarytools&quot;</span>)
-tab_psych &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
-tab_psych_cat &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
-tab_psych_mis &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">TRUE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)
-tab_psych
-<span class="op">&gt;</span><span class="st"> </span>Frequencies  
-<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych  
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">               </span>Freq        %
-<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span>
-<span class="er">&gt;</span><span class="st">           </span><span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span>
-<span class="op">&gt;</span><span class="st">           </span><span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span>
-<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span>
-tab_psych_cat 
-<span class="op">&gt;</span><span class="st"> </span>Frequencies  
-<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  
-<span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">               </span>Freq        %
-<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span>
-<span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span>
-<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span>
-tab_psych_mis
-<span class="op">&gt;</span><span class="st"> </span>Frequencies  
-<span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  
-<span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st">               </span>Freq   <span class="op">% Valid   %</span><span class="st"> </span>Total
-<span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">---------</span><span class="st"> </span><span class="op">---------</span>
-<span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>      <span class="fl">1.90</span>      <span class="fl">1.90</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>      <span class="fl">6.70</span>      <span class="fl">6.70</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>     <span class="fl">12.20</span>     <span class="fl">12.20</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>     <span class="fl">15.00</span>     <span class="fl">15.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>     <span class="fl">22.00</span>     <span class="fl">22.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>     <span class="fl">20.00</span>     <span class="fl">20.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>     <span class="fl">14.50</span>     <span class="fl">14.50</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>      <span class="fl">6.50</span>      <span class="fl">6.50</span>
-<span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>      <span class="fl">1.20</span>      <span class="fl">1.20</span>
-<span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st">      </span><span class="dv">0</span>                <span class="fl">0.00</span>
-<span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>    <span class="fl">100.00</span>    <span class="fl">100.00</span></code></pre></div>
-<p>Notera att vid användning av funktionen <strong>freq()</strong> är det en fördel att använda faktorn <strong>psych_cat</strong> eftersom kategorierna är namngivna. Det går inte här i efterhand att namnge kategorierna i våra variabler. Här har vi således ett exempel när faktorn är att föredra framför den numeriska variabeln. Vi kommer senare att stöta på det motsatta.</p>
-<p>Som vanligt har funktioner i R fleravargument som anger exakt vad funktionen ska göra. I exemplen redogörs bara för ett fåtal av dessa och ofta krävs att det att man använder sig av hälpfilen för en funktion, i detta fall <strong>help(freq)</strong>, eller att man provar ändra i den kod som finns.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">df<span class="op">$</span>psych_mis &lt;-<span class="st"> </span>df<span class="op">$</span>psych</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> df<span class="op">$</span>psych<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">df<span class="op">$</span>psych_mis[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>psych_mis<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">table_psych_mis &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_mis, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> df<span class="op">$</span>psych_mis<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">table_psych_mis</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_mis&#39;</span> not found</a></code></pre></div>
 </div>
 </div>
 <div id="korstabeller" class="section level2">
-<h2><span class="header-section-number">8.2</span> Korstabeller</h2>
+<h2><span class="header-section-number">6.2</span> Korstabeller</h2>
 <div id="korstabeller-med-table" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> Korstabeller med table()</h3>
+<h3><span class="header-section-number">6.2.1</span> Korstabeller med table()</h3>
 <p>Flera variabler kan korstabuleras i <strong>table()</strong>. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip.</p>
-<p>Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad gäller att konstruera tabellen.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych, df<span class="op">$</span>year)
-freqtable_psych_year 
-   
-    <span class="dv">1961</span> <span class="dv">1975</span>
-  <span class="dv">1</span>   <span class="dv">10</span>    <span class="dv">9</span>
-  <span class="dv">2</span>   <span class="dv">29</span>   <span class="dv">38</span>
-  <span class="dv">3</span>   <span class="dv">64</span>   <span class="dv">58</span>
-  <span class="dv">4</span>   <span class="dv">78</span>   <span class="dv">72</span>
-  <span class="dv">5</span>  <span class="dv">112</span>  <span class="dv">108</span>
-  <span class="dv">6</span>   <span class="dv">91</span>  <span class="dv">109</span>
-  <span class="dv">7</span>   <span class="dv">55</span>   <span class="dv">90</span>
-  <span class="dv">8</span>   <span class="dv">27</span>   <span class="dv">38</span>
-  <span class="dv">9</span>    <span class="dv">6</span>    <span class="dv">6</span>
-proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> )  <span class="co"># 2 är kolumnprocent</span>
-<span class="co"># Bind ihop frekvenser och relative frekvenser</span>
-table_psych_year_bind &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych_year[,<span class="dv">1</span>], <span class="kw">round</span>(proptable_psych_year[,<span class="dv">1</span>], <span class="dv">1</span>),
-                         freqtable_psych_year[,<span class="dv">2</span>],  <span class="kw">round</span>(proptable_psych_year[,<span class="dv">2</span>], <span class="dv">1</span>))
-table_psych_year &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_year_bind, <span class="dv">1</span>)
-<span class="kw">colnames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;1975&quot;</span>, <span class="st">&quot;%&quot;</span>)
-<span class="kw">rownames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)
-table_psych_year 
-      <span class="dv">1961</span>     <span class="op">% 1975    %</span>
-Kat <span class="dv">1</span>   <span class="dv">10</span>   <span class="fl">2.1</span>    <span class="dv">9</span>  <span class="fl">1.7</span>
-Kat <span class="dv">2</span>   <span class="dv">29</span>   <span class="fl">6.1</span>   <span class="dv">38</span>  <span class="fl">7.2</span>
-Kat <span class="dv">3</span>   <span class="dv">64</span>  <span class="fl">13.6</span>   <span class="dv">58</span> <span class="fl">11.0</span>
-Kat <span class="dv">4</span>   <span class="dv">78</span>  <span class="fl">16.5</span>   <span class="dv">72</span> <span class="fl">13.6</span>
-Kat <span class="dv">5</span>  <span class="dv">112</span>  <span class="fl">23.7</span>  <span class="dv">108</span> <span class="fl">20.5</span>
-Kat <span class="dv">6</span>   <span class="dv">91</span>  <span class="fl">19.3</span>  <span class="dv">109</span> <span class="fl">20.6</span>
-Kat <span class="dv">7</span>   <span class="dv">55</span>  <span class="fl">11.7</span>   <span class="dv">90</span> <span class="fl">17.0</span>
-Kat <span class="dv">8</span>   <span class="dv">27</span>   <span class="fl">5.7</span>   <span class="dv">38</span>  <span class="fl">7.2</span>
-Kat <span class="dv">9</span>    <span class="dv">6</span>   <span class="fl">1.3</span>    <span class="dv">6</span>  <span class="fl">1.1</span>
-Total  <span class="dv">472</span> <span class="fl">100.0</span>  <span class="dv">528</span> <span class="fl">99.9</span></code></pre></div>
-<p>Alternativt kan vi använda funktionen <strong>ctable()</strong> från paketet summarytoools.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>year)
-tab_psych_year &lt;-<span class="st"> </span><span class="kw">ctable</span>(df<span class="op">$</span>psych_cat, df<span class="op">$</span>year_cat, <span class="dt">prop =</span> <span class="st">&quot;c&quot;</span>)
-tab_psych_year
-Cross<span class="op">-</span>Tabulation, Column Proportions  
-psych_cat <span class="op">*</span><span class="st"> </span>year_cat  
-Data Frame<span class="op">:</span><span class="st"> </span>df  
-
-<span class="op">-----------</span><span class="st"> </span><span class="op">----------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span>
-<span class="st">              </span>year_cat           <span class="dv">1961</span>           <span class="dv">1975</span>           Total
-  psych_cat                                                         
-      Kat <span class="dv">1</span>               <span class="dv">10</span> (  <span class="fl">2.1</span><span class="op">%)     9 (  1.7%</span>)     <span class="dv">19</span> (  <span class="fl">1.9</span>%)
-      Kat <span class="dv">2</span>               <span class="dv">29</span> (  <span class="fl">6.1</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">67</span> (  <span class="fl">6.7</span>%)
-      Kat <span class="dv">3</span>               <span class="dv">64</span> ( <span class="fl">13.6</span><span class="op">%)    58 ( 11.0%</span>)    <span class="dv">122</span> ( <span class="fl">12.2</span>%)
-      Kat <span class="dv">4</span>               <span class="dv">78</span> ( <span class="fl">16.5</span><span class="op">%)    72 ( 13.6%</span>)    <span class="dv">150</span> ( <span class="fl">15.0</span>%)
-      Kat <span class="dv">5</span>              <span class="dv">112</span> ( <span class="fl">23.7</span><span class="op">%)   108 ( 20.5%</span>)    <span class="dv">220</span> ( <span class="fl">22.0</span>%)
-      Kat <span class="dv">6</span>               <span class="dv">91</span> ( <span class="fl">19.3</span><span class="op">%)   109 ( 20.6%</span>)    <span class="dv">200</span> ( <span class="fl">20.0</span>%)
-      Kat <span class="dv">7</span>               <span class="dv">55</span> ( <span class="fl">11.7</span><span class="op">%)    90 ( 17.0%</span>)    <span class="dv">145</span> ( <span class="fl">14.5</span>%)
-      Kat <span class="dv">8</span>               <span class="dv">27</span> (  <span class="fl">5.7</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">65</span> (  <span class="fl">6.5</span>%)
-      Kat <span class="dv">9</span>                <span class="dv">6</span> (  <span class="fl">1.3</span><span class="op">%)     6 (  1.1%</span>)     <span class="dv">12</span> (  <span class="fl">1.2</span>%)
-      Total              <span class="dv">472</span> (<span class="fl">100.0</span><span class="op">%)   528 (100.0%</span>)   <span class="dv">1000</span> (<span class="fl">100.0</span>%)
-<span class="op">-----------</span><span class="st"> </span><span class="op">----------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span></code></pre></div>
+<p>Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad
+gäller att konstruera tabellen.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych, df<span class="op">$</span>year)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">Error <span class="cf">in</span> df<span class="op">$</span>psych<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">freqtable_psych_year </a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych_year&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> )  <span class="co"># 2 är kolumnprocent</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">Error <span class="cf">in</span> <span class="kw">sweep</span>(x, margin, <span class="kw">margin.table</span>(x, margin), <span class="st">&quot;/&quot;</span>, <span class="dt">check.margin =</span> <span class="ot">FALSE</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych_year&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co"># Bind ihop frekvenser och relative frekvenser</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">table_psych_year_bind &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych_year[,<span class="dv">1</span>], <span class="kw">round</span>(proptable_psych_year[,<span class="dv">1</span>], <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">                         freqtable_psych_year[,<span class="dv">2</span>],  <span class="kw">round</span>(proptable_psych_year[,<span class="dv">2</span>], <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">Error <span class="cf">in</span> <span class="kw">cbind</span>(freqtable_psych_year[, <span class="dv">1</span>], <span class="kw">round</span>(proptable_psych_year[, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;freqtable_psych_year&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">table_psych_year &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_year_bind, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">Error <span class="cf">in</span> <span class="kw">addmargins</span>(table_psych_year_bind, <span class="dv">1</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_year_bind&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">colnames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;1975&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">Error <span class="cf">in</span> <span class="kw">colnames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;1975&quot;</span>, <span class="st">&quot;%&quot;</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_year&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw">rownames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">Error <span class="cf">in</span> <span class="kw">rownames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_year&#39;</span> not found</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">table_psych_year </a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table_psych_year&#39;</span> not found</a></code></pre></div>
 </div>
 </div>
 <div id="exportera-tabeller-till-html" class="section level2">
-<h2><span class="header-section-number">8.3</span> Exportera tabeller till html</h2>
-<p>Det kan vara omständligt att exportera data från R till Word. En smidigt lösning är att spara tabellerna i html-format, vilket gör tabellerna plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart.</p>
-<p>För att exporteravv tabeller gjorda med <strong>table()</strong> används paketet <strong>xtable</strong> och funktionen <strong>xtable()</strong> tillsammans med funktionen <strong>print()</strong> (som finns i basversionen av R). Installera därför nödvändigt paket</p>
+<h2><span class="header-section-number">6.3</span> Exportera tabeller till html</h2>
+<p>Det kan vara omständligt att exportera data från R till Word. En smidig lösning är att spara tabellerna i html-format, vilket gör tabellerna program och plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart.</p>
+<p>För att exportera tabeller använder vi paketet <strong>xtable</strong> och funktionen <strong>xtable()</strong> tillsammans med funktionen <strong>print()</strong> (som finns i basversionen av R). Installera därför nödvändigt paket</p>
 <p><code>install.packages(&quot;xtable&quot;)</code></p>
 <p>och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)
-<span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_cat), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_cat.html&quot;</span>)
-<span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_year), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_year.html&quot;</span>)</code></pre></div>
-<p>För exportera tabeller gjorda i summarytools kan vi använda funktionen <strong>print()</strong> direkt.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(tab_psych_cat, <span class="dt">headings =</span> <span class="ot">FALSE</span>, <span class="dt">file=</span><span class="st">&quot;tab_psych_cat.html&quot;</span>)
-<span class="kw">print</span>(tab_psych_year, <span class="dt">headings =</span> <span class="ot">FALSE</span>,  <span class="dt">file=</span><span class="st">&quot;D:/tab_psych_year.html&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_cat), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_cat.html&quot;</span>)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_year), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_year.html&quot;</span>)</a></code></pre></div>
 <p>För att sedan föra in tabellerna i ordbehandlingsprogram öppnas tabellen i en webläsare, du högerklickar någonstans i webläsaren och väljer <strong>markera allt</strong>, kopiera, och klistra in.</p>
 </div>
 <div id="frekvent-förekommande-tabeller" class="section level2">
-<h2><span class="header-section-number">8.4</span> Frekvent förekommande tabeller</h2>
+<h2><span class="header-section-number">6.4</span> Frekvent förekommande tabeller</h2>
 <div id="tabell-för-att-beskriva-urvalet" class="section level3">
-<h3><span class="header-section-number">8.4.1</span> Tabell för att beskriva urvalet</h3>
+<h3><span class="header-section-number">6.4.1</span> Tabell för att beskriva urvalet</h3>
 <p>Alla rapporter eller vetenskapliga artiklar bör inkludera en beskrivning av urvalet, dvs variablerna fördelning i stickprovet. Frågan som då besvaras är ‘’Vilka är det vi vi undersöker?’’. Ibland är denna beskrivning placeread i början, ibland i en bilaga. Inom en del vetenskapliga artiklar benämns en sådan tabell <strong>Tabell 1</strong> eller <strong>Table 1</strong>.</p>
 <p>Observera att eftersom syftet <strong>inte</strong> är att göra inferens utan enbart att beskriva urval, dvs normallt sett redovisas inte medelfel, konfidensintervall eller <span class="math inline">\(p\)</span>-värden.</p>
-<p>För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för Därefter kan man kombinera tabellerna i Word.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I studien krävs en variabel som indikerar högt blodtryck.</span>
-<span class="co"># För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset: </span>
-<span class="co"># 1. en binär 0-1 variabel som är numerisk</span>
-<span class="co"># 2. en binär variabel som R hanterar som en faktor med namngivna nivåer. </span>
-<span class="co"># Att ändra namn på faktorers nivåer är lite omständligt, men det är enkelt att använda nedanstående kod.</span>
-df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
-df<span class="op">$</span>sbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>sbp_bin)
-<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> 
-<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> 
-df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
-df<span class="op">$</span>dbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>dbp_bin)
-<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> 
-<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> 
-
-<span class="co"># Skapa Tabell 1a. Kvantitativa variabler</span>
-xbar_height &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>height)
-sd_height &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>height)
-xbar_weight &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>weight)
-sd_weight &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>weight)
-xbar_sbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>sbp)
-sd_sbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>sbp)
-xbar_dbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>dbp)
-sd_dbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>dbp)
-means &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), <span class="dv">1</span>)
-sds &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(sd_height, sd_weight, sd_sbp, sd_dbp), <span class="dv">2</span>)
-table1_cont_vars &lt;-<span class="st"> </span><span class="kw">cbind</span>(means, sds)
-<span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)
-<span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, 
-                               <span class="st">&quot;Vikt (kg)&quot;</span>,
-                               <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>,
-                               <span class="st">&quot;Diastoliskt blodtryck (mmHg)&quot;</span>)
-
-<span class="co"># Skapa Tabell 1b. Kategorivariabler</span>
-desc_sbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin)))
-desc_dbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin)))
-desc_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>psych), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>psych)))
-table1_cat_vars &lt;-<span class="st"> </span><span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)
-<span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)
-<span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>,
-                      <span class="st">&quot;Systoliskt  blodtryck (mmHG &gt;= 130)&quot;</span>,
-                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &lt; 80)&quot;</span>,
-                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &gt;= 80)&quot;</span>,
-                      <span class="st">&quot;Psykologisk bedömning: Kat 1&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 2&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 3&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 4&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 5&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 6&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 7&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 8&quot;</span>, 
-                      <span class="st">&quot;Psykologisk bedömning: Kat 9&quot;</span>) </code></pre></div>
+<p>För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för
+Därefter kan man kombinera tabellerna i Word.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># I studien krävs en variabel som indikerar högt blodtryck.</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset: </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># 1. en binär 0-1 variabel som är numerisk</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co"># 2. en binär variabel som R hanterar som en faktor med namngivna nivåer. </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># Att ändra namn på faktorers nivåer är lite omständligt, men det är enkelt att använda nedanstående kod.</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">Error <span class="cf">in</span> df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span><span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>sbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>sbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">df<span class="op">$</span>sbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>sbp_bin)</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">Error <span class="cf">in</span> df<span class="op">$</span>sbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
+<a class="sourceLine" id="cb8-15" data-line-number="15">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>sbp_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
+<a class="sourceLine" id="cb8-17" data-line-number="17">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>sbp_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-18" data-line-number="18">df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19">Error <span class="cf">in</span> df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span><span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-20" data-line-number="20">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-21" data-line-number="21">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>dbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-22" data-line-number="22">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb8-23" data-line-number="23">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>dbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-24" data-line-number="24">df<span class="op">$</span>dbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>dbp_bin)</a>
+<a class="sourceLine" id="cb8-25" data-line-number="25">Error <span class="cf">in</span> df<span class="op">$</span>dbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
+<a class="sourceLine" id="cb8-27" data-line-number="27">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>dbp_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
+<a class="sourceLine" id="cb8-29" data-line-number="29">Error <span class="cf">in</span> <span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span><span class="op">$</span>dbp_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co"># Skapa Tabell 1a. Kvantitativa variabler</span></a>
+<a class="sourceLine" id="cb8-32" data-line-number="32">xbar_height &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb8-33" data-line-number="33">Error <span class="cf">in</span> df<span class="op">$</span>height<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-34" data-line-number="34">sd_height &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb8-35" data-line-number="35">Error <span class="cf">in</span> df<span class="op">$</span>height<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-36" data-line-number="36">xbar_weight &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb8-37" data-line-number="37">Error <span class="cf">in</span> df<span class="op">$</span>weight<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-38" data-line-number="38">sd_weight &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb8-39" data-line-number="39">Error <span class="cf">in</span> df<span class="op">$</span>weight<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-40" data-line-number="40">xbar_sbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>sbp)</a>
+<a class="sourceLine" id="cb8-41" data-line-number="41">Error <span class="cf">in</span> df<span class="op">$</span>sbp<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-42" data-line-number="42">sd_sbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>sbp)</a>
+<a class="sourceLine" id="cb8-43" data-line-number="43">Error <span class="cf">in</span> df<span class="op">$</span>sbp<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-44" data-line-number="44">xbar_dbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>dbp)</a>
+<a class="sourceLine" id="cb8-45" data-line-number="45">Error <span class="cf">in</span> df<span class="op">$</span>dbp<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-46" data-line-number="46">sd_dbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>dbp)</a>
+<a class="sourceLine" id="cb8-47" data-line-number="47">Error <span class="cf">in</span> df<span class="op">$</span>dbp<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-48" data-line-number="48">means &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb8-49" data-line-number="49">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;xbar_height&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-50" data-line-number="50">sds &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(sd_height, sd_weight, sd_sbp, sd_dbp), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-51" data-line-number="51">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;sd_height&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-52" data-line-number="52">table1_cont_vars &lt;-<span class="st"> </span><span class="kw">cbind</span>(means, sds)</a>
+<a class="sourceLine" id="cb8-53" data-line-number="53">Error <span class="cf">in</span> <span class="kw">cbind</span>(means, sds)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;means&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)</a>
+<a class="sourceLine" id="cb8-55" data-line-number="55">Error <span class="cf">in</span> <span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cont_vars&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, </a>
+<a class="sourceLine" id="cb8-57" data-line-number="57">                               <span class="st">&quot;Vikt (kg)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-58" data-line-number="58">                               <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-59" data-line-number="59">                               <span class="st">&quot;Diastoliskt blodtryck (mmHg)&quot;</span>)</a>
+<a class="sourceLine" id="cb8-60" data-line-number="60">Error <span class="cf">in</span> <span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, <span class="st">&quot;Vikt (kg)&quot;</span>, <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cont_vars&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-61" data-line-number="61"></a>
+<a class="sourceLine" id="cb8-62" data-line-number="62"><span class="co"># Skapa Tabell 1b. Kategorivariabler</span></a>
+<a class="sourceLine" id="cb8-63" data-line-number="63">desc_sbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin)))</a>
+<a class="sourceLine" id="cb8-64" data-line-number="64">Error <span class="cf">in</span> df<span class="op">$</span>sbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-65" data-line-number="65">desc_dbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin)))</a>
+<a class="sourceLine" id="cb8-66" data-line-number="66">Error <span class="cf">in</span> df<span class="op">$</span>dbp_bin<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-67" data-line-number="67">desc_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>psych), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>psych)))</a>
+<a class="sourceLine" id="cb8-68" data-line-number="68">Error <span class="cf">in</span> df<span class="op">$</span>psych<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a>
+<a class="sourceLine" id="cb8-69" data-line-number="69">table1_cat_vars &lt;-<span class="st"> </span><span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)</a>
+<a class="sourceLine" id="cb8-70" data-line-number="70">Error <span class="cf">in</span> <span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;desc_sbp_bin&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-71" data-line-number="71"><span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb8-72" data-line-number="72">Error <span class="cf">in</span> <span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cat_vars&#39;</span> not found</a>
+<a class="sourceLine" id="cb8-73" data-line-number="73"><span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-74" data-line-number="74">                      <span class="st">&quot;Systoliskt  blodtryck (mmHG &gt;= 130)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-75" data-line-number="75">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &lt; 80)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-76" data-line-number="76">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &gt;= 80)&quot;</span>,</a>
+<a class="sourceLine" id="cb8-77" data-line-number="77">                      <span class="st">&quot;Psykologisk bedömning: Kat 1&quot;</span>, </a>
+<a class="sourceLine" id="cb8-78" data-line-number="78">                      <span class="st">&quot;Psykologisk bedömning: Kat 2&quot;</span>, </a>
+<a class="sourceLine" id="cb8-79" data-line-number="79">                      <span class="st">&quot;Psykologisk bedömning: Kat 3&quot;</span>, </a>
+<a class="sourceLine" id="cb8-80" data-line-number="80">                      <span class="st">&quot;Psykologisk bedömning: Kat 4&quot;</span>, </a>
+<a class="sourceLine" id="cb8-81" data-line-number="81">                      <span class="st">&quot;Psykologisk bedömning: Kat 5&quot;</span>, </a>
+<a class="sourceLine" id="cb8-82" data-line-number="82">                      <span class="st">&quot;Psykologisk bedömning: Kat 6&quot;</span>, </a>
+<a class="sourceLine" id="cb8-83" data-line-number="83">                      <span class="st">&quot;Psykologisk bedömning: Kat 7&quot;</span>, </a>
+<a class="sourceLine" id="cb8-84" data-line-number="84">                      <span class="st">&quot;Psykologisk bedömning: Kat 8&quot;</span>, </a>
+<a class="sourceLine" id="cb8-85" data-line-number="85">                      <span class="st">&quot;Psykologisk bedömning: Kat 9&quot;</span>) </a>
+<a class="sourceLine" id="cb8-86" data-line-number="86">Error <span class="cf">in</span> <span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>, <span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cat_vars&#39;</span> not found</a></code></pre></div>
 <p>I R ser tabellerna ut som följer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1_cont_vars
-                             Medelvärde    SD
-Lä<span class="kw">ngd</span> (cm)                        <span class="fl">179.3</span>  <span class="fl">6.58</span>
-<span class="kw">Vikt</span> (kg)                          <span class="fl">70.5</span> <span class="fl">10.68</span>
-Systoliskt <span class="kw">blodtryck</span> (mmHg)       <span class="fl">128.6</span> <span class="fl">10.98</span>
-Diastoliskt <span class="kw">blodtryck</span> (mmHg)       <span class="fl">66.9</span>  <span class="fl">9.83</span>
-table1_cat_vars
-                                    Antal    %
-Systoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>)    <span class="dv">519</span> <span class="fl">51.9</span>
-Systoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>)   <span class="dv">481</span> <span class="fl">48.1</span>
-Diastoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>)    <span class="dv">900</span> <span class="fl">90.0</span>
-Diastoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>)   <span class="dv">100</span> <span class="fl">10.0</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">1</span>           <span class="dv">19</span>  <span class="fl">1.9</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">2</span>           <span class="dv">67</span>  <span class="fl">6.7</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">3</span>          <span class="dv">122</span> <span class="fl">12.2</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">4</span>          <span class="dv">150</span> <span class="fl">15.0</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">5</span>          <span class="dv">220</span> <span class="fl">22.0</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">6</span>          <span class="dv">200</span> <span class="fl">20.0</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">7</span>          <span class="dv">145</span> <span class="fl">14.5</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">8</span>           <span class="dv">65</span>  <span class="fl">6.5</span>
-Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">9</span>           <span class="dv">12</span>  <span class="fl">1.2</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">table1_cont_vars</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cont_vars&#39;</span> not found</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">table1_cat_vars</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">Error <span class="cf">in</span> <span class="kw">eval</span>(expr, envir, enclos)<span class="op">:</span><span class="st"> </span>object <span class="st">&#39;table1_cat_vars&#39;</span> not found</a></code></pre></div>
 <p>För exportera använder du som förut paketet <strong>xtable</strong>. Kör <code>library(&quot;xtable&quot;)</code> om det inte är aktiverat.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">xtable</span>(table1_cont_vars, <span class="dt">digits =</span> <span class="dv">1</span>), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cont_vars.html&quot;</span>)
-<span class="kw">print</span>(<span class="kw">xtable</span>(table1_cat_vars, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cat_vars.html&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">xtable</span>(table1_cont_vars, <span class="dt">digits =</span> <span class="dv">1</span>), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cont_vars.html&quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">xtable</span>(table1_cat_vars, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cat_vars.html&quot;</span>)</a></code></pre></div>
 <p>En tabell skulle kunna se ut som följer, där bägge tabellerna för kvantitativa variabler och kategorivariabler är i Word sammanfogade till en tabell.</p>
 <p><img src="images/tabell1.png" width="70%" /></p>
-<p>Ett enklare sätt att skapa en tabell som redovisar grundläggande statistik som går att exportera är med paketet <strong>table</strong>. Installera paketet <code>install.packages(&quot;table1&quot;)</code>. Detta förenklar betydligt, men variabler och nivåer kan inte namnges i efterhand. Det finns det två sätt att konstruera tabellen</p>
-<ul>
-<li>namnge alla variabler och kategorier i ditt data frame</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;table1&quot;</span>)
-<span class="kw">label</span>(df<span class="op">$</span>height) &lt;-<span class="st"> &quot;Längd (cm)&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>weight) &lt;-<span class="st"> &quot;Vikt (kg)&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>sbp) &lt;-<span class="st"> &quot;Systoliskt blodtryck (mmHg)&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>dbp) &lt;-<span class="st"> &quot;Diastroliskt blodtryck (mmHg)&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>sbp_cat) &lt;-<span class="st"> &quot;Högt systoliskt blodtryck&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>dbp_cat) &lt;-<span class="st"> &quot;Högt diastoliskt blodtryck&quot;</span>
-<span class="kw">label</span>(df<span class="op">$</span>psych_cat) &lt;-<span class="st"> &quot;Psykologisk bedömning&quot;</span>
-tab1 &lt;-<span class="st"> </span><span class="kw">table1</span>(<span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>sbp <span class="op">+</span><span class="st"> </span>dbp <span class="op">+</span><span class="st"> </span>
-<span class="st">                    </span>sbp_cat <span class="op">+</span><span class="st"> </span>dbp_cat <span class="op">+</span><span class="st"> </span>psych_cat, <span class="dt">data=</span>df)
-tab1</code></pre></div>
-<div class="Rtable1"><table class="Rtable1">
-<thead>
-<tr>
-<th class='rowlabel firstrow lastrow'></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(n=1000)</span></span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Längd (cm)</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>179 (6.58)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>179 [159, 198]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Vikt (kg)</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>70.5 (10.7)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>70.0 [46.0, 136]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Systoliskt blodtryck (mmHg)</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>129 (11.0)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>129 [61.0, 160]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Diastroliskt blodtryck (mmHg)</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>66.9 (9.83)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>67.5 [39.0, 99.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Högt systoliskt blodtryck</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Normalt</td>
-<td>519 (51.9%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Högt</td>
-<td class='lastrow'>481 (48.1%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Högt diastoliskt blodtryck</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Normalt</td>
-<td>900 (90.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Högt</td>
-<td class='lastrow'>100 (10.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'><span class='varlabel'>Psykologisk bedömning</span></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 1</td>
-<td>19 (1.9%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 2</td>
-<td>67 (6.7%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 3</td>
-<td>122 (12.2%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 4</td>
-<td>150 (15.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 5</td>
-<td>220 (22.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 6</td>
-<td>200 (20.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 7</td>
-<td>145 (14.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Kat 8</td>
-<td>65 (6.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Kat 9</td>
-<td class='lastrow'>12 (1.2%)</td>
-</tr>
-</tbody>
-</table>
 </div>
-<p>Höger klicka på tabellen och kopiera eller spara den som html. Kopiera och klistra in i Word.</p>
-<p><img src="images/tabell1v2.png" width="70%" /></p>
 </div>
+<div id="x-2-tabeller-för-statistisk-analys" class="section level2">
+<h2><span class="header-section-number">6.5</span> 2 x 2 tabeller för statistisk analys</h2>
 </div>
 <div id="statistisk-inferens-baserat-på-korstabeller" class="section level2">
-<h2><span class="header-section-number">8.5</span> Statistisk inferens baserat på korstabeller</h2>
-<p>Det vanligaste testet för analys av korstabeller är <span class="math inline">\(\chi^2\)</span>-test som testar om två variabler är oberoende. För att genomföra detta test i R används funktionen <strong>chisq.test()</strong>. Detta test går att genomföra oavsett skalnivå, men det finns alternativ med bättre styrka om avsikten är att testa om det finns en trend och det faktiskt finns en sådan.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(df<span class="op">$</span>psych_cat, df<span class="op">$</span>year) 
-
-    Pearson<span class="st">&#39;s Chi-squared test</span>
-
-<span class="st">data:  df$psych_cat and df$year</span>
-<span class="st">X-squared = 10.697, df = 8, p-value = 0.2195</span></code></pre></div>
+<h2><span class="header-section-number">6.6</span> Statistisk inferens baserat på korstabeller</h2>
+<p>Det vanligaste testet för analys av korstabeller är <span class="math inline">\(\chi^2\)</span>-test som testar om två variabler är oberoende. För att genomföra detta test i R används funktionen <strong>chisq.test()</strong>.
+Detta test går att genomföra oavsett skalnivå, men det finns alternativ med bättre styrka om avsikten är att testa om det finns en trend och det faktiskt finns en sådan.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">chisq.test</span>(df<span class="op">$</span>psych_cat, df<span class="op">$</span>year) </a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">Error <span class="cf">in</span> df<span class="op">$</span>psych_cat<span class="op">:</span><span class="st"> </span>object of type <span class="st">&#39;closure&#39;</span> is not subsettable</a></code></pre></div>
 <p>Om bägge variablerna på ordinalskala med tillräckligt många skalsteg kan man använda test av Spearmans rangkorrelation.</p>
 
 </div>
@@ -660,8 +499,8 @@ tab1</code></pre></div>
           </div>
         </div>
       </div>
-<a href="variabeltyper.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tabeller-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="urvalsmetoder.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -680,12 +519,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -697,6 +535,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -713,7 +555,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

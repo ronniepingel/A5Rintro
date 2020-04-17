@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2020-04-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="kategorivariabler.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.1"><i class="fa fa-check"></i>Svar 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.2"><i class="fa fa-check"></i>Svar 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.3"><i class="fa fa-check"></i>Svar 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.4"><i class="fa fa-check"></i>Svar 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.5"><i class="fa fa-check"></i>Svar 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.6"><i class="fa fa-check"></i>Svar 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.7"><i class="fa fa-check"></i>Svar 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.8"><i class="fa fa-check"></i>Svar 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.2"><i class="fa fa-check"></i>Svar 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.3"><i class="fa fa-check"></i>Svar 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.4"><i class="fa fa-check"></i>Svar 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.5"><i class="fa fa-check"></i>Svar 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.6"><i class="fa fa-check"></i>Svar 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.7"><i class="fa fa-check"></i>Svar 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.12"><i class="fa fa-check"></i>Svar 3.12</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-ska"><i class="fa fa-check"></i><b>4.1</b> Principer ska</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.2</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.4</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>5</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="5.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>5.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>5.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-p"><i class="fa fa-check"></i><b>5.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-tau"><i class="fa fa-check"></i><b>5.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>5.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>5.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>5.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>5.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>5.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>5.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="5.2.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>5.2.5</b> Efterstratifiering</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-2"><i class="fa fa-check"></i><b>5.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-1"><i class="fa fa-check"></i>Övning 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-1"><i class="fa fa-check"></i>Svar 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-2"><i class="fa fa-check"></i>Övning 2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kategorivariabler-och-tabeller" class="section level1">
+<h1><span class="header-section-number">Kapitel 7</span> Kategorivariabler och tabeller</h1>
+<p>Det är viktigt vid dataanalys att kunna arbeta med tre moment som involverar tabeller:</p>
+<ul>
+<li>Frekvenstabeller. (dvs en univariat beskrivning av en kategori-variabel)</li>
+<li>Korstabeller i R</li>
+<li>Export av tabeller till HTML (som sedan kan importeras till ordbehandlingsprogram)</li>
+</ul>
+<p>Notera att det även finns många paket i R för att skapa tabeller exempelvis <em>summarytools</em> och <em>table1</em>, men vi kommer att
+arbeta med baspaketen i R. Notera att mycket av nedanstående kod innebär att bygga upp tabeller där olika komponenter är byggstenar som måste passa ihop.</p>
+<p>För att exemplifiera tittar vi på ett datamaterial.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"> <span class="co"># Skapa en population och urval </span></a>
+<a class="sourceLine" id="cb150-2" title="2"></a>
+<a class="sourceLine" id="cb150-3" title="3"> <span class="co"># Läs in data. Vi ska välja ut födda 1961 och födda 1975. </span></a>
+<a class="sourceLine" id="cb150-4" title="4">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>) </a>
+<a class="sourceLine" id="cb150-5" title="5"> <span class="co"># Välja ut insark för födda 1961 </span></a>
+<a class="sourceLine" id="cb150-6" title="6"> insark1 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1961</span>,] </a>
+<a class="sourceLine" id="cb150-7" title="7"> <span class="co"># Välj ut INSARK för födda 1975 --&gt;</span></a>
+<a class="sourceLine" id="cb150-8" title="8"> insark2 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>,] </a>
+<a class="sourceLine" id="cb150-9" title="9"> <span class="co"># Skapa ett dataset av INSARK 1961 och 1975.  </span></a>
+<a class="sourceLine" id="cb150-10" title="10"> insark3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(insark1, insark2) </a>
+<a class="sourceLine" id="cb150-11" title="11"> <span class="co"># Skapa nytt rad id baserat på delpopulationen 1961 och 1975</span></a>
+<a class="sourceLine" id="cb150-12" title="12"> insark3<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark3<span class="op">$</span>id)</a>
+<a class="sourceLine" id="cb150-13" title="13"></a>
+<a class="sourceLine" id="cb150-14" title="14"> <span class="co"># Dra urval</span></a>
+<a class="sourceLine" id="cb150-15" title="15"> n &lt;-<span class="st"> </span><span class="dv">1000</span> </a>
+<a class="sourceLine" id="cb150-16" title="16"> <span class="kw">set.seed</span>(<span class="dv">12345</span>) </a>
+<a class="sourceLine" id="cb150-17" title="17"> df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<span class="op">$</span>newid, n), ] </a></code></pre></div>
+<div id="faktorer-på-ordinalskala" class="section level3">
+<h3><span class="header-section-number">7.0.1</span> Faktorer på ordinalskala</h3>
+<p>Variablen <em>psych</em> i INSARK mäter psykisk funktionsförmåga under stressade förhållande på en skala från från 1-9. Värdet är satt av en psykolog och kan betraktas som en variabel på ordinalskala. Därför skapar vi en ny variabel <code>psych_cat</code> som R använder som ordinalskala.</p>
+<p>För att skapa en ordinal kategorivariabel används funktionen <strong>factor()</strong> och i detta fall lägger vi till argumentet <strong>ordered = TRUE</strong> eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">  df<span class="op">$</span>psych </a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="op">&gt;</span><span class="st">    </span>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span></a>
+<a class="sourceLine" id="cb151-3" title="3"><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">38</span>] <span class="dv">9</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-4" title="4"><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">75</span>] <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb151-5" title="5"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">112</span>] <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">9</span></a>
+<a class="sourceLine" id="cb151-6" title="6"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">149</span>] <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-7" title="7"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">186</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-8" title="8"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">223</span>] <span class="dv">4</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb151-9" title="9"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">260</span>] <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-10" title="10"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">297</span>] <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-11" title="11"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">334</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-12" title="12"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">371</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb151-13" title="13"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">408</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-14" title="14"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">445</span>] <span class="dv">3</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb151-15" title="15"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">482</span>] <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-16" title="16"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">519</span>] <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-17" title="17"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">556</span>] <span class="dv">6</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-18" title="18"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">593</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-19" title="19"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">630</span>] <span class="dv">8</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb151-20" title="20"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">667</span>] <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb151-21" title="21"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">704</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb151-22" title="22"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">741</span>] <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb151-23" title="23"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">778</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb151-24" title="24"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">815</span>] <span class="dv">8</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb151-25" title="25"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">852</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-26" title="26"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">889</span>] <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span></a>
+<a class="sourceLine" id="cb151-27" title="27"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">926</span>] <span class="dv">5</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-28" title="28"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">963</span>] <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb151-29" title="29"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1000</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb151-30" title="30">  df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered=</span><span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb151-31" title="31">  <span class="kw">mean</span>(df<span class="op">$</span>psych) </a>
+<a class="sourceLine" id="cb151-32" title="32"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">5.062</span></a>
+<a class="sourceLine" id="cb151-33" title="33">  <span class="kw">mean</span>(df<span class="op">$</span>psych_cat) </a>
+<a class="sourceLine" id="cb151-34" title="34"><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>psych_cat)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span></a>
+<a class="sourceLine" id="cb151-35" title="35"><span class="er">&gt;</span><span class="st"> </span>returning <span class="ot">NA</span></a>
+<a class="sourceLine" id="cb151-36" title="36"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="ot">NA</span></a>
+<a class="sourceLine" id="cb151-37" title="37">  <span class="kw">hist</span>(df<span class="op">$</span>psych) </a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">  <span class="kw">hist</span>(df<span class="op">$</span>psych_cat) </a>
+<a class="sourceLine" id="cb152-2" title="2"><span class="op">&gt;</span><span class="st"> </span>Error <span class="cf">in</span> <span class="kw">hist.default</span>(df<span class="op">$</span>psych_cat)<span class="op">:</span><span class="st"> &#39;x&#39;</span> must be numeric</a></code></pre></div>
+<p>Naturligtvis är det på grund av att vi försöker skapa histogram och medelvärden på <strong>psych_cat</strong> som inte är en kvantitativ variabel. Titta återigen på ditt dataset. <strong>psych_cat</strong> är således kategorivariabel (factor) på ordinalskalnivå.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">str</span>(df)</a>
+<a class="sourceLine" id="cb153-2" title="2"><span class="op">&gt;</span><span class="st"> &#39;data.frame&#39;</span><span class="op">:</span><span class="st"> </span><span class="dv">1000</span> obs. of  <span class="dv">19</span> variables<span class="op">:</span></a>
+<a class="sourceLine" id="cb153-3" title="3"><span class="er">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>id          <span class="op">:</span><span class="st"> </span>int  <span class="dv">703699</span> <span class="dv">692123</span> <span class="dv">702781</span> <span class="dv">692870</span> <span class="dv">689627</span> <span class="dv">25548</span> <span class="dv">393</span> <span class="dv">701579</span> <span class="dv">21052</span> <span class="dv">2848</span> ...</a>
+<a class="sourceLine" id="cb153-4" title="4"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>year        <span class="op">:</span><span class="st"> </span>int  <span class="dv">1975</span> <span class="dv">1975</span> <span class="dv">1975</span> <span class="dv">1975</span> <span class="dv">1975</span> <span class="dv">1961</span> <span class="dv">1961</span> <span class="dv">1975</span> <span class="dv">1961</span> <span class="dv">1961</span> ...</a>
+<a class="sourceLine" id="cb153-5" title="5"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>height      <span class="op">:</span><span class="st"> </span>int  <span class="dv">170</span> <span class="dv">189</span> <span class="dv">174</span> <span class="dv">179</span> <span class="dv">183</span> <span class="dv">179</span> <span class="dv">175</span> <span class="dv">168</span> <span class="dv">177</span> <span class="dv">183</span> ...</a>
+<a class="sourceLine" id="cb153-6" title="6"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>weight      <span class="op">:</span><span class="st"> </span>int  <span class="dv">69</span> <span class="dv">69</span> <span class="dv">60</span> <span class="dv">73</span> <span class="dv">74</span> <span class="dv">71</span> <span class="dv">60</span> <span class="dv">62</span> <span class="dv">69</span> <span class="dv">62</span> ...</a>
+<a class="sourceLine" id="cb153-7" title="7"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>psych       <span class="op">:</span><span class="st"> </span>int  <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> ...</a>
+<a class="sourceLine" id="cb153-8" title="8"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>muscle      <span class="op">:</span><span class="st"> </span>int  <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> ...</a>
+<a class="sourceLine" id="cb153-9" title="9"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>armstrength <span class="op">:</span><span class="st"> </span>num  <span class="dv">392</span> <span class="dv">335</span> <span class="dv">404</span> <span class="dv">545</span> <span class="dv">451</span> ...</a>
+<a class="sourceLine" id="cb153-10" title="10"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>physical    <span class="op">:</span><span class="st"> </span>int  <span class="dv">8</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> ...</a>
+<a class="sourceLine" id="cb153-11" title="11"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>gripstrength<span class="op">:</span><span class="st"> </span>num  <span class="dv">554</span> <span class="dv">701</span> <span class="dv">562</span> <span class="dv">693</span> <span class="dv">619</span> ...</a>
+<a class="sourceLine" id="cb153-12" title="12"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>legstrength <span class="op">:</span><span class="st"> </span>num  <span class="dv">624</span> <span class="dv">601</span> <span class="dv">633</span> <span class="dv">791</span> <span class="dv">646</span> ...</a>
+<a class="sourceLine" id="cb153-13" title="13"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>sbp         <span class="op">:</span><span class="st"> </span>int  <span class="dv">118</span> <span class="dv">141</span> <span class="dv">106</span> <span class="dv">121</span> <span class="dv">130</span> <span class="dv">125</span> <span class="dv">124</span> <span class="dv">151</span> <span class="dv">140</span> <span class="dv">126</span> ...</a>
+<a class="sourceLine" id="cb153-14" title="14"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>dbp         <span class="op">:</span><span class="st"> </span>int  <span class="dv">77</span> <span class="dv">80</span> <span class="dv">63</span> <span class="dv">68</span> <span class="dv">61</span> <span class="dv">55</span> <span class="dv">55</span> <span class="dv">90</span> <span class="dv">78</span> <span class="dv">62</span> ...</a>
+<a class="sourceLine" id="cb153-15" title="15"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>officer     <span class="op">:</span><span class="st"> </span>int  <span class="ot">NA</span> <span class="dv">9</span> <span class="dv">0</span> <span class="dv">9</span> <span class="dv">9</span> <span class="dv">8</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> ...</a>
+<a class="sourceLine" id="cb153-16" title="16"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>testa       <span class="op">:</span><span class="st"> </span>int  <span class="dv">24</span> <span class="dv">35</span> <span class="dv">25</span> <span class="dv">18</span> <span class="dv">25</span> <span class="dv">27</span> <span class="dv">26</span> <span class="dv">30</span> <span class="dv">27</span> <span class="dv">30</span> ...</a>
+<a class="sourceLine" id="cb153-17" title="17"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>testb       <span class="op">:</span><span class="st"> </span>int  <span class="dv">16</span> <span class="dv">26</span> <span class="dv">24</span> <span class="dv">28</span> <span class="dv">24</span> <span class="dv">20</span> <span class="dv">19</span> <span class="dv">34</span> <span class="dv">26</span> <span class="dv">29</span> ...</a>
+<a class="sourceLine" id="cb153-18" title="18"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>testc       <span class="op">:</span><span class="st"> </span>int  <span class="dv">5</span> <span class="dv">39</span> <span class="dv">18</span> <span class="dv">23</span> <span class="dv">28</span> <span class="dv">16</span> <span class="dv">12</span> <span class="dv">36</span> <span class="dv">20</span> <span class="dv">16</span> ...</a>
+<a class="sourceLine" id="cb153-19" title="19"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>testd       <span class="op">:</span><span class="st"> </span>int  <span class="dv">19</span> <span class="dv">0</span> <span class="dv">24</span> <span class="dv">30</span> <span class="dv">25</span> <span class="dv">37</span> <span class="dv">28</span> <span class="dv">34</span> <span class="dv">26</span> <span class="dv">26</span> ...</a>
+<a class="sourceLine" id="cb153-20" title="20"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>newid       <span class="op">:</span><span class="st"> </span>int  <span class="dv">76440</span> <span class="dv">64864</span> <span class="dv">75522</span> <span class="dv">65611</span> <span class="dv">62368</span> <span class="dv">25548</span> <span class="dv">393</span> <span class="dv">74320</span> <span class="dv">21052</span> <span class="dv">2848</span> ...</a>
+<a class="sourceLine" id="cb153-21" title="21"><span class="op">&gt;</span><span class="st">  </span><span class="er">$</span><span class="st"> </span>psych_cat   <span class="op">:</span><span class="st"> </span>Ord.factor w<span class="op">/</span><span class="st"> </span><span class="dv">9</span> levels <span class="st">&quot;1&quot;</span><span class="op">&lt;</span><span class="st">&quot;2&quot;</span><span class="op">&lt;</span><span class="st">&quot;3&quot;</span><span class="op">&lt;</span><span class="st">&quot;4&quot;</span><span class="op">&lt;</span>..<span class="op">:</span><span class="st"> </span><span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> ...</a>
+<a class="sourceLine" id="cb153-22" title="22">df<span class="op">$</span>psych_cat</a>
+<a class="sourceLine" id="cb153-23" title="23"><span class="op">&gt;</span><span class="st">    </span>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span></a>
+<a class="sourceLine" id="cb153-24" title="24"><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">38</span>] <span class="dv">9</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-25" title="25"><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">75</span>] <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb153-26" title="26"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">112</span>] <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">9</span></a>
+<a class="sourceLine" id="cb153-27" title="27"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">149</span>] <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-28" title="28"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">186</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-29" title="29"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">223</span>] <span class="dv">4</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb153-30" title="30"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">260</span>] <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-31" title="31"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">297</span>] <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-32" title="32"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">334</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-33" title="33"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">371</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb153-34" title="34"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">408</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-35" title="35"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">445</span>] <span class="dv">3</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb153-36" title="36"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">482</span>] <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-37" title="37"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">519</span>] <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-38" title="38"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">556</span>] <span class="dv">6</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-39" title="39"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">593</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-40" title="40"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">630</span>] <span class="dv">8</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">9</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb153-41" title="41"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">667</span>] <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb153-42" title="42"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">704</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb153-43" title="43"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">741</span>] <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb153-44" title="44"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">778</span>] <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb153-45" title="45"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">815</span>] <span class="dv">8</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb153-46" title="46"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">852</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-47" title="47"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">889</span>] <span class="dv">7</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span></a>
+<a class="sourceLine" id="cb153-48" title="48"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">926</span>] <span class="dv">5</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-49" title="49"><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">963</span>] <span class="dv">5</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb153-50" title="50"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1000</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb153-51" title="51"><span class="op">&gt;</span><span class="st"> </span>Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">6</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">8</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">9</span></a></code></pre></div>
+<p>Om variabeln är på ordinalskalenivå. För variabeln <code>psych_cat</code> står <code>Levels: 1 &lt; 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; 9</code> som indikerar hur nivåerna är rangordnade. <strong>OBS!</strong> Trots att det är siffror i variabeln hanteras inte dessa som numeriska värden. Genom att använda funktionen <strong>levels()</strong> kan vi se vilka nivåer en faktor-variabel har.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="co"># Namn på nivåerna i faktorn psych_cat</span></a>
+<a class="sourceLine" id="cb154-2" title="2"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat) </a>
+<a class="sourceLine" id="cb154-3" title="3"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span> <span class="st">&quot;4&quot;</span> <span class="st">&quot;5&quot;</span> <span class="st">&quot;6&quot;</span> <span class="st">&quot;7&quot;</span> <span class="st">&quot;8&quot;</span> <span class="st">&quot;9&quot;</span></a>
+<a class="sourceLine" id="cb154-4" title="4"><span class="co"># Ändra namn på nivåerna i psych_cat </span></a>
+<a class="sourceLine" id="cb154-5" title="5"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;1&quot;</span>] &lt;-<span class="st"> &quot;A&quot;</span> </a>
+<a class="sourceLine" id="cb154-6" title="6"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;2&quot;</span>] &lt;-<span class="st"> &quot;B&quot;</span></a>
+<a class="sourceLine" id="cb154-7" title="7"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;3&quot;</span>] &lt;-<span class="st"> &quot;C&quot;</span></a>
+<a class="sourceLine" id="cb154-8" title="8"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;4&quot;</span>] &lt;-<span class="st"> &quot;D&quot;</span> </a>
+<a class="sourceLine" id="cb154-9" title="9"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;5&quot;</span>] &lt;-<span class="st"> &quot;E&quot;</span> </a>
+<a class="sourceLine" id="cb154-10" title="10"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;6&quot;</span>] &lt;-<span class="st"> &quot;F&quot;</span> </a>
+<a class="sourceLine" id="cb154-11" title="11"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;7&quot;</span>] &lt;-<span class="st"> &quot;G&quot;</span> </a>
+<a class="sourceLine" id="cb154-12" title="12"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;8&quot;</span>] &lt;-<span class="st"> &quot;H&quot;</span> </a>
+<a class="sourceLine" id="cb154-13" title="13"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat)[<span class="kw">levels</span>(df<span class="op">$</span>psych_cat)<span class="op">==</span><span class="st">&quot;9&quot;</span>] &lt;-<span class="st"> &quot;I&quot;</span> </a>
+<a class="sourceLine" id="cb154-14" title="14"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat) </a>
+<a class="sourceLine" id="cb154-15" title="15"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span> <span class="st">&quot;D&quot;</span> <span class="st">&quot;E&quot;</span> <span class="st">&quot;F&quot;</span> <span class="st">&quot;G&quot;</span> <span class="st">&quot;H&quot;</span> <span class="st">&quot;I&quot;</span></a>
+<a class="sourceLine" id="cb154-16" title="16"><span class="kw">str</span>(df<span class="op">$</span>psych_cat)</a>
+<a class="sourceLine" id="cb154-17" title="17"><span class="op">&gt;</span><span class="st">  </span>Ord.factor w<span class="op">/</span><span class="st"> </span><span class="dv">9</span> levels <span class="st">&quot;A&quot;</span><span class="op">&lt;</span><span class="st">&quot;B&quot;</span><span class="op">&lt;</span><span class="st">&quot;C&quot;</span><span class="op">&lt;</span><span class="st">&quot;D&quot;</span><span class="op">&lt;</span>..<span class="op">:</span><span class="st"> </span><span class="dv">5</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">6</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">4</span> ...</a></code></pre></div>
+<p>För att ändra rangordningen används funktionen <strong>ordered()</strong> och argumentet <strong>levels</strong>, där namnen på nivåerna
+placeras i en vektor som anger den rangordning nivåerna ska ha.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">ordered</span>(df<span class="op">$</span>psych_cat, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>)) </a>
+<a class="sourceLine" id="cb155-2" title="2"><span class="kw">str</span>(df<span class="op">$</span>psych_cat)</a>
+<a class="sourceLine" id="cb155-3" title="3"><span class="op">&gt;</span><span class="st">  </span>Ord.factor w<span class="op">/</span><span class="st"> </span><span class="dv">9</span> levels <span class="st">&quot;I&quot;</span><span class="op">&lt;</span><span class="st">&quot;H&quot;</span><span class="op">&lt;</span><span class="st">&quot;G&quot;</span><span class="op">&lt;</span><span class="st">&quot;F&quot;</span><span class="op">&lt;</span>..<span class="op">:</span><span class="st"> </span><span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">6</span> ...</a></code></pre></div>
+<p>I exemplet vänds rangordningen, men det går att ordna nivåerna i vilken ordning som helst.</p>
+<!-- ## Frekvenstabeller -->
+<!-- En frekvenstabell är  -->
+<!-- ### Frekvenstabeller med table() -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'} -->
+<!-- # Läs in data. Välj ut födda 1961 och födda 1975  -->
+<!-- insark <- read.csv2("~/Dropbox/A5VT20/Lectures/Data/conscriptiondata.csv") -->
+<!-- # Välja ut insark för födda 1961 och 1975 -->
+<!-- insark1 <- insark[(insark$year == 1961) | (insark$year == 1975),] -->
+<!-- # Skapa nytt radid baserat på delpopulationen 1961 och 1975 -->
+<!-- insark1$newid <-  1:length(insark1$id)  -->
+<!-- ``` -->
+<!-- Vi ska nu  dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt, -->
+<!-- dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig! -->
+<!-- Beträffade funktionen **set.seed()** så används denna för att ange vilket -->
+<!-- slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed() -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE, message =FALSE} -->
+<!-- n <- 1000 -->
+<!-- set.seed(12345) -->
+<!-- df <- insark3[sample(insark3$newid, n), ] -->
+<!-- ``` -->
+<!-- Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både **absoluta** och **relativa** frekvenser. För att skapa tabeller används funktionerna -->
+<!-- + **table()** och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att **table()** enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas. -->
+<!-- +  **prop.table()** tillämpad på ett objekt från **table()** och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.    -->
+<!-- + **addmargins()** ger marginalerna i ett tabellobjeket. Med argumentet **margins** anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas. -->
+<!-- Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln **psych**, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Vi börjar med att titta på exemplet där variabeln **psych** används som numerisk variabel. Med funktionerna **colnames()** och **rownames()** går det att namnge kolumner och rader i tabellobjektet. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # Univariat tabell med frekvenser och proportioner  -->
+<!-- freqtable_psych <- table(df$psych) -->
+<!-- proptable_psych <- prop.table(freqtable_psych) -->
+<!-- table_psych <- cbind(freqtable_psych, 100*proptable_psych) -->
+<!-- table_psych <- addmargins(table_psych, margin = 1) -->
+<!-- colnames(table_psych) <- c("Frekvens", "%") -->
+<!-- rownames(table_psych) <- c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9", "Total") -->
+<!-- freqtable_psych  -->
+<!-- proptable_psych  -->
+<!-- table_psych -->
+<!-- ``` -->
+<!-- Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen **round()**. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen dock avrundning ske. -->
+<!-- `table_psych <- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)` -->
+<!-- Alternativet är nu att skapa en variabel som heter **psych_cat**  och sedan använda funktionen **levels()** för att ange nivåerna i faktorn. Som vanligt när vi skapar en ny variabel adderas vi den till datamaterialet. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # För att namnge raderna kan göra om psych-variabeln till en faktor som namnges.  -->
+<!-- df$psych_cat <- factor(df$psych, ordered = TRUE) -->
+<!-- levels(df$psych_cat) = c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9") -->
+<!-- freqtable_psych_cat <- table(df$psych_cat) -->
+<!-- proptable_psych_cat <- prop.table(freqtable_psych_cat) -->
+<!-- table_psych_cat <- cbind(round(freqtable_psych_cat), round(100*proptable_psych_cat, 1)) -->
+<!-- table_psych_cat <- addmargins(table_psych_cat, 1) -->
+<!-- colnames(table_psych_cat) <- c("Frekvens", "%") -->
+<!-- table_psych_cat -->
+<!-- ``` -->
+<!-- Du har nu konstruerat en frekvenstabell utifrån bägge tillvägagångsätten. -->
+<!-- Det är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data. Default-inställningen för **table()** är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet `useNA = "ifany"`.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych -->
+<!-- df$psych_mis <- df$psych -->
+<!-- df$psych_mis[c(3,4)] <- NA -->
+<!-- table_psych_mis <- table(df$psych_mis, useNA = "ifany") -->
+<!-- table_psych_mis -->
+<!-- ``` -->
+<!-- ## Korstabeller -->
+<!-- ### Korstabeller med table() -->
+<!-- Flera variabler kan korstabuleras i **table()**. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip. -->
+<!-- Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad -->
+<!-- gäller att konstruera tabellen. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- freqtable_psych_year <- table(df$psych, df$year) -->
+<!-- freqtable_psych_year  -->
+<!-- proptable_psych_year <- 100*prop.table(freqtable_psych_year, margin = 2 )  # 2 är kolumnprocent -->
+<!-- # Bind ihop frekvenser och relative frekvenser -->
+<!-- table_psych_year_bind <- cbind(freqtable_psych_year[,1], round(proptable_psych_year[,1], 1), -->
+<!--                          freqtable_psych_year[,2],  round(proptable_psych_year[,2], 1)) -->
+<!-- table_psych_year <- addmargins(table_psych_year_bind, 1) -->
+<!-- colnames(table_psych_year) <- c("1961", "%", "1975", "%") -->
+<!-- rownames(table_psych_year) <- c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9", "Total") -->
+<!-- table_psych_year  -->
+<!-- ``` -->
+<!-- ## Exportera tabeller till html -->
+<!-- Det kan vara omständligt att exportera data från R till Word. En smidig lösning är att spara tabellerna i html-format, vilket gör tabellerna program och plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart. -->
+<!-- För att exportera tabeller använder vi paketet **xtable** och funktionen **xtable()** tillsammans med funktionen **print()** (som finns i basversionen av R). Installera därför nödvändigt paket -->
+<!-- `install.packages("xtable")` -->
+<!-- och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas. -->
+<!-- ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- library("xtable") -->
+<!-- print(xtable(table_psych_cat), type="html", file="table_psych_cat.html") -->
+<!-- print(xtable(table_psych_year), type="html", file="table_psych_year.html") -->
+<!-- ``` -->
+<!-- För att sedan föra in tabellerna i ordbehandlingsprogram öppnas tabellen i en webläsare, du högerklickar någonstans i webläsaren och väljer **markera allt**, kopiera, och klistra in.  -->
+<!-- ## Frekvent förekommande tabeller -->
+<!-- ### Tabell för att beskriva urvalet -->
+<!-- Alla rapporter eller vetenskapliga artiklar bör inkludera en beskrivning av urvalet, dvs variablerna fördelning i stickprovet. Frågan som då besvaras är ''Vilka är det vi vi undersöker?''. Ibland är denna beskrivning placeread i början, ibland i en bilaga. Inom en del vetenskapliga artiklar benämns en sådan tabell **Tabell 1** eller **Table 1**.  -->
+<!-- Observera att eftersom syftet **inte** är att göra inferens utan enbart att beskriva urval, dvs normallt sett redovisas inte medelfel, konfidensintervall eller $p$-värden. -->
+<!-- För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för  -->
+<!-- Därefter kan man kombinera tabellerna i Word.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- # I studien krävs en variabel som indikerar högt blodtryck. -->
+<!-- # För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset:  -->
+<!-- # 1. en binär 0-1 variabel som är numerisk -->
+<!-- # 2. en binär variabel som R hanterar som en faktor med namngivna nivåer.  -->
+<!-- # Att ändra namn på faktorers nivåer är lite omständligt, men det är enkelt att använda nedanstående kod. -->
+<!-- df$sbp_bin <- NA -->
+<!-- df$sbp_bin[df$sbp >= 130] <- 1 -->
+<!-- df$sbp_bin[df$sbp < 130] <- 0 -->
+<!-- df$sbp_cat <- factor(df$sbp_bin) -->
+<!-- levels(df$sbp_cat)[levels(df$sbp_cat) == "0"] <- "Normalt"  -->
+<!-- levels(df$sbp_cat)[levels(df$sbp_cat) == "1"] <- "Högt"  -->
+<!-- df$dbp_bin <- NA -->
+<!-- df$dbp_bin[df$dbp >= 80] <- 1 -->
+<!-- df$dbp_bin[df$dbp < 80] <- 0 -->
+<!-- df$dbp_cat <- factor(df$dbp_bin) -->
+<!-- levels(df$dbp_cat)[levels(df$dbp_cat) == "0"] <- "Normalt"  -->
+<!-- levels(df$dbp_cat)[levels(df$dbp_cat) == "1"] <- "Högt"  -->
+<!-- # Skapa Tabell 1a. Kvantitativa variabler -->
+<!-- xbar_height <- mean(df$height) -->
+<!-- sd_height <- sd(df$height) -->
+<!-- xbar_weight <- mean(df$weight) -->
+<!-- sd_weight <- sd(df$weight) -->
+<!-- xbar_sbp <- mean(df$sbp) -->
+<!-- sd_sbp<- sd(df$sbp) -->
+<!-- xbar_dbp <- mean(df$dbp) -->
+<!-- sd_dbp<- sd(df$dbp) -->
+<!-- means <- round(c(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), 1) -->
+<!-- sds <- round(c(sd_height, sd_weight, sd_sbp, sd_dbp), 2) -->
+<!-- table1_cont_vars <- cbind(means, sds) -->
+<!-- colnames(table1_cont_vars) <- c("Medelvärde", "SD") -->
+<!-- rownames(table1_cont_vars) <- c("Längd (cm)",  -->
+<!--                                "Vikt (kg)", -->
+<!--                                "Systoliskt blodtryck (mmHg)", -->
+<!--                                "Diastoliskt blodtryck (mmHg)") -->
+<!-- # Skapa Tabell 1b. Kategorivariabler -->
+<!-- desc_sbp_bin <- cbind(table(df$sbp_bin), 100*prop.table(table(df$sbp_bin))) -->
+<!-- desc_dbp_bin <- cbind(table(df$dbp_bin), 100*prop.table(table(df$dbp_bin))) -->
+<!-- desc_psych_cat <- cbind(table(df$psych), 100*prop.table(table(df$psych))) -->
+<!-- table1_cat_vars <- rbind(desc_sbp_bin, desc_dbp_bin, desc_psych_cat) -->
+<!-- colnames(table1_cat_vars) <- c("Antal", "%") -->
+<!-- rownames(table1_cat_vars) <- c("Systoliskt  blodtryck (mmHG < 130)", -->
+<!--                       "Systoliskt  blodtryck (mmHG >= 130)", -->
+<!--                       "Diastoliskt  blodtryck (mmHG < 80)", -->
+<!--                       "Diastoliskt  blodtryck (mmHG >= 80)", -->
+<!--                       "Psykologisk bedömning: Kat 1",  -->
+<!--                       "Psykologisk bedömning: Kat 2",  -->
+<!--                       "Psykologisk bedömning: Kat 3",  -->
+<!--                       "Psykologisk bedömning: Kat 4",  -->
+<!--                       "Psykologisk bedömning: Kat 5",  -->
+<!--                       "Psykologisk bedömning: Kat 6",  -->
+<!--                       "Psykologisk bedömning: Kat 7",  -->
+<!--                       "Psykologisk bedömning: Kat 8",  -->
+<!--                       "Psykologisk bedömning: Kat 9")  -->
+<!-- ``` -->
+<!-- I R ser tabellerna ut som följer. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- table1_cont_vars -->
+<!-- table1_cat_vars -->
+<!-- ``` -->
+<!-- För exportera använder du som förut paketet **xtable**. Kör `library("xtable")` om det inte är aktiverat. -->
+<!-- ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- print(xtable(table1_cont_vars, digits = 1), type="html", file="D:/table1_cont_vars.html") -->
+<!-- print(xtable(table1_cat_vars, digits = c(0,0,1)), type="html", file="D:/table1_cat_vars.html") -->
+<!-- ``` -->
+<!-- En tabell skulle kunna se ut som följer, där bägge tabellerna för kvantitativa variabler och kategorivariabler är i Word sammanfogade till en tabell.  -->
+<!-- ```{r, echo = FALSE, out.width = "70%", dpi = 72} -->
+<!-- knitr::include_graphics("images/tabell1.png") -->
+<!-- ``` -->
+<!-- ## 2 x 2 tabeller för statistisk analys -->
+<!-- ## Statistisk inferens baserat på korstabeller -->
+<!-- Det vanligaste testet för analys av korstabeller är $\chi^2$-test som testar om två variabler är oberoende. För att genomföra detta test i R används funktionen **chisq.test()**.  -->
+<!-- Detta test går att genomföra oavsett skalnivå, men det finns alternativ med bättre styrka om avsikten är att testa om det finns en trend och det faktiskt finns en sådan.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE, message=FALSE} -->
+<!-- chisq.test(df$psych_cat, df$year)  -->
+<!-- ``` -->
+<!-- Om bägge variablerna på ordinalskala med tillräckligt många skalsteg kan man använda test av Spearmans rangkorrelation. -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="kategorivariabler.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

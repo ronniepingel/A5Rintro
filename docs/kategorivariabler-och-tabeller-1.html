@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Tillämpad statistik med R</title>
-  <meta name="description" content="Tillämpad statistik med R" />
+  <title>Kapitel 9 Kategorivariabler och tabeller | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 9 Kategorivariabler och tabeller | Tillämpad statistik med R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Tillämpad statistik med R" />
+  <meta property="og:title" content="Kapitel 9 Kategorivariabler och tabeller | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Tillämpad statistik med R" />
+  <meta name="twitter:title" content="Kapitel 9 Kategorivariabler och tabeller | Tillämpad statistik med R" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="variabeltyper.html"/>
 
-<link rel="next" href="att-börja-använda-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -225,14 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
-<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler och tabeller</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#binära-variabler"><i class="fa fa-check"></i><b>6.0.1</b> Binära variabler</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="ändra-kategorinamnen-i-faktorvariabel-.html"><a href="ändra-kategorinamnen-i-faktorvariabel-.html"><i class="fa fa-check"></i><b>7</b> Ändra kategorinamnen i faktorvariabel.</a></li>
+<li class="chapter" data-level="8" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>8</b> Variabeltyper</a></li>
+<li class="chapter" data-level="9" data-path="kategorivariabler-och-tabeller-1.html"><a href="kategorivariabler-och-tabeller-1.html"><i class="fa fa-check"></i><b>9</b> Kategorivariabler och tabeller</a></li>
 </ul>
 
       </nav>
@@ -250,118 +248,274 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Tillämpad statistik med R</h1>
-<p class="author"><em>Ronnie Pingel</em></p>
-<p class="date"><em>2020-04-17</em></p>
-</div>
-<div id="introduktion" class="section level1">
-<h1><span class="header-section-number">Kapitel 1</span> Introduktion</h1>
-<p>Denna material utgör en viktig del av en kurs i tillämpad statistik.</p>
-<div id="om-statistisk-programmering-med-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Om statistisk programmering med R</h2>
-<p>På denna kurs arbetar vi med R, som är ett programspråk och en miljö för statistisk dataanalys (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>) som fungerar på UNIX plattformar, Windows och MacOS. Det finns flera anledningar till att vi valt R:</p>
+<div id="kategorivariabler-och-tabeller-1" class="section level1">
+<h1><span class="header-section-number">Kapitel 9</span> Kategorivariabler och tabeller</h1>
+<p>Att analys av kategorivariabler arbetar man med</p>
 <ul>
-<li>R är gratis och har en öppen källkod.</li>
-<li>R ger tillgång till avancerade verktyg för dataanalys och datavisualisering.</li>
-<li>Användare av R bidrar ofta med egen programkod och egna paket, vilket innebär att en omfattande mängd funktioner enkelt går att implementera.</li>
-<li>Många läroböcker skrivs med utgångspunkt från R.</li>
-<li>Online-resurserna är mycket stora. Det finns många forum där användare av R kan få hjälp (t ex <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a>).</li>
-<li>R är ett av de absolut vanligaste programmen för statistisk dataanalys. (<a href="http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/" class="uri">http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/</a>)</li>
+<li>Frekvenstabeller i R</li>
+<li>Korstabeller i R</li>
+<li>Export av tabeller till HTML (som sedan kan importeras till ordbehandlingsprogram)</li>
 </ul>
-<p>Finns det anledningar till att inte välja R?</p>
+<p>Vi förutsätter här att ni redan kan flera grundläggande begrepp.
+Notera att det även finns många paket i R för att skapa tabeller exempelvis <em>summarytools</em> och <em>table1</em>.</p>
+<p>Dessutom kan kvantiativa variabler vara antingen kontinuerliga eller diskreta.</p>
+<p>I R korresponderar detta till numeriska variabler. Notera att en kvantitativ variabl kan hanteras som en kategorivariabel om den har få kategorier.</p>
 <ul>
-<li>Det finns ingen officiell support.</li>
-<li>Eftersom R bygger på användarnas bidrag finns ingen garanti att funktioner fungerar som de ska.</li>
-<li>Jämfört med andra programspråk kan R uppfattas som långsamt.</li>
+<li>Det finns två typer av kvantitativa variabler i R: <strong>numeric</strong> eller <strong>integer</strong> (heltal)</li>
+<li>Kategorivariabler finns som två typer: <strong>factor</strong> och <strong>ordered factor</strong>.</li>
 </ul>
-<p>För den som van vid menybaserade system (sk point-and-click) kan dessutom kodning uppfattas som en nackdel. Det finns emellertid <strong>etiska</strong> och <strong>praktiska</strong> skäl att lära sig programmera i statistikprogram (dvs att i kod skriva ange hur data ska hanteras och analyseras), och inte förlita sig på menyer. Programmering</p>
-<ul>
-<li>är nödvändig för att tillförlitligt upprepa (replikera) dataanalyser. På företag och på myndigheter ska kolleger kunna ta över datamaterial och tillhörande analyser och på nytt genomföra dessa med samma resultat. Samma sak gäller inom forskning, där andra forskare ska erhålla samma resultat givet samma data och analys. Notera att detta även gäller för dig själv, dvs det är inte ovanligt att som analytiker på nytt upprepa en analys.</li>
-<li>spar tid för repetativa moment, t ex om många liknande analyser ska genomföras.<br />
-</li>
-<li>ger möjlighet till avancerade analyser samt frihet att utforma egna analyser.</li>
-<li>bidrar till ökad förståelse för dataanalys.</li>
-</ul>
-<p>Kruxet? Statistisk programmering tar längre tid att lära sig jämfört med att lära sig menybaserad datahantering och analyser! Tabell 2.1 redovisar några reflektioner över ett antal vanliga statistikprogram.</p>
-<table>
-<caption><span id="tab:unnamed-chunk-2">Table 1.1: </span>En jämförelse av några vanliga statistikprogram</caption>
-<tbody>
-<tr class="odd">
-<td align="left">Minitab</td>
-<td align="left">Mycket enkelt att lära sig. Används främst inom kvalitetskontroll i industri samt planering av randomiserade försök. Billigt. Begränsat urval av statistiska metoder</td>
-</tr>
-<tr class="even">
-<td align="left">SPSS</td>
-<td align="left">Enkelt att lära sig. Stor spridning bland samhällsvetare och utredare. Ganska stort urval av statistiska metoder som är organiserade på ett något rörigt sätt. Krånglig programkod.</td>
-</tr>
-<tr class="odd">
-<td align="left">Stata</td>
-<td align="left">Enkelt att lära sig och mycket enkel programkod. Spridning bland forskare inom ekonometri och epidemiologi. Stort urval av, även de senaste, statistiska metoderna</td>
-</tr>
-<tr class="even">
-<td align="left">SAS</td>
-<td align="left">Medelsvårt att lära sig, med en föråldrad programkod. Kan hantera stora dataset. Används av myndigheter, industri och forskare inom alla områden. Standard för läkemdelsbolag. Stort urval av statistiska metoder, men inte de allra senaste. Dyrt. Svårt att göra bra figurer.</td>
-</tr>
-<tr class="odd">
-<td align="left">R</td>
-<td align="left">Svårt att lära sig. Gratis. Flexibelt. Mycket stor spridning inom alla områden för dataanalys. Enkel programkod.</td>
-</tr>
-<tr class="even">
-<td align="left">Python</td>
-<td align="left">Mycket svårt att lära sig. Gratis. Flexibelt. Stor spridning inom maskininlärning och AI.</td>
-</tr>
-</tbody>
-</table>
-<p>Varför är inte Excel, Open Office Calc, Google Docs och andra kalkylprogram inkluderade i jämförelsen? SVaret är enkelt. Dessa är nämligen inga statistikprogram! Ofta saknas i sådana program viktiga statistiska funktioner och dessutom är den numeriska tillförlitligheten lägre än för konventionella statistiskprogram (Keeling, K. B., &amp; Pavur, R. J., 2011).</p>
-</div>
-<div id="allmänna-tips-om-r-på-kursen" class="section level2">
-<h2><span class="header-section-number">1.2</span> Allmänna tips om R på kursen</h2>
-<p>Det tar tid att lära sig R. Det kan även vara frustrerande, inte minst eftersom programmering är inte förlåtande vad gäller fel.
-Men misströsta inte, i slutändan är det värt det och är i högsta grad tidsbesparande. Här följer några tips vad gäller inlärningen och användandet av R under kursens gång:</p>
-<ul>
-<li>Se till att snabbt få grunderna på plats. R kommer att användas löpande under kursens gång.</li>
-<li>Arbeta aktivt med R. Programmering lär man sig genom tillämpning, inte genom att läsa. Det krävs normalt sett många timmar av aktivt arbete för att lära sig ett programspråk. Använd därför R till att lösa övningsuppgifter och att replikera exempel från föreläsningar. På så vis får du rutin vad gäller användandet av R.<br />
-</li>
-<li>Använd kod som presenterats på kursen. Ändra och laborera i färdig kod för att se vad som händer. Det är inte viktigt att kunna skriva all kod utantill, däremot ska man förstå skriven kod och kunna manipulera denna för sitt syfte.</li>
-<li>Lös övningsuppgifter på följande vis: 1. Läs uppgiften och skissa därefter på papper upp en lösning, men gör inga beräkningar inte. Skriv ner antaganden och formler. 2. Lös sedan uppgiften med hjälp av beräkningar i R. Om du fastnar, studera R-koden i lösningsförslaget förstå hur hur uppgiften har lösts med hjälp R alternativt använd kod som presenterats på kursen. 3. Räkna därefter igenom uppgiften för hand. När du känner dig helt trygg med att räkna för hand kan du så småningom hoppa över detta moment. 4. Fyll i din papperslösning och avsluta med ett svar.</li>
-<li>Var inte rädd för att använda resurser på nätet. Se ovan.</li>
-<li>Kontakta lärare och lärarassistenter på kursen om ni fastnar och har frågor. Utnyttja de lärarledda sessionerna.</li>
-<li>Samarbeta och diskutera i de diskussionsforum som skapats för er studenter.</li>
-</ul>
-<p>På denna kurs rekommenderas att ni <strong>endast skriver kod på det sätt som det presenteras på kursen</strong>. Visserligen är R oerhört flexibelt och en uppgift går att lösa på en mängd sätt. Koden som presenteras på kursen är emellertid framtagen för att vara tydlig och tillförlitlig och syftet är att du ska bli trygg med att beräkningarna är korrekta snarare än effektiva.</p>
-<p>Slutligen, så är det bra att som läsare ha i åtanke att all beskrivning av kodens funktionalitet inte är uttömmande. Syftet är nämligen att lära ut vad som är nödvändigt för denna kurs och då behövs inte en fullständig beskrivning av till exempel vad ett verktyg i R kan göra.</p>
-<p>Lycka till!</p>
-<hr />
-<p><img src="docs/images/important.png" width="5%" /></p>
-</div>
-<div id="sammanfattning" class="section level2">
-<h2><span class="header-section-number">1.3</span> Sammanfattning</h2>
-<style>
-div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
-</style>
-<div class="red">
-<p><font size="5"> </font>
-Du ska kunna</p>
-<ul>
-<li>motivera varför statistisk programmering är nödvändig för arbete med data och dataanalyser.</li>
-</ul>
-</div>
-<hr />
-</div>
-<div id="referenser" class="section level2">
-<h2><span class="header-section-number">1.4</span> Referenser</h2>
-<p>Keeling, K. B., &amp; Pavur, R. J. (2011). Statistical accuracy of spreadsheet software. The American Statistician, 65(4), 265-273.</p>
+<p>För att exemplifiera tittar vi på ett datamaterial.</p>
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'} -->
+<!-- # Skapa en population och urval -->
+<!-- # Läs in data. Vi ska välja ut födda 1961 och födda 1975. -->
+<!-- insark <- read.csv2("D:/conscriptiondata.csv") -->
+<!-- # Välja ut insark för födda 1961 -->
+<!-- insark1 <- insark[insark$year == 1961,] -->
+<!-- # Välj ut INSARK för födda 1975 -->
+<!-- insark2 <- insark[insark$year == 1975,] -->
+<!-- # Skapa ett dataset av INSARK 1961 och 1975.  -->
+<!-- insark3 <- rbind(insark1, insark2) -->
+<!-- # Skapa nytt rad id baserat på delpopulationen 1961 och 1975 -->
+<!-- insark3$newid <-  1:length(insark3$id)  -->
+<!-- # Dra urval -->
+<!-- n <- 1000 -->
+<!-- set.seed(12345) -->
+<!-- df <- insark3[sample(insark3$newid, n), ] -->
+<!-- ``` -->
+<!-- Du har nu en data frame. Med funktionen **str()** (Compactly Display the Structure of an Arbitrary R Object) tittar man på ett objekts interna struktur.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'} -->
+<!-- str(df) -->
+<!-- ``` -->
+<!-- I `df` finns variabler som är heltal`int` och numeriska `num`. I allra flesta fall har denna distinktion ingen betydelse, utan detta hur R sparat data. Integer är nämligen inte lika minneskrävande jämfört med numeric. Statistiskt är dock bägge kvantativa variabler. -->
+<!-- ## Faktorer -->
+<!-- Faktorer är beteckningen som R använder för kategorivariabler. Faktorer är generellt sett besvärligare att arbeta än numeriska variabler och som kan vara förvirrande är att det finns två alternativ beträffande hur man arbetar med kategorivariabler. Det går nämligen att använda kategorivariabler -->
+<!-- + definierade som kategorivariabler (faktorer) i R -->
+<!-- + som numeriska variabler om de är kodade till 0-1 variabler (eller annan typ av numerisk kodning som ger en tolkning av intresse.) -->
+<!-- Vi kommer utgå ifrån att vi alltid försöker ha **bägge typerna** av kodning för en kategorivariabel i vårt dataset, där kategorivariabler kodade som faktorer kallas **variabelnamn_cat** och numeriska kategorivariabler kallas för  **variabelnamn_bin** pm den är kodad 0-1 eller enbart **variabelnamn** om den innehåller numeriska värden. -->
+<!-- Vid arbete med data det av stor vikt att vara bekväm med kategorivariabler!  -->
+<!-- ### Faktorer på ordinalskala -->
+<!-- Vi börjar med att titta på variabler vars kategorier går att rangordna. -->
+<!-- Variablen *psych* i INSARK mäter psykisk funktionsförmåga under stressade förhållande på en skala från från 1-9. Värdet är satt av en psykolog och kan betraktas som en variabel på ordinalskala. Därför skapar vi en ny variabel `psych_cat` som R använder som ordinalskala. -->
+<!-- För att skapa en kategorivariabel används funktionen **factor()** och i detta fall lägger vi till argumentet **ordered = TRUE** eftersom det är en kategorivariabel som går att rangordna. Kör nedanstående kod och fundera varför R ger felmeddelanden. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- df$psych -->
+<!-- df$psych_cat <- factor(df$psych, ordered=TRUE) -->
+<!-- mean(df$psych) -->
+<!-- mean(df$psych_cat) -->
+<!-- hist(df$psych) -->
+<!-- hist(df$psych_cat) -->
+<!-- ``` -->
+<!-- Naturligtvis är det på grund av att vi försöker skapa histogram och medelvärden på **psych_cat** som inte är en kvantitativ variabel. Titta återigen på ditt dataset. **psych_cat** är således kategorivariabel (factor) på ordinalskalnivå. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'} -->
+<!-- str(df) -->
+<!-- df$psych_cat -->
+<!-- ``` -->
+<!-- + Faktorer består av olika nivåer, **levels**. Om variabeln är på ordinalskalenivå. För variabeln `psych_cat` står `Levels: 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9` som indikerar hur nivåerna är rangordnade. **OBS!** Trots att det är siffror i variabeln hanteras inte dessa som numeriska värden.  -->
+<!-- + Faktorernas nivåer kan anges med funktionen **levels*, se nedan. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'} -->
+<!-- # Namn på nivåerna i faktorn psych_cat  -->
+<!-- levels(df$psych_cat) -->
+<!-- # Ändra namn på nivåerna i psych_cat -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="1"] <- "A" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="2"] <- "B" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="3"] <- "C" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="4"] <- "D" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="5"] <- "E" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="6"] <- "F" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="7"] <- "G" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="8"] <- "H" -->
+<!-- levels(df$psych_cat)[levels(df$psych_cat)=="9"] <- "I" -->
+<!-- levels(df$psych_cat) -->
+<!-- str(df$psych_cat) -->
+<!-- ``` -->
+<!-- För att ändra rangordningen används funktionen **ordered()** och argumentet **levels**. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>'} -->
+<!-- df$psych_cat <- ordered(df$psych_cat, levels=c("I", "H", "G", "F", "E", "D", "C", "B", "A")) -->
+<!-- str(df$psych_cat) -->
+<!-- ``` -->
+<!-- I exemplet vänds rangordningen, men det går att ordna nivåerna i vilken ordning som helst. -->
+<!-- ## Faktorer på nominalskala -->
+<!-- Faktorer på nominalskala innebär att kategorierna inte går att rangordna. -->
+<!-- ## Frekvenstabeller -->
+<!-- En frekvenstabell är  -->
+<!-- ### Frekvenstabeller med table() -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=FALSE, prompt=FALSE, comment='>'} -->
+<!-- # Läs in data. Välj ut födda 1961 och födda 1975  -->
+<!-- insark <- read.csv2("~/Dropbox/A5VT20/Lectures/Data/conscriptiondata.csv") -->
+<!-- # Välja ut insark för födda 1961 och 1975 -->
+<!-- insark1 <- insark[(insark$year == 1961) | (insark$year == 1975),] -->
+<!-- # Skapa nytt radid baserat på delpopulationen 1961 och 1975 -->
+<!-- insark1$newid <-  1:length(insark1$id)  -->
+<!-- ``` -->
+<!-- Vi ska nu  dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt, -->
+<!-- dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig! -->
+<!-- Beträffade funktionen **set.seed()** så används denna för att ange vilket -->
+<!-- slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed() -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE, message =FALSE} -->
+<!-- n <- 1000 -->
+<!-- set.seed(12345) -->
+<!-- df <- insark3[sample(insark3$newid, n), ] -->
+<!-- ``` -->
+<!-- Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både **absoluta** och **relativa** frekvenser. För att skapa tabeller används funktionerna -->
+<!-- + **table()** och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att **table()** enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas. -->
+<!-- +  **prop.table()** tillämpad på ett objekt från **table()** och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.    -->
+<!-- + **addmargins()** ger marginalerna i ett tabellobjeket. Med argumentet **margins** anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas. -->
+<!-- Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln **psych**, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Vi börjar med att titta på exemplet där variabeln **psych** används som numerisk variabel. Med funktionerna **colnames()** och **rownames()** går det att namnge kolumner och rader i tabellobjektet. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # Univariat tabell med frekvenser och proportioner  -->
+<!-- freqtable_psych <- table(df$psych) -->
+<!-- proptable_psych <- prop.table(freqtable_psych) -->
+<!-- table_psych <- cbind(freqtable_psych, 100*proptable_psych) -->
+<!-- table_psych <- addmargins(table_psych, margin = 1) -->
+<!-- colnames(table_psych) <- c("Frekvens", "%") -->
+<!-- rownames(table_psych) <- c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9", "Total") -->
+<!-- freqtable_psych  -->
+<!-- proptable_psych  -->
+<!-- table_psych -->
+<!-- ``` -->
+<!-- Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen **round()**. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen dock avrundning ske. -->
+<!-- `table_psych <- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)` -->
+<!-- Alternativet är nu att skapa en variabel som heter **psych_cat**  och sedan använda funktionen **levels()** för att ange nivåerna i faktorn. Som vanligt när vi skapar en ny variabel adderas vi den till datamaterialet. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # För att namnge raderna kan göra om psych-variabeln till en faktor som namnges.  -->
+<!-- df$psych_cat <- factor(df$psych, ordered = TRUE) -->
+<!-- levels(df$psych_cat) = c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9") -->
+<!-- freqtable_psych_cat <- table(df$psych_cat) -->
+<!-- proptable_psych_cat <- prop.table(freqtable_psych_cat) -->
+<!-- table_psych_cat <- cbind(round(freqtable_psych_cat), round(100*proptable_psych_cat, 1)) -->
+<!-- table_psych_cat <- addmargins(table_psych_cat, 1) -->
+<!-- colnames(table_psych_cat) <- c("Frekvens", "%") -->
+<!-- table_psych_cat -->
+<!-- ``` -->
+<!-- Du har nu konstruerat en frekvenstabell utifrån bägge tillvägagångsätten. -->
+<!-- Det är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data. Default-inställningen för **table()** är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet `useNA = "ifany"`.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='>', error=TRUE} -->
+<!-- # Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych -->
+<!-- df$psych_mis <- df$psych -->
+<!-- df$psych_mis[c(3,4)] <- NA -->
+<!-- table_psych_mis <- table(df$psych_mis, useNA = "ifany") -->
+<!-- table_psych_mis -->
+<!-- ``` -->
+<!-- ## Korstabeller -->
+<!-- ### Korstabeller med table() -->
+<!-- Flera variabler kan korstabuleras i **table()**. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip. -->
+<!-- Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad -->
+<!-- gäller att konstruera tabellen. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- freqtable_psych_year <- table(df$psych, df$year) -->
+<!-- freqtable_psych_year  -->
+<!-- proptable_psych_year <- 100*prop.table(freqtable_psych_year, margin = 2 )  # 2 är kolumnprocent -->
+<!-- # Bind ihop frekvenser och relative frekvenser -->
+<!-- table_psych_year_bind <- cbind(freqtable_psych_year[,1], round(proptable_psych_year[,1], 1), -->
+<!--                          freqtable_psych_year[,2],  round(proptable_psych_year[,2], 1)) -->
+<!-- table_psych_year <- addmargins(table_psych_year_bind, 1) -->
+<!-- colnames(table_psych_year) <- c("1961", "%", "1975", "%") -->
+<!-- rownames(table_psych_year) <- c("Kat 1", "Kat 2", "Kat 3", "Kat 4", "Kat 5", "Kat 6", "Kat 7", "Kat 8", "Kat 9", "Total") -->
+<!-- table_psych_year  -->
+<!-- ``` -->
+<!-- ## Exportera tabeller till html -->
+<!-- Det kan vara omständligt att exportera data från R till Word. En smidig lösning är att spara tabellerna i html-format, vilket gör tabellerna program och plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart. -->
+<!-- För att exportera tabeller använder vi paketet **xtable** och funktionen **xtable()** tillsammans med funktionen **print()** (som finns i basversionen av R). Installera därför nödvändigt paket -->
+<!-- `install.packages("xtable")` -->
+<!-- och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas. -->
+<!-- ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- library("xtable") -->
+<!-- print(xtable(table_psych_cat), type="html", file="table_psych_cat.html") -->
+<!-- print(xtable(table_psych_year), type="html", file="table_psych_year.html") -->
+<!-- ``` -->
+<!-- För att sedan föra in tabellerna i ordbehandlingsprogram öppnas tabellen i en webläsare, du högerklickar någonstans i webläsaren och väljer **markera allt**, kopiera, och klistra in.  -->
+<!-- ## Frekvent förekommande tabeller -->
+<!-- ### Tabell för att beskriva urvalet -->
+<!-- Alla rapporter eller vetenskapliga artiklar bör inkludera en beskrivning av urvalet, dvs variablerna fördelning i stickprovet. Frågan som då besvaras är ''Vilka är det vi vi undersöker?''. Ibland är denna beskrivning placeread i början, ibland i en bilaga. Inom en del vetenskapliga artiklar benämns en sådan tabell **Tabell 1** eller **Table 1**.  -->
+<!-- Observera att eftersom syftet **inte** är att göra inferens utan enbart att beskriva urval, dvs normallt sett redovisas inte medelfel, konfidensintervall eller $p$-värden. -->
+<!-- För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för  -->
+<!-- Därefter kan man kombinera tabellerna i Word.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- # I studien krävs en variabel som indikerar högt blodtryck. -->
+<!-- # För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset:  -->
+<!-- # 1. en binär 0-1 variabel som är numerisk -->
+<!-- # 2. en binär variabel som R hanterar som en faktor med namngivna nivåer.  -->
+<!-- # Att ändra namn på faktorers nivåer är lite omständligt, men det är enkelt att använda nedanstående kod. -->
+<!-- df$sbp_bin <- NA -->
+<!-- df$sbp_bin[df$sbp >= 130] <- 1 -->
+<!-- df$sbp_bin[df$sbp < 130] <- 0 -->
+<!-- df$sbp_cat <- factor(df$sbp_bin) -->
+<!-- levels(df$sbp_cat)[levels(df$sbp_cat) == "0"] <- "Normalt"  -->
+<!-- levels(df$sbp_cat)[levels(df$sbp_cat) == "1"] <- "Högt"  -->
+<!-- df$dbp_bin <- NA -->
+<!-- df$dbp_bin[df$dbp >= 80] <- 1 -->
+<!-- df$dbp_bin[df$dbp < 80] <- 0 -->
+<!-- df$dbp_cat <- factor(df$dbp_bin) -->
+<!-- levels(df$dbp_cat)[levels(df$dbp_cat) == "0"] <- "Normalt"  -->
+<!-- levels(df$dbp_cat)[levels(df$dbp_cat) == "1"] <- "Högt"  -->
+<!-- # Skapa Tabell 1a. Kvantitativa variabler -->
+<!-- xbar_height <- mean(df$height) -->
+<!-- sd_height <- sd(df$height) -->
+<!-- xbar_weight <- mean(df$weight) -->
+<!-- sd_weight <- sd(df$weight) -->
+<!-- xbar_sbp <- mean(df$sbp) -->
+<!-- sd_sbp<- sd(df$sbp) -->
+<!-- xbar_dbp <- mean(df$dbp) -->
+<!-- sd_dbp<- sd(df$dbp) -->
+<!-- means <- round(c(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), 1) -->
+<!-- sds <- round(c(sd_height, sd_weight, sd_sbp, sd_dbp), 2) -->
+<!-- table1_cont_vars <- cbind(means, sds) -->
+<!-- colnames(table1_cont_vars) <- c("Medelvärde", "SD") -->
+<!-- rownames(table1_cont_vars) <- c("Längd (cm)",  -->
+<!--                                "Vikt (kg)", -->
+<!--                                "Systoliskt blodtryck (mmHg)", -->
+<!--                                "Diastoliskt blodtryck (mmHg)") -->
+<!-- # Skapa Tabell 1b. Kategorivariabler -->
+<!-- desc_sbp_bin <- cbind(table(df$sbp_bin), 100*prop.table(table(df$sbp_bin))) -->
+<!-- desc_dbp_bin <- cbind(table(df$dbp_bin), 100*prop.table(table(df$dbp_bin))) -->
+<!-- desc_psych_cat <- cbind(table(df$psych), 100*prop.table(table(df$psych))) -->
+<!-- table1_cat_vars <- rbind(desc_sbp_bin, desc_dbp_bin, desc_psych_cat) -->
+<!-- colnames(table1_cat_vars) <- c("Antal", "%") -->
+<!-- rownames(table1_cat_vars) <- c("Systoliskt  blodtryck (mmHG < 130)", -->
+<!--                       "Systoliskt  blodtryck (mmHG >= 130)", -->
+<!--                       "Diastoliskt  blodtryck (mmHG < 80)", -->
+<!--                       "Diastoliskt  blodtryck (mmHG >= 80)", -->
+<!--                       "Psykologisk bedömning: Kat 1",  -->
+<!--                       "Psykologisk bedömning: Kat 2",  -->
+<!--                       "Psykologisk bedömning: Kat 3",  -->
+<!--                       "Psykologisk bedömning: Kat 4",  -->
+<!--                       "Psykologisk bedömning: Kat 5",  -->
+<!--                       "Psykologisk bedömning: Kat 6",  -->
+<!--                       "Psykologisk bedömning: Kat 7",  -->
+<!--                       "Psykologisk bedömning: Kat 8",  -->
+<!--                       "Psykologisk bedömning: Kat 9")  -->
+<!-- ``` -->
+<!-- I R ser tabellerna ut som följer. -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- table1_cont_vars -->
+<!-- table1_cat_vars -->
+<!-- ``` -->
+<!-- För exportera använder du som förut paketet **xtable**. Kör `library("xtable")` om det inte är aktiverat. -->
+<!-- ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE} -->
+<!-- print(xtable(table1_cont_vars, digits = 1), type="html", file="D:/table1_cont_vars.html") -->
+<!-- print(xtable(table1_cat_vars, digits = c(0,0,1)), type="html", file="D:/table1_cat_vars.html") -->
+<!-- ``` -->
+<!-- En tabell skulle kunna se ut som följer, där bägge tabellerna för kvantitativa variabler och kategorivariabler är i Word sammanfogade till en tabell.  -->
+<!-- ```{r, echo = FALSE, out.width = "70%", dpi = 72} -->
+<!-- knitr::include_graphics("images/tabell1.png") -->
+<!-- ``` -->
+<!-- ## 2 x 2 tabeller för statistisk analys -->
+<!-- ## Statistisk inferens baserat på korstabeller -->
+<!-- Det vanligaste testet för analys av korstabeller är $\chi^2$-test som testar om två variabler är oberoende. För att genomföra detta test i R används funktionen **chisq.test()**.  -->
+<!-- Detta test går att genomföra oavsett skalnivå, men det finns alternativ med bättre styrka om avsikten är att testa om det finns en trend och det faktiskt finns en sådan.  -->
+<!-- ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='', error=TRUE, message=FALSE} -->
+<!-- chisq.test(df$psych_cat, df$year)  -->
+<!-- ``` -->
+<!-- Om bägge variablerna på ordinalskala med tillräckligt många skalsteg kan man använda test av Spearmans rangkorrelation. -->
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="variabeltyper.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="att-börja-använda-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

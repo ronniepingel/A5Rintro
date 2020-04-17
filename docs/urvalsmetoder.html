@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 5 Urvalsmetoder | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 5 Urvalsmetoder | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 5 Urvalsmetoder | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 5 Urvalsmetoder | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel" />
+
+
+<meta name="date" content="2020-04-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="läsa-in-och-spara-data.html"/>
+<link rel="next" href="kategorivariabler.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.1"><i class="fa fa-check"></i>Svar 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.2"><i class="fa fa-check"></i>Svar 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.3"><i class="fa fa-check"></i>Svar 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.4"><i class="fa fa-check"></i>Svar 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.5"><i class="fa fa-check"></i>Svar 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.6"><i class="fa fa-check"></i>Svar 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.7"><i class="fa fa-check"></i>Svar 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.8"><i class="fa fa-check"></i>Svar 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.2"><i class="fa fa-check"></i>Svar 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.3"><i class="fa fa-check"></i>Svar 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.4"><i class="fa fa-check"></i>Svar 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.5"><i class="fa fa-check"></i>Svar 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.6"><i class="fa fa-check"></i>Svar 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.7"><i class="fa fa-check"></i>Svar 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.12"><i class="fa fa-check"></i>Svar 3.12</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-ska"><i class="fa fa-check"></i><b>4.1</b> Principer ska</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.2</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.4</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>5</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="5.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>5.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>5.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-p"><i class="fa fa-check"></i><b>5.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-tau"><i class="fa fa-check"></i><b>5.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>5.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>5.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>5.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>5.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>5.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>5.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="5.2.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>5.2.5</b> Efterstratifiering</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-2"><i class="fa fa-check"></i><b>5.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-1"><i class="fa fa-check"></i>Övning 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-1"><i class="fa fa-check"></i>Svar 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-2"><i class="fa fa-check"></i>Övning 2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="urvalsmetoder" class="section level1">
+<h1><span class="header-section-number">Kapitel 5</span> Urvalsmetoder</h1>
+<div id="obundet-slumpmässigt-urval-utan-återläggning" class="section level2">
+<h2><span class="header-section-number">5.1</span> Obundet slumpmässigt urval utan återläggning</h2>
+<div id="inferens-för-mu" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Inferens för <span class="math inline">\(\mu\)</span></h3>
+<p>Målet är att undersöka en variabel <span class="math inline">\(x\)</span> i en population bestående av <span class="math inline">\(N\)</span> element. Variabelns populationsmedelvärde betecknas <span class="math inline">\(\mu\)</span> och populationsvariansen <span class="math inline">\(\sigma^2\)</span>. Ett urval dras med storleken <span class="math inline">\(n\)</span>. Givet att urvalsmetoden är ett obundet slumpmässigt urval utan återläggning (OSU-UÅ) gäller följande:</p>
+<ul>
+<li><p>Stickprovsmedelvärdet, <span class="math display">\[\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i\]</span> är
+en väntevärdesriktig skattning av <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Stickprovsmedelvärdets varians är <span class="math display">\[V(\bar{x}) = \left(\dfrac{N-n}{N-1}\right)\dfrac{\sigma^2}{n}\]</span> och skattas med
+<span class="math display">\[\hat{V}(\bar{x}) = \left(1 - \dfrac{n}{N}\right)\dfrac{s^2_x}{n},\]</span> där <span class="math inline">\(s^2\)</span> är stickprovsvariansen.</p></li>
+<li><p>Om stickprovsstorleken är tillräckligt stor är stickprovsmedelvärdets samplingfördelning <span class="math inline">\(\bar{x} \underset{approx}{\sim} N(\mu,\sigma^2)\)</span>). Ett konfidensintervall ges då av</p></li>
+</ul>
+<p><span class="math display">\[
+\bar{x}\pm z_{\alpha/2}\sqrt{\hat{V}(\bar{x})}
+\]</span></p>
+<p>där <span class="math inline">\(1-\alpha\)</span> är konfidensgraden och <span class="math inline">\(z_{\alpha/2}\)</span> är det <span class="math inline">\(z\)</span>-värde som erhålls om svanssannolikheten <span class="math inline">\(\alpha/2\)</span> läggs i högra svansen.</p>
+<ul>
+<li>För statistiska test krävs en nollhypotes, en testfunktion (och huruvida testet är ensidigt eller två-sidigt) samt data. Om nollhypotesen <span class="math inline">\(H_0:\mu=\mu_0\)</span> är sann är testfunktionen</li>
+</ul>
+<p><span class="math display">\[z = \dfrac{\bar{x} - \mu_0}{\sqrt{\hat{V}(\bar{x})}}\]</span>
+approximativt <span class="math inline">\(N(0,1)\)</span>.</p>
+<hr />
+<style>
+div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
+</style>
+<div class="red">
+<p><font size="5"> Kommer du ihåg? </font></p>
+<p><span class="math inline">\(p\)</span>-värdet är sannolikheten att observera ett minst lika extremt värde som det observerade givet att nollhypotesen är sann. Beroende på hur hypoteserna är formulerade är <span class="math inline">\(p\)</span>-värdet något av följande sannolikheter:</p>
+<ol style="list-style-type: decimal">
+<li>För en händelse i höger svans, dvs <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span> är <span class="math display">\[p-value=\Pr(Z \geq z|H_0\,\,\text{sann})\]</span></li>
+<li>För en händelse i vänster svans, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>
+<span class="math display">\[p-value=\Pr(Z \leq z|H_0\,\,\text{sann})\]</span></li>
+<li>För en två-sidig <span class="math inline">\(H_1:\mu\neq \mu_0\)</span>
+<span class="math display">\[p-value=2 \cdot \min \left\{ \Pr(Z \leq z|H_0\,\,\text{sann}), \Pr(Z \geq z|H_0\,\,\text{sann}) \right\} \]</span></li>
+</ol>
+<p>Om möjligt, beräkna alltid <span class="math inline">\(p\)</span>-värdet istället för att enbart jämföra testfunktionens observerade värde med en kritisk punkt. Det går nämligen att tolka <span class="math inline">\(p\)</span>-värdet som ett kontinuerligt mått på bevis mot nollhypotesen eller formulerat som i vilken utsträckning data stämmer överens med nollhypotesen. Ett lågt <span class="math inline">\(p\)</span>-värde indikerar att data har låg överensstämmelse med nollhypoytesen. Om målet med studien trots allt innebär att ett beslut måste fattas kan <span class="math inline">\(p\)</span>-värdet då enkelt relateras till vald signifikansnivå. Understiger <span class="math inline">\(p\)</span>-värdet signifikansnivå så förkastas nollhypotesen, i annat fall kan nollhypotesen inte förkastas. Tänk på att signifikansnivån i dessa fall måste väljas i förväg.</p>
+</div>
+<hr />
+<p><img src="docs/images/important.png" width="5%" /></p>
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class="green">
+<p><font size="5"> Normalfördelning eller <span class="math inline">\(t\)</span>-fördelning? </font></p>
+<p>Det går att argumentera för att <span class="math inline">\(t\)</span>-fördelningen bör användas i beräkning av konfidensintervall och test även vid användning av approximativ normalfördelning på grund av CGS. Anledningen är att variansen i den approximativa normalfördelningen är <em>okänd</em> och därmed skattas denna varians. Om vi förlitar oss på CGS har dock valet mellan normal- och <span class="math inline">\(t\)</span>-fördelning liten betydelse eftersom dessa fördelningar är snarlika i stora stickprov. Använd följande Shiny-app och jämför standardnormalfördelningen med t-fördelningar med olika frihetsgrader, där antalet frihetgrader beror på stickprovsstorleken.
+<a href="https://jetty.im.uu.se/shiny/Dist/" class="uri">https://jetty.im.uu.se/shiny/Dist/</a></p>
+</div>
+<hr />
+</div>
+<div id="skattning-av-p" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Skattning av <span class="math inline">\(p\)</span></h3>
+<p>Anta att variabeln <span class="math inline">\(x\)</span> i tidigare nämnda population är binär med populationsandelen <span class="math inline">\(p\)</span>. Givet OSU-UÅ gäller följande:</p>
+<ul>
+<li><p>Stickprovsandelen <span class="math inline">\(\hat{p}\)</span> är en väntevärdesriktig skattning av <span class="math inline">\(p\)</span>.</p></li>
+<li><p>Andelsestimatorns varians <span class="math display">\[V(\hat{p}) = \left(\dfrac{N-n}{N-1}\right)\dfrac{p(1-p)}{n}\]</span> skattas med
+<span class="math display">\[\hat{V}(\hat{p}) = \left(1 - \dfrac{n}{N}\right)\dfrac{\hat{p}(1-\hat{p})}{n-1}\]</span>.</p></li>
+<li><p>För konfidensintervall krävs att samplingfördelningen är känd. Om <span class="math inline">\(np(1-p)&gt;5\)</span> är andelsestimatorn approximativt normalfördelad. Ett konfidensintervall ges då av
+<span class="math display">\[
+\hat{p}\pm z_{\alpha/2}\sqrt{\hat{V}(\hat{p})}
+\]</span></p></li>
+<li><p>Vid hypotesprövning av <span class="math inline">\(H_0: p = p_0\)</span> är under nollhypotesen</p></li>
+</ul>
+<p><span class="math display">\[z = \dfrac{\hat{p} - p_0}{\sqrt{\dfrac{N-n}{N-1}\dfrac{p_0(1-p_0)}{n}}}\]</span>
+approximativt <span class="math inline">\(N(0,1)\)</span> om <span class="math inline">\(np(1-p)&gt;5\)</span>.</p>
+<hr />
+<p><img src="docs/images/warning.png" width="5%" /></p>
+<style>
+div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
+</style>
+<div class="green">
+<p><font size="5"> Centrala gränsvärdessatsen och inferens om <span class="math inline">\(p\)</span> </font></p>
+<p>Tumregeln <span class="math inline">\(np(1-p)&gt;5\)</span> är dålig om andelen i populationen är nära 0 eller 1. Om andelen i populationen är nära 0 eller 1 krävs stort stickprov för att konfidensgraden ska vara rätt. Det finns dock så kallade exakta alternativ för att skapa konfidensintervall och genomföra test.</p>
+</div>
+<hr />
+</div>
+<div id="skattning-av-tau" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Skattning av <span class="math inline">\(\tau\)</span></h3>
+<p>Målet är att studera summan av alla variabelvärden i poulationen, dvs populationstotalen <span class="math inline">\(\tau\)</span>. Givet OSU-UÅ gäller följande:</p>
+<ul>
+<li>Totalestimatorn <span class="math inline">\(\hat{\tau} = N\bar{x}\)</span> är en väntevärdesriktig skattning av <span class="math inline">\(\tau\)</span>. Om <span class="math inline">\(x\)</span> är binär gäller att <span class="math inline">\(\hat{\tau} = N\hat{p}\)</span>.</li>
+<li>Totalestimatorns varians är <span class="math inline">\(V(\hat{\tau}) = N^2V(\bar{x})\)</span>, vilken skattas med
+<span class="math inline">\(\hat{V}(\hat{\tau}) = N^2\hat{V}(\bar{x})\)</span>. Om <span class="math inline">\(x\)</span> är binär gäller att andelsestimatorns varians är <span class="math inline">\(V(\hat{\tau}) = N^2V(\hat{p})\)</span>, vilken skattas med och <span class="math inline">\(\hat{V}(\hat{\tau}) = N^2\hat{V}(\hat{p})\)</span>.</li>
+<li>Samplingfördelningen följer samma regler som för <span class="math inline">\(\bar{x}\)</span> respektive <span class="math inline">\(\hat{p}\)</span>.</li>
+<li>Ett konfidensintervall om vi förlitar oss på CGS ges av:</li>
+</ul>
+<p><span class="math display">\[
+\hat{\tau}\pm z_{\alpha/2}\sqrt{\hat{V}(\hat{\tau})}
+\]</span></p>
+<ul>
+<li>Om nollhypotetesen <span class="math inline">\(H_0:\tau=\tau_0\)</span> är sann så är testfunktionen
+<span class="math display">\[z = \dfrac{\hat{\tau} - \tau_0}{\sqrt{\hat{V}(\hat{\tau})}}\]</span>
+approximativt <span class="math inline">\(N(0,1)\)</span>.</li>
+</ul>
+</div>
+<div id="beräkningar-av-stickprovstorlek" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Beräkningar av stickprovstorlek</h3>
+<p>Precisionskraven kan i regel skrivas i termer av estimatorns varians och ett tabellvärde. Tre vanliga precisionskrav är</p>
+<ul>
+<li><span class="math inline">\(\text{medelfel}=\sqrt{V(\hat{\theta})},\)</span></li>
+<li><span class="math inline">\(\text{felmarginal}=tabellvärde\cdot \sqrt{V(\hat{\theta})}\)</span> eller</li>
+<li><span class="math inline">\(\text{KIbredd}=2\cdot tabellvärde \cdot \sqrt{V(\hat{\theta})}\)</span></li>
+</ul>
+<p>får vara av en viss storlek. Att formulera ett precisionskrav är inte enkelt eftersom det beror på vilken nogrannhet som krävs i en undersökning.</p>
+<ul>
+<li>Kan vi i en partisympatiundersökning nöja oss med en felmarginal på 10 procentenheter när vi skattar andelen i väljarkåren som sympatiserar med Socialdemokraterna?</li>
+<li>Kan vi vid en skattning av andelen individer med antikroppar från Covid-19 nöja oss med ett konfidensintervall med längden 3 procentenheter?</li>
+</ul>
+<p>Storleken på precisionskravet beror således på den praktiska betydelsen av att undersökningen ger en viss precision.</p>
+<p>Formel för variansen beror på val av estimator. Vidare finns ett tabellvärdet som beror på samplingfördelningen. Kända parametervärden stoppas sedan in i precisionskravet, till exempel populationsvariansen, <span class="math inline">\(\sigma^2\)</span> och populationsstorleken <span class="math inline">\(n\)</span>. Slutligen löser vi ut urvalstorleken <span class="math inline">\(n\)</span>.</p>
+<p>Om en algebraisk lösning är svår kan en iterativ lösning enkelt genomföras i R. Nedan följer exempel på kod för beräkning av stickprovsstorlek vid skattning av <span class="math inline">\(\mu\)</span>. Läs koden och relatera den till formlerna för precisionskraven.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="co"># Bestäm spridningen i populationen, sätter 1 som default</span></a>
+<a class="sourceLine" id="cb141-2" title="2">sigma2 &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb141-3" title="3"><span class="co"># Känd populationsstorlek, sätter 10000 som default</span></a>
+<a class="sourceLine" id="cb141-4" title="4">N &lt;-<span class="st"> </span><span class="dv">100000</span></a>
+<a class="sourceLine" id="cb141-5" title="5"><span class="co"># Bestäm konfidensgrad eller signifikansnivå, sätter 95%/5% som default</span></a>
+<a class="sourceLine" id="cb141-6" title="6">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb141-7" title="7">z_alpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>((<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb141-8" title="8"><span class="co"># Lista olika stickprovsstorlekar, sätter 1 till 1000 som default</span></a>
+<a class="sourceLine" id="cb141-9" title="9">n &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb141-10" title="10"></a>
+<a class="sourceLine" id="cb141-11" title="11"><span class="co"># Beräkna medelfelet för olika stickprovsstorlekar</span></a>
+<a class="sourceLine" id="cb141-12" title="12">xbar_medelfel &lt;-<span class="st"> </span><span class="kw">sqrt</span>( ( (N<span class="op">-</span>n)<span class="op">/</span>(N<span class="dv">-1</span>))<span class="op">*</span>sigma2<span class="op">/</span>n )</a>
+<a class="sourceLine" id="cb141-13" title="13"><span class="co"># Beräkna felmarginal för olika stickprovsstorlekar</span></a>
+<a class="sourceLine" id="cb141-14" title="14">xbar_felmarginal &lt;-<span class="st"> </span>z_alpha <span class="op">*</span><span class="st"> </span>xbar_medelfel </a>
+<a class="sourceLine" id="cb141-15" title="15"><span class="co"># Beräkna konfidensintervallets bredd för olika stickprovsstorlekar</span></a>
+<a class="sourceLine" id="cb141-16" title="16">xbar_KIbredd &lt;-<span class="st"> </span>z_alpha <span class="op">*</span><span class="st"> </span>xbar_medelfel </a>
+<a class="sourceLine" id="cb141-17" title="17"><span class="co"># Välj stickprovsstorlek utifrån valt precisionskra, sätter 0.2 som default</span></a>
+<a class="sourceLine" id="cb141-18" title="18">precisionskrav &lt;-<span class="st"> </span><span class="fl">0.2</span></a>
+<a class="sourceLine" id="cb141-19" title="19"><span class="co"># Välj den minsta stickprovsstorlek som uppnår precisionskravet. </span></a>
+<a class="sourceLine" id="cb141-20" title="20"><span class="kw">min</span>(n[xbar_medelfel <span class="op">&lt;=</span><span class="st"> </span>precisionskrav])</a>
+<a class="sourceLine" id="cb141-21" title="21"></a>
+<a class="sourceLine" id="cb141-22" title="22"><span class="co"># Studera precisionskrav som en funktion av stickprovstorleken</span></a>
+<a class="sourceLine" id="cb141-23" title="23"><span class="kw">plot</span>(n, xbar_medelfel, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb141-24" title="24"><span class="kw">abline</span>(<span class="dt">h =</span> precisionskrav)</a></code></pre></div>
+</div>
+</div>
+<div id="stratifierat-urval" class="section level2">
+<h2><span class="header-section-number">5.2</span> Stratifierat urval</h2>
+<div id="inferens-för-mu-1" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Inferens för <span class="math inline">\(\mu\)</span></h3>
+<p>Målet är att undersöka en variabel <span class="math inline">\(x\)</span> i en population bestående av <span class="math inline">\(N\)</span> element. Variabelns populationsmedelvärde betecknas <span class="math inline">\(\mu\)</span> och populationsvariansen <span class="math inline">\(\sigma^2\)</span>. Populationen indelas i <span class="math inline">\(K\)</span> stycken disjunkta strata. Populationsstorlekan i stratum <span class="math inline">\(j\)</span> betecknas <span class="math inline">\(N_j\)</span> och den total populationsstorleken är <span class="math inline">\(N=N_1 + \dots + N_K\)</span>. Vidare betecknar <span class="math inline">\(\mu_j\)</span> och <span class="math inline">\(\sigma^2_j\)</span> populationsmedelvärdet respektive populationsvariansen i stratum <span class="math inline">\(j\)</span>.</p>
+<p>Från respektive stratum dras ett urval. Den stratumspecifika urvalsstorlek betecknas <span class="math inline">\(n_j\)</span> och den totala urvalsstorleken i undersökningen är <span class="math inline">\(n=n_1+\cdots+n_K\)</span>. Givet att urvalsmetoden i respektive stratum är ett OSU-UÅ gäller följande:</p>
+<ul>
+<li>Stickprovsmedelvärdet vid stratifierat urval, <span class="math display">\[\bar{x}_{st} = \sum_{j=1}^K\dfrac{N_j}{N}\bar{x}_j\]</span> är
+en väntevärdesriktig skattning av <span class="math inline">\(\mu\)</span>, där <span class="math inline">\(\bar{x}_{j}\)</span> betecknar stickprovsmedelvärdet i stratum <span class="math inline">\(j\)</span>.</li>
+<li>Stickprovsmedelvärdets varians är <span class="math display">\[V(\bar{x}_{st}) = \sum_{j=1}^K \left(\dfrac{N_j}{N}\right)^2 V(\bar{x}_j)\]</span> där stickprovsmedelvärdets varians betecknas
+<span class="math display">\[V(\bar{x}_j) = \left(\dfrac{N_j-n_j}{N_j-1}\right)\dfrac{\sigma^2_j}{n_j}\]</span>.</li>
+</ul>
+<p>Ovan skattas med
+<span class="math display">\[\hat{V}(\bar{x}_{st}) = \sum_{j=1}^K \left(\dfrac{N_j}{N}\right)^2\hat{V}(\bar{x}_j)\]</span>
+där
+<span class="math display">\[\hat{V}(\bar{x}_j) = \left(1 - \dfrac{n_j}{N_j}\right)\dfrac{s^2_j}{n_j}\]</span>
+där <span class="math inline">\(s^2_j\)</span> är den stratumspecifika stickprovsvariansen.
++ För konfidensintervall krävs att samplingfördelningen är känd. Om stickprovsstorleken är tillräckligt stor i respektive stratum, dvs <span class="math inline">\(n_j &gt; 20\)</span>, är <span class="math inline">\(\bar{x}_{st}\)</span> approximativt normalfördelad.
++ Ett konfidensintervall ges av</p>
+<p><span class="math display">\[
+\bar{x}_{st}\pm z_{\alpha/2}\sqrt{\hat{V}(\bar{x}_{st})}
+\]</span></p>
+<p>där <span class="math inline">\(1-\alpha\)</span> är konfidensgraden och <span class="math inline">\(z_{\alpha/2}\)</span> är det <span class="math inline">\(z\)</span>-värde som erhålls om svanssannolikheten <span class="math inline">\(\alpha/2\)</span> läggs i högra svansen.
++ För statistiska test krävs en nollhypotes, en testfunktion (och huruvida testet är ensidigt eller två-sidigt) samt data. Om nollhypotesen <span class="math inline">\(H_0:\mu=\mu_0\)</span> är sann är testfunktionen</p>
+<p><span class="math display">\[z = \dfrac{\bar{x}_{st} - \mu_0}{\sqrt{\hat{V}(\bar{x}_{st})}}\]</span>
+approximativt <span class="math inline">\(N(0,1)\)</span>.</p>
+</div>
+<div id="inferens-för-p" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Inferens för <span class="math inline">\(p\)</span></h3>
+<p>Anta att variabeln <span class="math inline">\(x\)</span> i tidigare nämnda stratifierade population är binär med populationsandelen <span class="math inline">\(p\)</span>. En stratumspecifik andel betecknas <span class="math inline">\(p_j\)</span>. Givet OSU-UÅ gäller följande:</p>
+<ul>
+<li>Stickprovsandelen <span class="math inline">\(\hat{p}_st=\dfrac{N}{N_j}\hat{p}_j\)</span> är en väntevärdesriktig skattning av <span class="math inline">\(p\)</span>.</li>
+<li>Andelsestimatorns varians <span class="math display">\[V(\hat{p}) = \left(\dfrac{N-n}{N-1}\right)\dfrac{p(1-p)}{n}\]</span> skattas med
+<span class="math display">\[\hat{V}(\hat{p}) = \left(1 - \dfrac{n}{N}\right)\dfrac{\hat{p}(1-\hat{p})}{n-1}\]</span>.</li>
+<li>För konfidensintervall krävs att samplingfördelningen är känd. Om <span class="math inline">\(np(1-p)&gt;5\)</span> är andelsestimatorn approximativt normalfördelad.</li>
+<li>För hypotesprövning krävs information om variansen under nollhypotesen. Vid stratifierat urval krävs då information om alla stratumspecifika varianser. Hypotesprövning för andelar vid stratifierat urval ingår inte på kursen.</li>
+</ul>
+</div>
+<div id="inferens-för-tau" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Inferens för <span class="math inline">\(\tau\)</span></h3>
+<p>Om målet är att skatta totalen i populationen <span class="math inline">\(\tau\)</span> med ett stratifierat urval, och utgångspunkten är som ovan beskrivits med OSU-UÅ från respektive stratum så gäller följande:</p>
+<ul>
+<li>Totalestimatorn <span class="math inline">\(\hat{\tau}_{st} = N\bar{x}_{st}\)</span> är en väntevärdesriktig skattning av <span class="math inline">\(\tau\)</span>. Om <span class="math inline">\(x\)</span> är binär gäller att <span class="math inline">\(\hat{\tau}_{st} = N\hat{p}_{st}\)</span></li>
+<li>Totalestimatorns varians är <span class="math inline">\(V(\hat{\tau}_{st}) = N^2V(\bar{x}_{st})\)</span>, vilken skattas med <span class="math inline">\(\hat{V}(\hat{\tau}_{st}) = N^2\hat{V}(\bar{x}_{st})\)</span>. Om <span class="math inline">\(x\)</span> är binär är <span class="math inline">\(V(\hat{\tau}_{st}) = N^2V(\hat{p}_{st})\)</span>, vilken skattas med <span class="math inline">\(\hat{V}(\hat{\tau}_{st}) = N^2\hat{V}(\hat{p}_{st})\)</span>.</li>
+<li>Samplingfördelningen följer samma regler som för <span class="math inline">\(\bar{x}_{st}\)</span> respektive <span class="math inline">\(\hat{p}_{st}\)</span>.</li>
+<li>Samma principer gäller som för när stratifierat urval används för inferens om <span class="math inline">\(\mu\)</span> respektive <span class="math inline">\(p\)</span>.</li>
+</ul>
+</div>
+<div id="allokering-av-n." class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Allokering av <span class="math inline">\(n\)</span>.</h3>
+<p>För att allokera ett stickprov av storleken <span class="math inline">\(n\)</span> till <span class="math inline">\(K\)</span> strata används formeln</p>
+<p><span class="math display">\[n_j=\dfrac{\sigma_jN_j}{\sum_{j=1}^K \sigma_j N_j}\]</span></p>
+<ul>
+<li>Neyman-allokering innebär hänsyn tas till variation och populationsstorlek.</li>
+<li>Proportionell allokering innebär allokering utifrån de stratumspecifika populationsstorlekar men hänsyn tas ej tas variansen. Därmed förkortas <span class="math inline">\(\sigma_j\)</span> bort från allokeringsformeln. Proportionell allokering är mindre effektiv än Neyman-allokering, men denna allokeringsmetod väljs ändå på grund av ett eller flera av följande skäl: (i) Varianserna antas vara lika varandra i olika stratum och Neymana-allokering skulle innebära en mycket låg precisionsvinst. (ii) Det saknas information om de stratumspecifika varianserna. (iii) Inferensen blir enklare med proportionell allokering eftersom det leder till ett så kallat självvägt urval (alla element i populationen har samma inklusionssannolikhet).</li>
+<li>Lika allokering innebär att <span class="math inline">\(n_j=n/K\)</span>.</li>
+</ul>
+</div>
+<div id="efterstratifiering" class="section level3">
+<h3><span class="header-section-number">5.2.5</span> Efterstratifiering</h3>
+<p>Efterstratifiering (poststratifiering) innebär att en stratifiering görs i efterhand. Anledningen är att hjälpvariabeln inte finns i urvalsramen och det är först efter datainsamlingen som elementens stratumtillhörigheter blir kända. En förutsättning för efterstratifiering är dock att information om hjälpvariabeln är känd på aggregerad nivå i populationen, dvs <span class="math inline">\(N_j\)</span> för respektive stratum måste vara känd.</p>
+<p>Efterstratifiering leder till att de stratumspecifika stickprovsstorlekarna <span class="math inline">\(n_j\)</span> är slumpvariabler eftersom de stratumspecifika stickprovsstorlekarna beror de element som valts ut i urvalet. På detta vis skiljer sig efterstratifering från sedvanligt stratifierat urval där <span class="math inline">\(n_j\)</span> är konstanter som väljs i förväg. På grund av denna extra slumpmässighet är estimatorernas varianser vid efterstratifiering alltid <em>större än vid stratifierat urval</em>, dvs <span class="math inline">\(V(\bar{x}_{post} &gt; V(\bar{x}_{st}\)</span>, <span class="math inline">\(V(\hat{\tau}_{post} &gt; V(\hat{\tau}_{st}\)</span> och <span class="math inline">\(V(\hat{\tau}_{post} &gt; V(\hat{\tau}_{st}\)</span>.</p>
+<p>Dock minskar skillnaden mellan varianserna när <span class="math inline">\(n\)</span> är stort och all <span class="math inline">\(n_j\)</span> är relativt stora. Därför gäller att</p>
+<ul>
+<li>om <span class="math inline">\(n\)</span> är stort och alla <span class="math inline">\(n_j\)</span> är relativt stora används samma variansskattningar som vid stratifierat urval. En praktisk konsekvens är att man inte kan välja allt för många strata vid en efterstratifiering. Istället för att stratifiera utifrån nio eller tio ålderskategorier så måste vi nöja oss med två eller tre strata.</li>
+<li>Undersökaren måste i förväg ha bestämt hur stratifiering ska göras, så att man inte letar efter en lämplig stratumindelning i efterhand.</li>
+</ul>
+<p>Efterstratifiering används ofta för korrigera för bortfall i en undersökning.</p>
+</div>
+</div>
+<div id="övningar-2" class="section level2">
+<h2><span class="header-section-number">5.3</span> Övningar</h2>
+<p>När lösningar presenteras till uppgifter som liknar tidigare genomgådda uppgifter kommer förklaringarna inte vara lika utförliga. Detta för att minska textmängden. Om du upplever ett kommando oklart, försök först att hitta en förklaring i tidigare kod och glöm inte bort hjälp-funktionen i R.</p>
+<div id="övning-1" class="section level3 unnumbered">
+<h3>Övning 1</h3>
+<p>I ett nybyggt höghusområde önskade kommunen undersöka förskolebehovet. Kommunen gjorde därför ett obundet slumpmässigt urval utan återläggning (OSU-UÅ) av 100 hushåll. Frågan som ställdes var hur många platser som hushållen är i behov av. Totalt finns det 800 hushåll i området. Av de tillfrågade hushållen angav 56 inget behov, 34 hade behov av en plats, 7 hade behov av två platser och 3 hade behov av tre platser.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Beräkna ett 95 % konfidensintervall (KI) för det totala antalet önskade förskoleplatser i området. Var noga med förutsättningar! Tolka intervallet!</li>
+<li>Beräkna ett 95 % KI för andelen hushåll i området som inte önskar någon förskoleplats. Var noga med förutsättningar! Tolka intervallet!</li>
+</ol>
+</div>
+<div id="svar-1" class="section level3 unnumbered">
+<h3>Svar 1</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<ul>
+<li>Mål: Skatta populationstotalen <span class="math inline">\(\tau\)</span> med konfidensgraden 95%.</li>
+<li>Estimator: <span class="math inline">\(\hat{\tau} = N \bar{x}\)</span> där <span class="math inline">\(\bar{x}\)</span> är stickprovsmedelvärdet.</li>
+<li>Förutsättningar: 1. OSU-UÅ ger att <span class="math inline">\(\hat{\tau}\)</span> är vvr. 2. <span class="math inline">\(N=800\)</span>, dvs populationen är ändlig och <span class="math inline">\(V(\hat{\tau} )\)</span> skattas med <span class="math inline">\(\hat{V}(\tau)=N^2(1-\frac{n}{N})\frac{s^2}{n}\)</span>. 3. <span class="math inline">\(n=100\)</span>. Eftersom stickprovsstorleken är <span class="math inline">\(n&gt;30\)</span> så är <span class="math inline">\(\hat{\tau}\)</span> approximativt normalfördelad enligt CGS.</li>
+<li>Beräkningar: Ett 95% konfidensintervall för <span class="math inline">\(\tau\)</span> ges av</li>
+</ul>
+<p><span class="math display">\[ 
+ \hat{\tau}\pm z_{\alpha/2}\sqrt{\hat{V}(\hat{\tau})} 
+ \]</span></p>
+<p>där <span class="math inline">\(z_{ \alpha/2 } = z_{0.025} = 1.96\)</span> och <span class="math inline">\(\hat{V}(\hat{\tau}) = N^2\left(1-\dfrac{n}{N}\right)\dfrac{s^2}{n}\)</span>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="co"># Börja med att tömma minnet inför uppgiften</span></a>
+<a class="sourceLine" id="cb142-2" title="2">  <span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb142-3" title="3"><span class="co"># Skapa variabeln platsbehov utifrån informationen i uppgiften</span></a>
+<a class="sourceLine" id="cb142-4" title="4">  platsbehov &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="dt">times =</span> <span class="dv">56</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dt">times =</span> <span class="dv">34</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dt">times =</span> <span class="dv">7</span>),  <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dt">times =</span> <span class="dv">3</span>))  </a>
+<a class="sourceLine" id="cb142-5" title="5"><span class="co"># Populationsstorlek</span></a>
+<a class="sourceLine" id="cb142-6" title="6">  N &lt;-<span class="st"> </span><span class="dv">800</span>  </a>
+<a class="sourceLine" id="cb142-7" title="7"><span class="co"># Urvalsstorlek</span></a>
+<a class="sourceLine" id="cb142-8" title="8">  n &lt;-<span class="st"> </span><span class="kw">length</span>(platsbehov) </a>
+<a class="sourceLine" id="cb142-9" title="9"><span class="co"># Skatta totalen</span></a>
+<a class="sourceLine" id="cb142-10" title="10">  tauhat &lt;-<span class="st">  </span>N <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(platsbehov) </a>
+<a class="sourceLine" id="cb142-11" title="11"><span class="co"># Beräkna stickprovsvariansen</span></a>
+<a class="sourceLine" id="cb142-12" title="12">  s2 &lt;-<span class="st"> </span><span class="kw">var</span>(platsbehov)</a>
+<a class="sourceLine" id="cb142-13" title="13"><span class="co"># Variansskattning (Notera att vi av utrymmesskäl använder det kortare vtauhat och inte det mer korrekta vhattauhat)</span></a>
+<a class="sourceLine" id="cb142-14" title="14">  vtauhat &lt;-<span class="st"> </span>N<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>n<span class="op">/</span>N) <span class="op">*</span><span class="st"> </span>(s2<span class="op">/</span>n) </a>
+<a class="sourceLine" id="cb142-15" title="15"><span class="co"># Välj konfidensgraden 100*(1-alpha)%  </span></a>
+<a class="sourceLine" id="cb142-16" title="16">  alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb142-17" title="17">  z_alpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>( (<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>) )</a>
+<a class="sourceLine" id="cb142-18" title="18"><span class="co"># Beräkna konfidensintervallet</span></a>
+<a class="sourceLine" id="cb142-19" title="19">  tau_LB &lt;-<span class="st"> </span>tauhat <span class="op">-</span><span class="st">  </span>z_alpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(vtauhat) </a>
+<a class="sourceLine" id="cb142-20" title="20">  tau_UB &lt;-<span class="st"> </span>tauhat <span class="op">+</span><span class="st">  </span>z_alpha <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(vtauhat)  </a></code></pre></div>
+<ul>
+<li>Svar: Det totala antalet önskade förskoleplatser i området skattas till 456 stycken. Med 95% säkerhet täcker intervallet 345 <span class="math inline">\(&lt; \tau &lt;\)</span> 567 det totala antalet önskade förskoleplatser i området.</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Beräkna ett 95 % KI för andelen hushåll i området som inte önskar någon förskoleplats. Var noga med förutsättningar! Tolka intervallet!</li>
+</ol>
+<ul>
+<li>Mål: Skatta populationsandelen <span class="math inline">\(p\)</span> med konfidensgraden 95%.</li>
+<li>Estimator: <span class="math inline">\(\hat{p}\)</span> = stickprovsandelen. –&gt;</li>
+<li>Förutsättningar: 1. OSU-UÅ ger att <span class="math inline">\(\hat{p}\)</span> är vvr. 2. <span class="math inline">\(N=800\)</span>, dvs populationen är ändlig och <span class="math inline">\(V(\hat{p})\)</span> skattas med <span class="math inline">\(\hat{V}(\hat{p})=(1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}\)</span>. 3. <span class="math inline">\(n=100\)</span>. Om <span class="math inline">\(np(1-p)&gt;5\)</span> är <span class="math inline">\(\hat{p}\)</span> approximativt normalfördelad enligt CGS. Kontrollera med stickprovskvantiterna att detta verkar vara uppfyllt!</li>
+<li>Beräkningar: Ett 95% KI för <span class="math inline">\(p\)</span> ges av
+<span class="math display">\[\hat{p} \pm z_{\alpha/2} \sqrt{\left(1-\frac{n}{N}\right)\frac{\hat{p}(1-\hat{p})}{n-1}}\]</span>
+där <span class="math inline">\(z_{\alpha/2}=z_{0,025}=1.96\)</span>.</li>
+</ul>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="co"># Skapa binär variabel platsbehov_bin som är 1 om ej platsbehov 0 annars</span></a>
+<a class="sourceLine" id="cb143-2" title="2">  platsbehov_bin &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</a>
+<a class="sourceLine" id="cb143-3" title="3">  platsbehov_bin[platsbehov <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>  </a>
+<a class="sourceLine" id="cb143-4" title="4">  platsbehov_bin[platsbehov <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span> </a>
+<a class="sourceLine" id="cb143-5" title="5">  platsbehov_bin[platsbehov <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span> </a>
+<a class="sourceLine" id="cb143-6" title="6">  platsbehov_bin[platsbehov <span class="op">==</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">0</span> </a>
+<a class="sourceLine" id="cb143-7" title="7"></a>
+<a class="sourceLine" id="cb143-8" title="8"><span class="co"># Skatta andelen</span></a>
+<a class="sourceLine" id="cb143-9" title="9">  phat &lt;-<span class="st"> </span><span class="kw">mean</span>(platsbehov_bin)  </a>
+<a class="sourceLine" id="cb143-10" title="10"><span class="co"># Skatta variansen för andelen (återigen skriver vi av utrymmeskäl in vhatphat)</span></a>
+<a class="sourceLine" id="cb143-11" title="11">  vphat &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>n<span class="op">/</span>N) <span class="op">*</span><span class="st"> </span>( phat<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>phat)<span class="op">/</span>(n<span class="dv">-1</span>) )</a>
+<a class="sourceLine" id="cb143-12" title="12">                         </a>
+<a class="sourceLine" id="cb143-13" title="13"><span class="co"># Kolla förutsättning för normalitet</span></a>
+<a class="sourceLine" id="cb143-14" title="14">  normalitet &lt;-<span class="st"> </span>n<span class="op">*</span>phat<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>phat)</a>
+<a class="sourceLine" id="cb143-15" title="15"><span class="co"># Beräkna konfidensintervall </span></a>
+<a class="sourceLine" id="cb143-16" title="16">  p_LB &lt;-<span class="st"> </span>phat <span class="op">-</span><span class="st"> </span>z_alpha<span class="op">*</span><span class="kw">sqrt</span>(vphat)  </a>
+<a class="sourceLine" id="cb143-17" title="17">  p_UB &lt;-<span class="st"> </span>phat <span class="op">+</span><span class="st"> </span>z_alpha<span class="op">*</span><span class="kw">sqrt</span>(vphat)  </a></code></pre></div>
+<ul>
+<li>Kontroll av förutsättningen för normalitet ger <span class="math inline">\(n \hat{p}(1-\hat{p}) =\)</span> 24.64.</li>
+<li>Svar: Andelen i området som ej önskar förskoleplats skattas till 0.56. Med 95% säkerhet täcker intervallet 0.47 <span class="math inline">\(&lt; p &lt;\)</span> 0.65 andelen önskade förskoleplatser i området.</li>
+</ul>
+</div>
+<div id="övning-2" class="section level3 unnumbered">
+<h3>Övning 2</h3>
+<p>Vid en marknadsundersökning i en kommun med <span class="math inline">\(8000\)</span> hushåll utvaldes 200 hushåll med OSU-UÅ. De
+utvalda hushållen tillfrågades genom brevenkät bland annat om åsikterna beträffande ett antal produkter.
+Efter påminnelser hade kommunen fått svar från samtliga 200 hushåll. De i urvalet ingående hushållens
+procentuella fördelning efter åsikt beträffande en viss produkt A blev följande: Utmärkt (U) 30%, Tillfredsställande (T) 50%, Dålig (D) 20%.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Beräkna ett 95% konfidensintervall för antalet hushåll i kommunen som anser att produkten är dålig. Var noga med förutsättningar! Tolka intervallet!<br />
+</li>
+<li>Hur stort är medelfelet för andelen hushåll i kommunen som anser att produkten är utmärkt? Var noga med förutsättningar! Tolka medelfelet!</li>
+</ol>
+</div>
+<div id="svar-2" class="section level3 unnumbered">
+<h3>Svar 2</h3>
+<ul>
+<li><p>Mål: Intervallskatta antalet hushåll i kommunen som anser att produkten är dålig med konfidensgraden 95%.</p></li>
+<li><p>Parameter: <span class="math inline">\(\tau=Np\)</span> = totala antalet hushåll i kommunen som anser att produkten är dålig.</p></li>
+<li><p>Estimator: <span class="math inline">\(\hat{\tau}=N\hat{p}\)</span> = antalet hushåll i stickprovet som anser att produkten är dålig.</p></li>
+<li><p>Förutsättningar: 1. ger att <span class="math inline">\(E(\hat{\tau})=\tau\)</span>, dvs att <span class="math inline">\(\hat{\tau}\)</span> är en väntevärdesriktig skattning av <span class="math inline">\(\tau\)</span>. 2. Populationsstorlek: <span class="math inline">\(N = 8000\)</span>. Urvalsstorlek: <span class="math inline">\(n = 200\)</span>. <span class="math inline">\(V(\hat{\tau})\)</span> skattas med <span class="math inline">\(V(\hat{\tau})=N^2\hat{V}(\hat{p})=N^2\left(1-\frac{n}{N}\right)\frac{\hat{p}(1-\hat{p})}{n-1}\)</span>.
+3.Om <span class="math inline">\(np(1-p)&gt;5\)</span> är <span class="math inline">\(\hat{\tau}=N\hat{p}\)</span> i detta fall approximativt normalfördelad enligt CGS. Kontrollera med stickprovskvantiterna att detta verkar vara uppfyllt!</p></li>
+<li><p>Beräkning: Ett 95% konfidensintervall för <span class="math inline">\(\tau\)</span> ges av –&gt;</p></li>
+</ul>
+<!-- $$N\hat{p}\pm z_{\alpha/2}\sqrt{N^2\left(1-\frac{n}{N}\right)\frac{\hat{p}(1-\hat{p})}{n-1}}$$ -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Först sammanställer vi data: -->
+<!-- ```{r} -->
+<!-- # Skapa data enligt uppgift. När vi har ett namn på en kategori sätter vi namnet inom citattecken. -->
+<!-- kommunprodukt <- c( -->
+<!--   rep("U", times = 60), -->
+<!--   rep("T", times = 100), -->
+<!--   rep("D", times = 40) -->
+<!-- ) -->
+<!-- kommunprodukt # visa data. -->
+<!-- ``` -->
+<!-- Vi gör om data till ettor och nollor. Vi låter varje element ersättas av antingen 1 eller 0 beroende på om ett villkor är uppfyllt: om värdet från början var "Dålig" eller inte. Värdet blir 1 om värdet från början var "Dålig". Undersök skillnaden mellan 'kommunprodukt' och 'kommunprodukt_binary'! -->
+<!-- ```{r} -->
+<!-- kommunprodukt_binary <- ifelse(kommunprodukt == "D", 1, 0) -->
+<!-- kommunprodukt_binary -->
+<!-- ``` -->
+<!-- Insättning av värden ger intervallgränserna: -->
+<!-- ```{r} -->
+<!-- N <- 8000 -->
+<!-- n <-  length(kommunprodukt_binary) -->
+<!-- # vår punktestimator är N multiplicerat med stickprovsmedelvärdet av våra ettor och nollor. Stickprovsmedelvärdet är lika med stickprovsandelen. Verifiera detta! -->
+<!-- p.hat <- mean(kommunprodukt_binary) -->
+<!-- point.est <- N * p.hat -->
+<!-- # variansskattning -->
+<!-- Var.hat.theta.hat <-  N^2 * (1 - n / N) * p.hat * ( 1 - p.hat ) / ( n - 1 ) -->
+<!-- # konfidensintervall -->
+<!-- lower.lim <- point.est - qnorm(0.975) * sqrt(Var.hat.theta.hat)  -->
+<!-- upper.lim <- point.est + qnorm(0.975) * sqrt(Var.hat.theta.hat)  -->
+<!-- ``` -->
+<!-- * Svar:  Med 95\% säkerhet täcker intervallet $1161 < \tau < 2039$ det totala antalet hushåll i kommunen som anser att produkten är dålig. -->
+<!-- ### (b) Hur stor är medelfelet för andelen hushåll i kommunen som anser att produkten är utmärkt? Var noga med förutsättningar! Tolka medelfelet! -->
+<!-- Vi skriver över den tidigare 'kommunprodukt_binary' och beräknar medelfelet! -->
+<!-- ```{r} -->
+<!-- kommunprodukt_binary <- ifelse(kommunprodukt == "U", 1, 0) -->
+<!-- # uppdatera punktestimat nu när vi har nya data. -->
+<!-- p.hat <- mean(kommunprodukt_binary) -->
+<!-- # Beräkna medelfel. -->
+<!-- sqrt( (1 - (n/8000) ) * p.hat * (1 - p.hat )/(n - 1) ) -->
+<!-- ``` -->
+<!-- * Svar: Medelfelet (standardfelet, standard error) är 0,32 vilket är den skattade standardavvikelsen i stickprovsandelens samplingfördelning. -->
+<!-- Vi avslutar med att rensa arbetsminnet så att nästa uppgift påbörjas utan några definierade variabler. -->
+<!-- ```{r} -->
+<!-- rm(list = ls() ) -->
+<!-- ``` -->
+<!-- ## 111 -->
+<!-- Ett oljebolag är intresserat av att för ett äldre bostadsområde med $2\,000$ hus skatta andelen hus utan oljeeldning. Sakkunskapen säger att det sanna antalet hus utan oljeeldning är mellan 300 och 800 stycken. Precisionskravet är formulerat så att ett 95\% konfidensintervall för andelen hus utan oljeeldning inte får -->
+<!-- bli längre än 0,05 procentenheter. -->
+<!-- ### (a) Beräkna urvalsstorleken vid OSU om dragningen sker med återläggning. -->
+<!-- * Mål: Beräkna den nödvändiga stickprovsstorleken $n$ om längden för ett 95\% konfidensintervall för andelen i populationen får vara maximalt 0,05. -->
+<!-- * Parameter: $p$ = andelen hus utan oljeeldning i populationen. -->
+<!-- * Estimator: $\hat{p}$ = andelen hus utan oljeeldning i stickprovet. -->
+<!-- * Förutsättningar: -->
+<!-- 1. OSU-MÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. $V(\hat{p})=\frac{p(1-p)}{n}$. -->
+<!-- 3. Vi antar att $p=\frac{800}{2000}=0,4$ eftersom detta ger störst varians givet den information vi har. -->
+<!-- 4. Vi utgår från att $np(1-p)>5$ kommer att vara uppfyllt. Vi måste sedan kontrollera att antagandet faktiskt är uppfyllt! Annars gäller inte CGS och approximativ normalfördelning. -->
+<!-- Det går att ändra värdena på $n$ i R för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.05. -->
+<!-- ```{r} -->
+<!-- n <- 10 -->
+<!-- p <- 0.4 -->
+<!-- z <- qnorm(0.975) -->
+<!-- 2 * z * sqrt(  ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- Vi kan även lösa uppgiften algebraiskt. -->
+<!-- Beräkning: Vi sätter in värden  -->
+<!-- $$ -->
+<!--    0,05\geq 2\cdot 1,96\sqrt{\frac{0,4(1-0,4)}{n}}. -->
+<!-- $$ -->
+<!-- Kvadrera båda leden för att bli av med kvadratroten  -->
+<!-- $$0,05^2\geq 2^2\cdot 1,96^2 \cdot \frac{0,4(1-0,4)}{n}.$$  -->
+<!-- Löser vi sedan ut $n$ landar vi på uttrycket  -->
+<!-- $$n\geq \frac{4\cdot 1,96^2\cdot 0,24}{0,0025}=1475,174.$$  -->
+<!-- Svar: För att uppnå precisionskravet behövs ett stickprov med minst 1476 hus. Glöm inte att kontrollera CGS: $np(1-p)=1476\cdot 0,4(1-0,4)=354,24 > 5$ så antagandet är uppfyllt. -->
+<!-- ### (b) Beräkna urvalsstorleken vid OSU om dragningen sker utan återläggning. -->
+<!-- * Mål: Beräkna den nödvändiga stickprovsstorleken $n$ om längden för ett 95\% konfidensintervall för andelen i populationen får vara maximalt 0,05. -->
+<!-- * Parameter: $p$ = andelen hus utan oljeeldning i populationen. -->
+<!-- * Estimator: $\hat{p}$ = andelen hus utan oljeeldning i stickprovet. -->
+<!-- * Förutsättningar: -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. $V(\hat{p})$ vid OSU-UÅ ges av $\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$, $N=2000$. -->
+<!-- 3. Vi antar att $p=\frac{800}{2000}=0,4$ eftersom detta ger störst varians givet den information vi har. -->
+<!-- 4. Vi utgår från att $np(1-p)>5$ kommer att vara uppfyllt. Vi måste sedan kontrollera att antagandet faktiskt är uppfyllt! Annars gäller inte CGS och approximativ normalfördelning. -->
+<!-- Det går att ändra värdena på $n$ i R för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.05. -->
+<!-- ```{r} -->
+<!-- N <- 2000 -->
+<!-- n <- 10 -->
+<!-- p <- 0.4 -->
+<!-- z <- qnorm(0.975) -->
+<!-- 2 * z * sqrt( ( (N - n)/(N-1) ) * ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- Vi kan även lösa uppgiften algebraiskt. -->
+<!-- Beräkning: Vi sätter in värden och löser ut $n$. -->
+<!-- \begin{equation}\label{eq:intbredd2} -->
+<!-- 0,05\geq 2\cdot 1,96\sqrt{\left(\frac{2000-n}{1999}\right)\frac{0,24}{n}} -->
+<!-- \end{equation} -->
+<!-- $$\left(\frac{0,05}{2\cdot 1,96}\right)^2 \geq \left(\frac{2000-n}{1999}\right)\frac{0,24}{n}$$  -->
+<!-- $$\left(\frac{0,05}{2\cdot 1,96}\right)^2 1999 \geq \left(\frac{2000}{n}-1\right)0,24$$ -->
+<!-- $$\left(\frac{0,05}{2\cdot 1,96}\right)^2 1999+0,24 \geq \frac{2000}{n}0,24.$$ -->
+<!-- Vi landar slutligen på uttrycket  -->
+<!-- $$n \geq \frac{2000\cdot 0,24}{\left(\frac{0,05}{2\cdot1,96}\right)^2 1999+0,24}$$  -->
+<!-- vilket ger  -->
+<!-- $$n \geq 849,22.$$ -->
+<!-- * Svar: Vi behöver ett urval bestående av minst 850 hushåll för att nå precisionskravet. Kontroll för CGS: $np(1-)=204 > 5$. OK! -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 112 -->
+<!-- Anta att vi ha en population med $N=5$ element med värdena $x_1=4, x_2=8, x_3=2, x_4=6, x_5=9$. Anta att vi i en undersökning inte kan undersöka hela populationen utan måste dra ett OSU-UÅ med stickprovsstorleken $n=3$. -->
+<!-- ### (a) Beräkna medelvärde i populationen $\mu_x$, populationsmedianen $md$, och populationsvariansen $\sigma^2_x$. -->
+<!-- Vi beräknar populationsstorheterna på följande vis: -->
+<!-- ```{r} -->
+<!-- x <- c(4, 8, 2, 6, 9)  # vår population -->
+<!-- mean(x)                  # väntevärde -->
+<!-- median(x)                # median -->
+<!-- mean(x^2) - mean(x)^2    # varians enligt formel E(X^2) - [E(X)]^2 -->
+<!-- ``` -->
+<!-- ### (b) Totalt finns det $K$ möjliga stickprov. Beräkna $K$. -->
+<!-- Vi kan använda 'choose' för att beräkna kombinationer av $k$ element från $n$ element. -->
+<!-- ```{r} -->
+<!-- choose(n = 5, k = 3) -->
+<!-- ``` -->
+<!-- ### (c) Beräkna medelvärdet, $\bar{x}$, och medianen, $\widehat{md}$ i varje stickprov. -->
+<!-- vi måste först generera alla möjliga kombinationer från de 5 x-värdena när vi väljer ut 3 av dem per gång. Detta görs med 'combn'-funktionen. Varje kolumn i output innehåller de x-värden som fåtts i ett visst stickprov. Det finns totalt 10 möjliga stickprov.  -->
+<!-- ```{r} -->
+<!-- combn(x, 3) -->
+<!-- ``` -->
+<!-- Till exempel får vi (4,8,2) i ett av stickproven.  -->
+<!-- Med 'combn'-funktionen kan vi lägga till ett kommando som säger vad vi vill beräkna för varje stickprov. Låt oss beräkna stickprovsmedelvärden och stickprovsmedianer i varje stickprov! -->
+<!-- ```{r} -->
+<!-- combn(x, 3, mean) # beräkna stickprovsmedelvärden. Jämför med föregående kommando! -->
+<!-- combn(x, 3, median) # median i varje möjligt stickprov. -->
+<!-- ``` -->
+<!-- ### (d) Rita två stolpdiagram. Ett som beskriver fördelningen av medelvärdet, ett som beskriver fördelningen av medianen. Vad kallas dessa fördelningar? -->
+<!-- Vi sammanställer resultaten i c-uppgiften med 'table' som skapar en frekvenstabell för resultaten.  -->
+<!-- ```{r} -->
+<!-- means.112   <- table( combn(x, 3, mean) )   # medelvärden i varje möjligt stickprov. -->
+<!-- medians.112 <- table( combn(x, 3, median) ) # median i varje möjligt stickprov. -->
+<!-- ``` -->
+<!-- Sedan skapar vi stolpdiagrammen. -->
+<!-- ```{r} -->
+<!-- # Bar chart för medelvärdena -->
+<!-- barplot(means.112, main="Distribution of Sample Means", -->
+<!--         names.arg=c("4", "4.67", "5", "5.33", "5.67", "6", "6.33", "7", "7.67")) # 'names.arg' ger etiketterna på x-axeln. -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- # Bar chart för medianerna -->
+<!-- barplot(medians.112, main="Distribution of Sample Medians", -->
+<!--         names.arg=c("4", "6", "8") ) -->
+<!-- ``` -->
+<!-- ### (e) Beräkna $E(\bar{x})$ och $E(\widehat{md})$. -->
+<!-- Eftersom vi drar OSU-UÅ följer att $E(\bar{x})=\mu_x=5.8$. Vi har också att $E(\widehat{md})=md=6$. -->
+<!-- ### (f) Beräkna $(1/K)(\sum_{k=1}^K(\bar{x}_k-E(\bar{x}))^2)$ och  $(1/K)\sum_{k=1}^K(\widehat{md}_k-E(\widehat{md}))^2$. Beräkna även $V(\bar{x})=\left(\dfrac{N-n}{N-1}\right)\dfrac{\sigma^2_x}{n}$ och jämför med de två tidigare värdena. -->
+<!-- Vi börjar med medelvärdet.  -->
+<!-- $$\frac{1}{N}\sum_{k=1}^K(\bar{x}_k-E(\bar{x}))^2=\frac{1}{N}\sum_{k=1}^K(\bar{x}_k-\mu_k)^2=\frac{\sum_{k=1}^K\bar{x}_k^2}{N}-\mu_k^2.$$  -->
+<!-- Insättning av värden ger  -->
+<!-- ```{r} -->
+<!-- # först sammanställer vi medelvärden, men nu i en vektor istället för i ett 'table'. -->
+<!-- means <- combn(x, 3, mean) -->
+<!-- sum(means^2)/10 - mean(x)^2  # beräkning enligt formel. -->
+<!-- ``` -->
+<!-- För medianen får vi följande:  -->
+<!-- $$\frac{1}{N}\sum_{k=1}^K(\widehat{md}_k-E(\widehat{md}))^2=\frac{1}{N}\sum_{k=1}^K(\widehat{md}_k-md)^2.$$ -->
+<!-- Insättning av värden ger  -->
+<!-- ```{r} -->
+<!-- # först sammanställer vi medianer, men nu i en vektor istället för i ett 'table'. -->
+<!-- medians <- combn(x, 3, median) -->
+<!-- 1/10 * sum( (medians - median(x) )^2     ) -->
+<!-- ``` -->
+<!-- Slutligen får vi     -->
+<!-- $$V(\bar{x})=\left(\frac{N-n}{N-1}\right)\frac{\sigma_x^2}{n}$$ -->
+<!-- Insättning av värden ger -->
+<!-- ```{r} -->
+<!-- (5-3)/(5-1) * ( mean(x^2) - mean(x)^2  ) / 3 -->
+<!-- ``` -->
+<!-- ### (g) Beskriv med ord skillnaden mellan $\sigma^2_x$, $s^2_x$, $V(\bar{x})$, $\hat{V}(\bar{x})$, $SE(\bar{x})$, $V(\widehat{md})$, $\hat{V}(\widehat{md})$ samt $SE(\widehat{md})$. -->
+<!-- (Notera att $\sigma^2_x$ och $s^2_x$ ofta skrivs utan index, samt att $V(\bar{x})$ och $\hat{V}(\bar{x})$ alternativt kan skrivas $\sigma^2_{\bar{x}}$ och $\hat{\sigma}^2_{\bar{x}}$.)  -->
+<!-- * $\sigma_x^2$ är variansen för $x$ i populationen som vi är intresserade av. -->
+<!-- * $s_x^2$ är variansen för $x$ i stickprovet. -->
+<!-- * $V(\bar{x})$ är variansen för stickprovsmedelvärdets fördelning som beräknas med populationsvariansen. -->
+<!-- * $\hat{V}(\bar{x})$ är den skattade variansen för stickprovsmedelvädets fördelning som beräknas med stickprovsvariansen. -->
+<!-- * $SE(\bar{x})$ är standardavvikelsen för stickprovsmedelvärdets fördelning.  -->
+<!-- * $V(\widehat{md})$ är variansen för stickprovsmedianens fördelning. -->
+<!-- * $\hat{V}(\widehat{md})$ är den skattade variansen för stickprovsmedianens fördelning. -->
+<!-- * $SE(\widehat{md})$ är standardavvikelsen för stickprovsmedianens fördelning.  -->
+<!-- ### (h) Om $n$ är stort och vi kan använda tumregeln $n > 30$ (som måste användas med viss försiktighet), vilken varians och approximativ fördelning har $\bar{x}$?  -->
+<!-- Om $n$ är stort följer $\bar{x}$ approximativt fördelningen $N(\mu; V(\bar{x}))$. -->
+<!-- ### (i) Vad kallas fördelningen för $\bar{x}$? Förklara med ord hur denna fördelning uppkommer. -->
+<!-- Samplingfördelningen för stickprovsmedelvärdet. Det är fördelningen för medelvärdena för alla olika stickprov vi kan dra från populationen. -->
+<!-- ### (j) Om $n$ är stort och vi kan använda tumregeln $n > 30$ (som måste användas med viss försiktighet), vilken varians och approximativ fördelning har $\hat{\tau}=N\bar{x}$?  -->
+<!-- Om $n$ är stort följer $\hat{\tau}$ approximativt fördelningen $N(\mu; V(\hat{\tau}))$. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 113 -->
+<!-- Styrelsen i en mindre fackförening på 2000 medlemmar överväger att erbjuda medlemmarna en gruppförsäkring av typ ''liv och olycksfall''. För att utrön slagkraften i ett inkommet erbjudande avser man att uppskatta genomsnittsvärdet av den årliga utgift medlemmarna för närvarande betalar för dylika försäkringar, genom ett urval. Precisionskravet formuleras så att längden av ett 95\% konfidensintervall för medelutgiften -->
+<!-- bland de 2000 medlemmarna inte får överstiga 50 kronor. Försäkringsbolaget hävdar att standardavvikelsen i populationen med största säkerhet inte överstiger 250 kronor. -->
+<!-- ### Bestäm tillräcklig stickprovsstorlek under förutsättningarna att den av bolaget angivna standardavvikelsen överensstämmer med populationens och att urvalet är ett OSU-UÅ. -->
+<!-- * Mål: Bestämma nödvändig stickprovsstorlek $n$ om längden för ett 95\% konfidensintervall för medelutgiften inte får överstiga 50 kronor. -->
+<!-- * Parameter: $\mu$ = medelutgiften för försäkringar för de 2000 medlemmarna i populationen. -->
+<!-- * Estimator: $\bar{x}$ = medelutgiften i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Vi utgår från att vi vet populationsstandardavvikelsen (250) varpå $V(\bar{x})=\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$.  -->
+<!-- 3. Vi utgår från att den nödvändiga stickprovsstorleken är tillräckligt stor för att CGS ska gälla men måste kontrollera det när vi har en stickprovsstorlek.  -->
+<!-- * Beräkningar: vi kan lösa uppgiften algebraiskt. LÃ€ngden fÃ¶r ett 95\% konfidensintervall kan skrivas som -->
+<!-- $$2\cdot z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Precisionskravet är $50\geq 2\cdot z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}$ och vi sätter in värden och löser ut $n$. -->
+<!-- \begin{equation}\label{eq:intbredd3} -->
+<!--        50\geq 2\cdot 1,96\sqrt{\left(\frac{2000-n}{2000-1}\right)\frac{250^2}{n}} -->
+<!-- \end{equation} -->
+<!-- $$\left(\frac{50}{2\cdot 1,96}\right)^2\geq \left(\frac{2000-n}{1999}\right)\frac{250^2}{n}$$ -->
+<!-- $$\left(\frac{50}{2\cdot 1,96}\right)^2 1999 \geq \left(\frac{2000}{n}-1\right)250^2$$ -->
+<!-- $$\left(\frac{50}{2\cdot 1,96}\right)^2 1999+250^2 \geq \frac{2000}{n}250^2$$ -->
+<!-- $$n\geq \frac{2000\cdot 250^2}{\left(\frac{50}{2\cdot 1,96}\right)^2 1999+250^2}=322,40.$$  -->
+<!-- Man kan även testa sig fram i R: -->
+<!-- ```{r} -->
+<!-- # testa dig fram till att hitta minsta möjliga n så att precisionskravet uppfylls, alltså att längden inte ska överskrida 50 kronor. -->
+<!-- z <- qnorm(0.975) -->
+<!-- N <- 2000 -->
+<!-- sigma2 <- 250^2 -->
+<!-- n <- 10 -->
+<!-- 2 * z * sqrt( ((N - n)/(N-1)) * (sigma2/n)    ) -->
+<!-- ``` -->
+<!-- * Svar: Vi behöver ett urval bestående av minst 323 medlemmar för att nå precisionskravet. Kontroll för CGS: $323 > 30$. OK! -->
+<!-- ### Hur stort stickprov ska dras om precisionskravet istället är att felmarginalen får vara max 50 kronor? -->
+<!-- * Mål: Bestämma nödvändig stickprovsstorlek $n$ om felmarginalen för ett 95\% konfidensintervall för medelutgiften inte får överstiga 50 kronor. -->
+<!-- * Parameter: $\mu$ = medelutgiften för försäkringar för de 2000 medlemmarna i populationen. -->
+<!-- * Estimator: $\bar{x}$ = medelutgiften i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Vi utgår från att vi vet populationsstandardavvikelsen (250) varpå $V(\bar{x})=\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$.  -->
+<!-- 3. Vi utgår från att den nödvändiga stickprovsstorleken är tillräckligt stor för att CGS ska gälla men måste kontrollera det när vi har en stickprovsstorlek.  -->
+<!-- * Beräkningar: Vi kan lösa uppgiften algebraiskt. Felmarginalen utgör halva konfidensintervallets längd varpå en felmarginal på 50 kronor innebär en intervallängd på 100 kr. Vi kan ställa upp precisionskravet som  -->
+<!-- $$50\geq z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}.$$  -->
+<!-- Vi anpassar formeln för nödvändig stickprovsstorlek som härleddes i (a) vilket ger  -->
+<!-- $$n\geq \frac{2000\cdot 250^2}{\left(\frac{20}{1,96}\right)^2 1999+250^2}=91,68.$$ -->
+<!-- Vi kan även testa oss fram i R: -->
+<!-- ```{r} -->
+<!-- z <- qnorm(0.975) -->
+<!-- N <- 2000 -->
+<!-- sigma2 <- 250^2 -->
+<!-- n <- 10 -->
+<!-- z * sqrt( ((N - n)/(N-1)) * (sigma2/n)    ) -->
+<!-- ``` -->
+<!-- * Svar: Vi behöver ett urval bestånde av minst 92 medlemmar för att nå precisionskravet om en felmarginal på 50 kronor. Kontroll för CGS: $92 > 30$. OK! -->
+<!-- ### Hur stort stickprov ska dras om precisionskravet istället är att medelfelet får vara max 50 kronor? -->
+<!-- * Mål: Bestämma nödvändig stickprovsstorlek $n$ för ett 95\% konfidensintervall om medelfelet får vara max 50 kronor. -->
+<!-- * Parameter: $\mu$ = medelutgiften för försäkringar för de 2000 medlemmarna i populationen. -->
+<!-- * Estimator: $\bar{x}$ = medelutgiften i stickprovet.  -->
+<!-- * Förutsättningar: Se (a). Men vi behöver inte normalfördelning för att beräkna medelfelet.  -->
+<!-- * Beräkningar: Medelfelet ges av -->
+<!-- $$SE(\bar{x})=\sqrt{V(\bar{x})}=\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}.$$  -->
+<!-- Precisionskravet kan skrivas som $$50\geq \sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}$$ och insättning av värden ger  -->
+<!-- $$50\geq \sqrt{\left(\frac{2000-n}{2000-1}\right)\frac{250^2}{n}}.$$  -->
+<!-- Vi löser ut $n$ på motsvarande sätt som i (a) och landar på uttrycket -->
+<!-- $$n\geq \frac{2000\cdot250^2}{50^2\cdot1999+250^2}=24,70.$$ -->
+<!-- Vi kan även testa oss fram i R: -->
+<!-- ```{r} -->
+<!-- N <- 2000 -->
+<!-- sigma2 <- 250^2 -->
+<!-- n <- 20 -->
+<!-- sqrt( ((N - n)/(N-1)) * (sigma2/n)    ) -->
+<!-- ``` -->
+<!-- * Svar: Vi behöver ett urval på minst 25 medlemmar för att uppnå precisionskravet. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 114 -->
+<!-- För några år sedan annonserade Findus på följande sätt: ''Findus lagar fortfarande Sveriges populäraste -->
+<!-- köttbullar (näst efter hemlagade förstås)''. -->
+<!-- Detta uttalande baserade Findus på en undersökning utförd av Skandinaviska Marknadsinstitutet. Där -->
+<!-- hade man låtit 200 konsumenter jämföra Findus köttbullar med Felix köttbullar. De 200 konsumenterna -->
+<!-- hade valts med OSU utan återläggning från en grupp bestående av $5000$ personer som ansågs -->
+<!-- representera svenska konsumenter. På basis av undersökningen gjorde man ett konfidensintervall för -->
+<!-- andelen som tyckte att Findus smakade bäst. Detta konfidensintervall tyckte man dock blev alltför -->
+<!-- brett. I stället ville man ha ett 95\% konfidensintervall som skulle vara högst 6 procentenheter brett.  -->
+<!-- * Hur stort urval ur konsumentpanelen på $5000$ personer måste man göra för att uppfylla detta precisionskrav?  -->
+<!-- *   Mål: Beräkna nödvändig stickprovsstorlek $n$ om längden för ett 95\% konfidensintervall för andelen i populationen får vara max 6 procentenheter brett. -->
+<!-- * Parameter: $p$ = andelen bland de 5000 personerna i populationen som föredrar Findus köttbullar.  -->
+<!-- * Estimator: $\hat{p}$ = andelen bland de 200 personerna i stickprovet som föredrar Findus köttbullar. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. Vi vet populationsstorleken och använder ändlighetskorrektion varpå $\hat{V}(p)=\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$.  -->
+<!-- 3. Vi vet inget om populationsandelen och använder därför 0,5 som ger störst varians. -->
+<!-- 4. Vi utgår från att $np(1-p)>5$ är uppfyllt för att CGS ska gälla men vi måste i efterhand kontrollera om så faktiskt är fallet. -->
+<!-- * Beräkning: vi kan lösa uppgiften algebraiskt. Längden fÃ¶r ett 95\% konfidensintervall kan skrivas som  -->
+<!-- $$2\cdot z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Vi sätter in värden givet precisionskravet och löser ut $n$.  -->
+<!-- $$0,06\geq 2\cdot 1,96\sqrt{\left(\frac{5000-n}{5000-1}\right)\frac{0,5(1-0,5)}{n}}$$ -->
+<!-- $$\left(\frac{0,06}{2\cdot 1,96}\right)^2 \geq \left(\frac{5000-n}{4999}\right)\frac{0,25}{n}$$ -->
+<!-- $$\left(\frac{0,06}{2\cdot 1,96}\right)^2 4999 \geq \left(\frac{5000}{n}-1\right)0,25$$ -->
+<!-- $$\left(\frac{0,06}{2\cdot 1,96}\right)^2 4999+0,25 \geq \frac{5000}{n}0,25.$$  -->
+<!-- Vi landar slutligen pÃ¥  -->
+<!-- $$n \geq \frac{5000\cdot 0,25}{\left(\frac{0,06}{2\cdot1,96}\right)^2 4999+0,25}=879,57.$$ -->
+<!-- Vi kan även testa oss fram i R: -->
+<!-- ```{r} -->
+<!-- # p = 0.5 ger störst varians. Vi har OSU-UÅ. Det går att ändra värdena på n för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.06. -->
+<!-- N <- 5000 -->
+<!-- n <- 20 -->
+<!-- p <- 0.5 -->
+<!-- z <- qnorm(0.975) -->
+<!-- 2 * z * sqrt( ( (N - n)/(N-1) ) * ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- * Svar: För att uppnå precisionskravet behövs ett stickprov på minst 880 personer. Kontroll av CGS: $np(1-p)=880\cdot0,5\cdot(1-0,5)=220>5$. OK! -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 115 -->
+<!-- Låt $\hat{\tau}$ vara en estimator för totalen i en ändlig population där urvalet är ett OSU-UÅ.  Utgå från att du känner till $V(\bar{x})$. -->
+<!-- ### Visa att  -->
+<!-- $$V(\hat{\tau})=N^2\left(\dfrac{N-n}{N-1}\right)\dfrac{\sigma^2}{n}.$$  -->
+<!-- Vi vill skatta populationstotalen $\tau=N\mu$ där $N$ är populationsstorleken och $\mu$ är populationsmedelvärdet. -->
+<!-- Vi använder estimatorn $\hat{\tau}=N\bar{x}$. Vi vet att $V(\bar{x})=\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$ där $\sigma^2$ är populationsvariansen och $n$ är stickprovsstorleken. Vi kan nu skriva -->
+<!-- \begin{equation}\nonumber -->
+<!-- V(\hat{\tau})=V(N\bar{x})=N^2V(\bar{x})=N^2\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}. -->
+<!-- \end{equation} -->
+<!-- Likheten gäller eftersom $N$ är en konstant som kvadreras enligt regeln $V(aX)=a^2V(X)$ om $X$ är en slumpvariabel och $a$ är en konstant. -->
+<!-- ## 116 -->
+<!-- En grisuppfödare äger 150 svin som är utspridda i ett stall. Av -->
+<!-- praktiska skäl är en totalundersökning inte möjlig. Hon gör därför ett urval -->
+<!-- på 20 djur på ett sådant sätt att det kan betraktas som ett OSU-UÅ. Grisarnas vikt kan betraktas som normalfördelad.  -->
+<!-- Medelvikten för de 65 utvalda svinen visade sig vara 120 kg och -->
+<!-- standardavvikelsen 15 kg. -->
+<!-- ### (a)  Bilda ett 95 \%-igt konfidensintervall för svinens medelvikt. Tolka intervallet i ord! -->
+<!-- * Mål: Intervallskatta medelvikten för svinen i stallet. -->
+<!-- * Parameter: $\mu$ = medelvikten för samtliga svin i stallet. -->
+<!-- * Estimator: $\bar{x}$ = medelvikten för svinen i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N=150$. Urvalsstorlek: $n=20$. Eftersom $\frac{n}{N}>0,1$ skattas $V(\bar{x})$ med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- 3. $x$ är normalfördelad så vi behöver inte förlita oss på CGS. Eftersom stickprovet är litet använder vi $t$-fördelningen med $n-1$ frihetsgrader. -->
+<!-- * Beräkningar: först sammanställer vi våra värden från uppgiften.  -->
+<!-- ```{r} -->
+<!-- # Sammanställ data. -->
+<!-- x_bar <- 120 -->
+<!-- s = 15 -->
+<!-- N <- 120 -->
+<!-- n <- 20 # litet stickprov. -->
+<!-- ``` -->
+<!-- Ett 95\% konfidensintervall för $\mu$ ges av  -->
+<!-- $$\bar{x}\pm t_{n-1; \alpha/2}\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}.$$ -->
+<!-- Konfidensintervallet skapas här nedanför. 'qt' fungerar som 'qnorm' fast med fokus på t-fördelningen. Vi måste specificera vilken kvantil vi söker samt hur många frihetsgrader vi har. -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat <- (1 - n/N) * s^2/n -->
+<!-- lower.lim <- x_bar - qt(0.975, df = n - 1) * sqrt(Var.hat.theta.hat)  # df = degrees of freedom (frihetsgrader).  -->
+<!-- upper.lim <- x_bar + qt(0.975, df = n - 1) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 113,5 till 126,5 den genomsnittliga vikten för svinen i stallet. -->
+<!-- ### (b) Hur ser ändlighetskorrektionen  i variansformeln ut? Vilket syfte har denna korrektion? -->
+<!-- $\left(1-\frac{n}{N}\right)$. Ändlighetskorrektionen tar hänsyn till den ökade precisionen om urvalet utgör en allt större andel av populationen. -->
+<!-- ### (c) Hur stort stickprov hade behövts för att halvera konfidensintervallets längd i (a)? -->
+<!-- Vi kan lösa uppgiften algebraiskt.  -->
+<!-- Konfidensintervallets längd är  -->
+<!-- $$2\cdot t_{n-1;\alpha/2}\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}=13,07.$$  -->
+<!-- Om längden halveras ska intervallet vara $13,07/2=6,535$ enheter brett, d.v.s. $2\cdot t_{n-1;\alpha/2}\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}=6,535$. Insättning av värden ger  -->
+<!-- $$2\cdot 2,093 \sqrt{\left(1-\frac{n}{150}\right)\frac{15^2}{n}}=6,535$$ -->
+<!-- $$2^2\cdot 2,093^2\left(1-\frac{n}{150}\right)\frac{15^2}{n}=6,535^2$$ -->
+<!-- $$\left(1-\frac{n}{150}\right)\frac{15^2}{n}=\frac{6,535^2}{2^2\cdot 2,093^2}$$ -->
+<!-- $$\frac{15^2}{n}-\frac{15^2}{150}=\frac{6,535^2}{2^2\cdot 2,093^2}$$ -->
+<!-- $$\frac{15^2}{n}=\frac{6,535^2}{2^2\cdot 2,093^2}+\frac{15^2}{150}$$  -->
+<!-- vilket ger uttrycket -->
+<!-- $$n=\frac{15^2}{\frac{6,535^2}{2^2\cdot 2,093^2}+\frac{15^2}{150}}=57,147.$$ -->
+<!-- Vi avrundar uppåt eftersom vi vill som minst halvera intervallets längd varpå \textit{n}=58. -->
+<!-- Vi kan även testa oss fram i R: -->
+<!-- ```{r} -->
+<!-- # Testa dig fram! Intervallet ska ha bredden 6.535. -->
+<!-- s = 15 -->
+<!-- n <- 10 -->
+<!-- N <- 150 -->
+<!-- t <- qt(0.975, df = n - 1) -->
+<!-- 2 * t * sqrt( (1 - (n / N) ) * (s^2 / n)   ) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- * Svar: Vi behöver ett stickprov på minst 58 svin för att halvera intervallets längd. -->
+<!-- ## 117 -->
+<!-- Ett fackförbundsdistrikt vill veta med hjälp av ett OSU-UÅ veta hur många av medlemmarna som ställer sig positiva till ett förslag. Distriktet har 3800 medlemmar. -->
+<!-- ### (a) Beräkna urvalsstorlek om felmarginalen får max vara 2 procentenheter. -->
+<!-- * Mål: Beräkna nödvändig stickprovsstorlek $n$ om felmarginalen för andelen i populationen får vara max 2 procentenheter bred. -->
+<!-- * Parameter: $p$ = andelen medlemmar i distriktet som ställer sig positiva till förslaget. -->
+<!-- * Estimator: $\hat{p}$ = andelen medlemmar i stickprovet som ställer sig positiva till förslaget. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. Vi vet populationsstorleken och använder ändlighetskorrektion. $V(p)=\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$. -->
+<!-- 3. Vi vet inte populationsandelen men utgår från att den är $p=0,5$ vilket ger störst varians. Vi antar att $np(1-p)>5$ för att CGS ska gälla men måste kontrollera om det stämmer i slutet av uppgiften.  -->
+<!-- * Beräkning: vi kan lösa uppgiften algebraiskt. Felmarginalen ges av  -->
+<!-- $$z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Vi sätter in precisionskrav och värden och löser ut $n$:  -->
+<!-- $$0,02\geq 1,96\sqrt{\left(\frac{3800-n}{3800-1}\right)\frac{0,5(1-0,5)}{n}}$$ -->
+<!-- $$\left(\frac{0,02}{1,96}\right)^2\geq \left(\frac{3800-n}{3799}\right)\frac{0,25}{n}$$ -->
+<!-- $$\left(\frac{0,02}{1,96}\right)^2 3799 \geq \left(\frac{3800}{n}-1\right)0,25$$ -->
+<!-- $$\left(\frac{0,02}{1,96}\right)^2 3799+0,25 \geq \left(\frac{3800}{n}\right)0,25$$  -->
+<!-- vilket ger att  -->
+<!-- $$n\geq \frac{3800\cdot 0,25}{\left(\frac{0,02}{1,96}\right)^2 3799+0,25}=1471,58.$$ -->
+<!-- Vi kan även testa oss fram i R: -->
+<!-- ```{r} -->
+<!-- # p = 0.5 ger störst varians. Vi har OSU-UÅ. Det går att ändra värdena på n för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.02. -->
+<!-- N <- 3800 -->
+<!-- n <- 10 -->
+<!-- p <- 0.5 -->
+<!-- z <- qnorm(0.975) -->
+<!-- z * sqrt( ( (N - n)/(N-1) ) * ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- * Svar: För att uppnå precisionskravet behövs ett stickprov med minst 1472 medlemmar. Kontroll av CGS: $np(1-p)=386 > 5$ så antagandet är uppfyllt. -->
+<!-- ### (b) Beräkna urvalsstorlek om konfidensintervallet får max vara 3 procentenheter. -->
+<!-- * Mål: Beräkna nödvändig stickprovsstorlek $n$ om ett 95 \% konfidensintervall för andelen i populationen får vara max 3 procentenheter brett. -->
+<!-- * Parameter: $p$ = andelen medlemmar i distriktet som ställer sig positiva till förslaget. -->
+<!-- * Estimator: $\hat{p}$ = andelen medlemmar i stickprovet som ställer sig positiva till förslaget. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. Vi vet populationsstorleken och använder ändlighetskorrektion. $V(p)=\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$. -->
+<!-- 3. Vi vet inte populationsandelen men utgår från att den är $p=0,5$ vilket ger störst varians. Vi antar att $np(1-p)>5$ för att CGS ska gälla men måste kontrollera om det stämmer i slutet av uppgiften.  -->
+<!-- * Beräkning: vi kan lösa uppgiften algebraiskt. Längden för ett 95\% konfidensintervall för $p$ ges av  -->
+<!-- $$2\cdot z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Vi sätter in värden givet precisionskravet  -->
+<!-- $$0,03 \geq 2\cdot 1,96\sqrt{\left(\frac{3800-n}{3799}\right)\frac{0,25}{n}}.$$  -->
+<!-- På motsvarande sätt som i (a) löser vi ut \textit{n} och landar på  -->
+<!-- $$n \geq \frac{3800 \cdot 0,25}{\left(\frac{0,03}{2\cdot 1,96}\right)^23799+0,25}=2010,56.$$ -->
+<!-- Vi kan även testa oss fram i R.  -->
+<!-- ```{r} -->
+<!-- N <- 3800 -->
+<!-- n <- 20 -->
+<!-- p <- 0.5 -->
+<!-- z <- qnorm(0.975) -->
+<!-- 2 * z * sqrt( ( (N - n)/(N-1) ) * ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- * Svar: För att uppnå precisionskravet behövs ett stickprov på minst 2011 medlemmar. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 118 -->
+<!-- En forskare vill undersöka genomsnittlig IQ bland studenterna som går en kurs i statistik. På kursen går 70 studenter och forskaren drog ett OSU-UÅ bestående av 11 studenter fick genomföra ett IQ-test. Resultatet av testet blev: -->
+<!-- 98 121 124 105 104 102 102 128  96  92  94. -->
+<!-- ### Skatta medelfelet. Var noga med förutsättningar! Tolka medelfelet! -->
+<!-- * Mål: Skatta medelfelet för genomsnittlig IQ bland studenterna.  -->
+<!-- * Parameter: $\mu$ = genomsnittlig IQ för de 70 studenterna på kursen. -->
+<!-- * Estimator: $\bar{x}$ = genomsnittlig IQ för de 11 studenterna i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N = 70$. Urvalsstorlek: $n = 11$. Vi använder ändlighetskorrektion varpå $V(\bar{x})$ skattas med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- * Beräkning: Medelfelet ges av -->
+<!-- $$SE(\bar{x})=\sqrt{\hat{V}(\bar{x})}=\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}.$$  -->
+<!-- Vi gör beräkningar i R: -->
+<!-- ```{r} -->
+<!-- # Först sammanställer vi data. -->
+<!-- IQdata <- c(98, 121, 124, 105, 104, 102, 102, 128, 96, 92, 94) -->
+<!-- n <- length(IQdata) -->
+<!-- # Beräkna medelfel. -->
+<!-- sqrt( (1 - n/70) * var(IQdata)/ n   ) -->
+<!-- ``` -->
+<!-- * Svar: Medelfelet är 3,47 vilket är den skattade standardavvikelsen i stickprovsmedelvärdets samplingfördelning. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 119 -->
+<!-- En forskare ville undersöka genomsnittlig IQ bland studenterna som går en kurs i statistik. På kursen går 70 studenter och forskaren drog ett OSU-UÅ bestående av 11 studenter som fick genomföra ett IQ-test. IQ anses följa normalfördelning och är konstruerat så att standardavvikelsen är 15 (dvs den anses känd). Resultatet av testet blev:  -->
+<!-- 98 121 124 105 104 102 102 128  96  92  94.  -->
+<!-- ### Beräkna ett 90\% konfidensintervall för genomsnittlig IQ i bland studenterna på kursen. Var noga med förutsättningar! Tolka intervallet! -->
+<!-- * Mål: Med ett 90\% konfidensintervall skatta genomsnittlig IQ bland studenterna på kursen. -->
+<!-- * Parameter: $\mu$ = genomsnittlig IQ för de 70 studenterna på kursen. -->
+<!-- * Estimator: $\bar{x}$ = genomsnittlig IQ för de 11 studenterna i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 70. Urvalsstorlek: $n$ = 11. Vi använder ändlighetskorrektion och känner populationsstandardavvikelsen varpå $V(\bar{x})=\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$. -->
+<!-- 3. Vi är givna i uppgiften att IQ anses följa en normalfördelning.  -->
+<!-- * Beräkning: Ett 90\% konfidensintervall för $\mu$ ges av  -->
+<!-- $$\bar{x}\pm z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$ och $\bar{x}=106$. Insättning av värden i R ger:  -->
+<!-- ```{r} -->
+<!-- # Samma data som i uppg 118. I detta fall känner vi till populationsstandardavvikelsen och behöver därför ingen variansskattning. -->
+<!-- IQdata <- c(98, 121, 124, 105, 104, 102, 102, 128, 96, 92, 94) -->
+<!-- N <- 70 -->
+<!-- n <- length(IQdata) -->
+<!-- x_bar <- mean(IQdata) -->
+<!-- z <- qnorm(0.95) -->
+<!-- sigma2 <- 15^2 -->
+<!-- # Medelfel: -->
+<!-- se_IQ <- sqrt(  ( ( N - n ) / (N - 1)   ) * ( sigma2 / n )     ) -->
+<!-- # intervall med punktestimat: -->
+<!-- interval.IQdata <- c(x_bar - z * se_IQ,  -->
+<!--                      x_bar,  -->
+<!--                      x_bar + z * se_IQ) -->
+<!-- ``` -->
+<!-- *  Svar: Med 90\% säkerhet täcker intervallet 99 till 113 genomsnittlig IQ för studenterna på kursen. -->
+<!-- ## 120 -->
+<!-- En barnmorska arbetar på en vårdcentral som har ett visst patientunderlag. Barnmorskan ville jämföra om nyfödda barns födelsevikt vid den här vårdcentralen är mindre än genomsnittsvikten i Sverige som är 3600 gram för pojkar. Hon valde med OSU-UÅ ut 20 pojkar av de totalt 190 spädbarn som var listade vid vårdcentralen. Hon frågade därefter föräldarna om godkännande och tittade sedan i barnens journaler. Födelsevikt kan betraktas som normalfördelad variabel. Följande födelsevikter erhölls: -->
+<!-- 3017 3523 2609 2518 2556 2659 3103 2657 3272 4153 3729 3711 3223 2668 3042 3545 3530 2209 2470 -->
+<!-- ### Genomför en hypotesprövning på 5-procentsnivån för att undersöka om barnmorskan har belägg för sin misstanke. -->
+<!-- * Mål: Testa om nyfödda barns födelsevikt vid kliniken i genomsnitt är mindre än medelvikten i Sverige som är 3600 gram. -->
+<!-- * Parameter: $\mu$ = medelvikten bland nyfödda i Sverige. -->
+<!-- * Estimator: $\bar{x}$ = medelvikten i stickprovet. -->
+<!-- * Hypoteser: $H: \mu_0=3600$ versus $H_1: \mu<3600$ -->
+<!-- * Signifikansnivå: $\alpha=0,05$. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 190. Urvalsstorlek: $n$ =  20. Eftersom $\frac{n}{N}>0,1$ och vi inte vet populationsstandardavvikelsen skattas $V(\bar{x})$ med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- 3. Vi är givna i uppgiften att födelsevikten kan betraktas som normalförderdelad. -->
+<!-- * Testfunktion:  -->
+<!-- $$Z=\frac{\bar{x}-\mu_0}{\sqrt{\hat{V}(\bar{x})}}$$  -->
+<!-- som är approximativt $N(0;1)$ när nollhypotesen är sann. -->
+<!-- * Beslutsregel: Vi har en ensidig mothypotes vilket ger $z_{\alpha}=z_{0,05}=1,6449$ så vi förkastar nollhypotesen om $Z_{obs}<-z_{0,05}=-1,6449$. -->
+<!-- *  Beräkning: Först sammanställer vi data. -->
+<!-- ```{r} -->
+<!-- barnvikt <- c(3017, 3523, 2609, 2518, 2556, 2659, 3103, 2657, 3272, 4153, 3729, 3711, 3223, 2668, 3042, 3545, 3530, 2209, 2470, 3120) -->
+<!-- N = 190 -->
+<!-- n <- length(barnvikt) -->
+<!-- x_bar <- mean(barnvikt) -->
+<!-- s2 <- var(barnvikt) -->
+<!-- ``` -->
+<!-- Variansberäkning: -->
+<!-- ```{r} -->
+<!-- var.hat.barnvikt <- (1 - (n / N) ) * (s2 / n ) -->
+<!-- ``` -->
+<!-- Vi finner den kritiska punkten via R: -->
+<!-- ```{r} -->
+<!-- - qnorm(0.95)  # minustecknet framför gör att vi får ett negativt värde av kommandot, som annars skulle vara positivt. -->
+<!-- ``` -->
+<!-- Testfunktionens värde blir: -->
+<!-- ```{r} -->
+<!-- # testfunktionens värde. -->
+<!-- (x_bar - 3600) / sqrt(var.hat.barnvikt) -->
+<!-- ``` -->
+<!-- * Beslut: $Z_{obs}=-4.868462 < -1,6449= -z_{0,05}$ och alltså kan vi förkasta nollhypotesen på 5\% signifikansnivå. -->
+<!-- * Svar: Testresultatet ger tillräckligt starkt stöd för att vi ska slå fast att födelsevikten på kliniken är mindre än genomsnittet i Sverige. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 121 -->
+<!-- Gå in på www.scb.se. Finn data på 290 kommuners kostnad för skolskjuts per -->
+<!-- elev i Sverige år 2010 för elever som som går i grundskola. Ladda ner data i en -->
+<!-- Excel-fil, importera till R och välj sedan ut 30 kommuner med hjälp av -->
+<!-- ett OSU-UÅ. -->
+<!-- ### (a) Gör urvalet som efterfrågas! -->
+<!-- Ladda ner en Excel-fil från SCB:s "Statistikdatabasen": http://www.statistikdatabasen.scb.se/sq/70804. Sedan kan vi använda 'File' -->
+<!-- 'Import Dataset' -->
+<!--  'From Excel...', och det är denna procedur som genererar nedanstående kod. Vi väljer även vilka celler i Excel som <!-- vi vill använda. OBS: nedanstående kod fungerar inte generellt utan är genererad för detta specifika fall. Använd ovanstående procedur så <!-- kommer kod produceras som fungerar för ert specifika dataset och som liknar nedanstående kod.  -->
+<!-- ```{r, eval=FALSE} -->
+<!-- # genom ovanstående procedur laddas ett paket automatiskt ned som tillåter import av Excel-filer. -->
+<!-- install.packages("readxl") -->
+<!-- library(readxl)  -->
+<!-- # Datainläsning: -->
+<!-- OE0107A2 <- read_excel("~/Desktop/OE0107A2.xlsx",  -->
+<!--                        range = "A3:F293")   # ange vilka celler i Excel-filen som vi vill använda. OBS: här kommer platsen för filen att bero på var du placerat datafilen på din dator. -->
+<!-- # View(OE0107A2)  # undersök datasettet! -->
+<!-- ``` -->
+<!-- Låt oss välja ut kommunkostnaderna för år 2010 och spara dessa i ett eget dataset. -->
+<!-- ```{r, eval=FALSE} -->
+<!-- kommundata.2010 <- OE0107A2$`2010` -->
+<!-- ``` -->
+<!-- Nu väljer vi ut 30 kommuner med OSU-UÅ. -->
+<!-- ```{r, eval=FALSE} -->
+<!-- sample.kommundata.2010 <- sample(kommundata.2010,   # specificera dataset. -->
+<!--                                  size = 30,         # ange hur många element som vi vill välja ut. -->
+<!--                                  replace = FALSE)   # dragning utan återläggning. -->
+<!-- ``` -->
+<!-- ### (b) Använd urvalet för att skatta den genomsnittliga kostnaden för skolskjuts per elev bland Sverige kommuner. -->
+<!-- * Mål: Punktskatta den genomsnittliga kostnaden för skolskjuts -->
+<!-- per elev bland Sverige kommuner. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga kostnaden för skolskjuts -->
+<!-- per elev bland Sverige kommuner. -->
+<!-- * Estimator: $\bar{x}$ = den genomsnittliga kostnaden för skolskjuts per elev i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- * Beräkning: En skattning av medelvärdet ges av  -->
+<!-- ```{r, eval=FALSE} -->
+<!-- point.est <- mean(sample.kommundata.2010) -->
+<!-- ``` -->
+<!-- * Svar: En punktskattning av den genomsnittliga kostnaden för skolskjuts -->
+<!-- per elev bland Sverige kommuner är [...] (sätt in ditt värde här. Värdet beror på ditt urval). -->
+<!-- ### (c) Genomför en intervallskattning för den genomsnittliga kostnaden. Använd konfidensgraden 95\%. -->
+<!-- * Mål: Intervallskatta den genomsnittliga kostnaden för skolskjuts -->
+<!-- per elev bland Sverige kommuner med 95\% konfidensgrad. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga kostnaden för skolskjuts -->
+<!-- per elev bland Sverige kommuner. -->
+<!-- * Estimator: $\bar{x}$ = den genomsnittliga kostnaden för skolskjuts per elev i stickprovet. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 290. Urvalsstorlek: $n$ = 30. Eftersom $\frac{n}{N}>0,1$ och populationsstandardavvikelsen är okänd skattas $V(\bar{x})$ med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- 3. Vi känner inte populationsfördelningen men $n=30$ varpå vi kan förlita oss på CGS givet att populationsfördelningen inte är alltför skev.  -->
+<!-- * Beräkning: Eftersom $n$ är på gränsen använder vi $t$-fördelningen varpå ett 95\% konfidensintervall för $\mu$ ges av  -->
+<!-- $$\bar{x}\pm t_{n-1;\alpha/2}\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}$$  -->
+<!-- där $t_{n-1;\alpha/2}=t_{29;0,025}=2,045$. Insättning av värden ger -->
+<!-- ```{r, eval=FALSE} -->
+<!-- N <- 290 -->
+<!-- point.est <- mean(sample.kommundata.2010)  -->
+<!-- Var.hat.theta.hat <- (1 - 30/N) * var(sample.kommundata.2010)/30 -->
+<!-- lower.lim <- point.est - qt(0.975, df = 30-1) * sqrt(Var.hat.theta.hat)  # df = degrees of freedom -->
+<!-- upper.lim <- point.est + qt(0.975, df = 30-1) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet [x] till [y] den genomsnittliga kostnaden för skolskjuts per elev bland Sveriges kommuner. [x] och [y] beror på ditt urval. -->
+<!-- ### (d) Ta reda på vad sannolikheten för att just ditt framräknade intervall täcker den genomsnittliga kostnaden bland Sveriges kommuner. -->
+<!-- Både intervallet och den genomsnittliga kostnaden för skolskjuts per elev bland Sverige kommuner är fixa vilket innebär att intervallet antingen täcker eller inte täcker genomsnittet i populationen. Alltså är sannolikheten antingen 0 eller 1. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 122 -->
+<!-- (Baserad på Mendelhall et al. (1996)) Vi vill undersöka situationen i tillverkningsindustrin -->
+<!-- genom att få en preliminär uppfattning om antalet anställda ett -->
+<!-- visst år. Anta att tillverkningsindustrin kan delas upp i 80 kategorier. Från -->
+<!-- en lista med olika typer av tillverkningsindustrier gör vi därför ett systematiskt -->
+<!-- urval, där var femte industri väljs. Genom att undersöka de valda industrierna -->
+<!-- erhålls följande resultat: -->
+<!-- ```{r} -->
+<!-- # anställda 1987 (1000-tals) -->
+<!-- data1987 <- c(72.4, 45.4, 57.9, 129.1, 110, 53.2, 31.7, 16.1, 384.7, 80.9, 64, 151.9, 112.3, 389.1, 166.7, 88.9) -->
+<!-- # anställda 1997 (1000-tals) -->
+<!-- data1991 <- c(65.5, 49.3, 54.7, 130.3, 110.6, 46.3, 36.6, 16.4, 388.9, 77, 56.3, 126, 94.1, 369.9, 135.8, 78) -->
+<!-- # tot. antal kategorier -->
+<!-- N <- 80 -->
+<!-- ``` -->
+<!-- ### Skatta den genomsnittliga förändringen i antalet anställda mellan 1987 och 1991. Beräkna felmarginalen. Vad kan påverka felmarginalens validitet och varför? (Tips: Plotta stickprovsnumret mot skillnaderna för antalet anställda.) -->
+<!-- Beräkna differenser. Vi tar det första elementet i 'data1991' minus det första elementet i 'data1987', sedan tar vi differensen mellan element 2 i de två datasetten, sedan element 3, osv... Då får vi skillnaden i anställda per industrikategori. -->
+<!-- ```{r} -->
+<!-- #  -->
+<!-- diffs <- data1991 - data1987 -->
+<!-- ``` -->
+<!-- Vår punktskattning blir: -->
+<!-- ```{r} -->
+<!-- # Punktskattning. -->
+<!-- point.est <- mean(diffs) -->
+<!-- ``` -->
+<!-- Vår felmarginal är: -->
+<!-- ```{r} -->
+<!-- # felmarginal. -->
+<!-- Var.hat.theta.hat <- (1 - 16/N) * var(diffs)/16 -->
+<!-- qt(0.975, df = 16-1) * sqrt(Var.hat.theta.hat)  # df = degrees of freedom -->
+<!-- ``` -->
+<!-- Vi kan även använda oss av tipset för att undersöka validitet och får då: -->
+<!-- ```{r} -->
+<!-- # om vi använder kommandot 'plot' kommer vi att få ett scatterplot där observationerna placeras i ordningen de angavs i våra dataset (vektorer) från vänster till höger.  -->
+<!-- plot(diffs) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 123 -->
+<!-- En undersökning i USA vill undersöka andelen positiva till dödsstraff. Tidigare -->
+<!-- studier visar att ungefär 60\% i USA är positiva. -->
+<!-- ### (a) Vilken stickprovsstorlek behövs vid ett OSU för att vi med 90\% konfidensgrad ska ha som mest 3 procents felmarginal för andelen positiva? -->
+<!-- * Mål: Beräkna nödvändig stickprovsstorlek för ett 90\% konfidensintervall för andelen positiva till dödsstraff i USA där felmarginalen får vara max tre procentenheter.  -->
+<!-- * Parameter: $p$ = andelen positiva i USA. -->
+<!-- * Estimator: $\hat{p}$ = andelen positiva i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU ger att $E(\hat{p})=p$. -->
+<!-- 2. Vi vet inte populationsstorleken men har en uppfattning om andelen i populationen. Därför skattas $V(p)$ med $V(\hat{p})=\frac{p(1-p)}{n}$. -->
+<!-- 3. Vi utgår från att $np(1-p)>5$ för att CGS ska gälla men måste kontrollera om antagandet är uppfyllt på slutet.  -->
+<!-- * Beräkning: Felmarginalen ges av  -->
+<!-- $$z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$. Vi sätter in värden.  -->
+<!-- ```{r} -->
+<!-- # vi har en stor population och kan approximera situationen som ett OSU-MÅ. Det går att ändra värdena på n för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.03. -->
+<!-- n <- 20 -->
+<!-- p <- 0.6 -->
+<!-- z <- qnorm(0.95) -->
+<!-- z * sqrt(  ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- * Svar: För att uppnå precisionskraven behövs ett stickprov på minst 722 individer. Kontroll av CGS: $np(1-p)=173>5$ så antagandet är uppfyllt. -->
+<!-- ### (b) Anta nu att vill nu undersöka andelen positiva i den lilla staden Sigmaville med 3800 invånare där tidigare undersökningar också visat att andelen positiva är 60\%. Vilken stickprovsstorlek behövs nu vid ett OSU för att vi med 90\% konfidensgrad ska ha som mest 3 procents felmarginal för andelen positiva? Jämför med ovanstående undersökning med undersökningen för USA. Vad kan vi konstatera vad gäller betydelsen av populationens storlek för stickprovsstorleken? -->
+<!-- * Mål: Beräkna nödvändig stickprovsstorlek för ett 90\% konfidensintervall för andelen positiva till dödsstraff i USA där felmarginalen får vara max tre procentenheter.  -->
+<!-- * Parameter: $p$ = andelen positiva i USA. -->
+<!-- * Estimator: $\hat{p}$ = andelen positiva i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU ger att $E(\hat{p})=p$. -->
+<!-- 2. Vi vet populationsstorleken och har en uppfattning om andelen i populationen. Därför skattas $V(p)$ mzed $V(\hat{p})=\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$. -->
+<!-- 3. Vi utgår från att $np(1-p)>5$ för att CGS ska gälla men måste kontrollera om antagandet är uppfyllt på slutet. -->
+<!-- * Beräkning: Vi gör samma sak som i (a) men med ändlighetskorrektion. Felmarginalen för $p$ ges av  -->
+<!-- $$ z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$. Vi sätter in värden: -->
+<!-- ```{r} -->
+<!-- # vi har OSU-UÅ. Det går att ändra värdena på n för att se vilket n som ger vår önskade minsta stickprovsstorlek. Vi vill att uttrycket nedan ska vara lika med eller mindre än 0.03. -->
+<!-- N <- 3800 -->
+<!-- n <- 200 -->
+<!-- p <- 0.6 -->
+<!-- z <- qnorm(0.95) -->
+<!-- z * sqrt( ( (N - n)/(N-1) ) * ( p * (1-p) ) / n   ) -->
+<!-- ``` -->
+<!-- * Svar: När vi vet och tar hänsyn till populationsstorleken behövs ett stickprov på minst 607 individer för att uppnå precisionskraven. Kontroll för CGS: $np(1-p)=146>5$ alltså är antagandet uppfyllt. -->
+<!-- ### (c) Anta nu att en undersökare i en helt annan undersökning är intresserad av att skatta den totala vikten bland kalvar som fått en ny sorts foder. Totalt finns   det $N = 1000$ kalvar, men att väga varenda kalv skulle ta för mycket tid. Därför dras ett stickprov bestående av $n$ kalvar, där felmarginalen med konfidensgraden 95\% får vara som mest 20 kg. Från tidigare studier vet vi att populationsvariansen är $\sigma^2 = 900$. Hur stort ska stickprovet vara? Observera: Använd inte formlerna för beräkning av stickprovsstorlekar i formelsamlingen för att lösa uppgiften. Försök att antingen lösa ut stickprovsstorleken algebraiskt eller finn $n$ numeriskt genom att prova er fram på miniräknaren. -->
+<!-- * Mål: Beräkna hur stort stickprov som behövs när konfidensgraden är 95\% och felmarginalen får vara max 20 kg. -->
+<!-- * Parameter: $\tau=N\mu$ = den totala vikten bland kalvarna i populationen. -->
+<!-- * Estimator: $\hat{\tau}=N\bar{x}$ = den totala vikten bland kalvarna i stickprovet. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. $E(\hat{\tau})=NE(\bar{x})=N\mu=\tau$. -->
+<!-- 2. Vi känner populationsstorleken och populationsvariansen så $V(\tau)$ skattas med $V(\hat{\tau})=N^2V(\bar{x})=N^2\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}$. -->
+<!-- 3. Vi utgår från att vikten är normalfördelad och resultatet bygger på antagandet.  -->
+<!-- * Beräkning: Den statistiska felmarginalen ges av  -->
+<!-- $$z_{\alpha/2}\sqrt{\left(\frac{N-n}{N-1}\right)\frac{\sigma^2}{n}}.$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Vi sätter in värden: -->
+<!-- ```{r} -->
+<!-- # Testa dig fram genom att ändra på n. -->
+<!-- n <- 20 -->
+<!-- N <- 1000 -->
+<!-- sigma2 <- 900 -->
+<!-- maxbredd <- 20 -->
+<!-- z <- qnorm(0.975) -->
+<!-- z * sqrt( ((N-n)/(N-1)) * (sigma2/n)   ) -->
+<!-- ``` -->
+<!-- * Svar: Med konfidensgraden 95\% är den minsta stickprovsstorleken som ger en felmarginal på max 20 kg $n=9$, givet att vikten är normalfördelad. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 124 -->
+<!-- En population består av 6000 företag. Ett  företag är intresserat av att uppskatta medelvärdet och totalen i populationen. Företagen delades in i tre strata efter storlek. Ur populationen drogs sedan ett proportionellt stratifierat urval om sammanlagt 600 företag. Tabell 1 presenterar en sammanställning från undersökningen. -->
+<!-- | Stratum | $N_j$ | $\bar{x}_j$   | $s_j$   | -->
+<!-- |---------|-----|---|---| -->
+<!-- |      Små företag       |  4000   | 50  | 5  | -->
+<!-- |   Medelstora företag      |  1700   | 100  | 12  | -->
+<!-- |   Stora företag      |  300   | 1000  | 90  | -->
+<!-- ### (a) Beräkna ett 95\% konfidensintervall för medelvärdet  i populationen. -->
+<!-- * Mål: Beräkna ett 95\% konfidensintervall för medelvärdet i populationen. -->
+<!-- * Parameter: $\mu$ = medelvärdet i populationen. -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^{K}\frac{N_j}{N}\bar{x}_j$ = medelvärdet i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi förutsätter att företagen i respektive stratum har dragits genom OSU har vi $E(\bar{x}_{st})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 6000. Urvalsstorlek: $n = 600. $\frac{n}{N}=0,1$ men eftersom vi vet populationsstorleken använder vi ändlighetskorrektion. $V(\bar{x}_{st})$ skattas därför med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Populationsfördelningen är okänd men vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- * Beräkning: Ett 95\% konfidensintervall för medelvärdet i populationen ges av  -->
+<!-- $$\bar{x}_{st}\pm z_{\alpha/2}\sqrt{\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Stratumstorlekarna erhålls genom att multiplicera den totala stickprovsstorleken med respektive populationsproportion. Små företag: 400, medelstora företag: 170, stora företag: 30. Vi behöver $\bar{x}_{st}$ som ges av  -->
+<!-- $$\bar{x}_{st}=\sum_{j=1}^{K}\frac{N_j}{N}\bar{x}_j=\frac{4000}{6000}50+\frac{1700}{6000}100+\frac{300}{6000}1000=111,667,$$  -->
+<!-- vilket vi också kan ta fram i R.  -->
+<!-- ```{r} -->
+<!-- # stratifierat urval. Vi kommer nu att få nytta av R:s förmåga att definiera variabler med flera värden i sig. -->
+<!-- # först skapar vi data. -->
+<!-- Ntot <- 6000   # populationsstorlek. -->
+<!-- Nj <- c(4000, 1700, 300)  # storlekar på strata. Observera att sum(Nj) = 6000 = Ntot. -->
+<!-- nj <- c(400, 170, 30)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(50, 100, 1000)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(5, 12, 90)  # stickprovsstandardavvikelser per stratum. -->
+<!-- # beräkning av stickprovsmedelvärde vid stratifierat urval. -->
+<!-- x.bar.tot <- (4000/6000) * 50 + (1700/6000) * 100 + (300/6000) * 1000  -->
+<!-- # alternativt... använd R:s förmåga att hantera värden i variabler i en logisk följd.  -->
+<!-- x.bar.tot <- sum( (Nj / Ntot) * x.bar.j    ) -->
+<!-- ``` -->
+<!-- Den skattade variansen för $\bar{x}_{st}$ ges av: -->
+<!-- ```{r} -->
+<!-- # beräkning av varians för estimatorn. -->
+<!-- Var.hat.theta.hat <- (4000/6000)^2 * (1 - (400/4000) ) * (5^2 / 400) + (1700/6000)^2 * (1 - (170/1700) ) * (12^2 / 170) + (300/6000)^2 * (1 - (30/300) ) * (90^2 / 30)  -->
+<!-- # alternativt... -->
+<!-- Var.hat.theta.hat <- sum(  (Nj / Ntot)^2 * (1 - (nj / Nj)   ) * (sj^2 / nj)) -->
+<!-- ``` -->
+<!-- Konfidensintervallets gränser ges av: -->
+<!-- ```{r} -->
+<!-- lower.lim <- x.bar.tot - qnorm(0.975) * sqrt(Var.hat.theta.hat) -->
+<!-- upper.lim <- x.bar.tot + qnorm(0.975) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 110,31 till 113,03 medelvärdet i populationen.  -->
+<!-- ### (b) Beräkna ett 99\% konfidensintervall för totalen i populationen. -->
+<!-- * Mål: Beräkna ett 99\% konfidensintervall för totalen i populationen. -->
+<!-- * Parameter: $\tau$ = totalen i populationen. -->
+<!-- * Estimator: $\hat{\tau}_{st}=\sum_{j=1}^{K}N_j\bar{x}_j$ = totalen i stickprovet. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. Om vi förutsätter att företagen i respektive stratum har dragits genom OSU har vi $E(\hat{\tau}_{st})=\tau$. -->
+<!-- 2. Populationsstorlek: $N$ = 6000. Urvalsstorlek: $n$ = 600. $\frac{n}{N}=0,1$ men eftersom vi vet populationsstorleken använder vi ändlighetskorrektion. $V(\tau)$ skattas därför med $\hat{V}(\hat{\tau}_{st})=\sum_{j=1}^{K}N_j^2\hat{V}(\bar{x}_j)=\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Populationsfördelningen är okänd men vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- * Beräkning: Stickprovsstotalen ges av: -->
+<!-- ```{r} -->
+<!-- tau.est <- 4000 * 50 + 1700 * 100 + 300 * 1000 -->
+<!-- ``` -->
+<!-- Den skattade variansen för $\hat{\tau}_{st}$ ges av  -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat <- 4000^2 * (1 - (400/4000) ) * (5^2 / 400) + 1700^2 * (1 - (170/1700) ) * (12^2 / 170) + 300^2 * (1 - (30/300) ) * (90^2 / 30)  -->
+<!-- ``` -->
+<!-- Ett 99\% konfidensintervall för populationstotalen ges av  -->
+<!-- $$\hat{\tau}_{st}\pm z_{\alpha/2}\sqrt{\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,005}=2,5758$. Insättning av värden ger:  -->
+<!-- ```{r} -->
+<!-- lower.lim <- tau.est - qnorm(0.995) * sqrt(Var.hat.theta.hat) -->
+<!-- upper.lim <- tau.est + qnorm(0.995) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 99\% säkerhet täcker intervallet 657146 till 682854 totalen i populationen. -->
+<!-- ### (c) Tror du att man skulle erhålla sämre eller bättre precision om man i stället dragit ett OSU om 600 företag? Motivera ditt svar! -->
+<!-- Om det finns en skillnad mellan olika strata med avseende på stratifieringsvariabeln ger ett stratifierat urval ofta bättre precision än ett OSU. Ett OSU motsvarar om det inte finns någon skillnad mellan olika strata vad gäller stratifieringsvariabeln. Därför skulle ett OSU antagligen ge sämre precision i det här fallet. -->
+<!-- ### (d) Om du vid en senare tidpunkt skulle genomföra en motsvarande undersökning med ett nytt stickprov om 600 företag ur samma population, skulle du då använda samma allokering som ovan? Om inte, beräkna den allokering som du då anser skulle vara bäst avseende skattningens precision. -->
+<!-- Eftersom storleken på respektive stratum skiljer sig så pass mycket skulle en lika allokering kunna ge bättre precision. Den proportionella allokeringen ger förhållandevis få stora företag. Med lika allokering skulle variansskattningen i (a) bli -->
+<!-- ```{r} -->
+<!-- var.lika.allokering.mu <- (4000/6000)^2 * (1 - (200/4000) ) * (5^2 / 200) + (1700/6000)^2 * (1 - (200/1700) ) * (12^2 / 200) + (300/6000)^2 * (1 - (200/300) ) * (90^2 / 200)   # denna varians är mindre än den vid prop. allokering. -->
+<!-- ``` -->
+<!-- vilket är betydligt mindre än variansskattningen vid proportionell allokering som var 0,6937. Den skattade variansen i (b) skulle bli -->
+<!-- ```{r} -->
+<!-- var.lika.allokering.tau <- 4000^2 * (1 - (200/4000) ) * (5^2 / 200) + 1700^2 * (1 - (200/1700) ) * (12^2 / 200) + 300^2 * (1 - (200/300) ) * (90^2 / 200)  -->
+<!-- ``` -->
+<!-- som också är betydligt mindre än den skattade variansen vid proportionell allokering som var 24903200. Alltså ger lika allokering högre precision i det här fallet.  -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 125 -->
+<!-- Ett försäljningsdistrikt omfattade $20\,000$ hushåll i tätortsbebyggelsen och $10\,000$ från landsbygden. Till en marknadsundersökning drogs med ett OSU utan återläggning 250 hushåll från tätortsbebyggelsen. På samma sätt drogs från landsbygdshushållen 200 hushåll. Man studerade bl a hushållens konsumtion av en viss förbrukningsartikel under den senaste månaden. Resultaten från undersökningen återges i tabellen nedan. -->
+<!-- | Stadsdel | $n_j$ | $\bar{x}_j$  | $s_j$  | -->
+<!-- |---------|-----|---|---| -->
+<!-- |  Hushåll i tätortsbebyggelse        |  250   | 190 kr  | 90  | -->
+<!-- |  Landsbygdshushåll       |  200   | 150 kr  | 30  | -->
+<!-- ### (a) Beräkna ett 95\% konfidensintervall för den genomsnittliga förbrukningen per hushåll i populationen. -->
+<!-- * Mål: Skatta den genomsnittliga förbrukningen per hushåll av en viss artikel med 95\% konfidens. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga förbrukningen i försäljningsdistriktet. -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = den genomsnittliga förbrukningen bland de 450 hushållen i stickprovet. -->
+<!-- * Förutsättningar: -->
+<!-- 1.  OSU ger att $E(\bar{x}_{st})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 30000. Urvalsstorlek: $n$ = 450. $\frac{n}{N}<0,1$ men eftersom vi vet populationsstorleken använder vi ändlighetskorrektion. Vi känner inte populationsfördelningen så $V(\bar{x}_{st})$ skattas med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Stickprovet är stort så vi kan förlita oss på CGS.  -->
+<!-- * Beräkning: Stickprovsmedelvärdet ges av -->
+<!-- ```{r} -->
+<!-- # först skapar vi data. -->
+<!-- Ntot <- 30000   # populationsstorlek. -->
+<!-- Nj <- c(20000, 10000)  # storlekar på strata. Observera att sum(Nj) = 6000 = Ntot. -->
+<!-- nj <- c(250, 200)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(190, 150)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(90, 30)  # stickprovsstandardavvikelser per stratum. -->
+<!-- # Se uppgift 124 för bekrivningar av steg. Jämförelse med formler i formelsamling för stratifierat urval uppmuntras! -->
+<!-- x.bar.tot <- (20000/30000) * 190 + (10000/30000) * 150 -->
+<!-- ``` -->
+<!-- Variansskattningen för $\bar{x}_{st}$ ges av -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu <- (20000/30000)^2 * (1 - (250/20000) ) * (90^2 / 250) + (10000/30000)^2 * (1 - (200/10000) ) * (30^2 / 200) -->
+<!-- ``` -->
+<!-- Ett 95\% konfidensintervall för medelvärdet i populationen ges av: -->
+<!-- ```{r} -->
+<!-- lower.lim <- x.bar.tot - qnorm(0.975) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- upper.lim <- x.bar.tot + qnorm(0.975) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 169,15 till 184,19 den genomsnittliga konsumtionen i populationen. -->
+<!-- ### (b) Beräkna ett 95\% konfidensintervall för den totala förbrukningen i kronor i populationen. -->
+<!-- * Mål: Skatta den totala förbrukningen i försäljningsdistriktet av en viss artikel med 95\% konfidens. -->
+<!-- * Parameter: $\tau$ = den totala förbrukningen i försäljningsdistriktet. -->
+<!-- * Estimator: $\hat{\tau}_{st}=\sum_{j=1}^{K}N_j\bar{x}_j$ = den totala förbrukningen i stickprovet. -->
+<!-- * Förutsättningar: -->
+<!-- 1. OSU ger att $E(\hat{\tau}_{st})=\tau$. -->
+<!-- 2. Populationsstorlek: $N$ = 30000. Urvalsstorlek: $n$ = 450. $\frac{n}{N}<0,1$ men eftersom vi vet populationsstorleken använder vi ändlighetskorrektion. Vi känner inte populationsfördelningen och $V(\tau)$ skattas därför med $\hat{V}(\hat{\tau}_{st})=\sum_{j=1}^{K}N_j^2\hat{V}(\bar{x}_j)=\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Populationsfördelningen är okänd men vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- * Beräkning: Stickprovstotalen ges av: -->
+<!-- ```{r} -->
+<!-- tau.est <- 20000 * 190 + 10000 * 150 -->
+<!-- ``` -->
+<!-- Variansskattning: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.tau <- 20000^2 * (1 - (250/20000) ) * (90^2 / 250) + 10000^2 * (1 - (200/10000) ) * (30^2 / 200) -->
+<!-- ``` -->
+<!-- Ett 95\% konfidensintervall för den totala förbrukningen ges av  -->
+<!-- $$\hat{\tau}_{st}\pm z_{\alpha/2}\sqrt{\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Insättning av värden ger -->
+<!-- ```{r} -->
+<!-- lower.lim <- tau.est - qnorm(0.995) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- upper.lim <- tau.est + qnorm(0.995) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 5074481 kronor till 5525519 kronor den totala förbrukningen i försäljningsdistriktet. -->
+<!-- ### (c) Med hjälp av informationen från undersökningen, vilken är din uppfattning om den ursprungliga allokeringen? Hade det, för precisionen i skattningarna, varit lämpligare med en annan allokering? -->
+<!-- Låt oss testa med proportionell allokering. Då ska vi ha $n_1$ = 300 och $n_2$ = 150 eftersom vi har fler hushåll i tätortsbebyggelsen än från landsbygden. -->
+<!-- Vi antar att stickprovsmedelvärden och standradavvikelser inte förändras då vi inte har tillgång till rådata. Då fås följande data: -->
+<!-- ```{r} -->
+<!-- Ntot <- 30000   # populationsstorlek. -->
+<!-- Nj <- c(20000, 10000)  # storlekar på strata. -->
+<!-- nj <- c(300, 150)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(190, 150)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(90, 30)  # stickprovsstandardavvikelser per stratum. -->
+<!-- ``` -->
+<!-- Variansen för medelvärdesestimatorn utifrån ett proportionellt urval beräknas. Variansen sjunker! -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu.prop <- (20000/30000)^2 * (1 - (300/20000) ) * (90^2 / 300) + (10000/30000)^2 * (1 - (150/10000) ) * (30^2 / 150) -->
+<!-- ``` -->
+<!-- Variansen för totalestimatorn sjunker också! -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.tau.prop <- 20000^2 * (1 - (300/20000) ) * (90^2 / 300) + 10000^2 * (1 - (150/10000) ) * (30^2 / 150) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 126 -->
+<!-- För att få en uppfattning om relativa andelen körkortsinnehavare i ett militärområde i Sverige bestämmer man sig för att göra en intervjuundersökning. Befolkningen inom området indelas i tre strata, med åldern som stratifieringsvariabel. Urvalet sker enligt principen för proportionellt stratifierat urval. Sammanlagt 800 individer intervjuas och resultat presenteras nedan. -->
+<!-- | Åldersgrupp | $n_j$ | $\hat{p}_j$   | -->
+<!-- |---------|-----|---| -->
+<!-- | 18-34        | 200    | 0,5  | -->
+<!-- | 35-49        | 400     |0,3   | -->
+<!-- | 50 och över        |  200   | 0,1  | -->
+<!-- Kostnaderna för intervjuerna uppgår till 200 kr per individ, dvs 160 000 kr totalt. De administrativa kostnaderna i samband med stratifieringen belöper sig till 6 000 kr. -->
+<!-- ### Beräkna hur stor besparing man lyckas uppnå genom proportionellt stratifierat urval i jämförelse med OSU, om man vill ha samma precision i skattningen, dvs samma standardavvikelse (medelfel) för skattningen. Folkmängden i området uppgår till 500 000. Förtydligande: Vid OSU blir det naturligtvis inga stratifieringskostnader. Utgå från att vi  antar $p=0.3$ när stickprovsstorlek beräknas med OSU. -->
+<!-- * Mål: Beräkna hur stor besparing en lyckas uppnå genom proportionellt -->
+<!-- stratifierat urval i jämförelse med OSU. -->
+<!-- * Parameter: $p$ = populationsandelen. -->
+<!-- * Estimator: $\hat{p}$ = stickprovsandelen. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU ger att $E(\hat{p})=p$. -->
+<!-- * Beräkning: Vi börjar med att beräkna medelfelet utifrån det stratifierade urvalet. Medelfelet för stickprovsandelen ges av  -->
+<!-- $$SE(\hat{p}_{st})=\sqrt{\hat{V}(\hat{p}_{st})}=\sqrt{\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{\hat{p}(1-\hat{p})}{n_j - 1}}.$$  -->
+<!-- Vi beräknar först variansskattningen: -->
+<!-- ```{r} -->
+<!-- # vi börjar med att sammanställa våra data. -->
+<!-- Ntot <- 500000   # populationsstorlek. -->
+<!-- Nj <- c(125000, 250000, 125000)  # storlekar på strata. -->
+<!-- nj <- c(200, 400, 200)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- pj.hat <- c(0.5, 0.3, 0.1) # skattade andelar. -->
+<!-- # vi beräknar sedan variansen för estimatorn vid prop. stratifierat urval. -->
+<!-- var.hat.theta.hat <- (125000 / 500000)^2 * (1 - (200/125000)) * (0.25/199) + (250000 / 500000)^2 * (1 - (400/250000)) * (0.21/399) + (125000 / 500000)^2 * (1 - (200/125000)) * (0.09/199) -->
+<!-- ``` -->
+<!-- Medelfelet blir då -->
+<!-- ```{r} -->
+<!-- se.propstrat <- sqrt(var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- Vi beräknar sedan nödvändig stickprovsstorlek vid OSU för att uppnå samma medelfel. Medelfelet för stickprovsandelen vid OSU ges av  -->
+<!-- $$SE(\hat{p})=\sqrt{\left(1-\frac{n}{N}\right)\frac{\hat{p}(1-\hat{p})}{n-1}}.$$  -->
+<!-- Vi sätter in värden enligt precisionskravet och löser ut $n$: $$0,0154=\sqrt{\left(1-\frac{n}{500000}\right)\frac{0,3(1-0,3)}{n-1}}$$ -->
+<!-- $$0,0154^2(n-1)=\left(1-\frac{n}{500000}\right)0,21$$ -->
+<!-- $$n\left(0,0154^2+\frac{1}{500000}0,21\right)=0,21+0,0154^2$$ -->
+<!-- $$n=\frac{0,21+0,0154^2}{0,0154^2+\frac{0,21}{500000}}=884,91.$$ -->
+<!-- Vi kan även testa oss fram med R: -->
+<!-- ```{r} -->
+<!-- # Testa olika värden på n. Som skattning av p använder vi estimatorn för p vid OSU-UÅ. -->
+<!-- p.hat <- (200*0.5 + 400*0.3 + 200*0.1)/800 -->
+<!-- N <- 500000 -->
+<!-- n <- 20 -->
+<!-- sqrt( (1-(n/N)) * (p.hat * (1-p.hat) )/(n-1)  ) -->
+<!-- ``` -->
+<!-- Vid OSU behövs alltså ett stickprov på 885 individer vilket ger kostnaden $885\cdot200=177000$ vilket är $177000-166000=11000$ kronor mer än vid stratifierat urval. -->
+<!-- * Svar: Besparingen som uppnås genom att använda stratifierat urval med proportionell allokering jämfört med OSU är 11000 kronor. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 127 -->
+<!-- I en stad där det finns 5000 personer i åldern 20-24 år och 8000 i åldern 25-34 år, uttages genom OSU-UÅ 100 personer ur den första åldersgruppen och på samma sätt 200 personer ur den andra åldersgruppen. Genom intervjuer erhålls uppgifter om antalet inköpta veckotidningar per vecka och utgiften för dessa, vilka presenteras nedan. -->
+<!-- | Antal inköpta veckotidningar | 18-24 | 25-34  | -->
+<!-- |---------|-----|---| -->
+<!-- | 0        |  40   |   50 | -->
+<!-- | 1        |     25 |   80 | -->
+<!-- |   2      |    12 |   36  | -->
+<!-- | 3        |  8   |   9 | -->
+<!-- | 4        |     4 |   5 | -->
+<!-- |   5      |    5 |   11  |  -->
+<!-- |   6      |    6 |   7  |  -->
+<!-- |  Antal person     |     100 |   200 | -->
+<!-- |   Medelutgift i kronor för veckotidningar       |    $\bar{x}=1,20$ |   $\bar{y}=1,60$  |  -->
+<!-- |      Standardavvikelse för utgiften      |    $s_x=0,6$ |   $s_{y}=0,8$  |  -->
+<!-- ### (a) Ange ett punktestimat för det totala antalet veckotidningar som inköps under en vecka av samtliga 13 000 personer i åldern 20-34 år. -->
+<!-- * Mål: Punktskatta det totala antalet veckotidningar som inköps under en vecka. -->
+<!-- * Parameter: $\tau$ = det totala antalet veckotidningar som köps av populationen.  -->
+<!-- * Estimator: $\hat{\tau}=N\bar{x}=N\frac{1}{n}\sum_{i=1}^{n}f_ix_i$ = det totala antalet veckotidningar som köps av stickprovet.  -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\hat{\tau})=NE(\bar{x})=N\mu=\tau$. -->
+<!-- * Beräkning: Vi börjar med att utöka tabellen -->
+<!-- | Tidningar | Individer | Individer $\cdot$ tidningar   | Individer $\cdot$ tidningar$^2$   | -->
+<!-- |---------|-----|---|---| -->
+<!-- | 0         |   90  | 0   |   0 | -->
+<!-- | 1        |    105 | 105  |105   | -->
+<!-- | 2        | 48     | 96  | 192   | -->
+<!-- | 3         |   17  | 51   |   153 | -->
+<!-- | 4        |    9 | 36  | 144   | -->
+<!-- | 5        | 16     | 80  | 400   | -->
+<!-- | 6        | 13     | 78  | 468   | -->
+<!-- | Summa    |      | 446  | 1462   | -->
+<!-- En punktskattning av populationstotalen ges av: -->
+<!-- ```{r} -->
+<!-- # vi börjar med att sammanställa data. Först betämmer vi tot. antal invider som köpt ett visst antal tidningar. -->
+<!-- individer <- c(40+50, 25+80, 12+36, 8+9, 4+5, 5+11, 6+7) -->
+<!-- # Sedan beräknar vi ett punktestimat för totala antalet inköpta veckotidningar. Vi har ett stickprov på tot. 300 observationer och en tot. populationsstorlek på 13000 individer. Vi börjar med att beräkna 'tidningar*individer' för att få fram totala antalet inköpta tidningar. -->
+<!-- tidningar <- c(0, 1, 2, 3, 4, 5, 6) -->
+<!-- individer.tidningar <- sum(individer * tidningar   ) -->
+<!-- point.est <- 13000 * (1/300) * individer.tidningar -->
+<!-- ``` -->
+<!-- * Svar: Ett punktestimat för det totala antalet sålda veckotidningar är 19327. -->
+<!-- ### (b) Ange ett 99\% KI för totalantalet inköpta veckotidningar i populationen. -->
+<!-- * Mål: Intervallskatta antalet inköpta veckotidningar i populationen med 99\% konfidens. -->
+<!-- * Parameter: $\tau$ = det totala antalet veckotidningar som köps av populationen.  -->
+<!-- * Estimator: $\hat{\tau}=N\bar{x}=N\frac{1}{n}\sum_{i=1}^{n}f_ix_i$ = det totala antalet veckotidningar som köps av stickprovet. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\hat{\tau})=NE(\bar{x})=N\mu=\tau$. -->
+<!-- 2. Populationsstorlek: \textit{N} = 13000. Urvalsstorlek: \textit{n} = 300. Vi känner populationsstorleken men inte populationsfördelningen varpå $V(\tau)$ skattas med $\hat{V}(\hat{\tau})=N^2\hat{V}(\bar{x})=N^2\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- 3. Populationsfördelningen är okänd men vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- * Beräkning: För att beräkna stickprovsvariansen krävs att vi först använder R och beräknar 'tidningar*individer^2'.  -->
+<!-- ```{r} -->
+<!-- individer.tidningar2 <- sum(individer.tidningar^2 ) -->
+<!-- ``` -->
+<!-- Stickprovsvariansen blir: -->
+<!-- ```{r} -->
+<!-- s2 <- ( (individer.tidningar2 - ( individer.tidningar2^2 / 300 ) ) / (300-1)  )   -->
+<!-- ``` -->
+<!-- Den skattade variansen för punktskattningen av det totala antalet sålda tidningar är -->
+<!-- ```{r} -->
+<!-- var.hat.theta.hat <- 13000^2 * (1 - (300 / 13000)) * (s2 / 300) -->
+<!-- ``` -->
+<!-- Ett 99\% konfidensintervall för det totala antalet sålda tidningar ges av: -->
+<!-- ```{r} -->
+<!-- lower.lim <- point.est - qnorm(0.995) * sqrt(var.hat.theta.hat) -->
+<!-- upper.lim <- point.est + qnorm(0.995) * sqrt(var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 99\% säkerhet täcker intervallet 16203 till 22451 det totala antalet sålda tidningar. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 128 -->
+<!-- En kommun ville undersöka en utgiftspost bland barnen i kommunens skolor. Populationen stratifierades därför utifrån åldersgrupp och sedan drogs ett OSU-UÅ från respektiva stratum. Undersökningen presenteras i tabellen nedan. -->
+<!-- | Skolstadium | $N_j$ | $n_j$   | $\bar{x}_j$    | $s_j$   | -->
+<!-- |---------|-----|---|---|---| -->
+<!-- | Lågstadium        | 1300    | 140  |95   | 28  | -->
+<!-- | Mellanstadium        | 1800    | 240  | 75  | 22  | -->
+<!-- | Högstadium        | 1900    | 220  | 63  | 16  | -->
+<!-- ### (a) Punktskatta populationens genomsnittliga utgift i kronor. -->
+<!-- * Mål: Punktskatta populationens genomsnittliga utgift i kronor. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga utgiften i populationen.  -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = den genomsnittliga utgiften i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x}_{st})=\mu$. -->
+<!-- * Beräkning: En punktskattning av populationens genomsnittliga utgift ges av: -->
+<!-- ```{r} -->
+<!-- # först skapar vi data. -->
+<!-- Ntot <- 50000   # populationsstorlek. -->
+<!-- Nj <- c(1300, 1800, 1900)  # storlekar på strata. -->
+<!-- nj <- c(140, 240, 220)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(95, 75, 63)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(28, 22, 16)  # stickprovsstandardavvikelser per stratum. -->
+<!-- # (a) Se uppgift 124 för bekrivningar av steg. Jämförelse med formler i formelsamling för stratifierat urval uppmuntras! -->
+<!-- x.bar.tot <- (1300/5000) * 95 + (1800/5000) * 75 + (1900/5000) * 63  -->
+<!-- ``` -->
+<!-- * Svar: Punktskattningen av populationens genomsnittliga utgift är 75,64 kronor. -->
+<!-- ### (b) Beräkna den statistiska felmarginalen för skattningen i (a). -->
+<!-- * Mål: Beräkna den statistiska felmarginalen för punktskattningen av populationens genomsnittliga utgift. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga utgiften i populationen.  -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = den genomsnittliga utgiften i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x}_{st})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 5000. Urvalsstorlek: $n$ = 600. Eftersom $\frac{n}{N}>0,1$ skattas $V(\bar{x}_{st})$ med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Vi har ett stort stickprov och kan förlita och på CGS.  -->
+<!-- * Beräkning: Vi skattar först punktskattningens varians som ges av: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu <- (1300/5000)^2 * (1 - (140/1300) ) * (28^2 / 140) + (1800/5000)^2 * (1 - (240/1800) ) * (22^2 / 240) + (1900/5000)^2 * (1 - (220/1900) ) * (16^2 / 220)  -->
+<!-- ``` -->
+<!-- Den statistiska felmarginalen för $\bar{x}_{st}$ med 95\% konfidens ges av: -->
+<!-- ```{r} -->
+<!-- qnorm(0.975) * Var.hat.theta.hat.mu -->
+<!-- ``` -->
+<!-- * Svar: Den statistiska felmarginalen vid 95\% konfidens för skattningen i (a) är 1,6549. -->
+<!-- ### (c) Skatta den totala utgiften för samtliga individer i populationen med ett 95\% KI. -->
+<!-- * Mål: Skatta den totala utgiften för samtliga individer i populationen med konfidensgraden 95\%. -->
+<!-- * Parameter: $\tau$ = den totala utgiften för samtliga individer i populationen. -->
+<!-- * Estimator: $\hat{\tau}_{st}=\sum_{j=1}^KN_j\bar{x}_j$ = den totala utgiften för individerna i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{\tau})=NE(\bar{x})=N\mu=\tau$. -->
+<!-- 2. Populationsstorlek: $N$ = 5000. Urvalsstorlek: $n$ = 6000. Vi känner populationsstorleken men inte populationsfördelningen varpå $V(\tau)$ skattas med $\hat{V}(\hat{\tau}_{st})=\sum_{j=1}^{K}N_j^2\hat{V}(\bar{x}_j)=\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Populationsfördelningen är okänd men vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- *  Beräkning: En punktskattning för den totala utgiften är $\hat{\tau}=N\bar{x}_{st}=5000\cdot75,64=378200$. Den skattade variansen för punktskattningen ges av: -->
+<!-- ```{r} -->
+<!-- point.est <- Ntot * x.bar.tot -->
+<!-- # variansskattning -->
+<!-- Var.hat.theta.hat.tau <- (1300)^2 * (1 - (140/1300) ) * (28^2 / 140) + (1800)^2 * (1 - (240/1800) ) * (22^2 / 240) + (1900)^2 * (1 - (220/1900) ) * (16^2 / 220)  -->
+<!-- #konfidensintervallet. -->
+<!-- lower.lim <- point.est - qnorm(0.975) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- upper.lim <- point.est + qnorm(0.975) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- ``` -->
+<!-- Variansskattning: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.tau <- (1300)^2 * (1 - (140/1300) ) * (28^2 / 140) + (1800)^2 * (1 - (240/1800) ) * (22^2 / 240) + (1900)^2 * (1 - (220/1900) ) * (16^2 / 220)  -->
+<!-- ``` -->
+<!-- Ett 95\% konfidensintervall ges av  -->
+<!-- $$\hat{\tau}_{st}\pm z_{\alpha/2}\sqrt{\hat{V}(\hat{\tau}_{st})}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Insättning av värden ger -->
+<!-- ```{r} -->
+<!-- lower.lim <- point.est - qnorm(0.975) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- upper.lim <- point.est + qnorm(0.975) * sqrt(Var.hat.theta.hat.tau) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 369926 till 386474 den totala utgiften för samtliga individer i populationen.  -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 129 -->
+<!--  För en undersökning av livsmedelsutgifterna per hushåll kunde en viss stad delas in i tre separata delar med -->
+<!-- olika typer av bebyggelse och därmed i viss mån också med olika typer av hushåll. Med hjälp av  -->
+<!-- liknande undersökningar uppskattade man standardavvikelsen för livsmedelsutgifterna i var och en av stadsdelarna. I tabellen nedan ges nödvändig information. -->
+<!-- | Stadsdel | Antal hushåll |  Uppskattning av standardavvikelse  | -->
+<!-- |---------|-----|---| -->
+<!-- | A        |  3000    | 1000   | -->
+<!-- |  B       |  2700    | 2000  | -->
+<!-- |   C      |  5000   | 800   | -->
+<!-- ### Beräkna hur ett stickprov på 1000 hushåll bör allokeras på de tre stadsdelarna för att medelfelet i skattningen av de  genomsnittliga livsmedelsutgifterna ska bli så litet som möjligt. -->
+<!-- Vi sammanställer data och kan sedan testa oss fram med R: -->
+<!-- ```{r} -->
+<!-- Nj <- c(3000, 2700, 5000) -->
+<!-- Ntot <- sum(Nj) -->
+<!-- sj <- c(1000, 2000, 800) -->
+<!-- nj <- c(1, 1, 1)      # bestäm värden här. Testa dig fram! Obs: sum(nj) ska bli 1000. Alltså måste ursprungliga värden ändras. -->
+<!-- # Medelfelet. 'sum' gör att vi beräknar uttrycket med de första elementen i variablerna som vi definierat, sedan med de andra elementen och till sist med de tredje elementen.  -->
+<!-- sum( (Nj/Ntot)^2 * (1- (nj/Nj)) * (sj/nj)       ) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 130 -->
+<!-- Universitetsledningen ville undersöka hur många timmar i veckan som studenterna vid ett universitet lägger på att studera. Ledningen stratifierade utifrån program och drog ett OSU-UÅ från respektive stratum. Resultatet från undersökningen presenteras i tabellen nedan. -->
+<!-- | Program | Antal på program | Antal i urval  | Genomsnitt per vecka    | $s_j$  | -->
+<!-- |---------|-----|---|---|---| -->
+<!-- | A        | 200    | 25   | 20   | 5   | -->
+<!-- |  B       | 150    | 21   | 23   | 5   | -->
+<!-- |   C      | 80    | 22   | 40   | 6   | -->
+<!-- |    D     | 150    | 23   | 35   | 6   | -->
+<!-- ### Beräkna ett 90\% KI för det genomsnittliga antalet timmar som studenterna vid universitet lägger ner på studierna varje vecka.  -->
+<!-- * Mål: Skatta det genomsnittliga antalet timmar som studenterna lägger på studier varje vecka med 90\% konfidens. -->
+<!-- * Parameter: $\mu$ = det genomsnittliga antalet timmar i hela studentpopulationen. -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = det genomsnittliga antalet timmar i stickprovet. -->
+<!-- * Förutsättningar:   -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x}_{st})=\sum_{j=1}^K\frac{N_j}{N}E(\bar{x}_j)=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 580. Urvalsstorlek: $n$ = 91. Eftersom $\frac{n}{N}>0,1$ och vi inte känner populationsfördelningen skattas $V(\bar{x}_{st})$ med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Tumregeln för stratifierat urval att alla $n_j>20$ är uppfylld så vi kan förlita oss på CGS. -->
+<!-- * Beräkning: Vi börjar med att punktskatta det genomsnittliga antalet timmar:  -->
+<!-- ```{r} -->
+<!-- # Först sammanställer vi data -->
+<!-- Nj <- c(200, 150, 80, 150)  # storlekar på strata. Observera att sum(Nj) = 6000 = Ntot. -->
+<!-- Ntot <- sum(Nj)   # populationsstorlek. -->
+<!-- nj <- c(25, 21, 22, 23)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(20, 23, 40, 35)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(5, 5, 6, 6)  # stickprovsstandardavvikelser per stratum. -->
+<!-- # punktskatttning. Jämförelse med formler i formelsamling för stratifierat urval uppmuntras! -->
+<!-- x.bar.tot <- (200/580) * 20 + (150/580) * 23 + (80/580) * 40 + (150/580) * 35 -->
+<!-- ``` -->
+<!-- Den skattade variansen för punktskattningen ges av -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu <- (200/580)^2 * (1 - (25/200) ) * (5^2 / 25) + (150/580)^2 * (1 - (21/150) ) * (5^2 / 21) + (80/580)^2 * (1 - (22/80) ) * (6^2 / 22) + (150/580)^2 * (1 - (23/150) ) * (6^2 / 23) -->
+<!-- ``` -->
+<!-- Ett 90\% konfidensintervall för medelvärdet ges av  -->
+<!-- $$\bar{x}_{st}\pm z_{\alpha/2}\sqrt{\hat{V}(\bar{x}_{st})}.$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$. Insättning av värden:  -->
+<!-- ```{r} -->
+<!-- lower.lim <- x.bar.tot - qnorm(0.975) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- upper.lim <- x.bar.tot + qnorm(0.975) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- ``` -->
+<!-- * Svar: Med 90\% säkerhet täcker intervallet 26,9 till 28,0 det genomsnittliga antalet timmar som studenterna vid universitet lägger på studier varje vecka. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 131 -->
+<!-- Universitetsledningen ville undersöka hur stor andel av studenterna vid ett universitet som studerar minst 30 timmar i veckan. Ledningen stratifierade utifrån program och drog ett OSU-UÅ från respektive stratum. Resultatet från undersökningen presenteras i tabellen nedan. -->
+<!-- | Program | Antal på program | Antal i urval   | Antal minst 30h/vecka  | -->
+<!-- |---------|-----|---|---| -->
+<!-- |  A       | 200    | 19  | 5  | -->
+<!-- |   B      | 150    | 25   | 7   | -->
+<!-- |    C     | 80    | 16   | 6   | -->
+<!-- |     D     | 150    | 18   | 9   | -->
+<!-- ### (a) Beräkna medelfelet för andelen som studerar minst 30 timmar i veckan. -->
+<!-- * Mål: Beräkna medelfelet för andelen studenter som studerar minst 30 timmar i veckan. -->
+<!-- * Parameter: $p$ = andelen studenter i populationen som studerar minst 30 timmar i veckan. -->
+<!-- * Estimator: $\hat{p}_{st}$ = andelen studenter i stickprovet som studerar minst 30 timmar i veckan. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p}_{st})=\sum_{j=1}^K\frac{N_j}{N}E(\hat{p}_j)=p$. -->
+<!-- 2. Populationsstorlek: $N$ = 580. Urvalsstorlek: \$n$ = 78. Eftersom $\frac{n}{N}>0,1$ och populationsfördelningen är okänd skattas $V(\hat{p}_{st})$ med $\hat{V}(\hat{p}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{\hat{p}(1-\hat{p})}{n_j-1}$. -->
+<!-- * Beräkning: Den skattade variansen för andelen som studerar minst 30 timmar i veckan är  -->
+<!-- ```{r} -->
+<!-- # Först sammanställer vi data -->
+<!-- Nj <- c(200, 150, 80, 150)  # storlekar på strata. Observera att sum(Nj) = 6000 = Ntot. -->
+<!-- Ntot <- sum(Nj)   # populationsstorlek. -->
+<!-- nj <- c(25, 21, 22, 23)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- pj.hat <- c(5/19, 7/25, 6/16, 9/18) -->
+<!-- # (a) variansskattning -->
+<!-- Var.hat.theta.hat.p <- (200/580)^2 * (1 - (19/200) ) * ( (5/19) * (1 - (5/19) ) / 18) + (150/580)^2 * (1 - (25/150) ) * ( (7/25) * (1 - (7/25) ) / 24)  + (80/580)^2 * (1 - (16/80) ) * ( (6/16) * (1 - (6/16) ) / 15)  + (150/580)^2 * (1 - (18/150) ) * ( (9/18) * (1 - (9/18) ) / 17) -->
+<!-- # medelfelet. -->
+<!-- sqrt(Var.hat.theta.hat.p) -->
+<!-- ``` -->
+<!-- * Svar: Medelfelet för andelen studenter som studerar minst 30 timmar i veckan är 0,0523. -->
+<!-- ### (b) Kan du beräkna ett 90\% KI för andelen studenter vid universitetet som studenterar minst 20 timmar i veckan? -->
+<!-- Vi vet inte andelen som uppger att de studerar minst 20 timmar i veckan men vi kan använda $p=0,5$ som ger störst varians och alltså bredast möjliga intervall. Om andelen är lika i samtliga strata finns emellertid ingen anledning att använda stratifieringen då den kommer att ge samma resultat som ett OSU. -->
+<!-- * Mål: Skatta andelen studenter som studerar minst 20 timmar i veckan med 90\% konfidens.  -->
+<!-- * Parameter: $p$ = andelen studenter i populationen som studerar minst 20 timmar i veckan. -->
+<!-- * Estimator: $\hat{p}$ = andelen studenter i stickprovet som studerar minst 20 timmar i veckan. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. Populationsstorlek: $N$ = 580. Urvalsstorlek: $n$ = 78. Eftersom $\frac{n}{N}>0,1$ skattas $V(\hat{p})$ med $\hat{V}(\hat{p})=\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}$. -->
+<!-- 3. Stickprovet är ganska stort så vi kan förlita oss på CGS. -->
+<!-- * Beräkning: Ett 90\% konfidensintervall för populationsandelen ges av  -->
+<!-- $$\hat{p} \pm z_{\alpha/2} \sqrt{\left(\frac{N-n}{N-1}\right)\frac{p(1-p)}{n}}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$. Insättning av värden ger -->
+<!-- ```{r} -->
+<!-- # andelen som uppger att de studerar minst 20 timmar i veckan är okänd. Vi använder p = 0.5 här  (inte p "hatt", utan p) då detta ger bredast möjliga intervall. Om andelen är lika stor i varje stratum kommer vi att kunna använda OSU-UÅ-formlerna istället. -->
+<!-- p <- 0.5 -->
+<!-- # varians för estimatorn. -->
+<!-- Var.theta.hat.p <- ( (Ntot - sum(nj) ) / (Ntot - 1) ) * ( (p * (1-p))/sum(nj)    ) -->
+<!-- # konfidensintervall. -->
+<!-- lower.lim <- p - qnorm(0.95) * sqrt(Var.theta.hat.p) -->
+<!-- upper.lim <- p + qnorm(0.95) * sqrt(Var.theta.hat.p) -->
+<!-- ``` -->
+<!-- * Svar: Med 90\% säkerhet täcker intervallet 0,413 till 0,587 andelen studenter vid universitetet som studerar minst 20 timmar i veckan. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 132 -->
+<!-- (Baserad på skrivningsuppgift A5, 110111) Anta att ICA Sverige med hjälp -->
+<!-- av besöksintervjuer undersökte butikernas kontakter med lokala producenter. -->
+<!-- Den primära undersökningsvariabeln var antalet lokala producenter. Den totala -->
+<!-- stickprovsstorleken bestämdes till 200 och man genomförde ett proportionellt -->
+<!-- stratifierat urval baserat på stratiferingsvariabeln butikstyp. Undersökningen -->
+<!-- gav följande resultat: -->
+<!-- | Stratum | $N_j$ | $n_j$   | $\bar{x}_j$    | $s_j$   | -->
+<!-- |---------|-----|---|---|---| -->
+<!-- |  ICA Nära       | 728    | 107   | 9   | 3   | -->
+<!-- |   ICA Supermarket       | 444    | 65   | 6   | 2   | -->
+<!-- |  ICA Kvantum       | 119    | 18   | 6   | 3   | -->
+<!-- |  ICA Maxi       | 70    | 10   | 4   | 2   | -->
+<!-- ### (a) Gör en punktskattning av det genomsnittliga antalet lokala producenter bland ICA-butikerna i Sverige. Beräkna även medelfelet för skattningen. -->
+<!-- * Mål: Punktskatta det genonsnittliga antalet lokala producenter bland ICA-butikerna i Sverige samt beräkna medelfelet för skattningen. -->
+<!-- * Parameter: $\mu$ = det genonsnittliga antalet lokala producenter bland ICA-butikerna i Sverige. -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = det genonsnittliga antalet lokala producenter i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi förutsätter OSU från respektive stratum har vi att $E(\bar{x}_{st})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 1361. Urvalsstorlek: $n$ = 200. Eftersom $\frac{n}{N}>0,1$ skattas $V(\bar{x})$ med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- * Beräkning: Genomsnittet beräknas som: -->
+<!-- ```{r} -->
+<!-- # Först sammanställer vi data -->
+<!-- Nj <- c(728, 444, 119, 70)  # storlekar på strata. Observera att sum(Nj) = 6000 = Ntot. -->
+<!-- Ntot <- sum(Nj)   # populationsstorlek. -->
+<!-- nj <- c(107, 65, 18, 10)  # stickprovsstorlek per stratum. Vi har ett proportionellt stratifierat urval. -->
+<!-- x.bar.j <- c(9, 6, 6, 4)  # stickprovsmedelvärden per stratum. -->
+<!-- sj <- c(3, 2, 3, 2)  # stickprovsstandardavvikelser per stratum. -->
+<!-- # Genomsnittsberäkning: Jämförelse med formler i formelsamling för stratifierat urval uppmuntras! -->
+<!-- x.bar.tot <- sum( (Nj/Ntot) * x.bar.j) -->
+<!--   (200/580) * 20 + (150/580) * 23 + (80/580) * 40 + (150/580) * 35 -->
+<!-- ``` -->
+<!-- Variansskattning: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu <- (728/1361)^2 * (1 - (107/728) ) * (3^2 / 107) + (444/1361)^2 * (1 - (65/444) ) * (2^2 / 65) + (119/1361)^2 * (1 - (18/119) ) * (3^2 / 18) + (70/1361)^2 * (1 - (10/70) ) * (2^2 / 10) -->
+<!-- ``` -->
+<!-- Medelfelet blir: -->
+<!-- ```{r} -->
+<!-- sqrt(Var.hat.theta.hat.mu) -->
+<!-- ``` -->
+<!-- * Svar: Det genonsnittliga antalet lokala producenter bland ICA-butikerna i Sverige är 7,5 och skattningens medelfel är 0,174. -->
+<!-- ### (b) Din uppdragsgivare vill att du beräknar felmarginalen för skattningen i a-uppgiften. Använd konfidensgraden 95 procent. Tolka felmarginalen! Har   du någon invändning som statistikkunnig beträffande felmarginalen? -->
+<!-- * Mål: Beräkna felmarginalen för skattningen i (a) med konfidensgraden 95\%. -->
+<!-- * Parameter: $\mu$ = det genonsnittliga antalet lokala producenter bland ICA-butikerna i Sverige. -->
+<!-- * Estimator: $\bar{x}_{st}=\sum_{j=1}^K\frac{N_j}{N}\bar{x}_j$ = det genonsnittliga antalet lokala producenter i stickprovet.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi förutsätter OSU från respektive stratum har vi att $E(\bar{x}_{st})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 1361. Urvalsstorlek: $n$ = 200. Eftersom $\frac{n}{N}>0,1$ skattas $V(\bar{x})$ med $\hat{V}(\bar{x}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Tumregeln vid stratifierat urval att alla $n_j>20$ är inte uppfylld vilket innebär att vi inte kan förlita oss på CGS utan måste anta normalfördelning för att kunna motivera beräkningen av felmarginalen. -->
+<!-- * Beräkning: Felmarginalen ges av  -->
+<!-- $$z_{\alpha/2} \sqrt{\hat{V}(\bar{x}_{st})}$$ -->
+<!-- där $z_{\alpha/2}=z_{0,025}=1,96$. Insättning av värden: -->
+<!-- ```{r} -->
+<!-- qnorm(0.975) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- ``` -->
+<!-- * Svar: Felmarginalen innebär att vår punktskattning $\bar{x}_{st}$ med 95\% säkerhet inte avviker med mer än 0,174 från det okända genonsnittliga antalet lokala producenter bland ICA-butikerna i Sverige. -->
+<!-- ### (c) Vid en upprepning av undersökningen nästkommande år finns nu en uppfattning    om osäkerheten i respektive stratum. Använd de skattade standardavvikelserna och gör en Neyman-allokering av stickprovet. Anta att den totala stickprovsstorleken är samma som föregående år. -->
+<!-- * Mål: Gör en Neyman-allokering av stickprovet. -->
+<!-- * Beräkning: Vi antar att kostnaden är lika för alla strata och ska därför göra allokeringen med följande formel  -->
+<!-- $$n_j=n\frac{N_j\sigma_j}{\sum_{j=1}^KN_j\sigma_j}.$$  -->
+<!-- Vi beräknar först nämnaren som är: -->
+<!-- ```{r} -->
+<!-- Nj.sigmaj <- 728 * 3 + 444 * 2 + 119 * 3 + 70 *2 -->
+<!-- ``` -->
+<!-- Stickprovsstorleken är $n=200$ och den nya allokeringen blir: -->
+<!-- ```{r} -->
+<!-- n <- 200 -->
+<!-- # allokeringar -->
+<!-- n1 <- 200 * (728*3 / Nj.sigmaj) -->
+<!-- n2 <- 200 * (444*2 / Nj.sigmaj) -->
+<!-- n3 <- 200 * (119*3 / Nj.sigmaj) -->
+<!-- n4 <- 200 * (70*2 / Nj.sigmaj) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 133 -->
+<!-- Ett franschiseföretag är intresserat av undersöka den totala försäljningen av en -->
+<!-- specifik vara, $\tau$ . Företaget väljer med hjälp av stratifierat urval ut affärer i tre -->
+<!-- strata och får följande resultat för antalet sålda varor: -->
+<!-- Landsbygd ($N_1 = 510$) -->
+<!-- 30 21 48 38 26 25 41 19 46 41 25 17 36 41 43 35 26 32 30 38 39 37 23 32 34 -->
+<!-- 9 20 22 33 41 54 11 -->
+<!-- Samhälle ($N_2 = 310$) -->
+<!-- 51 44 77 55 38 54 62 57 42 59 50 63 32 63 55 43 53 50 39 56 44 -->
+<!-- Stad ($N_3 = 410$) -->
+<!-- 49 54 63 54 77 94 25 23 53 44 65 86 61 43 85 39 93 43 61 46 32 73 57 -->
+<!-- ### (a) Punktskatta det totala antalet sålda varor. -->
+<!-- * Mål: Punktskatta den totala försäljningen av varan. -->
+<!-- * Parameter: $\tau$ = totala antalet sålda varor. -->
+<!-- * Estimator: $\hat{\tau}_{st}=\sum_{j=1}^KN_j\bar{x}_j$ = antalet sålda varor i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi utgår från att varje stratum är draget med OSU har vi att $E(\hat{\tau}_{st})=NE(\bar{x}_{st})=\tau$. -->
+<!-- * Beräkning: Den totala försäljningen ges av: -->
+<!-- ```{r} -->
+<!-- # först sammanställer vi data. -->
+<!-- Nj <- c(510, 310, 410) -->
+<!-- landsbygd <- c(30, 21, 48, 38, 26, 25, 41, 19, 46, 41, 25, 17, 36, 41, 43, 35, 26, 32, 30, 38, 39, 37, 23, 32, 34, 9, 20, 22, 33, 41, 54, 11) -->
+<!-- samh <- c(51, 44, 77, 55, 38, 54, 62, 57, 42, 59, 50, 63, 32, 63, 55, 43, 53, 50, 39, 56, 44) -->
+<!-- stad <- c(49, 54, 63, 54, 77, 94, 25, 23, 53, 44, 65, 86, 61, 43, 85, 39, 93, 43, 61, 46, 32, 73, 57)  -->
+<!-- nj <- c(length(landsbygd), length(samh), length(stad)) -->
+<!-- x.bar.j <- c(mean(landsbygd), mean(samh), mean(stad)) -->
+<!-- sj <- c( sd(landsbygd), sd(samh), sd(stad)  ) -->
+<!-- # punktesitmat för totalen. -->
+<!-- x.bar.tot <- 510 * 31.65625 + 310 * 51.7619 + 410 * 57.3913 -->
+<!-- # alternativt... -->
+<!-- x.bar.tot <- sum( Nj * x.bar.j   ) -->
+<!-- ``` -->
+<!-- * Svar: En punktskattning av den totala försäljningen av varan är 55721 stycken. -->
+<!-- ### (b) Ge en intervallskattning för det totala antalet sålda varor. Använd konfidensgraden 90 procent. -->
+<!-- * Mål: Intervallskatta det totala antalet sålda varor med konfidensgraden 90\%. -->
+<!-- * Parameter: $\tau$ = totala antalet sålda varor. -->
+<!-- * Estimator: $\hat{\tau}_{st}=\sum_{j=1}^KN_j\bar{x}_j$ = antalet sålda varor i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi utgår från att varje stratum är draget med OSU har vi att $E(\hat{\tau}_{st})=NE(\bar{x}_{st})=\tau$. -->
+<!-- 2. Populationsstorlek: $N$ = 1230. Urvalsstorlek: $n$ = 76. $\frac{n}{N}<0,1$ men eftersom vi vet populationsstorleken använder vi ändlighetskorrektion och $V(\hat{\tau}_{st})$ skattas med $\hat{V}(\hat{\tau}_{st})=\sum_{j=1}^{K}N_j^2\hat{V}(\bar{x}_j)=\sum_{j=1}^{K}N_j^2\left(1-\frac{n_j}{N_j}\right)\frac{s_j^2}{n_j}$. -->
+<!-- 3. Tumregeln för stratifierat urval att $n_j>20$ är uppfylld så vi kan förlita oss på CGS. -->
+<!-- * Beräkning: Den skattade variansen för punktskattningen ges av -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.mu <- 510^2 * (1 - (32/510) ) * (10.68798^2 / 32) + 310^2 * (1 - (21/310) ) * (10.39666^2 / 21) + 410^2 * (1 - (23/410) ) * (20.20742^2 / 23)  -->
+<!-- # alternativt... -->
+<!-- Var.hat.theta.hat.mu <- sum( Nj^2 * (1 - (nj / Nj) ) * (sj^2 / nj)  ) -->
+<!-- ``` -->
+<!-- Ett 90\% konfidensintervall för det totala antalet sålda varor ges av: -->
+<!-- ```{r} -->
+<!-- lower.lim <- x.bar.tot - qnorm(0.95) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- upper.lim <- x.bar.tot + qnorm(0.95) * sqrt(Var.hat.theta.hat.mu) -->
+<!-- ``` -->
+<!-- * Svar: Med 90\% säkerhet täcker intervallet 52371 till 59071 det totala antalet sålda varor. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 134 -->
+<!-- Ett landsting vill skatta det totala antalet vaccinationer -->
+<!-- som behövs. Landstinget drar ett urval bestående av 23 vårdcentraler -->
+<!-- med OSU-UÅ från totalt 90 vårdcentaler i landstinget.  -->
+<!-- Följande resultat erhålls från de 25 vårdcentralerna: -->
+<!-- Antal vaccinationer: 210 239 238 211 262 219 248 227 259 247 207 212 185 253 247 233 177 197 222 198 215 279 242 -->
+<!-- Antal invånare som är listade vid vårdcentralen: 2680 3820 2010 2000 3900 2970 1640 3120 2280 1740 2080 3420 3040 2730 2370 -->
+<!-- 2430 3390 2800 2860 2740 2950 3010 1600 -->
+<!-- ### (a) Beräkna ett 95\% KI för det totala antalet vaccinationer som behövs i landstinget. Var noga med förutsättningar! Tolka intervallet! -->
+<!-- * Mål: Skatta det totala antalet vaccinationer som behövs i landstinget med 95\% konfidens. -->
+<!-- * Parameter: $\tau$ = det totala antalet vaccinationer som behövs i landstinget. -->
+<!-- * Estimator: $\hat{\tau}=N\bar{x}$ = antalet vaccinationer i stickprovet där $x_i$ är antalet vaccinationer vid respektive vårdcentral.  -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{\tau})=NE(\bar{x})=N\mu=\tau$. -->
+<!-- 2. Populationsstorlek: $N$ = 90. Urvalsstorlek: \$n$ = 23. Eftersom $\frac{n}{N}>0,1$ skattas $V(\hat{\tau})$ med $\hat{V}(\hat{\tau})=N^2V(\bar{x})=N^2\left(1-\frac{n}{N}\right)\frac{s^2)}{n}$. -->
+<!-- 3. Vi har ett för litet stickprov för att kunna förlita oss på CGS och antar därför att antalet vaccinationer är normalfördelad i populationen för att kunna använda formlerna vi lärt oss. -->
+<!-- * Beräkning: En punktskattning av totala antalet vaccinationer som behövs är: -->
+<!-- ```{r} -->
+<!-- # först sammanställer vi data. -->
+<!-- vacc <- c(210, 239, 238, 211, 262, 219, 248, 227, 259, 247, 207, 212, 185, 253, 247, 233, 177, 197, 222, 198, 215, 279, 242) -->
+<!-- n <- length(vacc) -->
+<!-- N <- 90 -->
+<!-- sum.vacc <- sum(vacc) -->
+<!-- # (a) -->
+<!-- # punktestimat -->
+<!-- point.est <- N/n * sum.vacc -->
+<!-- ``` -->
+<!-- Variansskattning: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat <- 90^2 * (1- (23 / 90)) * (sd(vacc)^2 / 23) -->
+<!-- ``` -->
+<!-- Konfidensintervallet blir: -->
+<!-- ```{r} -->
+<!-- lower.lim <- point.est - qt(0.975, df = 23-1) * sqrt(Var.hat.theta.hat) -->
+<!-- upper.lim <- point.est + qt(0.975, df = 23-1) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 19582 till 21325 det totala antalet vaccinationer som behövs i landstinget. -->
+<!-- ### (b) Vad är det genomsnittliga antalet vaccinationer per invånare?  Ge en punktskattning. Var noga med förutsättningar!  -->
+<!-- * Mål: Punktskatta det genomsnittliga antalet vaccinationer per invånare i landstinget. -->
+<!-- * Parameter: $\mu$ = det genomsnittliga antalet vaccinationer per invånare i landstinget. -->
+<!-- * Estimator: $\bar{x}$ = det genomsnittliga antalet vaccinationer per invånare i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- * Beräkning: Om vi definierar $\sum_{i=1}^{23}y_i$ = antal vaccinationer i stickprovet och $\sum_{i=1}^{23}z_i$ = antalet invånare i stickprovet ges det genomsnittliga antalet vaccinationer per invånare av  -->
+<!-- $$\bar{x}_{vac/inv}=\frac{\sum_{i=1}^{23}y_i}{\sum_{i=1}^{23}z_i}.$$ -->
+<!-- Beräkning i R ger: -->
+<!-- ```{r} -->
+<!-- # invånarantalet. -->
+<!-- inv <- 2680 + 3820 + 2010 + 2000 + 3900 + 2970 + 1640 + 3120 + 2280 + 1740 + 2080 + 3420 + 3040 + 2730 + 2370 + 2430 + 3390 + 2800 + 2860 + 2740 + 2950 + 3010 + 1600 -->
+<!-- vacc.per.inv <- sum.vacc / inv -->
+<!-- ``` -->
+<!-- * Svar: En punktskattning av det genomsnittliga antalet vaccinationer per invånare i landstinget är 0,085. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 135 -->
+<!-- Vi vill undersöka andelen som röker bland högstadieelever i en kommun. -->
+<!-- Vi drar därför ett OSU-UÅ bestående av 12 klasser från kommunens totalt -->
+<!-- 80 klasser och undersöker alla elever i dessa klasser. Totalt finns det 2200 högstadielever i kommunen.  -->
+<!-- Antalet som röker i klasserna i stickprovet är: 12  1  3  4  2  2  7  5  5 12  6 13 -->
+<!-- och dragna klassernas storlek är 34 26 33 27 21 24 25 29 28 28 30 19. -->
+<!-- ### Hur stor andel av kommunens högstadieelever röker? Ange förutsättningar! -->
+<!-- * Mål: Skatta hur stor andel av kommunens högstadieelever som röker. -->
+<!-- * Parameter: $p$ = andelen av kommunens högstadieelever som röker. -->
+<!-- * Estimator: $\hat{p}$ = andelen högstadieelever i stickprovet som röker. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\hat{p})=p$. -->
+<!-- 2. Populationsstorlek: $N$ = 2200. Urvalsstorlek: $n$ = 324. Eftersom $\frac{n}{N}>0,1$ skattas $V(\hat{p})$ med $\hat{V}(\hat{p})=\left(1-\frac{n}{N}\right)\frac{\hat{p}(1-\hat{p})}{n-1}$. -->
+<!-- 3. Vi har ett stort stickprov och kan därmed förlita oss till CGS för approximativ normalfördelning. -->
+<!-- * Beräkning: Andelen i stickprovet som röker är  -->
+<!-- ```{r} -->
+<!-- # Sammanställ data. -->
+<!-- n <- 34 + 26 + 33 + 27 + 21 + 24 + 25 + 29 + 28 + 28 + 30 + 19 -->
+<!-- N <- 2200  -->
+<!-- smoke <- 12 + 1 + 3 + 4 + 2 + 2 + 7 + 5 + 5 + 12 + 6 + 13 -->
+<!-- # punktestimat -->
+<!-- p.hat <- (1/n) * smoke -->
+<!-- ``` -->
+<!-- och ett 95\% konfidensintervall för andelen ges av  -->
+<!-- $$\hat{p} \pm z_{\alpha/2} \sqrt{\hat{V}(\hat{p})}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,96$. Insättning av värden ger variansskattningen: -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat <- (1 - (smoke/n) ) * (  (p.hat * ( 1 - p.hat ) )  / (n-1)   ) -->
+<!-- ``` -->
+<!-- Intervallet blir: -->
+<!-- ```{r} -->
+<!-- lower.lim <- p.hat - qnorm(0.975) * sqrt(Var.hat.theta.hat) -->
+<!-- upper.lim <- p.hat + qnorm(0.975) * sqrt(Var.hat.theta.hat) -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 0,18 till 0,26 andelen av kommunens högstadieelever som röker. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 136 -->
+<!-- En organisation vill skatta medelåldern bland avlidna i ebola i ett område i Liberia. Urvalsramen består av 150 vårdenheter och 3 av dessa väljs med OSU-UÅ. -->
+<!-- Information om åldern på de avlidna hämtas fram från respektive vårdenhet och är som följer: -->
+<!-- Ålder på avlidna, vårdenhet 1: 13 36 31 23 34 14 23 20 26 28 33 39 32 29 26 26 40 22 19 30 42 34 28  9 47 -->
+<!-- 25 15 26 18 11 18 30 27 25 33  2 15 33 28 38 31 42 16 23 33 35 20 43 11 35 -->
+<!-- 35 31 19 31 43 20 49 -->
+<!-- Ålder på avlidna, vårdenhet 2: 30 25 30 27 23 31 30 21 36 31 28 32 35 38 28 27 41 35 34 32 33 30 40 29 29 -->
+<!-- 29 34 25 26  -->
+<!-- Ålder på avlidna, vårdenhet 3: 29 40 36 28 17 24 31 27 40 20 26 35 40 34 23 44 30 12 32 35 37 28 35 35 39 -->
+<!-- 33 40 40 36 25 46 40 -->
+<!-- \noindent Organisationen får fram att den genomsnittliga åldern bland de avlidna i området med 95\% säkerhet är mellan 27,32 till 30,46 år. -->
+<!-- ### (a) Beräkna ett alternativt medelfel om du vet att det totalt dog 5100 i ebola på de 150 vårdenheterna. Är ditt medelfel mer korrekt än organisationens? -->
+<!-- * Mål: Beräkna medelfelet för den genomsnittliga åldern bland avlidna i Ebola i stickprovet. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga åldern bland avlidna i Ebola i populationen. -->
+<!-- * Estimator: $\bar{x}$ = den genomsnittliga åldern bland avlidna i Ebola i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 5100. Urvalsstorlek: $n$ = 118. $\frac{n}{N}<0,1$ men vi vet populationsstorleken och använder ändlighetskorrektion varpå $V(\bar{x})$ skattas med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- * Beräkning: Medelfelet ges av  -->
+<!-- $$\text{Medelfel} = \sqrt{\hat{V}(\bar{x})} =\sqrt{\left(1-\frac{n}{N}\right)\frac{s^2}{n}}.$$  -->
+<!-- Insättning av värden ger: -->
+<!-- ```{r} -->
+<!-- # sammanställ data. -->
+<!-- N <- 5100 -->
+<!-- age <- c(13, 36, 31, 23, 34, 14, 23, 20, 26, 28, 33, 39, 32, 29, 26, 26, 40, 22, 19, 30, 42, 34, 28, 9, 47, 25, 15, 26, 18, 11, 18, 30, 27, 25, 33, 2, 15, 33, 28, 38, 31, 42, 16, 23, 33, 35, 20, 43, 11, 35, 35, 31, 19, 31, 43, 20, 49,  -->
+<!--          30, 25, 30, 27, 23, 31, 30, 21, 36, 31, 28, 32, 35, 38, 28, 27, 41, 35, 34, 32, 33, 30, 40, 29, 29, 29, 34, 25, 26, -->
+<!--          29, 40, 36, 28, 17, 24, 31, 27, 40, 20, 26, 35, 40, 34, 23, 44, 30, 12, 32, 35, 37, 28, 35, 35, 39, 33, 40, 40, 36, 25, 46, 40) -->
+<!-- n <- length(age) -->
+<!-- # alternativt medelfel, jämfört med organisationens. -->
+<!-- se.age <- sqrt( (1 - (n/N)) * (var(age) / n )   )  -->
+<!-- ``` -->
+<!-- * Svar: Medelfelet för genomsnittsåldern bland avlidna i Ebola i området är 0,7878. Eftersom vi nu har använt information om populationsstorleken är vårt medelfel mer korrekt än organisationens. -->
+<!-- ### (b) Kan du beräkna ett konfidensintervall? -->
+<!-- * Mål: Beräkna ett 95\% konfidensintervall för den genomsnittliga åldern i området. -->
+<!-- * Parameter: $\mu$ = den genomsnittliga åldern bland avlidna i Ebola i populationen. -->
+<!-- * Estimator: $\bar{x}$ = den genomsnittliga åldern bland avlidna i Ebola i stickprovet. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. OSU-UÅ ger att $E(\bar{x})=\mu$. -->
+<!-- 2. Populationsstorlek: $N$ = 5100. Urvalsstorlek: $n$ = 118. $\frac{n}{N}<0,1$ men vi vet populationsstorleken och använder ändlighetskorrektion varpå $V(\bar{x})$ skattas med $\hat{V}(\bar{x})=\left(1-\frac{n}{N}\right)\frac{s^2}{n}$. -->
+<!-- 3. Vi har ett stort stickprov och kan förlita oss på CGS. -->
+<!-- * Beräkning: Ett 95\% konfidensintervall för populationsmedelvärdet ges av  -->
+<!-- $$\bar{x} \pm z_{\alpha/2} \sqrt{\hat{V}(\bar{x})}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,96$. Insättning av värden i intervallet ger: -->
+<!-- ```{r} -->
+<!-- point.est <- mean(age) -->
+<!-- lower.lim <- point.est - qnorm(0.975) * se.age -->
+<!-- upper.lim <- point.est + qnorm(0.975) * se.age -->
+<!-- ``` -->
+<!-- * Svar: Med 95\% säkerhet täcker intervallet 28,02 till 31,15 den genomsnittliga åldern bland avlidna i Ebola i området. -->
+<!-- ```{r} -->
+<!-- rm(list=ls()) -->
+<!-- ``` -->
+<!-- ## 137 -->
+<!-- En kommun vill undersöka andelen som ställer sig positiva till en ny arena. -->
+<!-- Kommunen stratifierar på ålder och drar sedan i respektive ålderskategori ett systematiskt urval från RTB. Resultatet blev följande: -->
+<!-- | Stratum | $N_j$ |  $n_j$ |  Andel positiva $\hat{p}_j$   | -->
+<!-- |---------|-----|---|---|---| -->
+<!-- |  18-34 år       |  3300   | 400  |  0,5   | -->
+<!-- | 35-59 år        |   4000  | 400  |   0,7   | -->
+<!-- |   60 år eller äldre      |  3400   | 400  |  0,3   | -->
+<!-- ### Beräkna ett 90\% KI för andelen positiva i kommunen. Var noga med förutsättningar! Tolka intervallet! -->
+<!-- * Mål: Skatta andelen i kommunen som ställer sig positiva till en ny arena med ett 90\% konfidensintervall. -->
+<!-- * Parameter: $p$ = andelen i kommunen som ställer sig positiva till en ny arena. -->
+<!-- * Estimator: $\hat{p}_{st}=\sum_{j=1}^{K}\frac{N_j}{N}\hat{p}_j$ = andelen i stickprovet som ställer sig positiva till en ny arena. -->
+<!-- * Förutsättningar:  -->
+<!-- 1. Om vi utgår från att respektive stratum framtagits slupmässigt har vi att $E(\hat{p}_{st})=p$.  -->
+<!-- 2. Populationsstorlek: $N$ = 10700. Urvalsstorlek: $n$ = 1200. Eftersom $\frac{n}{N}>0,1$ och populationsfördelningen är okänd skattas $V(\hat{p}_{st})$ med $\hat{V}(\hat{p}_{st})=\sum_{j=1}^{K}\left(\frac{N_j}{N}\right)^2\left(1-\frac{n_j}{N_j}\right)\frac{\hat{p}_j(1-\hat{p}_j)}{n_j-1}$. -->
+<!-- 3. Tumregeln för stratifierat urval att $n_j>20$ är uppfylld och vi kan förlita oss på CGS. -->
+<!-- * Beräkning: En punktskattning av andelen positiva är -->
+<!-- ```{r} -->
+<!-- # sammanställ data. Anta slumpmässigt framtagna värden i våra strata. -->
+<!-- Nj <- c(3300, 4000, 3400) -->
+<!-- Ntot <- sum(Nj) -->
+<!-- nj <- c(400, 400, 400) -->
+<!-- pj.hat <- c(0.5, 0.7, 0.3) -->
+<!-- # punktskattning -->
+<!-- p.hat <- (3300/10700) * 0.5 + (4000/10700) * 0.7 + (3400/10700) * 0.3  -->
+<!-- ``` -->
+<!-- Den skattade variansen för punktskattningen är  -->
+<!-- ```{r} -->
+<!-- Var.hat.theta.hat.p <- (3300/10700)^2 * (1 - (400/3300) ) * ( (1/2) * (1 - (1/2) ) / 399) + (4000/10700)^2 * (1 - (400/4000) ) * ( (7/10) * (1 - (7/10) ) / 399)  + (3400/10700)^2 * (1 - (400/3400) ) * ( (3/10) * (1 - (3/10) ) / 399) -->
+<!-- ``` -->
+<!-- Ett 90\% konfidensintervall för andelen positiva i kommunen ges av  -->
+<!-- $$\hat{p}_{st} \pm z_{\alpha/2} \sqrt{\hat{V}(\hat{p}_{st})}$$  -->
+<!-- där $z_{\alpha/2}=z_{0,05}=1,6449$. Insättning av värden ger:  -->
+<!-- ```{r} -->
+<!-- lower.lim <- p.hat - qnorm(0.95) * sqrt(Var.hat.theta.hat.p) -->
+<!-- upper.lim <- p.hat + qnorm(0.95) * sqrt(Var.hat.theta.hat.p) -->
+<!-- ``` -->
+<!-- * Svar: Med 90\% säkerhet täcker intervallet 0,4900 till 0,5324 andelen i kommunen som ställer sig positiva till en ny arena. -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="läsa-in-och-spara-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kategorivariabler.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

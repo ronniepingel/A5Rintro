@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Tillämpad statistik med R</title>
-  <meta name="description" content="Tillämpad statistik med R" />
+  <title>Kapitel 7 Kategorivariablel, variabeltyp och datatyp. | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 7 Kategorivariablel, variabeltyp och datatyp. | Tillämpad statistik med R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Tillämpad statistik med R" />
+  <meta property="og:title" content="Kapitel 7 Kategorivariablel, variabeltyp och datatyp. | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Tillämpad statistik med R" />
+  <meta name="twitter:title" content="Kapitel 7 Kategorivariablel, variabeltyp och datatyp. | Tillämpad statistik med R" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2020-04-17" />
+<meta name="date" content="2020-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="att-börja-använda-r.html"/>
+<link rel="prev" href="kategorivariabler-och-tabeller.html"/>
+<link rel="next" href="ändra-kategorinamnen-i-faktorvariabel-.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -225,14 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
-<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler och tabeller</a></li>
+<li class="chapter" data-level="7" data-path="kategorivariablel-variabeltyp-och-datatyp-.html"><a href="kategorivariablel-variabeltyp-och-datatyp-.html"><i class="fa fa-check"></i><b>7</b> Kategorivariablel, variabeltyp och datatyp.</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="kategorivariablel-variabeltyp-och-datatyp-.html"><a href="kategorivariablel-variabeltyp-och-datatyp-.html#binära-variabler"><i class="fa fa-check"></i><b>7.0.1</b> Binära variabler</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
-</ul></li>
+<li class="chapter" data-level="8" data-path="ändra-kategorinamnen-i-faktorvariabel-.html"><a href="ändra-kategorinamnen-i-faktorvariabel-.html"><i class="fa fa-check"></i><b>8</b> Ändra kategorinamnen i faktorvariabel.</a></li>
+<li class="chapter" data-level="9" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>9</b> Variabeltyper</a></li>
 </ul>
 
       </nav>
@@ -250,109 +248,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Tillämpad statistik med R</h1>
-<p class="author"><em>Ronnie Pingel</em></p>
-<p class="date"><em>2020-04-17</em></p>
-</div>
-<div id="introduktion" class="section level1">
-<h1><span class="header-section-number">Kapitel 1</span> Introduktion</h1>
-<p>Denna material utgör en viktig del av en kurs i tillämpad statistik.</p>
-<div id="om-statistisk-programmering-med-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Om statistisk programmering med R</h2>
-<p>På denna kurs arbetar vi med R, som är ett programspråk och en miljö för statistisk dataanalys (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>) som fungerar på UNIX plattformar, Windows och MacOS. Det finns flera anledningar till att vi valt R:</p>
+<div id="kategorivariablel-variabeltyp-och-datatyp." class="section level1">
+<h1><span class="header-section-number">Kapitel 7</span> Kategorivariablel, variabeltyp och datatyp.</h1>
+<p>Kategorivariabler kan antingen vara faktorer, men det är även vanligt att arbeta med diskreta. Enklast är att inledningsvis exemplifiera</p>
+<div id="binära-variabler" class="section level3">
+<h3><span class="header-section-number">7.0.1</span> Binära variabler</h3>
+<p>Binära variabler har enbart två kategorier är den absolut vanligaste typen av kategorivariabel. Oavsett om en binär variabel har kategorier som inte går att rangordna (till exempel <span class="math inline">\(kön\)</span> med kategorierna <span class="math inline">\(kvinna\)</span> och <span class="math inline">\(man\)</span>) eller binär variabel med kategorier som går att rangordna (till exempel <span class="math inline">\(utbildning\)</span> med kategorierna <span class="math inline">\(låg\)</span> och <span class="math inline">\(hög\)</span>) hanteras och analyseras variablerna på samma sätt. I praktiken arbetar man i R på två sätt:</p>
 <ul>
-<li>R är gratis och har en öppen källkod.</li>
-<li>R ger tillgång till avancerade verktyg för dataanalys och datavisualisering.</li>
-<li>Användare av R bidrar ofta med egen programkod och egna paket, vilket innebär att en omfattande mängd funktioner enkelt går att implementera.</li>
-<li>Många läroböcker skrivs med utgångspunkt från R.</li>
-<li>Online-resurserna är mycket stora. Det finns många forum där användare av R kan få hjälp (t ex <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a>).</li>
-<li>R är ett av de absolut vanligaste programmen för statistisk dataanalys. (<a href="http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/" class="uri">http://r4stats.com/2019/04/01/scholarly-datasci-popularity-2019/</a>)</li>
+<li>De två kategorierna i den binära variabeln tilldelas numeriska värden och variabeln analyseras sedan som en numerisk variabel. Vanligast är att ge kategorierna värdena (0,1) eller (1,2), men på denna kurs bör du koda en binär variabel som (0,1). Anledningen är tolkningen blir i termer av andelar. Dessutom förenklas tolkning i sambandsanalyser. Se exempel nedan:</li>
 </ul>
-<p>Finns det anledningar till att inte välja R?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Ursprungsvariabel</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  education &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb1-3" title="3">               <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb1-4" title="4">               <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, </a>
+<a class="sourceLine" id="cb1-5" title="5">               <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>,  </a>
+<a class="sourceLine" id="cb1-6" title="6">               <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co"># Numerisk kodning: 0 = low, 1 = high</span></a>
+<a class="sourceLine" id="cb1-8" title="8">  edu_<span class="dv">01</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(education))</a>
+<a class="sourceLine" id="cb1-9" title="9">  edu_<span class="dv">01</span>[education <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-10" title="10">  edu_<span class="dv">01</span>[education <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co"># Numerisk kodning: 1 = low, 2 = high</span></a>
+<a class="sourceLine" id="cb1-12" title="12">  edu_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(education))</a>
+<a class="sourceLine" id="cb1-13" title="13">  edu_<span class="dv">12</span>[edu_<span class="dv">12</span> <span class="op">==</span><span class="st"> &quot;high&quot;</span>] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-14" title="14">  edu_<span class="dv">12</span>[edu_<span class="dv">12</span> <span class="op">==</span><span class="st"> &quot;low&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co"># Beräkna medelvärdet</span></a>
+<a class="sourceLine" id="cb1-16" title="16">  <span class="kw">mean</span>(edu_<span class="dv">01</span>)</a></code></pre></div>
+<pre><code>## [1] 0.725</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">  <span class="kw">mean</span>(edu_<span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
 <ul>
-<li>Det finns ingen officiell support.</li>
-<li>Eftersom R bygger på användarnas bidrag finns ingen garanti att funktioner fungerar som de ska.</li>
-<li>Jämfört med andra programspråk kan R uppfattas som långsamt.</li>
+<li>Den binära variabeln definieras som en faktor med funktionen <strong>factor()</strong>, vilket innebär att R hanterar den som kategorivariabel i analyser. Det går till inte att utföra några räkneoperationer på en faktor, men däremot finns det funktioner i R som är anpassade för att hantera just faktorer. Det finns flera fördelar med att arbeta med faktorer: Dessutom ser vi att kategorierna har namn.</li>
 </ul>
-<p>För den som van vid menybaserade system (sk point-and-click) kan dessutom kodning uppfattas som en nackdel. Det finns emellertid <strong>etiska</strong> och <strong>praktiska</strong> skäl att lära sig programmera i statistikprogram (dvs att i kod skriva ange hur data ska hanteras och analyseras), och inte förlita sig på menyer. Programmering</p>
-<ul>
-<li>är nödvändig för att tillförlitligt upprepa (replikera) dataanalyser. På företag och på myndigheter ska kolleger kunna ta över datamaterial och tillhörande analyser och på nytt genomföra dessa med samma resultat. Samma sak gäller inom forskning, där andra forskare ska erhålla samma resultat givet samma data och analys. Notera att detta även gäller för dig själv, dvs det är inte ovanligt att som analytiker på nytt upprepa en analys.</li>
-<li>spar tid för repetativa moment, t ex om många liknande analyser ska genomföras.<br />
-</li>
-<li>ger möjlighet till avancerade analyser samt frihet att utforma egna analyser.</li>
-<li>bidrar till ökad förståelse för dataanalys.</li>
-</ul>
-<p>Kruxet? Statistisk programmering tar längre tid att lära sig jämfört med att lära sig menybaserad datahantering och analyser! Tabell 2.1 redovisar några reflektioner över ett antal vanliga statistikprogram.</p>
-<table>
-<caption><span id="tab:unnamed-chunk-2">Table 1.1: </span>En jämförelse av några vanliga statistikprogram</caption>
-<tbody>
-<tr class="odd">
-<td align="left">Minitab</td>
-<td align="left">Mycket enkelt att lära sig. Används främst inom kvalitetskontroll i industri samt planering av randomiserade försök. Billigt. Begränsat urval av statistiska metoder</td>
-</tr>
-<tr class="even">
-<td align="left">SPSS</td>
-<td align="left">Enkelt att lära sig. Stor spridning bland samhällsvetare och utredare. Ganska stort urval av statistiska metoder som är organiserade på ett något rörigt sätt. Krånglig programkod.</td>
-</tr>
-<tr class="odd">
-<td align="left">Stata</td>
-<td align="left">Enkelt att lära sig och mycket enkel programkod. Spridning bland forskare inom ekonometri och epidemiologi. Stort urval av, även de senaste, statistiska metoderna</td>
-</tr>
-<tr class="even">
-<td align="left">SAS</td>
-<td align="left">Medelsvårt att lära sig, med en föråldrad programkod. Kan hantera stora dataset. Används av myndigheter, industri och forskare inom alla områden. Standard för läkemdelsbolag. Stort urval av statistiska metoder, men inte de allra senaste. Dyrt. Svårt att göra bra figurer.</td>
-</tr>
-<tr class="odd">
-<td align="left">R</td>
-<td align="left">Svårt att lära sig. Gratis. Flexibelt. Mycket stor spridning inom alla områden för dataanalys. Enkel programkod.</td>
-</tr>
-<tr class="even">
-<td align="left">Python</td>
-<td align="left">Mycket svårt att lära sig. Gratis. Flexibelt. Stor spridning inom maskininlärning och AI.</td>
-</tr>
-</tbody>
-</table>
-<p>Varför är inte Excel, Open Office Calc, Google Docs och andra kalkylprogram inkluderade i jämförelsen? SVaret är enkelt. Dessa är nämligen inga statistikprogram! Ofta saknas i sådana program viktiga statistiska funktioner och dessutom är den numeriska tillförlitligheten lägre än för konventionella statistiskprogram (Keeling, K. B., &amp; Pavur, R. J., 2011).</p>
-</div>
-<div id="allmänna-tips-om-r-på-kursen" class="section level2">
-<h2><span class="header-section-number">1.2</span> Allmänna tips om R på kursen</h2>
-<p>Det tar tid att lära sig R. Det kan även vara frustrerande, inte minst eftersom programmering är inte förlåtande vad gäller fel.
-Men misströsta inte, i slutändan är det värt det och är i högsta grad tidsbesparande. Här följer några tips vad gäller inlärningen och användandet av R under kursens gång:</p>
-<ul>
-<li>Se till att snabbt få grunderna på plats. R kommer att användas löpande under kursens gång.</li>
-<li>Arbeta aktivt med R. Programmering lär man sig genom tillämpning, inte genom att läsa. Det krävs normalt sett många timmar av aktivt arbete för att lära sig ett programspråk. Använd därför R till att lösa övningsuppgifter och att replikera exempel från föreläsningar. På så vis får du rutin vad gäller användandet av R.<br />
-</li>
-<li>Använd kod som presenterats på kursen. Ändra och laborera i färdig kod för att se vad som händer. Det är inte viktigt att kunna skriva all kod utantill, däremot ska man förstå skriven kod och kunna manipulera denna för sitt syfte.</li>
-<li>Lös övningsuppgifter på följande vis: 1. Läs uppgiften och skissa därefter på papper upp en lösning, men gör inga beräkningar inte. Skriv ner antaganden och formler. 2. Lös sedan uppgiften med hjälp av beräkningar i R. Om du fastnar, studera R-koden i lösningsförslaget förstå hur hur uppgiften har lösts med hjälp R alternativt använd kod som presenterats på kursen. 3. Räkna därefter igenom uppgiften för hand. När du känner dig helt trygg med att räkna för hand kan du så småningom hoppa över detta moment. 4. Fyll i din papperslösning och avsluta med ett svar.</li>
-<li>Var inte rädd för att använda resurser på nätet. Se ovan.</li>
-<li>Kontakta lärare och lärarassistenter på kursen om ni fastnar och har frågor. Utnyttja de lärarledda sessionerna.</li>
-<li>Samarbeta och diskutera i de diskussionsforum som skapats för er studenter.</li>
-</ul>
-<p>På denna kurs rekommenderas att ni <strong>endast skriver kod på det sätt som det presenteras på kursen</strong>. Visserligen är R oerhört flexibelt och en uppgift går att lösa på en mängd sätt. Koden som presenteras på kursen är emellertid framtagen för att vara tydlig och tillförlitlig och syftet är att du ska bli trygg med att beräkningarna är korrekta snarare än effektiva.</p>
-<p>Slutligen, så är det bra att som läsare ha i åtanke att all beskrivning av kodens funktionalitet inte är uttömmande. Syftet är nämligen att lära ut vad som är nödvändigt för denna kurs och då behövs inte en fullständig beskrivning av till exempel vad ett verktyg i R kan göra.</p>
-<p>Lycka till!</p>
-<hr />
-<p><img src="docs/images/important.png" width="5%" /></p>
-</div>
-<div id="sammanfattning" class="section level2">
-<h2><span class="header-section-number">1.3</span> Sammanfattning</h2>
-<style>
-div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
-</style>
-<div class="red">
-<p><font size="5"> </font>
-Du ska kunna</p>
-<ul>
-<li>motivera varför statistisk programmering är nödvändig för arbete med data och dataanalyser.</li>
-</ul>
-</div>
-<hr />
-</div>
-<div id="referenser" class="section level2">
-<h2><span class="header-section-number">1.4</span> Referenser</h2>
-<p>Keeling, K. B., &amp; Pavur, R. J. (2011). Statistical accuracy of spreadsheet software. The American Statistician, 65(4), 265-273.</p>
-
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Ursprungsvariabel. Datatypen är character.</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  education &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb5-3" title="3">               <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, </a>
+<a class="sourceLine" id="cb5-4" title="4">               <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, </a>
+<a class="sourceLine" id="cb5-5" title="5">               <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>,  </a>
+<a class="sourceLine" id="cb5-6" title="6">               <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>)</a>
+<a class="sourceLine" id="cb5-7" title="7">  education</a></code></pre></div>
+<pre><code>##  [1] &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;high&quot; &quot;low&quot;  &quot;low&quot;  &quot;high&quot;
+## [11] &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot;
+## [21] &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot; 
+## [31] &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot;  &quot;low&quot;  &quot;high&quot; &quot;low&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">  <span class="kw">class</span>(education) </a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Skapa en faktorvariabel  </span></a>
+<a class="sourceLine" id="cb9-2" title="2">  education_f &lt;-<span class="st"> </span><span class="kw">factor</span>(education)</a>
+<a class="sourceLine" id="cb9-3" title="3">  education_f</a></code></pre></div>
+<pre><code>##  [1] high high low  high high low  high low  low  high high high high high high
+## [16] low  high high high high high high high high high low  high high high low 
+## [31] high high low  high high high low  low  high low 
+## Levels: high low</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">  <span class="kw">class</span>(education_f)</a></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Test att utföra en räkneoperation på en faktorvariabel</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="kw">mean</span>(education_f)</a></code></pre></div>
+<pre><code>## Warning in mean.default(education_f): argument is not numeric or logical:
+## returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
 </div>
 </div>
             </section>
@@ -360,8 +313,8 @@ Du ska kunna</p>
           </div>
         </div>
       </div>
-
-<a href="att-börja-använda-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="kategorivariabler-och-tabeller.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ändra-kategorinamnen-i-faktorvariabel-.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
