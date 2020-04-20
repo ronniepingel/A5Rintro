@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R</title>
-  <meta name="description" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  <title>Kapitel 7 Binära variabler och tabeller | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 7 Binära variabler och tabeller | Tillämpad statistik med R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  <meta property="og:title" content="Kapitel 7 Binära variabler och tabeller | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 7 Kategorivariabler och tabeller | Tillämpad statistik med R" />
+  <meta name="twitter:title" content="Kapitel 7 Binära variabler och tabeller | Tillämpad statistik med R" />
   
   
   
@@ -226,12 +226,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
-<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler"><i class="fa fa-check"></i><b>6.1</b> Binära variabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-en-binär-variabel"><i class="fa fa-check"></i><b>6.1</b> Analys av en binär variabel</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.1</b> Binära variabler med missing</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Kategorivariabler och tabeller</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="kategorivariabler-och-tabeller.html"><a href="kategorivariabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
+<li class="chapter" data-level="7" data-path="binära-variabler-och-tabeller.html"><a href="binära-variabler-och-tabeller.html"><i class="fa fa-check"></i><b>7</b> Binära variabler och tabeller</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="binära-variabler-och-tabeller.html"><a href="binära-variabler-och-tabeller.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.0.1</b> Faktorer på ordinalskala</a></li>
 </ul></li>
 </ul>
 
@@ -250,14 +250,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="kategorivariabler-och-tabeller" class="section level1">
-<h1><span class="header-section-number">Kapitel 7</span> Kategorivariabler och tabeller</h1>
-<p>Det är viktigt vid dataanalys att kunna arbeta med tre moment som involverar tabeller:</p>
+<div id="binära-variabler-och-tabeller" class="section level1">
+<h1><span class="header-section-number">Kapitel 7</span> Binära variabler och tabeller</h1>
+<p>För skapa tabeller används flera funktioner.</p>
 <ul>
-<li>Frekvenstabeller. (dvs en univariat beskrivning av en kategori-variabel)</li>
-<li>Korstabeller i R</li>
-<li>Export av tabeller till HTML (som sedan kan importeras till ordbehandlingsprogram)</li>
+<li>Den grundläggande funktionen för skapa tabeller är <strong>table()</strong>, vilken har flexibilitet att hantera både en och flera variabler. <strong>table()</strong> presenterar dock enbart frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas.</li>
+<li>Funktionen <strong>prop.table()</strong> kan tillämpas på ett objekt från <strong>table()</strong> och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.</li>
+<li><strong>addmargins()</strong> ger marginalerna i ett tabellobjeket. Med argumentet <strong>margins</strong> anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas. –&gt;</li>
 </ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">table</span>(education)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="op">&gt;</span><span class="st"> </span>education</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">&gt;</span><span class="st"> </span>high  low </a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">&gt;</span><span class="st">   </span><span class="dv">29</span>   <span class="dv">11</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="op">&gt;</span><span class="st"> </span><span class="kw">table</span>(edu_bin)</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="op">&gt;</span><span class="st"> </span>edu_bin</a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;</span><span class="st">  </span><span class="dv">0</span>  <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span> <span class="dv">29</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="op">&gt;</span><span class="st"> </span><span class="kw">table</span>(edu_cat)</a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="op">&gt;</span><span class="st"> </span>edu_cat</a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="op">&gt;</span><span class="st">  </span>L  H </a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span> <span class="dv">29</span></a></code></pre></div>
+<p>Vi illustrerar detta nu utifrån binära variabler. Vi kommer se att detta generaliseras till</p>
 <p>Notera att det även finns många paket i R för att skapa tabeller exempelvis <em>summarytools</em> och <em>table1</em>, men vi kommer att
 arbeta med baspaketen i R. Notera att mycket av nedanstående kod innebär att bygga upp tabeller där olika komponenter är byggstenar som måste passa ihop.</p>
 <p>För att exemplifiera tittar vi på ett datamaterial.</p>
