@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 9 Figurer | R på kursen Tillämpad statistik (A5)</title>
-  <meta name="description" content="Kapitel 9 Figurer | R på kursen Tillämpad statistik (A5)" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <title>Kapitel 7 Figurer | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 7 Figurer | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 9 Figurer | R på kursen Tillämpad statistik (A5)" />
+  <meta property="og:title" content="Kapitel 7 Figurer | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 9 Figurer | R på kursen Tillämpad statistik (A5)" />
+  <meta name="twitter:title" content="Kapitel 7 Figurer | Tillämpad statistik med R" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Ronnie Pingel" />
 
 
-<meta name="date" content="2019-12-09" />
+<meta name="date" content="2020-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tabeller.html"/>
-<link rel="next" href="regressionsanalys.html"/>
+<link rel="prev" href="kategorivariabler.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -102,78 +127,128 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Förord</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#statistiska-program"><i class="fa fa-check"></i><b>1.1</b> Statistiska program</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#om-r"><i class="fa fa-check"></i><b>1.2</b> Om R</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.3</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
-<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#installation-av-r"><i class="fa fa-check"></i><b>2.1</b> Installation av R</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="installation.html"><a href="installation.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
-<li class="chapter" data-level="2.1.2" data-path="installation.html"><a href="installation.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
-<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#paket"><i class="fa fa-check"></i><b>2.3</b> Paket</a></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.1"><i class="fa fa-check"></i>Svar 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.2"><i class="fa fa-check"></i>Svar 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.3"><i class="fa fa-check"></i>Svar 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.4"><i class="fa fa-check"></i>Svar 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.5"><i class="fa fa-check"></i>Svar 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.6"><i class="fa fa-check"></i>Svar 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.7"><i class="fa fa-check"></i>Svar 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#svar-2.8"><i class="fa fa-check"></i>Svar 2.8</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="första-sessionen.html"><a href="första-sessionen.html"><i class="fa fa-check"></i><b>3</b> Första sessionen</a></li>
-<li class="chapter" data-level="4" data-path="objekt.html"><a href="objekt.html"><i class="fa fa-check"></i><b>4</b> Objekt</a><ul>
-<li class="chapter" data-level="4.1" data-path="objekt.html"><a href="objekt.html#vektorer"><i class="fa fa-check"></i><b>4.1</b> Vektorer</a></li>
-<li class="chapter" data-level="4.2" data-path="objekt.html"><a href="objekt.html#matriser"><i class="fa fa-check"></i><b>4.2</b> Matriser</a></li>
-<li class="chapter" data-level="4.3" data-path="objekt.html"><a href="objekt.html#data-frames"><i class="fa fa-check"></i><b>4.3</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="funktioner.html"><a href="funktioner.html"><i class="fa fa-check"></i><b>5</b> Funktioner</a></li>
-<li class="chapter" data-level="6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>6</b> Läsa in och spara data</a><ul>
-<li class="chapter" data-level="6.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>6.1</b> Text- och CSV-filer</a></li>
-<li class="chapter" data-level="6.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>6.2</b> Excel-filer</a></li>
-<li class="chapter" data-level="6.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>6.3</b> Övriga format</a></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="variabeltyper.html"><a href="variabeltyper.html"><i class="fa fa-check"></i><b>7</b> Variabeltyper</a><ul>
-<li class="chapter" data-level="7.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer"><i class="fa fa-check"></i><b>7.1</b> Faktorer</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-ordinalskala"><i class="fa fa-check"></i><b>7.1.1</b> Faktorer på ordinalskala</a></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.1"><i class="fa fa-check"></i>Svar 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.2"><i class="fa fa-check"></i>Svar 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.3"><i class="fa fa-check"></i>Svar 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.4"><i class="fa fa-check"></i>Svar 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.5"><i class="fa fa-check"></i>Svar 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.6"><i class="fa fa-check"></i>Svar 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.7"><i class="fa fa-check"></i>Svar 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.8"><i class="fa fa-check"></i>Svar 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.9"><i class="fa fa-check"></i>Svar 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.10"><i class="fa fa-check"></i>Svar 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.11"><i class="fa fa-check"></i>Svar 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#svar-3.12"><i class="fa fa-check"></i>Svar 3.12</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="variabeltyper.html"><a href="variabeltyper.html#faktorer-på-nominalskala"><i class="fa fa-check"></i><b>7.2</b> Faktorer på nominalskala</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
-<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
-<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-ska"><i class="fa fa-check"></i><b>4.1</b> Principer ska</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.2</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.4</b> Övriga format</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+<li class="chapter" data-level="5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>5</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="5.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>5.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>5.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-p"><i class="fa fa-check"></i><b>5.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#skattning-av-tau"><i class="fa fa-check"></i><b>5.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>5.1.4</b> Beräkningar av stickprovstorlek</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
-<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+<li class="chapter" data-level="5.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>5.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>5.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>5.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>5.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>5.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="5.2.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>5.2.5</b> Efterstratifiering</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="tabeller.html"><a href="tabeller.html#statistisk-inferens-baserat-på-korstabeller"><i class="fa fa-check"></i><b>8.5</b> Statistisk inferens baserat på korstabeller</a></li>
+<li class="chapter" data-level="5.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-2"><i class="fa fa-check"></i><b>5.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-1"><i class="fa fa-check"></i>Övning 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-1"><i class="fa fa-check"></i>Svar 1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-2"><i class="fa fa-check"></i>Övning 2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#svar-2"><i class="fa fa-check"></i>Svar 2</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>9</b> Figurer</a><ul>
-<li class="chapter" data-level="9.1" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>9.1</b> Typer av figurer</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>9.1.1</b> Presentation av aggregerade data</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>9.2</b> Lådagram</a></li>
-<li class="chapter" data-level="9.3" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>9.3</b> Spridningsdiagram</a></li>
-<li class="chapter" data-level="9.4" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>9.4</b> Några frekvent förekommande diagram.</a></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-binära-variabeler"><i class="fa fa-check"></i><b>6.1</b> Analys av binära variabeler</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-en-binär-variabel"><i class="fa fa-check"></i><b>6.1.1</b> Analys av en binär variabel</a></li>
+<li class="chapter" data-level="6.1.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#binära-variabler-med-missing"><i class="fa fa-check"></i><b>6.1.2</b> Binära variabler med missing</a></li>
+<li class="chapter" data-level="6.1.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analays-av-en-binär-variabel-med-en-tabell"><i class="fa fa-check"></i><b>6.1.3</b> Analays av en binär variabel med en tabell</a></li>
+<li class="chapter" data-level="6.1.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-två-binära-variabler"><i class="fa fa-check"></i><b>6.1.4</b> Analys av två binära variabler</a></li>
+<li class="chapter" data-level="6.1.5" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kvantifiering-och-test-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>6.1.5</b> Kvantifiering och test av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="6.1.6" data-path="kategorivariabler.html"><a href="kategorivariabler.html#export-av-tabeller"><i class="fa fa-check"></i><b>6.1.6</b> Export av tabeller</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="regressionsanalys.html"><a href="regressionsanalys.html"><i class="fa fa-check"></i><b>10</b> Regressionsanalys</a><ul>
-<li class="chapter" data-level="10.1" data-path="regressionsanalys.html"><a href="regressionsanalys.html#inläsning-och-kodning-av-data"><i class="fa fa-check"></i><b>10.1</b> Inläsning och kodning av data</a></li>
+<li class="chapter" data-level="6.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-variabler-med-mer-än-två-kategorier"><i class="fa fa-check"></i><b>6.2</b> Analys av variabler med mer än två kategorier</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#analys-av-två-variabler-med-fler-än-två-kategorier"><i class="fa fa-check"></i><b>6.2.1</b> Analys av två variabler med fler än två kategorier</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html"><i class="fa fa-check"></i><b>11</b> Enkel linjär regression</a><ul>
-<li class="chapter" data-level="11.1" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regression-och-lm"><i class="fa fa-check"></i><b>11.1</b> Regression och <strong>lm()</strong></a></li>
-<li class="chapter" data-level="11.2" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#regressions-resultat"><i class="fa fa-check"></i><b>11.2</b> Regressions resultat</a></li>
-<li class="chapter" data-level="11.3" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#konfidensintervall"><i class="fa fa-check"></i><b>11.3</b> Konfidensintervall</a></li>
-<li class="chapter" data-level="11.4" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#residualanalys"><i class="fa fa-check"></i><b>11.4</b> Residualanalys</a></li>
-<li class="chapter" data-level="11.5" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#skattning-av-betingade-medelvärden"><i class="fa fa-check"></i><b>11.5</b> Skattning av betingade medelvärden</a></li>
-<li class="chapter" data-level="11.6" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#prediktion"><i class="fa fa-check"></i><b>11.6</b> Prediktion</a></li>
-<li class="chapter" data-level="11.7" data-path="enkel-linjär-regression.html"><a href="enkel-linjär-regression.html#binära-oberoende-variabler"><i class="fa fa-check"></i><b>11.7</b> Binära oberoende variabler</a></li>
+<li class="chapter" data-level="6.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>6.3</b> Exportera tabeller till html –&gt;</a></li>
+<li class="chapter" data-level="6.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#några-frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>6.4</b> Några frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>6.4.1</b> Tabell för att beskriva urvalet</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html"><i class="fa fa-check"></i><b>12</b> Multipel linjär regression</a><ul>
-<li class="chapter" data-level="12.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#regression-och-lm-1"><i class="fa fa-check"></i><b>12.1</b> Regression och <strong>lm()</strong></a></li>
-<li class="chapter" data-level="12.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#f-test-och-anova"><i class="fa fa-check"></i><b>12.2</b> <span class="math inline">\(F\)</span>-test och <strong>anova()</strong></a></li>
-<li class="chapter" data-level="12.3" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#variabler-med-flera-än-två-kategorier."><i class="fa fa-check"></i><b>12.3</b> Variabler med flera än två kategorier.</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#dummy-variabler"><i class="fa fa-check"></i><b>12.3.1</b> Dummy-variabler</a></li>
-<li class="chapter" data-level="12.3.2" data-path="multipel-linjär-regression.html"><a href="multipel-linjär-regression.html#faktor-variabler"><i class="fa fa-check"></i><b>12.3.2</b> Faktor-variabler</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>7</b> Figurer</a><ul>
+<li class="chapter" data-level="7.1" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>7.1</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>7.1.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>7.2</b> Lådagram</a></li>
+<li class="chapter" data-level="7.3" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>7.3</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="7.4" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>7.4</b> Några frekvent förekommande diagram.</a></li>
 </ul></li>
 </ul>
 
@@ -184,7 +259,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R på kursen Tillämpad statistik (A5)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
           </h1>
         </div>
 
@@ -193,185 +268,185 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="figurer" class="section level1">
-<h1><span class="header-section-number">Kapitel 9</span> Figurer</h1>
-<p>R ger tillgång till omfattande möjligheter för datavisualisering. Dels ger basversionen i R stor frihet, dels finns det paket (exempelvis <strong>ggplot2</strong> och <strong>lattice</strong>) som ger ytterligare funktioner, men som också förenklar skapandet av figurer.</p>
+<h1><span class="header-section-number">Kapitel 7</span> Figurer</h1>
+<p>R ger tillgång till omfattande möjligheter för datavisualisering.
+Dels ger basversionen i R stor frihet, dels finns det paket (exempelvis <strong>ggplot2</strong> och <strong>lattice</strong>) som ger ytterligare funktioner, men som också förenklar skapandet av figurer.</p>
 <p>Det går att klassificera syftet med figurer enligt följande:</p>
 <ul>
 <li>Figurer primärt avsedda för dataanalytikern, där syftet är att studera data explorativt, kontrollera att förutsättningar är uppfyllda och förmedla preliminära resultat. Estetiska och pedagogiska aspekter hos sådana figurer är sekundär eftersom det<br />
 </li>
 <li>Figurer avsedda att presenteras för en publik och ska finnas med i en rapport, vetenskaplig artikel eller ett bildspel. En sådan figur ska på ett tydligt och korrekt redovisa det väsentliga i en analys och den ska även vara estetiskt fullgod.</li>
 </ul>
-<p>Beroende på syfte tar det olika lång tid att skapa figurer. Det finns komplicerade figurer som kan ta flera timmar att skapa.</p>
+<p>Beroende på syfte tar det olika lång tid att skapa figurer. Det finns komplicerade figurer
+som kan ta flera timmar att skapa.</p>
 <p>Wilke delar in figurer i</p>
 <ul>
 <li>Oestetisk. Figurer är i många avseenden korrekt</li>
 <li>Dålig</li>
 <li>Fel</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)
-n &lt;-<span class="st"> </span><span class="dv">10000</span>
-<span class="kw">set.seed</span>(<span class="dv">12345</span>)
-df &lt;-<span class="st"> </span>insark[<span class="kw">sample</span>(insark<span class="op">$</span>id, n), ]
-<span class="kw">names</span>(insark)</code></pre></div>
-<pre><code>&gt;  [1] &quot;id&quot;           &quot;year&quot;         &quot;height&quot;       &quot;weight&quot;      
-&gt;  [5] &quot;psych&quot;        &quot;muscle&quot;       &quot;armstrength&quot;  &quot;physical&quot;    
-&gt;  [9] &quot;gripstrength&quot; &quot;legstrength&quot;  &quot;sbp&quot;          &quot;dbp&quot;         
-&gt; [13] &quot;officer&quot;      &quot;testa&quot;        &quot;testb&quot;        &quot;testc&quot;       
-&gt; [17] &quot;testd&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1961</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1966</span>)] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1966</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1971</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1975</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>
-df<span class="op">$</span>year_cat &lt;-<span class="st">  </span><span class="kw">factor</span>(df<span class="op">$</span>year_cat)
-<span class="kw">levels</span>(df<span class="op">$</span>year_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961-1965&quot;</span>, <span class="st">&quot;1966-1970&quot;</span>, <span class="st">&quot;1970-1975&quot;</span>)
-
-df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
-
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
-
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)
-
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)
-
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)
-
-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
-freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, 
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
-<span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, 
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>), <span class="dt">add=</span><span class="ot">TRUE</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, 
-        <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),
-        <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
-<span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, 
-        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        )
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, 
-        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
-        <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, 
-        <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)
-n &lt;-<span class="st"> </span><span class="dv">10000</span>
-<span class="kw">set.seed</span>(<span class="dv">12345</span>)
-df &lt;-<span class="st"> </span>insark[<span class="kw">sample</span>(insark<span class="op">$</span>id, n), ]
-<span class="kw">names</span>(insark)</code></pre></div>
-<pre><code>&gt;  [1] &quot;id&quot;           &quot;year&quot;         &quot;height&quot;       &quot;weight&quot;      
-&gt;  [5] &quot;psych&quot;        &quot;muscle&quot;       &quot;armstrength&quot;  &quot;physical&quot;    
-&gt;  [9] &quot;gripstrength&quot; &quot;legstrength&quot;  &quot;sbp&quot;          &quot;dbp&quot;         
-&gt; [13] &quot;officer&quot;      &quot;testa&quot;        &quot;testb&quot;        &quot;testc&quot;       
-&gt; [17] &quot;testd&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1961</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1966</span>)] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1966</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1971</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1975</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>
-df<span class="op">$</span>year_cat &lt;-<span class="st">  </span><span class="kw">factor</span>(df<span class="op">$</span>year_cat)
-<span class="kw">levels</span>(df<span class="op">$</span>year_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961-1965&quot;</span>, <span class="st">&quot;1966-1970&quot;</span>, <span class="st">&quot;1970-1975&quot;</span>)
-
-df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
-
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
-
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)
-
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)
-
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)
-
-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
-freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, 
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
-<span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, 
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>), <span class="dt">add=</span><span class="ot">TRUE</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, 
-        <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),
-        <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
-<span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, 
-        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
-        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
-        )
-<span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, 
-        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
-        <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,
-        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, 
-        <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb171-2" title="2">n &lt;-<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb171-3" title="3"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb171-4" title="4">df &lt;-<span class="st"> </span>insark[<span class="kw">sample</span>(insark<span class="op">$</span>id, n), ]</a>
+<a class="sourceLine" id="cb171-5" title="5"><span class="kw">names</span>(insark)</a></code></pre></div>
+<pre><code>&gt;  [1] &quot;id&quot;           &quot;year&quot;         &quot;height&quot;       &quot;weight&quot;       &quot;psych&quot;       
+&gt;  [6] &quot;muscle&quot;       &quot;armstrength&quot;  &quot;physical&quot;     &quot;gripstrength&quot; &quot;legstrength&quot; 
+&gt; [11] &quot;sbp&quot;          &quot;dbp&quot;          &quot;officer&quot;      &quot;testa&quot;        &quot;testb&quot;       
+&gt; [16] &quot;testc&quot;        &quot;testd&quot;</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb173-2" title="2">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1961</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1966</span>)] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-3" title="3">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1966</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-4" title="4">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1971</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1975</span>)] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb173-5" title="5">df<span class="op">$</span>year_cat &lt;-<span class="st">  </span><span class="kw">factor</span>(df<span class="op">$</span>year_cat)</a>
+<a class="sourceLine" id="cb173-6" title="6"><span class="kw">levels</span>(df<span class="op">$</span>year_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961-1965&quot;</span>, <span class="st">&quot;1966-1970&quot;</span>, <span class="st">&quot;1970-1975&quot;</span>)</a>
+<a class="sourceLine" id="cb173-7" title="7"></a>
+<a class="sourceLine" id="cb173-8" title="8">df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-9" title="9">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-10" title="10">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb173-11" title="11">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb173-12" title="12">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb173-13" title="13"></a>
+<a class="sourceLine" id="cb173-14" title="14">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb173-15" title="15">df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-16" title="16">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-17" title="17">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb173-18" title="18">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb173-19" title="19">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb173-20" title="20"></a>
+<a class="sourceLine" id="cb173-21" title="21">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb173-22" title="22">df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-23" title="23">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-24" title="24">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb173-25" title="25">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb173-26" title="26">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)</a>
+<a class="sourceLine" id="cb173-27" title="27"></a>
+<a class="sourceLine" id="cb173-28" title="28">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb173-29" title="29">df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-30" title="30">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-31" title="31">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb173-32" title="32">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb173-33" title="33">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)</a>
+<a class="sourceLine" id="cb173-34" title="34"></a>
+<a class="sourceLine" id="cb173-35" title="35">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb173-36" title="36">df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb173-37" title="37">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-38" title="38">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb173-39" title="39">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb173-40" title="40">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)</a>
+<a class="sourceLine" id="cb173-41" title="41"></a>
+<a class="sourceLine" id="cb173-42" title="42"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb173-43" title="43">freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb173-44" title="44"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, </a>
+<a class="sourceLine" id="cb173-45" title="45">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb173-46" title="46">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb173-47" title="47">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
+<a class="sourceLine" id="cb173-48" title="48"><span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb173-49" title="49"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, </a>
+<a class="sourceLine" id="cb173-50" title="50">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb173-51" title="51">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb173-52" title="52">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>), <span class="dt">add=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb173-53" title="53"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, </a>
+<a class="sourceLine" id="cb173-54" title="54">        <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb173-55" title="55">        <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>,</a>
+<a class="sourceLine" id="cb173-56" title="56">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb173-57" title="57">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
+<a class="sourceLine" id="cb173-58" title="58"><span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb173-59" title="59"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, </a>
+<a class="sourceLine" id="cb173-60" title="60">        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb173-61" title="61">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb173-62" title="62">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb173-63" title="63">        )</a>
+<a class="sourceLine" id="cb173-64" title="64"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, </a>
+<a class="sourceLine" id="cb173-65" title="65">        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb173-66" title="66">        <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,</a>
+<a class="sourceLine" id="cb173-67" title="67">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, </a>
+<a class="sourceLine" id="cb173-68" title="68">        <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb174-2" title="2">n &lt;-<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb174-3" title="3"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb174-4" title="4">df &lt;-<span class="st"> </span>insark[<span class="kw">sample</span>(insark<span class="op">$</span>id, n), ]</a>
+<a class="sourceLine" id="cb174-5" title="5"><span class="kw">names</span>(insark)</a></code></pre></div>
+<pre><code>&gt;  [1] &quot;id&quot;           &quot;year&quot;         &quot;height&quot;       &quot;weight&quot;       &quot;psych&quot;       
+&gt;  [6] &quot;muscle&quot;       &quot;armstrength&quot;  &quot;physical&quot;     &quot;gripstrength&quot; &quot;legstrength&quot; 
+&gt; [11] &quot;sbp&quot;          &quot;dbp&quot;          &quot;officer&quot;      &quot;testa&quot;        &quot;testb&quot;       
+&gt; [16] &quot;testc&quot;        &quot;testd&quot;</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb176-2" title="2">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1961</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1966</span>)] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-3" title="3">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1966</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-4" title="4">df<span class="op">$</span>year_cat[(df<span class="op">$</span>year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1971</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1975</span>)] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb176-5" title="5">df<span class="op">$</span>year_cat &lt;-<span class="st">  </span><span class="kw">factor</span>(df<span class="op">$</span>year_cat)</a>
+<a class="sourceLine" id="cb176-6" title="6"><span class="kw">levels</span>(df<span class="op">$</span>year_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961-1965&quot;</span>, <span class="st">&quot;1966-1970&quot;</span>, <span class="st">&quot;1970-1975&quot;</span>)</a>
+<a class="sourceLine" id="cb176-7" title="7"></a>
+<a class="sourceLine" id="cb176-8" title="8">df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-9" title="9">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-10" title="10">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb176-11" title="11">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb176-12" title="12">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb176-13" title="13"></a>
+<a class="sourceLine" id="cb176-14" title="14">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb176-15" title="15">df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-16" title="16">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-17" title="17">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb176-18" title="18">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb176-19" title="19">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb176-20" title="20"></a>
+<a class="sourceLine" id="cb176-21" title="21">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb176-22" title="22">df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-23" title="23">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-24" title="24">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb176-25" title="25">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb176-26" title="26">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)</a>
+<a class="sourceLine" id="cb176-27" title="27"></a>
+<a class="sourceLine" id="cb176-28" title="28">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb176-29" title="29">df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-30" title="30">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-31" title="31">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb176-32" title="32">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb176-33" title="33">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)</a>
+<a class="sourceLine" id="cb176-34" title="34"></a>
+<a class="sourceLine" id="cb176-35" title="35">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb176-36" title="36">df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb176-37" title="37">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb176-38" title="38">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb176-39" title="39">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb176-40" title="40">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)</a>
+<a class="sourceLine" id="cb176-41" title="41"></a>
+<a class="sourceLine" id="cb176-42" title="42"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb176-43" title="43">freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb176-44" title="44"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, </a>
+<a class="sourceLine" id="cb176-45" title="45">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb176-46" title="46">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb176-47" title="47">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
+<a class="sourceLine" id="cb176-48" title="48"><span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb176-49" title="49"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, </a>
+<a class="sourceLine" id="cb176-50" title="50">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb176-51" title="51">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb176-52" title="52">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>), <span class="dt">add=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb176-53" title="53"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, </a>
+<a class="sourceLine" id="cb176-54" title="54">        <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb176-55" title="55">        <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>,</a>
+<a class="sourceLine" id="cb176-56" title="56">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb176-57" title="57">        <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
+<a class="sourceLine" id="cb176-58" title="58"><span class="kw">grid</span>(<span class="dt">nx=</span><span class="ot">NA</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb176-59" title="59"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, </a>
+<a class="sourceLine" id="cb176-60" title="60">        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb176-61" title="61">        <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
+<a class="sourceLine" id="cb176-62" title="62">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb176-63" title="63">        )</a>
+<a class="sourceLine" id="cb176-64" title="64"><span class="kw">barplot</span>(freqtable_testa, <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, </a>
+<a class="sourceLine" id="cb176-65" title="65">        <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb176-66" title="66">        <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,</a>
+<a class="sourceLine" id="cb176-67" title="67">        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, </a>
+<a class="sourceLine" id="cb176-68" title="68">        <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 <p>Den första figuren är OK eftersom den redovisar stapeldiagramen utan felaktigheter. Den andra figuren har oestetisk beträffande färgval och har hjälplinjer som löper över staplarna istället för bakom. Figuren som klassas som dålig är korrekt, men det är svårt att urskilja detaljer i den. Den felaktiga figuren visar staplarna men ingen övrigr information som gör figuren möjlig att tolka.</p>
 <p>Notera att distinktionen oestetisk-dålig-felaktig är flytande. Färgvalet kan innebär att faktiskt är dålig eftersom . Att ha olika färger på staplar innebär att tolkningen av innebär att läsaren kan föranledas att tro att det ytterligare information som inte finns. En korrekt figur som är dålig, kanske är så dålig att den misstolkasm vilket innebär att den egentligen är felaktig.</p>
 <div id="typer-av-figurer" class="section level2">
-<h2><span class="header-section-number">9.1</span> Typer av figurer</h2>
+<h2><span class="header-section-number">7.1</span> Typer av figurer</h2>
 <div id="presentation-av-aggregerade-data" class="section level3">
-<h3><span class="header-section-number">9.1.1</span> Presentation av aggregerade data</h3>
+<h3><span class="header-section-number">7.1.1</span> Presentation av aggregerade data</h3>
 <p>Aggregerade data (summor, antal, medelvärden, andelar) presenteras ofta i</p>
 <ul>
 <li>stapeldiagram, där R använder funktionen <strong>barplot()</strong>.</li>
@@ -379,150 +454,165 @@ freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<s
 </ul>
 <p>I princip redovisas grafiskt värden presenteras i en tabell, men en grafisk presentation blir enklare att avläsa. På grund av relationen mellan stapeldiagram och tabeller används i R ett skapat tabellobjekt i stapeldiagramsfunktionen <strong>barplot</strong> för att skapa stapeldiagram.</p>
 <p>Det finns olika typer av stapeldiagram.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;WDI&quot;</span>)
-wdi_dat &lt;-<span class="st"> </span><span class="kw">WDI</span>(<span class="dt">indicator =</span> <span class="kw">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>,  <span class="st">&quot;SP.DYN.IMRT.IN&quot;</span>), 
-               <span class="dt">start =</span> <span class="dv">2018</span>, <span class="dt">end =</span> <span class="dv">2018</span>, <span class="dt">extra =</span> <span class="ot">TRUE</span>) 
-wdieu &lt;-<span class="st"> </span><span class="kw">subset</span>(wdi_dat, 
-country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Denmark&quot;</span>, <span class="st">&quot;Finland&quot;</span>, <span class="st">&quot;Iceland&quot;</span>, <span class="st">&quot;Norway&quot;</span>, 
-            <span class="st">&quot;Sweden&quot;</span>))
-<span class="kw">dotchart</span>(wdieu<span class="op">$</span>SP.POP.TOTL, <span class="dt">labels =</span> wdieu<span class="op">$</span>country, <span class="dt">cex=</span><span class="fl">1.1</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-3-1.png" width="480" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dotchart</span>(<span class="kw">sort</span>(wdieu<span class="op">$</span>SP.POP.TOTL<span class="op">/</span><span class="dv">1000000</span>), 
-         <span class="dt">labels =</span> wdieu<span class="op">$</span>country[<span class="kw">order</span>(wdieu<span class="op">$</span>SP.POP.TOTL)],
-         <span class="dt">xlab =</span> <span class="st">&quot;Population (million)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-3-2.png" width="480" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(t.test)
-
-freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)
-<span class="kw">kable</span>(freqtable_psych, <span class="dt">format =</span><span class="st">&quot;html&quot;</span>)
-Error <span class="cf">in</span> <span class="kw">kable</span>(freqtable_psych, <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>)<span class="op">:</span><span class="st"> </span>could not find <span class="cf">function</span> <span class="st">&quot;kable&quot;</span>
-<span class="kw">barplot</span>(freqtable_psych, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori&quot;</span>, <span class="st">&quot;Antal&quot;</span>))
-Warning <span class="cf">in</span> <span class="kw">plot.window</span>(xlim, ylim, <span class="dt">log =</span> log, ...)<span class="op">:</span><span class="st"> &quot;colnames&quot;</span> is not a
-graphical parameter
-Warning <span class="cf">in</span> <span class="kw">axis</span>(<span class="cf">if</span> (horiz) <span class="dv">2</span> <span class="cf">else</span> <span class="dv">1</span>, <span class="dt">at =</span> at.l, <span class="dt">labels =</span> names.arg, <span class="dt">lty =</span>
-axis.lty, <span class="op">:</span><span class="st"> &quot;colnames&quot;</span> is not a graphical parameter
-Warning <span class="cf">in</span> <span class="kw">title</span>(<span class="dt">main =</span> main, <span class="dt">sub =</span> sub, <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, ...)<span class="op">:</span>
-<span class="st">&quot;colnames&quot;</span> is not a graphical parameter
-Warning <span class="cf">in</span> <span class="kw">axis</span>(<span class="cf">if</span> (horiz) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">2</span>, <span class="dt">cex.axis =</span> cex.axis, ...)<span class="op">:</span><span class="st"> &quot;colnames&quot;</span>
-is not a graphical parameter</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(freqtable_psych, <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dotchart</span>(freqtable_psych)
-Warning <span class="cf">in</span> <span class="kw">dotchart</span>(freqtable_psych)<span class="op">:</span><span class="st"> &#39;x&#39;</span> is neither a vector nor a matrix<span class="op">:</span>
-using <span class="kw">as.numeric</span>(x)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;WDI&quot;</span>)
-wdi_dat &lt;-<span class="st"> </span><span class="kw">WDI</span>(<span class="dt">indicator =</span> <span class="kw">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>,  <span class="st">&quot;SP.DYN.IMRT.IN&quot;</span>), 
-               <span class="dt">start =</span> <span class="dv">2018</span>, <span class="dt">end =</span> <span class="dv">2018</span>, <span class="dt">extra =</span> <span class="ot">TRUE</span>) 
-wdieu &lt;-<span class="st"> </span><span class="kw">subset</span>(wdi_dat, 
-country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgium&quot;</span>, <span class="st">&quot;Bulgaria&quot;</span>, <span class="st">&quot;Czech Republic&quot;</span>, <span class="st">&quot;Denmark&quot;</span>, 
-            <span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;Estonia&quot;</span>, <span class="st">&quot;Ireland&quot;</span>, <span class="st">&quot;Greece&quot;</span>, <span class="st">&quot;Spain&quot;</span>, 
-            <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Croatia&quot;</span>, <span class="st">&quot;Italy&quot;</span>, <span class="st">&quot;Cyprus&quot;</span>, <span class="st">&quot;Latvia&quot;</span>, 
-            <span class="st">&quot;Lithuania&quot;</span>, <span class="st">&quot;Luxembourg&quot;</span>, <span class="st">&quot;Hungary&quot;</span>, <span class="st">&quot;Malta&quot;</span>, 
-            <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;Austria&quot;</span>, <span class="st">&quot;Poland&quot;</span>, <span class="st">&quot;Portugal&quot;</span>, <span class="st">&quot;Romania&quot;</span>, 
-            <span class="st">&quot;Slovenia&quot;</span>, <span class="st">&quot;Slovakia&quot;</span>, <span class="st">&quot;Finland&quot;</span>, <span class="st">&quot;Sweden&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>))
-<span class="kw">dotchart</span>(wdieu<span class="op">$</span>SP.POP.TOTL, <span class="dt">labels =</span> wdieu<span class="op">$</span>country, <span class="dt">cex=</span><span class="fl">1.1</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-5-1.png" width="480" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dotchart</span>(<span class="kw">sort</span>(wdieu<span class="op">$</span>SP.POP.TOTL<span class="op">/</span><span class="dv">1000000</span>), 
-         <span class="dt">labels =</span> wdieu<span class="op">$</span>country[<span class="kw">order</span>(wdieu<span class="op">$</span>SP.POP.TOTL)],
-         <span class="dt">xlab =</span> <span class="st">&quot;Population (million)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-5-2.png" width="480" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">library</span>(<span class="st">&quot;WDI&quot;</span>)</a>
+<a class="sourceLine" id="cb177-2" title="2">wdi_dat &lt;-<span class="st"> </span><span class="kw">WDI</span>(<span class="dt">indicator =</span> <span class="kw">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>,  <span class="st">&quot;SP.DYN.IMRT.IN&quot;</span>), </a>
+<a class="sourceLine" id="cb177-3" title="3">               <span class="dt">start =</span> <span class="dv">2018</span>, <span class="dt">end =</span> <span class="dv">2018</span>, <span class="dt">extra =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb177-4" title="4">wdieu &lt;-<span class="st"> </span><span class="kw">subset</span>(wdi_dat, </a>
+<a class="sourceLine" id="cb177-5" title="5">country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Denmark&quot;</span>, <span class="st">&quot;Finland&quot;</span>, <span class="st">&quot;Iceland&quot;</span>, <span class="st">&quot;Norway&quot;</span>, </a>
+<a class="sourceLine" id="cb177-6" title="6">            <span class="st">&quot;Sweden&quot;</span>))</a>
+<a class="sourceLine" id="cb177-7" title="7"><span class="kw">dotchart</span>(wdieu<span class="op">$</span>SP.POP.TOTL, <span class="dt">labels =</span> wdieu<span class="op">$</span>country, <span class="dt">cex=</span><span class="fl">1.1</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-177-1.png" width="480" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">dotchart</span>(<span class="kw">sort</span>(wdieu<span class="op">$</span>SP.POP.TOTL<span class="op">/</span><span class="dv">1000000</span>), </a>
+<a class="sourceLine" id="cb178-2" title="2">         <span class="dt">labels =</span> wdieu<span class="op">$</span>country[<span class="kw">order</span>(wdieu<span class="op">$</span>SP.POP.TOTL)],</a>
+<a class="sourceLine" id="cb178-3" title="3">         <span class="dt">xlab =</span> <span class="st">&quot;Population (million)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-177-2.png" width="480" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="kw">help</span>(t.test)</a>
+<a class="sourceLine" id="cb179-2" title="2"></a>
+<a class="sourceLine" id="cb179-3" title="3">freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)</a>
+<a class="sourceLine" id="cb179-4" title="4"><span class="kw">kable</span>(freqtable_psych, <span class="dt">format =</span><span class="st">&quot;html&quot;</span>)</a>
+<a class="sourceLine" id="cb179-5" title="5">Error <span class="cf">in</span> <span class="kw">kable</span>(freqtable_psych, <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>)<span class="op">:</span><span class="st"> </span>could not find <span class="cf">function</span> <span class="st">&quot;kable&quot;</span></a>
+<a class="sourceLine" id="cb179-6" title="6"><span class="kw">barplot</span>(freqtable_psych, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori&quot;</span>, <span class="st">&quot;Antal&quot;</span>))</a>
+<a class="sourceLine" id="cb179-7" title="7">Warning <span class="cf">in</span> <span class="kw">plot.window</span>(xlim, ylim, <span class="dt">log =</span> log, ...)<span class="op">:</span><span class="st"> &quot;colnames&quot;</span> is not a</a>
+<a class="sourceLine" id="cb179-8" title="8">graphical parameter</a>
+<a class="sourceLine" id="cb179-9" title="9">Warning <span class="cf">in</span> <span class="kw">axis</span>(<span class="cf">if</span> (horiz) <span class="dv">2</span> <span class="cf">else</span> <span class="dv">1</span>, <span class="dt">at =</span> at.l, <span class="dt">labels =</span> names.arg, <span class="dt">lty =</span></a>
+<a class="sourceLine" id="cb179-10" title="10">axis.lty, <span class="op">:</span><span class="st"> &quot;colnames&quot;</span> is not a graphical parameter</a>
+<a class="sourceLine" id="cb179-11" title="11">Warning <span class="cf">in</span> <span class="kw">title</span>(<span class="dt">main =</span> main, <span class="dt">sub =</span> sub, <span class="dt">xlab =</span> xlab, <span class="dt">ylab =</span> ylab, ...)<span class="op">:</span></a>
+<a class="sourceLine" id="cb179-12" title="12"><span class="st">&quot;colnames&quot;</span> is not a graphical parameter</a>
+<a class="sourceLine" id="cb179-13" title="13">Warning <span class="cf">in</span> <span class="kw">axis</span>(<span class="cf">if</span> (horiz) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">2</span>, <span class="dt">cex.axis =</span> cex.axis, ...)<span class="op">:</span><span class="st"> &quot;colnames&quot;</span> is</a>
+<a class="sourceLine" id="cb179-14" title="14">not a graphical parameter</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">barplot</span>(freqtable_psych, <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-178-2.png" width="672" /></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">dotchart</span>(freqtable_psych)</a>
+<a class="sourceLine" id="cb181-2" title="2">Warning <span class="cf">in</span> <span class="kw">dotchart</span>(freqtable_psych)<span class="op">:</span><span class="st"> &#39;x&#39;</span> is neither a vector nor a matrix<span class="op">:</span></a>
+<a class="sourceLine" id="cb181-3" title="3">using <span class="kw">as.numeric</span>(x)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-178-3.png" width="672" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">library</span>(<span class="st">&quot;WDI&quot;</span>)</a>
+<a class="sourceLine" id="cb182-2" title="2">wdi_dat &lt;-<span class="st"> </span><span class="kw">WDI</span>(<span class="dt">indicator =</span> <span class="kw">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>,  <span class="st">&quot;SP.DYN.IMRT.IN&quot;</span>), </a>
+<a class="sourceLine" id="cb182-3" title="3">               <span class="dt">start =</span> <span class="dv">2018</span>, <span class="dt">end =</span> <span class="dv">2018</span>, <span class="dt">extra =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb182-4" title="4">wdieu &lt;-<span class="st"> </span><span class="kw">subset</span>(wdi_dat, </a>
+<a class="sourceLine" id="cb182-5" title="5">country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Belgium&quot;</span>, <span class="st">&quot;Bulgaria&quot;</span>, <span class="st">&quot;Czech Republic&quot;</span>, <span class="st">&quot;Denmark&quot;</span>, </a>
+<a class="sourceLine" id="cb182-6" title="6">            <span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;Estonia&quot;</span>, <span class="st">&quot;Ireland&quot;</span>, <span class="st">&quot;Greece&quot;</span>, <span class="st">&quot;Spain&quot;</span>, </a>
+<a class="sourceLine" id="cb182-7" title="7">            <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Croatia&quot;</span>, <span class="st">&quot;Italy&quot;</span>, <span class="st">&quot;Cyprus&quot;</span>, <span class="st">&quot;Latvia&quot;</span>, </a>
+<a class="sourceLine" id="cb182-8" title="8">            <span class="st">&quot;Lithuania&quot;</span>, <span class="st">&quot;Luxembourg&quot;</span>, <span class="st">&quot;Hungary&quot;</span>, <span class="st">&quot;Malta&quot;</span>, </a>
+<a class="sourceLine" id="cb182-9" title="9">            <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;Austria&quot;</span>, <span class="st">&quot;Poland&quot;</span>, <span class="st">&quot;Portugal&quot;</span>, <span class="st">&quot;Romania&quot;</span>, </a>
+<a class="sourceLine" id="cb182-10" title="10">            <span class="st">&quot;Slovenia&quot;</span>, <span class="st">&quot;Slovakia&quot;</span>, <span class="st">&quot;Finland&quot;</span>, <span class="st">&quot;Sweden&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>))</a>
+<a class="sourceLine" id="cb182-11" title="11"><span class="kw">dotchart</span>(wdieu<span class="op">$</span>SP.POP.TOTL, <span class="dt">labels =</span> wdieu<span class="op">$</span>country, <span class="dt">cex=</span><span class="fl">1.1</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-179-1.png" width="480" /></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">dotchart</span>(<span class="kw">sort</span>(wdieu<span class="op">$</span>SP.POP.TOTL<span class="op">/</span><span class="dv">1000000</span>), </a>
+<a class="sourceLine" id="cb183-2" title="2">         <span class="dt">labels =</span> wdieu<span class="op">$</span>country[<span class="kw">order</span>(wdieu<span class="op">$</span>SP.POP.TOTL)],</a>
+<a class="sourceLine" id="cb183-3" title="3">         <span class="dt">xlab =</span> <span class="st">&quot;Population (million)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-179-2.png" width="480" /></p>
 <p>Det finns lite riktlinjer</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)
-freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">factor</span>(df<span class="op">$</span>testa_cat), df<span class="op">$</span>year_cat)
-<span class="kw">barplot</span>(freqtable_psych_year, <span class="dt">beside=</span><span class="ot">TRUE</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> ) 
-<span class="kw">barplot</span>(proptable_psych_year, <span class="dt">beside=</span><span class="ot">TRUE</span>, <span class="dt">ylab=</span><span class="st">&quot;Procent (%)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1">proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)</a>
+<a class="sourceLine" id="cb184-2" title="2">freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">factor</span>(df<span class="op">$</span>testa_cat), df<span class="op">$</span>year_cat)</a>
+<a class="sourceLine" id="cb184-3" title="3"><span class="kw">barplot</span>(freqtable_psych_year, <span class="dt">beside=</span><span class="ot">TRUE</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> ) </a>
+<a class="sourceLine" id="cb185-2" title="2"><span class="kw">barplot</span>(proptable_psych_year, <span class="dt">beside=</span><span class="ot">TRUE</span>, <span class="dt">ylab=</span><span class="st">&quot;Procent (%)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-180-2.png" width="672" /></p>
 <p>Some key rules for table layout are the following:</p>
-<p>Do not use vertical lines. Do not use horizontal lines between data rows. (Horizontal lines as separator between the title row and the first data row or as frame for the entire table are fine.) Text columns should be left aligned. Number columns should be right aligned and should use the same number of decimal digits throughout. Columns containing single characters are centered. The header fields are aligned with their data, i.e., the heading for a text column will be left aligned and the heading for a number column will be right aligned.</p>
+<p>Do not use vertical lines.
+Do not use horizontal lines between data rows. (Horizontal lines as separator between the title row and the first data row or as frame for the entire table are fine.)
+Text columns should be left aligned.
+Number columns should be right aligned and should use the same number of decimal digits throughout.
+Columns containing single characters are centered.
+The header fields are aligned with their data, i.e., the heading for a text column will be left aligned and the heading for a number column will be right aligned.</p>
 </div>
 </div>
 <div id="lådagram" class="section level2">
-<h2><span class="header-section-number">9.2</span> Lådagram</h2>
-<p>Lådagram används främst när vi ska jämföra fördelningar uppdelat på kategorier. Att använda lådagram för en enda variabel är inte optimalt, utan histogram ger då mer information.</p>
+<h2><span class="header-section-number">7.2</span> Lådagram</h2>
+<p>Lådagram används främst när vi ska jämföra fördelningar uppdelat på kategorier.
+Att använda lådagram för en enda variabel är inte optimalt, utan histogram ger då mer information.</p>
 <p>Vi vill studera testresultat uppdelat på psykologisk bedämning</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(df<span class="op">$</span>gripstrength<span class="op">~</span>df<span class="op">$</span>psych, <span class="dt">xlab=</span><span class="st">&quot;Psykologisk bedömning (1-9)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-7-1.png" width="672" /> ## Histogram Histogram används för att visualisera en kontinuerlig variabel. Funktionen <strong>hist()</strong> skapar ett histogram. Nackdelen med histogram är att den är känslig för antalet klasser. Testa därför olika antal klasser.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
-<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">main=</span><span class="st">&quot;7 klasser&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">14</span>, <span class="dt">main=</span><span class="st">&quot;14 klasser&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">28</span>, <span class="dt">main=</span><span class="st">&quot;28 klasser&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">56</span>, <span class="dt">main=</span><span class="st">&quot;56 klasser&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">boxplot</span>(df<span class="op">$</span>gripstrength<span class="op">~</span>df<span class="op">$</span>psych, <span class="dt">xlab=</span><span class="st">&quot;Psykologisk bedömning (1-9)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-181-1.png" width="672" />
+## Histogram
+Histogram används för att visualisera en kontinuerlig variabel. Funktionen <strong>hist()</strong> skapar ett histogram. Nackdelen med histogram är att den är känslig för antalet klasser. Testa därför olika antal klasser.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb187-2" title="2"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">main=</span><span class="st">&quot;7 klasser&quot;</span>)</a>
+<a class="sourceLine" id="cb187-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">14</span>, <span class="dt">main=</span><span class="st">&quot;14 klasser&quot;</span>)</a>
+<a class="sourceLine" id="cb187-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">28</span>, <span class="dt">main=</span><span class="st">&quot;28 klasser&quot;</span>)</a>
+<a class="sourceLine" id="cb187-5" title="5"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">56</span>, <span class="dt">main=</span><span class="st">&quot;56 klasser&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 </div>
 <div id="spridningsdiagram" class="section level2">
-<h2><span class="header-section-number">9.3</span> Spridningsdiagram</h2>
+<h2><span class="header-section-number">7.3</span> Spridningsdiagram</h2>
 <p>Den vanligaste funktionen i R för att skapa figurer är <strong>plot</strong>. Det finns många argument och i de närmaste obegränsade möjligher att anpassa figurerna</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(df<span class="op">$</span>legstrength, df<span class="op">$</span>armstrength, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">plot</span>(df<span class="op">$</span>legstrength, df<span class="op">$</span>armstrength, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
 </div>
 <div id="några-frekvent-förekommande-diagram." class="section level2">
-<h2><span class="header-section-number">9.4</span> Några frekvent förekommande diagram.</h2>
-<p>I surveydata stöter vi ofta på uppdelade stapeldiagram. Dessa figurer har en inneboende problem eftersom kategorierna storlek kan vara svåra att relatera till varandra. Samtidigt är de en visualisering som gör det enkelt att jämföra fördelningar för många variabler av typen attitydfrågor. För att illustrera kategoriserar vi testresultat på begåvningstesterna i INSARK enligt nedanstående schema.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
-
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)
-
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)
-
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
-df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
-df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
-df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)
-
-
-Likert_table &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">cbind</span>( <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testd_cat) ), 
-                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testc_cat) ),
-                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testb_cat) ), 
-                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testa_cat) ) )
-<span class="kw">colnames</span>(Likert_table) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Testa D&quot;</span>, <span class="st">&quot;Test C&quot;</span>, <span class="st">&quot;Test B&quot;</span>, <span class="st">&quot;Test A&quot;</span>)
-
-bar1 &lt;-<span class="st"> </span><span class="kw">barplot</span>(Likert_table,      <span class="dt">horiz =</span> <span class="ot">TRUE</span>, 
-         <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>),
-        <span class="dt">xlab=</span><span class="st">&quot;Procent (%)&quot;</span>, <span class="dt">las=</span><span class="dv">1</span>)
-<span class="kw">abline</span>(<span class="dt">v=</span><span class="dv">50</span>)
-<span class="kw">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>), 
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori 1&quot;</span>, <span class="st">&quot;Kategori 2&quot;</span>, <span class="st">&quot;Kategori 3&quot;</span>, <span class="st">&quot;Kategori 4&quot;</span>), 
-       <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">inset =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="fl">0.1</span>), <span class="dt">xpd =</span> <span class="ot">TRUE</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">barplot</span>(Likert_table,      <span class="dt">horiz =</span> <span class="ot">FALSE</span>, <span class="dt">beside=</span><span class="ot">TRUE</span>,
-        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>),
-        <span class="dt">xlab=</span><span class="st">&quot;Procent (%)&quot;</span>, <span class="dt">las=</span><span class="dv">1</span>)
-<span class="kw">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>), 
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori 1&quot;</span>, <span class="st">&quot;Kategori 2&quot;</span>, <span class="st">&quot;Kategori 3&quot;</span>, <span class="st">&quot;Kategori 4&quot;</span>), 
-       <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">inset =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="fl">0.1</span>), <span class="dt">xpd =</span> <span class="ot">TRUE</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
-<p>Ett alternativ är att använda paketet <strong>likert</strong>. Notera att som input hanterar den bara faktorer! Dessutom inkluderas inte variabler i form av en matris. Funktionen har mycket</p>
-<p><code>install.packages(&quot;likert&quot;)</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;likert&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span>Loading required package<span class="op">:</span><span class="st"> </span>ggplot2
-<span class="op">&gt;</span><span class="st"> </span>Loading required package<span class="op">:</span><span class="st"> </span>xtable
-likertdata &lt;-<span class="st"> </span><span class="kw">likert</span>(<span class="kw">data.frame</span>(df<span class="op">$</span>testa_cat, df<span class="op">$</span>testb_cat, df<span class="op">$</span>testc_cat, df<span class="op">$</span>testd_cat))
-<span class="kw">plot</span>(likertdata)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?likert</code></pre></div>
+<h2><span class="header-section-number">7.4</span> Några frekvent förekommande diagram.</h2>
+<p>I surveydata stöter vi ofta på uppdelade stapeldiagram. Dessa figurer har en inneboende problem eftersom kategorierna storlek kan vara svåra att relatera till varandra. Samtidigt är de en visualisering som gör det enkelt att jämföra fördelningar för många variabler av typen attitydfrågor.
+För att illustrera kategoriserar vi testresultat på begåvningstesterna i INSARK enligt nedanstående schema.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb189-2" title="2">df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb189-3" title="3">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb189-4" title="4">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb189-5" title="5">df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb189-6" title="6">df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
+<a class="sourceLine" id="cb189-7" title="7"></a>
+<a class="sourceLine" id="cb189-8" title="8">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb189-9" title="9">df<span class="op">$</span>testb_cat[df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb189-10" title="10">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb189-11" title="11">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testb <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb189-12" title="12">df<span class="op">$</span>testb_cat[(df<span class="op">$</span>testb <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb189-13" title="13">df<span class="op">$</span>testb_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testb_cat)</a>
+<a class="sourceLine" id="cb189-14" title="14"></a>
+<a class="sourceLine" id="cb189-15" title="15">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb189-16" title="16">df<span class="op">$</span>testc_cat[df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb189-17" title="17">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb189-18" title="18">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testc <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb189-19" title="19">df<span class="op">$</span>testc_cat[(df<span class="op">$</span>testc <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb189-20" title="20">df<span class="op">$</span>testc_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testc_cat)</a>
+<a class="sourceLine" id="cb189-21" title="21"></a>
+<a class="sourceLine" id="cb189-22" title="22">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb189-23" title="23">df<span class="op">$</span>testd_cat[df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb189-24" title="24">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb189-25" title="25">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testd <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
+<a class="sourceLine" id="cb189-26" title="26">df<span class="op">$</span>testd_cat[(df<span class="op">$</span>testd <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
+<a class="sourceLine" id="cb189-27" title="27">df<span class="op">$</span>testd_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testd_cat)</a>
+<a class="sourceLine" id="cb189-28" title="28"></a>
+<a class="sourceLine" id="cb189-29" title="29"></a>
+<a class="sourceLine" id="cb189-30" title="30">Likert_table &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">cbind</span>( <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testd_cat) ), </a>
+<a class="sourceLine" id="cb189-31" title="31">                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testc_cat) ),</a>
+<a class="sourceLine" id="cb189-32" title="32">                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testb_cat) ), </a>
+<a class="sourceLine" id="cb189-33" title="33">                       <span class="kw">prop.table</span>( <span class="kw">table</span>( df<span class="op">$</span>testa_cat) ) )</a>
+<a class="sourceLine" id="cb189-34" title="34"><span class="kw">colnames</span>(Likert_table) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Testa D&quot;</span>, <span class="st">&quot;Test C&quot;</span>, <span class="st">&quot;Test B&quot;</span>, <span class="st">&quot;Test A&quot;</span>)</a>
+<a class="sourceLine" id="cb189-35" title="35"></a>
+<a class="sourceLine" id="cb189-36" title="36">bar1 &lt;-<span class="st"> </span><span class="kw">barplot</span>(Likert_table,      <span class="dt">horiz =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb189-37" title="37">         <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>),</a>
+<a class="sourceLine" id="cb189-38" title="38">        <span class="dt">xlab=</span><span class="st">&quot;Procent (%)&quot;</span>, <span class="dt">las=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb189-39" title="39"><span class="kw">abline</span>(<span class="dt">v=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb189-40" title="40"><span class="kw">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>), </a>
+<a class="sourceLine" id="cb189-41" title="41">       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori 1&quot;</span>, <span class="st">&quot;Kategori 2&quot;</span>, <span class="st">&quot;Kategori 3&quot;</span>, <span class="st">&quot;Kategori 4&quot;</span>), </a>
+<a class="sourceLine" id="cb189-42" title="42">       <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">inset =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="fl">0.1</span>), <span class="dt">xpd =</span> <span class="ot">TRUE</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"></a>
+<a class="sourceLine" id="cb190-2" title="2"></a>
+<a class="sourceLine" id="cb190-3" title="3"><span class="kw">barplot</span>(Likert_table,      <span class="dt">horiz =</span> <span class="ot">FALSE</span>, <span class="dt">beside=</span><span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb190-4" title="4">        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>),</a>
+<a class="sourceLine" id="cb190-5" title="5">        <span class="dt">xlab=</span><span class="st">&quot;Procent (%)&quot;</span>, <span class="dt">las=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb190-6" title="6"><span class="kw">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;brown3&quot;</span>, <span class="st">&quot;brown1&quot;</span>, <span class="st">&quot;cadetblue1&quot;</span>, <span class="st">&quot;cadetblue4&quot;</span>), </a>
+<a class="sourceLine" id="cb190-7" title="7">       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Kategori 1&quot;</span>, <span class="st">&quot;Kategori 2&quot;</span>, <span class="st">&quot;Kategori 3&quot;</span>, <span class="st">&quot;Kategori 4&quot;</span>), </a>
+<a class="sourceLine" id="cb190-8" title="8">       <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">inset =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="fl">0.1</span>), <span class="dt">xpd =</span> <span class="ot">TRUE</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-184-2.png" width="672" /></p>
+<p>Ett alternativ är att använda paketet <strong>likert</strong>. Notera att som input hanterar den bara faktorer!
+Dessutom inkluderas inte variabler i form av en matris. Funktionen har mycket</p>
+<p><code>install.packages("likert")</code></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">library</span>(<span class="st">&quot;likert&quot;</span>)</a>
+<a class="sourceLine" id="cb191-2" title="2"><span class="op">&gt;</span><span class="st"> </span>Loading required package<span class="op">:</span><span class="st"> </span>ggplot2</a>
+<a class="sourceLine" id="cb191-3" title="3"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb191-4" title="4"><span class="er">&gt;</span><span class="st"> </span>Attaching package<span class="op">:</span><span class="st"> &#39;ggplot2&#39;</span></a>
+<a class="sourceLine" id="cb191-5" title="5"><span class="op">&gt;</span><span class="st"> </span>The following objects are masked from <span class="st">&#39;package:psych&#39;</span><span class="op">:</span></a>
+<a class="sourceLine" id="cb191-6" title="6"><span class="er">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb191-7" title="7"><span class="er">&gt;</span><span class="st">     </span><span class="op">%+%</span>, alpha</a>
+<a class="sourceLine" id="cb191-8" title="8"><span class="op">&gt;</span><span class="st"> </span>Loading required package<span class="op">:</span><span class="st"> </span>xtable</a>
+<a class="sourceLine" id="cb191-9" title="9">likertdata &lt;-<span class="st"> </span><span class="kw">likert</span>(<span class="kw">data.frame</span>(df<span class="op">$</span>testa_cat, df<span class="op">$</span>testb_cat, df<span class="op">$</span>testc_cat, df<span class="op">$</span>testd_cat))</a>
+<a class="sourceLine" id="cb191-10" title="10"><span class="kw">plot</span>(likertdata)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">?likert</a></code></pre></div>
 
 </div>
 </div>
@@ -531,8 +621,8 @@ likertdata &lt;-<span class="st"> </span><span class="kw">likert</span>(<span cl
           </div>
         </div>
       </div>
-<a href="tabeller.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regressionsanalys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="kategorivariabler.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -551,12 +641,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -568,6 +657,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -584,7 +677,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
