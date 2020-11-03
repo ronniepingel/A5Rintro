@@ -1,6 +1,6 @@
 --- 
 title: "Tillämpad statistik med R"
-author: "Ronnie Pingel, Valentin Zulj"
+author: "Ronnie Pingel och Valentin Zulj"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 documentclass: book
@@ -13,7 +13,7 @@ link-citations: yes
 
 # Introduktion
 
-Detta material är kurslitteratur till tillämpad statistik. Observera att materialet kommer att utökas under kursens gång.
+Detta material utgör kurslitteratur till kursen Tillämpad statistik (A5). Observera att materialet kommer att utökas under kursens gång.
 
 
 ```{r include=FALSE}
