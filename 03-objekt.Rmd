@@ -1171,7 +1171,15 @@ c) Beräkna variationsbredden.
 d) Beräkna det geometriska medelvärdet för de positiva värden $4, 5, 6, 8$.
 e) Beräkna det geometriska medelvärdet för alla värden $4, -2, 5, 6, 8$.
 
-### Svar 3.1 {-}
+<button title="q301" type="button"
+onclick="if(document.getElementById('q301') .style.display=='none')
+              {document.getElementById('q301') .style.display=''}
+            else{document.getElementById('q301') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q301" style="display:none">
+<div class="alert alert-info">
 a)
 
 ```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
@@ -1227,14 +1235,25 @@ geometric.mean(x)
 
 * Svar: Eftersom en observation är negativ   blir `r (4  * (-2) * 5 * 6 * 8)^(1/5)`, vilket betyder ''Not a Number''. Det går alltså inte att beräkna. 
 
+</div>
+</div>
+</br>
 
 
 ### Övning 3.2 {-}
 Ett slumpmässigt urval ger följande observationer $0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1$,där $1=Arbetslös$ och $0=Förvärvsarbetande$.
 Beräkna andelen arbetslösa i stickprovet.
 
+<button title="q302" type="button"
+onclick="if(document.getElementById('q302') .style.display=='none')
+              {document.getElementById('q302') .style.display=''}
+            else{document.getElementById('q302') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q302" style="display:none">
+<div class="alert alert-info">
 
-### Svar 3.2 {-}
 Andelen arbetslösa beräkna i R med
 ```{r} 
 # Töm minnet inför denna Övning 3.2 
@@ -1245,7 +1264,9 @@ mean(x)
 
 * Svar: Andelen arbetslösa i stickprovet är `r round(mean(x), 2)`.
 
-
+</div>
+</div>
+</br>
 
 ### Övning 3.3 {-}
 Kosumentpriset 2006-2011  är 
@@ -1258,7 +1279,16 @@ knitr::kable(
 
 Med hur många procent har prisnivån förändrats från 2007 till 2010?
 
-### Svar 3.3 {-}
+<button title="q303" type="button"
+onclick="if(document.getElementById('q303') .style.display=='none')
+              {document.getElementById('q303') .style.display=''}
+            else{document.getElementById('q303') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q303" style="display:none">
+<div class="alert alert-info">
+
 Beräkning i R ger
 ```{r} 
 # Töm minnet inför denna Övning 3.2 
@@ -1270,13 +1300,25 @@ percent_change <- 100*(kpi[year == 2010]/kpi[year == 2007])-100
 
 * Svar: Prisnivån har ökat med `r round(percent_change,3)`%.
 
+</div>
+</div>
+</br>
 
 
 ### Övning 3.4  {-}
 Låt observationerna $4,-2,5,6,8$ vara obundet slumpmässigt urval från en normalfördelad population. Genomför en hypotesprövning på 5\% signifikansnivå för att testa medelvärdet i population är skild från 1.
 
 
-### Svar 3.4 {-}
+<button title="q304" type="button"
+onclick="if(document.getElementById('q304') .style.display=='none')
+              {document.getElementById('q304') .style.display=''}
+            else{document.getElementById('q304') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q304" style="display:none">
+<div class="alert alert-info">
+
 1. Vi observerar $x=\{4,-2,5,6,8\}.$
 2. Hypoteser: $H_0:\mu=1$ vs $H_1:\mu \neq 1$ 
 3. Antaganden: Variabeln $x$ är normalfördelad i populationen. Populationsvariansen $\sigma^2$ är okänd i populationen. Vi har ett litet stickprov, $n=5$.
@@ -1311,6 +1353,9 @@ t.test(x, mu = 1)$p.value
 
 * Svar: Efterom $p=0.13$ kan vi  på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta **inte** innebär att vi visar att medelvärdet är 1.
 
+</div>
+</div>
+</br>
 
 ### Övning 3.5  {-}
 Du observerar följande vektorer $x = \{4,7,2,4,6,NA,89\}$ och $y=\{7,3, 2, 5,6, 5 , 7\}$ och $z=\{Alfa, bravo, Charlie, delta, Echo, Foxtrot, Golf\}$
@@ -1320,7 +1365,16 @@ b) Använd indexering för att ändra NA i $x$ till 999.
 c) Använd indexering för att korrigera så att bravo och delta inleds med versaler.
 d) Exkludera Echo och Foxtrot från $z$.
 
-### Svar 3.5  {-}
+<button title="q305" type="button"
+onclick="if(document.getElementById('q305') .style.display=='none')
+              {document.getElementById('q305') .style.display=''}
+            else{document.getElementById('q305') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q305" style="display:none">
+<div class="alert alert-info">
+
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.5 
 rm(list = ls())
@@ -1342,7 +1396,9 @@ zsub <- z[-c(5,6)]
 zsub
 ```
 
-
+</div>
+</div>
+</br>
 
 
 
@@ -1366,7 +1422,16 @@ c) Beräkna residualen för $x=7$
 d) Beräkna residualspridningen.
 
 
-### Svar 3.6 {-}
+<button title="q306" type="button"
+onclick="if(document.getElementById('q306') .style.display=='none')
+              {document.getElementById('q306') .style.display=''}
+            else{document.getElementById('q306') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q306" style="display:none">
+<div class="alert alert-info">
+
 a) Riktningskoefficienten ges av
 $$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
 och interceptet ges av
@@ -1421,7 +1486,9 @@ residual_spridning
   
 (Notera att $\sum_{i=1}^n \varepsilon_i^2$ kallas för *residualkvadratsumman*.)
 
-
+</div>
+</div>
+</br>
 
 
 ### Övning 3.7  {-}
@@ -1436,7 +1503,15 @@ df <- data.frame(income, education)
 
 Skapa en ny variabel som heter high_edu som tar värdet 1 om education är "High" och 0 annars.
 
-### Svar 3.7  {-}
+<button title="q307" type="button"
+onclick="if(document.getElementById('q307') .style.display=='none')
+              {document.getElementById('q307') .style.display=''}
+            else{document.getElementById('q307') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q307" style="display:none">
+<div class="alert alert-info">
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.6
@@ -1451,7 +1526,9 @@ df$high_edu[df$education == "Medium"] <- 0
 df
 
 ```
-
+</div>
+</div>
+</br>
 
 ### Övning 3.8  {-}
 Ett oljebolag är intresserat av att för ett äldre bostadsområde med $2\,000$ hus skatta andelen hus utan oljeeldning. Sakkunskapen säger att det sanna antalet hus utan oljeeldning är mellan 300 och 800 stycken. Precisionskravet är formulerat så att ett 95\% konfidensintervall för andelen hus utan oljeeldning inte får
@@ -1459,7 +1536,15 @@ bli längre än 0.05 procentenheter.
 
 a) Beräkna urvalsstorleken vid OSU om dragningen sker med återläggning.
 
-### Svar 3.8  {-}
+<button title="q308" type="button"
+onclick="if(document.getElementById('q308') .style.display=='none')
+              {document.getElementById('q308') .style.display=''}
+            else{document.getElementById('q308') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q308" style="display:none">
+<div class="alert alert-info">
 
 * Mål: Beräkna den nödvändiga stickprovsstorleken $n$ om längden för ett 95\% konfidensintervall för andelen i populationen får vara maximalt 0.05.
 
@@ -1497,6 +1582,9 @@ min( n[KIlength < 0.05] )
 
 * Svar: För att uppnå precisionskravet behövs ett stickprov med minst 1476 hus. Glöm inte att kontrollera CGS: $np(1-p)=1476\cdot 0.4(1-0.4)=354.24 > 5$ så antagandet är uppfyllt. Det går även att lösa denna uppgift algebraiskt, genom att lösa ut $n i formeln ovan.
 
+</div>
+</div>
+</br>
 
 ### Övning 3.9  {-}
 En rikstäckande butikskedja säljer bland annat kompletta datorpaket. För ett visst paket tillåter man butikscheferna att själva sätta priset. För att centralt i företaget få en uppfattning om hur efterfrågan påverkas av priset gör man ett slumpmässigt urval om åtta butiker och inhämtar uppgifter om pris och försäljning under den närmast föregående månaden:
@@ -1508,7 +1596,16 @@ antal <- c(41, 38, 35, 40, 44, 38, 45, 42)
 
 Beräkna korrelationskoefficienten. 
 
-### Svar 3.9  {-}
+<button title="q309" type="button"
+onclick="if(document.getElementById('q309') .style.display=='none')
+              {document.getElementById('q309') .style.display=''}
+            else{document.getElementById('q309') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q309" style="display:none">
+<div class="alert alert-info">
+
 Korrelationskoefficentens ges av
 
 $$r=\dfrac{\sum_{i=1}^n(x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_i - \bar{x})^2 \sum_{i=1}^n(y_i - \bar{y})^2}}.$$
@@ -1529,6 +1626,9 @@ r
 ```
 
 * Svar: Pearsons produktmomentkorrelationskoefficient är $-0.94$, vilket tyder på ett mkt starkt negativt samband mellan pris och antal.
+</div>
+</div>
+</br>
 
 
 ### Övning 3.10  {-}
@@ -1541,7 +1641,15 @@ some_letters <- c("A", "B", "C", "B", "D", "A", "D", "A")
 Använd R för att räkna hur många B det finns i vektorn.
  
 
-### Svar 3.10  {-}
+<button title="q310" type="button"
+onclick="if(document.getElementById('q310') .style.display=='none')
+              {document.getElementById('q310') .style.display=''}
+            else{document.getElementById('q310') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q310" style="display:none">
+<div class="alert alert-info">
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.8
@@ -1549,6 +1657,11 @@ rm(list = ls())
 some_letters <- c("A", "B", "C", "B", "D", "A", "D", "A")
 length( some_letters[some_letters == "B"] )
 ```
+
+</div>
+</div>
+</br>
+
 
 ### Övning 3.11  {-}
 Betrakta nedanstående vektorer:
@@ -1561,7 +1674,15 @@ some_numbers_and_letters <- c("2", "4", "-1", "3", "3", "A", "D")
 Använd R för att summera alla värdena i respektive vektor. Tips: Använd funktionen *as.numeric()*.
  
 
-### Svar 3.11  {-}
+<button title="q311" type="button"
+   onclick="if(document.getElementById('q311') .style.display=='none')
+              {document.getElementById('q311') .style.display=''}
+            else{document.getElementById('q311') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q311" style="display:none">
+<div class="alert alert-info">
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.10
@@ -1577,6 +1698,9 @@ some_numerics_2 <- as.numeric(some_numbers_and_letters)
 sum(some_numerics_2, na.rm = TRUE)
 ```
 
+</div>
+</div>
+</br>
 
 
 ### Övning 3.12  {-}
@@ -1595,7 +1719,15 @@ d) Skapa variabeln $v = v_1 + v_2 + v_3$ som är en summa av de binära variable
 e) Skapa en frekvenstabell för $v$.
 
 
-### Svar 3.12  {-}
+<button title="q312" type="button"
+   onclick="if(document.getElementById('q312') .style.display=='none')
+              {document.getElementById('q312') .style.display=''}
+            else{document.getElementById('q312') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q312" style="display:none">
+<div class="alert alert-info">
 
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
 # Töm minnet inför uppgift 3.10
@@ -1637,8 +1769,304 @@ frequency.table <- cbind(values, frequencies)
 frequency.table 
 # Det finns i R också en inbyggd funktion table(), som vi ska använda oss av senare på kursen.
 ```
+</div>
+</div>
+
+</br>
+
+### Övning 3.13 {-}
+
+Denna övning syftar till att förtydliga skillnaden mellan ett par summor som används ofta i statistiken, dessa är $\sum_{i = 1}^{n}x_{i}^{2}$ och $\left(\sum_{i = 1}^{n} x_{i}\right)^{2}$.
+
+Företäll dig att du har dragit ett stickprov av något slag, och att du samlat informationen i ditt stickprov i vektorn
+```{r, eval = FALSE}
+x <- c(2, 4, 5, 3, 8, 4)
+```
+
+Föreställ dig även att du vill beräkna standardavvikelsen i vektorn, men att du inte känner till funktionen `sd()`. Därför behöver du beräkna de båda summorna som presenteras ovan. Din uppgift är nu att
+
+a) Beräkna de båda summorna manuellt i `R`, utan att använda funktionen `sum()`
+
+<button title="q313a" type="button"
+   onclick="if(document.getElementById('q313a') .style.display=='none')
+              {document.getElementById('q313a') .style.display=''}
+            else{document.getElementById('q313a') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q313a" style="display:none">
+<div class="alert alert-info">
+Börja med att rensa minnet och mata in vektorn i `R`
+```{r}
+rm(list = ls()) # Rensar minnet
+
+x <- c(2, 4, 5, 3, 8, 4) # Matar in vektor
+```
+
+I beräkningen av $\sum_{i = 1}^{n}x_{i}^{2}$ är det viktigt att komma ihåg att kvadreringen sker först, och summeringen sedan. Summan räknas alltså ut som
+```{r}
+# Kvadrera elementen först, summera sen
+x[1]^(2) + x[2]^(2) + x[3]^(2) + x[4]^(2) + x[5]^(2) + x[6]^(2)
+```
+
+I beräkningen av $\left(\sum_{i = 1}^{n} x_{i}\right)^{2}$ sitter summan inom parenteser, och därför sker summering här innan kvadrering. Summan beräknas som 
+```{r}
+# Summera elementen först, kvadrera sen
+(x[1] + x[2] + x[3] + x[4] + x[5] + x[6])^(2)
+```
+</div>
+</div>
+</br>
+
+b) Förenkla nu beräkningarna i **a** genom att använda `sum()` och räkna på vektorerna i sin helhet
+
+<button title="q313b" type="button"
+   onclick="if(document.getElementById('q313b') .style.display=='none')
+              {document.getElementById('q313b') .style.display=''}
+            else{document.getElementById('q313b') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q313b" style="display:none">
+<div class="alert alert-info">
+
+Kom ihåg att $\sum_{i = 1}^{n}x_{i}^{2}$ kräver kvadrering innan summering. Börja därför med att kvadrera alla element i `x`. Resultatet blir
+```{r}
+x^(2) # Ser att elementen kvadreras var för sig
+```
+
+För att slutföra beräkningen av den första summan återstår bara att stoppa in ovanstående uttryck i summeringsfunktionen
+```{r}
+sum(x^(2)) # Summerar över kvadrerade x
+```
+Som synes blir resultatet samma som i **a**, men koden är mer kompakt och lättare att skriva
 
 
+För att beräkna den andra summan summeras värdena först, och sedan kvadreras hela summan. Detta innebär att kvadraten i detta fall måste sättas utanför summeringsfunktionen, precis som i koden här nedan
 
+```{r}
+x             # Skriver ut x
+sum(x)        # Summerar över alla x
+(sum(x))^(2)  # Summerar alla x och kvadrerar summan
+```
+
+Beräkningen ger samma resultat som i **a**, men koden är återigen mer kompakt och lättare att skriva
+
+</div>
+</div>
+</br>
+
+### Övning 3.14 {-}
+
+Denna uppgift rör beräkningen av en stickprovsvarians, och syftar till att tydliggöra att likheten 
+
+$$
+\frac{\sum_{i = 1}^{n}(x_{i} - \bar{x})^{2}}{n-1} = \frac{\sum_{i = 1}^{n}x_{i}^{2} - \frac{\left(\sum_{i = 1}^{n} x_{i}\right)^{2}}{n}}{n-1}
+$$
+faktiskt håller. Uttrycket till vänster kan, genom några delsteg, skrivas om och bli uttrycket som står till höger om likhetstecknet. Din uppgift är nu att beräkna värdet på varje del i utvecklingen, och på så sätt se att uttrycken är lika.
+
+Betrakta samma stickprov som i uppgift 3.13
+
+```{r, eval = FALSE}
+x <- c(2, 4, 5, 3, 8, 4)
+```
+
+och utför följande beräkningar:
+
+a) Beräkna stickprovsmedelvärdet för `x`, och även antal element som finns i vektorn
+
+<button title="q314a" type="button"
+   onclick="if(document.getElementById('q314a') .style.display=='none')
+              {document.getElementById('q314a') .style.display=''}
+            else{document.getElementById('q314a') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314a" style="display:none">
+<div class="alert alert-info">
+
+Börja med att rensa minnet och mata in vektorn i `R`
+```{r}
+rm(list = ls()) # Rensar minnet
+
+x <- c(2, 4, 5, 3, 8, 4) # Matar in vektor
+```
+
+Medelvärdet beräknas nu som
+```{r}
+x_streck <- mean(x) 
+x_streck
+```
+och antalet element som
+```{r}
+n <- length(x)
+n
+```
+</div>
+</div>
+</br>
+
+b) Beräkna värdet på $\frac{1}{n - 1} \sum_{i = 1}^{n} (x_{i} - \bar{x})^{2}$
+
+<button title="q314b" type="button"
+   onclick="if(document.getElementById('q314b') .style.display=='none')
+              {document.getElementById('q314b') .style.display=''}
+            else{document.getElementById('q314b') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314b" style="display:none">
+<div class="alert alert-info">
+
+Använd $n$ och $\bar{x}$ från **a**, och kom ihåg att kvadrering sker innan summan beräknas
+```{r}
+(1/(n-1)) * sum((x - x_streck)^(2))
+```
+
+</div>
+</div>
+</br>
+
+c) Beräkna värdet på $\frac{1}{n - 1} \sum_{i = 1}^{n} (x_{i} - \bar{x})(x_{i} - \bar{x})$
+
+<button title="q314c" type="button"
+   onclick="if(document.getElementById('q314c') .style.display=='none')
+              {document.getElementById('q314c') .style.display=''}
+            else{document.getElementById('q314c') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314c" style="display:none">
+<div class="alert alert-info">
+
+Ta bort kvadraten och multiplicera $(x_{i} - \bar{x})$ med sig självt
+```{r}
+(1/(n-1)) * sum((x - x_streck) * (x - x_streck))
+```
+
+</div>
+</div>
+</br>
+
+d) Beräkna värdet på $\frac{1}{n-1}\sum_{i = 1}^{n} \left(x_{i}^{2} - 2x_{i} \bar{x} + \bar{x}^{2} \right)$
+
+<button title="q314d" type="button"
+   onclick="if(document.getElementById('q314d') .style.display=='none')
+              {document.getElementById('q314d') .style.display=''}
+            else{document.getElementById('q314d') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314d" style="display:none">
+<div class="alert alert-info">
+
+Multiplicera ut parenteserna innanför summan
+```{r}
+(1/(n-1)) * sum(x^(2) - 2*x*x_streck + x_streck^(2))
+```
+</div>
+</div>
+</br>
+
+e) Beräkna värdet på $\frac{1}{n-1}\left(\left(\sum_{i = 1}^{n} x_{i}^{2}\right) - 2n\bar{x} \cdot \bar{x} + n\bar{x}^{2} \right)$
+
+<button title="q314e" type="button"
+   onclick="if(document.getElementById('q314e') .style.display=='none')
+              {document.getElementById('q314e') .style.display=''}
+            else{document.getElementById('q314e') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314e" style="display:none">
+<div class="alert alert-info">
+
+Notera att summan enbart opererar på $x_{i}^{2}$
+```{r}
+(1/(n-1)) * (sum(x^(2)) - 2*n*x_streck*x_streck + n*x_streck^(2))
+```
+
+</div>
+</div>
+</br>
+
+f) Beräkna värdet på $\frac{1}{n-1}\left(\left(\sum_{i = 1}^{n} x_{i}^{2}\right) - 2n\bar{x}^{2} + n\bar{x}^{2} \right)$
+
+<button title="q314f" type="button"
+   onclick="if(document.getElementById('q314f') .style.display=='none')
+              {document.getElementById('q314f') .style.display=''}
+            else{document.getElementById('q314f') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314f" style="display:none">
+<div class="alert alert-info">
+
+Notera att summan enbart opererar på $x_{i}^{2}$
+```{r}
+(1/(n-1)) * (sum(x^(2)) - 2*n*x_streck^(2) + n*x_streck^(2))
+```
+</div>
+</div>
+</br>
+
+g) Beräkna värdet på $\frac{1}{n-1}\left(\left(\sum_{i = 1}^{n} x_{i}^{2}\right) - n\bar{x}^{2} \right)$
+
+<button title="q314g" type="button"
+   onclick="if(document.getElementById('q314g') .style.display=='none')
+              {document.getElementById('q314g') .style.display=''}
+            else{document.getElementById('q314g') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314g" style="display:none">
+<div class="alert alert-info">
+
+Notera att summan enbart opererar på $x_{i}^{2}$
+```{r}
+(1/(n-1)) * (sum(x^(2)) - n*x_streck^(2))
+```
+</div>
+</div>
+</br>
+
+h) Beräkna värdet på $\frac{\sum_{i = 1}^{n} x_{i}^{2} - \frac{\left(\sum_{i = 1}^{n} x_{i} \right)^{2}}{n} }{n-1}$
+
+<button title="q314h" type="button"
+   onclick="if(document.getElementById('q314h') .style.display=='none')
+              {document.getElementById('q314h') .style.display=''}
+            else{document.getElementById('q314h') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314h" style="display:none">
+<div class="alert alert-info">
+
+Notera att summan enbart opererar på $x_{i}^{2}$
+```{r}
+(sum(x^(2)) - (sum(x)^(2))/n)/(n - 1)
+```
+</div>
+</div>
+</br>
+
+i) Kontrollera att beräkningarna stämmer genom att jämföra med funktionen `var()`
+
+<button title="q314i" type="button"
+   onclick="if(document.getElementById('q314i') .style.display=='none')
+              {document.getElementById('q314i') .style.display=''}
+            else{document.getElementById('q314i') .style.display='none'}">
+  Visa svar
+</button>
+
+<div id="q314i" style="display:none">
+<div class="alert alert-info">
+
+Notera att summan enbart summerar över $x_{i}^{2}$
+```{r}
+var(x)
+```
+</div>
+</div>
+</br>
 
 

@@ -1,6 +1,6 @@
 --- 
 title: "Tillämpad statistik med R"
-author: "Ronnie Pingel"
+author: "Ronnie Pingel, Valentin Zulj"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 documentclass: book

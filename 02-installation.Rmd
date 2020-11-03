@@ -296,7 +296,16 @@ c) Beräkna variationsbredden.
 d) Beräkna det geometriska medelvärdet för de positiva värden $4, 5, 6, 8$.
 e) Beräkna det geometriska medelvärdet för alla värden $4, -2, 5, 6, 8$.
 
-### Svar 2.1 {-}
+<button title="q201" type="button"
+onclick="if(document.getElementById('q201') .style.display=='none')
+              {document.getElementById('q201') .style.display=''}
+            else{document.getElementById('q201') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q201" style="display:none">
+<div class="alert alert-info">
+
 a) Medelvärdet $\bar{x}$ beräknas i R i editorn med
 
 ```{r, eval = FALSE}
@@ -362,14 +371,25 @@ e) Det geometriska medelvärdet $$\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n
 
 * Svar: Eftersom en observation är negativ   blir `r (4  * (-2) * 5 * 6 * 8)^(1/5)`, vilket betyder ''Not a Number''. Det går alltså inte att beräkna. 
 
-
+</div>
+</div>
+</br>
 
 ### Övning 2.2 {-}
 Ett slumpmässigt urval ger följande observationer $0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1$,där $1=Arbetslös$ och $0=Förvärvsarbetande$.
 Beräkna andelen arbetslösa i stickprovet.
 
 
-### Svar 2.2 {-}
+<button title="q202" type="button"
+onclick="if(document.getElementById('q202') .style.display=='none')
+              {document.getElementById('q202') .style.display=''}
+            else{document.getElementById('q202') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q202" style="display:none">
+<div class="alert alert-info">
+
 Andelen arbetslösa beräkna i R med
 ```{r} 
 (0 + 1 + 1 + 0 + 0 + 0 + 0 + 0 + 1 + 0 + 1 + 0 + 1)/13 
@@ -378,7 +398,9 @@ Andelen arbetslösa beräkna i R med
 
 * Svar: Andelen arbetslösa i stickprovet är `r round((0 + 1 + 1 + 0 + 0 + 0 + 0 + 0 + 1 + 0 + 1 + 0 + 1)/13, 2)`.
 
-
+</div>
+</div>
+</br>
 
 ### Övning 2.3 {-}
 Kosumentpriset 2006-2011  är 
@@ -391,7 +413,16 @@ knitr::kable(
 
 Med hur många procent har prisnivån förändrats från 2007 till 2010?
 
-### Svar 2.3 {-}
+<button title="q203" type="button"
+onclick="if(document.getElementById('q203') .style.display=='none')
+              {document.getElementById('q203') .style.display=''}
+            else{document.getElementById('q203') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q203" style="display:none">
+<div class="alert alert-info">
+
 Beräkning i R ger
 ```{r} 
 303.46/290.51
@@ -399,7 +430,9 @@ Beräkning i R ger
 
 * Svar: Prisnivån har ökat med `r 100*round(303.46/290.51, 3)-100`%.
 
-
+</div>
+</div>
+</br>
 
 ### Övning 2.4  {-}
 Denna övningar handlar om potentslagarna. Då $x$ och $y$ är reella och $a,b>0$ gäller följande likheter:
@@ -427,7 +460,16 @@ k) $3^4*4^4$
 l) $12^4$
 
 
-### Svar 2.4 {-}
+<button title="q204" type="button"
+onclick="if(document.getElementById('q204') .style.display=='none')
+              {document.getElementById('q204') .style.display=''}
+            else{document.getElementById('q204') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q204" style="display:none">
+<div class="alert alert-info">
+
 I R kan uttrycken enkelt beräknas.
 ```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
 4^2 + 4^3
@@ -446,6 +488,10 @@ I R kan uttrycken enkelt beräknas.
 
 
 Vi ser att för $b= c$ pga  1. $d= e$  pga 2. $k=l$ pga 5. Vidare gäller...
+</div>
+</div>
+</br>
+
 
 ### Övning 2.5  {-}
 Den naturliga logaritmen, dvs logaritmen med
@@ -471,7 +517,16 @@ h) $e^5*e^6$
 i) $5 \ln 5 + 6 \ln 6
 
 
-### Svar 2.5 {-}
+<button title="q205" type="button"
+onclick="if(document.getElementById('q205') .style.display=='none')
+              {document.getElementById('q205') .style.display=''}
+            else{document.getElementById('q205') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q205" style="display:none">
+<div class="alert alert-info">
+
 I R kan uttrycken enkelt beräknas.
 
 ```{r, echo=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
@@ -486,12 +541,23 @@ exp(5)*exp(6)
 5*log(5) + 6*log(6)
 ```
 
+</div>
+</div>
+</br>
 
 ### Övning 2.6  {-}
 Låt observationerna $4,-2,5,6,8$ vara obundet slumpmässigt urval från en normalfördelad population. Genomför en hypotesprövning på 5\% signifikansnivå för att testa medelvärdet i population är skild från 1.
 
+<button title="q206" type="button"
+onclick="if(document.getElementById('q206') .style.display=='none')
+              {document.getElementById('q206') .style.display=''}
+            else{document.getElementById('q206') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q206" style="display:none">
+<div class="alert alert-info">
 
-### Svar 2.6 {-}
 1. Vi observerar $x=\{4,-2,5,6,8\}.$
 2. Hypoteser: $H_0:\mu=0$ vs $H_1:\mu \neq 0$ 
 3. Antaganden: Variabeln $x$ är normalfördelad i populationen. Populationsvariansen $\sigma^2$ är okänd i populationen. Vi har ett litet stickprov, $n=5$.
@@ -506,6 +572,10 @@ Låt observationerna $4,-2,5,6,8$ vara obundet slumpmässigt urval från en norm
 Eftersom $t_{obs}=$ `r ( (4 + (-2) + 5 + 6 + 8)/5 - 1 )/sqrt( ( 4^2 + (-2)^2 + 5^2 + 6^2 + 8^2 - (4 + (-2) + 5 + 6 + 8)^2/5 )/ (5-1)/5 )` $< 2.776 = t_{krit}$ kan vi inte förkasta nollhypotesen.
 
 * Svar: Vi kan  på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta **inte** innebär att vi visar att medelvärdet är 1.
+
+</div>
+</div>
+</br>
 
 ### Övning 2.7  {-}
 Du observerar följande datapunkter $x = \{4,7,2,4,6\}$ och $y=\{7,3, 2, 5,6}\$.
@@ -525,7 +595,16 @@ c) Beräkna residualen för $x=7$
 d) Beräkna residualspridningen.
 
 
-### Svar 2.7  {-}
+<button title="q207" type="button"
+onclick="if(document.getElementById('q207') .style.display=='none')
+              {document.getElementById('q207') .style.display=''}
+            else{document.getElementById('q207') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q207" style="display:none">
+<div class="alert alert-info">
+
 a) Riktningskoefficienten ges av
 $$b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$$
 ```{r, collapse=TRUE, prompt=FALSE, comment=''}
@@ -601,13 +680,25 @@ sqrt(
   
 (Notera att $\sum_{i=1}^n \hat{\varepsilon}_i^2$ kallas för *residualkvadratsumman*.)
 
+</div>
+</div>
+</br>
 
 ### Övning 2.8  {-}
 
 1. Installera paketet **MASS** som innehåller funktioner som kan vara användbara senare på kursen.
 2. Aktivera det installerade paketet **MASS**.
 
-### Svar 2.8  {-}
+
+<button title="q208" type="button"
+onclick="if(document.getElementById('q208') .style.display=='none')
+              {document.getElementById('q208') .style.display=''}
+            else{document.getElementById('q208') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q208" style="display:none">
+<div class="alert alert-info">
 
 ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
 # Installera paket
@@ -616,4 +707,6 @@ install.packages("psych")
 library("psych")
 ```
 
-
+</div>
+</div>
+</br>
