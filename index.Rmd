@@ -13,7 +13,7 @@ link-citations: yes
 
 # Introduktion
 
-Denna material utgör en viktig del av en kurs i tillämpad statistik.
+Detta material är kurslitteratur till tillämpad statistik. Observera att materialet kommer att utökas under kursens gång.
 
 
 ```{r include=FALSE}
