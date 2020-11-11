@@ -364,8 +364,8 @@ Ovanstående kod illustrerar två vanliga företeelser:
 ### Vektorer och logiska operatorer
 Istället för att  direkt identifiera positionen i vektorn kan man använda **logiska operatorer**. Några vanliga och viktiga logiska operatorer är:
 
++ `>` är större än.
 + `<` är mindre än.
-+ `>` är mindre än.
 + `>=` större än eller lika med	
 + `<=` mindre än eller lika med	
 + `==` lika med.

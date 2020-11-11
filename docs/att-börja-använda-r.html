@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 2 Att börja använda R | Tillämpad statistik med R</title>
   <meta name="description" content="Kapitel 2 Att börja använda R | Tillämpad statistik med R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 2 Att börja använda R | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel och Valentin Zulj" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -199,6 +174,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="binära-variabler.html"><a href="binära-variabler.html"><i class="fa fa-check"></i><b>5</b> Binära variabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> Deskription av en binär variabel</a></li>
+<li class="chapter" data-level="5.2" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.2</b> Tabeller och en binär variabel</a></li>
+<li class="chapter" data-level="5.3" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.3</b> Figurer och en binär variabel</a></li>
+<li class="chapter" data-level="5.4" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-binär-variabel"><i class="fa fa-check"></i><b>5.4</b> Inferens för binär variabel</a></li>
+<li class="chapter" data-level="5.5" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-två-binära-variabler"><i class="fa fa-check"></i><b>5.5</b> Deskription av två binära variabler</a></li>
+<li class="chapter" data-level="5.6" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.6</b> Tabeller och två binära variabler</a></li>
+<li class="chapter" data-level="5.7" data-path="binära-variabler.html"><a href="binära-variabler.html#kvantifiering-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>5.7</b> Kvantifiering av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="5.8" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.8</b> Figurer och två binära variabler</a></li>
+<li class="chapter" data-level="5.9" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-två-binära-variabler"><i class="fa fa-check"></i><b>5.9</b> Inferens för två binära variabler</a></li>
+<li class="chapter" data-level="5.10" data-path="binära-variabler.html"><a href="binära-variabler.html#övningar-3"><i class="fa fa-check"></i><b>5.10</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="binära-variabler.html"><a href="binära-variabler.html#referenser-1"><i class="fa fa-check"></i><b>5.11</b> Referenser</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -221,16 +215,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I detta kapitel ska du inledningsvis installera R samt ett gränssnitt som kallas för RStudio. RStudio kan liknas vid en avancerad textredigerare som underlättar arbetet med R. Det går visserligen alldeles utmärkt att använda R som det är, men RStudio förenklar i många avseenden programmeringen.</p>
 <div id="installation-av-r-och-rstudio" class="section level2">
 <h2><span class="header-section-number">2.1</span> Installation av R och RStudio</h2>
-<p>Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska nu <strong>först</strong> installera R.
-<strong>Därefter</strong> ska du installera RStudio.</p>
+<p>Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska nu <strong>först</strong> installera R. <strong>Därefter</strong> ska du installera RStudio.</p>
 <div id="installation-av-r-på-macos" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Installation av R på MacOS</h3>
 <ol style="list-style-type: decimal">
 <li>Ladda ner den senaste versionen från <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>.</li>
 </ol>
-<p>Notera att versionen
-måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS
-om du har en äldre Mac.</p>
+<p>Notera att versionen måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS om du har en äldre Mac.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Ladda ner pkg-filen under <em>Latest release</em>. Öppna den nedladdade .pkg-filen och installera R.</li>
 </ol>
@@ -276,8 +267,7 @@ om du har en äldre Mac.</p>
 </ol>
 <p><img src="docs/images/installingR.png" width="70%" /></p>
 <ol start="12" style="list-style-type: decimal">
-<li>Starta R för första gången.
-På Windows ser det ut så här.</li>
+<li>Starta R för första gången. På Windows ser det ut så här.</li>
 </ol>
 <p><img src="docs/images/firstR.PNG" width="70%" /></p>
 <p><img src="docs/images/firstR2.PNG" width="70%" /></p>
@@ -287,9 +277,7 @@ På Windows ser det ut så här.</li>
 <h2><span class="header-section-number">2.2</span> Installation av RStudio</h2>
 <p>Av olika anledningar väljer vi att inte arbeta i R Editor utan vi väljer RStudio. Stäng därför ner R.</p>
 <ol style="list-style-type: decimal">
-<li>Gå till <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a>}.
-2 Välj RStudio Desktop Free.
-3 Välj sedan den version stämmer överens med ditt operativsystem.</li>
+<li>Gå till <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a>}. 2 Välj RStudio Desktop Free. 3 Välj sedan den version stämmer överens med ditt operativsystem.</li>
 <li>Installera (på Windows) genom att klicka <strong>Next-&gt;Next-&gt;Install</strong></li>
 <li>Starta RStudio.</li>
 </ol>
@@ -314,95 +302,94 @@ På Windows ser det ut så här.</li>
 </ol>
 <p>Det finns några viktiga punkter att ha i åtanke:</p>
 <ul>
-<li>Om avsikten är att köra kod som sträcker
-sig över flera rader måste man avsluta raden med räknetecken <span class="math inline">\((+,-,*,/)\)</span>, kommatecken <span class="math inline">\(,\)</span> eller vänsterparentes <span class="math inline">\((\)</span>.</li>
+<li>Om avsikten är att köra kod som sträcker sig över flera rader måste man avsluta raden med räknetecken <span class="math inline">\((+,-,*,/)\)</span>, kommatecken <span class="math inline">\(,\)</span> eller vänsterparentes <span class="math inline">\((\)</span>.</li>
 <li>En rad inleds aldrig med räknetecken eller kommatecken.</li>
 <li>En rad som inleds med <strong>#</strong> exekveras inte. Tecknet <strong>#</strong> används för att kommentera koden, vilket viktigt eftersom vi då i text kan förklara vad koden gör.</li>
 </ul>
 <ol style="list-style-type: decimal">
 <li>Skriv in nedanstående script till <strong>myfirstscript.R</strong>. Spara.</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># I detta script använder jag R som miniräknare samt </span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co"># exekverar kod från scriptet.</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="dv">2-7</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span>
+<span class="co"># I detta script använder jag R som miniräknare samt </span>
+<span class="co"># exekverar kod från scriptet.</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">1</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">3</span>
+<span class="dv">2</span><span class="op">-</span><span class="dv">7</span>
+<span class="dv">2</span><span class="op">*</span><span class="dv">3</span>
+<span class="dv">4</span><span class="op">/</span><span class="dv">5</span>
+<span class="dv">3</span><span class="op">^</span><span class="dv">2</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Använd R som miniräknare genom att prova alla <strong>tre</strong> sätt att köra kod. Det är nödvändigt att bekanta sig med hur kod körs för att bli bekväm med att simultant arbeta i script-fönstret och se resultat i Console. Återigen, skriv <strong>aldrig</strong> i Console.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb2-2" title="2">[<span class="dv">1</span>] <span class="dv">2</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb2-4" title="4">[<span class="dv">1</span>] <span class="dv">4</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="dv">2-7</span></a>
-<a class="sourceLine" id="cb2-6" title="6">[<span class="dv">1</span>] <span class="dv">-5</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb2-8" title="8">[<span class="dv">1</span>] <span class="dv">6</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb2-10" title="10">[<span class="dv">1</span>] <span class="fl">0.8</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb2-12" title="12">[<span class="dv">1</span>] <span class="dv">9</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span>
+[<span class="dv">1</span>] <span class="dv">2</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">4</span>
+<span class="dv">2</span><span class="op">-</span><span class="dv">7</span>
+[<span class="dv">1</span>] <span class="op">-</span><span class="dv">5</span>
+<span class="dv">2</span><span class="op">*</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">6</span>
+<span class="dv">4</span><span class="op">/</span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="fl">0.8</span>
+<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>
+[<span class="dv">1</span>] <span class="dv">9</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Matematiska funktioner, t ex kvadratroten, finns implementerade i R. Skriv <code>sqrt(6)</code> i scriptet och spara. Kör koden och erhåll följande i Console.</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">sqrt</span>(<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2">[<span class="dv">1</span>] <span class="fl">2.44949</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">2.44949</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Även exponentialfunktionen <span class="math inline">\(\exp(x)\)</span> finns i R. Skriv <code>exp(3)</code> i script-filen, spara och kör.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">exp</span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2">[<span class="dv">1</span>] <span class="fl">20.08554</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="dv">3</span>)
+[<span class="dv">1</span>] <span class="fl">20.08554</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Konstanten <span class="math inline">\(\pi\)</span> finns i R. Skriv <code>pi</code> i script-filen, spara och kör.</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">pi</a>
-<a class="sourceLine" id="cb5-2" title="2">[<span class="dv">1</span>] <span class="fl">3.141593</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi
+[<span class="dv">1</span>] <span class="fl">3.141593</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Kod finns ofta på flera rader. Anta att vi önskar beräkna <span class="math inline">\(2 + 2+ 3+ 5\)</span> men att koden inte får plats på en rad utan måste delas upp på två rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör.</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Kod över 2 rader</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Kod över 2 rader</span>
+<span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
 <p>Följande resultat ska presenteras i Console.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Kod över 2 rader</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb7-4" title="4">[<span class="dv">1</span>] <span class="dv">12</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Kod över 2 rader</span>
+<span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">12</span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Kod finns ofta på flera rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör. Jämför resultatet med punkt 6!</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> 
+<span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
 <p>Nu utvärderas raderna var för sig, vilket inte var avsikten med analysen.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb9-2" title="2">[<span class="dv">1</span>] <span class="dv">4</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb9-4" title="4">[<span class="dv">1</span>] <span class="dv">8</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> 
+[<span class="dv">1</span>] <span class="dv">4</span>
+<span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">8</span></code></pre></div>
 <p><strong>Grattis!</strong> Du har nu genomfört din första session i R. Scriptet ska se ut enligt nedan. Spara och stäng R.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="co"># I detta script använder jag R som miniräknare samt </span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="co"># exekverar kod från scriptet.</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="dv">2-7</span></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb10-8" title="8"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb10-9" title="9"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb10-10" title="10"><span class="co"># Kvadratroten</span></a>
-<a class="sourceLine" id="cb10-11" title="11"><span class="kw">sqrt</span>(<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb10-12" title="12"><span class="co"># Exponentialfunktionen </span></a>
-<a class="sourceLine" id="cb10-13" title="13"><span class="kw">exp</span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb10-14" title="14"><span class="co"># Pi </span></a>
-<a class="sourceLine" id="cb10-15" title="15">pi</a>
-<a class="sourceLine" id="cb10-16" title="16"><span class="co"># Kod över 2 rader</span></a>
-<a class="sourceLine" id="cb10-17" title="17"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-18" title="18"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb10-19" title="19"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb10-20" title="20"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span>
+<span class="co"># I detta script använder jag R som miniräknare samt </span>
+<span class="co"># exekverar kod från scriptet.</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">1</span>
+<span class="dv">1</span><span class="op">+</span><span class="dv">3</span>
+<span class="dv">2</span><span class="op">-</span><span class="dv">7</span>
+<span class="dv">2</span><span class="op">*</span><span class="dv">3</span>
+<span class="dv">4</span><span class="op">/</span><span class="dv">5</span>
+<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>
+<span class="co"># Kvadratroten</span>
+<span class="kw">sqrt</span>(<span class="dv">6</span>)
+<span class="co"># Exponentialfunktionen </span>
+<span class="kw">exp</span>(<span class="dv">3</span>)
+<span class="co"># Pi </span>
+pi
+<span class="co"># Kod över 2 rader</span>
+<span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+<span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> 
+<span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
 </div>
 <div id="paket" class="section level2">
 <h2><span class="header-section-number">2.4</span> Paket</h2>
@@ -412,10 +399,7 @@ sig över flera rader måste man avsluta raden med räknetecken <span class="mat
 <p><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages" class="uri">https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages</a></p>
 <p>För att installera ett paket skriver man in paketnamnet med ett kommando alternativt använda menyn i RStudio under *Tools &gt; Install Packages**.</p>
 <p>Vi exemplifierar nu med ett paket som hjälper oss att läsa data från Excel-filer. Funktionalitet för inläsning från Excel-filer finns inte i basversionen av R, därför är detta paket nödvändigt om data är sparat i en Excelfil.</p>
-<p>Vi installerar paketet <strong>readxl</strong> genom att i Console skriva in <code>install.packages("readxl")</code> och trycka enter.
-Som tidigare nämnt går det även att installera paket via menyn.
-Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva <code>library("readxl")</code> och trycka enter aktiveras paketet.
-Nu kan analyser i R utnyttja paketets funktionalitet.</p>
+<p>Vi installerar paketet <strong>readxl</strong> genom att i Console skriva in <code>install.packages(&quot;readxl&quot;)</code> och trycka enter. Som tidigare nämnt går det även att installera paket via menyn. Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva <code>library(&quot;readxl&quot;)</code> och trycka enter aktiveras paketet. Nu kan analyser i R utnyttja paketets funktionalitet.</p>
 <p>Observera att ett paket måste aktiveras på nytt varje gång RStudio öppnas. Dock behövs det bara installeras en enda gång.</p>
 <hr />
 </div>
@@ -425,8 +409,7 @@ Nu kan analyser i R utnyttja paketets funktionalitet.</p>
 div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
 </style>
 <div class="red">
-<p><font size="5"> </font>
-Du ska kunna</p>
+<p><font size="5"> </font> Du ska kunna</p>
 <ul>
 <li>installera R och Rstudio och starta det utan felmeddelanden.</li>
 <li>använda R som miniräknare och använda de olika metoderna för att exekvera kod i editorn.</li>
@@ -447,9 +430,9 @@ Du ska kunna</p>
 <li>Beräkna det geometriska medelvärdet för de positiva värden <span class="math inline">\(4, 5, 6, 8\)</span>.</li>
 <li>Beräkna det geometriska medelvärdet för alla värden <span class="math inline">\(4, -2, 5, 6, 8\)</span>.</li>
 </ol>
-<button title="q201" type="button" onclick="if(document.getElementById(&#39;q201&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q201&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q201&#39;) .style.display=&#39;none&#39;}">
+<button title="q201" type="button" onclick="if(document.getElementById('q201') .style.display=='none')
+              {document.getElementById('q201') .style.display=''}
+            else{document.getElementById('q201') .style.display='none'}">
 Visa svar
 </button>
 <div id="q201" style="display:none">
@@ -457,7 +440,7 @@ Visa svar
 <ol style="list-style-type: lower-alpha">
 <li>Medelvärdet <span class="math inline">\(\bar{x}\)</span> beräknas i R i editorn med</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span></code></pre></div>
 <p>vilket i Console ger svaret</p>
 <pre><code>## [1] 4.2</code></pre>
 <ul>
@@ -467,13 +450,13 @@ Visa svar
 <li>Standardavvikelsen <span class="math inline">\(s\)</span> beräknas i R i editorn antingen genom att direkt tillämpa formeln för stickprovets standardavvikelse</li>
 </ol>
 <p><span class="math display">\[s=\sqrt{\dfrac{\sum_{i=1}^n (x_i -\bar{x})^2}{n-1}}\]</span></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">sqrt</span>( ( ( <span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="st">      </span>( (<span class="op">-</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="st">      </span>( <span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="st">      </span>( <span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="st">      </span>( <span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>( ( ( <span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span>( (<span class="op">-</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span>( <span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span>( <span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span>( <span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span>(<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>) )</code></pre></div>
 <p>eller genom att använda beräkningsformeln <span class="math display">\[s=\sqrt{\dfrac{\sum_{i=1}^{n}x_i ^2 - (\sum_{i=1}^n x_i)^2/n}{n-1}}\]</span>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>) )</code></pre></div>
 <p>Oavsett formel erhålls i Console svaret</p>
 <pre><code>## [1] 3.768289</code></pre>
 <ul>
@@ -482,7 +465,7 @@ Visa svar
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Variationsbredden, dvs skillnaden mellan det största och det minsta värdet är</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <ul>
 <li>Svar: Variationsbredden är är 10.</li>
@@ -490,7 +473,7 @@ Visa svar
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Det geometriska medelvärdet <span class="math display">\[\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}\]</span> kan i R beräknas med</li>
 </ol>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</code></pre></div>
 <pre><code>## [1] 5.566315</code></pre>
 <ul>
 <li>Svar: Det geometriska medelvärdet är 3.95.</li>
@@ -498,7 +481,7 @@ Visa svar
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Det geometriska medelvärdet <span class="math display">\[\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}\]</span> kan i R beräknas med</li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</code></pre></div>
 <pre><code>## [1] NaN</code></pre>
 <ul>
 <li>Svar: Eftersom en observation är negativ blir NaN, vilket betyder ‘’Not a Number’’. Det går alltså inte att beräkna.</li>
@@ -509,17 +492,16 @@ Visa svar
 </div>
 <div id="övning-2.2" class="section level3 unnumbered">
 <h3>Övning 2.2</h3>
-<p>Ett slumpmässigt urval ger följande observationer <span class="math inline">\(0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1\)</span>,där <span class="math inline">\(1=Arbetslös\)</span> och <span class="math inline">\(0=Förvärvsarbetande\)</span>.
-Beräkna andelen arbetslösa i stickprovet.</p>
-<button title="q202" type="button" onclick="if(document.getElementById(&#39;q202&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q202&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q202&#39;) .style.display=&#39;none&#39;}">
+<p>Ett slumpmässigt urval ger följande observationer <span class="math inline">\(0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1\)</span>,där <span class="math inline">\(1=Arbetslös\)</span> och <span class="math inline">\(0=Förvärvsarbetande\)</span>. Beräkna andelen arbetslösa i stickprovet.</p>
+<button title="q202" type="button" onclick="if(document.getElementById('q202') .style.display=='none')
+              {document.getElementById('q202') .style.display=''}
+            else{document.getElementById('q202') .style.display='none'}">
 Visa svar
 </button>
 <div id="q202" style="display:none">
 <div class="alert alert-info">
 <p>Andelen arbetslösa beräkna i R med</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">(<span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="dv">13</span> </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="dv">13</span> </code></pre></div>
 <pre><code>## [1] 0.3846154</code></pre>
 <ul>
 <li>Svar: Andelen arbetslösa i stickprovet är 0.38.</li>
@@ -561,15 +543,15 @@ Visa svar
 </tbody>
 </table>
 <p>Med hur många procent har prisnivån förändrats från 2007 till 2010?</p>
-<button title="q203" type="button" onclick="if(document.getElementById(&#39;q203&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q203&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q203&#39;) .style.display=&#39;none&#39;}">
+<button title="q203" type="button" onclick="if(document.getElementById('q203') .style.display=='none')
+              {document.getElementById('q203') .style.display=''}
+            else{document.getElementById('q203') .style.display='none'}">
 Visa svar
 </button>
 <div id="q203" style="display:none">
 <div class="alert alert-info">
 <p>Beräkning i R ger</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="fl">303.46</span><span class="op">/</span><span class="fl">290.51</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">303.46</span><span class="op">/</span><span class="fl">290.51</span></code></pre></div>
 <pre><code>## [1] 1.044577</code></pre>
 <ul>
 <li>Svar: Prisnivån har ökat med 4.5%.</li>
@@ -604,38 +586,38 @@ Visa svar
 <li><span class="math inline">\(3^4*4^4\)</span></li>
 <li><span class="math inline">\(12^4\)</span></li>
 </ol>
-<button title="q204" type="button" onclick="if(document.getElementById(&#39;q204&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q204&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q204&#39;) .style.display=&#39;none&#39;}">
+<button title="q204" type="button" onclick="if(document.getElementById('q204') .style.display=='none')
+              {document.getElementById('q204') .style.display=''}
+            else{document.getElementById('q204') .style.display='none'}">
 Visa svar
 </button>
 <div id="q204" style="display:none">
 <div class="alert alert-info">
 <p>I R kan uttrycken enkelt beräknas.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb26-2" title="2">[<span class="dv">1</span>] <span class="dv">80</span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb26-4" title="4">[<span class="dv">1</span>] <span class="dv">1024</span></a>
-<a class="sourceLine" id="cb26-5" title="5"><span class="dv">4</span><span class="op">^</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb26-6" title="6">[<span class="dv">1</span>] <span class="dv">1024</span></a>
-<a class="sourceLine" id="cb26-7" title="7">(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb26-8" title="8">[<span class="dv">1</span>] <span class="dv">4096</span></a>
-<a class="sourceLine" id="cb26-9" title="9"><span class="dv">4</span><span class="op">^</span><span class="dv">15</span></a>
-<a class="sourceLine" id="cb26-10" title="10">[<span class="dv">1</span>] <span class="dv">1073741824</span></a>
-<a class="sourceLine" id="cb26-11" title="11"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb26-12" title="12">[<span class="dv">1</span>] <span class="fl">0.25</span></a>
-<a class="sourceLine" id="cb26-13" title="13"><span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>}</a>
-<a class="sourceLine" id="cb26-14" title="14">[<span class="dv">1</span>] <span class="fl">0.25</span></a>
-<a class="sourceLine" id="cb26-15" title="15"><span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">2</span>}</a>
-<a class="sourceLine" id="cb26-16" title="16">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
-<a class="sourceLine" id="cb26-17" title="17"><span class="dv">1</span><span class="op">/</span>(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb26-18" title="18">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
-<a class="sourceLine" id="cb26-19" title="19"><span class="dv">1</span><span class="op">/</span><span class="dv">16</span></a>
-<a class="sourceLine" id="cb26-20" title="20">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
-<a class="sourceLine" id="cb26-21" title="21"><span class="dv">3</span><span class="op">^</span><span class="dv">4</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb26-22" title="22">[<span class="dv">1</span>] <span class="dv">20736</span></a>
-<a class="sourceLine" id="cb26-23" title="23"><span class="dv">12</span><span class="op">^</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb26-24" title="24">[<span class="dv">1</span>] <span class="dv">20736</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">80</span>
+<span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">1024</span>
+<span class="dv">4</span><span class="op">^</span><span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">1024</span>
+(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="dv">4096</span>
+<span class="dv">4</span><span class="op">^</span><span class="dv">15</span>
+[<span class="dv">1</span>] <span class="dv">1073741824</span>
+<span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span>
+[<span class="dv">1</span>] <span class="fl">0.25</span>
+<span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>}
+[<span class="dv">1</span>] <span class="fl">0.25</span>
+<span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">2</span>}
+[<span class="dv">1</span>] <span class="fl">0.0625</span>
+<span class="dv">1</span><span class="op">/</span>(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)
+[<span class="dv">1</span>] <span class="fl">0.0625</span>
+<span class="dv">1</span><span class="op">/</span><span class="dv">16</span>
+[<span class="dv">1</span>] <span class="fl">0.0625</span>
+<span class="dv">3</span><span class="op">^</span><span class="dv">4</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">4</span>
+[<span class="dv">1</span>] <span class="dv">20736</span>
+<span class="dv">12</span><span class="op">^</span><span class="dv">4</span>
+[<span class="dv">1</span>] <span class="dv">20736</span></code></pre></div>
 <p>Vi ser att för <span class="math inline">\(b= c\)</span> pga 1. <span class="math inline">\(d= e\)</span> pga 2. <span class="math inline">\(k=l\)</span> pga 5. Vidare gäller…</p>
 </div>
 </div>
@@ -643,8 +625,7 @@ Visa svar
 </div>
 <div id="övning-2.5" class="section level3 unnumbered">
 <h3>Övning 2.5</h3>
-<p>Den naturliga logaritmen, dvs logaritmen med
-basen <span class="math inline">\(e \approx 2.718282\)</span>, används ofta i statistiska beräkningar. Några logaratimlagar som gäller för naturliga logaritmen är:</p>
+<p>Den naturliga logaritmen, dvs logaritmen med basen <span class="math inline">\(e \approx 2.718282\)</span>, används ofta i statistiska beräkningar. Några logaratimlagar som gäller för naturliga logaritmen är:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(\ln\, \left (x\cdot y \right )=\ln\,x+\ln\,y\)</span></li>
 <li><span class="math inline">\(\ln\, \left (x/ y \right )=\ln\,x-\ln\,y\)</span></li>
@@ -665,32 +646,32 @@ basen <span class="math inline">\(e \approx 2.718282\)</span>, används ofta i s
 <li><span class="math inline">\(e^5*e^6\)</span></li>
 <li>$5 5 + 6 6</li>
 </ol>
-<button title="q205" type="button" onclick="if(document.getElementById(&#39;q205&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q205&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q205&#39;) .style.display=&#39;none&#39;}">
+<button title="q205" type="button" onclick="if(document.getElementById('q205') .style.display=='none')
+              {document.getElementById('q205') .style.display=''}
+            else{document.getElementById('q205') .style.display='none'}">
 Visa svar
 </button>
 <div id="q205" style="display:none">
 <div class="alert alert-info">
 <p>I R kan uttrycken enkelt beräknas.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">log</span>(<span class="dv">3</span><span class="op">*</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb27-2" title="2">[<span class="dv">1</span>] <span class="fl">2.484907</span></a>
-<a class="sourceLine" id="cb27-3" title="3"><span class="kw">log</span>(<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb27-4" title="4">[<span class="dv">1</span>] <span class="fl">2.484907</span></a>
-<a class="sourceLine" id="cb27-5" title="5"><span class="kw">log</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb27-6" title="6">[<span class="dv">1</span>] <span class="fl">-0.2876821</span></a>
-<a class="sourceLine" id="cb27-7" title="7"><span class="kw">log</span>(<span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb27-8" title="8">[<span class="dv">1</span>] <span class="fl">-0.2876821</span></a>
-<a class="sourceLine" id="cb27-9" title="9"><span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb27-10" title="10">[<span class="dv">1</span>] <span class="dv">1</span></a>
-<a class="sourceLine" id="cb27-11" title="11"><span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb27-12" title="12">[<span class="dv">1</span>] <span class="dv">5</span></a>
-<a class="sourceLine" id="cb27-13" title="13"><span class="kw">exp</span>(<span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb27-14" title="14">[<span class="dv">1</span>] <span class="fl">59874.14</span></a>
-<a class="sourceLine" id="cb27-15" title="15"><span class="kw">exp</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb27-16" title="16">[<span class="dv">1</span>] <span class="fl">59874.14</span></a>
-<a class="sourceLine" id="cb27-17" title="17"><span class="dv">5</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb27-18" title="18">[<span class="dv">1</span>] <span class="fl">18.79775</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">3</span><span class="op">*</span><span class="dv">4</span>)
+[<span class="dv">1</span>] <span class="fl">2.484907</span>
+<span class="kw">log</span>(<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)
+[<span class="dv">1</span>] <span class="fl">2.484907</span>
+<span class="kw">log</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">4</span>)
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.2876821</span>
+<span class="kw">log</span>(<span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.2876821</span>
+<span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">1</span>))
+[<span class="dv">1</span>] <span class="dv">1</span>
+<span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">5</span>))
+[<span class="dv">1</span>] <span class="dv">5</span>
+<span class="kw">exp</span>(<span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">59874.14</span>
+<span class="kw">exp</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">59874.14</span>
+<span class="dv">5</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">18.79775</span></code></pre></div>
 </div>
 </div>
 <p></br></p>
@@ -698,9 +679,9 @@ Visa svar
 <div id="övning-2.6" class="section level3 unnumbered">
 <h3>Övning 2.6</h3>
 <p>Låt observationerna <span class="math inline">\(4,-2,5,6,8\)</span> vara obundet slumpmässigt urval från en normalfördelad population. Genomför en hypotesprövning på 5% signifikansnivå för att testa medelvärdet i population är skild från 1.</p>
-<button title="q206" type="button" onclick="if(document.getElementById(&#39;q206&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q206&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q206&#39;) .style.display=&#39;none&#39;}">
+<button title="q206" type="button" onclick="if(document.getElementById('q206') .style.display=='none')
+              {document.getElementById('q206') .style.display=''}
+            else{document.getElementById('q206') .style.display='none'}">
 Visa svar
 </button>
 <div id="q206" style="display:none">
@@ -712,8 +693,8 @@ Visa svar
 <li>Testfunktionen ges av <span class="math inline">\(t=\dfrac{\bar{x}-\mu}{\sqrt{s^2/n}}\)</span>. Denna teststatistika är <span class="math inline">\(t\)</span>-fördelad med <span class="math inline">\(n-1\)</span> frihetsgrader om nollhypotesen är sann.</li>
 <li>Beslutregel: <span class="math inline">\(\alpha=0.05\)</span>. Tvåsidigt test, förkasta därför <span class="math inline">\(H_0\)</span> om <span class="math inline">\(|t_{obs}| &gt; t_{krit} = t_{4,\alpha/2=0.025} = 2.776\)</span></li>
 </ol>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">( (<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> )<span class="op">/</span><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>)<span class="op">/</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb28-2" title="2">[<span class="dv">1</span>] <span class="fl">1.898851</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">( (<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> )<span class="op">/</span><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">5</span> )
+[<span class="dv">1</span>] <span class="fl">1.898851</span></code></pre></div>
 <p>Eftersom <span class="math inline">\(t_{obs}=\)</span> 1.8988507 <span class="math inline">\(&lt; 2.776 = t_{krit}\)</span> kan vi inte förkasta nollhypotesen.</p>
 <ul>
 <li>Svar: Vi kan på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta <strong>inte</strong> innebär att vi visar att medelvärdet är 1.</li>
@@ -732,73 +713,70 @@ Visa svar
 <li>Beräkna residualen för <span class="math inline">\(x=7\)</span></li>
 <li>Beräkna residualspridningen.</li>
 </ol>
-<button title="q207" type="button" onclick="if(document.getElementById(&#39;q207&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q207&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q207&#39;) .style.display=&#39;none&#39;}">
+<button title="q207" type="button" onclick="if(document.getElementById('q207') .style.display=='none')
+              {document.getElementById('q207') .style.display=''}
+            else{document.getElementById('q207') .style.display='none'}">
 Visa svar
 </button>
 <div id="q207" style="display:none">
 <div class="alert alert-info">
 <ol style="list-style-type: lower-alpha">
-<li>Riktningskoefficienten ges av
-<span class="math display">\[b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}\]</span></li>
+<li>Riktningskoefficienten ges av <span class="math display">\[b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}\]</span></li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># Direkt tillämpning av formeln ger </span></a>
-<a class="sourceLine" id="cb29-2" title="2">( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-4" title="4"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-5" title="5"><span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-6" title="6"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) ) <span class="op">/</span></a>
-<a class="sourceLine" id="cb29-7" title="7">( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb29-8" title="8"><span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-9" title="9"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb29-10" title="10"><span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-11" title="11"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb29-12" title="12">[<span class="dv">1</span>] <span class="fl">0.2105263</span></a>
-<a class="sourceLine" id="cb29-13" title="13"><span class="co"># Det går att räkna ut detta i flera steg genom att </span></a>
-<a class="sourceLine" id="cb29-14" title="14"><span class="co"># t ex beräkna täljare och nämnare separat. </span></a>
-<a class="sourceLine" id="cb29-15" title="15"><span class="co"># Alternativt använda beräkningsformeln</span></a>
-<a class="sourceLine" id="cb29-16" title="16"></a>
-<a class="sourceLine" id="cb29-17" title="17">( <span class="dv">4</span><span class="op">*</span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">*</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span><span class="op">+</span><span class="dv">7</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">4</span><span class="op">+</span><span class="dv">6</span>)<span class="op">*</span>(<span class="dv">7</span><span class="op">+</span><span class="dv">3</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">/</span></a>
-<a class="sourceLine" id="cb29-18" title="18">( (<span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st">  </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )  </a>
-<a class="sourceLine" id="cb29-19" title="19">[<span class="dv">1</span>] <span class="fl">0.2105263</span></a>
-<a class="sourceLine" id="cb29-20" title="20"></a>
-<a class="sourceLine" id="cb29-21" title="21"><span class="co"># En kommentar: Dessa beräkningar kommer förenklas betydligt i R, vilket vi ska se senare.</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Direkt tillämpning av formeln ger </span>
+( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) ) <span class="op">/</span>
+( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> )
+[<span class="dv">1</span>] <span class="fl">0.2105263</span>
+<span class="co"># Det går att räkna ut detta i flera steg genom att </span>
+<span class="co"># t ex beräkna täljare och nämnare separat. </span>
+<span class="co"># Alternativt använda beräkningsformeln</span>
+
+( <span class="dv">4</span><span class="op">*</span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">*</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span><span class="op">+</span><span class="dv">7</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">4</span><span class="op">+</span><span class="dv">6</span>)<span class="op">*</span>(<span class="dv">7</span><span class="op">+</span><span class="dv">3</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">/</span>
+( (<span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st">  </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )  
+[<span class="dv">1</span>] <span class="fl">0.2105263</span>
+
+<span class="co"># En kommentar: Dessa beräkningar kommer förenklas betydligt i R, vilket vi ska se senare.</span></code></pre></div>
 <p>Interceptet är <span class="math inline">\(a=\bar{y} - b\bar{x}\)</span></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2105</span><span class="op">*</span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>  </a>
-<a class="sourceLine" id="cb30-2" title="2">[<span class="dv">1</span>] <span class="fl">3.6317</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2105</span><span class="op">*</span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>  
+[<span class="dv">1</span>] <span class="fl">3.6317</span></code></pre></div>
 <ul>
-<li>Svar: Riktningskoefficienten beräknas till <span class="math inline">\(b=0.2105\)</span>, vilket tolkas som att om <span class="math inline">\(x\)</span> ökar en enhet så ökar <span class="math inline">\(y\)</span> i <em>genomsnitt</em> med <span class="math inline">\(0.2105\)</span>
-enheter. Interceptet beräknas till <span class="math inline">\(a=3.632\)</span>, vilket tolkas som medelvärdet för <span class="math inline">\(y\)</span> när <span class="math inline">\(x=0\)</span>.</li>
+<li>Svar: Riktningskoefficienten beräknas till <span class="math inline">\(b=0.2105\)</span>, vilket tolkas som att om <span class="math inline">\(x\)</span> ökar en enhet så ökar <span class="math inline">\(y\)</span> i <em>genomsnitt</em> med <span class="math inline">\(0.2105\)</span> enheter. Interceptet beräknas till <span class="math inline">\(a=3.632\)</span>, vilket tolkas som medelvärdet för <span class="math inline">\(y\)</span> när <span class="math inline">\(x=0\)</span>.</li>
 </ul>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Använd koefficienterna från regressionslinjen och sätt in värdet <span class="math inline">\(x=7\)</span>.</li>
 </ol>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>  </a>
-<a class="sourceLine" id="cb31-2" title="2">[<span class="dv">1</span>] <span class="fl">5.1051</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>  
+[<span class="dv">1</span>] <span class="fl">5.1051</span></code></pre></div>
 <ul>
 <li>Svar: Prediktionen <span class="math inline">\(\hat{y}=\)</span> 5.1051. Detta är punkten på regressionslinjen när <span class="math inline">\(x=7\)</span> och vår bästa gissning för det <span class="math inline">\(y\)</span>-värde en individ med värdet <span class="math inline">\(x=7\)</span> kommer att ha.</li>
 </ul>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>En residual är skillnaden mellan ett predicerat värde och det faktiska observerade värdet, <span class="math inline">\(\hat{\varepsilon}=y_i - \hat{y}\)</span>.
-Eftersom <span class="math inline">\(y=3\)</span> när <span class="math inline">\(x=7\)</span> så residualen</li>
+<li>En residual är skillnaden mellan ett predicerat värde och det faktiska observerade värdet, <span class="math inline">\(\hat{\varepsilon}=y_i - \hat{y}\)</span>. Eftersom <span class="math inline">\(y=3\)</span> när <span class="math inline">\(x=7\)</span> så residualen</li>
 </ol>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>) </a>
-<a class="sourceLine" id="cb32-2" title="2">[<span class="dv">1</span>] <span class="fl">-2.1051</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>) 
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">2.1051</span></code></pre></div>
 <ul>
 <li>Svar: Residualen för <span class="math inline">\(x=7\)</span> är -2.1051.</li>
 </ul>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Residualspridningen ges av <span class="math display">\[s_\varepsilon=\sqrt{\dfrac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2}}= \sqrt{\dfrac{\sum_{i=1}^n\hat{\varepsilon}_i^2}{n-2}}\]</span>. Vi beräknar på samma sätt som i c) övriga residualer, kvadrerar och summerar.</li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">sqrt</span>(</a>
-<a class="sourceLine" id="cb33-2" title="2">( (<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb33-3" title="3"><span class="st">  </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb33-4" title="4"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb33-5" title="5"><span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
-<a class="sourceLine" id="cb33-6" title="6"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">6</span>))<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-7" title="7"><span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) )</a>
-<a class="sourceLine" id="cb33-8" title="8">[<span class="dv">1</span>] <span class="fl">2.347077</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(
+( (<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+<span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">6</span>))<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span>
+<span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) )
+[<span class="dv">1</span>] <span class="fl">2.347077</span></code></pre></div>
 <ul>
 <li>Svar: Residualspridningen är 2.347</li>
 </ul>
@@ -813,17 +791,17 @@ Eftersom <span class="math inline">\(y=3\)</span> när <span class="math inline"
 <li>Installera paketet <strong>MASS</strong> som innehåller funktioner som kan vara användbara senare på kursen.</li>
 <li>Aktivera det installerade paketet <strong>MASS</strong>.</li>
 </ol>
-<button title="q208" type="button" onclick="if(document.getElementById(&#39;q208&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q208&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q208&#39;) .style.display=&#39;none&#39;}">
+<button title="q208" type="button" onclick="if(document.getElementById('q208') .style.display=='none')
+              {document.getElementById('q208') .style.display=''}
+            else{document.getElementById('q208') .style.display='none'}">
 Visa svar
 </button>
 <div id="q208" style="display:none">
 <div class="alert alert-info">
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># Installera paket</span></a>
-<a class="sourceLine" id="cb34-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</a>
-<a class="sourceLine" id="cb34-3" title="3"><span class="co"># Aktivera paket</span></a>
-<a class="sourceLine" id="cb34-4" title="4"><span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Installera paket</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;psych&quot;</span>)
+<span class="co"># Aktivera paket</span>
+<span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>)</code></pre></div>
 </div>
 </div>
 <p></br></p>
@@ -856,11 +834,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -872,10 +851,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
@@ -892,7 +867,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

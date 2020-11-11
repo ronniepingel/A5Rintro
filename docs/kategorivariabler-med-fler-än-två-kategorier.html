@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 6 Kategorivariabler med fler än två kategorier | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 6 Kategorivariabler med fler än två kategorier | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 6 Kategorivariabler med fler än två kategorier | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 6 Kategorivariabler med fler än två kategorier | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel och Valentin Zulj" />
+
+
+<meta name="date" content="2020-11-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="binära-variabler.html"/>
+<link rel="next" href="figurer-i-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.13"><i class="fa fa-check"></i>Övning 3.13</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.14"><i class="fa fa-check"></i>Övning 3.14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-för-organiserade-datamaterial"><i class="fa fa-check"></i><b>4.1</b> Principer för organiserade datamaterial</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#working-directory"><i class="fa fa-check"></i><b>4.2</b> Working directory</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-kod"><i class="fa fa-check"></i><b>4.3</b> Läsa in datamaterial med hjälp av kod</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.3.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.3.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.3.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-menyerna-i-rstudio"><i class="fa fa-check"></i><b>4.4</b> Läsa in datamaterial med hjälp av menyerna i RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-från-working-directory"><i class="fa fa-check"></i><b>4.4.1</b> Läsa in data från working directory</a></li>
+<li class="chapter" data-level="4.4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-med-import-dataset"><i class="fa fa-check"></i><b>4.4.2</b> Läsa in data med “Import Dataset”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#spara-datamaterial-med-hjälp-av-r"><i class="fa fa-check"></i><b>4.5</b> Spara datamaterial med hjälp av R</a></li>
+<li class="chapter" data-level="4.6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övningar-2"><i class="fa fa-check"></i><b>4.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.1"><i class="fa fa-check"></i>Övning 4.1</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="binära-variabler.html"><a href="binära-variabler.html"><i class="fa fa-check"></i><b>5</b> Binära variabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> Deskription av en binär variabel</a></li>
+<li class="chapter" data-level="5.2" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.2</b> Tabeller och en binär variabel</a></li>
+<li class="chapter" data-level="5.3" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.3</b> Figurer och en binär variabel</a></li>
+<li class="chapter" data-level="5.4" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-binär-variabel"><i class="fa fa-check"></i><b>5.4</b> Inferens för binär variabel</a></li>
+<li class="chapter" data-level="5.5" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-två-binära-variabler"><i class="fa fa-check"></i><b>5.5</b> Deskription av två binära variabler</a></li>
+<li class="chapter" data-level="5.6" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.6</b> Tabeller och två binära variabler</a></li>
+<li class="chapter" data-level="5.7" data-path="binära-variabler.html"><a href="binära-variabler.html#kvantifiering-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>5.7</b> Kvantifiering av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="5.8" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.8</b> Figurer och två binära variabler</a></li>
+<li class="chapter" data-level="5.9" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-två-binära-variabler"><i class="fa fa-check"></i><b>5.9</b> Inferens för två binära variabler</a></li>
+<li class="chapter" data-level="5.10" data-path="binära-variabler.html"><a href="binära-variabler.html#övningar-3"><i class="fa fa-check"></i><b>5.10</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="binära-variabler.html"><a href="binära-variabler.html#referenser-1"><i class="fa fa-check"></i><b>5.11</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler med fler än två kategorier</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#deskription-av-en-variabel-med-fler-än-två-kategorier"><i class="fa fa-check"></i><b>6.1</b> Deskription av en variabel med fler än två kategorier</a></li>
+<li class="chapter" data-level="6.2" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#figurer-och-kategorivariabler-med-fler-än-2-kategorier"><i class="fa fa-check"></i><b>6.2</b> Figurer och kategorivariabler med fler än 2 kategorier</a></li>
+<li class="chapter" data-level="6.3" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#övningar-4"><i class="fa fa-check"></i><b>6.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#övning-5.1-1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#övning-5.2-1"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#övning-5.3-1"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#övning-5.4-1"><i class="fa fa-check"></i>Övning 5.4</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="kategorivariabler-med-fler-än-två-kategorier.html"><a href="kategorivariabler-med-fler-än-två-kategorier.html#referenser-2"><i class="fa fa-check"></i><b>6.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="figurer-i-r.html"><a href="figurer-i-r.html"><i class="fa fa-check"></i><b>7</b> Figurer i R</a><ul>
+<li class="chapter" data-level="7.1" data-path="figurer-i-r.html"><a href="figurer-i-r.html#typer-av-figurer"><i class="fa fa-check"></i><b>7.1</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="figurer-i-r.html"><a href="figurer-i-r.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>7.1.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="figurer-i-r.html"><a href="figurer-i-r.html#figurer-för-andelar"><i class="fa fa-check"></i><b>7.2</b> Figurer för andelar</a></li>
+<li class="chapter" data-level="7.3" data-path="figurer-i-r.html"><a href="figurer-i-r.html#figurer-för-fördelningar"><i class="fa fa-check"></i><b>7.3</b> Figurer för fördelningar</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="figurer-i-r.html"><a href="figurer-i-r.html#histogram"><i class="fa fa-check"></i><b>7.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="7.3.2" data-path="figurer-i-r.html"><a href="figurer-i-r.html#histogram-1"><i class="fa fa-check"></i><b>7.3.2</b> Histogram</a></li>
+<li class="chapter" data-level="7.3.3" data-path="figurer-i-r.html"><a href="figurer-i-r.html#lådagram"><i class="fa fa-check"></i><b>7.3.3</b> Lådagram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="figurer-i-r.html"><a href="figurer-i-r.html#spridningsdiagram"><i class="fa fa-check"></i><b>7.4</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="7.5" data-path="figurer-i-r.html"><a href="figurer-i-r.html#cirkeldigram"><i class="fa fa-check"></i><b>7.5</b> Cirkeldigram</a></li>
+<li class="chapter" data-level="7.6" data-path="figurer-i-r.html"><a href="figurer-i-r.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>7.6</b> Några frekvent förekommande diagram.</a></li>
+<li class="chapter" data-level="7.7" data-path="figurer-i-r.html"><a href="figurer-i-r.html#export-av-figurer"><i class="fa fa-check"></i><b>7.7</b> Export av figurer</a></li>
+<li class="chapter" data-level="7.8" data-path="figurer-i-r.html"><a href="figurer-i-r.html#export-av-tabeller"><i class="fa fa-check"></i><b>7.8</b> Export av tabeller</a><ul>
+<li class="chapter" data-level="" data-path="figurer-i-r.html"><a href="figurer-i-r.html#övning-5.1-2"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="figurer-i-r.html"><a href="figurer-i-r.html#övning-5.1-3"><i class="fa fa-check"></i>Övning 5.1</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="figurer-i-r.html"><a href="figurer-i-r.html#referenser-3"><i class="fa fa-check"></i><b>7.9</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>8</b> Tabeller</a><ul>
+<li class="chapter" data-level="8.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>8.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>8.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>8.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>8.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>8.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>8.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="8.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>8.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>8.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kategorivariabler-med-fler-än-två-kategorier" class="section level1">
+<h1><span class="header-section-number">Kapitel 6</span> Kategorivariabler med fler än två kategorier</h1>
+<p>En nödvändig färdighet vid arbete med data är att kunna hantera och analysera kategorivariabler.</p>
+<div id="deskription-av-en-variabel-med-fler-än-två-kategorier" class="section level2">
+<h2><span class="header-section-number">6.1</span> Deskription av en variabel med fler än två kategorier</h2>
+<p>Vi introducerar nu en tredje variabel, en variabel med ålderskategorier. Nedanstående avsnitt lämpar sig för variabler med relativt få kategorier, låt säg färre än 10. Om vi ha fler kategorier finns alternativa sätt. Vi kan konstera att detta är en variabel på ordinal datanivå, även om anges som numerisk med kategorierna. Dessutom är den lite märkligt kodad, eftersom det lägsta numeriska värdet korresponderar till den högsta datakategorin.</p>
+<ul>
+<li>0 - 65-79 år</li>
+<li>1 - 50-64 år</li>
+<li>2 - 18-49 år</li>
+</ul>
+<p>Vi börjar med att göra om variabeln till en faktor, med nivåerna i rätt ordning. Därefter ändrar vi namn på kategorierna.</p>
+<p>Dessutom gör vi något som vi kommer ha nytta av senare, dvs vi skapar binära variabler för varje kategori.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">age &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) </a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7">age_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(age, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> &quot;65-79 år&quot;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &quot;50-64 år&quot;</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> &quot;18-49 år&quot;</span></a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">age_<span class="dv">1849</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))</a>
+<a class="sourceLine" id="cb1-13" title="13">age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-14" title="14">age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-15" title="15">age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17">age_<span class="dv">5064</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))</a>
+<a class="sourceLine" id="cb1-18" title="18">age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-19" title="19">age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-20" title="20">age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">age_<span class="dv">6579</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))</a>
+<a class="sourceLine" id="cb1-23" title="23">age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-24" title="24">age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-25" title="25">age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27"><span class="co"># Vi jämför de tre kodningarna och skapar tabeller på motsvarande sätt som förut.</span></a>
+<a class="sourceLine" id="cb1-28" title="28"><span class="kw">table</span>(age)</a>
+<a class="sourceLine" id="cb1-29" title="29"><span class="op">&gt;</span><span class="st"> </span>age</a>
+<a class="sourceLine" id="cb1-30" title="30"><span class="op">&gt;</span><span class="st">   </span><span class="dv">0</span>   <span class="dv">1</span>   <span class="dv">2</span> </a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="op">&gt;</span><span class="st">  </span><span class="dv">66</span> <span class="dv">148</span>  <span class="dv">66</span></a>
+<a class="sourceLine" id="cb1-32" title="32">freq_table_age &lt;-<span class="st"> </span><span class="kw">table</span>(age_cat)</a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="kw">sum</span>(age_<span class="dv">1849</span>)</a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">66</span></a>
+<a class="sourceLine" id="cb1-35" title="35"><span class="kw">sum</span>(age_<span class="dv">5064</span>)</a>
+<a class="sourceLine" id="cb1-36" title="36"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">148</span></a>
+<a class="sourceLine" id="cb1-37" title="37"><span class="kw">sum</span>(age_<span class="dv">6579</span>)</a>
+<a class="sourceLine" id="cb1-38" title="38"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">66</span></a>
+<a class="sourceLine" id="cb1-39" title="39"></a>
+<a class="sourceLine" id="cb1-40" title="40"><span class="kw">prop.table</span>(<span class="kw">table</span>(age))</a>
+<a class="sourceLine" id="cb1-41" title="41"><span class="op">&gt;</span><span class="st"> </span>age</a>
+<a class="sourceLine" id="cb1-42" title="42"><span class="op">&gt;</span><span class="st">         </span><span class="dv">0</span>         <span class="dv">1</span>         <span class="dv">2</span> </a>
+<a class="sourceLine" id="cb1-43" title="43"><span class="op">&gt;</span><span class="st"> </span><span class="fl">0.2357143</span> <span class="fl">0.5285714</span> <span class="fl">0.2357143</span></a>
+<a class="sourceLine" id="cb1-44" title="44">prop_table_age &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table_age )</a>
+<a class="sourceLine" id="cb1-45" title="45"><span class="kw">mean</span>(age_<span class="dv">1849</span>)</a>
+<a class="sourceLine" id="cb1-46" title="46"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.2357143</span></a>
+<a class="sourceLine" id="cb1-47" title="47"><span class="kw">mean</span>(age_<span class="dv">5064</span>)</a>
+<a class="sourceLine" id="cb1-48" title="48"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.5285714</span></a>
+<a class="sourceLine" id="cb1-49" title="49"><span class="kw">mean</span>(age_<span class="dv">6579</span>)</a>
+<a class="sourceLine" id="cb1-50" title="50"><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.2357143</span></a></code></pre></div>
+</div>
+<div id="figurer-och-kategorivariabler-med-fler-än-2-kategorier" class="section level2">
+<h2><span class="header-section-number">6.2</span> Figurer och kategorivariabler med fler än 2 kategorier</h2>
+<p>Eftersom en tabell illustrerar något aggregerat, dvs antal (frekvenser) eller andelar använder
+vi stapeldiagram. Om vi har många kategorier så rekommenderas dotchart. Note att nedanstående är andelar som summerar till 100%.</p>
+<p>Vad man bör har i åtanke när man skapar ett stolpdiagram eller stapeldiagram är att huruvida kategorierna avstånd bör represeneras. Bestå kategorierna av nominal eller ordinalskala är avståndet inte viktigt. Är däremot variabeln heltal, år, datum så ska man ta hänsyn till avstånden.</p>
+<p>Dessutom gäller det vara uppmärksam på kategorier som inte har frekvenser.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co"># stapeldiagram baserat på tabellen med frekvenser</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">barplot</span>(freq_table_age, </a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">ylab =</span> <span class="st">&quot;Antal&quot;</span>,   </a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>)</a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co"># stapeldiagram baserat på tabellen med andelar</span></a>
+<a class="sourceLine" id="cb2-8" title="8">percentages_age &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>prop_table_age, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-9" title="9">my_bar2 &lt;-<span class="st"> </span><span class="kw">barplot</span>(percentages_age, </a>
+<a class="sourceLine" id="cb2-10" title="10">                   <span class="dt">ylab =</span> <span class="st">&quot;Procent (%)&quot;</span>,  </a>
+<a class="sourceLine" id="cb2-11" title="11">                   <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb2-12" title="12">                   <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb2-13" title="13">                   <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">65</span>))</a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="kw">text</span>(<span class="dt">x =</span> my_bar2, <span class="dt">y =</span> percentages_age <span class="op">+</span><span class="st"> </span><span class="dv">6</span>, <span class="dt">labels =</span> <span class="kw">paste</span>(percentages_age, <span class="st">&quot;%&quot;</span>,  <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)) </a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co"># av ordningen i vektorn utan av de numeriska värdens storlek.</span></a>
+<a class="sourceLine" id="cb3-3" title="3">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb3-4" title="4">freq_table_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>year)</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">barplot</span>( freq_table_year<span class="op">/</span><span class="dv">1000</span>, </a>
+<a class="sourceLine" id="cb3-6" title="6">         <span class="dt">space =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb3-7" title="7">         <span class="dt">cex.names =</span> <span class="fl">0.8</span>,</a>
+<a class="sourceLine" id="cb3-8" title="8">         <span class="dt">las =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb3-9" title="9">         <span class="dt">col =</span> <span class="st">&quot;darkolivegreen&quot;</span>,</a>
+<a class="sourceLine" id="cb3-10" title="10">         <span class="dt">ylab =</span> <span class="st">&quot;Antal mönstrande (1000-tal)&quot;</span>,</a>
+<a class="sourceLine" id="cb3-11" title="11">         <span class="dt">xlab =</span> <span class="st">&quot;Födelseår&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-3-1.png" width="960" /></p>
+</div>
+<div id="övningar-4" class="section level2">
+<h2><span class="header-section-number">6.3</span> Övningar</h2>
+<div id="övning-5.1-1" class="section level3 unnumbered">
+<h3>Övning 5.1</h3>
+<p>En undersökning ville testa jämföra andelen vänsterhänta bland män och kvinnor. I studien drogs ett OSU av med 30 kvinnor varav 6 var vänsterhänta samt ett OSU med 29 män varav 4 är vänsterhänta. Är andelen vänsterhänta mellan kvinnor och män samma? Testa nollhypotesen och redovisa p-värdet.</p>
+<button title="q501" type="button" onclick="if(document.getElementById(&#39;q501&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q501&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q501&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q501" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">x_f &lt;-<span class="st"> </span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb4-2" title="2">n_f &lt;-<span class="st"> </span><span class="dv">30</span></a>
+<a class="sourceLine" id="cb4-3" title="3">x_m &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb4-4" title="4">n_m&lt;-<span class="st"> </span><span class="dv">29</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">prop.test</span>(<span class="kw">c</span>(x_f,x_m), <span class="kw">c</span>(n_f, n_m), <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> <span class="kw">prop.test</span>(<span class="kw">c</span>(x_f, x_m), <span class="kw">c</span>(n_f, n_m), <span class="dt">correct =</span> <span class="ot">FALSE</span>)<span class="op">:</span><span class="st"> </span>Chi<span class="op">-</span>squared</a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="op">&gt;</span><span class="st"> </span>approximation may be incorrect</a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="er">&gt;</span><span class="st">   </span><span class="dv">2</span><span class="op">-</span>sample test <span class="cf">for</span> equality of proportions without continuity</a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">&gt;</span><span class="st">   </span>correction</a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="er">&gt;</span><span class="st"> </span>data<span class="op">:</span><span class="st">  </span><span class="kw">c</span>(x_f, x_m) out of <span class="kw">c</span>(n_f, n_m)</a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="op">&gt;</span><span class="st"> </span>X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">0.40357</span>, df =<span class="st"> </span><span class="dv">1</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.5252</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="op">&gt;</span><span class="st"> </span>alternative hypothesis<span class="op">:</span><span class="st"> </span>two.sided</a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="op">&gt;</span><span class="st"> </span><span class="dv">95</span> percent confidence interval<span class="op">:</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="er">&gt;</span><span class="st">  </span><span class="fl">-0.1282953</span>  <span class="fl">0.2524333</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="op">&gt;</span><span class="st"> </span>sample estimates<span class="op">:</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="er">&gt;</span><span class="st">   </span>prop <span class="dv">1</span>   prop <span class="dv">2</span> </a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="op">&gt;</span><span class="st"> </span><span class="fl">0.200000</span> <span class="fl">0.137931</span></a>
+<a class="sourceLine" id="cb4-20" title="20"></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co"># Undersök de förväntade frekvenserna</span></a>
+<a class="sourceLine" id="cb4-22" title="22">test &lt;-<span class="st"> </span><span class="kw">chisq.test</span>( <span class="kw">as.table</span>( <span class="kw">matrix</span>( <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">24</span>, <span class="dv">4</span>, <span class="dv">25</span>), <span class="dv">2</span>, <span class="dv">2</span>) ), <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> <span class="kw">chisq.test</span>(<span class="kw">as.table</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">24</span>, <span class="dv">4</span>, <span class="dv">25</span>), <span class="dv">2</span>, <span class="dv">2</span>)), <span class="dt">correct =</span> <span class="ot">FALSE</span>)<span class="op">:</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="er">&gt;</span><span class="st"> </span>Chi<span class="op">-</span>squared approximation may be incorrect</a>
+<a class="sourceLine" id="cb4-25" title="25">test</a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="er">&gt;</span><span class="st">   </span>Pearson<span class="st">&#39;s Chi-squared test</span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="st">&gt; </span></a>
+<a class="sourceLine" id="cb4-29" title="29"><span class="st">&gt; data:  as.table(matrix(c(6, 24, 4, 25), 2, 2))</span></a>
+<a class="sourceLine" id="cb4-30" title="30"><span class="st">&gt; X-squared = 0.40357, df = 1, p-value = 0.5252</span></a>
+<a class="sourceLine" id="cb4-31" title="31"><span class="st">test$expected</span></a>
+<a class="sourceLine" id="cb4-32" title="32"><span class="st">&gt;           A         B</span></a>
+<a class="sourceLine" id="cb4-33" title="33"><span class="st">&gt; A  5.084746  4.915254</span></a>
+<a class="sourceLine" id="cb4-34" title="34"><span class="st">&gt; B 24.915254 24.084746</span></a></code></pre></div>
+<p>Chi-tvåtest går alltså inte att använda! Det finns alternativa test som Fishers exakta test (se Triola, s583), men detta är inget som ingår på kursen.</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-5.2-1" class="section level3 unnumbered">
+<h3>Övning 5.2</h3>
+<p>Raghubir &amp; Srivastava (2009) undersökte effekten av storleken på sedlar och mynt på i vilken utsträckning pengarna används. Ett experiment genomfördes där 46 studenter fick en endollarssedel och 43 stycken studenter fick 4 stycken amerikanska 25 cents mynt, så kallade quarters. Studenterna fick sedan välja mellan att spara pengarna eller spendera dem på tuggummi och mintpastiller.</p>
+<p>Nedan redovisas en sammanfattning av studien.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">1 dollar sedel</th>
+<th align="center">4 quarters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spenderade pengarna</td>
+<td align="center">12</td>
+<td align="center">27</td>
+</tr>
+<tr class="even">
+<td>Sparade pengarna</td>
+<td align="center">34</td>
+<td align="center">16</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Skapa en tabell som deskriptivt redovisar sambandet</p></li>
+<li><p>Skapa en figur som deskriptivt redovisar sambandet</p></li>
+<li><p>Skatta skillnaden i andelar</p></li>
+<li><p>Beräkna <span class="math inline">\(p\)</span>-värdet om givet att det inte finns någon skillnad mellan grupperna vad gäller andelen som spenderar pengarna.</p></li>
+</ol>
+<button title="q502" type="button" onclick="if(document.getElementById(&#39;q502&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q502&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q502&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q501" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co"># a)</span></a>
+<a class="sourceLine" id="cb5-3" title="3">freq_table &lt;-<span class="st"> </span><span class="kw">as.table</span>( <span class="kw">matrix</span>( <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">16</span>), <span class="dv">2</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="kw">colnames</span>(freq_table) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1 dollarsedel&quot;</span>, <span class="st">&quot;4 quarters&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">rownames</span>(freq_table) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Spenderade pengarna&quot;</span>, <span class="st">&quot;Sparade pengarna&quot;</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6">prop_table &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb5-7" title="7">table_bill_spending &lt;-<span class="st"> </span><span class="kw">cbind</span>(freq_table[,<span class="dv">1</span>], <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>prop_table[,<span class="dv">1</span>], <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb5-8" title="8">                             freq_table[,<span class="dv">2</span>], <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>prop_table[,<span class="dv">2</span>], <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="kw">colnames</span>(table_bill_spending) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1 dollar (n)&quot;</span>, <span class="st">&quot;1 dollarsedel (%)&quot;</span>, <span class="st">&quot;4 quarters (n)&quot;</span>, <span class="st">&quot;4 quarters (%)&quot;</span>)</a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="kw">rownames</span>(table_bill_spending) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Spenderade pengarna&quot;</span>, <span class="st">&quot;Sparade pengarna&quot;</span>)</a>
+<a class="sourceLine" id="cb5-11" title="11"></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co"># b)</span></a>
+<a class="sourceLine" id="cb5-13" title="13">percentages_spending&lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>prop_table[<span class="dv">1</span>,], <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb5-14" title="14">my_bar &lt;-<span class="st"> </span><span class="kw">barplot</span>(  percentages_spending, </a>
+<a class="sourceLine" id="cb5-15" title="15">                    <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;1 dollarsedel&quot;</span>, <span class="st">&quot;4 quarters&quot;</span>), </a>
+<a class="sourceLine" id="cb5-16" title="16">                    <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>), </a>
+<a class="sourceLine" id="cb5-17" title="17">                    <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb5-18" title="18">                    <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb5-19" title="19">                    <span class="dt">ylab =</span> <span class="st">&quot;Spenderade pengarna (%)&quot;</span>)</a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="kw">text</span>(<span class="dt">x =</span> my_bar, <span class="dt">y =</span> percentages_spending <span class="op">+</span><span class="st"> </span><span class="dv">6</span>, <span class="dt">labels =</span> <span class="kw">paste</span>(percentages_spending, <span class="st">&quot;%&quot;</span>,  <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)) </a>
+<a class="sourceLine" id="cb5-21" title="21"></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="co"># c) </span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="co"># Version 1</span></a>
+<a class="sourceLine" id="cb5-24" title="24">x1 &lt;-<span class="st"> </span>freq_table[<span class="dv">1</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb5-25" title="25">x0 &lt;-<span class="st"> </span>freq_table[<span class="dv">1</span>,<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb5-26" title="26">n1 &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb5-27" title="27">n0 &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb5-28" title="28">resultat &lt;-<span class="st"> </span><span class="kw">prop.test</span>(<span class="kw">c</span>(x1, x0), <span class="kw">c</span>(n1, n0), <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb5-29" title="29">p_differens &lt;-<span class="st"> </span>resultat<span class="op">$</span>estimate[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>resultat<span class="op">$</span>estimate[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb5-30" title="30"></a>
+<a class="sourceLine" id="cb5-31" title="31"><span class="co"># Version 2</span></a>
+<a class="sourceLine" id="cb5-32" title="32">p1 &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb5-33" title="33">p0 &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb5-34" title="34">n1 &lt;-<span class="st">  </span><span class="kw">sum</span>(freq_table[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb5-35" title="35">n0 &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb5-36" title="36">p_diff &lt;-<span class="st"> </span>p1 <span class="op">-</span><span class="st"> </span>p0</a>
+<a class="sourceLine" id="cb5-37" title="37">v_diff &lt;-<span class="st"> </span>p1<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p1)<span class="op">/</span>n1 <span class="op">+</span><span class="st"> </span>p0<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p0)<span class="op">/</span>n0</a>
+<a class="sourceLine" id="cb5-38" title="38">z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</a>
+<a class="sourceLine" id="cb5-39" title="39">ll &lt;-<span class="st"> </span>p_diff <span class="op">-</span><span class="st"> </span>z<span class="op">*</span><span class="kw">sqrt</span>(v_diff)</a>
+<a class="sourceLine" id="cb5-40" title="40">ul &lt;-<span class="st"> </span>p_diff <span class="op">+</span><span class="st"> </span>z<span class="op">*</span><span class="kw">sqrt</span>(v_diff)</a>
+<a class="sourceLine" id="cb5-41" title="41"></a>
+<a class="sourceLine" id="cb5-42" title="42"><span class="co"># d)</span></a>
+<a class="sourceLine" id="cb5-43" title="43"><span class="co"># Version 1</span></a>
+<a class="sourceLine" id="cb5-44" title="44">resultat</a>
+<a class="sourceLine" id="cb5-45" title="45"><span class="co"># Version 2</span></a>
+<a class="sourceLine" id="cb5-46" title="46"><span class="kw">chisq.test</span>(freq_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-5.3-1" class="section level3 unnumbered">
+<h3>Övning 5.3</h3>
+<p>Rosa et al. (1998) undersökte om en typ av ‘’healers’’ hade förmåga att känna kroppens energifält.
+Forskarna besökte en mässa för alternativmedicin och gjorde ett experiment som gick ut på att healern skulle identifiera om undersökarens vänstra eller högre hand var närmst healern. Totalt genomfördes 130 försök av dessa lyckades healers identifera rätt hand 53 gånger. Undersök det finns belägg för denna förmåga bland healers.</p>
+<button title="q503" type="button" onclick="if(document.getElementById(&#39;q503&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q503&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q503&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q503" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co"># Version 1</span></a>
+<a class="sourceLine" id="cb6-3" title="3">x &lt;-<span class="st"> </span><span class="dv">53</span></a>
+<a class="sourceLine" id="cb6-4" title="4">n &lt;-<span class="st"> </span><span class="dv">130</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">prop.test</span>(<span class="dv">53</span>, <span class="dv">130</span>, <span class="dt">p =</span> <span class="fl">0.5</span>, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co"># Version 2</span></a>
+<a class="sourceLine" id="cb6-8" title="8">phat &lt;-<span class="st"> </span>x<span class="op">/</span>n</a>
+<a class="sourceLine" id="cb6-9" title="9">pH0 &lt;-<span class="st"> </span><span class="fl">0.5</span></a>
+<a class="sourceLine" id="cb6-10" title="10">z &lt;-<span class="st"> </span>(phat <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span>)<span class="op">/</span><span class="kw">sqrt</span>(pH0<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>pH0)<span class="op">/</span>n)</a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="dv">2</span><span class="op">*</span><span class="kw">pnorm</span>(z)</a></code></pre></div>
+<p>Givet att healers inte är bättre än slumpen, dvs <span class="math inline">\(H_0: p = 0.5\)</span>, så är sannolikheten
+<span class="math inline">\(p=0.035\)</span> att observera så extremt värde som det studien ger. Hur tolkar vi detta rent praktiskt? För det första ser vi att om det vore så att det finns en skillnad så verkar det snarare vara i en riktning att healers presterar sämre än slumpen. För det andra är detta ett exempel på hur man inte ska förlita sig på enskilda studier och hypotesprövning allena. Det är rimligt att tro att resultat helt enkelt är ett slumpfynd och att healers presterar varken bättre eller sämre än slumpen.</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-5.4-1" class="section level3 unnumbered">
+<h3>Övning 5.4</h3>
+<p>Gerritsen et al. (1998) ville jämföra kiurgi med spjälning för att hantera det som kallas karpaltunnelsyndrom, dvs nerver som kläms i handleden. Du erhåller följande datamaterial från studien. Undersökarna vill beräkna kvoten andelar lyckade behandlingar (relativ risk). Använd spjälning som referensgrupp. Eftersom forskarna vill fatta beslut genomförs en hypotesprövnig på 5% signifikansnivå.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">treatment =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">67</span>), <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">6</span>)), </a>
+<a class="sourceLine" id="cb7-2" title="2">                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">67</span>), <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">6</span>)))</a></code></pre></div>
+<button title="q504" type="button" onclick="if(document.getElementById(&#39;q504&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q504&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q504&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q504" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb8-2" title="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">treatment =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">67</span>), <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">6</span>)), </a>
+<a class="sourceLine" id="cb8-3" title="3">                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">67</span>), <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">6</span>)))</a>
+<a class="sourceLine" id="cb8-4" title="4">freq_table &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>y, df<span class="op">$</span>treatment)</a>
+<a class="sourceLine" id="cb8-5" title="5">prop_table &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table, <span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8">phat_splint &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb8-9" title="9">phat_surgery &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb8-10" title="10">p_kvot &lt;-<span class="st"> </span>phat_surgery<span class="op">/</span>phat_splint </a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="kw">chisq.test</span>(freq_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>```
+En patient har 27% (p = 0.002) större chans till lyckad behandling om patienten genomgår kirurgi istället för behandling. För att genomföra testet genomförs ett chitvå-test som testar samband i en 2x2 tabell, oavsett effektmått. Eftersom <span class="math inline">\(p&lt;0.05\)</span> förkastar vi på 5% signifikansnivå nollhypotesen.</p>
+</div>
+</div>
+<p></br></p>
+</div>
+</div>
+<div id="referenser-2" class="section level2">
+<h2><span class="header-section-number">6.4</span> Referenser</h2>
+<p>Gerritsen, A. A., De Vet, H. C., Scholten, R. J., Bertelsmann, F. W., De Krom, M. C., &amp; Bouter, L. M. (2002). Splinting vs surgery in the treatment of carpal tunnel syndrome: a randomized controlled trial. Jama, 288(10), 1245-1251.</p>
+<p>Raghubir, P., &amp; Srivastava, J. (2009). <em>The denomination effect.</em> Journal of Consumer Research, 36(4), 701-713</p>
+<p>Rosa, L., Rosa, E., Sarner, L., &amp; Barrett, S. (1998). A close look at therapeutic touch. Jama, 279(13), 1005-1010.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="binära-variabler.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="figurer-i-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

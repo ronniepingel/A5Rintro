@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 4 Läsa in och spara data | Tillämpad statistik med R</title>
   <meta name="description" content="Kapitel 4 Läsa in och spara data | Tillämpad statistik med R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 4 Läsa in och spara data | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel och Valentin Zulj" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="data-objekt-och-funktioner.html"/>
-
+<link rel="next" href="binära-variabler.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -198,6 +173,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
 <li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="binära-variabler.html"><a href="binära-variabler.html"><i class="fa fa-check"></i><b>5</b> Binära variabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> Deskription av en binär variabel</a></li>
+<li class="chapter" data-level="5.2" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.2</b> Tabeller och en binär variabel</a></li>
+<li class="chapter" data-level="5.3" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.3</b> Figurer och en binär variabel</a></li>
+<li class="chapter" data-level="5.4" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-binär-variabel"><i class="fa fa-check"></i><b>5.4</b> Inferens för binär variabel</a></li>
+<li class="chapter" data-level="5.5" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-två-binära-variabler"><i class="fa fa-check"></i><b>5.5</b> Deskription av två binära variabler</a></li>
+<li class="chapter" data-level="5.6" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.6</b> Tabeller och två binära variabler</a></li>
+<li class="chapter" data-level="5.7" data-path="binära-variabler.html"><a href="binära-variabler.html#kvantifiering-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>5.7</b> Kvantifiering av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="5.8" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.8</b> Figurer och två binära variabler</a></li>
+<li class="chapter" data-level="5.9" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-två-binära-variabler"><i class="fa fa-check"></i><b>5.9</b> Inferens för två binära variabler</a></li>
+<li class="chapter" data-level="5.10" data-path="binära-variabler.html"><a href="binära-variabler.html#övningar-3"><i class="fa fa-check"></i><b>5.10</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="binära-variabler.html"><a href="binära-variabler.html#referenser-1"><i class="fa fa-check"></i><b>5.11</b> Referenser</a></li>
 </ul></li>
 </ul>
 
@@ -355,71 +349,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>dec</strong> anger vilket teckan som används som decimaltecken.</li>
 </ul>
 <p>Standardinställningarna för de tre funktionernas vanligaste argument anges nedan.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb174-2" title="2"><span class="kw">read.csv2</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb174-3" title="3"><span class="kw">read.table</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)
+<span class="kw">read.csv2</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">read.table</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</code></pre></div>
 <p>Som syns i kodsnutten är det standard för alla tre funktionerna att läsa in första raden i ett datamaterial som variabelnamn, och de använder alla samma typ av citationstecken. Det som skiljer dem åt är vilka tecken so används för att åtskilja kolumner samt för att skriva ut decimaltal. Funktionen <strong>read.csv()</strong> använder kommatecken för att skilja mellan kolumner, och punkt för att dela upp decimaltal, samtidigt som <strong>read.csv2()</strong> använder semikolon för att skilja mellan kolumner och kommatecken för att dela upp decimaltal. <strong>read.table()</strong>, däremot, använder ett blanksteg för att skilja mellan kolumner, och en punkt för att dela upp decimaltal. För att lära sig läsa in text- och CSV-filer är det bra att gå igenom punktlistan för varje datamaterial som ska läsas in, och på så sätt ta reda på hur argumenten är specificerade i det specifika datamaterialet.</p>
 <p>Här nedan finns ett utdrag ur textfilen <strong>animals1.csv</strong>. Titta gärna närmare på datamaterialet och försök identifiera hur vart och ett av argumenten i punktlistan ovan är specificerade. Försök sedan komma fram till vilken av de tre inläsningsfunktionerna som lämpar sig bäst för att läsa in datamaterialet. Svaret finns att läsa under kodsnutten.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="st">&quot;&quot;</span>,<span class="st">&quot;animal&quot;</span>,<span class="st">&quot;body&quot;</span>,<span class="st">&quot;brain&quot;</span></a>
-<a class="sourceLine" id="cb175-2" title="2"><span class="st">&quot;1&quot;</span>,<span class="st">&quot;Lesser short-tailed shrew&quot;</span>,<span class="fl">0.005</span>,<span class="fl">0.14</span></a>
-<a class="sourceLine" id="cb175-3" title="3"><span class="st">&quot;2&quot;</span>,<span class="st">&quot;Little brown bat&quot;</span>,<span class="fl">0.01</span>,<span class="fl">0.25</span></a>
-<a class="sourceLine" id="cb175-4" title="4"><span class="st">&quot;3&quot;</span>,<span class="st">&quot;Big brown bat&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.3</span></a>
-<a class="sourceLine" id="cb175-5" title="5"><span class="st">&quot;4&quot;</span>,<span class="st">&quot;Mouse&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.4</span></a>
-<a class="sourceLine" id="cb175-6" title="6"><span class="st">&quot;5&quot;</span>,<span class="st">&quot;Musk shrew&quot;</span>,<span class="fl">0.048</span>,<span class="fl">0.33</span></a>
-<a class="sourceLine" id="cb175-7" title="7"><span class="st">&quot;6&quot;</span>,<span class="st">&quot;Star-nosed mole&quot;</span>,<span class="fl">0.06</span>,<span class="dv">1</span></a>
-<a class="sourceLine" id="cb175-8" title="8"><span class="st">&quot;7&quot;</span>,<span class="st">&quot;E. American mole&quot;</span>,<span class="fl">0.075</span>,<span class="fl">1.2</span></a>
-<a class="sourceLine" id="cb175-9" title="9"><span class="st">&quot;8&quot;</span>,<span class="st">&quot;Ground squirrel&quot;</span>,<span class="fl">0.101</span>,<span class="dv">4</span></a>
-<a class="sourceLine" id="cb175-10" title="10"><span class="st">&quot;9&quot;</span>,<span class="st">&quot;Tree shrew&quot;</span>,<span class="fl">0.104</span>,<span class="fl">2.5</span></a>
-<a class="sourceLine" id="cb175-11" title="11"><span class="st">&quot;10&quot;</span>,<span class="st">&quot;Golden hamster&quot;</span>,<span class="fl">0.12</span>,<span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;&quot;</span>,<span class="st">&quot;animal&quot;</span>,<span class="st">&quot;body&quot;</span>,<span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;1&quot;</span>,<span class="st">&quot;Lesser short-tailed shrew&quot;</span>,<span class="fl">0.005</span>,<span class="fl">0.14</span>
+<span class="st">&quot;2&quot;</span>,<span class="st">&quot;Little brown bat&quot;</span>,<span class="fl">0.01</span>,<span class="fl">0.25</span>
+<span class="st">&quot;3&quot;</span>,<span class="st">&quot;Big brown bat&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.3</span>
+<span class="st">&quot;4&quot;</span>,<span class="st">&quot;Mouse&quot;</span>,<span class="fl">0.023</span>,<span class="fl">0.4</span>
+<span class="st">&quot;5&quot;</span>,<span class="st">&quot;Musk shrew&quot;</span>,<span class="fl">0.048</span>,<span class="fl">0.33</span>
+<span class="st">&quot;6&quot;</span>,<span class="st">&quot;Star-nosed mole&quot;</span>,<span class="fl">0.06</span>,<span class="dv">1</span>
+<span class="st">&quot;7&quot;</span>,<span class="st">&quot;E. American mole&quot;</span>,<span class="fl">0.075</span>,<span class="fl">1.2</span>
+<span class="st">&quot;8&quot;</span>,<span class="st">&quot;Ground squirrel&quot;</span>,<span class="fl">0.101</span>,<span class="dv">4</span>
+<span class="st">&quot;9&quot;</span>,<span class="st">&quot;Tree shrew&quot;</span>,<span class="fl">0.104</span>,<span class="fl">2.5</span>
+<span class="st">&quot;10&quot;</span>,<span class="st">&quot;Golden hamster&quot;</span>,<span class="fl">0.12</span>,<span class="dv">1</span></code></pre></div>
 <p>I <strong>animals.csv</strong> är argumenten specificerade som</p>
 <ul>
 <li><code>header = TRUE</code> eftersom variabelnamnen anges i den första raden</li>
-<li><code>sep = ","</code> eftersom ett kommatecken används för att skilja cellerna i varje rad åt</li>
-<li><code>quote = "\""</code> eftersom helt vanliga citationstecken används för textvariabler</li>
-<li><code>dec = "."</code> eftersom en vanlig punkt används som decimaltecken</li>
+<li><code>sep = &quot;,&quot;</code> eftersom ett kommatecken används för att skilja cellerna i varje rad åt</li>
+<li><code>quote = &quot;\&quot;&quot;</code> eftersom helt vanliga citationstecken används för textvariabler</li>
+<li><code>dec = &quot;.&quot;</code> eftersom en vanlig punkt används som decimaltecken</li>
 </ul>
-<p>Dessa argument kan stämmas av med kodsnutten där standardargument anges, och då framkommer att funktionen <strong>read.csv()</strong> bör användas för att läsa in datamaterialet. Skriv därför in <code>df1 &lt;- read.csv(file="D:/animals1.csv")</code> för att läsa in datamaterialet i R (notera att det räcker att bara skriva <code>file = "animals1.csv"</code> om filen finns i den mapp som är working directory). Eftersom <strong>animals.csv</strong> är en textfil kan filen öppnas i Notepad eller Textredigerare (eller mosvarande), och på så sätt kan alla text- och CSV-filer öppnas för att inspektera hur de är organiserade. Märk väl att de tecken som används för att skilja mellan celler, hantera textvariabler, och dela upp decimaltal alla är angivna inom citationstecken – t.ex. står det alltså <code>sep = ","</code> istället för bara <code>sep = ,</code>. Detta är standard i R, och det är något som är viktigt att komma ihåg. Notera även att citationstecken anges som <code>"\""</code>, detta eftersom två uppsättningar av citationstecken skulle förvirra datorn.</p>
+<p>Dessa argument kan stämmas av med kodsnutten där standardargument anges, och då framkommer att funktionen <strong>read.csv()</strong> bör användas för att läsa in datamaterialet. Skriv därför in <code>df1 &lt;- read.csv(file=&quot;D:/animals1.csv&quot;)</code> för att läsa in datamaterialet i R (notera att det räcker att bara skriva <code>file = &quot;animals1.csv&quot;</code> om filen finns i den mapp som är working directory). Eftersom <strong>animals.csv</strong> är en textfil kan filen öppnas i Notepad eller Textredigerare (eller mosvarande), och på så sätt kan alla text- och CSV-filer öppnas för att inspektera hur de är organiserade. Märk väl att de tecken som används för att skilja mellan celler, hantera textvariabler, och dela upp decimaltal alla är angivna inom citationstecken – t.ex. står det alltså <code>sep = &quot;,&quot;</code> istället för bara <code>sep = ,</code>. Detta är standard i R, och det är något som är viktigt att komma ihåg. Notera även att citationstecken anges som <code>&quot;\&quot;&quot;</code>, detta eftersom två uppsättningar av citationstecken skulle förvirra datorn.</p>
 <p>Betrakta nu utdraget ur <strong>animals2.csv</strong> som finns här nedan, och försök återigen identifiera hur argumenten är specificerade, och vilken funktion som bör användas för att läsa in datamaterialet. Svaret finns än en gång att läsa under datamaterialet.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="st">&quot;&quot;</span>;<span class="st">&quot;animal&quot;</span>;<span class="st">&quot;body&quot;</span>;<span class="st">&quot;brain&quot;</span></a>
-<a class="sourceLine" id="cb176-2" title="2"><span class="st">&quot;1&quot;</span>;<span class="st">&quot;Lesser short-tailed shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">005</span>;<span class="dv">0</span>,<span class="dv">14</span></a>
-<a class="sourceLine" id="cb176-3" title="3"><span class="st">&quot;2&quot;</span>;<span class="st">&quot;Little brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">01</span>;<span class="dv">0</span>,<span class="dv">25</span></a>
-<a class="sourceLine" id="cb176-4" title="4"><span class="st">&quot;3&quot;</span>;<span class="st">&quot;Big brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">3</span></a>
-<a class="sourceLine" id="cb176-5" title="5"><span class="st">&quot;4&quot;</span>;<span class="st">&quot;Mouse&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">4</span></a>
-<a class="sourceLine" id="cb176-6" title="6"><span class="st">&quot;5&quot;</span>;<span class="st">&quot;Musk shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">048</span>;<span class="dv">0</span>,<span class="dv">33</span></a>
-<a class="sourceLine" id="cb176-7" title="7"><span class="st">&quot;6&quot;</span>;<span class="st">&quot;Star-nosed mole&quot;</span>;<span class="dv">0</span>,<span class="dv">06</span>;<span class="dv">1</span></a>
-<a class="sourceLine" id="cb176-8" title="8"><span class="st">&quot;7&quot;</span>;<span class="st">&quot;E. American mole&quot;</span>;<span class="dv">0</span>,<span class="dv">075</span>;<span class="dv">1</span>,<span class="dv">2</span></a>
-<a class="sourceLine" id="cb176-9" title="9"><span class="st">&quot;8&quot;</span>;<span class="st">&quot;Ground squirrel&quot;</span>;<span class="dv">0</span>,<span class="dv">101</span>;<span class="dv">4</span></a>
-<a class="sourceLine" id="cb176-10" title="10"><span class="st">&quot;9&quot;</span>;<span class="st">&quot;Tree shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">104</span>;<span class="dv">2</span>,<span class="dv">5</span></a>
-<a class="sourceLine" id="cb176-11" title="11"><span class="st">&quot;10&quot;</span>;<span class="st">&quot;Golden hamster&quot;</span>;<span class="dv">0</span>,<span class="dv">12</span>;<span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;&quot;</span>;<span class="st">&quot;animal&quot;</span>;<span class="st">&quot;body&quot;</span>;<span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;1&quot;</span>;<span class="st">&quot;Lesser short-tailed shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">005</span>;<span class="dv">0</span>,<span class="dv">14</span>
+<span class="st">&quot;2&quot;</span>;<span class="st">&quot;Little brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">01</span>;<span class="dv">0</span>,<span class="dv">25</span>
+<span class="st">&quot;3&quot;</span>;<span class="st">&quot;Big brown bat&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">3</span>
+<span class="st">&quot;4&quot;</span>;<span class="st">&quot;Mouse&quot;</span>;<span class="dv">0</span>,<span class="dv">023</span>;<span class="dv">0</span>,<span class="dv">4</span>
+<span class="st">&quot;5&quot;</span>;<span class="st">&quot;Musk shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">048</span>;<span class="dv">0</span>,<span class="dv">33</span>
+<span class="st">&quot;6&quot;</span>;<span class="st">&quot;Star-nosed mole&quot;</span>;<span class="dv">0</span>,<span class="dv">06</span>;<span class="dv">1</span>
+<span class="st">&quot;7&quot;</span>;<span class="st">&quot;E. American mole&quot;</span>;<span class="dv">0</span>,<span class="dv">075</span>;<span class="dv">1</span>,<span class="dv">2</span>
+<span class="st">&quot;8&quot;</span>;<span class="st">&quot;Ground squirrel&quot;</span>;<span class="dv">0</span>,<span class="dv">101</span>;<span class="dv">4</span>
+<span class="st">&quot;9&quot;</span>;<span class="st">&quot;Tree shrew&quot;</span>;<span class="dv">0</span>,<span class="dv">104</span>;<span class="dv">2</span>,<span class="dv">5</span>
+<span class="st">&quot;10&quot;</span>;<span class="st">&quot;Golden hamster&quot;</span>;<span class="dv">0</span>,<span class="dv">12</span>;<span class="dv">1</span></code></pre></div>
 <p>I <strong>animals2.csv</strong> är argumenten specificerade som</p>
 <ul>
 <li><code>header = TRUE</code> eftersom variabelnamnen anges i den första raden</li>
-<li><code>sep = ";"</code> eftersom ett semikolon används för att skilja cellerna i varje rad åt</li>
-<li><code>quote = "\""</code> eftersom helt vanliga citationstecken används för textvariabler</li>
-<li><code>dec = ","</code> eftersom ett kommatecken används som decimaltecken</li>
+<li><code>sep = &quot;;&quot;</code> eftersom ett semikolon används för att skilja cellerna i varje rad åt</li>
+<li><code>quote = &quot;\&quot;&quot;</code> eftersom helt vanliga citationstecken används för textvariabler</li>
+<li><code>dec = &quot;,&quot;</code> eftersom ett kommatecken används som decimaltecken</li>
 </ul>
-<p>Efter avstämning med standardargumenten framgår att <strong>animals2.csv</strong> bör läsas in med funktionen <strong>read.csv2()</strong>, och koden <code>df2 &lt;- read.csv2(file="D:/animals2.csv")</code> kan därför användas för att importera datamaterialet till R.</p>
+<p>Efter avstämning med standardargumenten framgår att <strong>animals2.csv</strong> bör läsas in med funktionen <strong>read.csv2()</strong>, och koden <code>df2 &lt;- read.csv2(file=&quot;D:/animals2.csv&quot;)</code> kan därför användas för att importera datamaterialet till R.</p>
 <p>Studera nu utdraget ur datamaterialet <strong>animals.txt</strong> som visas här nedanför, och försök identifiera argument och agöra vilken funktion som bör användas för att importera datamaterialet till R.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="st">&quot;animal&quot;</span> <span class="st">&quot;body&quot;</span> <span class="st">&quot;brain&quot;</span></a>
-<a class="sourceLine" id="cb177-2" title="2"><span class="st">&quot;Lesser short-tailed shrew&quot;</span> <span class="fl">0.005</span> <span class="fl">0.14</span></a>
-<a class="sourceLine" id="cb177-3" title="3"><span class="st">&quot;Little brown bat&quot;</span> <span class="fl">0.01</span> <span class="fl">0.25</span></a>
-<a class="sourceLine" id="cb177-4" title="4"><span class="st">&quot;Big brown bat&quot;</span> <span class="fl">0.023</span> <span class="fl">0.3</span></a>
-<a class="sourceLine" id="cb177-5" title="5"><span class="st">&quot;Mouse&quot;</span> <span class="fl">0.023</span> <span class="fl">0.4</span></a>
-<a class="sourceLine" id="cb177-6" title="6"><span class="st">&quot;Musk shrew&quot;</span> <span class="fl">0.048</span> <span class="fl">0.33</span></a>
-<a class="sourceLine" id="cb177-7" title="7"><span class="st">&quot;Star-nosed mole&quot;</span> <span class="fl">0.06</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb177-8" title="8"><span class="st">&quot;E. American mole&quot;</span> <span class="fl">0.075</span> <span class="fl">1.2</span></a>
-<a class="sourceLine" id="cb177-9" title="9"><span class="st">&quot;Ground squirrel&quot;</span> <span class="fl">0.101</span> <span class="dv">4</span></a>
-<a class="sourceLine" id="cb177-10" title="10"><span class="st">&quot;Tree shrew&quot;</span> <span class="fl">0.104</span> <span class="fl">2.5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;animal&quot;</span> <span class="st">&quot;body&quot;</span> <span class="st">&quot;brain&quot;</span>
+<span class="st">&quot;Lesser short-tailed shrew&quot;</span> <span class="fl">0.005</span> <span class="fl">0.14</span>
+<span class="st">&quot;Little brown bat&quot;</span> <span class="fl">0.01</span> <span class="fl">0.25</span>
+<span class="st">&quot;Big brown bat&quot;</span> <span class="fl">0.023</span> <span class="fl">0.3</span>
+<span class="st">&quot;Mouse&quot;</span> <span class="fl">0.023</span> <span class="fl">0.4</span>
+<span class="st">&quot;Musk shrew&quot;</span> <span class="fl">0.048</span> <span class="fl">0.33</span>
+<span class="st">&quot;Star-nosed mole&quot;</span> <span class="fl">0.06</span> <span class="dv">1</span>
+<span class="st">&quot;E. American mole&quot;</span> <span class="fl">0.075</span> <span class="fl">1.2</span>
+<span class="st">&quot;Ground squirrel&quot;</span> <span class="fl">0.101</span> <span class="dv">4</span>
+<span class="st">&quot;Tree shrew&quot;</span> <span class="fl">0.104</span> <span class="fl">2.5</span></code></pre></div>
 <p>I <strong>animals.csv</strong> är argumenten specificerade som</p>
 <ul>
 <li><code>header = TRUE</code> eftersom variabelnamnen anges i den första raden</li>
-<li><code>sep = " "</code> eftersom ett blanksteg används för att särskilja cellerna i varje rad</li>
-<li><code>quote = "\""</code> eftersom helt vanliga citationstecken används för textvariabler</li>
-<li><code>dec = "."</code> eftersom en punkt används som decimaltecken</li>
+<li><code>sep = &quot; &quot;</code> eftersom ett blanksteg används för att särskilja cellerna i varje rad</li>
+<li><code>quote = &quot;\&quot;&quot;</code> eftersom helt vanliga citationstecken används för textvariabler</li>
+<li><code>dec = &quot;.&quot;</code> eftersom en punkt används som decimaltecken</li>
 </ul>
-<p>För att läsa in <strong>animals.txt</strong> är alltså <strong>read.table()</strong> mest lämplig, och datamaterialet kan importeras med hjälp av koden <code>df3 &lt;- read.table(file="D:/animals.txt", header=TRUE)</code>.</p>
+<p>För att läsa in <strong>animals.txt</strong> är alltså <strong>read.table()</strong> mest lämplig, och datamaterialet kan importeras med hjälp av koden <code>df3 &lt;- read.table(file=&quot;D:/animals.txt&quot;, header=TRUE)</code>.</p>
 <p>Återgå nu till <strong>animals1.csv</strong>, och försök läsa in datamaterialet med hjälp av</p>
-<p><code>df4 &lt;- read.table(file="D:/animals1.csv", header=TRUE, sep=",", dec=".")</code></p>
+<p><code>df4 &lt;- read.table(file=&quot;D:/animals1.csv&quot;, header=TRUE, sep=&quot;,&quot;, dec=&quot;.&quot;)</code></p>
 <p>Studera såväl <code>df4</code> som <code>df1</code>, finns det någon skillnad mellan de två datamaterialen? Syftet med <code>df4</code> är att visa att <strong>read.table()</strong> också kan användas för att läsa in filer som inte använder de standardargument som presenterades i början av detta delkapitel. Istället för att använde <strong>read.csv()</strong> går det alltså att använda <strong>read.table()</strong>, och inom parenteserna specificera de argument som gäller för det datamaterial som ska läsas in. Det går lika bra att använda <strong>read.table()</strong> med egenspecificerade argument som att använda någon av funktionerna som har förspecificerade argument, och det är helt enkelt upp till varje individuell användare att avgöra vilken approach som är snabbast och lättast.</p>
 </div>
 <div id="excel-filer" class="section level3">
@@ -434,14 +428,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Radera kommentarer som du har i Excelfilen så att dessa inte tolkas som extra data.</li>
 </ul>
 <p>Många punkter på listan ovan finns även med i listan över saker som är värda att ta i beaktning när det rör sig om text- och CSV-filer. Det faktum att det finns ett relativt stort överlap kan ses som ett tecken på att många av dessa punkter är övergripande och gäller för nästan alla format som datamaterial kan sparas i. Det finns alltså en generell konvention för hur datamaterial bör struktureras för att göra analysen så smidig som möjligt.</p>
-<p>I resten av detta avsnitt är målet att importera datamaterialen som finns in Excel-filerna <strong>animal3.xlsx</strong> och <strong>animal4.xlsx</strong>. För att importera data som lagras i Excel-filer krävs ett nytt paket i R. Paketet heter <strong>readxl</strong>, och det lättaste sättet att installera det är att skriva <code>install.packages("readxl")</code> i Console och sedan trycka enter. När paketet väl är installerat är det viktigt att även köra koden <code>library(readxl)</code> för att paketet ska aktiveras i R-sessionen. Paketet behöver bara installeras en gång, men det måste aktiveras varje gång R har varit stängt och öppnas på nytt. Det kan därför vara bra att ha <code>library(readxl)</code> längst upp i ett script där Excel-filer läses in.</p>
+<p>I resten av detta avsnitt är målet att importera datamaterialen som finns in Excel-filerna <strong>animal3.xlsx</strong> och <strong>animal4.xlsx</strong>. För att importera data som lagras i Excel-filer krävs ett nytt paket i R. Paketet heter <strong>readxl</strong>, och det lättaste sättet att installera det är att skriva <code>install.packages(&quot;readxl&quot;)</code> i Console och sedan trycka enter. När paketet väl är installerat är det viktigt att även köra koden <code>library(readxl)</code> för att paketet ska aktiveras i R-sessionen. Paketet behöver bara installeras en gång, men det måste aktiveras varje gång R har varit stängt och öppnas på nytt. Det kan därför vara bra att ha <code>library(readxl)</code> längst upp i ett script där Excel-filer läses in.</p>
 <p>Den första av Excel-filerna, <strong>animals3.xlsx</strong>, är en vanlig Excel-fil med bra struktur, där all data finns i det första arket. Datamaterialet som finns i filen kan därför enkelt läsas in genom att använda koden som finns i kodsnutten här nedan.</p>
 <pre><code>df5 &lt;- read_excel(&quot;animal3.xlsx&quot;)</code></pre>
 <p>Använd samma ansats för att läsa in <strong>animal4.xlsx</strong>, denna ska alltså läsas in som</p>
 <pre><code>df6 &lt;- read_excel(&quot;animal3.xlsx&quot;)</code></pre>
 <p>Jämför <code>df5</code> och <code>df6</code> visar båda tecken på att datamaterialen har lästs in på ett korrekt sätt? <code>df5</code> ser bra ut, och datamaterialet verkar ha importerats på ett bra sätt. För <code>df6</code>, däremot, är det något som har gått fel i inläsningen. Öppna filen <strong>animal4.xlsx</strong> och fundera på vad det kan vara som orsakar detta fel.</p>
 <p>När filen är öppen framgår direkt att den består av flera olika kalkylblad, men att datamaterialet som är av intresse finns lagrat i blad 2. Utöver detta är det även så att datamaterialet inte börjar på första raden, utan det finns även annan text i kalkylbladet. För att R ska kunna importera data från <strong>animal4.xlsx</strong> på ett korrekt sätt krävs att två inställningar specificeras i <strong>read_excel()</strong>, nämligen <strong>sheet</strong> och <strong>range</strong>.</p>
-<p>Inställningen <strong>sheet</strong> används för att bestämma vilket blad R ska använda när det importera data från Excel-filer. I fallet <strong>animal4.xlsx</strong> finns det intressanta datamaterialet i blad 2, vilkt innebär att inställningen bör specificeras som <code>sheet = "Blad2"</code>, eftersom detta är namnet på bladet. Den andra inställningen, <strong>range</strong>, används för att bestämma vilken del av kalkylbladet som ska läsas in. I detta fall finns det en del text som stör inläsningen, och datamaterialet börjar först på rad 3. Inställningen bör specificeras som <code>range = "A3:D68"</code> eftersom cellerna <strong>A3</strong> och <strong>D68</strong> kan användas för att bilda en rektangel som innefattar hela datamaterialet (tänkt på det som att dra ett lodrätt och ett vågrätt streck från var och en av cellerna, då kommer alla data finnas inom rektangeln som bildas av strecken). Notera att den första cellen i inställningen ska vara den som är <em>längst upp till vänster</em> i datamaterialet, och den andra cellen ska vara den som finns <em>längt ner till höger.</em> Läs nu in datamaterialet som</p>
+<p>Inställningen <strong>sheet</strong> används för att bestämma vilket blad R ska använda när det importera data från Excel-filer. I fallet <strong>animal4.xlsx</strong> finns det intressanta datamaterialet i blad 2, vilkt innebär att inställningen bör specificeras som <code>sheet = &quot;Blad2&quot;</code>, eftersom detta är namnet på bladet. Den andra inställningen, <strong>range</strong>, används för att bestämma vilken del av kalkylbladet som ska läsas in. I detta fall finns det en del text som stör inläsningen, och datamaterialet börjar först på rad 3. Inställningen bör specificeras som <code>range = &quot;A3:D68&quot;</code> eftersom cellerna <strong>A3</strong> och <strong>D68</strong> kan användas för att bilda en rektangel som innefattar hela datamaterialet (tänkt på det som att dra ett lodrätt och ett vågrätt streck från var och en av cellerna, då kommer alla data finnas inom rektangeln som bildas av strecken). Notera att den första cellen i inställningen ska vara den som är <em>längst upp till vänster</em> i datamaterialet, och den andra cellen ska vara den som finns <em>längt ner till höger.</em> Läs nu in datamaterialet som</p>
 <pre><code>df7 &lt;- read_excel(&quot;animal4.xlsx&quot;, sheet = &quot;Blad2&quot;, range = &quot;A3:D68&quot;)</code></pre>
 <p>Studera <code>df7</code> närmare. Ser den likadan ut som <code>df6</code>, eller har specificeringen av inställningar gjort datainläsningen bättre? Denna typ av inställningar kan användas för att förenkla importen av datamaterial från Excel-filer, därför är det bra att öppna Excel-filer och titta på deras struktur innan de ska importeras till R.</p>
 <p><strong>read_excel()</strong> har som standard att importera data från det första bladet i en Excel-fil, och att importera alla celler som har någon typ av information lagrad i sig (det spelar ingen roll om det är meningslös text eller viktiga data). Därför går det bra att använda funktionen rakt av för datamaterial som är strukturerade som <strong>animals3.xlsx</strong>, eftersom datamaterialet börjar på första raden och alla celler är fyllda med relevant information. I alla övriga fall är det alltså värt att fundera över hur inställningarna kan användas för att underlätta inläsningen av data.</p>
@@ -467,20 +461,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Börja med att set till så att filerna i R:s working directory syns i panelen längst ner till vänster. Instruktioner för hur detta ordnas finns i sista stycket under rubriken <strong>Working directory</strong> i detta kapitel.</p>
 <p>Flytta nu filen <strong>OVB_data.rds</strong> till mappen som är working directory, och vänta tills det att den dyker upp i panelen längst ner till vänster. Klicka på filens namn när den har dykt upp, så att en dialogruta dyker upp. I denna ruta anges det namn som datamaterialet ska ha när det importeras till R. Ange ett namn och klicka på <strong>OK</strong> så importeras datamaterialet direkt till R. När filen som ska läsas in inte är av <strong>.rds</strong>-format kan det bli lite krångligare att använda denna approach, men i de flesta fall så går det att ändra grundinställningarna precis som när data importeras med hjälp av kod.</p>
 <p>Ladda nu ner filen <strong>OVB_data.csv</strong> och flytta den till working directory. Testa att klicka på dess namn i panelen längst ner till vänster, och sedan klicka på <strong>Import Dataset</strong>. När detta är gjort öppnas ett fönster där datamaterialet visas, detta fönster illustreras i bilden nedan.</p>
-<p><img src="docs/images/import_wd.png" />
-Som synes ser datamaterialet väldigt väl organiserat ut, men det behöver inte alltid vara fallet. Ibland kan det vara så att datamaterialet ser väldigt konstigt ut, och detta kan bero på att grundinställningarna i inläsningen inte är anpassade efter datamaterialet i fråga. När det rör sig om text- och CSV-filer finns det, precis som när data importeras med kod, fyra inställningar som kan ändras för att datamaterialet ska importeras korrekt. Dessa inställningar kan ändras i rutan <strong>Import Options</strong>, som finns precis under datamaterialet.</p>
+<p><img src="docs/images/import_wd.png" /> Som synes ser datamaterialet väldigt väl organiserat ut, men det behöver inte alltid vara fallet. Ibland kan det vara så att datamaterialet ser väldigt konstigt ut, och detta kan bero på att grundinställningarna i inläsningen inte är anpassade efter datamaterialet i fråga. När det rör sig om text- och CSV-filer finns det, precis som när data importeras med kod, fyra inställningar som kan ändras för att datamaterialet ska importeras korrekt. Dessa inställningar kan ändras i rutan <strong>Import Options</strong>, som finns precis under datamaterialet.</p>
 <p>Med hjälp av rutan vid <strong>First Row as Names</strong> kan inställningen <strong>header</strong> justeras. Om rutan har en bock i sig har inställningen specifierats som <code>header = TRUE</code>, annars är inställningen satt till <code>FALSE</code>. Till höger om <strong>Delimeter:</strong> finns en rullista som kan användas för att avgöra vilket tecken som används för att skilja mellan kolumner, och Till höger om <strong>Quotes:</strong> finns en rullista som kan användas för att avgöra hur textvariabler hanteras. Dessa båda motsvarar inställningarna <strong>sep</strong> respektive <strong>quote</strong> från tidigare. Slutligen kan knappen <strong>Configure</strong> till höger om <strong>Locale</strong> användas för att få upp en ruta där alternativet <strong>dec</strong> kan användas för att avgöra vilken typ av decimaltecken som används i datamaterialet.</p>
 <p>En sak som är särskilt bra med detta sätt att importera data är att det går att ange vilken datanivå varje variabel har (eller är tänkt att ha). Under varje variabel namn finns i bilden ovan en liten pil (med texten (double) bredvid). Klicka gärna på denna fil för att få upp en lista med olika datanivåer, en sådan lista visas i bilden som följer.</p>
-<p><img src="docs/images/dataniva.png" /></p>
+<div class="figure">
+<img src="docs/images/dataniva.png" />
+
+</div>
 <p>Det första allternativet i listan ovan är <strong>Guess</strong>, vilket innebär att R läser av värdena som finns i kolumnen och “gissar” vilken datanivå variabeln har. Om variabeln i fråga är en faktor variabel med numeriska nivåer, till exempel de binära nivåerna <strong>0</strong> och <strong>1</strong>, är det lätt hänt att R gissar fel och klassa variabeln som <strong>Integer</strong>. För att undvika detta rekommenderas att byta datanivån till <strong>Factor</strong>, detta kommer visas sig vara till stor hjälp i analysen av datamaterialet. Notera även att alternativen <strong>Skip</strong> och <strong>Only</strong> finns längst ner i listan. Alternativet <strong>Skip</strong> medför att den valda variabeln <em>inte</em> importeras, och <strong>Only</strong> medför att <em>bara</em> den valda variabeln importeras.</p>
 <p>Med hjälp av dessa fem inställningar bör det vara möjligt att läsa in datafiler på ett ordentligt sätt.</p>
 </div>
 <div id="läsa-in-data-med-import-dataset" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Läsa in data med “Import Dataset”</h3>
 <p>Längst upp till höger i RStudio finns en knapp där det står <strong>Import Dataset</strong>. Klicka på denna för att få upp en rullista med alternativ (se bild nedan).</p>
-<p><img src="docs/images/environ.png" /></p>
+<div class="figure">
+<img src="docs/images/environ.png" />
+
+</div>
 <p>I listan går det att välja vilket format datamaterialet som ska läsas in har. För text- och CSV-filer rekommenderas <strong>From Text (base)</strong>. Klicka på <strong>From Text (base)</strong> för att få upp ett fönster med alla filer som finns i R:s working directory. Notera att det även går att navigera runt i datorn för att hitta datamaterial som finns i mappar som inte är working directory. Välj nu filen <strong>OVB_data.csv</strong> för att få upp rutan som visas i bilden nedan.</p>
-<p><img src="docs/images/import_data.png" /></p>
+<div class="figure">
+<img src="docs/images/import_data.png" />
+
+</div>
 <p>I rutan finns tre paneler. I panelen med rubrik <strong>Input File</strong> visas filen som ska läsas in, med andra ord ger den en blick över det rådata som finns. Det som är bra med denna panel är att det går väldigt lätt att undersöka hur det ligger till med grundinställningarna som diskuterats ovan, det vill säga vilken typ av decimalteceken som använs och så vidare. I panelen som heter <strong>Data Frame</strong> visas strukturen på den data frame som kommer läsas in med de inställningar som råder för tillfället. I detta fall ser datamaterialet bra strukturerat ut, men så är inte alltid fallet. När det som visas under <strong>Data Frame</strong> ser dåligt strukturerat ut är det en bra idé att ändra på inställningarna till vänster om de två panelerna. De vanligaste inställningarna ändras med hjälp av <strong>Heading</strong> som anger huruvida den första raden innehåller variabelnamn, <strong>Separator</strong> som anger vilket tecken som används för att skilja mellan kolumner, <strong>Decimal</strong> som anger vilken typ av decimaltecken som används, och <strong>Quote</strong> som används för att specificera textvariabler. Testa att byta inställningen för <strong>Heading</strong> till <strong>Yes</strong>, vad händer? Ser materialet som visas under <strong>Data Frame</strong> bättre ut. Prova även att ändra de andra inställningarna för att se vad som händer, och fundera över varför det blir som det blir.</p>
 <p>När datamaterialet som visas under <strong>Data Frame</strong> ser bra ut importeras det genom att trycka på <strong>Import</strong>. Notera att ett kommando skrivs ut och körs i Console när datamaterialet importeras. Denna kod kan vara värd att kopiera och spara i den scriptfil där datamaterialet är tänkt att analyseras, eftersom koden då bara kan köras för att importera datamaterialet nästa gång R startas. Om koden redan finns i scriptet är det inte nödvändigt att importera det genom att använda <strong>Import Data</strong>-menyn en gång till.</p>
 </div>
@@ -489,9 +491,9 @@ Som synes ser datamaterialet väldigt väl organiserat ut, men det behöver inte
 <h2><span class="header-section-number">4.5</span> Spara datamaterial med hjälp av R</h2>
 <p>Många gånger kan det vara fördelaktigt att exportera ett datamaterial från R, och spara det på datorn i någon sorts text- eller excel-fil. Till exemple kan det vara så att R har använts för att städa ett datamaterial, göra olika ändringar i ett datamaterial, eller slå ihop två eller flera datamaterial. Då är det smidigt att kunna spara det förändrade datamaterialet för att sedan kunna arbeta med det direkt, och inte behöva genomföra samma förändringar varje gång analysarbete ska utföras.</p>
 <p>De kommandon som används för att exportera datamaterial i R är snarlika de som används för att importera datamaterial. Funktionerna har nästan samma namn, och deras struktur är uppbygd på i stort sett sätt. För att spara datamaterial i text-filer finns tre huvudsakliga funktioner. Dessa är</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">write.csv</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb183-2" title="2"><span class="kw">write.csv2</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb183-3" title="3"><span class="kw">write.table</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)
+<span class="kw">write.csv2</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">write.table</span>(x, <span class="dt">file =</span> <span class="st">&quot; &quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</code></pre></div>
 <p>Notera att funktionsnamnen är likadana, med skillnaden att det nu står <strong>write</strong> istället för <strong>read</strong> framför punkten. Grundinställningarna i funktionerna är samma som de för motsvarande funktion som används för dataimport. I funktionerna representerar <strong>x</strong> det material som ska exporteras, och inom de citationstecken som finns efter <strong>file = </strong> anges namnet på den fil som datamaterialet ska sparas i. Datamaterialet kommer per automatik sparas i det working directory som är angivet när kodsnutten körs.</p>
 <p>För att visa hur exportfunktionerna kan komma till nytta används de två datamaterialen <strong>exp_dat1.csv</strong> och <strong>exp_dat2.csv</strong>. De båda datamaterialen är simulerade vilked medför att de inte är särskilt intressanta i sig själva, utan det intressanta är hur de kan manipuleras och sedan sparas.</p>
 <p>Ladda ner de två datamaterialet till ett R:s working directory och läs in dem som</p>
@@ -522,9 +524,9 @@ exp_dat2 &lt;- read.csv(&quot;exp_dat2.csv&quot;)</code></pre>
 <li><p>Ladda ner datamaterialet som finns lagrat i <strong>VWS.csv</strong> från Studentportalen.</p></li>
 <li><p>Öppna filen som datamaterialet är lagrad i med hjälp av Notepad, TextEdit, eller någon annan textredigerare. Fundera på hur datamaterialet materialet är strukturerat, och ange hur de fyra grundinställningarna är specificerade i filen.</p></li>
 </ol>
-<button title="q41b" type="button" onclick="if(document.getElementById(&#39;q41b&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q41b&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q41b&#39;) .style.display=&#39;none&#39;}">
+<button title="q41b" type="button" onclick="if(document.getElementById('q41b') .style.display=='none')
+              {document.getElementById('q41b') .style.display=''}
+            else{document.getElementById('q41b') .style.display='none'}">
 Visa svar
 </button>
 <div id="q41b" style="display:none">
@@ -532,9 +534,9 @@ Visa svar
 <p>I datamaterialet är</p>
 <ul>
 <li><code>header = FALSE</code> eftersom inga variabelnamn ges i första raden</li>
-<li><code>sep = ";"</code> eftersom semikolon används för att skilja mellan kolumner</li>
-<li><code>quote = "\""</code> detta går egentligen inte att se, eftersom inga textvariabler finns med</li>
-<li><code>dec = "."</code> detta går inte heller att se, eftersom inga decimaltal finns i datamaterialet</li>
+<li><code>sep = &quot;;&quot;</code> eftersom semikolon används för att skilja mellan kolumner</li>
+<li><code>quote = &quot;\&quot;&quot;</code> detta går egentligen inte att se, eftersom inga textvariabler finns med</li>
+<li><code>dec = &quot;.&quot;</code> detta går inte heller att se, eftersom inga decimaltal finns i datamaterialet</li>
 </ul>
 </div>
 </div>
@@ -542,9 +544,9 @@ Visa svar
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Avgör vilken av funktionerna <code>read.csv()</code> och <code>read.csv2()</code> som är bäst lämpad för att importera datamaterialet till R, och skriv sedan en kodsnutt som kan användas för att importera datamaterialet.</li>
 </ol>
-<button title="q41c" type="button" onclick="if(document.getElementById(&#39;q41c&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q41c&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q41c&#39;) .style.display=&#39;none&#39;}">
+<button title="q41c" type="button" onclick="if(document.getElementById('q41c') .style.display=='none')
+              {document.getElementById('q41c') .style.display=''}
+            else{document.getElementById('q41c') .style.display='none'}">
 Visa svar
 </button>
 <div id="q41c" style="display:none">
@@ -557,9 +559,9 @@ Visa svar
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Använd nu <code>read.table()</code> för att importera samma datamaterial genom att ange egna specifikationer för alla inställningar.</li>
 </ol>
-<button title="q41d" type="button" onclick="if(document.getElementById(&#39;q41d&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q41d&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q41d&#39;) .style.display=&#39;none&#39;}">
+<button title="q41d" type="button" onclick="if(document.getElementById('q41d') .style.display=='none')
+              {document.getElementById('q41d') .style.display=''}
+            else{document.getElementById('q41d') .style.display='none'}">
 Visa svar
 </button>
 <div id="q41d" style="display:none">
@@ -572,9 +574,9 @@ Visa svar
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Ge varje kolumn ett meningsfullt namn.</li>
 </ol>
-<button title="q41e" type="button" onclick="if(document.getElementById(&#39;q41e&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q41e&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q41e&#39;) .style.display=&#39;none&#39;}">
+<button title="q41e" type="button" onclick="if(document.getElementById('q41e') .style.display=='none')
+              {document.getElementById('q41e') .style.display=''}
+            else{document.getElementById('q41e') .style.display='none'}">
 Visa svar
 </button>
 <div id="q41e" style="display:none">
@@ -596,9 +598,9 @@ View(wvs) </code></pre>
 <ol style="list-style-type: lower-alpha">
 <li>Ladda ner filen <strong>WVS.xlsx</strong> från Studentportalen och studera den i ett Excel-fönster. Finns det något som kan orsaka svårigheter i datainläsningen? Finns det några celler som innehåller information som inte är relevant i sammanhanget?</li>
 </ol>
-<button title="q42a" type="button" onclick="if(document.getElementById(&#39;q42a&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q42a&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q42a&#39;) .style.display=&#39;none&#39;}">
+<button title="q42a" type="button" onclick="if(document.getElementById('q42a') .style.display=='none')
+              {document.getElementById('q42a') .style.display=''}
+            else{document.getElementById('q42a') .style.display='none'}">
 Visa svar
 </button>
 <div id="q42a" style="display:none">
@@ -615,15 +617,15 @@ Visa svar
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Använd funktionen <strong>read_excel()</strong> för att läsa in datamaterialet. Vilka inställningar är viktiga att ändra för att inläsningen ska gå korrekt till?</li>
 </ol>
-<button title="q42b" type="button" onclick="if(document.getElementById(&#39;q42b&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q42b&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q42b&#39;) .style.display=&#39;none&#39;}">
+<button title="q42b" type="button" onclick="if(document.getElementById('q42b') .style.display=='none')
+              {document.getElementById('q42b') .style.display=''}
+            else{document.getElementById('q42b') .style.display='none'}">
 Visa svar
 </button>
 <div id="q42b" style="display:none">
 <div class="alert alert-info">
 <p>För att datainläsningen ska gå korrekt till finns två inställningar som behöver ändras. Den ena är <code>sheet</code>, som bestämmer vilket ark som ska läsas in, och den andra är <code>range</code> som anger vilken del av Excel-arket som ska läsas in.</p>
-<p>I detta fall bör <code>sheet = "Sheet2"</code>, och <code>range = "A4:D1210"</code>, och koden blir</p>
+<p>I detta fall bör <code>sheet = &quot;Sheet2&quot;</code>, och <code>range = &quot;A4:D1210&quot;</code>, och koden blir</p>
 <pre><code>wvs3 &lt;- read_excel(&quot;WVS.xlsx&quot;, sheet = &quot;Sheet2&quot;&quot;, range = &quot;A4:D1210&quot;)</code></pre>
 <p>Notera att indexet över vilken variabel som hör till vilken kolumn kan vara bra att spara på annat sätt, men inte i själva datamaterialet.</p>
 </div>
@@ -639,9 +641,9 @@ Visa svar
 <ol style="list-style-type: lower-alpha">
 <li>Skriv en kodsnutt som på lämligt sätt importerar datamaterialet till <code>R</code></li>
 </ol>
-<button title="q43a" type="button" onclick="if(document.getElementById(&#39;q43a&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q43a&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q43a&#39;) .style.display=&#39;none&#39;}">
+<button title="q43a" type="button" onclick="if(document.getElementById('q43a') .style.display=='none')
+              {document.getElementById('q43a') .style.display=''}
+            else{document.getElementById('q43a') .style.display='none'}">
 Visa svar
 </button>
 <div id="q43a" style="display:none">
@@ -655,30 +657,30 @@ Visa svar
 <p>I vilket fall som helst kan konstateras att</p>
 <ul>
 <li><code>header = TRUE</code></li>
-<li><code>sep = ","</code></li>
-<li><code>quote = "\""</code> egentligen finns ingen text-data i materialet, men detta är ett antagende som kan göras</li>
-<li><code>dec = "."</code> här gäller samma sak som ovan</li>
+<li><code>sep = &quot;,&quot;</code></li>
+<li><code>quote = &quot;\&quot;&quot;</code> egentligen finns ingen text-data i materialet, men detta är ett antagende som kan göras</li>
+<li><code>dec = &quot;.&quot;</code> här gäller samma sak som ovan</li>
 </ul>
 <p>Det är alltså lämplig att använda <code>read.csv()</code> för att importera datamaterialet.</p>
 <p>Om den inledande texten har raderats, och om filen finns i ett aktuellt working directory, kan materialet läsas in som</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">covid_<span class="dv">19</span> &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;covid_19.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">covid_<span class="dv">19</span> &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;covid_19.csv&quot;</span>)</code></pre></div>
 <p>Om informationstexten ligger kvar är det viktigt att notera att de 8 första raderna i textfilen antingen innehåller text eller är tomma. Därför kan alternativet <code>skip</code> sättas till <code>8</code>, så börjar <code>R</code> läsa in data från den nionde raden i filen. Koden skrivs då som</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">covid_<span class="dv">19</span> &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;covid_19.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">covid_<span class="dv">19</span> &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;covid_19.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">8</span>)</code></pre></div>
 </div>
 </div>
 <p></br></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Undersök datamaterialet för att se om det finns några konstigheter, så som konstiga eller orimliga värden. Koda i sådana fall om de konstiga värdena till <code>NA</code></li>
 </ol>
-<button title="q43b" type="button" onclick="if(document.getElementById(&#39;q43b&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;q43b&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;q43b&#39;) .style.display=&#39;none&#39;}">
+<button title="q43b" type="button" onclick="if(document.getElementById('q43b') .style.display=='none')
+              {document.getElementById('q43b') .style.display=''}
+            else{document.getElementById('q43b') .style.display='none'}">
 Visa svar
 </button>
 <div id="q43b" style="display:none">
 <div class="alert alert-info">
 <p>För att få en sammanfattning av datamaterialet kan <code>summary()</code> användas</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">summary</span>(covid_<span class="dv">19</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(covid_<span class="dv">19</span>)</code></pre></div>
 <pre><code>##        X            Statistikdatum Totalt_antal_fall    Dalarna      
 ##  Min.   :  1.0   2020-02-04:  1    Min.   : -99.0    Min.   :     0  
 ##  1st Qu.: 67.5   2020-02-05:  1    1st Qu.: 144.0    1st Qu.:     3  
@@ -701,11 +703,11 @@ Visa svar
 <li>I kolumnen som mäter antalet som bekräftats smittade i Dalarna finns minst ett värde som är <code>999999</code>. Eftersom Dalarnas folkmängd är cirka 285 000 borde detta vara en ren omöjlighet.</li>
 </ol>
 <p>Därför används koden</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">covid_<span class="dv">19</span><span class="op">$</span>Totalt_antal_fall[covid_<span class="dv">19</span><span class="op">$</span>Totalt_antal_fall <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb197-2" title="2">covid_<span class="dv">19</span><span class="op">$</span>Dalarna[covid_<span class="dv">19</span><span class="op">$</span>Dalarna <span class="op">==</span><span class="st"> </span><span class="dv">999999</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">covid_<span class="dv">19</span><span class="op">$</span>Totalt_antal_fall[covid_<span class="dv">19</span><span class="op">$</span>Totalt_antal_fall <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+covid_<span class="dv">19</span><span class="op">$</span>Dalarna[covid_<span class="dv">19</span><span class="op">$</span>Dalarna <span class="op">==</span><span class="st"> </span><span class="dv">999999</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
 <p>för att koda om de konstiga värdena.</p>
 <p>För att kontrollera att altt nu står rätt till anropas <code>summary()</code> en gång till</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1"><span class="kw">summary</span>(covid_<span class="dv">19</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(covid_<span class="dv">19</span>)</code></pre></div>
 <pre><code>##        X            Statistikdatum Totalt_antal_fall    Dalarna     
 ##  Min.   :  1.0   2020-02-04:  1    Min.   :   0.0    Min.   : 0.00  
 ##  1st Qu.: 67.5   2020-02-05:  1    1st Qu.: 166.5    1st Qu.: 3.00  
@@ -727,6 +729,17 @@ Visa svar
 </div>
 <p></br></p>
 
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+
+</style>
 </div>
 </div>
 </div>
@@ -735,8 +748,8 @@ Visa svar
           </div>
         </div>
       </div>
-<a href="data-objekt-och-funktioner.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="data-objekt-och-funktioner.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="binära-variabler.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -755,11 +768,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -771,10 +785,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
@@ -791,7 +801,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
