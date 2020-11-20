@@ -1619,8 +1619,6 @@ x <- c(5500, 6000, 6500, 6000, 5000, 6500, 4500, 5000)
 y <- c(41, 38, 35, 40, 44, 38, 45, 42)
 xbar <- mean(x)
 ybar <- mean(y)
-sdx <- sd(x)
-sdy <- sd(y)
 r <- sum( (x - xbar)*(y - ybar) ) /sqrt( sum( (x - xbar)^2)*sum( (y - ybar)^2) ) 
 r
 ```

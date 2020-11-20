@@ -1,0 +1,728 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+
+</style>
+
+
+# Kategorivariabler (uppdateras)
+
+Ofta har vi inte bara binära variabler, utan det finns kategoriervariabler av olika slag som har fler kategorier än två. Kategorivariablerna kan vara antingen på nominal eller ordinalskala. Dessutom kan även heltal och diskreta kvantitativa variabler analyseras som som kategorivariabler.
+
+## Deskription av en variabel med fler än två kategorier
+Detta avsnitt lämpar sig i regel för variabler med relativt få kategorier, låt säg färre än 10. För analys av variabler med fler kategorier kan alternativa metoder för analys och presentation vara bättre. Notera ordvalet *kan* eftersom val av presentation och analys måste bedömas från fall till fall. 
+
+Detta avsnitt utgår från data som används i kapitlet om binära variabler. Nu introduceras variabeln **age** som består av ålderskategorierna
+
++ 0 - 65-79 år
++ 1 - 50-64 år
++ 2 - 18-49 år
+
+Variabel är på ordinal datanivå, även om den anges som numerisk med kategorierna. Dessusom är kodningen  lite märkligt kodad, eftersom det lägsta numeriska värdet korresponderar till den högsta datakategorin.  
+Därför inleder vi med att göra om variabeln till en faktor, med nivåerna i rätt ordning. Därefter ändrar vi namn på kategorierna. Analogt med fallet för binära variabler, skapar vi binära variabler för varje kategori. Det är användbart senare på kursen.
+
+```{r, collapse=TRUE, prompt=FALSE, comment='>'}
+# Variabel. Kodad numerisk. 
+# 0 - 65-79 år
+# 1 - 50-64 år
+# 2 - 18-49 år
+ age <- c(1, 0, 1, 2, 2, 0, 2, 0, 1, 1, 2, 2, 1, 2, 1, 0, 0, 1, 0, 2, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0,   0, 2, 0, 0, 1, 0, 1, 2, 1, 1, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2,
+ 1, 2, 1, 1, 2, 1, 0, 1, 2, 2, 1, 0, 1, 1, 0, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 2, 1, 2, 2, 0, 1, 1, 1, 2,   1, 1, 1, 0, 2, 1, 2, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 2, 2, 1, 1, 0, 
+ 0, 1, 1, 2, 2, 1, 1, 2, 0, 0, 2, 0, 2, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 1, 0, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0,   1, 1, 0, 1, 1, 0, 0, 0, 1, 2, 0, 0, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1,
+ 1, 1, 1, 1, 1, 1, 0, 1, 2, 2, 1, 1, 2, 0, 0, 0, 1, 1, 1, 2, 1, 1, 0, 2, 0, 1, 2, 2, 0, 1, 1, 1, 0, 2, 1,   0, 1, 0, 0, 0, 1, 1, 1, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 2, 0, 1, 1,
+ 2, 0, 1, 2, 1, 2, 1, 1, 0, 2, 1, 1, 2, 2, 2, 1, 2, 1, 1, 0, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1, 0, 1, 2,   1, 0, 1, 2, 2, 1, 0, 0, 1, 0, 0, 2, 2, 1, 1, 1, 1) 
+
+# Gör variabel till faktor och ändra ordningen
+ age_cat <- factor(age, levels = c(2, 1, 0))
+ levels(age_cat)[levels(age_cat) == 0] <- "65-79 år"
+ levels(age_cat)[levels(age_cat) == 1] <- "50-64 år"
+ levels(age_cat)[levels(age_cat) == 2] <- "18-49 år"
+
+# Skapa binära variabler för respektive ålderskategori 
+ age_1849 <- rep(NA, length(age))
+ age_1849[age == 0] <- 0
+ age_1849[age == 1] <- 0
+ age_1849[age == 2] <- 1
+
+ age_5064 <- rep(NA, length(age))
+ age_5064[age == 0] <- 0
+ age_5064[age == 1] <- 1
+ age_5064[age == 2] <- 0
+
+ age_6579 <- rep(NA, length(age))
+ age_6579[age == 0] <- 1
+ age_6579[age == 1] <- 0
+ age_6579[age == 2] <- 0
+
+# Vi jämför de tre kodningarna och skapar tabeller på motsvarande sätt som förut.
+ table(age)
+ freq_table_age <- table(age_cat)
+ freq_table_age
+ sum(age_1849)
+ sum(age_5064)
+ sum(age_6579)
+
+ prop.table(table(age))
+ prop_table_age <- prop.table(freq_table_age )
+ mean(age_1849)
+ mean(age_5064)
+ mean(age_6579)
+``` 
+ 
+ 
+ 
+## Figurer och en kategorivariabel med fler än 2 kategorier
+
+Vi använder ett stapeldiagram för att redovisa antal (frekvenser) eller andelar för en kategorivariabel. Om vi har många kategorier är dotchart ett alternativ. 
+
+Vad man bör har i åtanke när man skapar ett stolpdiagram eller stapeldiagram är att huruvida kategorierna avstånd bör vara korrekt representerade i figuren. Bestå kategorierna av nominal eller ordinalskala är avståndet oviktigt. Är däremot variabeln heltal, år, datum så måste avståndet mellan staplarna stämma överens med kategoriernas avstånd. 
+
+Dessutom gäller det vara uppmärksam på kategorier som inte har frekvenser.
+
+
+```{r, collapse=TRUE, prompt=FALSE, fig.width = 10, comment='>'}
+par(mfrow = c(1,2))
+# stapeldiagram baserat på tabellen med frekvenser
+barplot(freq_table_age, 
+        ylab = "Antal",   
+        col = "lightblue",
+        border = "lightblue")
+# stapeldiagram baserat på tabellen med andelar
+percentages_age <- round(100*prop_table_age, 1)
+my_bar2 <- barplot(percentages_age, 
+                   ylab = "Procent (%)",  
+                   col = "lightblue",
+                   border = "lightblue",
+                   ylim = c(0, 65))
+text(x = my_bar2, y = percentages_age + 6, labels = paste(percentages_age, "%",  sep="")) 
+```
+
+
+```{r, collapse=TRUE, prompt=FALSE, comment='>', fig.width = 10}
+# Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms
+# av ordningen i vektorn utan av de numeriska värdens storlek.
+df <- read.csv2("data/conscriptiondata.csv")
+freq_table_year <- table(df$year)
+chisq.test(freq_table_year)
+
+```
+
+## Inferens och en kategorivariabel med fler än 2 kategorier
+
+Ett *goodness of fit-test (GOF)* undersöker om det rimligt att det observerad data  stämmer överens med en definierad population. Anta att vi i ett OSU har en kategorivariabeln med $k$ kategorier. Då kan ett sådant test genomföras med teststatistikan 
+$$\chi^2 = \sum_{i=1}^k\dfrac{ (O_i - E_i)^2}{E_i}= \dfrac{ (O_1 - E_1)^2}{E_1}+ \dfrac{ (O_2 - E_2)^2}{E_2}+\ldots+ \dfrac{ (O_k - E_k)^2}{E_k}$$
+där $O_i$ är antalet observerade frekvenser i kategori $i$ och $E_i$ är antalet förväntade frekvenser, enligt på nollhypotesen, i kategori $i$.  Hypoteserna formuleras i detta fall som $H_0: p_1 = p_{1,H_0}, p_2 = p_{2,H_0}, \ldots, p_k = p_{k,H_0}$  mot $H_1:$ Minst en av andelarna inte överstämmer med värdet under nollhypotesen. Teststatistikan är $\chi^2$-fördelad med $k-1$ frihetsgrader givet att nollhypotesen är sann och vi har ett OSU. Dessutom krävs att alla förväntade frekvenser är större än 5.
+ 
+Vi exemplifierar med vår analys av utbildning och rökning. Vi tänker oss att denna studie äger rum i en befolkning där det i det aktuella ålderspannet finns 65% i ålderskategorin 18-49 år, 20% i ålderskategorin 50-64 år och 15% ålderskategorin 65-79 år. Målet är att jämföra stickprovets åldersfördelning med populationen. För att genomföra detta används $\chi^2$-metoder i R med funktionen **chisq.test()**. 
+
+Eftersom det finns flera kategorier formuleras hypoteserna som $H_0: p_1 = 0.95$ och $p_2 = 0.20$ och  $p_3 = 0.15$ mot $H_1:$ Minst en av andelarna inte överstämmer med värdet under nollhypotesen.
+ 
+
+```{r, collapse=TRUE, prompt=FALSE, comment='>', fig.width = 10}
+# Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms
+# Version 1
+resultat <- chisq.test(freq_table_age, p = c(0.65, 0.2, 0.15))
+resultat$p.value
+freq_table_age
+resultat$expected
+
+# Version 2
+Oi <- freq_table_age
+pH0 <- c(0.65, 0.20, 0.15)
+totalsum <- sum(freq_table_age)
+Ei <- totalsum*pH0
+X2obs <- sum( (Oi - Ei)^2/Ei )
+fg <- length(pH0) - 1
+p_value <- 1 - pchisq(X2obs, 2)
+```
+
+Resultatet ger ett mycket lågt $p$-värde ($p<0.001$). Tolkningen är att om observerad data är slumpmässigt draget från befolkningen är det mycket låg sannolikhet att observera en så stor skillnad eller större mellan de oberseverade värdena och de förväntade. Data stämmer således inte överens med nollhypotesen. Vad $p$-värdet inte besvarar är varför överstämmelsen är låg. Det kan till exempel beror på att urvalet inte kommer är OSU.
+
+
+## Övningar
+
+
+### Övning 6.1  {-}
+
+En studie av Helsing, K. J., & Comstock, G. W. (1977) undersökte faktorer som kan tänkas ha samband med bilbältesanvändning. Du erhåller följande data från studien.
+
+```{r, collapse=TRUE, prompt=FALSE, comment='>', fig.width = 10}
+antal_cigaretter <- c(rep(0, 175), rep(0, 149), rep(1, 20), rep(1, 17), rep(2, 42), rep(2, 41), rep(3, 6), rep(3, 9))
+bilbalte <-  c(rep(0, 175), rep(1, 149), rep(0, 20), rep(1, 17), rep(0, 42), rep(1, 41), rep(0, 6), rep(1, 9))
+
+```
+
+a) Beskriv sambandet mellan rökning och bilbältesanvändning med en tabell.
+
+b) Beskriv sambandet mellan rökning och bilbältesanvändning med en figur.
+
+c) Genom ett statistiskt test för att undersöka sambandet mellan rökning och bilbältesanvändning.
+
+d) Genomför ett statistisk test utan att använda någon inbyggd test-funktion i R. 
+
+
+<button title="q601" type="button"
+onclick="if(document.getElementById('q601') .style.display=='none')
+              {document.getElementById('q601') .style.display=''}
+            else{document.getElementById('q601') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q601" style="display:none">
+<div class="alert alert-info">
+
+
+```{r, collapse=TRUE, prompt=FALSE, comment='>', fig.width = 10}
+rm(list=ls())
+antal_cigaretter <- c(rep(0, 175), rep(0, 149), rep(1, 20), rep(1, 17), rep(2, 42), rep(2, 41), rep(3, 6), rep(3, 9))
+antal_cigaretter_cat <- factor(antal_cigaretter, ordered = TRUE)
+levels(antal_cigaretter_cat)[levels(antal_cigaretter_cat) == 0] <- "0"
+levels(antal_cigaretter_cat)[levels(antal_cigaretter_cat) == 1] <- "1-14"
+levels(antal_cigaretter_cat)[levels(antal_cigaretter_cat) == 2] <- "15-34"
+levels(antal_cigaretter_cat)[levels(antal_cigaretter_cat) == 3] <- "35-"
+
+bilbalte <-  c(rep(0, 175), rep(1, 149), rep(0, 20), rep(1, 17), rep(0, 42), rep(1, 41), rep(0, 6), rep(1, 9))
+bilbalte_cat <- factor(bilbalte)
+levels(bilbalte_cat)[levels(bilbalte_cat) == 0] <- "Ja"
+levels(bilbalte_cat)[levels(bilbalte_cat) == 1] <- "Nej"
+
+# a)
+freq_table <- table(bilbalte_cat, antal_cigaretter_cat)
+prop.table_cig_belt <- prop.table(freq_table, 2)
+prop.table_cig_belt
+
+# b)
+barplot(prop.table_cig_belt,
+         ylab = "Andel", 
+         legend = c("Bälte", "Ej bilbälte"), 
+         args.legend =  c(y = 1.1, horiz = TRUE, bty ='n'))
+
+# c)
+chisq.test(freq_table)
+
+# d)
+ Oij <- freq_table
+ radsummor <- rowSums(freq_table)
+ kolumnsummor <- colSums(freq_table)
+ totalsumma <- sum(freq_table)
+ r <- dim(freq_table)[1]
+ k <- dim(freq_table)[2]
+ Eij <- matrix(NA, r, k)
+ Eij[1,1] <- kolumnsummor[1]*radsummor[1]/totalsumma
+ Eij[1,2] <- kolumnsummor[2]*radsummor[1]/totalsumma
+ Eij[1,3] <- kolumnsummor[3]*radsummor[1]/totalsumma
+ Eij[1,4] <- kolumnsummor[4]*radsummor[1]/totalsumma
+ Eij[2,1] <- kolumnsummor[1]*radsummor[2]/totalsumma
+ Eij[2,2] <- kolumnsummor[2]*radsummor[2]/totalsumma
+ Eij[2,3] <- kolumnsummor[3]*radsummor[2]/totalsumma
+ Eij[2,4] <- kolumnsummor[4]*radsummor[2]/totalsumma
+ X2obs <- sum( (Oij - Eij)^2/Eij )
+ fg <- (r-1)*(k-1)
+ p_value <- 1 - pchisq(X2obs, fg)
+ X2obs
+ p_value
+
+```
+
+
+
+</div>
+</div>
+</br>
+
+### Övning 6.2  {-}
+
+
+En studie 1980 undersökte homosexuellas situation Sverige. En del av denna studie utgjordes bland annat en enkätundersökning. Ladda ner Lilla Enkäten som är txt-fil som finns i zip-filen "Enkäterna i csv-format" på https://riksarkivet.se/psidata/livet-som-gay. Utgå från att data är insamlat med OSU och besvara sedan följande frågor:
+
+a) Har den svarande själv haft en önskan om att inte vara homosexuell? Redovisa med en tabell.
+
+b) Undersök samband mellan önskan om att inte vara homosexuell och att känna skam eller ångest (**SKAM**)? Redovisa bortfall. Redovisa en figur.
+
+c)  Undersök samband mellan önskan om att inte vara homosexuell och att känna skam eller ångest (**SKAM**)? Redovisa bortfall. Redovisa en figur.
+
+
+
+
+<button title="q602" type="button"
+onclick="if(document.getElementById('q602') .style.display=='none')
+              {document.getElementById('q602') .style.display=''}
+            else{document.getElementById('q602') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q602" style="display:none">
+<div class="alert alert-info">
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
+rm(list=ls())
+# a)
+
+ df <- read.csv2("data/Lilla_enkaeten.txt")
+ df$skam_bin <- NA
+ df$skam_bin[df$SKAM == "Ja"] <- 1 
+ df$skam_bin[df$SKAM == "Nej"] <- 0
+ 
+ df$onskan_bin <- NA
+ df$onskan_bin[df$OENSKAN == "Ja, det har jag gjort men jag önskar det inte nu"] <- 1
+  df$onskan_bin[df$OENSKAN == "Ja, jag önskar nu att jag vore (helt) heterosexuell"] <- 1
+   df$onskan_bin[df$OENSKAN == "Nej"] <- 0
+freq_table <- table(df$onskan_bin,  df$skam_bin)
+chisq.test(freq_table)
+```
+
+e) Se formuleringar ovan om andelar, differens av andelar, KI och p-värde.
+
+f) OSU (experiment) och normalapproximation gäller. Jag litar på resultaten.
+
+</div>
+</div>
+</br>
+
+
+### Övning 6.3  {-}
+År 2019 omkom  221 i trafiken. Uppdelat på månad
+
+|           | Antal omkomna 2019        |  Antal omkomna 2018  |  Antal omkomna 2018 |
+|-----------|:---------------------------------------------:|:---------------------------------------------:|:---------------------------------------------:|
+| Januari| 27  |  13 | 12 |
+| Februari  | 17    |  16 | 14 |
+| Mars  | 10    | 22 | 18 |
+| April  | 16    | 17 | 17 |
+| Maj | 19    | 31 | 24 |
+| Juni | 19    | 32 | 27 |
+| Juli | 20    | 44 | 31 |
+| Augusti  | 25    | 29 | 34 |
+| September | 15    | 21 | 27 |
+| Okober | 23    | 25 | 20 |
+| November  | 13    | 36 | 10 |
+| December | 17    | 38 | 19 |
+
+Källa: Transportstyrelsen
+
+Besvara om antalet omkomna är oberoende av månad.
+
+<button title="q603" type="button"
+onclick="if(document.getElementById('q603') .style.display=='none')
+              {document.getElementById('q603') .style.display=''}
+            else{document.getElementById('q603') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q603" style="display:none">
+<div class="alert alert-info">
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+rm(list=ls())
+# Version 1
+omkomna2019 <- c(27, 17, 10, 16, 19, 19, 20, 25, 15, 23, 13, 17)
+omkomna2018 <- c(13, 16, 22, 17, 31, 32, 44, 29, 21, 25, 36, 38)
+omkomna2017 <- c(12, 14, 18, 17, 24, 27, 31, 34, 27, 20, 10, 19)
+manad <- c("Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")
+
+barplot(omkomna2019, names.arg = manad)
+chisq.test(omkomna2019)
+
+O <- omkomna2019
+E <- rep(sum(omkomna2019)/12, 12)
+X2 <- sum( (O - E)^2/E)
+```
+
+
+</div>
+</div>
+</br>
+
+
+### Övning 6.4  {-}
+BMI	Nutritional status
+Below 18.5
+
+Underweight
+
+18.5–24.9
+
+Normal weight
+
+25.0–29.9
+
+Pre-obesity
+
+30.0–34.9
+
+Obesity class I
+
+35.0–39.9
+
+Obesity class II
+
+Above 40
+
+Obesity class III
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
+df <- read.csv2("data/conscriptiondata.csv")
+df$bmi <- df$weight/(df$height/100)^2
+summary(df$bmi)
+df$bmi_cat <- NA
+df$bmi_cat[df$bmi < 18.5] <- "Undervikt"
+df$bmi_cat[(df$bmi >= 18.5) & (df$bmi < 25)] <- "Normalvikt"
+df$bmi_cat[(df$bmi >= 25) & (df$bmi < 30) ] <- "Övervikt"
+df$bmi_cat[(df$bmi >= 30) & (df$bmi < 35) ] <- "Fetma klass I"
+df$bmi_cat[(df$bmi >= 35) & (df$bmi < 40) ] <- "Fetma klass II"
+df$bmi_cat[(df$bmi >= 40)] <- "Fetma klass III"
+df$bmi_cat <- factor(df$bmi_cat, 
+                     levels = c("Undervikt", "Normalvikt", "Övervikt", "Fetma klass I", "Fetma klass II", "Fetma klass III"),
+                     ordered = TRUE)
+freq_table_bmi_cat <- table(df$bmi_cat)
+prop_table_bmi_cat <- prop.table(freq_table)
+
+
+barplot(freq_table_bmi_cat)
+barplot(prop_table_bmi_cat)
+
+prop_bmi_year <- prop.table( table(df$bmi_cat, df$year), 2 )
+
+barplot(prop_bmi_year, las = 2, horiz = TRUE)
+
+chisq.test(freq_table_bmi_cat)
+
+```
+
+Vi kan konstatera att andelen överviktiga har ökat. Samtidigt har andelen underviktiga minskat. 
+
+Det finns ett beroende mellan år och bmi-kategori.
+
+
+Undersökarna vill beräkna kvoten av andelar lyckade behandlingar (relativ risk), där spjälning är referensgrupp. Eftersom forskarna vill fatta beslut vill man att en hypotesprövning genomförs på 5% signifikansnivå.
+
+
+<button title="q604" type="button"
+onclick="if(document.getElementById('q604') .style.display=='none')
+              {document.getElementById('q604') .style.display=''}
+            else{document.getElementById('q604') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q604" style="display:none">
+<div class="alert alert-info">
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment=''} 
+ rm(list=ls())
+ df <- data.frame(treatment = c(rep("splint", 60), rep("splint", 23), rep("surgery", 67),  rep("surgery", 6)), 
+                 y = c(rep("succesful", 60), rep("unsucsessful",23), rep("succesful", 67),   rep("unsucsessful",6)))
+ freq_table <- table(df$y, df$treatment)
+ prop_table <- prop.table(freq_table, 2) 
+ phat_splint <- prop_table[1,1]
+ phat_surgery <- prop_table[1,2]
+ p_kvot <- phat_surgery/phat_splint 
+ resultat <- chisq.test(freq_table, correct = FALSE)
+ p_kvot
+ resultat$p.value
+```
+
+En patient har 27% (p = 0.002) större chans till lyckad behandling om patienten genomgår kirurgi istället för behandling. Eftersom $p<0.05$ förkastar vi på 5% signifikansnivå nollhypotesen om att kirurgi och spjälning är lika effektiva.  
+
+</div>
+</div>
+</br>
+
+
+### Övning 6.5  {-}
+
+
+I riksdagsvalet 2018 blev mandatfördelningen följande. Skapa ett stapeldiagram och ett cirkeldiagram som redovisar mandatfördelningen. Argumentera varför det enda diagrammet är att föredra i detta fall.
+
+
+
+|           | Antal mandat i riksdagsvalet 2018        | 
+|-----------|:---------------------------------------------:|
+| Centerpartiet | 31  |  
+| Kristdemokraterna | 22    |  
+| Liberalerna  | 20    |
+| Miljöpartiet  | 16    |
+| Moderaterna | 70    | 
+| Socialdemokraterna | 100    | 
+| Sverigedemokraterna | 62    | 
+| Vänsterpartiet  | 28    | 
+
+
+
+
+<button title="q605" type="button"
+onclick="if(document.getElementById('q605') .style.display=='none')
+              {document.getElementById('q605') .style.display=''}
+            else{document.getElementById('q605') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q605" style="display:none">
+<div class="alert alert-info">
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
+ rm(list=ls())
+parti <- c("Centerpartiet", "Kristdemokraterna", "Liberalerna", "Miljöpartiet", "Moderaterna", "Socialdemokraterna", "Sverigedemokraterna", "Vänsterpartiet")
+partishort <- factor(c("C", "KD", "L", "Mp", "M", "S", "SD", "V"))
+particol <- c("green", "purple", "lightblue", "darkgreen", "blue", "red", "yellow", "darkred")
+mandat <- c(31, 22, 20, 16, 70, 100, 62, 28)
+df <- data.frame(parti = parti, partishort = partishort, particol = particol, mandat = mandat)
+df$parti <- factor(df$parti, levels = c("Vänsterpartiet", "Socialdemokraterna", "Miljöpartiet", "Sverigedemokraterna", "Centerpartiet", "Liberalerna", "Kristdemokraterna", "Moderaterna"))
+df$particol <- as.character(df$particol)
+df_sorted <- df[order(df$parti),]
+
+# Stapeldiagram
+barplot(df_sorted$mandat, 
+        names.arg = df_sorted$partishort, 
+        col = df_sorted$particol)
+
+# Cirkeldiagram
+ lbs <-  paste(df_sorted$partishort, " ", "(", df_sorted$mandat, ")", sep="")
+ pie(df_sorted$mandat, 
+     labels = lbs,
+     col = c("darkred", "red", "darkgreen", "yellow", "green", "lightblue", "purple", "blue"),
+     clockwise = TRUE, radius = 1, main = "Riksdagsvalet 2018: Mandatfördelning")
+
+
+# Hästskodiagram för att redovisa mandatfördelning. Överkurs. Installera
+# paketet ggplot2 och kör koden nedan. Till för att visa flexibiliten i R
+# och visualisering.
+install.packages("ggplot")
+library("ggparliament")
+swedish_election_2018 <- parliament_data(election_data = df_sorted,
+                                       party_seats = df_sorted$mandat,
+                                       parl_rows = 5,
+                                       type = "horseshoe")
+swe <- ggplot(swedish_election_2018, aes(x, y, colour = partishort)) +
+    geom_parliament_seats() + 
+    theme_ggparliament() +
+    labs(colour = NULL, 
+         title = "Sveriges riksdag") +
+    scale_colour_manual(values = particol, 
+                        limits = partishort) + 
+    theme(legend.position = 'bottom')
+swe
+
+```
+
+
+</div>
+</div>
+</br>
+
+
+### Övning 6.6  {-}
+
+En studie 1980 undersökte homosexuellas situation Sverige. En del av denna studie utgjordes bland annat en enkätundersökning. Ladda ner Lilla Enkäten som är txt-fil som finns i zip-filen "Enkäterna i csv-format" på https://riksarkivet.se/psidata/livet-som-gay. Utgå från att data är insamlat med OSU och besvara sedan följande frågor:
+
+a) Har den svarande själv talat om för någon heterosexuell bekant (som
+inte bara är arbetskamrat) att den svarande är homo/bisexuell? Variabeln heter *TALAT_OM*.
+
+b) Finns ett samband mellan kön (**KOEN**) och fråga a)?
+
+c) Undersök samband mellan att känna skam eller ångest (**SKAM**) och *TALAT_OM*? Redovisa bortfall. Redovisa en figur.
+
+
+<button title="q606" type="button"
+onclick="if(document.getElementById('q606') .style.display=='none')
+              {document.getElementById('q606') .style.display=''}
+            else{document.getElementById('q606') .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q606" style="display:none">
+<div class="alert alert-info">
+
+
+```{r, collapse=TRUE, eval = FALSE, prompt=FALSE, comment='>', fig.width = 10}
+ rm(list=ls())
+ df <- read.csv2("data/Lilla_enkaeten.txt")
+
+# Undersök variabeln och variabelkategorierna
+ summary(df$TALAT_OM)
+ table(df$TALAT_OM, useNA = "ifany")
+ 
+# Skapar en tom variabel och koda sedan alla nej till 1 och övriga till 0
+ df$EJ_TALAT_OM_bin <- NA
+ df$EJ_TALAT_OM_bin[df$TALAT_OM == "Ja, för en bekant"] <- 0
+ df$EJ_TALAT_OM_bin[df$TALAT_OM == "Ja, för flera bakanta"] <- 0
+ df$EJ_TALAT_OM_bin[df$TALAT_OM == "Jag har inga heterosexuella vänner"] <- 0
+ df$EJ_TALAT_OM_bin[df$TALAT_OM == "Nej"] <- 1
+
+# a)    
+ freq_table_EJ_TALAT_OM <- table(df$EJ_TALAT_OM_bin)
+ x <- freq_table_EJ_TALAT_OM[2]
+ n <- sum(freq_table_EJ_TALAT_OM)
+ resultat_1 <- prop.test(x, n, correct = FALSE)
+ resultat_1
+ 
+# b) 
+# Undersök variabeln kön
+ summary(df$KOEN)
+ table(df$KOEN, useNA = "ifany")
+ 
+# Skapa en korstabell av kön och ej talat om
+ freq_table_KOEN_EJ_TALAT_OM <- table(df$EJ_TALAT_OM_bin, df$KOEN)
+ x1 <- freq_table_KOEN_EJ_TALAT_OM[2,1]
+ x0 <- freq_table_KOEN_EJ_TALAT_OM[2,2]
+ n1 <-sum(freq_table_KOEN_EJ_TALAT_OM[,1])
+ n0 <-sum(freq_table_KOEN_EJ_TALAT_OM[,2])
+ p1hat <- x1/n1
+ p0hat <- x0/n0
+ resultat_KOEN_EJ_TALAT_OM <- prop.test(c(x1,x0), c(n1, n0), correct = FALSE)
+ resultat_KOEN_EJ_TALAT_OM
+
+ # Kolla förutsättningarna
+ n1*p1hat*(1-p1hat)
+ n0*p0hat*(1-p0hat)
+ 
+ # c)  
+ # Undersök variabeln
+ summary(df$SKAM)
+ table(df$SKAM, useNA = "ifany")
+ 
+ # Skapa en korstabell
+ df$skam_bin <- NA
+ df$skam_bin[df$SKAM == "Ja"] <- 1
+ df$skam_bin[df$SKAM == "Nej"] <- 0
+ df$skam_bin[df$SKAM == 9] <- NA
+
+ freq_table_ej_talat_om_skam <- table( df$EJ_TALAT_OM_bin,  df$skam_bin)
+ colnames(freq_table_ej_talat_om_skam) <- c("Ej skam", "Skam")
+ rownames(freq_table_ej_talat_om_skam) <- c("Ej talat om", "Talat om")
+ prop_table_ej_talat_om_skam <- prop.table(freq_table_ej_talat_om_skam, 2)
+ 
+ barplot( prop_table_ej_talat_om_skam[2,], 
+         names.arg = c("Ej skam", "Skam"), 
+         ylab = "Andel som tala om")
+ 
+ x1_2 <- freq_table_ej_talat_om_skam[2,2]
+ x0_2 <- freq_table_ej_talat_om_skam[2,1]
+ n1_2 <- sum(freq_table_ej_talat_om_skam[,2])
+ n0_2 <- sum(freq_table_ej_talat_om_skam[,1])
+ p1hat_2 <- x1_2/n1_2
+ p0hat_2 <- x0_2/n0_2
+ p_kvot <- p1hat_2/p0hat_2
+ p_kvot
+ resultat_2 <- prop.test(c(x1_2, x0_2), c(n1_2, n0_2), correct = FALSE)
+
+```
+
+a) Notera att förutsättningen är ej uppfylld för sambandsanalysen. Vi kan inte lita på testet.
+
+c) 10 värden är kodade som 9, som förmodligen vet ej eller bortfall. Vi sätter dem som NA. Dessa exkuderas ur analysen.
+
+</div>
+</div>
+</br>
+
+
+
+
+
+
+### Övning 6.7  {-}
+
+En marknadsundersökning genom ett slumpmässigt urval av konsumenter för undersöka
+om färg har betydelse vad gäller val av mobiltelefon. Nedan presenterar data som du fått från företaget gällande vilken färg konsumenterna föredrar av tre möjligt:
+
+|           | Färg      |  
+|-----------|:---------------------------------------------:|
+| Cyberblå  | 150    |
+| Prestigeröd  | 150    | 
+| Supergrå  | 200    | 
+
+a) Har färgen någon betydelse?
+
+
+Dessutom fanns data uppdelat på kön.
+
+|           | Färg: Män     |  Färg: Kvinnor |
+|-----------|:---------------------------------------------:|:---------------------------------------------:|
+| Cyberblå  | 100    | 50 |
+| Prestigeröd  | 60    | 90 |
+| Supergrå  | 100    | 100 |
+
+b) Finns det samband mellan kön och vilken färg konsumenterna föredrar?
+
+<button title="q607" type="button"
+onclick="if(document.getElementById('q607') .style.display=='none')
+              {document.getElementById('q607') .style.display=''}
+            else{document.getElementById('q607) .style.display='none'}">
+  Visa svar
+</button>
+  
+<div id="q607" style="display:none">
+<div class="alert alert-info">
+
+
+```{r, collapse=TRUE, eval =FALSE, prompt=FALSE, comment='>', fig.width = 10}
+ rm(list=ls())
+ df <- read.csv2("data/Lilla_enkaeten.txt")
+
+
+```
+
+a) Notera att förutsättningen är ej uppfylld för sambandsanalysen. Vi kan inte lita på testet.
+
+c) 10 värden är kodade som 9, som förmodligen vet ej eller bortfall. Vi sätter dem som NA. Dessa exkuderas ur analysen.
+
+</div>
+</div>
+</br>
+
+
+
+
+## Referenser
+
+Helsing, K. J., & Comstock, G. W. (1977). What kinds of people do not use seat belts?. American Journal of Public Health, 67(11), 1043-1050.
+
+
+
+
+admitted <- c(rep(1, 512), rep(1, 353), rep(1, 120), rep(1, 138), rep(1, 53), rep(1, 22),
+              rep(1, 89), rep(1, 17), rep(1, 202), rep(1, 131), rep(1, 94), rep(1, 24),
+              rep(0, 313), rep(0, 207), rep(0, 205), rep(0, 279), rep(0, 138), rep(0, 351),
+              rep(0, 19), rep(0, 8), rep(0, 391), rep(0, 244), rep(0, 299), rep(0, 317))
+male <-    c(rep(1, 512), rep(1, 353), rep(1, 120), rep(1, 138), rep(1, 53), rep(1, 22),
+             rep(0, 89), rep(0, 17), rep(0, 202), rep(0, 131), rep(0, 94), rep(0, 24),
+             rep(1, 313), rep(1, 207), rep(1, 205), rep(1, 279), rep(1, 138), rep(1, 351),
+             rep(0, 19), rep(0, 8), rep(0, 391), rep(0, 244), rep(0, 299), rep(0, 317))
+department <- c(rep("A", 512), rep("B", 353), rep("C", 120), rep("D", 138), rep("E", 53), rep("F", 22),
+                rep("A", 89), rep("B", 17), rep("C", 202), rep("D", 131), rep("E", 94), rep("F", 24),
+                rep("A", 313), rep("B", 207), rep("C", 205), rep("D", 279), rep("E", 138), rep("F", 351),
+                rep("A", 19), rep("B", 8), rep("C", 391), rep("D", 244), rep("E", 299), rep("F", 317))
+
+table(admitted, male)
+prop.table(table(admitted, male, department),2)
+chisq.test(table(admitted, male))
+chisq.test(table(admitted[department == "A"], male[department == "A"]))
+
+
+treatment <- c(rep("A", 350), rep("B", 350))
+success <- c(rep(1, 81), rep(0,6), 
+          rep(1, 192), rep(0, 71),
+          rep(1, 234), rep(0, 36),
+          rep(1, 55), rep(0, 25))
+size <- c(rep(1, 81), rep(1,6), 
+             rep(0, 192), rep(0, 71),
+             rep(1, 234), rep(1, 36),
+             rep(0, 55), rep(0, 25))
+
+
+prop.table(table(success, treatment), 2)
+prop.table( table(success[size == 1], treatment[size==1]), 2)
+prop.table( table(success[size == 0], treatment[size==0]), 2)
+
+
+
+

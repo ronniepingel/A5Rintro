@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 6 Kategorivariabler (uppdateras) | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 6 Kategorivariabler (uppdateras) | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 6 Kategorivariabler (uppdateras) | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 6 Kategorivariabler (uppdateras) | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel och Valentin Zulj" />
+
+
+<meta name="date" content="2020-11-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="binära-variabler.html"/>
+<link rel="next" href="urvalsmetoder-uppdateras.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.13"><i class="fa fa-check"></i>Övning 3.13</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.14"><i class="fa fa-check"></i>Övning 3.14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-för-organiserade-datamaterial"><i class="fa fa-check"></i><b>4.1</b> Principer för organiserade datamaterial</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#working-directory"><i class="fa fa-check"></i><b>4.2</b> Working directory</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-kod"><i class="fa fa-check"></i><b>4.3</b> Läsa in datamaterial med hjälp av kod</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.3.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.3.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.3.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-menyerna-i-rstudio"><i class="fa fa-check"></i><b>4.4</b> Läsa in datamaterial med hjälp av menyerna i RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-från-working-directory"><i class="fa fa-check"></i><b>4.4.1</b> Läsa in data från working directory</a></li>
+<li class="chapter" data-level="4.4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-med-import-dataset"><i class="fa fa-check"></i><b>4.4.2</b> Läsa in data med “Import Dataset”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#spara-datamaterial-med-hjälp-av-r"><i class="fa fa-check"></i><b>4.5</b> Spara datamaterial med hjälp av R</a></li>
+<li class="chapter" data-level="4.6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övningar-2"><i class="fa fa-check"></i><b>4.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.1"><i class="fa fa-check"></i>Övning 4.1</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="binära-variabler.html"><a href="binära-variabler.html"><i class="fa fa-check"></i><b>5</b> Binära variabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> Deskription av en binär variabel</a></li>
+<li class="chapter" data-level="5.2" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.2</b> Tabeller och en binär variabel</a></li>
+<li class="chapter" data-level="5.3" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.3</b> Figurer och en binär variabel</a></li>
+<li class="chapter" data-level="5.4" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-binär-variabel"><i class="fa fa-check"></i><b>5.4</b> Inferens för binär variabel</a></li>
+<li class="chapter" data-level="5.5" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-två-binära-variabler"><i class="fa fa-check"></i><b>5.5</b> Deskription av två binära variabler</a></li>
+<li class="chapter" data-level="5.6" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.6</b> Tabeller och två binära variabler</a></li>
+<li class="chapter" data-level="5.7" data-path="binära-variabler.html"><a href="binära-variabler.html#kvantifiering-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>5.7</b> Kvantifiering av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="5.8" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.8</b> Figurer och två binära variabler</a></li>
+<li class="chapter" data-level="5.9" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-två-binära-variabler"><i class="fa fa-check"></i><b>5.9</b> Inferens för två binära variabler</a></li>
+<li class="chapter" data-level="5.10" data-path="binära-variabler.html"><a href="binära-variabler.html#övningar-3"><i class="fa fa-check"></i><b>5.10</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.6"><i class="fa fa-check"></i>Övning 5.6</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="binära-variabler.html"><a href="binära-variabler.html#referenser-1"><i class="fa fa-check"></i><b>5.11</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler (uppdateras)</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#deskription-av-en-variabel-med-fler-än-två-kategorier"><i class="fa fa-check"></i><b>6.1</b> Deskription av en variabel med fler än två kategorier</a></li>
+<li class="chapter" data-level="6.2" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#figurer-och-en-kategorivariabel-med-fler-än-2-kategorier"><i class="fa fa-check"></i><b>6.2</b> Figurer och en kategorivariabel med fler än 2 kategorier</a></li>
+<li class="chapter" data-level="6.3" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#inferens-och-en-kategorivariabel-med-fler-än-2-kategorier"><i class="fa fa-check"></i><b>6.3</b> Inferens och en kategorivariabel med fler än 2 kategorier</a></li>
+<li class="chapter" data-level="6.4" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övningar-4"><i class="fa fa-check"></i><b>6.4</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.1"><i class="fa fa-check"></i>Övning 6.1</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.2"><i class="fa fa-check"></i>Övning 6.2</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.3"><i class="fa fa-check"></i>Övning 6.3</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.4"><i class="fa fa-check"></i>Övning 6.4</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.5"><i class="fa fa-check"></i>Övning 6.5</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.6"><i class="fa fa-check"></i>Övning 6.6</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#övning-6.7"><i class="fa fa-check"></i>Övning 6.7</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="kategorivariabler-uppdateras.html"><a href="kategorivariabler-uppdateras.html#referenser-2"><i class="fa fa-check"></i><b>6.5</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html"><i class="fa fa-check"></i><b>7</b> Urvalsmetoder (uppdateras)</a><ul>
+<li class="chapter" data-level="7.1" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>7.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#inferens-för-mu"><i class="fa fa-check"></i><b>7.1.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#skattning-av-p"><i class="fa fa-check"></i><b>7.1.2</b> Skattning av <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#skattning-av-tau"><i class="fa fa-check"></i><b>7.1.3</b> Skattning av <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="7.1.4" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>7.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#stratifierat-urval"><i class="fa fa-check"></i><b>7.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>7.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#inferens-för-p"><i class="fa fa-check"></i><b>7.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="7.2.3" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#inferens-för-tau"><i class="fa fa-check"></i><b>7.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="7.2.4" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#allokering-av-n."><i class="fa fa-check"></i><b>7.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="7.2.5" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#efterstratifiering"><i class="fa fa-check"></i><b>7.2.5</b> Efterstratifiering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övningar-5"><i class="fa fa-check"></i><b>7.3</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.1"><i class="fa fa-check"></i>Övning 7.1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.2"><i class="fa fa-check"></i>Övning 7.2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.3"><i class="fa fa-check"></i>Övning 7.3</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.4"><i class="fa fa-check"></i>Övning 7.4</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.5"><i class="fa fa-check"></i>Övning 7.5</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.6"><i class="fa fa-check"></i>Övning 7.6</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.7"><i class="fa fa-check"></i>Övning 7.7</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.8"><i class="fa fa-check"></i>Övning 7.8</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.9"><i class="fa fa-check"></i>Övning 7.9</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.10"><i class="fa fa-check"></i>Övning 7.10</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder-uppdateras.html"><a href="urvalsmetoder-uppdateras.html#övning-7.11"><i class="fa fa-check"></i>Övning 7.11</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kategorivariabler-uppdateras" class="section level1">
+<h1><span class="header-section-number">Kapitel 6</span> Kategorivariabler (uppdateras)</h1>
+<p>Ofta har vi inte bara binära variabler, utan det finns kategoriervariabler av olika slag som har fler kategorier än två. Kategorivariablerna kan vara antingen på nominal eller ordinalskala. Dessutom kan även heltal och diskreta kvantitativa variabler analyseras som som kategorivariabler.</p>
+<div id="deskription-av-en-variabel-med-fler-än-två-kategorier" class="section level2">
+<h2><span class="header-section-number">6.1</span> Deskription av en variabel med fler än två kategorier</h2>
+<p>Detta avsnitt lämpar sig i regel för variabler med relativt få kategorier, låt säg färre än 10. För analys av variabler med fler kategorier kan alternativa metoder för analys och presentation vara bättre. Notera ordvalet <em>kan</em> eftersom val av presentation och analys måste bedömas från fall till fall.</p>
+<p>Detta avsnitt utgår från data som används i kapitlet om binära variabler. Nu introduceras variabeln <strong>age</strong> som består av ålderskategorierna</p>
+<ul>
+<li>0 - 65-79 år</li>
+<li>1 - 50-64 år</li>
+<li>2 - 18-49 år</li>
+</ul>
+<p>Variabel är på ordinal datanivå, även om den anges som numerisk med kategorierna. Dessusom är kodningen lite märkligt kodad, eftersom det lägsta numeriska värdet korresponderar till den högsta datakategorin.<br />
+Därför inleder vi med att göra om variabeln till en faktor, med nivåerna i rätt ordning. Därefter ändrar vi namn på kategorierna. Analogt med fallet för binära variabler, skapar vi binära variabler för varje kategori. Det är användbart senare på kursen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variabel. Kodad numerisk. </span>
+<span class="co"># 0 - 65-79 år</span>
+<span class="co"># 1 - 50-64 år</span>
+<span class="co"># 2 - 18-49 år</span>
+ age &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>,
+ <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, 
+ <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>,
+ <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>,   <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,
+ <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) 
+
+<span class="co"># Gör variabel till faktor och ändra ordningen</span>
+ age_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(age, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))
+ <span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> &quot;65-79 år&quot;</span>
+ <span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &quot;50-64 år&quot;</span>
+ <span class="kw">levels</span>(age_cat)[<span class="kw">levels</span>(age_cat) <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> &quot;18-49 år&quot;</span>
+
+<span class="co"># Skapa binära variabler för respektive ålderskategori </span>
+ age_<span class="dv">1849</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))
+ age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ age_<span class="dv">1849</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+
+ age_<span class="dv">5064</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))
+ age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+ age_<span class="dv">5064</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+
+ age_<span class="dv">6579</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(age))
+ age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+ age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ age_<span class="dv">6579</span>[age <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+
+<span class="co"># Vi jämför de tre kodningarna och skapar tabeller på motsvarande sätt som förut.</span>
+ <span class="kw">table</span>(age)
+<span class="op">&gt;</span><span class="st"> </span>age
+<span class="op">&gt;</span><span class="st">   </span><span class="dv">0</span>   <span class="dv">1</span>   <span class="dv">2</span> 
+<span class="op">&gt;</span><span class="st">  </span><span class="dv">66</span> <span class="dv">148</span>  <span class="dv">66</span>
+ freq_table_age &lt;-<span class="st"> </span><span class="kw">table</span>(age_cat)
+ freq_table_age
+<span class="op">&gt;</span><span class="st"> </span>age_cat
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span><span class="op">-</span><span class="dv">49</span> år <span class="dv">50</span><span class="op">-</span><span class="dv">64</span> år <span class="dv">65</span><span class="op">-</span><span class="dv">79</span> år 
+<span class="op">&gt;</span><span class="st">       </span><span class="dv">66</span>      <span class="dv">148</span>       <span class="dv">66</span>
+ <span class="kw">sum</span>(age_<span class="dv">1849</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">66</span>
+ <span class="kw">sum</span>(age_<span class="dv">5064</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">148</span>
+ <span class="kw">sum</span>(age_<span class="dv">6579</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">66</span>
+
+ <span class="kw">prop.table</span>(<span class="kw">table</span>(age))
+<span class="op">&gt;</span><span class="st"> </span>age
+<span class="op">&gt;</span><span class="st">         </span><span class="dv">0</span>         <span class="dv">1</span>         <span class="dv">2</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">0.2357143</span> <span class="fl">0.5285714</span> <span class="fl">0.2357143</span>
+ prop_table_age &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table_age )
+ <span class="kw">mean</span>(age_<span class="dv">1849</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.2357143</span>
+ <span class="kw">mean</span>(age_<span class="dv">5064</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.5285714</span>
+ <span class="kw">mean</span>(age_<span class="dv">6579</span>)
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.2357143</span></code></pre></div>
+</div>
+<div id="figurer-och-en-kategorivariabel-med-fler-än-2-kategorier" class="section level2">
+<h2><span class="header-section-number">6.2</span> Figurer och en kategorivariabel med fler än 2 kategorier</h2>
+<p>Vi använder ett stapeldiagram för att redovisa antal (frekvenser) eller andelar för en kategorivariabel. Om vi har många kategorier är dotchart ett alternativ.</p>
+<p>Vad man bör har i åtanke när man skapar ett stolpdiagram eller stapeldiagram är att huruvida kategorierna avstånd bör vara korrekt representerade i figuren. Bestå kategorierna av nominal eller ordinalskala är avståndet oviktigt. Är däremot variabeln heltal, år, datum så måste avståndet mellan staplarna stämma överens med kategoriernas avstånd.</p>
+<p>Dessutom gäller det vara uppmärksam på kategorier som inte har frekvenser.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="co"># stapeldiagram baserat på tabellen med frekvenser</span>
+<span class="kw">barplot</span>(freq_table_age, 
+        <span class="dt">ylab =</span> <span class="st">&quot;Antal&quot;</span>,   
+        <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,
+        <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>)
+<span class="co"># stapeldiagram baserat på tabellen med andelar</span>
+percentages_age &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>prop_table_age, <span class="dv">1</span>)
+my_bar2 &lt;-<span class="st"> </span><span class="kw">barplot</span>(percentages_age, 
+                   <span class="dt">ylab =</span> <span class="st">&quot;Procent (%)&quot;</span>,  
+                   <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,
+                   <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>,
+                   <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">65</span>))
+<span class="kw">text</span>(<span class="dt">x =</span> my_bar2, <span class="dt">y =</span> percentages_age <span class="op">+</span><span class="st"> </span><span class="dv">6</span>, <span class="dt">labels =</span> <span class="kw">paste</span>(percentages_age, <span class="st">&quot;%&quot;</span>,  <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)) </code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-206-1.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms</span>
+<span class="co"># av ordningen i vektorn utan av de numeriska värdens storlek.</span>
+df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)
+freq_table_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>year)
+<span class="kw">chisq.test</span>(freq_table_year)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">   </span>Chi<span class="op">-</span>squared test <span class="cf">for</span> given probabilities
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>data<span class="op">:</span><span class="st">  </span>freq_table_year
+<span class="op">&gt;</span><span class="st"> </span>X<span class="op">-</span>squared =<span class="st"> </span><span class="dv">11203</span>, df =<span class="st"> </span><span class="dv">14</span>, p<span class="op">-</span>value <span class="op">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre></div>
+</div>
+<div id="inferens-och-en-kategorivariabel-med-fler-än-2-kategorier" class="section level2">
+<h2><span class="header-section-number">6.3</span> Inferens och en kategorivariabel med fler än 2 kategorier</h2>
+<p>Ett <em>goodness of fit-test (GOF)</em> undersöker om det rimligt att det observerad data stämmer överens med en definierad population. Anta att vi i ett OSU har en kategorivariabeln med <span class="math inline">\(k\)</span> kategorier. Då kan ett sådant test genomföras med teststatistikan <span class="math display">\[\chi^2 = \sum_{i=1}^k\dfrac{ (O_i - E_i)^2}{E_i}= \dfrac{ (O_1 - E_1)^2}{E_1}+ \dfrac{ (O_2 - E_2)^2}{E_2}+\ldots+ \dfrac{ (O_k - E_k)^2}{E_k}\]</span> där <span class="math inline">\(O_i\)</span> är antalet observerade frekvenser i kategori <span class="math inline">\(i\)</span> och <span class="math inline">\(E_i\)</span> är antalet förväntade frekvenser, enligt på nollhypotesen, i kategori <span class="math inline">\(i\)</span>. Hypoteserna formuleras i detta fall som <span class="math inline">\(H_0: p_1 = p_{1,H_0}, p_2 = p_{2,H_0}, \ldots, p_k = p_{k,H_0}\)</span> mot <span class="math inline">\(H_1:\)</span> Minst en av andelarna inte överstämmer med värdet under nollhypotesen. Teststatistikan är <span class="math inline">\(\chi^2\)</span>-fördelad med <span class="math inline">\(k-1\)</span> frihetsgrader givet att nollhypotesen är sann och vi har ett OSU. Dessutom krävs att alla förväntade frekvenser är större än 5.</p>
+<p>Vi exemplifierar med vår analys av utbildning och rökning. Vi tänker oss att denna studie äger rum i en befolkning där det i det aktuella ålderspannet finns 65% i ålderskategorin 18-49 år, 20% i ålderskategorin 50-64 år och 15% ålderskategorin 65-79 år. Målet är att jämföra stickprovets åldersfördelning med populationen. För att genomföra detta används <span class="math inline">\(\chi^2\)</span>-metoder i R med funktionen <strong>chisq.test()</strong>.</p>
+<p>Eftersom det finns flera kategorier formuleras hypoteserna som <span class="math inline">\(H_0: p_1 = 0.95\)</span> och <span class="math inline">\(p_2 = 0.20\)</span> och <span class="math inline">\(p_3 = 0.15\)</span> mot <span class="math inline">\(H_1:\)</span> Minst en av andelarna inte överstämmer med värdet under nollhypotesen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms</span>
+<span class="co"># Version 1</span>
+resultat &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(freq_table_age, <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.65</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span>))
+resultat<span class="op">$</span>p.value
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">1.403291e-52</span>
+freq_table_age
+<span class="op">&gt;</span><span class="st"> </span>age_cat
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span><span class="op">-</span><span class="dv">49</span> år <span class="dv">50</span><span class="op">-</span><span class="dv">64</span> år <span class="dv">65</span><span class="op">-</span><span class="dv">79</span> år 
+<span class="op">&gt;</span><span class="st">       </span><span class="dv">66</span>      <span class="dv">148</span>       <span class="dv">66</span>
+resultat<span class="op">$</span>expected
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span><span class="op">-</span><span class="dv">49</span> år <span class="dv">50</span><span class="op">-</span><span class="dv">64</span> år <span class="dv">65</span><span class="op">-</span><span class="dv">79</span> år 
+<span class="op">&gt;</span><span class="st">      </span><span class="dv">182</span>       <span class="dv">56</span>       <span class="dv">42</span>
+
+<span class="co"># Version 2</span>
+Oi &lt;-<span class="st"> </span>freq_table_age
+pH0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.65</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span>)
+totalsum &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table_age)
+Ei &lt;-<span class="st"> </span>totalsum<span class="op">*</span>pH0
+X2obs &lt;-<span class="st"> </span><span class="kw">sum</span>( (Oi <span class="op">-</span><span class="st"> </span>Ei)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>Ei )
+fg &lt;-<span class="st"> </span><span class="kw">length</span>(pH0) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+p_value &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(X2obs, <span class="dv">2</span>)</code></pre></div>
+<p>Resultatet ger ett mycket lågt <span class="math inline">\(p\)</span>-värde (<span class="math inline">\(p&lt;0.001\)</span>). Tolkningen är att om observerad data är slumpmässigt draget från befolkningen är det mycket låg sannolikhet att observera en så stor skillnad eller större mellan de oberseverade värdena och de förväntade. Data stämmer således inte överens med nollhypotesen. Vad <span class="math inline">\(p\)</span>-värdet inte besvarar är varför överstämmelsen är låg. Det kan till exempel beror på att urvalet inte kommer är OSU.</p>
+</div>
+<div id="övningar-4" class="section level2">
+<h2><span class="header-section-number">6.4</span> Övningar</h2>
+<div id="övning-6.1" class="section level3 unnumbered">
+<h3>Övning 6.1</h3>
+<p>En studie av Helsing, K. J., &amp; Comstock, G. W. (1977) undersökte faktorer som kan tänkas ha samband med bilbältesanvändning. Du erhåller följande data från studien.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">antal_cigaretter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">175</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">149</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">17</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">42</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">41</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">6</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">9</span>))
+bilbalte &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">175</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">149</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">17</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">42</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">41</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>))</code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Beskriv sambandet mellan rökning och bilbältesanvändning med en tabell.</p></li>
+<li><p>Beskriv sambandet mellan rökning och bilbältesanvändning med en figur.</p></li>
+<li><p>Genom ett statistiskt test för att undersöka sambandet mellan rökning och bilbältesanvändning.</p></li>
+<li><p>Genomför ett statistisk test utan att använda någon inbyggd test-funktion i R.</p></li>
+</ol>
+<button title="q601" type="button" onclick="if(document.getElementById('q601') .style.display=='none')
+              {document.getElementById('q601') .style.display=''}
+            else{document.getElementById('q601') .style.display='none'}">
+Visa svar
+</button>
+<div id="q601" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+antal_cigaretter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">175</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">149</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">17</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">42</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">41</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">6</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">9</span>))
+antal_cigaretter_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(antal_cigaretter, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
+<span class="kw">levels</span>(antal_cigaretter_cat)[<span class="kw">levels</span>(antal_cigaretter_cat) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> &quot;0&quot;</span>
+<span class="kw">levels</span>(antal_cigaretter_cat)[<span class="kw">levels</span>(antal_cigaretter_cat) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &quot;1-14&quot;</span>
+<span class="kw">levels</span>(antal_cigaretter_cat)[<span class="kw">levels</span>(antal_cigaretter_cat) <span class="op">==</span><span class="st"> </span><span class="dv">2</span>] &lt;-<span class="st"> &quot;15-34&quot;</span>
+<span class="kw">levels</span>(antal_cigaretter_cat)[<span class="kw">levels</span>(antal_cigaretter_cat) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> &quot;35-&quot;</span>
+
+bilbalte &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">175</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">149</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">17</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">42</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">41</span>), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>))
+bilbalte_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(bilbalte)
+<span class="kw">levels</span>(bilbalte_cat)[<span class="kw">levels</span>(bilbalte_cat) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> &quot;Ja&quot;</span>
+<span class="kw">levels</span>(bilbalte_cat)[<span class="kw">levels</span>(bilbalte_cat) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &quot;Nej&quot;</span>
+
+<span class="co"># a)</span>
+freq_table &lt;-<span class="st"> </span><span class="kw">table</span>(bilbalte_cat, antal_cigaretter_cat)
+prop.table_cig_belt &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table, <span class="dv">2</span>)
+prop.table_cig_belt
+<span class="op">&gt;</span><span class="st">             </span>antal_cigaretter_cat
+<span class="op">&gt;</span><span class="st"> </span>bilbalte_cat         <span class="dv">0</span>      <span class="dv">1</span><span class="op">-</span><span class="dv">14</span>     <span class="dv">15</span><span class="op">-</span><span class="dv">34</span>       <span class="dv">35</span><span class="op">-</span>
+<span class="er">&gt;</span><span class="st">          </span>Ja  <span class="fl">0.5401235</span> <span class="fl">0.5405405</span> <span class="fl">0.5060241</span> <span class="fl">0.4000000</span>
+<span class="op">&gt;</span><span class="st">          </span>Nej <span class="fl">0.4598765</span> <span class="fl">0.4594595</span> <span class="fl">0.4939759</span> <span class="fl">0.6000000</span>
+
+<span class="co"># b)</span>
+<span class="kw">barplot</span>(prop.table_cig_belt,
+         <span class="dt">ylab =</span> <span class="st">&quot;Andel&quot;</span>, 
+         <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Bälte&quot;</span>, <span class="st">&quot;Ej bilbälte&quot;</span>), 
+         <span class="dt">args.legend =</span>  <span class="kw">c</span>(<span class="dt">y =</span> <span class="fl">1.1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">bty =</span><span class="st">&#39;n&#39;</span>))</code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-210-1.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># c)</span>
+<span class="kw">chisq.test</span>(freq_table)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st">   </span>Pearson<span class="st">&#39;s Chi-squared test</span>
+<span class="st">&gt; </span>
+<span class="st">&gt; data:  freq_table</span>
+<span class="st">&gt; X-squared = 1.3582, df = 3, p-value = 0.7154</span>
+
+<span class="st"># d)</span>
+<span class="st"> Oij &lt;- freq_table</span>
+<span class="st"> radsummor &lt;- rowSums(freq_table)</span>
+<span class="st"> kolumnsummor &lt;- colSums(freq_table)</span>
+<span class="st"> totalsumma &lt;- sum(freq_table)</span>
+<span class="st"> r &lt;- dim(freq_table)[1]</span>
+<span class="st"> k &lt;- dim(freq_table)[2]</span>
+<span class="st"> Eij &lt;- matrix(NA, r, k)</span>
+<span class="st"> Eij[1,1] &lt;- kolumnsummor[1]*radsummor[1]/totalsumma</span>
+<span class="st"> Eij[1,2] &lt;- kolumnsummor[2]*radsummor[1]/totalsumma</span>
+<span class="st"> Eij[1,3] &lt;- kolumnsummor[3]*radsummor[1]/totalsumma</span>
+<span class="st"> Eij[1,4] &lt;- kolumnsummor[4]*radsummor[1]/totalsumma</span>
+<span class="st"> Eij[2,1] &lt;- kolumnsummor[1]*radsummor[2]/totalsumma</span>
+<span class="st"> Eij[2,2] &lt;- kolumnsummor[2]*radsummor[2]/totalsumma</span>
+<span class="st"> Eij[2,3] &lt;- kolumnsummor[3]*radsummor[2]/totalsumma</span>
+<span class="st"> Eij[2,4] &lt;- kolumnsummor[4]*radsummor[2]/totalsumma</span>
+<span class="st"> X2obs &lt;- sum( (Oij - Eij)^2/Eij )</span>
+<span class="st"> fg &lt;- (r-1)*(k-1)</span>
+<span class="st"> p_value &lt;- 1 - pchisq(X2obs, fg)</span>
+<span class="st"> X2obs</span>
+<span class="st">&gt; [1] 1.358175</span>
+<span class="st"> p_value</span>
+<span class="st">&gt; [1] 0.7153672</span></code></pre></div>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.2" class="section level3 unnumbered">
+<h3>Övning 6.2</h3>
+<p>En studie 1980 undersökte homosexuellas situation Sverige. En del av denna studie utgjordes bland annat en enkätundersökning. Ladda ner Lilla Enkäten som är txt-fil som finns i zip-filen “Enkäterna i csv-format” på <a href="https://riksarkivet.se/psidata/livet-som-gay" class="uri">https://riksarkivet.se/psidata/livet-som-gay</a>. Utgå från att data är insamlat med OSU och besvara sedan följande frågor:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Har den svarande själv haft en önskan om att inte vara homosexuell? Redovisa med en tabell.</p></li>
+<li><p>Undersök samband mellan önskan om att inte vara homosexuell och att känna skam eller ångest (<strong>SKAM</strong>)? Redovisa bortfall. Redovisa en figur.</p></li>
+<li><p>Undersök samband mellan önskan om att inte vara homosexuell och att känna skam eller ångest (<strong>SKAM</strong>)? Redovisa bortfall. Redovisa en figur.</p></li>
+</ol>
+<button title="q602" type="button" onclick="if(document.getElementById('q602') .style.display=='none')
+              {document.getElementById('q602') .style.display=''}
+            else{document.getElementById('q602') .style.display='none'}">
+Visa svar
+</button>
+<div id="q602" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+<span class="co"># a)</span>
+
+ df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/Lilla_enkaeten.txt&quot;</span>)
+ df<span class="op">$</span>skam_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+ df<span class="op">$</span>skam_bin[df<span class="op">$</span>SKAM <span class="op">==</span><span class="st"> &quot;Ja&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span> 
+ df<span class="op">$</span>skam_bin[df<span class="op">$</span>SKAM <span class="op">==</span><span class="st"> &quot;Nej&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ 
+ df<span class="op">$</span>onskan_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+ df<span class="op">$</span>onskan_bin[df<span class="op">$</span>OENSKAN <span class="op">==</span><span class="st"> &quot;Ja, det har jag gjort men jag önskar det inte nu&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+  df<span class="op">$</span>onskan_bin[df<span class="op">$</span>OENSKAN <span class="op">==</span><span class="st"> &quot;Ja, jag önskar nu att jag vore (helt) heterosexuell&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+   df<span class="op">$</span>onskan_bin[df<span class="op">$</span>OENSKAN <span class="op">==</span><span class="st"> &quot;Nej&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+freq_table &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>onskan_bin,  df<span class="op">$</span>skam_bin)
+<span class="kw">chisq.test</span>(freq_table)</code></pre></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Se formuleringar ovan om andelar, differens av andelar, KI och p-värde.</p></li>
+<li><p>OSU (experiment) och normalapproximation gäller. Jag litar på resultaten.</p></li>
+</ol>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.3" class="section level3 unnumbered">
+<h3>Övning 6.3</h3>
+<p>År 2019 omkom 221 i trafiken. Uppdelat på månad</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Antal omkomna 2019</th>
+<th align="center">Antal omkomna 2018</th>
+<th align="center">Antal omkomna 2018</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Januari</td>
+<td align="center">27</td>
+<td align="center">13</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td>Februari</td>
+<td align="center">17</td>
+<td align="center">16</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td>Mars</td>
+<td align="center">10</td>
+<td align="center">22</td>
+<td align="center">18</td>
+</tr>
+<tr class="even">
+<td>April</td>
+<td align="center">16</td>
+<td align="center">17</td>
+<td align="center">17</td>
+</tr>
+<tr class="odd">
+<td>Maj</td>
+<td align="center">19</td>
+<td align="center">31</td>
+<td align="center">24</td>
+</tr>
+<tr class="even">
+<td>Juni</td>
+<td align="center">19</td>
+<td align="center">32</td>
+<td align="center">27</td>
+</tr>
+<tr class="odd">
+<td>Juli</td>
+<td align="center">20</td>
+<td align="center">44</td>
+<td align="center">31</td>
+</tr>
+<tr class="even">
+<td>Augusti</td>
+<td align="center">25</td>
+<td align="center">29</td>
+<td align="center">34</td>
+</tr>
+<tr class="odd">
+<td>September</td>
+<td align="center">15</td>
+<td align="center">21</td>
+<td align="center">27</td>
+</tr>
+<tr class="even">
+<td>Okober</td>
+<td align="center">23</td>
+<td align="center">25</td>
+<td align="center">20</td>
+</tr>
+<tr class="odd">
+<td>November</td>
+<td align="center">13</td>
+<td align="center">36</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td>December</td>
+<td align="center">17</td>
+<td align="center">38</td>
+<td align="center">19</td>
+</tr>
+</tbody>
+</table>
+<p>Källa: Transportstyrelsen</p>
+<p>Besvara om antalet omkomna är oberoende av månad.</p>
+<button title="q603" type="button" onclick="if(document.getElementById('q603') .style.display=='none')
+              {document.getElementById('q603') .style.display=''}
+            else{document.getElementById('q603') .style.display='none'}">
+Visa svar
+</button>
+<div id="q603" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+<span class="co"># Version 1</span>
+omkomna2019 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">15</span>, <span class="dv">23</span>, <span class="dv">13</span>, <span class="dv">17</span>)
+omkomna2018 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">31</span>, <span class="dv">32</span>, <span class="dv">44</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">38</span>)
+omkomna2017 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">31</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">19</span>)
+manad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Maj&quot;</span>, <span class="st">&quot;Jun&quot;</span>, <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Aug&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Okt&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dec&quot;</span>)
+
+<span class="kw">barplot</span>(omkomna2019, <span class="dt">names.arg =</span> manad)</code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(omkomna2019)
+
+    Chi<span class="op">-</span>squared test <span class="cf">for</span> given probabilities
+
+data<span class="op">:</span><span class="st">  </span>omkomna2019
+X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">14.276</span>, df =<span class="st"> </span><span class="dv">11</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2181</span>
+
+O &lt;-<span class="st"> </span>omkomna2019
+E &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">sum</span>(omkomna2019)<span class="op">/</span><span class="dv">12</span>, <span class="dv">12</span>)
+X2 &lt;-<span class="st"> </span><span class="kw">sum</span>( (O <span class="op">-</span><span class="st"> </span>E)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>E)</code></pre></div>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.4" class="section level3 unnumbered">
+<h3>Övning 6.4</h3>
+<p>BMI Nutritional status Below 18.5</p>
+<p>Underweight</p>
+<p>18.5–24.9</p>
+<p>Normal weight</p>
+<p>25.0–29.9</p>
+<p>Pre-obesity</p>
+<p>30.0–34.9</p>
+<p>Obesity class I</p>
+<p>35.0–39.9</p>
+<p>Obesity class II</p>
+<p>Above 40</p>
+<p>Obesity class III</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)
+df<span class="op">$</span>bmi &lt;-<span class="st"> </span>df<span class="op">$</span>weight<span class="op">/</span>(df<span class="op">$</span>height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>
+<span class="kw">summary</span>(df<span class="op">$</span>bmi)
+df<span class="op">$</span>bmi_cat &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>bmi_cat[df<span class="op">$</span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="fl">18.5</span>] &lt;-<span class="st"> &quot;Undervikt&quot;</span>
+df<span class="op">$</span>bmi_cat[(df<span class="op">$</span>bmi <span class="op">&gt;=</span><span class="st"> </span><span class="fl">18.5</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span>)] &lt;-<span class="st"> &quot;Normalvikt&quot;</span>
+df<span class="op">$</span>bmi_cat[(df<span class="op">$</span>bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">25</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>) ] &lt;-<span class="st"> &quot;Övervikt&quot;</span>
+df<span class="op">$</span>bmi_cat[(df<span class="op">$</span>bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">35</span>) ] &lt;-<span class="st"> &quot;Fetma klass I&quot;</span>
+df<span class="op">$</span>bmi_cat[(df<span class="op">$</span>bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">35</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">40</span>) ] &lt;-<span class="st"> &quot;Fetma klass II&quot;</span>
+df<span class="op">$</span>bmi_cat[(df<span class="op">$</span>bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">40</span>)] &lt;-<span class="st"> &quot;Fetma klass III&quot;</span>
+df<span class="op">$</span>bmi_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>bmi_cat, 
+                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Undervikt&quot;</span>, <span class="st">&quot;Normalvikt&quot;</span>, <span class="st">&quot;Övervikt&quot;</span>, <span class="st">&quot;Fetma klass I&quot;</span>, <span class="st">&quot;Fetma klass II&quot;</span>, <span class="st">&quot;Fetma klass III&quot;</span>),
+                     <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
+freq_table_bmi_cat &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>bmi_cat)
+prop_table_bmi_cat &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table)
+
+
+<span class="kw">barplot</span>(freq_table_bmi_cat)
+<span class="kw">barplot</span>(prop_table_bmi_cat)
+
+prop_bmi_year &lt;-<span class="st"> </span><span class="kw">prop.table</span>( <span class="kw">table</span>(df<span class="op">$</span>bmi_cat, df<span class="op">$</span>year), <span class="dv">2</span> )
+
+<span class="kw">barplot</span>(prop_bmi_year, <span class="dt">las =</span> <span class="dv">2</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">chisq.test</span>(freq_table_bmi_cat)</code></pre></div>
+<p>Vi kan konstatera att andelen överviktiga har ökat. Samtidigt har andelen underviktiga minskat.</p>
+<p>Det finns ett beroende mellan år och bmi-kategori.</p>
+<p>Undersökarna vill beräkna kvoten av andelar lyckade behandlingar (relativ risk), där spjälning är referensgrupp. Eftersom forskarna vill fatta beslut vill man att en hypotesprövning genomförs på 5% signifikansnivå.</p>
+<button title="q604" type="button" onclick="if(document.getElementById('q604') .style.display=='none')
+              {document.getElementById('q604') .style.display=''}
+            else{document.getElementById('q604') .style.display='none'}">
+Visa svar
+</button>
+<div id="q604" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+ df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">treatment =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;splint&quot;</span>, <span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">67</span>),  <span class="kw">rep</span>(<span class="st">&quot;surgery&quot;</span>, <span class="dv">6</span>)), 
+                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">60</span>), <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;succesful&quot;</span>, <span class="dv">67</span>),   <span class="kw">rep</span>(<span class="st">&quot;unsucsessful&quot;</span>,<span class="dv">6</span>)))
+ freq_table &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>y, df<span class="op">$</span>treatment)
+ prop_table &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table, <span class="dv">2</span>) 
+ phat_splint &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">1</span>]
+ phat_surgery &lt;-<span class="st"> </span>prop_table[<span class="dv">1</span>,<span class="dv">2</span>]
+ p_kvot &lt;-<span class="st"> </span>phat_surgery<span class="op">/</span>phat_splint 
+ resultat &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(freq_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)
+ p_kvot
+[<span class="dv">1</span>] <span class="fl">1.269635</span>
+ resultat<span class="op">$</span>p.value
+[<span class="dv">1</span>] <span class="fl">0.001792853</span></code></pre></div>
+<p>En patient har 27% (p = 0.002) större chans till lyckad behandling om patienten genomgår kirurgi istället för behandling. Eftersom <span class="math inline">\(p&lt;0.05\)</span> förkastar vi på 5% signifikansnivå nollhypotesen om att kirurgi och spjälning är lika effektiva.</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.5" class="section level3 unnumbered">
+<h3>Övning 6.5</h3>
+<p>I riksdagsvalet 2018 blev mandatfördelningen följande. Skapa ett stapeldiagram och ett cirkeldiagram som redovisar mandatfördelningen. Argumentera varför det enda diagrammet är att föredra i detta fall.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Antal mandat i riksdagsvalet 2018</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Centerpartiet</td>
+<td align="center">31</td>
+</tr>
+<tr class="even">
+<td>Kristdemokraterna</td>
+<td align="center">22</td>
+</tr>
+<tr class="odd">
+<td>Liberalerna</td>
+<td align="center">20</td>
+</tr>
+<tr class="even">
+<td>Miljöpartiet</td>
+<td align="center">16</td>
+</tr>
+<tr class="odd">
+<td>Moderaterna</td>
+<td align="center">70</td>
+</tr>
+<tr class="even">
+<td>Socialdemokraterna</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td>Sverigedemokraterna</td>
+<td align="center">62</td>
+</tr>
+<tr class="even">
+<td>Vänsterpartiet</td>
+<td align="center">28</td>
+</tr>
+</tbody>
+</table>
+<button title="q605" type="button" onclick="if(document.getElementById('q605') .style.display=='none')
+              {document.getElementById('q605') .style.display=''}
+            else{document.getElementById('q605') .style.display='none'}">
+Visa svar
+</button>
+<div id="q605" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+parti &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Centerpartiet&quot;</span>, <span class="st">&quot;Kristdemokraterna&quot;</span>, <span class="st">&quot;Liberalerna&quot;</span>, <span class="st">&quot;Miljöpartiet&quot;</span>, <span class="st">&quot;Moderaterna&quot;</span>, <span class="st">&quot;Socialdemokraterna&quot;</span>, <span class="st">&quot;Sverigedemokraterna&quot;</span>, <span class="st">&quot;Vänsterpartiet&quot;</span>)
+partishort &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;KD&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;Mp&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;V&quot;</span>))
+particol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;darkred&quot;</span>)
+mandat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">31</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">70</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">28</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">parti =</span> parti, <span class="dt">partishort =</span> partishort, <span class="dt">particol =</span> particol, <span class="dt">mandat =</span> mandat)
+df<span class="op">$</span>parti &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>parti, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Vänsterpartiet&quot;</span>, <span class="st">&quot;Socialdemokraterna&quot;</span>, <span class="st">&quot;Miljöpartiet&quot;</span>, <span class="st">&quot;Sverigedemokraterna&quot;</span>, <span class="st">&quot;Centerpartiet&quot;</span>, <span class="st">&quot;Liberalerna&quot;</span>, <span class="st">&quot;Kristdemokraterna&quot;</span>, <span class="st">&quot;Moderaterna&quot;</span>))
+df<span class="op">$</span>particol &lt;-<span class="st"> </span><span class="kw">as.character</span>(df<span class="op">$</span>particol)
+df_sorted &lt;-<span class="st"> </span>df[<span class="kw">order</span>(df<span class="op">$</span>parti),]
+
+<span class="co"># Stapeldiagram</span>
+<span class="kw">barplot</span>(df_sorted<span class="op">$</span>mandat, 
+        <span class="dt">names.arg =</span> df_sorted<span class="op">$</span>partishort, 
+        <span class="dt">col =</span> df_sorted<span class="op">$</span>particol)
+
+<span class="co"># Cirkeldiagram</span>
+ lbs &lt;-<span class="st">  </span><span class="kw">paste</span>(df_sorted<span class="op">$</span>partishort, <span class="st">&quot; &quot;</span>, <span class="st">&quot;(&quot;</span>, df_sorted<span class="op">$</span>mandat, <span class="st">&quot;)&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+ <span class="kw">pie</span>(df_sorted<span class="op">$</span>mandat, 
+     <span class="dt">labels =</span> lbs,
+     <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>),
+     <span class="dt">clockwise =</span> <span class="ot">TRUE</span>, <span class="dt">radius =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;Riksdagsvalet 2018: Mandatfördelning&quot;</span>)
+
+
+<span class="co"># Hästskodiagram för att redovisa mandatfördelning. Överkurs. Installera</span>
+<span class="co"># paketet ggplot2 och kör koden nedan. Till för att visa flexibiliten i R</span>
+<span class="co"># och visualisering.</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;ggplot&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;ggparliament&quot;</span>)
+swedish_election_<span class="dv">2018</span> &lt;-<span class="st"> </span><span class="kw">parliament_data</span>(<span class="dt">election_data =</span> df_sorted,
+                                       <span class="dt">party_seats =</span> df_sorted<span class="op">$</span>mandat,
+                                       <span class="dt">parl_rows =</span> <span class="dv">5</span>,
+                                       <span class="dt">type =</span> <span class="st">&quot;horseshoe&quot;</span>)
+swe &lt;-<span class="st"> </span><span class="kw">ggplot</span>(swedish_election_<span class="dv">2018</span>, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> partishort)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_parliament_seats</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">theme_ggparliament</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="ot">NULL</span>, 
+         <span class="dt">title =</span> <span class="st">&quot;Sveriges riksdag&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> particol, 
+                        <span class="dt">limits =</span> partishort) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&#39;bottom&#39;</span>)
+swe</code></pre></div>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.6" class="section level3 unnumbered">
+<h3>Övning 6.6</h3>
+<p>En studie 1980 undersökte homosexuellas situation Sverige. En del av denna studie utgjordes bland annat en enkätundersökning. Ladda ner Lilla Enkäten som är txt-fil som finns i zip-filen “Enkäterna i csv-format” på <a href="https://riksarkivet.se/psidata/livet-som-gay" class="uri">https://riksarkivet.se/psidata/livet-som-gay</a>. Utgå från att data är insamlat med OSU och besvara sedan följande frågor:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Har den svarande själv talat om för någon heterosexuell bekant (som inte bara är arbetskamrat) att den svarande är homo/bisexuell? Variabeln heter <em>TALAT_OM</em>.</p></li>
+<li><p>Finns ett samband mellan kön (<strong>KOEN</strong>) och fråga a)?</p></li>
+<li><p>Undersök samband mellan att känna skam eller ångest (<strong>SKAM</strong>) och <em>TALAT_OM</em>? Redovisa bortfall. Redovisa en figur.</p></li>
+</ol>
+<button title="q606" type="button" onclick="if(document.getElementById('q606') .style.display=='none')
+              {document.getElementById('q606') .style.display=''}
+            else{document.getElementById('q606') .style.display='none'}">
+Visa svar
+</button>
+<div id="q606" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+ df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/Lilla_enkaeten.txt&quot;</span>)
+
+<span class="co"># Undersök variabeln och variabelkategorierna</span>
+ <span class="kw">summary</span>(df<span class="op">$</span>TALAT_OM)
+ <span class="kw">table</span>(df<span class="op">$</span>TALAT_OM, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)
+ 
+<span class="co"># Skapar en tom variabel och koda sedan alla nej till 1 och övriga till 0</span>
+ df<span class="op">$</span>EJ_TALAT_OM_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+ df<span class="op">$</span>EJ_TALAT_OM_bin[df<span class="op">$</span>TALAT_OM <span class="op">==</span><span class="st"> &quot;Ja, för en bekant&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ df<span class="op">$</span>EJ_TALAT_OM_bin[df<span class="op">$</span>TALAT_OM <span class="op">==</span><span class="st"> &quot;Ja, för flera bakanta&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ df<span class="op">$</span>EJ_TALAT_OM_bin[df<span class="op">$</span>TALAT_OM <span class="op">==</span><span class="st"> &quot;Jag har inga heterosexuella vänner&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ df<span class="op">$</span>EJ_TALAT_OM_bin[df<span class="op">$</span>TALAT_OM <span class="op">==</span><span class="st"> &quot;Nej&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+
+<span class="co"># a)    </span>
+ freq_table_EJ_TALAT_OM &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>EJ_TALAT_OM_bin)
+ x &lt;-<span class="st"> </span>freq_table_EJ_TALAT_OM[<span class="dv">2</span>]
+ n &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table_EJ_TALAT_OM)
+ resultat_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">prop.test</span>(x, n, <span class="dt">correct =</span> <span class="ot">FALSE</span>)
+ resultat_<span class="dv">1</span>
+ 
+<span class="co"># b) </span>
+<span class="co"># Undersök variabeln kön</span>
+ <span class="kw">summary</span>(df<span class="op">$</span>KOEN)
+ <span class="kw">table</span>(df<span class="op">$</span>KOEN, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)
+ 
+<span class="co"># Skapa en korstabell av kön och ej talat om</span>
+ freq_table_KOEN_EJ_TALAT_OM &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>EJ_TALAT_OM_bin, df<span class="op">$</span>KOEN)
+ x1 &lt;-<span class="st"> </span>freq_table_KOEN_EJ_TALAT_OM[<span class="dv">2</span>,<span class="dv">1</span>]
+ x0 &lt;-<span class="st"> </span>freq_table_KOEN_EJ_TALAT_OM[<span class="dv">2</span>,<span class="dv">2</span>]
+ n1 &lt;-<span class="kw">sum</span>(freq_table_KOEN_EJ_TALAT_OM[,<span class="dv">1</span>])
+ n0 &lt;-<span class="kw">sum</span>(freq_table_KOEN_EJ_TALAT_OM[,<span class="dv">2</span>])
+ p1hat &lt;-<span class="st"> </span>x1<span class="op">/</span>n1
+ p0hat &lt;-<span class="st"> </span>x0<span class="op">/</span>n0
+ resultat_KOEN_EJ_TALAT_OM &lt;-<span class="st"> </span><span class="kw">prop.test</span>(<span class="kw">c</span>(x1,x0), <span class="kw">c</span>(n1, n0), <span class="dt">correct =</span> <span class="ot">FALSE</span>)
+ resultat_KOEN_EJ_TALAT_OM
+
+ <span class="co"># Kolla förutsättningarna</span>
+ n1<span class="op">*</span>p1hat<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p1hat)
+ n0<span class="op">*</span>p0hat<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p0hat)
+ 
+ <span class="co"># c)  </span>
+ <span class="co"># Undersök variabeln</span>
+ <span class="kw">summary</span>(df<span class="op">$</span>SKAM)
+ <span class="kw">table</span>(df<span class="op">$</span>SKAM, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)
+ 
+ <span class="co"># Skapa en korstabell</span>
+ df<span class="op">$</span>skam_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+ df<span class="op">$</span>skam_bin[df<span class="op">$</span>SKAM <span class="op">==</span><span class="st"> &quot;Ja&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+ df<span class="op">$</span>skam_bin[df<span class="op">$</span>SKAM <span class="op">==</span><span class="st"> &quot;Nej&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+ df<span class="op">$</span>skam_bin[df<span class="op">$</span>SKAM <span class="op">==</span><span class="st"> </span><span class="dv">9</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+
+ freq_table_ej_talat_om_skam &lt;-<span class="st"> </span><span class="kw">table</span>( df<span class="op">$</span>EJ_TALAT_OM_bin,  df<span class="op">$</span>skam_bin)
+ <span class="kw">colnames</span>(freq_table_ej_talat_om_skam) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ej skam&quot;</span>, <span class="st">&quot;Skam&quot;</span>)
+ <span class="kw">rownames</span>(freq_table_ej_talat_om_skam) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ej talat om&quot;</span>, <span class="st">&quot;Talat om&quot;</span>)
+ prop_table_ej_talat_om_skam &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freq_table_ej_talat_om_skam, <span class="dv">2</span>)
+ 
+ <span class="kw">barplot</span>( prop_table_ej_talat_om_skam[<span class="dv">2</span>,], 
+         <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;Ej skam&quot;</span>, <span class="st">&quot;Skam&quot;</span>), 
+         <span class="dt">ylab =</span> <span class="st">&quot;Andel som tala om&quot;</span>)
+ 
+ x1_<span class="dv">2</span> &lt;-<span class="st"> </span>freq_table_ej_talat_om_skam[<span class="dv">2</span>,<span class="dv">2</span>]
+ x0_<span class="dv">2</span> &lt;-<span class="st"> </span>freq_table_ej_talat_om_skam[<span class="dv">2</span>,<span class="dv">1</span>]
+ n1_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table_ej_talat_om_skam[,<span class="dv">2</span>])
+ n0_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sum</span>(freq_table_ej_talat_om_skam[,<span class="dv">1</span>])
+ p1hat_<span class="dv">2</span> &lt;-<span class="st"> </span>x1_<span class="dv">2</span><span class="op">/</span>n1_<span class="dv">2</span>
+ p0hat_<span class="dv">2</span> &lt;-<span class="st"> </span>x0_<span class="dv">2</span><span class="op">/</span>n0_<span class="dv">2</span>
+ p_kvot &lt;-<span class="st"> </span>p1hat_<span class="dv">2</span><span class="op">/</span>p0hat_<span class="dv">2</span>
+ p_kvot
+ resultat_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">prop.test</span>(<span class="kw">c</span>(x1_<span class="dv">2</span>, x0_<span class="dv">2</span>), <span class="kw">c</span>(n1_<span class="dv">2</span>, n0_<span class="dv">2</span>), <span class="dt">correct =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Notera att förutsättningen är ej uppfylld för sambandsanalysen. Vi kan inte lita på testet.</p></li>
+<li><p>10 värden är kodade som 9, som förmodligen vet ej eller bortfall. Vi sätter dem som NA. Dessa exkuderas ur analysen.</p></li>
+</ol>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-6.7" class="section level3 unnumbered">
+<h3>Övning 6.7</h3>
+<p>En marknadsundersökning genom ett slumpmässigt urval av konsumenter för undersöka om färg har betydelse vad gäller val av mobiltelefon. Nedan presenterar data som du fått från företaget gällande vilken färg konsumenterna föredrar av tre möjligt:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Färg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cyberblå</td>
+<td align="center">150</td>
+</tr>
+<tr class="even">
+<td>Prestigeröd</td>
+<td align="center">150</td>
+</tr>
+<tr class="odd">
+<td>Supergrå</td>
+<td align="center">200</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>Har färgen någon betydelse?</li>
+</ol>
+<p>Dessutom fanns data uppdelat på kön.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Färg: Män</th>
+<th align="center">Färg: Kvinnor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cyberblå</td>
+<td align="center">100</td>
+<td align="center">50</td>
+</tr>
+<tr class="even">
+<td>Prestigeröd</td>
+<td align="center">60</td>
+<td align="center">90</td>
+</tr>
+<tr class="odd">
+<td>Supergrå</td>
+<td align="center">100</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Finns det samband mellan kön och vilken färg konsumenterna föredrar?</li>
+</ol>
+<button title="q607" type="button" onclick="if(document.getElementById('q607') .style.display=='none')
+              {document.getElementById('q607') .style.display=''}
+            else{document.getElementById('q607) .style.display='none'}">
+Visa svar
+</button>
+<div id="q607" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+ df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/Lilla_enkaeten.txt&quot;</span>)</code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Notera att förutsättningen är ej uppfylld för sambandsanalysen. Vi kan inte lita på testet.</p></li>
+<li><p>10 värden är kodade som 9, som förmodligen vet ej eller bortfall. Vi sätter dem som NA. Dessa exkuderas ur analysen.</p></li>
+</ol>
+</div>
+</div>
+<p></br></p>
+</div>
+</div>
+<div id="referenser-2" class="section level2">
+<h2><span class="header-section-number">6.5</span> Referenser</h2>
+<p>Helsing, K. J., &amp; Comstock, G. W. (1977). What kinds of people do not use seat belts?. American Journal of Public Health, 67(11), 1043-1050.</p>
+<p>admitted &lt;- c(rep(1, 512), rep(1, 353), rep(1, 120), rep(1, 138), rep(1, 53), rep(1, 22), rep(1, 89), rep(1, 17), rep(1, 202), rep(1, 131), rep(1, 94), rep(1, 24), rep(0, 313), rep(0, 207), rep(0, 205), rep(0, 279), rep(0, 138), rep(0, 351), rep(0, 19), rep(0, 8), rep(0, 391), rep(0, 244), rep(0, 299), rep(0, 317)) male &lt;- c(rep(1, 512), rep(1, 353), rep(1, 120), rep(1, 138), rep(1, 53), rep(1, 22), rep(0, 89), rep(0, 17), rep(0, 202), rep(0, 131), rep(0, 94), rep(0, 24), rep(1, 313), rep(1, 207), rep(1, 205), rep(1, 279), rep(1, 138), rep(1, 351), rep(0, 19), rep(0, 8), rep(0, 391), rep(0, 244), rep(0, 299), rep(0, 317)) department &lt;- c(rep(“A”, 512), rep(“B”, 353), rep(“C”, 120), rep(“D”, 138), rep(“E”, 53), rep(“F”, 22), rep(“A”, 89), rep(“B”, 17), rep(“C”, 202), rep(“D”, 131), rep(“E”, 94), rep(“F”, 24), rep(“A”, 313), rep(“B”, 207), rep(“C”, 205), rep(“D”, 279), rep(“E”, 138), rep(“F”, 351), rep(“A”, 19), rep(“B”, 8), rep(“C”, 391), rep(“D”, 244), rep(“E”, 299), rep(“F”, 317))</p>
+<p>table(admitted, male) prop.table(table(admitted, male, department),2) chisq.test(table(admitted, male)) chisq.test(table(admitted[department == “A”], male[department == “A”]))</p>
+<p>treatment &lt;- c(rep(“A”, 350), rep(“B”, 350)) success &lt;- c(rep(1, 81), rep(0,6), rep(1, 192), rep(0, 71), rep(1, 234), rep(0, 36), rep(1, 55), rep(0, 25)) size &lt;- c(rep(1, 81), rep(1,6), rep(0, 192), rep(0, 71), rep(1, 234), rep(1, 36), rep(0, 55), rep(0, 25))</p>
+<p>prop.table(table(success, treatment), 2) prop.table( table(success[size == 1], treatment[size==1]), 2) prop.table( table(success[size == 0], treatment[size==0]), 2)</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="binära-variabler.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="urvalsmetoder-uppdateras.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
