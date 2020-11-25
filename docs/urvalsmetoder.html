@@ -220,15 +220,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>7.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
 <li class="chapter" data-level="7.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>7.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
 <li class="chapter" data-level="7.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>7.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
-<li class="chapter" data-level="7.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n."><i class="fa fa-check"></i><b>7.2.4</b> Allokering av <span class="math inline">\(n\)</span>.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n"><i class="fa fa-check"></i><b>7.2.4</b> Allokering av <span class="math inline">\(n\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#gruppurval"><i class="fa fa-check"></i><b>7.3</b> Gruppurval</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>7.3.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
 <li class="chapter" data-level="7.3.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau-1"><i class="fa fa-check"></i><b>7.3.2</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
 <li class="chapter" data-level="7.3.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p-1"><i class="fa fa-check"></i><b>7.3.3</b> Inferens för <span class="math inline">\(p\)</span></a></li>
-<li class="chapter" data-level="7.3.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>7.3.4</b> Efterstratifiering</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-5"><i class="fa fa-check"></i><b>7.4</b> Övningar</a><ul>
+<li class="chapter" data-level="7.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>7.4</b> Efterstratifiering</a></li>
+<li class="chapter" data-level="7.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-5"><i class="fa fa-check"></i><b>7.5</b> Övningar</a><ul>
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.1"><i class="fa fa-check"></i>Övning 7.1</a></li>
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.2"><i class="fa fa-check"></i>Övning 7.2</a></li>
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.3"><i class="fa fa-check"></i>Övning 7.3</a></li>
@@ -733,8 +733,8 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 <pre><code>## [1] 21.39</code></pre>
 <p><em>Antalet i kommunen med en inkomst över 30000 skattas till 3660 stycken. Med 95% säkerhet täcker intervallet 3207 till 4113 antalet i kommunen med en inkomst över 30000. Vi har ett OSU-UÅ från respektive stratum vilket ger väntevärdesriktiga skattningar och förutsättningarna för att, på grund av CGS, använda normalapproximationen är uppfylld.</em></p>
 </div>
-<div id="allokering-av-n." class="section level3">
-<h3><span class="header-section-number">7.2.4</span> Allokering av <span class="math inline">\(n\)</span>.</h3>
+<div id="allokering-av-n" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Allokering av <span class="math inline">\(n\)</span></h3>
 <p>Utgå från att vi har budget för en viss urvalsstorlek. Vid stratifierat urval ska denna urvalsstorlek allokeras till olika strata.</p>
 <ul>
 <li>Neyman-allokering innebär hänsyn tas till variation och populationsstorlek: <span class="math display">\[n_j=\dfrac{\sigma_jN_j}{\sum_{j=1}^K \sigma_j N_j}\]</span></li>
@@ -898,8 +898,9 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 [<span class="dv">1</span>] <span class="fl">0.3196817</span></code></pre></div>
 <p><em>Andelen invånare i åldersgruppen 18-67 år med en inkomst över 30 000 skattas till 0.32</em>.</p>
 </div>
-<div id="efterstratifiering" class="section level3">
-<h3><span class="header-section-number">7.3.4</span> Efterstratifiering</h3>
+</div>
+<div id="efterstratifiering" class="section level2">
+<h2><span class="header-section-number">7.4</span> Efterstratifiering</h2>
 <p>Efterstratifiering (poststratifiering) innebär att en stratifiering görs i efterhand. Anledningen är att hjälpvariabeln inte finns i urvalsramen och det är först efter datainsamlingen som elementens stratumtillhörigheter blir kända. En förutsättning för efterstratifiering är dock att information om hjälpvariabeln är känd på aggregerad nivå i populationen, dvs <span class="math inline">\(N_j\)</span> för respektive stratum måste vara känd.</p>
 <p>Efterstratifiering leder till att de stratumspecifika stickprovsstorlekarna <span class="math inline">\(n_j\)</span> är slumpvariabler eftersom de stratumspecifika stickprovsstorlekarna beror de element som valts ut i urvalet. På detta vis skiljer sig efterstratifering från sedvanligt stratifierat urval där <span class="math inline">\(n_j\)</span> är konstanter som väljs i förväg. På grund av denna extra slumpmässighet är estimatorernas varianser vid efterstratifiering alltid <em>större än vid stratifierat urval</em>, dvs <span class="math inline">\(V(\bar{x}_{post}) &gt; V(\bar{x}_{st})\)</span>.</p>
 <p>Dock minskar skillnaden mellan varianserna när <span class="math inline">\(n\)</span> är stort och all <span class="math inline">\(n_j\)</span> är relativt stora. Därför gäller att</p>
@@ -909,9 +910,8 @@ div.green{ background-color:#abd4b3; border-radius: 5px; padding: 20px;}
 </ul>
 <p>Efterstratifiering används ofta för korrigera för bortfall i en undersökning.</p>
 </div>
-</div>
 <div id="övningar-5" class="section level2">
-<h2><span class="header-section-number">7.4</span> Övningar</h2>
+<h2><span class="header-section-number">7.5</span> Övningar</h2>
 <p>Nedan följer ett antal övningsuppgifter tillhörande detta kapitel. De senare lösningarna kan ha en annan utformning än de inledande, gällande exempelvis beteckningar i R-kod. Ni får använda den kod som ni är mest bekväm med.</p>
 <div id="övning-7.1" class="section level3 unnumbered">
 <h3>Övning 7.1</h3>

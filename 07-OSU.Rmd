@@ -739,7 +739,7 @@ Givet ett OSU-UÅ från respektive stratum är:
 *Antalet i kommunen med en inkomst över 30000 skattas till 3660 stycken. Med 95% säkerhet täcker intervallet 3207 till 4113 antalet i kommunen med en inkomst över 30000. Vi har ett OSU-UÅ från respektive stratum vilket ger väntevärdesriktiga skattningar och förutsättningarna för att, på grund av CGS, använda normalapproximationen är uppfylld.*
 
 
-### Allokering av $n$.
+### Allokering av $n$
 
 Utgå från att vi har budget för en viss urvalsstorlek. Vid stratifierat urval ska denna urvalsstorlek allokeras till olika strata. 
 
@@ -957,7 +957,7 @@ $$\hat{p}_{kvot} = \dfrac{\sum_{i=1}^n a_i}{\sum_{i=1}^n m_i} = \dfrac{n}{m}\bar
 
 
 
-### Efterstratifiering
+## Efterstratifiering
 Efterstratifiering (poststratifiering) innebär att en stratifiering görs i efterhand. Anledningen är att hjälpvariabeln inte finns i urvalsramen och det är först efter datainsamlingen som elementens stratumtillhörigheter blir kända.  En förutsättning för efterstratifiering är dock att information om hjälpvariabeln är känd på aggregerad nivå i populationen, dvs $N_j$ för respektive stratum måste vara känd.
 
 Efterstratifiering leder till att de stratumspecifika stickprovsstorlekarna $n_j$ är slumpvariabler eftersom de stratumspecifika stickprovsstorlekarna beror de element som valts ut i urvalet. På detta vis skiljer sig efterstratifering från sedvanligt stratifierat urval där $n_j$ är konstanter som väljs i förväg. På grund av denna extra slumpmässighet är estimatorernas varianser vid efterstratifiering alltid  *större än vid stratifierat urval*, dvs  $V(\bar{x}_{post}) >  V(\bar{x}_{st})$.
