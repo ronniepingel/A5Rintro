@@ -370,7 +370,7 @@ my_bar2 &lt;-<span class="st"> </span><span class="kw">barplot</span>(percentage
                    <span class="dt">border =</span> <span class="st">&quot;lightblue&quot;</span>,
                    <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">65</span>))
 <span class="kw">text</span>(<span class="dt">x =</span> my_bar2, <span class="dt">y =</span> percentages_age <span class="op">+</span><span class="st"> </span><span class="dv">6</span>, <span class="dt">labels =</span> <span class="kw">paste</span>(percentages_age, <span class="st">&quot;%&quot;</span>,  <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)) </code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-206-1.png" width="960" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Gör en numerisk variabel med två värden till en faktor. Notera att nivåerna i detta fall inte bestäms</span>
 <span class="co"># av ordningen i vektorn utan av de numeriska värdens storlek.</span>
 df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)
@@ -457,7 +457,7 @@ prop.table_cig_belt
          <span class="dt">ylab =</span> <span class="st">&quot;Andel&quot;</span>, 
          <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Bälte&quot;</span>, <span class="st">&quot;Ej bilbälte&quot;</span>), 
          <span class="dt">args.legend =</span>  <span class="kw">c</span>(<span class="dt">y =</span> <span class="fl">1.1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">bty =</span><span class="st">&#39;n&#39;</span>))</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-6-1.png" width="960" /></p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-210-1.png" width="960" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># c)</span>
 <span class="kw">chisq.test</span>(freq_table)
@@ -635,7 +635,7 @@ omkomna2017 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class=
 manad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Maj&quot;</span>, <span class="st">&quot;Jun&quot;</span>, <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Aug&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Okt&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dec&quot;</span>)
 
 <span class="kw">barplot</span>(omkomna2019, <span class="dt">names.arg =</span> manad)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(omkomna2019)
 
     Chi<span class="op">-</span>squared test <span class="cf">for</span> given probabilities
