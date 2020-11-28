@@ -75,30 +75,28 @@ Nedan illustreras de bägge urvalsmetoderna OSU-MÅ och OSU-UÅ i R.
 
 I praktiken måste vi inte bara dra ett OSU-UÅ från en vektor, utan i regel består en urvalsram av exempelvis kontaktuppgifter. Vi illusterar därför hur ett urval från en dataframe kan genomföras i R. 
 
-Först dras unika identifieringsnummer. Därefter matchas identifieringsnummer till rader. Det logiska kommandot $==$ går ej att tillämpa eftersom $id$ och $idnr\_ous\_ua$ har olika storlek. Istället används operatorn $\%in\%$ för att finna de element som matchar mellan två vektorer.  Sedan används funktionen **which()** för att hitta index (radnummer) för de rader vi har hittat matchande element. Avslutningsvis väljs sedan urvalet med hjälp av indexering.
+Först dras unika identifieringsnummer. Därefter matchas identifieringsnummer till rader. Det logiska kommandot $==$ går ej att tillämpa eftersom $id$ och $idnr\_ous\_ua$ har olika storlek. Istället används operatorn $\%in\%$ för att finna de element som matchar mellan två vektorer. Med indexeringar väljs sedan de rader ut där matcher är funna (TRUE). 
 
 ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
-# Använd sample() för att dra urval från vektorn x_pop # Vi konstruerar en urvalsram nedan.
- id <- c(5,7,44,41,99,101,6)
- namn <- c("Alex", "Robin", "Kim", "Charlie", "Tintin", "Lo", "Kim")
- tfn <- c(4443344,633223,3335664,322112,73344,42224,5435732)
- adress <- c("Storgatan 1", "Kungsgatan 4", "Drottninggatan 6", "Backvägen 33", 
- "Storgatan 7", "Lillgränd 6", "Skogsvägen 90")
- ram <- data.frame(id = id, namn = namn, tfn = tfn, adress = adress)
+# Vi konstruerar en urvalsram nedan.
+ ram <- data.frame(id = c(5,7,44,41,99,101,6), 
+                   namn = c("Alex", "Robin", "Kim", "Charlie", "Tintin", "Lo", "Kim"), 
+                   tfn = c(4443344,633223,3335664,322112,73344,42224,5435732), 
+                   adress =  c("Storgatan 1", "Kungsgatan 4", "Drottninggatan 6", "Backvägen 33", "Storgatan 7", "Lillgränd 6", "Skogsvägen 90"))
 # Urvalsstorleken sätts till n=3. Välj 3 idnr med OSU-UÅ och spara i idnr_ous_ua  
  n <- 3 
- idnr_ous_ua <- sample(df$id, n, replace = FALSE)  
+ idnr_ous_ua <- sample(ram$id, n, replace = FALSE)  
 # Välj rader i data frame (ramen) som korresponderar till slumpmässigt valda idnr.
- osu_ua <- df[which(df$id %in% idnr_ous_ua), ]
+ osu_ua <- ram[ram$id %in% idnr_ous_ua, ]
  osu_ua
 ```
 
-Det är inte uppenbart för nybörjaren varför ovanstående kod ska användas. Det finns alternativa sätt att dra urval från en dataframe, exempelvis där användaren först skapar skapar en variabel med radnummer, *1:N*, från vilken radnummer väljs slumpmässigt. Därefter rader väljas från en dataframe göras med indexinering. En sådan metod bygger dock på sorteringen i dataframet bibehålls.  
+Det finns även alternativa sätt att dra urval från en dataframe, exempelvis där användaren först skapar skapar en variabel med radnummer, *1:N*, från vilken radnummer väljs slumpmässigt. Därefter rader väljas från en dataframe göras med indexinering. En sådan metod bygger dock på sorteringen i dataframet bibehålls.  
 
 Oavsett metod förutsätter vi att alla element förekommer endast en gång i urvalsramen. Funktionen **anyDuplicated()** kan användas för att undersöka om värden på identifieringsvariabeln förekommer flera gånger.
 
 ```{r, echo=TRUE, eval=FALSE, collapse=TRUE, prompt=FALSE, comment=''} 
-anyDuplicated(id)
+anyDuplicated(ram$id)
 ```
 
 ### Inferens för populationsmedelvärdet, $\mu$

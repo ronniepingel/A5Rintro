@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 9 Tabeller | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 9 Tabeller | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 9 Tabeller | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 9 Tabeller | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel och Valentin Zulj" />
+
+
+<meta name="date" content="2020-11-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="figurer.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.13"><i class="fa fa-check"></i>Övning 3.13</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.14"><i class="fa fa-check"></i>Övning 3.14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-för-organiserade-datamaterial"><i class="fa fa-check"></i><b>4.1</b> Principer för organiserade datamaterial</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#working-directory"><i class="fa fa-check"></i><b>4.2</b> Working directory</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-kod"><i class="fa fa-check"></i><b>4.3</b> Läsa in datamaterial med hjälp av kod</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.3.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.3.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.3.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-menyerna-i-rstudio"><i class="fa fa-check"></i><b>4.4</b> Läsa in datamaterial med hjälp av menyerna i RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-från-working-directory"><i class="fa fa-check"></i><b>4.4.1</b> Läsa in data från working directory</a></li>
+<li class="chapter" data-level="4.4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-med-import-dataset"><i class="fa fa-check"></i><b>4.4.2</b> Läsa in data med “Import Dataset”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#spara-datamaterial-med-hjälp-av-r"><i class="fa fa-check"></i><b>4.5</b> Spara datamaterial med hjälp av R</a></li>
+<li class="chapter" data-level="4.6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övningar-2"><i class="fa fa-check"></i><b>4.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.1"><i class="fa fa-check"></i>Övning 4.1</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="binära-variabler.html"><a href="binära-variabler.html"><i class="fa fa-check"></i><b>5</b> Binära variabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> Deskription av en binär variabel</a></li>
+<li class="chapter" data-level="5.2" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.2</b> Tabeller och en binär variabel</a></li>
+<li class="chapter" data-level="5.3" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-en-binär-variabel"><i class="fa fa-check"></i><b>5.3</b> Figurer och en binär variabel</a></li>
+<li class="chapter" data-level="5.4" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-binär-variabel"><i class="fa fa-check"></i><b>5.4</b> Inferens för binär variabel</a></li>
+<li class="chapter" data-level="5.5" data-path="binära-variabler.html"><a href="binära-variabler.html#deskription-av-två-binära-variabler"><i class="fa fa-check"></i><b>5.5</b> Deskription av två binära variabler</a></li>
+<li class="chapter" data-level="5.6" data-path="binära-variabler.html"><a href="binära-variabler.html#tabeller-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.6</b> Tabeller och två binära variabler</a></li>
+<li class="chapter" data-level="5.7" data-path="binära-variabler.html"><a href="binära-variabler.html#kvantifiering-av-samband-mellan-två-binära-variabler"><i class="fa fa-check"></i><b>5.7</b> Kvantifiering av samband mellan två binära variabler</a></li>
+<li class="chapter" data-level="5.8" data-path="binära-variabler.html"><a href="binära-variabler.html#figurer-och-två-binära-variabler"><i class="fa fa-check"></i><b>5.8</b> Figurer och två binära variabler</a></li>
+<li class="chapter" data-level="5.9" data-path="binära-variabler.html"><a href="binära-variabler.html#inferens-för-två-binära-variabler"><i class="fa fa-check"></i><b>5.9</b> Inferens för två binära variabler</a></li>
+<li class="chapter" data-level="5.10" data-path="binära-variabler.html"><a href="binära-variabler.html#övningar-3"><i class="fa fa-check"></i><b>5.10</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+<li class="chapter" data-level="" data-path="binära-variabler.html"><a href="binära-variabler.html#övning-5.6"><i class="fa fa-check"></i>Övning 5.6</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="binära-variabler.html"><a href="binära-variabler.html#referenser-1"><i class="fa fa-check"></i><b>5.11</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>6</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="6.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#deskription-av-en-variabel-med-fler-än-två-kategorier"><i class="fa fa-check"></i><b>6.1</b> Deskription av en variabel med fler än två kategorier</a></li>
+<li class="chapter" data-level="6.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#figurer-och-en-kategorivariabel-med-fler-än-2-kategorier"><i class="fa fa-check"></i><b>6.2</b> Figurer och en kategorivariabel med fler än 2 kategorier</a></li>
+<li class="chapter" data-level="6.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-och-en-kategorivariabel-med-fler-än-2-kategorier"><i class="fa fa-check"></i><b>6.3</b> Inferens och en kategorivariabel med fler än 2 kategorier</a></li>
+<li class="chapter" data-level="6.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#samband-mellan-två-kategorivariabler"><i class="fa fa-check"></i><b>6.4</b> Samband mellan två kategorivariabler</a></li>
+<li class="chapter" data-level="6.5" data-path="kategorivariabler.html"><a href="kategorivariabler.html#figurer-och-två-kategorivariabler"><i class="fa fa-check"></i><b>6.5</b> Figurer och två kategorivariabler</a></li>
+<li class="chapter" data-level="6.6" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-och-två-kategorivariabler"><i class="fa fa-check"></i><b>6.6</b> Inferens och två kategorivariabler</a></li>
+<li class="chapter" data-level="6.7" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övningar-4"><i class="fa fa-check"></i><b>6.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.1"><i class="fa fa-check"></i>Övning 6.1</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.2"><i class="fa fa-check"></i>Övning 6.2</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.3"><i class="fa fa-check"></i>Övning 6.3</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.4"><i class="fa fa-check"></i>Övning 6.4</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.5"><i class="fa fa-check"></i>Övning 6.5</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.6"><i class="fa fa-check"></i>Övning 6.6</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-6.7"><i class="fa fa-check"></i>Övning 6.7</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="kategorivariabler.html"><a href="kategorivariabler.html#referenser-2"><i class="fa fa-check"></i><b>6.8</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>7</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="7.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>7.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsmedelvärdet-mu"><i class="fa fa-check"></i><b>7.1.1</b> Inferens för populationsmedelvärdet, <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsandelen-p"><i class="fa fa-check"></i><b>7.1.2</b> Inferens för populationsandelen, <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationstotalen-tau"><i class="fa fa-check"></i><b>7.1.3</b> Inferens för populationstotalen, <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="7.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>7.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>7.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>7.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>7.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="7.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>7.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="7.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n"><i class="fa fa-check"></i><b>7.2.4</b> Allokering av <span class="math inline">\(n\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#gruppurval"><i class="fa fa-check"></i><b>7.3</b> Gruppurval</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>7.3.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.3.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau-1"><i class="fa fa-check"></i><b>7.3.2</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="7.3.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p-1"><i class="fa fa-check"></i><b>7.3.3</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>7.4</b> Efterstratifiering</a></li>
+<li class="chapter" data-level="7.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-5"><i class="fa fa-check"></i><b>7.5</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.1"><i class="fa fa-check"></i>Övning 7.1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.2"><i class="fa fa-check"></i>Övning 7.2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.3"><i class="fa fa-check"></i>Övning 7.3</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.4"><i class="fa fa-check"></i>Övning 7.4</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.5"><i class="fa fa-check"></i>Övning 7.5</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.6"><i class="fa fa-check"></i>Övning 7.6</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.7"><i class="fa fa-check"></i>Övning 7.7</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.8"><i class="fa fa-check"></i>Övning 7.8</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.9"><i class="fa fa-check"></i>Övning 7.9</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.10"><i class="fa fa-check"></i>Övning 7.10</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.11"><i class="fa fa-check"></i>Övning 7.11</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.12"><i class="fa fa-check"></i>Övning 7.12</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.13"><i class="fa fa-check"></i>Övning 7.13</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.14"><i class="fa fa-check"></i>Övning 7.14</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.15"><i class="fa fa-check"></i>Övning 7.15</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16-1"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.17"><i class="fa fa-check"></i>Övning 7.17</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.18"><i class="fa fa-check"></i>Övning 7.18</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.19"><i class="fa fa-check"></i>Övning 7.19</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.20"><i class="fa fa-check"></i>Övning 7.20</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.21"><i class="fa fa-check"></i>Övning 7.21</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.22"><i class="fa fa-check"></i>Övning 7.22</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.23"><i class="fa fa-check"></i>Övning 7.23</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.24"><i class="fa fa-check"></i>Övning 7.24</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.25"><i class="fa fa-check"></i>Övning 7.25</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.26"><i class="fa fa-check"></i>Övning 7.26</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.27"><i class="fa fa-check"></i>Övning 7.27</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figurer.html"><a href="figurer.html"><i class="fa fa-check"></i><b>8</b> Figurer</a><ul>
+<li class="chapter" data-level="8.1" data-path="figurer.html"><a href="figurer.html#grundläggande-figurhantering"><i class="fa fa-check"></i><b>8.1</b> Grundläggande figurhantering</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="figurer.html"><a href="figurer.html#exportera-figurer"><i class="fa fa-check"></i><b>8.1.1</b> Exportera figurer</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="figurer.html"><a href="figurer.html#färger-och-figurer"><i class="fa fa-check"></i><b>8.2</b> Färger och figurer</a></li>
+<li class="chapter" data-level="8.3" data-path="figurer.html"><a href="figurer.html#typer-av-figurer"><i class="fa fa-check"></i><b>8.3</b> Typer av figurer</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="figurer.html"><a href="figurer.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>8.3.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="figurer.html"><a href="figurer.html#cirkeldigram"><i class="fa fa-check"></i><b>8.4</b> Cirkeldigram</a></li>
+<li class="chapter" data-level="8.5" data-path="figurer.html"><a href="figurer.html#figurer-för-fördelningar"><i class="fa fa-check"></i><b>8.5</b> Figurer för fördelningar</a></li>
+<li class="chapter" data-level="8.6" data-path="figurer.html"><a href="figurer.html#lådagram"><i class="fa fa-check"></i><b>8.6</b> Lådagram</a></li>
+<li class="chapter" data-level="8.7" data-path="figurer.html"><a href="figurer.html#histogram"><i class="fa fa-check"></i><b>8.7</b> Histogram</a></li>
+<li class="chapter" data-level="8.8" data-path="figurer.html"><a href="figurer.html#spridningsdiagram"><i class="fa fa-check"></i><b>8.8</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="8.9" data-path="figurer.html"><a href="figurer.html#några-frekvent-förekommande-diagram."><i class="fa fa-check"></i><b>8.9</b> Några frekvent förekommande diagram.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tabeller.html"><a href="tabeller.html"><i class="fa fa-check"></i><b>9</b> Tabeller</a><ul>
+<li class="chapter" data-level="9.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller"><i class="fa fa-check"></i><b>9.1</b> Frekvenstabeller</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-table"><i class="fa fa-check"></i><b>9.1.1</b> Frekvenstabeller med table()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="tabeller.html"><a href="tabeller.html#frekvenstabeller-med-freq"><i class="fa fa-check"></i><b>9.1.2</b> Frekvenstabeller med freq()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="tabeller.html"><a href="tabeller.html#korstabeller"><i class="fa fa-check"></i><b>9.2</b> Korstabeller</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="tabeller.html"><a href="tabeller.html#korstabeller-med-table"><i class="fa fa-check"></i><b>9.2.1</b> Korstabeller med table()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="tabeller.html"><a href="tabeller.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>9.3</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="9.4" data-path="tabeller.html"><a href="tabeller.html#frekvent-förekommande-tabeller"><i class="fa fa-check"></i><b>9.4</b> Frekvent förekommande tabeller</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="tabeller.html"><a href="tabeller.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>9.4.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tabeller" class="section level1">
+<h1><span class="header-section-number">Kapitel 9</span> Tabeller</h1>
+<p>Att presentera resultat och samband med diskreta variabler och kategorivariabler är en viktig del av att arbeta med</p>
+<ul>
+<li>Frekvenstabeller i R, med och utan paket</li>
+<li>Korstabeller i R, med och utan paket</li>
+<li>Export av tabeller till Word.</li>
+</ul>
+<div id="frekvenstabeller" class="section level2">
+<h2><span class="header-section-number">9.1</span> Frekvenstabeller</h2>
+<div id="frekvenstabeller-med-table" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Frekvenstabeller med table()</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Läs in data. Välj ut födda 1961 och födda 1975 </span></a>
+<a class="sourceLine" id="cb1-2" title="2">insark &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;D:/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># Välja ut insark för födda 1961</span></a>
+<a class="sourceLine" id="cb1-4" title="4">insark1 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1961</span>,]</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co"># Välj ut INSARK för födda 1975</span></a>
+<a class="sourceLine" id="cb1-6" title="6">insark2 &lt;-<span class="st"> </span>insark[insark<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>,]</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co"># Skapa ett dataset av INSARK 1961 och 1975. </span></a>
+<a class="sourceLine" id="cb1-8" title="8">insark3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(insark1, insark2)</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co"># Skapa nytt radid baserat på delpopulationen 1961 och 1975</span></a>
+<a class="sourceLine" id="cb1-10" title="10">insark3<span class="op">$</span>newid &lt;-<span class="st">  </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(insark3<span class="op">$</span>id) </a></code></pre></div>
+<p>Vi ska nu dra ett urval från INSARK. Anledningen till detta är enbart pedagogiskt,
+dvs vi får ett datamaterial som översiktlig. I praktiken används den data som tillgänglig!
+Beträffade funktionen <strong>set.seed()</strong> så används denna för att ange vilket
+slumpmässigt urval som dras. Annars erhålls inte samma skattningar som i exemplet. I praktiken vid urvalsdragning används inte set.seed()</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">n &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">df &lt;-<span class="st"> </span>insark3[<span class="kw">sample</span>(insark3<span class="op">$</span>newid, n), ]</a></code></pre></div>
+<p>Baserat på urvalet är nu målet att skapa frekvenstabell som innehåller både <strong>absoluta</strong> och <strong>relativa</strong> frekvenser. För att skapa tabeller används funktionerna</p>
+<ul>
+<li><strong>table()</strong> och hantera både tabuleringar av en enda variabler eller korstabeller av två eller flera variabler. Notera att <strong>table()</strong> enbart presenterar frekvenser för att få utförligare resultat krävs att tabellen sparas som ett objekt, på vilket andra funktioner kan användas.</li>
+<li><strong>prop.table()</strong> tillämpad på ett objekt från <strong>table()</strong> och beräknar proportioner baserat på totala antalet (default), radvisa frekvenser eller kolumnfrekvenser.<br />
+</li>
+<li><strong>addmargins()</strong> ger marginalerna i ett tabellobjeket. Med argumentet <strong>margins</strong> anges om alla marginaler, radmarginalen eller kolumnmargialen ska beräknas.</li>
+</ul>
+<p>Baserat på urvalet är nu målet är att skapa en tabell som beskriver variabeln <strong>psych</strong>, som är bedömd psykisk funktionsförmåga som är en variabel med 9 steg, där 1 är sämst och 9 är bäst. Vi börjar med att titta på exemplet där variabeln <strong>psych</strong> används som numerisk variabel. Med funktionerna <strong>colnames()</strong> och <strong>rownames()</strong> går det att namnge kolumner och rader i tabellobjektet.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Univariat tabell med frekvenser och proportioner </span></a>
+<a class="sourceLine" id="cb3-2" title="2">freqtable_psych &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych)</a>
+<a class="sourceLine" id="cb3-3" title="3">proptable_psych &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych)</a>
+<a class="sourceLine" id="cb3-4" title="4">table_psych &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych, <span class="dv">100</span><span class="op">*</span>proptable_psych)</a>
+<a class="sourceLine" id="cb3-5" title="5">table_psych &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych, <span class="dt">margin =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">colnames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw">rownames</span>(table_psych) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)</a>
+<a class="sourceLine" id="cb3-8" title="8">freqtable_psych </a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="er">&gt;</span><span class="st">   </span><span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">3</span>   <span class="dv">4</span>   <span class="dv">5</span>   <span class="dv">6</span>   <span class="dv">7</span>   <span class="dv">8</span>   <span class="dv">9</span> </a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="op">&gt;</span><span class="st">  </span><span class="dv">19</span>  <span class="dv">67</span> <span class="dv">122</span> <span class="dv">150</span> <span class="dv">220</span> <span class="dv">200</span> <span class="dv">145</span>  <span class="dv">65</span>  <span class="dv">12</span></a>
+<a class="sourceLine" id="cb3-12" title="12">proptable_psych </a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="er">&gt;</span><span class="st">     </span><span class="dv">1</span>     <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">4</span>     <span class="dv">5</span>     <span class="dv">6</span>     <span class="dv">7</span>     <span class="dv">8</span>     <span class="dv">9</span> </a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="op">&gt;</span><span class="st"> </span><span class="fl">0.019</span> <span class="fl">0.067</span> <span class="fl">0.122</span> <span class="fl">0.150</span> <span class="fl">0.220</span> <span class="fl">0.200</span> <span class="fl">0.145</span> <span class="fl">0.065</span> <span class="fl">0.012</span></a>
+<a class="sourceLine" id="cb3-16" title="16">table_psych</a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="op">&gt;</span><span class="st">       </span>Frekvens     %</a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">1</span>       <span class="dv">19</span>   <span class="fl">1.9</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">2</span>       <span class="dv">67</span>   <span class="fl">6.7</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">3</span>      <span class="dv">122</span>  <span class="fl">12.2</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">4</span>      <span class="dv">150</span>  <span class="fl">15.0</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">5</span>      <span class="dv">220</span>  <span class="fl">22.0</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">6</span>      <span class="dv">200</span>  <span class="fl">20.0</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">7</span>      <span class="dv">145</span>  <span class="fl">14.5</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">8</span>       <span class="dv">65</span>   <span class="fl">6.5</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">9</span>       <span class="dv">12</span>   <span class="fl">1.2</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="op">&gt;</span><span class="st"> </span>Total     <span class="dv">1000</span> <span class="fl">100.0</span></a></code></pre></div>
+<p>Notera att tabellen med proportioner multipliceras med 100 för att få resultaten i procent. Det kan även finns anledning att avrunda resultat med funktionen <strong>round()</strong>. Antalet decimaler i avrundningen beror på behovet av precision i resultatredovisningen. Ska tabellen användas i beräkningar i R, alltså inte som en del av en rapport, bör ingen dock avrundning ske.</p>
+<p><code>table_psych &lt;- cbind(round(freqtable_psych, 0), round(100*proptable_psych), 0)</code></p>
+<p>Alternativet är nu att skapa en variabel som heter <strong>psych_cat</strong> och sedan använda funktionen <strong>levels()</strong> för att ange nivåerna i faktorn. Som vanligt när vi skapar en ny variabel adderas vi den till datamaterialet.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># För att namnge raderna kan göra om psych-variabeln till en faktor som namnges. </span></a>
+<a class="sourceLine" id="cb4-2" title="2">df<span class="op">$</span>psych_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>psych, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">levels</span>(df<span class="op">$</span>psych_cat) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4">freqtable_psych_cat &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_cat)</a>
+<a class="sourceLine" id="cb4-5" title="5">proptable_psych_cat &lt;-<span class="st"> </span><span class="kw">prop.table</span>(freqtable_psych_cat)</a>
+<a class="sourceLine" id="cb4-6" title="6">table_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">round</span>(freqtable_psych_cat), <span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>proptable_psych_cat, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb4-7" title="7">table_psych_cat &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_cat, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw">colnames</span>(table_psych_cat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Frekvens&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb4-9" title="9">table_psych_cat</a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">&gt;</span><span class="st">       </span>Frekvens     %</a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">1</span>       <span class="dv">19</span>   <span class="fl">1.9</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">2</span>       <span class="dv">67</span>   <span class="fl">6.7</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">3</span>      <span class="dv">122</span>  <span class="fl">12.2</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">4</span>      <span class="dv">150</span>  <span class="fl">15.0</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">5</span>      <span class="dv">220</span>  <span class="fl">22.0</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">6</span>      <span class="dv">200</span>  <span class="fl">20.0</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">7</span>      <span class="dv">145</span>  <span class="fl">14.5</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">8</span>       <span class="dv">65</span>   <span class="fl">6.5</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="op">&gt;</span><span class="st"> </span>Kat <span class="dv">9</span>       <span class="dv">12</span>   <span class="fl">1.2</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="op">&gt;</span><span class="st"> </span>Sum       <span class="dv">1000</span> <span class="fl">100.0</span></a></code></pre></div>
+<p>Du har nu konstruerat en frekvenstabell utifrån bägge tillvägagångsätten.</p>
+<p>Det är viktigt vid alla dataanlyser är att veta hur funktionerna som används hanterar saknade data. Default-inställningen för <strong>table()</strong> är att ignorera sådana observationer. För att redovisa saknade data som en egen kategori används argumentet <code>useNA = "ifany"</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Skapa en bortfallsvariabel på position 3 och 4 i variabeln psych</span></a>
+<a class="sourceLine" id="cb5-2" title="2">df<span class="op">$</span>psych_mis &lt;-<span class="st"> </span>df<span class="op">$</span>psych</a>
+<a class="sourceLine" id="cb5-3" title="3">df<span class="op">$</span>psych_mis[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb5-4" title="4">table_psych_mis &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych_mis, <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5">table_psych_mis</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="er">&gt;</span><span class="st">    </span><span class="dv">1</span>    <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">4</span>    <span class="dv">5</span>    <span class="dv">6</span>    <span class="dv">7</span>    <span class="dv">8</span>    <span class="dv">9</span> <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="er">&gt;</span><span class="st">   </span><span class="dv">19</span>   <span class="dv">67</span>  <span class="dv">121</span>  <span class="dv">150</span>  <span class="dv">219</span>  <span class="dv">200</span>  <span class="dv">145</span>   <span class="dv">65</span>   <span class="dv">12</span>    <span class="dv">2</span></a></code></pre></div>
+</div>
+<div id="frekvenstabeller-med-freq" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> Frekvenstabeller med freq()</h3>
+<p>Även om <strong>table()</strong> är väldigt flexibelt och användbart finns det också färdiga funktioner som kan förenkla koden.</p>
+<p>Ett smidigt R-paket för beskriva och summera data är **summarytools*. Skriv därför <code>install.packages("summarytools")</code>.</p>
+<p>På MacOS krävs eventuellt även av ett program som heter <em>XQuartz</em>, som görs externt från
+<a href="https://www.xquartz.org/releases/index.html" class="uri">https://www.xquartz.org/releases/index.html</a>.</p>
+<p>När programmet är installerat kan följande kod användas för att enkelt skapa en frekvenstabell. Funktionen <strong>freq()</strong> används för att skapa en frekvens och för att replikera tabellerna ovan används följande kod.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">library</span>(<span class="st">&quot;summarytools&quot;</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">tab_psych &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3">tab_psych_cat &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">FALSE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-4" title="4">tab_psych_mis &lt;-<span class="st"> </span><span class="kw">freq</span>(df<span class="op">$</span>psych_cat, <span class="dt">report.nas =</span> <span class="ot">TRUE</span>, <span class="dt">cumul =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-5" title="5">tab_psych</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="op">&gt;</span><span class="st"> </span>Frequencies  </a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych  </a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="er">&gt;</span><span class="st">               </span>Freq        %</a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="er">&gt;</span><span class="st">           </span><span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="op">&gt;</span><span class="st">           </span><span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="op">&gt;</span><span class="st">           </span><span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="op">&gt;</span><span class="st">           </span><span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="op">&gt;</span><span class="st">           </span><span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="op">&gt;</span><span class="st">           </span><span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="op">&gt;</span><span class="st">           </span><span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="op">&gt;</span><span class="st">           </span><span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="op">&gt;</span><span class="st">           </span><span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span></a>
+<a class="sourceLine" id="cb6-21" title="21">tab_psych_cat </a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="op">&gt;</span><span class="st"> </span>Frequencies  </a>
+<a class="sourceLine" id="cb6-23" title="23"><span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  </a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  </a>
+<a class="sourceLine" id="cb6-25" title="25"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-26" title="26"><span class="er">&gt;</span><span class="st">               </span>Freq        %</a>
+<a class="sourceLine" id="cb6-27" title="27"><span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">--------</span></a>
+<a class="sourceLine" id="cb6-28" title="28"><span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>     <span class="fl">1.90</span></a>
+<a class="sourceLine" id="cb6-29" title="29"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>     <span class="fl">6.70</span></a>
+<a class="sourceLine" id="cb6-30" title="30"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>    <span class="fl">12.20</span></a>
+<a class="sourceLine" id="cb6-31" title="31"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>    <span class="fl">15.00</span></a>
+<a class="sourceLine" id="cb6-32" title="32"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>    <span class="fl">22.00</span></a>
+<a class="sourceLine" id="cb6-33" title="33"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>    <span class="fl">20.00</span></a>
+<a class="sourceLine" id="cb6-34" title="34"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>    <span class="fl">14.50</span></a>
+<a class="sourceLine" id="cb6-35" title="35"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>     <span class="fl">6.50</span></a>
+<a class="sourceLine" id="cb6-36" title="36"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>     <span class="fl">1.20</span></a>
+<a class="sourceLine" id="cb6-37" title="37"><span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>   <span class="fl">100.00</span></a>
+<a class="sourceLine" id="cb6-38" title="38">tab_psych_mis</a>
+<a class="sourceLine" id="cb6-39" title="39"><span class="op">&gt;</span><span class="st"> </span>Frequencies  </a>
+<a class="sourceLine" id="cb6-40" title="40"><span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>psych_cat  </a>
+<a class="sourceLine" id="cb6-41" title="41"><span class="op">&gt;</span><span class="st"> </span>Type<span class="op">:</span><span class="st"> </span>Ordered Factor  </a>
+<a class="sourceLine" id="cb6-42" title="42"><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-43" title="43"><span class="er">&gt;</span><span class="st">               </span>Freq   <span class="op">% Valid   %</span><span class="st"> </span>Total</a>
+<a class="sourceLine" id="cb6-44" title="44"><span class="op">&gt;</span><span class="st"> </span><span class="op">-----------</span><span class="st"> </span><span class="op">------</span><span class="st"> </span><span class="op">---------</span><span class="st"> </span><span class="op">---------</span></a>
+<a class="sourceLine" id="cb6-45" title="45"><span class="er">&gt;</span><span class="st">       </span>Kat <span class="dv">1</span>     <span class="dv">19</span>      <span class="fl">1.90</span>      <span class="fl">1.90</span></a>
+<a class="sourceLine" id="cb6-46" title="46"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">2</span>     <span class="dv">67</span>      <span class="fl">6.70</span>      <span class="fl">6.70</span></a>
+<a class="sourceLine" id="cb6-47" title="47"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">3</span>    <span class="dv">122</span>     <span class="fl">12.20</span>     <span class="fl">12.20</span></a>
+<a class="sourceLine" id="cb6-48" title="48"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">4</span>    <span class="dv">150</span>     <span class="fl">15.00</span>     <span class="fl">15.00</span></a>
+<a class="sourceLine" id="cb6-49" title="49"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">5</span>    <span class="dv">220</span>     <span class="fl">22.00</span>     <span class="fl">22.00</span></a>
+<a class="sourceLine" id="cb6-50" title="50"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">6</span>    <span class="dv">200</span>     <span class="fl">20.00</span>     <span class="fl">20.00</span></a>
+<a class="sourceLine" id="cb6-51" title="51"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">7</span>    <span class="dv">145</span>     <span class="fl">14.50</span>     <span class="fl">14.50</span></a>
+<a class="sourceLine" id="cb6-52" title="52"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">8</span>     <span class="dv">65</span>      <span class="fl">6.50</span>      <span class="fl">6.50</span></a>
+<a class="sourceLine" id="cb6-53" title="53"><span class="op">&gt;</span><span class="st">       </span>Kat <span class="dv">9</span>     <span class="dv">12</span>      <span class="fl">1.20</span>      <span class="fl">1.20</span></a>
+<a class="sourceLine" id="cb6-54" title="54"><span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st">      </span><span class="dv">0</span>                <span class="fl">0.00</span></a>
+<a class="sourceLine" id="cb6-55" title="55"><span class="op">&gt;</span><span class="st">       </span>Total   <span class="dv">1000</span>    <span class="fl">100.00</span>    <span class="fl">100.00</span></a></code></pre></div>
+<p>Notera att vid användning av funktionen <strong>freq()</strong> är det en fördel att använda faktorn <strong>psych_cat</strong> eftersom kategorierna är namngivna. Det går inte här i efterhand att namnge kategorierna i våra variabler. Här har vi således ett exempel när faktorn är att föredra framför den numeriska variabeln. Vi kommer senare att stöta på det motsatta.</p>
+<p>Som vanligt har funktioner i R fleravargument som anger exakt vad funktionen ska göra. I exemplen
+redogörs bara för ett fåtal av dessa och ofta krävs att det att man använder sig av hälpfilen för en funktion, i detta fall <strong>help(freq)</strong>, eller att man provar ändra i den kod som finns.</p>
+</div>
+</div>
+<div id="korstabeller" class="section level2">
+<h2><span class="header-section-number">9.2</span> Korstabeller</h2>
+<div id="korstabeller-med-table" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Korstabeller med table()</h3>
+<p>Flera variabler kan korstabuleras i <strong>table()</strong>. Variabeln som ska finnas på raden kommer före variabeln som på kolumnen. Tabellen som erhålls kallas i fallet med två inkluderade variabler för tvåvägs-korstabell. Om det går att översätta variablerna i termer av förklarande variabel och beroende variabel, sätts den förklarande variabeln i regel kolumnsvis. Det kan dock av utrymmesskäl finnas anledning att rucka på denna princip.</p>
+<p>Vi ska nu beskriva psyskologisk bedömning uppdelat på födda 1961 respektive 1975. Först en korstabell med frekvenser och baserat på denna skapa en korstabell med relativa frekvenser baserat på kolumnprocent. Notera att det kräver en del pusslande, men vi har stor flexibilitet vad
+gäller att konstruera tabellen.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">freqtable_psych_year &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>psych, df<span class="op">$</span>year)</a>
+<a class="sourceLine" id="cb7-2" title="2">freqtable_psych_year </a>
+<a class="sourceLine" id="cb7-3" title="3">   </a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="dv">1961</span> <span class="dv">1975</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="dv">1</span>   <span class="dv">10</span>    <span class="dv">9</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  <span class="dv">2</span>   <span class="dv">29</span>   <span class="dv">38</span></a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="dv">3</span>   <span class="dv">64</span>   <span class="dv">58</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="dv">4</span>   <span class="dv">78</span>   <span class="dv">72</span></a>
+<a class="sourceLine" id="cb7-9" title="9">  <span class="dv">5</span>  <span class="dv">112</span>  <span class="dv">108</span></a>
+<a class="sourceLine" id="cb7-10" title="10">  <span class="dv">6</span>   <span class="dv">91</span>  <span class="dv">109</span></a>
+<a class="sourceLine" id="cb7-11" title="11">  <span class="dv">7</span>   <span class="dv">55</span>   <span class="dv">90</span></a>
+<a class="sourceLine" id="cb7-12" title="12">  <span class="dv">8</span>   <span class="dv">27</span>   <span class="dv">38</span></a>
+<a class="sourceLine" id="cb7-13" title="13">  <span class="dv">9</span>    <span class="dv">6</span>    <span class="dv">6</span></a>
+<a class="sourceLine" id="cb7-14" title="14">proptable_psych_year &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(freqtable_psych_year, <span class="dt">margin =</span> <span class="dv">2</span> )  <span class="co"># 2 är kolumnprocent</span></a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="co"># Bind ihop frekvenser och relative frekvenser</span></a>
+<a class="sourceLine" id="cb7-16" title="16">table_psych_year_bind &lt;-<span class="st"> </span><span class="kw">cbind</span>(freqtable_psych_year[,<span class="dv">1</span>], <span class="kw">round</span>(proptable_psych_year[,<span class="dv">1</span>], <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb7-17" title="17">                         freqtable_psych_year[,<span class="dv">2</span>],  <span class="kw">round</span>(proptable_psych_year[,<span class="dv">2</span>], <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb7-18" title="18">table_psych_year &lt;-<span class="st"> </span><span class="kw">addmargins</span>(table_psych_year_bind, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb7-19" title="19"><span class="kw">colnames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1961&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;1975&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb7-20" title="20"><span class="kw">rownames</span>(table_psych_year) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Kat 1&quot;</span>, <span class="st">&quot;Kat 2&quot;</span>, <span class="st">&quot;Kat 3&quot;</span>, <span class="st">&quot;Kat 4&quot;</span>, <span class="st">&quot;Kat 5&quot;</span>, <span class="st">&quot;Kat 6&quot;</span>, <span class="st">&quot;Kat 7&quot;</span>, <span class="st">&quot;Kat 8&quot;</span>, <span class="st">&quot;Kat 9&quot;</span>, <span class="st">&quot;Total&quot;</span>)</a>
+<a class="sourceLine" id="cb7-21" title="21">table_psych_year </a>
+<a class="sourceLine" id="cb7-22" title="22">      <span class="dv">1961</span>     <span class="op">% 1975    %</span></a>
+<a class="sourceLine" id="cb7-23" title="23">Kat <span class="dv">1</span>   <span class="dv">10</span>   <span class="fl">2.1</span>    <span class="dv">9</span>  <span class="fl">1.7</span></a>
+<a class="sourceLine" id="cb7-24" title="24">Kat <span class="dv">2</span>   <span class="dv">29</span>   <span class="fl">6.1</span>   <span class="dv">38</span>  <span class="fl">7.2</span></a>
+<a class="sourceLine" id="cb7-25" title="25">Kat <span class="dv">3</span>   <span class="dv">64</span>  <span class="fl">13.6</span>   <span class="dv">58</span> <span class="fl">11.0</span></a>
+<a class="sourceLine" id="cb7-26" title="26">Kat <span class="dv">4</span>   <span class="dv">78</span>  <span class="fl">16.5</span>   <span class="dv">72</span> <span class="fl">13.6</span></a>
+<a class="sourceLine" id="cb7-27" title="27">Kat <span class="dv">5</span>  <span class="dv">112</span>  <span class="fl">23.7</span>  <span class="dv">108</span> <span class="fl">20.5</span></a>
+<a class="sourceLine" id="cb7-28" title="28">Kat <span class="dv">6</span>   <span class="dv">91</span>  <span class="fl">19.3</span>  <span class="dv">109</span> <span class="fl">20.6</span></a>
+<a class="sourceLine" id="cb7-29" title="29">Kat <span class="dv">7</span>   <span class="dv">55</span>  <span class="fl">11.7</span>   <span class="dv">90</span> <span class="fl">17.0</span></a>
+<a class="sourceLine" id="cb7-30" title="30">Kat <span class="dv">8</span>   <span class="dv">27</span>   <span class="fl">5.7</span>   <span class="dv">38</span>  <span class="fl">7.2</span></a>
+<a class="sourceLine" id="cb7-31" title="31">Kat <span class="dv">9</span>    <span class="dv">6</span>   <span class="fl">1.3</span>    <span class="dv">6</span>  <span class="fl">1.1</span></a>
+<a class="sourceLine" id="cb7-32" title="32">Total  <span class="dv">472</span> <span class="fl">100.0</span>  <span class="dv">528</span> <span class="fl">99.9</span></a></code></pre></div>
+<p>Alternativt kan vi använda funktionen <strong>ctable()</strong> från paketet summarytoools.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">df<span class="op">$</span>year_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>year)</a>
+<a class="sourceLine" id="cb8-2" title="2">tab_psych_year &lt;-<span class="st"> </span><span class="kw">ctable</span>(df<span class="op">$</span>psych_cat, df<span class="op">$</span>year_cat, <span class="dt">prop =</span> <span class="st">&quot;c&quot;</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3">tab_psych_year</a>
+<a class="sourceLine" id="cb8-4" title="4">Cross<span class="op">-</span>Tabulation, Column Proportions  </a>
+<a class="sourceLine" id="cb8-5" title="5">psych_cat <span class="op">*</span><span class="st"> </span>year_cat  </a>
+<a class="sourceLine" id="cb8-6" title="6">Data Frame<span class="op">:</span><span class="st"> </span>df  </a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="op">-----------</span><span class="st"> </span><span class="op">----------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">              </span>year_cat           <span class="dv">1961</span>           <span class="dv">1975</span>           Total</a>
+<a class="sourceLine" id="cb8-10" title="10">  psych_cat                                                         </a>
+<a class="sourceLine" id="cb8-11" title="11">      Kat <span class="dv">1</span>               <span class="dv">10</span> (  <span class="fl">2.1</span><span class="op">%)     9 (  1.7%</span>)     <span class="dv">19</span> (  <span class="fl">1.9</span>%)</a>
+<a class="sourceLine" id="cb8-12" title="12">      Kat <span class="dv">2</span>               <span class="dv">29</span> (  <span class="fl">6.1</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">67</span> (  <span class="fl">6.7</span>%)</a>
+<a class="sourceLine" id="cb8-13" title="13">      Kat <span class="dv">3</span>               <span class="dv">64</span> ( <span class="fl">13.6</span><span class="op">%)    58 ( 11.0%</span>)    <span class="dv">122</span> ( <span class="fl">12.2</span>%)</a>
+<a class="sourceLine" id="cb8-14" title="14">      Kat <span class="dv">4</span>               <span class="dv">78</span> ( <span class="fl">16.5</span><span class="op">%)    72 ( 13.6%</span>)    <span class="dv">150</span> ( <span class="fl">15.0</span>%)</a>
+<a class="sourceLine" id="cb8-15" title="15">      Kat <span class="dv">5</span>              <span class="dv">112</span> ( <span class="fl">23.7</span><span class="op">%)   108 ( 20.5%</span>)    <span class="dv">220</span> ( <span class="fl">22.0</span>%)</a>
+<a class="sourceLine" id="cb8-16" title="16">      Kat <span class="dv">6</span>               <span class="dv">91</span> ( <span class="fl">19.3</span><span class="op">%)   109 ( 20.6%</span>)    <span class="dv">200</span> ( <span class="fl">20.0</span>%)</a>
+<a class="sourceLine" id="cb8-17" title="17">      Kat <span class="dv">7</span>               <span class="dv">55</span> ( <span class="fl">11.7</span><span class="op">%)    90 ( 17.0%</span>)    <span class="dv">145</span> ( <span class="fl">14.5</span>%)</a>
+<a class="sourceLine" id="cb8-18" title="18">      Kat <span class="dv">8</span>               <span class="dv">27</span> (  <span class="fl">5.7</span><span class="op">%)    38 (  7.2%</span>)     <span class="dv">65</span> (  <span class="fl">6.5</span>%)</a>
+<a class="sourceLine" id="cb8-19" title="19">      Kat <span class="dv">9</span>                <span class="dv">6</span> (  <span class="fl">1.3</span><span class="op">%)     6 (  1.1%</span>)     <span class="dv">12</span> (  <span class="fl">1.2</span>%)</a>
+<a class="sourceLine" id="cb8-20" title="20">      Total              <span class="dv">472</span> (<span class="fl">100.0</span><span class="op">%)   528 (100.0%</span>)   <span class="dv">1000</span> (<span class="fl">100.0</span>%)</a>
+<a class="sourceLine" id="cb8-21" title="21"><span class="op">-----------</span><span class="st"> </span><span class="op">----------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">--------------</span><span class="st"> </span><span class="op">---------------</span></a></code></pre></div>
+</div>
+</div>
+<div id="exportera-tabeller-till-html" class="section level2">
+<h2><span class="header-section-number">9.3</span> Exportera tabeller till html</h2>
+<p>Det kan vara omständligt att exportera data från R till Word. En smidigt lösning är att spara tabellerna i html-format, vilket gör tabellerna plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart.</p>
+<p>För att exporteravv tabeller gjorda med <strong>table()</strong> används paketet <strong>xtable</strong> och funktionen <strong>xtable()</strong> tillsammans med funktionen <strong>print()</strong> (som finns i basversionen av R).
+Installera därför nödvändigt paket</p>
+<p><code>install.packages("xtable")</code></p>
+<p>och kör sedan nedanstående kod. Du måste ange i sökvägen var filen ska sparas.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_cat), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_cat.html&quot;</span>)</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">print</span>(<span class="kw">xtable</span>(table_psych_year), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;table_psych_year.html&quot;</span>)</a></code></pre></div>
+<p>För exportera tabeller gjorda i summarytools kan vi använda funktionen <strong>print()</strong> direkt.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">print</span>(tab_psych_cat, <span class="dt">headings =</span> <span class="ot">FALSE</span>, <span class="dt">file=</span><span class="st">&quot;tab_psych_cat.html&quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">print</span>(tab_psych_year, <span class="dt">headings =</span> <span class="ot">FALSE</span>,  <span class="dt">file=</span><span class="st">&quot;D:/tab_psych_year.html&quot;</span>)</a></code></pre></div>
+<p>För att sedan föra in tabellerna i ordbehandlingsprogram öppnas tabellen i en webläsare, du högerklickar någonstans i webläsaren och väljer <strong>markera allt</strong>, kopiera, och klistra in.</p>
+</div>
+<div id="frekvent-förekommande-tabeller" class="section level2">
+<h2><span class="header-section-number">9.4</span> Frekvent förekommande tabeller</h2>
+<div id="tabell-för-att-beskriva-urvalet" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Tabell för att beskriva urvalet</h3>
+<p>Alla rapporter eller vetenskapliga artiklar bör inkludera en beskrivning av urvalet, dvs variablerna fördelning i stickprovet. Frågan som då besvaras är ‘’Vilka är det vi vi undersöker?’’. Ibland är denna beskrivning placeread i början, ibland i en bilaga. Inom en del vetenskapliga artiklar benämns en sådan tabell <strong>Tabell 1</strong> eller <strong>Table 1</strong>.</p>
+<p>Observera att eftersom syftet <strong>inte</strong> är att göra inferens utan enbart att beskriva urval, dvs normallt sett redovisas inte medelfel, konfidensintervall eller <span class="math inline">\(p\)</span>-värden.</p>
+<p>För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för
+Därefter kan man kombinera tabellerna i Word.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># I studien krävs en variabel som indikerar högt blodtryck.</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="co"># För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset: </span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="co"># 1. en binär 0-1 variabel som är numerisk</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="co"># 2. en binär variabel som R hanterar som en faktor med namngivna nivåer. </span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="co"># Att ändra namn på faktorers nivåer är lite omständligt, men det är enkelt att använda nedanstående kod.</span></a>
+<a class="sourceLine" id="cb11-6" title="6">df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb11-7" title="7">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb11-8" title="8">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb11-9" title="9">df<span class="op">$</span>sbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>sbp_bin)</a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
+<a class="sourceLine" id="cb11-11" title="11"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
+<a class="sourceLine" id="cb11-12" title="12">df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb11-13" title="13">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb11-14" title="14">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb11-15" title="15">df<span class="op">$</span>dbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>dbp_bin)</a>
+<a class="sourceLine" id="cb11-16" title="16"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
+<a class="sourceLine" id="cb11-17" title="17"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
+<a class="sourceLine" id="cb11-18" title="18"></a>
+<a class="sourceLine" id="cb11-19" title="19"><span class="co"># Skapa Tabell 1a. Kvantitativa variabler</span></a>
+<a class="sourceLine" id="cb11-20" title="20">xbar_height &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb11-21" title="21">sd_height &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb11-22" title="22">xbar_weight &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb11-23" title="23">sd_weight &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb11-24" title="24">xbar_sbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>sbp)</a>
+<a class="sourceLine" id="cb11-25" title="25">sd_sbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>sbp)</a>
+<a class="sourceLine" id="cb11-26" title="26">xbar_dbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>dbp)</a>
+<a class="sourceLine" id="cb11-27" title="27">sd_dbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>dbp)</a>
+<a class="sourceLine" id="cb11-28" title="28">means &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb11-29" title="29">sds &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(sd_height, sd_weight, sd_sbp, sd_dbp), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb11-30" title="30">table1_cont_vars &lt;-<span class="st"> </span><span class="kw">cbind</span>(means, sds)</a>
+<a class="sourceLine" id="cb11-31" title="31"><span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)</a>
+<a class="sourceLine" id="cb11-32" title="32"><span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, </a>
+<a class="sourceLine" id="cb11-33" title="33">                               <span class="st">&quot;Vikt (kg)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-34" title="34">                               <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-35" title="35">                               <span class="st">&quot;Diastoliskt blodtryck (mmHg)&quot;</span>)</a>
+<a class="sourceLine" id="cb11-36" title="36"></a>
+<a class="sourceLine" id="cb11-37" title="37"><span class="co"># Skapa Tabell 1b. Kategorivariabler</span></a>
+<a class="sourceLine" id="cb11-38" title="38">desc_sbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin)))</a>
+<a class="sourceLine" id="cb11-39" title="39">desc_dbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin)))</a>
+<a class="sourceLine" id="cb11-40" title="40">desc_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>psych), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>psych)))</a>
+<a class="sourceLine" id="cb11-41" title="41">table1_cat_vars &lt;-<span class="st"> </span><span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)</a>
+<a class="sourceLine" id="cb11-42" title="42"><span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
+<a class="sourceLine" id="cb11-43" title="43"><span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-44" title="44">                      <span class="st">&quot;Systoliskt  blodtryck (mmHG &gt;= 130)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-45" title="45">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &lt; 80)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-46" title="46">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &gt;= 80)&quot;</span>,</a>
+<a class="sourceLine" id="cb11-47" title="47">                      <span class="st">&quot;Psykologisk bedömning: Kat 1&quot;</span>, </a>
+<a class="sourceLine" id="cb11-48" title="48">                      <span class="st">&quot;Psykologisk bedömning: Kat 2&quot;</span>, </a>
+<a class="sourceLine" id="cb11-49" title="49">                      <span class="st">&quot;Psykologisk bedömning: Kat 3&quot;</span>, </a>
+<a class="sourceLine" id="cb11-50" title="50">                      <span class="st">&quot;Psykologisk bedömning: Kat 4&quot;</span>, </a>
+<a class="sourceLine" id="cb11-51" title="51">                      <span class="st">&quot;Psykologisk bedömning: Kat 5&quot;</span>, </a>
+<a class="sourceLine" id="cb11-52" title="52">                      <span class="st">&quot;Psykologisk bedömning: Kat 6&quot;</span>, </a>
+<a class="sourceLine" id="cb11-53" title="53">                      <span class="st">&quot;Psykologisk bedömning: Kat 7&quot;</span>, </a>
+<a class="sourceLine" id="cb11-54" title="54">                      <span class="st">&quot;Psykologisk bedömning: Kat 8&quot;</span>, </a>
+<a class="sourceLine" id="cb11-55" title="55">                      <span class="st">&quot;Psykologisk bedömning: Kat 9&quot;</span>) </a></code></pre></div>
+<p>I R ser tabellerna ut som följer.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">table1_cont_vars</a>
+<a class="sourceLine" id="cb12-2" title="2">                             Medelvärde    SD</a>
+<a class="sourceLine" id="cb12-3" title="3">Lä<span class="kw">ngd</span> (cm)                        <span class="fl">179.3</span>  <span class="fl">6.58</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="kw">Vikt</span> (kg)                          <span class="fl">70.5</span> <span class="fl">10.68</span></a>
+<a class="sourceLine" id="cb12-5" title="5">Systoliskt <span class="kw">blodtryck</span> (mmHg)       <span class="fl">128.6</span> <span class="fl">10.98</span></a>
+<a class="sourceLine" id="cb12-6" title="6">Diastoliskt <span class="kw">blodtryck</span> (mmHg)       <span class="fl">66.9</span>  <span class="fl">9.83</span></a>
+<a class="sourceLine" id="cb12-7" title="7">table1_cat_vars</a>
+<a class="sourceLine" id="cb12-8" title="8">                                    Antal    %</a>
+<a class="sourceLine" id="cb12-9" title="9">Systoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>)    <span class="dv">519</span> <span class="fl">51.9</span></a>
+<a class="sourceLine" id="cb12-10" title="10">Systoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>)   <span class="dv">481</span> <span class="fl">48.1</span></a>
+<a class="sourceLine" id="cb12-11" title="11">Diastoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>)    <span class="dv">900</span> <span class="fl">90.0</span></a>
+<a class="sourceLine" id="cb12-12" title="12">Diastoliskt  <span class="kw">blodtryck</span> (mmHG <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>)   <span class="dv">100</span> <span class="fl">10.0</span></a>
+<a class="sourceLine" id="cb12-13" title="13">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">1</span>           <span class="dv">19</span>  <span class="fl">1.9</span></a>
+<a class="sourceLine" id="cb12-14" title="14">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">2</span>           <span class="dv">67</span>  <span class="fl">6.7</span></a>
+<a class="sourceLine" id="cb12-15" title="15">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">3</span>          <span class="dv">122</span> <span class="fl">12.2</span></a>
+<a class="sourceLine" id="cb12-16" title="16">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">4</span>          <span class="dv">150</span> <span class="fl">15.0</span></a>
+<a class="sourceLine" id="cb12-17" title="17">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">5</span>          <span class="dv">220</span> <span class="fl">22.0</span></a>
+<a class="sourceLine" id="cb12-18" title="18">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">6</span>          <span class="dv">200</span> <span class="fl">20.0</span></a>
+<a class="sourceLine" id="cb12-19" title="19">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">7</span>          <span class="dv">145</span> <span class="fl">14.5</span></a>
+<a class="sourceLine" id="cb12-20" title="20">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">8</span>           <span class="dv">65</span>  <span class="fl">6.5</span></a>
+<a class="sourceLine" id="cb12-21" title="21">Psykologisk bedömning<span class="op">:</span><span class="st"> </span>Kat <span class="dv">9</span>           <span class="dv">12</span>  <span class="fl">1.2</span></a></code></pre></div>
+<p>För exportera använder du som förut paketet <strong>xtable</strong>. Kör <code>library("xtable")</code> om det inte är aktiverat.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">print</span>(<span class="kw">xtable</span>(table1_cont_vars, <span class="dt">digits =</span> <span class="dv">1</span>), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cont_vars.html&quot;</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">print</span>(<span class="kw">xtable</span>(table1_cat_vars, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">file=</span><span class="st">&quot;D:/table1_cat_vars.html&quot;</span>)</a></code></pre></div>
+<p>En tabell skulle kunna se ut som följer, där bägge tabellerna för kvantitativa variabler och kategorivariabler är i Word sammanfogade till en tabell.</p>
+<p>Ett enklare sätt att skapa en tabell som redovisar grundläggande statistik som går att exportera är med paketet <strong>table</strong>. Installera paketet <code>install.packages("table1")</code>. Detta förenklar betydligt, men variabler och nivåer kan inte namnges i efterhand. Det finns det två sätt att konstruera tabellen</p>
+<ul>
+<li>namnge alla variabler och kategorier i ditt data frame</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">library</span>(<span class="st">&quot;table1&quot;</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">label</span>(df<span class="op">$</span>height) &lt;-<span class="st"> &quot;Längd (cm)&quot;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="kw">label</span>(df<span class="op">$</span>weight) &lt;-<span class="st"> &quot;Vikt (kg)&quot;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">label</span>(df<span class="op">$</span>sbp) &lt;-<span class="st"> &quot;Systoliskt blodtryck (mmHg)&quot;</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">label</span>(df<span class="op">$</span>dbp) &lt;-<span class="st"> &quot;Diastroliskt blodtryck (mmHg)&quot;</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="kw">label</span>(df<span class="op">$</span>sbp_cat) &lt;-<span class="st"> &quot;Högt systoliskt blodtryck&quot;</span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">label</span>(df<span class="op">$</span>dbp_cat) &lt;-<span class="st"> &quot;Högt diastoliskt blodtryck&quot;</span></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="kw">label</span>(df<span class="op">$</span>psych_cat) &lt;-<span class="st"> &quot;Psykologisk bedömning&quot;</span></a>
+<a class="sourceLine" id="cb14-9" title="9">tab1 &lt;-<span class="st"> </span><span class="kw">table1</span>(<span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>sbp <span class="op">+</span><span class="st"> </span>dbp <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="st">                    </span>sbp_cat <span class="op">+</span><span class="st"> </span>dbp_cat <span class="op">+</span><span class="st"> </span>psych_cat, <span class="dt">data=</span>df)</a>
+<a class="sourceLine" id="cb14-11" title="11">tab1</a></code></pre></div>
+<div class="Rtable1"><table class="Rtable1">
+<thead>
+<tr>
+<th class='rowlabel firstrow lastrow'></th>
+<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=1000)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Längd (cm)</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>179 (6.58)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>179 [159, 198]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Vikt (kg)</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>70.5 (10.7)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>70.0 [46.0, 136]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Systoliskt blodtryck (mmHg)</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>129 (11.0)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>129 [61.0, 160]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Diastroliskt blodtryck (mmHg)</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>66.9 (9.83)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>67.5 [39.0, 99.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Högt systoliskt blodtryck</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Normalt</td>
+<td>519 (51.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Högt</td>
+<td class='lastrow'>481 (48.1%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Högt diastoliskt blodtryck</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Normalt</td>
+<td>900 (90.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Högt</td>
+<td class='lastrow'>100 (10.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'><span class='varlabel'>Psykologisk bedömning</span></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 1</td>
+<td>19 (1.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 2</td>
+<td>67 (6.7%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 3</td>
+<td>122 (12.2%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 4</td>
+<td>150 (15.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 5</td>
+<td>220 (22.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 6</td>
+<td>200 (20.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 7</td>
+<td>145 (14.5%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Kat 8</td>
+<td>65 (6.5%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Kat 9</td>
+<td class='lastrow'>12 (1.2%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Höger klicka på tabellen och kopiera eller spara den som html. Kopiera och klistra in i Word.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="figurer.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
