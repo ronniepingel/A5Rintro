@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 10 Randomiserade experiment (uppdateras) | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 10 Randomiserade experiment (uppdateras) | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 10 Randomiserade experiment (uppdateras) | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 10 Randomiserade experiment (uppdateras) | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel och Valentin Zulj" />
+
+
+<meta name="date" content="2020-11-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="urvalsmetoder.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.13"><i class="fa fa-check"></i>Övning 3.13</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.14"><i class="fa fa-check"></i>Övning 3.14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-för-organiserade-datamaterial"><i class="fa fa-check"></i><b>4.1</b> Principer för organiserade datamaterial</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#working-directory"><i class="fa fa-check"></i><b>4.2</b> Working directory</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-kod"><i class="fa fa-check"></i><b>4.3</b> Läsa in datamaterial med hjälp av kod</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.3.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.3.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.3.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-menyerna-i-rstudio"><i class="fa fa-check"></i><b>4.4</b> Läsa in datamaterial med hjälp av menyerna i RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-från-working-directory"><i class="fa fa-check"></i><b>4.4.1</b> Läsa in data från working directory</a></li>
+<li class="chapter" data-level="4.4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-med-import-dataset"><i class="fa fa-check"></i><b>4.4.2</b> Läsa in data med “Import Dataset”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#spara-datamaterial-med-hjälp-av-r"><i class="fa fa-check"></i><b>4.5</b> Spara datamaterial med hjälp av R</a></li>
+<li class="chapter" data-level="4.6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övningar-2"><i class="fa fa-check"></i><b>4.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.1"><i class="fa fa-check"></i>Övning 4.1</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>5</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> En binär variabel</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kodning"><i class="fa fa-check"></i><b>5.1.1</b> Kodning</a></li>
+<li class="chapter" data-level="5.1.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer"><i class="fa fa-check"></i><b>5.1.2</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens"><i class="fa fa-check"></i><b>5.1.3</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#två-binära-variabler"><i class="fa fa-check"></i><b>5.2</b> Två binära variabler</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller"><i class="fa fa-check"></i><b>5.2.1</b> Tabeller</a></li>
+<li class="chapter" data-level="5.2.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kvantifiering-av-samband"><i class="fa fa-check"></i><b>5.2.2</b> Kvantifiering av samband</a></li>
+<li class="chapter" data-level="5.2.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#figurer"><i class="fa fa-check"></i><b>5.2.3</b> Figurer</a></li>
+<li class="chapter" data-level="5.2.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-1"><i class="fa fa-check"></i><b>5.2.4</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tre-kategorier-eller-fler"><i class="fa fa-check"></i><b>5.3</b> Tre kategorier eller fler</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kodning-1"><i class="fa fa-check"></i><b>5.3.1</b> Kodning</a></li>
+<li class="chapter" data-level="5.3.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer-1"><i class="fa fa-check"></i><b>5.3.2</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.3.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-2"><i class="fa fa-check"></i><b>5.3.3</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#samband-mellan-kategorivariabler"><i class="fa fa-check"></i><b>5.4</b> Samband mellan kategorivariabler</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer-2"><i class="fa fa-check"></i><b>5.4.1</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-3"><i class="fa fa-check"></i><b>5.4.2</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övningar-3"><i class="fa fa-check"></i><b>5.5</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.6"><i class="fa fa-check"></i>Övning 5.6</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.7"><i class="fa fa-check"></i>Övning 5.7</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.8"><i class="fa fa-check"></i>Övning 5.8</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.9"><i class="fa fa-check"></i>Övning 5.9</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.10"><i class="fa fa-check"></i>Övning 5.10</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.11"><i class="fa fa-check"></i>Övning 5.11</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.12"><i class="fa fa-check"></i>Övning 5.12</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.13"><i class="fa fa-check"></i>Övning 5.13</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="kategorivariabler.html"><a href="kategorivariabler.html#referenser-1"><i class="fa fa-check"></i><b>5.6</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kvantitativa-variabler-kommer-ej-uppdateras-ht20.html"><a href="kvantitativa-variabler-kommer-ej-uppdateras-ht20.html"><i class="fa fa-check"></i><b>6</b> Kvantitativa variabler (Kommer ej uppdateras HT20)</a></li>
+<li class="chapter" data-level="7" data-path="tabeller-1.html"><a href="tabeller-1.html"><i class="fa fa-check"></i><b>7</b> Tabeller</a><ul>
+<li class="chapter" data-level="7.1" data-path="tabeller-1.html"><a href="tabeller-1.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>7.1</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="7.2" data-path="tabeller-1.html"><a href="tabeller-1.html#några-vanliga-tabeller"><i class="fa fa-check"></i><b>7.2</b> Några vanliga tabeller</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="tabeller-1.html"><a href="tabeller-1.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>7.2.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tabeller-1.html"><a href="tabeller-1.html#principer-för-tabeller"><i class="fa fa-check"></i><b>7.3</b> Principer för tabeller</a></li>
+<li class="chapter" data-level="7.4" data-path="tabeller-1.html"><a href="tabeller-1.html#paket-för-tabeller"><i class="fa fa-check"></i><b>7.4</b> Paket för tabeller</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figurer-1.html"><a href="figurer-1.html"><i class="fa fa-check"></i><b>8</b> Figurer</a><ul>
+<li class="chapter" data-level="8.1" data-path="figurer-1.html"><a href="figurer-1.html#grundläggande-figurhantering"><i class="fa fa-check"></i><b>8.1</b> Grundläggande figurhantering</a></li>
+<li class="chapter" data-level="8.2" data-path="figurer-1.html"><a href="figurer-1.html#färger-och-figurer"><i class="fa fa-check"></i><b>8.2</b> Färger och figurer</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="figurer-1.html"><a href="figurer-1.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>8.2.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="figurer-1.html"><a href="figurer-1.html#cirkeldigram"><i class="fa fa-check"></i><b>8.3</b> Cirkeldigram</a></li>
+<li class="chapter" data-level="8.4" data-path="figurer-1.html"><a href="figurer-1.html#figurer-för-fördelningar"><i class="fa fa-check"></i><b>8.4</b> Figurer för fördelningar</a></li>
+<li class="chapter" data-level="8.5" data-path="figurer-1.html"><a href="figurer-1.html#lådagram"><i class="fa fa-check"></i><b>8.5</b> Lådagram</a></li>
+<li class="chapter" data-level="8.6" data-path="figurer-1.html"><a href="figurer-1.html#spridningsdiagram"><i class="fa fa-check"></i><b>8.6</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="8.7" data-path="figurer-1.html"><a href="figurer-1.html#exportera-figurer"><i class="fa fa-check"></i><b>8.7</b> Exportera figurer</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>9</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="9.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>9.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsmedelvärdet-mu"><i class="fa fa-check"></i><b>9.1.1</b> Inferens för populationsmedelvärdet, <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsandelen-p"><i class="fa fa-check"></i><b>9.1.2</b> Inferens för populationsandelen, <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationstotalen-tau"><i class="fa fa-check"></i><b>9.1.3</b> Inferens för populationstotalen, <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>9.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>9.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>9.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>9.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>9.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n"><i class="fa fa-check"></i><b>9.2.4</b> Allokering av <span class="math inline">\(n\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#gruppurval"><i class="fa fa-check"></i><b>9.3</b> Gruppurval</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>9.3.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.3.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau-1"><i class="fa fa-check"></i><b>9.3.2</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.3.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p-1"><i class="fa fa-check"></i><b>9.3.3</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>9.4</b> Efterstratifiering</a></li>
+<li class="chapter" data-level="9.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-4"><i class="fa fa-check"></i><b>9.5</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.1"><i class="fa fa-check"></i>Övning 7.1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.2"><i class="fa fa-check"></i>Övning 7.2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.3"><i class="fa fa-check"></i>Övning 7.3</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.4"><i class="fa fa-check"></i>Övning 7.4</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.5"><i class="fa fa-check"></i>Övning 7.5</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.6"><i class="fa fa-check"></i>Övning 7.6</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.7"><i class="fa fa-check"></i>Övning 7.7</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.8"><i class="fa fa-check"></i>Övning 7.8</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.9"><i class="fa fa-check"></i>Övning 7.9</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.10"><i class="fa fa-check"></i>Övning 7.10</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.11"><i class="fa fa-check"></i>Övning 7.11</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.12"><i class="fa fa-check"></i>Övning 7.12</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.13"><i class="fa fa-check"></i>Övning 7.13</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.14"><i class="fa fa-check"></i>Övning 7.14</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.15"><i class="fa fa-check"></i>Övning 7.15</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16-1"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.17"><i class="fa fa-check"></i>Övning 7.17</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.18"><i class="fa fa-check"></i>Övning 7.18</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.19"><i class="fa fa-check"></i>Övning 7.19</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.20"><i class="fa fa-check"></i>Övning 7.20</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.21"><i class="fa fa-check"></i>Övning 7.21</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.22"><i class="fa fa-check"></i>Övning 7.22</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.23"><i class="fa fa-check"></i>Övning 7.23</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.24"><i class="fa fa-check"></i>Övning 7.24</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.25"><i class="fa fa-check"></i>Övning 7.25</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.26"><i class="fa fa-check"></i>Övning 7.26</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.27"><i class="fa fa-check"></i>Övning 7.27</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html"><i class="fa fa-check"></i><b>10</b> Randomiserade experiment (uppdateras)</a><ul>
+<li class="chapter" data-level="10.1" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html#randomiserade-försök-och-validitet"><i class="fa fa-check"></i><b>10.1</b> Randomiserade försök och validitet</a></li>
+<li class="chapter" data-level="10.2" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html#ändlig-population-vs-modell"><i class="fa fa-check"></i><b>10.2</b> Ändlig population vs modell</a></li>
+<li class="chapter" data-level="10.3" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html#experimentella-designer"><i class="fa fa-check"></i><b>10.3</b> Experimentella designer</a></li>
+<li class="chapter" data-level="10.4" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.4</b> Aspekter som inte ingår i detta block</a></li>
+<li class="chapter" data-level="10.5" data-path="randomiserade-experiment-uppdateras.html"><a href="randomiserade-experiment-uppdateras.html#anova"><i class="fa fa-check"></i><b>10.5</b> ANOVA</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="randomiserade-experiment-uppdateras" class="section level1">
+<h1><span class="header-section-number">Kapitel 10</span> Randomiserade experiment (uppdateras)</h1>
+<p><img src="docs/images/hat.png" width="25%" style="background-color: #414244 ; padding:1px; display: inline-block;" /></p>
+<ul>
+<li>Jämförelse av två grupper utifrån en relevant skillnad</li>
+<li>Jämförelse av medelvärden basert</li>
+</ul>
+<p>Anta att vi önskar jämföra</p>
+<div id="randomiserade-försök-och-validitet" class="section level2">
+<h2><span class="header-section-number">10.1</span> Randomiserade försök och validitet</h2>
+<p>Randomiserade försök vs observationsstudier</p>
+<p>Shadish, Cook and Campbell argue for the primacy of internal validity, and claim that
+without internal validity causal studies have little value. This echos Neyman’s comment that
+without actual randomization a study would have little value, as well as Fisher’s observation
+that randomization was what he called “the reasoned basis” for inference.</p>
+<ul>
+<li>Intern</li>
+<li>Extern</li>
+</ul>
+</div>
+<div id="ändlig-population-vs-modell" class="section level2">
+<h2><span class="header-section-number">10.2</span> Ändlig population vs modell</h2>
+<p>Betrakta mönstringsdatat INSARK. Vi tittar på benstyrkan hos unga män som mönstrade som var födda år 1962, 1968 och 1974. Populationsdata ser ut som nedan.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,  <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Tre populationner?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">40</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">main =</span><span class="st">&quot;En population?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-2-1.png" width="384" /></p>
+<p>Vi kommer dock inte observera all data utan vi drar ett OSU från respektive år med storlekarna <span class="math inline">\(n_1=120\)</span>, <span class="math inline">\(n_2=300\)</span>, <span class="math inline">\(n_3=200\)</span> och mäter på dessa individer benstyrkan. Följande data erhålls som vi studerar:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">467.4</span>,<span class="fl">590.5</span>,<span class="fl">599.7</span>,<span class="fl">546.7</span>,<span class="fl">615.9</span>,<span class="fl">508.3</span>,<span class="fl">780.3</span>,<span class="fl">563.4</span>,<span class="dv">782</span>,<span class="fl">625.9</span>,<span class="fl">709.2</span>,<span class="fl">471.9</span>,<span class="fl">623.9</span>,<span class="fl">636.6</span>,<span class="fl">706.8</span>,<span class="fl">740.6</span>,<span class="fl">580.3</span>,<span class="fl">518.1</span>,<span class="fl">526.6</span>,<span class="fl">584.8</span>,<span class="fl">470.5</span>,<span class="fl">463.8</span>,<span class="fl">627.5</span>,<span class="fl">448.1</span>,<span class="fl">464.5</span>,<span class="fl">365.2</span>,<span class="fl">603.8</span>,<span class="fl">541.6</span>,<span class="fl">612.6</span>,<span class="fl">457.1</span>,<span class="fl">472.3</span>,<span class="fl">568.6</span>,<span class="fl">479.2</span>,<span class="fl">584.1</span>,<span class="dv">303</span>,<span class="fl">673.8</span>,<span class="fl">397.6</span>,<span class="fl">513.2</span>,<span class="fl">529.6</span>,<span class="fl">766.1</span>,<span class="dv">696</span>,<span class="fl">430.3</span>,<span class="fl">452.4</span>,<span class="fl">540.8</span>,<span class="fl">641.8</span>,<span class="fl">480.2</span>,<span class="fl">411.3</span>,<span class="fl">726.2</span>,<span class="fl">577.5</span>,<span class="fl">421.5</span>,<span class="fl">515.7</span>,<span class="fl">833.8</span>,<span class="fl">512.2</span>,<span class="fl">509.3</span>,<span class="fl">420.9</span>,<span class="fl">704.2</span>,<span class="fl">467.8</span>,<span class="fl">400.7</span>,<span class="dv">419</span>,<span class="fl">427.3</span>,<span class="fl">565.9</span>,<span class="fl">564.2</span>,<span class="fl">204.2</span>,<span class="fl">490.5</span>,<span class="fl">448.9</span>,<span class="dv">792</span>,<span class="fl">389.9</span>,<span class="fl">437.7</span>,<span class="fl">440.2</span>,<span class="fl">581.2</span>,<span class="fl">465.1</span>,<span class="fl">569.1</span>,<span class="fl">698.7</span>,<span class="fl">632.1</span>,<span class="fl">336.2</span>,<span class="fl">485.5</span>,<span class="fl">452.2</span>,<span class="fl">695.1</span>,<span class="fl">394.7</span>,<span class="fl">566.1</span>,<span class="fl">628.6</span>,<span class="fl">513.7</span>,<span class="fl">692.2</span>,<span class="fl">624.7</span>,<span class="dv">664</span>,<span class="fl">482.7</span>,<span class="fl">586.8</span>,<span class="dv">651</span>,<span class="dv">530</span>,<span class="fl">683.9</span>,<span class="fl">440.5</span>,<span class="dv">548</span>,<span class="dv">563</span>,<span class="fl">592.3</span>,<span class="dv">750</span>,<span class="fl">515.9</span>,<span class="fl">685.4</span>,<span class="dv">522</span>,<span class="fl">750.1</span>,<span class="fl">778.5</span>,<span class="fl">591.8</span>,<span class="fl">635.9</span>,<span class="fl">524.9</span>,<span class="fl">356.2</span>,<span class="fl">379.3</span>,<span class="fl">455.4</span>,<span class="fl">656.4</span>,<span class="fl">587.2</span>,<span class="fl">600.9</span>,<span class="fl">623.4</span>,<span class="fl">526.3</span>,<span class="fl">550.4</span>,<span class="fl">748.2</span>,<span class="dv">518</span>,<span class="fl">594.7</span>,<span class="fl">696.7</span>,<span class="fl">829.4</span>,<span class="fl">362.9</span>,<span class="fl">679.9</span>,<span class="fl">421.8</span>,<span class="fl">626.4</span>,<span class="dv">830</span>,<span class="fl">680.2</span>,<span class="fl">400.8</span>,<span class="fl">725.5</span>,<span class="fl">472.5</span>,<span class="fl">456.9</span>,<span class="dv">640</span>,<span class="fl">710.8</span>,<span class="fl">755.6</span>,<span class="fl">643.1</span>,<span class="fl">481.6</span>,<span class="fl">794.9</span>,<span class="fl">501.1</span>,<span class="fl">597.1</span>,<span class="fl">615.3</span>,<span class="dv">524</span>,<span class="fl">732.2</span>,<span class="fl">475.6</span>,<span class="fl">641.2</span>,<span class="fl">571.4</span>,<span class="fl">721.9</span>,<span class="fl">545.8</span>,<span class="fl">487.9</span>,<span class="fl">646.1</span>,<span class="fl">546.7</span>,<span class="dv">857</span>,<span class="fl">472.1</span>,<span class="fl">497.6</span>,<span class="fl">565.2</span>,<span class="dv">835</span>,<span class="fl">478.7</span>,<span class="fl">650.7</span>,<span class="fl">564.2</span>,<span class="fl">631.5</span>,<span class="fl">636.2</span>,<span class="fl">767.6</span>,<span class="fl">437.9</span>,<span class="fl">664.7</span>,<span class="fl">592.8</span>,<span class="fl">534.3</span>,<span class="fl">465.2</span>,<span class="dv">651</span>,<span class="fl">566.8</span>,<span class="fl">608.9</span>,<span class="fl">517.3</span>,<span class="fl">582.2</span>,<span class="fl">498.9</span>,<span class="fl">616.7</span>,<span class="fl">728.5</span>,<span class="fl">541.3</span>,<span class="fl">466.1</span>,<span class="fl">449.2</span>,<span class="fl">518.9</span>,<span class="fl">702.9</span>,<span class="fl">547.9</span>,<span class="fl">582.1</span>,<span class="fl">595.4</span>,<span class="fl">532.6</span>,<span class="fl">826.1</span>,<span class="fl">633.6</span>,<span class="fl">518.5</span>,<span class="fl">500.3</span>,<span class="fl">550.6</span>,<span class="fl">635.8</span>,<span class="fl">459.2</span>,<span class="fl">777.1</span>,<span class="fl">631.4</span>,<span class="fl">578.4</span>,<span class="fl">485.9</span>,<span class="fl">855.1</span>,<span class="fl">634.8</span>,<span class="fl">816.6</span>,<span class="fl">546.8</span>,<span class="fl">555.5</span>,<span class="fl">602.4</span>,<span class="fl">501.3</span>,<span class="fl">590.5</span>,<span class="dv">518</span>,<span class="fl">634.4</span>,<span class="fl">701.2</span>,<span class="fl">762.5</span>,<span class="fl">436.8</span>,<span class="fl">497.6</span>,<span class="fl">520.6</span>,<span class="fl">556.4</span>,<span class="fl">686.6</span>,<span class="fl">553.2</span>,<span class="fl">614.2</span>,<span class="fl">580.5</span>,<span class="fl">463.3</span>,<span class="fl">707.5</span>,<span class="fl">677.5</span>,<span class="fl">773.4</span>,<span class="dv">570</span>,<span class="fl">530.9</span>,<span class="fl">524.5</span>,<span class="fl">377.8</span>,<span class="fl">467.9</span>,<span class="fl">753.2</span>,<span class="fl">705.8</span>,<span class="fl">436.4</span>,<span class="fl">732.1</span>,<span class="fl">450.2</span>,<span class="fl">699.9</span>,<span class="fl">586.2</span>,<span class="fl">464.4</span>,<span class="fl">535.9</span>,<span class="fl">632.2</span>,<span class="dv">642</span>,<span class="fl">557.7</span>,<span class="dv">436</span>,<span class="fl">604.3</span>,<span class="fl">324.8</span>,<span class="fl">496.3</span>,<span class="fl">494.5</span>,<span class="fl">576.1</span>,<span class="fl">615.4</span>,<span class="fl">439.6</span>,<span class="fl">325.9</span>,<span class="fl">589.9</span>,<span class="fl">683.2</span>,<span class="fl">513.3</span>,<span class="dv">376</span>,<span class="dv">549</span>,<span class="fl">806.1</span>,<span class="fl">463.5</span>,<span class="dv">591</span>,<span class="dv">529</span>,<span class="fl">577.3</span>,<span class="fl">567.7</span>,<span class="fl">469.4</span>,<span class="fl">408.6</span>,<span class="dv">659</span>,<span class="fl">928.6</span>,<span class="fl">679.3</span>,<span class="fl">525.9</span>,<span class="fl">427.4</span>,<span class="fl">882.2</span>,<span class="fl">528.1</span>,<span class="fl">539.5</span>,<span class="fl">656.5</span>,<span class="fl">612.4</span>,<span class="dv">629</span>,<span class="fl">370.4</span>,<span class="fl">590.9</span>,<span class="fl">582.9</span>,<span class="fl">394.5</span>,<span class="fl">590.4</span>,<span class="fl">529.7</span>,<span class="fl">401.5</span>,<span class="fl">489.3</span>,<span class="fl">826.5</span>,<span class="fl">588.6</span>,<span class="fl">659.4</span>,<span class="fl">501.5</span>,<span class="fl">598.2</span>,<span class="fl">226.1</span>,<span class="fl">446.7</span>,<span class="fl">738.5</span>,<span class="fl">738.9</span>,<span class="fl">504.9</span>,<span class="fl">440.6</span>,<span class="fl">448.6</span>,<span class="fl">733.6</span>,<span class="fl">508.4</span>,<span class="fl">560.2</span>,<span class="fl">516.5</span>,<span class="dv">784</span>,<span class="fl">549.7</span>,<span class="fl">566.8</span>,<span class="fl">582.5</span>,<span class="fl">730.7</span>,<span class="fl">623.4</span>,<span class="fl">688.2</span>,<span class="fl">746.1</span>,<span class="dv">574</span>,<span class="fl">655.1</span>,<span class="fl">690.8</span>,<span class="fl">728.5</span>,<span class="fl">489.4</span>,<span class="fl">557.2</span>,<span class="fl">622.6</span>,<span class="fl">644.8</span>,<span class="fl">586.7</span>,<span class="fl">748.9</span>,<span class="dv">900</span>,<span class="fl">649.2</span>,<span class="fl">474.3</span>,<span class="fl">485.1</span>,<span class="fl">667.3</span>,<span class="dv">667</span>,<span class="fl">457.1</span>,<span class="fl">988.4</span>,<span class="fl">445.3</span>,<span class="fl">452.1</span>,<span class="dv">691</span>,<span class="fl">556.8</span>,<span class="fl">764.6</span>,<span class="fl">615.5</span>,<span class="fl">351.7</span>,<span class="fl">436.6</span>,<span class="fl">576.8</span>,<span class="fl">553.6</span>,<span class="fl">302.5</span>,<span class="fl">586.1</span>,<span class="fl">556.1</span>,<span class="fl">601.8</span>,<span class="fl">458.7</span>,<span class="fl">704.1</span>,<span class="fl">644.5</span>,<span class="fl">471.7</span>,<span class="fl">689.4</span>,<span class="dv">482</span>,<span class="fl">728.1</span>,<span class="fl">389.4</span>,<span class="fl">723.4</span>,<span class="fl">519.5</span>,<span class="fl">761.1</span>,<span class="fl">559.6</span>,<span class="fl">635.3</span>,<span class="fl">544.8</span>,<span class="fl">750.6</span>,<span class="fl">556.4</span>,<span class="fl">498.1</span>,<span class="fl">607.5</span>,<span class="fl">576.7</span>,<span class="fl">533.2</span>,<span class="fl">536.5</span>,<span class="fl">454.6</span>,<span class="fl">625.7</span>,<span class="fl">580.3</span>,<span class="fl">499.5</span>,<span class="fl">631.5</span>,<span class="fl">396.4</span>,<span class="fl">505.1</span>,<span class="fl">616.7</span>,<span class="fl">696.5</span>,<span class="fl">694.8</span>,<span class="fl">536.7</span>,<span class="fl">435.4</span>,<span class="fl">553.1</span>,<span class="dv">484</span>,<span class="dv">561</span>,<span class="dv">575</span>,<span class="fl">487.4</span>,<span class="fl">575.6</span>,<span class="fl">567.4</span>,<span class="fl">604.6</span>,<span class="fl">453.6</span>,<span class="fl">794.4</span>,<span class="fl">557.7</span>,<span class="fl">633.8</span>,<span class="fl">635.4</span>,<span class="fl">705.6</span>,<span class="fl">504.4</span>,<span class="fl">966.9</span>,<span class="fl">463.3</span>,<span class="fl">580.2</span>,<span class="fl">502.1</span>,<span class="fl">549.1</span>,<span class="fl">668.9</span>,<span class="dv">686</span>,<span class="fl">618.6</span>,<span class="fl">458.5</span>,<span class="fl">762.3</span>,<span class="fl">388.3</span>,<span class="fl">645.9</span>,<span class="fl">483.9</span>,<span class="fl">704.9</span>,<span class="fl">561.9</span>,<span class="fl">726.9</span>,<span class="fl">535.9</span>,<span class="fl">701.6</span>,<span class="fl">611.8</span>,<span class="fl">434.7</span>,<span class="fl">668.3</span>,<span class="fl">500.9</span>,<span class="fl">617.1</span>,<span class="fl">433.5</span>,<span class="fl">682.1</span>,<span class="fl">520.5</span>,<span class="fl">709.5</span>,<span class="fl">678.8</span>,<span class="fl">699.9</span>,<span class="fl">412.6</span>,<span class="fl">857.7</span>,<span class="fl">733.1</span>,<span class="fl">643.9</span>,<span class="fl">773.4</span>,<span class="fl">662.8</span>,<span class="fl">573.8</span>,<span class="fl">673.9</span>,<span class="fl">509.7</span>,<span class="fl">608.4</span>,<span class="fl">966.8</span>,<span class="fl">628.5</span>,<span class="fl">727.7</span>,<span class="fl">542.2</span>,<span class="fl">540.4</span>,<span class="fl">625.1</span>,<span class="fl">668.2</span>,<span class="fl">645.6</span>,<span class="fl">637.1</span>,<span class="fl">554.2</span>,<span class="fl">677.3</span>,<span class="fl">562.1</span>,<span class="fl">626.8</span>,<span class="fl">742.3</span>,<span class="fl">587.1</span>,<span class="fl">903.6</span>,<span class="fl">418.5</span>,<span class="fl">895.8</span>,<span class="fl">604.1</span>,<span class="fl">378.7</span>,<span class="fl">444.8</span>,<span class="fl">526.6</span>,<span class="fl">546.4</span>,<span class="fl">751.4</span>,<span class="fl">616.7</span>,<span class="fl">723.6</span>,<span class="fl">621.7</span>,<span class="fl">786.4</span>,<span class="fl">780.3</span>,<span class="fl">622.9</span>,<span class="fl">579.2</span>,<span class="fl">744.1</span>,<span class="fl">820.4</span>,<span class="fl">792.3</span>,<span class="fl">835.9</span>,<span class="fl">563.9</span>,<span class="fl">405.1</span>,<span class="fl">671.8</span>,<span class="fl">494.6</span>,<span class="fl">735.4</span>,<span class="fl">540.7</span>,<span class="fl">605.4</span>,<span class="dv">523</span>,<span class="fl">504.5</span>,<span class="fl">697.8</span>,<span class="fl">854.2</span>,<span class="fl">580.1</span>,<span class="fl">440.3</span>,<span class="dv">480</span>,<span class="fl">415.1</span>,<span class="fl">731.8</span>,<span class="fl">489.5</span>,<span class="fl">545.8</span>,<span class="fl">460.5</span>,<span class="fl">587.5</span>,<span class="fl">689.3</span>,<span class="fl">509.2</span>,<span class="fl">798.3</span>,<span class="fl">614.1</span>,<span class="fl">661.4</span>,<span class="dv">706</span>,<span class="fl">547.9</span>,<span class="fl">663.1</span>,<span class="fl">918.8</span>,<span class="fl">724.9</span>,<span class="fl">680.4</span>,<span class="fl">744.2</span>,<span class="fl">469.7</span>,<span class="fl">360.4</span>,<span class="fl">781.5</span>,<span class="fl">700.2</span>,<span class="fl">560.4</span>,<span class="fl">591.5</span>,<span class="fl">661.4</span>,<span class="dv">697</span>,<span class="fl">595.4</span>,<span class="fl">783.1</span>,<span class="dv">570</span>,<span class="dv">630</span>,<span class="fl">1011.9</span>,<span class="fl">584.2</span>,<span class="fl">572.7</span>,<span class="fl">611.4</span>,<span class="fl">543.5</span>,<span class="fl">687.2</span>,<span class="dv">666</span>,<span class="fl">435.7</span>,<span class="fl">775.8</span>,<span class="fl">709.3</span>,<span class="fl">441.8</span>,<span class="fl">723.2</span>,<span class="dv">874</span>,<span class="fl">767.6</span>,<span class="fl">555.3</span>,<span class="fl">595.6</span>,<span class="fl">497.3</span>,<span class="fl">722.2</span>,<span class="fl">589.8</span>,<span class="fl">607.3</span>,<span class="fl">673.2</span>,<span class="fl">616.3</span>,<span class="dv">537</span>,<span class="fl">645.6</span>,<span class="fl">622.5</span>,<span class="dv">666</span>,<span class="fl">659.5</span>,<span class="fl">731.3</span>,<span class="fl">621.6</span>,<span class="fl">426.3</span>,<span class="fl">638.4</span>,<span class="fl">686.8</span>,<span class="fl">661.7</span>,<span class="fl">615.5</span>,<span class="fl">606.2</span>,<span class="fl">565.2</span>,<span class="fl">585.9</span>,<span class="fl">461.9</span>,<span class="fl">646.6</span>,<span class="fl">847.2</span>,<span class="fl">590.7</span>,<span class="dv">707</span>,<span class="fl">574.1</span>,<span class="fl">711.4</span>,<span class="fl">501.1</span>,<span class="fl">621.3</span>,<span class="fl">618.3</span>,<span class="fl">569.1</span>,<span class="fl">680.4</span>,<span class="fl">541.7</span>,<span class="dv">729</span>,<span class="dv">577</span>,<span class="fl">702.8</span>,<span class="fl">608.5</span>,<span class="fl">690.5</span>,<span class="fl">442.7</span>,<span class="fl">613.7</span>,<span class="fl">541.6</span>,<span class="fl">568.6</span>,<span class="fl">598.2</span>,<span class="fl">577.8</span>,<span class="fl">505.5</span>,<span class="fl">507.3</span>,<span class="fl">722.8</span>,<span class="fl">482.4</span>,<span class="fl">640.7</span>,<span class="dv">554</span>,<span class="fl">789.2</span>,<span class="fl">661.4</span>,<span class="fl">680.1</span>,<span class="fl">525.4</span>,<span class="fl">645.4</span>,<span class="fl">650.1</span>,<span class="fl">499.4</span>,<span class="fl">826.5</span>,<span class="fl">493.2</span>,<span class="fl">580.1</span>,<span class="fl">728.4</span>,<span class="fl">511.8</span>,<span class="fl">711.7</span>,<span class="fl">813.2</span>,<span class="fl">610.9</span>,<span class="fl">385.2</span>,<span class="fl">604.5</span>,<span class="fl">516.6</span>,<span class="fl">737.1</span>,<span class="fl">489.7</span>,<span class="fl">674.7</span>,<span class="fl">643.4</span>,<span class="fl">641.3</span>,<span class="fl">1018.2</span>,<span class="fl">698.8</span>,<span class="fl">572.6</span>,<span class="fl">774.5</span>,<span class="fl">687.2</span>,<span class="fl">417.1</span>,<span class="fl">661.6</span>,<span class="fl">817.2</span>,<span class="fl">732.5</span>,<span class="fl">451.3</span>,<span class="fl">488.1</span>,<span class="fl">653.3</span>,<span class="fl">577.9</span>,<span class="fl">494.4</span>,<span class="fl">659.9</span>,<span class="fl">457.5</span>,<span class="fl">487.8</span>,<span class="fl">641.2</span>,<span class="fl">499.5</span>,<span class="fl">611.4</span>,<span class="dv">473</span>,<span class="fl">699.3</span>,<span class="fl">518.8</span>,<span class="fl">961.8</span>,<span class="fl">774.9</span>,<span class="fl">602.5</span>,<span class="fl">539.5</span>,<span class="fl">558.8</span>,<span class="dv">638</span>,<span class="fl">421.2</span>,<span class="fl">392.6</span>,<span class="fl">640.8</span>,<span class="dv">450</span>,<span class="fl">591.7</span>,<span class="fl">530.1</span>,<span class="fl">698.5</span>),</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="dt">year =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;1962&quot;</span>, <span class="dv">120</span>), <span class="kw">rep</span>(<span class="st">&quot;1968&quot;</span>, <span class="dv">300</span>), <span class="kw">rep</span>(<span class="st">&quot;1974&quot;</span>, <span class="dv">200</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1962&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span><span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1962&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1968&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1968&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1974&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1974&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">boxplot</span>(df<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>year, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-4-1.png" width="384" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">1200</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">552.1966</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">592.1725</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">612.3662</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">583.8242</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>))</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>Potentiella utfall.</p>
+<p>I praktiken om experimenten är någotlunda stora, ingen skillnad.</p>
+</div>
+<div id="experimentella-designer" class="section level2">
+<h2><span class="header-section-number">10.3</span> Experimentella designer</h2>
+<ul>
+<li>Completely randomized expreiment (analogt med OSU)</li>
+<li>Strafifierat randomized exerpiment (analogit med stratifierat urval)</li>
+<li>Grupp (kluster) randomized experiment (analogt med grupp urval)</li>
+</ul>
+<p>• Forskaren manipulerar den oberoende variabeln
+X, genom en innovation eller behandling
+• Därefter gör man en observation eller mätning
+av den beroende variabeln Y
+• Fråga: I vilken utsträckning har Y påverkats av
+variation i X?
+• Hypotes: Variation i X kommer att påverka Y
+• Experiment kan genomföras i ett laboratorium
+(in vitro, in vivo) eller i en verklig situation som
+fältexperiment (in situ)</p>
+<p>De flesta som någon gång arbetat på en förskola är bekanta med problemet
+att föräldrar hämtar sina barn alldeles för sent. Vid en förskola i Israel
+tröttnade man på beteendet och bestämde sig för att tillsammans med
+forskarna Gneezy och Rustichini (2000) utforma ett bestraffningssystem
+för föräldrar som hämtade sent. För att minska antalet sena hämtningar
+infördes en böter på 10 israeliska shekels per barn, vilket motsvarar ungefär
+en tredjedels timlön för en person med medelinkomst.
+Följden av detta blev något överraskande att antalet sena hämtningar
+ökade. Forskarna tolkade resultatet som ett bevis på att ekonomiska incitament kan undantränga andra drivkrafter, så kallad motivation crowding.
+6
+I detta fall sker detta genom att bötesbeloppet uppfattas som ett pris för
+att hämta sent, vilket gör att föräldrarna inte längre behöver skämmas eller
+ta hänsyn till förskolans personal när de kommer för sent. Föräldrarna har
+trots allt betalat för sig.</p>
+</div>
+<div id="aspekter-som-inte-ingår-i-detta-block" class="section level2">
+<h2><span class="header-section-number">10.4</span> Aspekter som inte ingår i detta block</h2>
+<ul>
+<li>Hantering av bortfall.</li>
+<li>Jämförelse av medelvärden vid ANOVA med mer än 2 behandling, t ex Tukeys eller Dunnets metod.</li>
+<li>Diskussion om massignifikans.</li>
+<li>Analys av klusterrandomiserade experiment</li>
+<li>Val av relevant parameter: Intention-to-treat. Complier average causal effect. Per protocol.</li>
+<li>Hänsyn tagen till utfall mätt före randomisering. Ingår dock i regressionsdelen på kursen.</li>
+<li>Styrkeberäkning</li>
+<li>En tydlig åtskillnad mellan block och strata.</li>
+<li>Flera mätningar per individ.</li>
+</ul>
+<p>Med ett two-sample t-test undersökter vi om två stickprov kommer från populationer med samma medelvärde.
+# Vi generaliserar nu detta till
+Ett stort möbel företag undersöker två olika utseende på hur man kan själv designa ett kök i en webläsare.
+När köket är designat kan man välja att köpa eller inte.</p>
+</div>
+<div id="anova" class="section level2">
+<h2><span class="header-section-number">10.5</span> ANOVA</h2>
+<p>Vi observerar <span class="math inline">\(y_{ij}\)</span>, där</p>
+<ul>
+<li><span class="math inline">\(i = 1,\ldots,a\)</span> indexerar behandlingsgrupper/faktornivår/populationer</li>
+<li><span class="math inline">\(j = 1,\ldots,n_{i}\)</span> indexerer individer i behandlingsgrupp <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(n = \sum_{1=i}^3 n_i\)</span> är antalet indivder i studien.</li>
+</ul>
+<p>Vi sätt nu upp en <strong>modell</strong> för hur data för individ <span class="math inline">\(i\)</span> har genererats. Enligt modellen kommer en individ från modellen</p>
+<p><span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span></p>
+<p>där <span class="math inline">\(\mu_i\)</span> är medelvärdet i population <span class="math inline">\(i\)</span> och <span class="math inline">\(\varepsilon_{ij}\)</span> är det slumpmässiga felet från</p>
+<p>library(“MASS”)
+df &lt;- anorexia</p>
+<p>boxplot(df<span class="math inline">\(Postwt ~ df\)</span>Treat)
+df<span class="math inline">\(Postwt_kg &lt;- df\)</span>Postw*0.453592
+boxplot(df<span class="math inline">\(Postwt_kg ~ df\)</span>Treat)</p>
+<p>ybar_cont &lt;- df<span class="math inline">\(anorexia[df\)</span>Treat == “Cont”]
+ybar_cbt &lt;- df<span class="math inline">\(anorexia[df\)</span>Treat == “CBT”]
+ybar_cbt &lt;- df<span class="math inline">\(anorexia[df\)</span>Treat == “FT”]</p>
+<p>Anta att medelvärdet för observation <span class="math inline">\(i\)</span> kan skriva</p>
+<p>anova(df<span class="math inline">\(Postwt ~ df\)</span>Treat)</p>
+<p><span class="math inline">\(y_i = \alpha + \beta_1x + \varepsilon_i\)</span>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="urvalsmetoder.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

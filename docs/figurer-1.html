@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 8 Figurer | Tillämpad statistik med R</title>
   <meta name="description" content="Kapitel 8 Figurer | Tillämpad statistik med R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 8 Figurer | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel och Valentin Zulj" />
 
 
-<meta name="date" content="2020-11-28" />
+<meta name="date" content="2020-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -307,6 +282,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.27"><i class="fa fa-check"></i>Övning 7.27</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="experiment.html"><a href="experiment.html"><i class="fa fa-check"></i><b>10</b> Experiment</a><ul>
+<li class="chapter" data-level="10.1" data-path="experiment.html"><a href="experiment.html#det-klassiska-experimentet"><i class="fa fa-check"></i><b>10.1</b> Det klassiska experimentet</a></li>
+<li class="chapter" data-level="10.2" data-path="experiment.html"><a href="experiment.html#stratifiering"><i class="fa fa-check"></i><b>10.2</b> Stratifiering</a></li>
+<li class="chapter" data-level="10.3" data-path="experiment.html"><a href="experiment.html#tabell-1-vid-randomiserade-försök"><i class="fa fa-check"></i><b>10.3</b> Tabell 1 vid randomiserade försök</a></li>
+<li class="chapter" data-level="10.4" data-path="experiment.html"><a href="experiment.html#anova"><i class="fa fa-check"></i><b>10.4</b> ANOVA</a></li>
+<li class="chapter" data-level="10.5" data-path="experiment.html"><a href="experiment.html#jämförelse-med-t-test"><i class="fa fa-check"></i><b>10.5</b> Jämförelse med t-test</a></li>
+<li class="chapter" data-level="10.6" data-path="experiment.html"><a href="experiment.html#experimentella-designer"><i class="fa fa-check"></i><b>10.6</b> Experimentella designer</a></li>
+<li class="chapter" data-level="10.7" data-path="experiment.html"><a href="experiment.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.7</b> Aspekter som inte ingår i detta block</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -329,14 +313,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En figur kan vara ett diagram, ett foto, en skiss. Om tabeller ger detaljer, så är syftet med figurer att förmedla en överskådlig sammanfattning om det vi studerar. I detta avseende måste man alltid ställa sig frågan om en figur är nödvändig eller om den enbart kopierar information som redan återfinns i en tabell. En bra figur kan däremot leda till en lång diskussion förkortas och kan göra en rapport eller vetenskaplig artikel lättläst.</p>
 <p>Eftersom figurerna ofta är det som läsaren av en vetenskaplig artikel eller en rapport först ser är det viktigt att figurerna är välgjorda. R ger tillgång till omfattande möjligheter för datavisualisering och en anledning till utvecklingen av R var behovet av ett verktyg för avancerad visualisering. Dels ger basutbudet i R stora möjligheter, dels finns det paket (exempelvis ggplot2 och lattice) som ger ytterligare möjligheter. Det bör nämnas att man ofta får prova sig fram när man skapar figurer i R och nybörjaren bör därför inte misströsta. Övning ger färdighet.</p>
 <p>När vi ska skapa en figur är det viktigt att veta det primära syftet med figuren utifrån två alternativ:</p>
-<p>Figurer primärt avsedda för en intern analys, dvs för dataanalytikern och andra involverade i analysen. Syften kan till exempel vara att studera data explorativt vid tvätt av data, kontrollera att förutsättningar är uppfyllda vid analyser eller förmedla preliminära resultat. Estetiska och pedagogiska aspekter hos sådana figurer är inte av någon större vikt. Däremot måste naturligtvis figurerna på ett korrekt sätt representera data.
-Figurer avsedda att presenteras ëxternt, dvs figurer som presenteras i en rapport, vetenskaplig artikel eller ett bildspel. En sådan figur ska på ett tydligt och korrekt redovisa det väsentliga i en analys. Den ska även vara estetiskt fullgod. Dessutom måste figuren vara sparad i ett format som fungerar för det medium det ska publiceras i.
-Beroende på syfte tar det olika lång tid att skapa figurer. Det kan vara bra att veta att även figurer avsedda för enbart internt bruk kan, om de är komplicerade, ta flera timmar att skapa. Dessutom kan det ta ännu fler timmar för att få data i ordning för att skapa figuren.</p>
+<p>Figurer primärt avsedda för en intern analys, dvs för dataanalytikern och andra involverade i analysen. Syften kan till exempel vara att studera data explorativt vid tvätt av data, kontrollera att förutsättningar är uppfyllda vid analyser eller förmedla preliminära resultat. Estetiska och pedagogiska aspekter hos sådana figurer är inte av någon större vikt. Däremot måste naturligtvis figurerna på ett korrekt sätt representera data. Figurer avsedda att presenteras ëxternt, dvs figurer som presenteras i en rapport, vetenskaplig artikel eller ett bildspel. En sådan figur ska på ett tydligt och korrekt redovisa det väsentliga i en analys. Den ska även vara estetiskt fullgod. Dessutom måste figuren vara sparad i ett format som fungerar för det medium det ska publiceras i. Beroende på syfte tar det olika lång tid att skapa figurer. Det kan vara bra att veta att även figurer avsedda för enbart internt bruk kan, om de är komplicerade, ta flera timmar att skapa. Dessutom kan det ta ännu fler timmar för att få data i ordning för att skapa figuren.</p>
 <p>Vi kan klassificera figurer enligt fyra kategorier:</p>
-<p>Ok.
-Oestetisk, men korrekt.
-Dålig, innebär att figuren är svårtolkad men principellt korrekt.
-Felaktig.</p>
+<p>Ok. Oestetisk, men korrekt. Dålig, innebär att figuren är svårtolkad men principellt korrekt. Felaktig.</p>
 <p>R ger tillgång till omfattande möjligheter gällande datavisualisering. Dels ger basversionen i R stora möjlighet, dels finns det paket (exempelvis <strong>ggplot2</strong> och <strong>lattice</strong>) som ger ytterligare funktionalitet. När vi ska skapa en figur är det viktigt att fundera över det primära syftet med figuren. Det går att klassificera syftet med figurer enligt följande:</p>
 <ul>
 <li>Figurer primärt avsedda för att beskriva något internt, dvs för dataanalytikern och andra involverade i analysen. Syftet kan till exempel vara att studera data explorativt vid tvätt av data, kontrollera att förutsättningar är uppfyllda vid analyser och förmedla preliminära resultat. Estetiska och pedagogiska aspekter hos sådana figurer är inte av någon större vikt. Däremot måste naturligtvis figurerna på ett korrekt sätt representera data.<br />
@@ -353,62 +332,62 @@ Felaktig.</p>
 <p>DDen första figuren är OK eftersom den redovisar stapeldiagramen utan felaktigheter. Den andra figuren är oestetisk beträffande färgval och har hjälplinjer som löper över staplarna istället för bakom. Figuren som klassas som dålig är korrekt, men det är svårt att urskilja detaljer i den. Dessutom är namnen på kategorierna otydliga och kan förväxlas med poäng. Den felaktiga figuren visar staplarna, men det finns ingen information som gör figuren möjlig att tolka.</p>
 <p>Notera att distinktionen oestetisk-dålig-felaktig är flytande. Att ha olika färger på staplar innebär att tolkningen av innebär att läsaren kan föranledas att tro att det ytterligare information som inte finns. En korrekt figur som är dålig, kanske är så dålig att den kan misstolkas vilket innebär att den egentligen är felaktig.</p>
 <p>Forskare och andra som regelbundet arbetar med vetenskapliga rapporter brukar ofta ha en ganska bra uppfattning om vad som är en korrekt figur. Däremot saknas en känsla för estetiken i en figur. Å andra sidan är det inte ovanligt att se grafiker som skapar vackra figurer, men som inte tillfredställande korrekt sätt redovisar data.</p>
-<button title="f1" type="button" onclick="if(document.getElementById(&#39;f1&#39;) .style.display==&#39;none&#39;)
-              {document.getElementById(&#39;f1&#39;) .style.display=&#39;&#39;}
-            else{document.getElementById(&#39;f1&#39;) .style.display=&#39;none&#39;}">
+<button title="f1" type="button" onclick="if(document.getElementById('f1') .style.display=='none')
+              {document.getElementById('f1') .style.display=''}
+            else{document.getElementById('f1') .style.display='none'}">
 Visa figurkod
 </button>
 <div id="f1" style="display:none">
 <div class="alert alert-info">
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" title="1"><span class="co"># Läs in data</span></a>
-<a class="sourceLine" id="cb274-2" title="2"> df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb274-3" title="3"><span class="co"># Skapa kategorier av poängen på Test A</span></a>
-<a class="sourceLine" id="cb274-4" title="4"> df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb274-5" title="5"> df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb274-6" title="6"> df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  </a>
-<a class="sourceLine" id="cb274-7" title="7"> df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  </a>
-<a class="sourceLine" id="cb274-8" title="8"> df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)</a>
-<a class="sourceLine" id="cb274-9" title="9"><span class="co"># Skapa ett tabellobjekt </span></a>
-<a class="sourceLine" id="cb274-10" title="10"> freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)</a>
-<a class="sourceLine" id="cb274-11" title="11"></a>
-<a class="sourceLine" id="cb274-12" title="12"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb274-13" title="13"><span class="co"># OK figur</span></a>
-<a class="sourceLine" id="cb274-14" title="14">  <span class="kw">barplot</span>(freqtable_testa<span class="op">/</span><span class="dv">1000</span>, </a>
-<a class="sourceLine" id="cb274-15" title="15">          <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, </a>
-<a class="sourceLine" id="cb274-16" title="16">          <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, </a>
-<a class="sourceLine" id="cb274-17" title="17">          <span class="dt">ylab=</span><span class="st">&quot;Antal (tusental)&quot;</span>, </a>
-<a class="sourceLine" id="cb274-18" title="18">          <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,</a>
-<a class="sourceLine" id="cb274-19" title="19">          <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350</span>), </a>
-<a class="sourceLine" id="cb274-20" title="20">          <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
-<a class="sourceLine" id="cb274-21" title="21">          <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
-<a class="sourceLine" id="cb274-22" title="22"><span class="co"># Oestetisk figur</span></a>
-<a class="sourceLine" id="cb274-23" title="23"> <span class="kw">barplot</span>(freqtable_testa<span class="op">/</span><span class="dv">1000</span>, </a>
-<a class="sourceLine" id="cb274-24" title="24">         <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, </a>
-<a class="sourceLine" id="cb274-25" title="25">         <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb274-26" title="26">         <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, </a>
-<a class="sourceLine" id="cb274-27" title="27">         <span class="dt">ylab=</span><span class="st">&quot;Antal (tusental)&quot;</span>,</a>
-<a class="sourceLine" id="cb274-28" title="28">         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350</span>), </a>
-<a class="sourceLine" id="cb274-29" title="29">         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,</a>
-<a class="sourceLine" id="cb274-30" title="30">         <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))</a>
-<a class="sourceLine" id="cb274-31" title="31"> <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb274-32" title="32"> <span class="co"># Dålig figur</span></a>
-<a class="sourceLine" id="cb274-33" title="33"> <span class="kw">barplot</span>(freqtable_testa, </a>
-<a class="sourceLine" id="cb274-34" title="34">         <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, </a>
-<a class="sourceLine" id="cb274-35" title="35">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
-<a class="sourceLine" id="cb274-36" title="36">         <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, </a>
-<a class="sourceLine" id="cb274-37" title="37">         <span class="dt">xlab =</span> <span class="st">&quot;Poängkategori test A&quot;</span>,</a>
-<a class="sourceLine" id="cb274-38" title="38">         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350000</span>), </a>
-<a class="sourceLine" id="cb274-39" title="39">         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>)</a>
-<a class="sourceLine" id="cb274-40" title="40"> <span class="co"># Felaktig figur </span></a>
-<a class="sourceLine" id="cb274-41" title="41"> <span class="kw">barplot</span>(freqtable_testa, </a>
-<a class="sourceLine" id="cb274-42" title="42">         <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, </a>
-<a class="sourceLine" id="cb274-43" title="43">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,</a>
-<a class="sourceLine" id="cb274-44" title="44">         <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, </a>
-<a class="sourceLine" id="cb274-45" title="45">         <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,</a>
-<a class="sourceLine" id="cb274-46" title="46">         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">800000</span>), </a>
-<a class="sourceLine" id="cb274-47" title="47">         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, </a>
-<a class="sourceLine" id="cb274-48" title="48">         <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, </a>
-<a class="sourceLine" id="cb274-49" title="49">         <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Läs in data</span>
+ df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)
+<span class="co"># Skapa kategorier av poängen på Test A</span>
+ df<span class="op">$</span>testa_cat[df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+ df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)] &lt;-<span class="st"> </span><span class="dv">2</span>
+ df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(df<span class="op">$</span>testa <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">3</span>  
+ df<span class="op">$</span>testa_cat[(df<span class="op">$</span>testa <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>)] &lt;-<span class="st"> </span><span class="dv">4</span>  
+ df<span class="op">$</span>testa_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>testa_cat)
+<span class="co"># Skapa ett tabellobjekt </span>
+ freqtable_testa &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>testa_cat)
+
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="co"># OK figur</span>
+  <span class="kw">barplot</span>(freqtable_testa<span class="op">/</span><span class="dv">1000</span>, 
+          <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, 
+          <span class="dt">main=</span><span class="st">&quot;OK&quot;</span>, 
+          <span class="dt">ylab=</span><span class="st">&quot;Antal (tusental)&quot;</span>, 
+          <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>,
+          <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350</span>), 
+          <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
+          <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
+<span class="co"># Oestetisk figur</span>
+ <span class="kw">barplot</span>(freqtable_testa<span class="op">/</span><span class="dv">1000</span>, 
+         <span class="dt">main=</span><span class="st">&quot;Oestetisk&quot;</span>, 
+         <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),
+         <span class="dt">xlab =</span> <span class="st">&quot;Poäng test A&quot;</span>, 
+         <span class="dt">ylab=</span><span class="st">&quot;Antal (tusental)&quot;</span>,
+         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350</span>), 
+         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>,
+         <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;0-9&quot;</span>, <span class="st">&quot;10-19&quot;</span>, <span class="st">&quot;20-29&quot;</span>, <span class="st">&quot;30-40&quot;</span>))
+ <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)
+ <span class="co"># Dålig figur</span>
+ <span class="kw">barplot</span>(freqtable_testa, 
+         <span class="dt">main=</span><span class="st">&quot;Dålig&quot;</span>, 
+         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
+         <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, 
+         <span class="dt">xlab =</span> <span class="st">&quot;Poängkategori test A&quot;</span>,
+         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">350000</span>), 
+         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>)
+ <span class="co"># Felaktig figur </span>
+ <span class="kw">barplot</span>(freqtable_testa, 
+         <span class="dt">main=</span><span class="st">&quot;Felaktig&quot;</span>, 
+         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,
+         <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, 
+         <span class="dt">xlab =</span> <span class="st">&quot;Test&quot;</span>,
+         <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">800000</span>), 
+         <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, 
+         <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, 
+         <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</code></pre></div>
 </div>
 </div>
 <p></br></p>
@@ -417,51 +396,51 @@ Visa figurkod
 <h2><span class="header-section-number">8.1</span> Grundläggande figurhantering</h2>
 <p>Det finns ofta uppsättning figurer som ofta används. Vi kommer gå igenom de vanligaste som räcker för de absolut flesta situationer. Utöver dessa finns till exempel figurer som visar 3D-dimensionella samband, kartor och specialdiagram. Innan vi presenterar några vanlig typer av figurer ska vi gå igenom ett några grundläggande funktioner som en användare ska känna till när man konstruerar figurer.</p>
 <p>För det första bygger R på att man med hjälp av en figur-funktion, t ex <strong>plot()</strong>, skapar en canvas/målarduk. Det går sedan att med olika argument i flera steg måla på denna målarduk. Vi illusterar detta sätt att arbeta med figurer genom att först med funktionen <strong>plot()</strong> skapa en figur. Sedan används funktionen <strong>lines()</strong> för rita en regressionslinje figuren i figuren.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1"><span class="co"># Läs in data för figurer</span></a>
-<a class="sourceLine" id="cb275-2" title="2"> x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb275-3" title="3"> x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb275-4" title="4"> x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb275-5" title="5"> x4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb275-6" title="6"> y1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>)</a>
-<a class="sourceLine" id="cb275-7" title="7"> y2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>)</a>
-<a class="sourceLine" id="cb275-8" title="8"> y3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>)</a>
-<a class="sourceLine" id="cb275-9" title="9"> y4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>)</a>
-<a class="sourceLine" id="cb275-10" title="10"></a>
-<a class="sourceLine" id="cb275-11" title="11"><span class="co"># Regressionlinje </span></a>
-<a class="sourceLine" id="cb275-12" title="12"> x &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">:</span><span class="dv">14</span></a>
-<a class="sourceLine" id="cb275-13" title="13"> Ey &lt;-<span class="st"> </span><span class="fl">3.00</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.500</span><span class="op">*</span>x</a>
-<a class="sourceLine" id="cb275-14" title="14"></a>
-<a class="sourceLine" id="cb275-15" title="15"><span class="co"># Skapa en figur för x1 och y1. Ritar sedan en regressionslinje med lines()</span></a>
-<a class="sourceLine" id="cb275-16" title="16"> <span class="kw">plot</span>(x1, y1)</a>
-<a class="sourceLine" id="cb275-17" title="17"> <span class="kw">lines</span>(x, Ey)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Läs in data för figurer</span>
+ x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)
+ x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)
+ x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>)
+ x4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>)
+ y1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>)
+ y2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>)
+ y3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>)
+ y4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>)
+
+<span class="co"># Regressionlinje </span>
+ x &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">:</span><span class="dv">14</span>
+ Ey &lt;-<span class="st"> </span><span class="fl">3.00</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.500</span><span class="op">*</span>x
+
+<span class="co"># Skapa en figur för x1 och y1. Ritar sedan en regressionslinje med lines()</span>
+ <span class="kw">plot</span>(x1, y1)
+ <span class="kw">lines</span>(x, Ey)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-245-1.png" width="384" /></p>
 <p>För det andra omges målarduken av en ram, så kallade marginaler. Genom att använda funktionen <strong>par(mar = c(5.1, 4.1, 4.1, 2.1))</strong>, värdena är default-inställningen på marginalernas storlek, kan vi enkelt ändra marginalernas storlek. Figuren nedan illusterar målarduken i mitten med marginalerna omkring. Ordningen på värdena korresponderar till respektive marginals position. Det finns en nedre marginal (1), en vänstermarginal (2), en övre marginal (3) och en högermarginal (4).</p>
 <p><img src="docs/images/margins.jpg" width="70%" style="background-color: #414244 ; padding:1px; display: inline-block;" /></p>
 <p>Genom att ändra värdena ser vi ser att marginalernas storlek ändras. Det är mycket vanligt att Justera marginalernas storlek eftersom onödiga vita ytor inte är önsvärda i en figur. Det kan också vara så atte marginalers storlek måste utökas på grund att delar i figuren, t ex namn, annars inte får plats. I exemplet nedan hamnar exempelvis x-axelns namn utanför figuren och syns inte.</p>
 <p>För det tredje är det vanligt att kombinera flera diagram i en figur. Detta är möjligt med <strong>par()</strong> funktionen, fast nu med argumentet <strong>mfrow = c(antalrader, antalkolumner)</strong> som innehåller två värden, en som anger antalet rader och anger antalet kolumner.</p>
 <p>Exemplet nedan hur fyra diagram över samband kan illustereras i en och samma figur. De fyra datamaterialen kallas för Anscombes kvartett (Anscombe, 1973) och är berömd illustration av hur viktig datavisualisering är. Alla fyra datamaterial har nämligen samma medelvärde, standardavvikelse, korrelation och regressionlinje. Men en grafisk jämförelse visar hur olika egenskaper de olika datamaterialen har!</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1"><span class="co"># Skapa fyra diagram i en figur, 2 rader och 2 kolumner. Fyller på med lines i varje diagram.</span></a>
-<a class="sourceLine" id="cb276-2" title="2"> <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb276-3" title="3"> <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb276-4" title="4"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb276-5" title="5"> <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb276-6" title="6"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb276-7" title="7"> <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb276-8" title="8"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb276-9" title="9"> <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb276-10" title="10"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa fyra diagram i en figur, 2 rader och 2 kolumner. Fyller på med lines i varje diagram.</span>
+ <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+ <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-247-1.png" width="576" /></p>
 <p>Vi är dock inte helt nöjda med ovanstående figur, utan vi tycker det finns för mycket vit yta mellan diagrammen. Vi kombineras de bägge argumenten i par() med målet att ha fyra diagram i en figur, men med mindre marginaler. Nu ser det bättre ut!</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1"><span class="co"># Skapa fyra diagram i en figur. Fyller på med en linje med lines()</span></a>
-<a class="sourceLine" id="cb277-2" title="2"> <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) </a>
-<a class="sourceLine" id="cb277-3" title="3"> <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb277-4" title="4"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb277-5" title="5"> <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb277-6" title="6"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb277-7" title="7"> <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb277-8" title="8"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb277-9" title="9"> <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb277-10" title="10"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa fyra diagram i en figur. Fyller på med en linje med lines()</span>
+ <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) 
+ <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-248-1.png" width="576" /></p>
 </div>
 <div id="färger-och-figurer" class="section level2">
@@ -481,72 +460,78 @@ Visa figurkod
 <p>Ett vanligt exemplet är om vi vill för olika kategorier vill redovisa medelvärden eller antal. Genom att använda funktionen <strong>aggregate()</strong> kan skapa en dataframe med nödvändigt information. Därefter tillämpar vi barplot.</p>
 <p>Vi exemplifierar med att vi vill för varje kategori (1-9) av psykologisk bedömning (enligt pyskolog från en intervju med den mönstrande) beskriva medelvärdet för Test A. Kategorinamnen är långa och detta kan hanteras på två sätt. Antingen skapar vi nya kortare namn och förtydligande med argumentet xlabs eller så roteras kategorinamnen med argumentet las. Av dessa två alternativ rekommenderas generellt det första eftersom man som läsaren annars tvingas vrida huvudet och överskådligheten minskar.</p>
 <p>Vi ska nu skapa en figur för filmers intäkter 2019. Jämför de olika figurerna nedan och fundera på varför den ena är bättre än den andra.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" title="1">boxoffice2019 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">title =</span> <span class="kw">c</span>(<span class="st">&quot;Aladdin&quot;</span>,  <span class="st">&quot;Avengers: Endgame&quot;</span>, <span class="st">&quot;Captain Marvel&quot;</span>, <span class="st">&quot;Frozen II&quot;</span>, <span class="st">&quot;IT Chapter Two&quot;</span>, <span class="st">&quot;Joker&quot;</span>, <span class="st">&quot;Spider-Man: Far from Home&quot;</span>, <span class="st">&quot;Star Wars: Episode IX&quot;</span>, <span class="st">&quot;The Lion King&quot;</span>, <span class="st">&quot;Toy Story 4&quot;</span>),</a>
-<a class="sourceLine" id="cb278-2" title="2"><span class="dt">amount =</span> <span class="kw">c</span>(<span class="dv">355772511</span>, <span class="dv">858373000</span>, <span class="dv">426829839</span>, <span class="dv">430144682</span>, <span class="dv">211593228</span>,<span class="dv">333772511</span>,<span class="dv">390532085</span>,  <span class="dv">390706234</span>,<span class="dv">543638043</span>,<span class="dv">434038008</span>))</a>
-<a class="sourceLine" id="cb278-3" title="3"><span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, </a>
-<a class="sourceLine" id="cb278-4" title="4">        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">boxoffice2019 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">title =</span> <span class="kw">c</span>(<span class="st">&quot;Aladdin&quot;</span>,  <span class="st">&quot;Avengers: Endgame&quot;</span>, <span class="st">&quot;Captain Marvel&quot;</span>, <span class="st">&quot;Frozen II&quot;</span>, <span class="st">&quot;IT Chapter Two&quot;</span>, <span class="st">&quot;Joker&quot;</span>, <span class="st">&quot;Spider-Man: Far from Home&quot;</span>, <span class="st">&quot;Star Wars: Episode IX&quot;</span>, <span class="st">&quot;The Lion King&quot;</span>, <span class="st">&quot;Toy Story 4&quot;</span>),
+<span class="dt">amount =</span> <span class="kw">c</span>(<span class="dv">355772511</span>, <span class="dv">858373000</span>, <span class="dv">426829839</span>, <span class="dv">430144682</span>, <span class="dv">211593228</span>,<span class="dv">333772511</span>,<span class="dv">390532085</span>,  <span class="dv">390706234</span>,<span class="dv">543638043</span>,<span class="dv">434038008</span>))
+<span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, 
+        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-249-1.png" width="768" /></p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1"><span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, </a>
-<a class="sourceLine" id="cb279-2" title="2">        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title, </a>
-<a class="sourceLine" id="cb279-3" title="3">        <span class="dt">las=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, 
+        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title, 
+        <span class="dt">las=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-249-2.png" width="768" /></p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb280-2" title="2"><span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, </a>
-<a class="sourceLine" id="cb280-3" title="3">        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title, </a>
-<a class="sourceLine" id="cb280-4" title="4">        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb280-5" title="5">        <span class="dt">las=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">barplot</span>(boxoffice2019<span class="op">$</span>amount, 
+        <span class="dt">names.arg=</span>boxoffice2019<span class="op">$</span>title, 
+        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, 
+        <span class="dt">las=</span><span class="dv">1</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-249-3.png" width="768" /></p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb281-2" title="2">boxoffice2019_decreasing  &lt;-<span class="st"> </span>boxoffice2019[<span class="kw">order</span>(boxoffice2019[,<span class="dv">2</span>], <span class="dt">decreasing=</span><span class="ot">FALSE</span>), ]</a>
-<a class="sourceLine" id="cb281-3" title="3"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb281-4" title="4"><span class="kw">barplot</span>(boxoffice2019_decreasing<span class="op">$</span>amount<span class="op">/</span><span class="dv">1000000</span>, </a>
-<a class="sourceLine" id="cb281-5" title="5">        <span class="dt">names.arg=</span>boxoffice2019_decreasing<span class="op">$</span>title, </a>
-<a class="sourceLine" id="cb281-6" title="6">        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb281-7" title="7">        <span class="dt">las=</span><span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb281-8" title="8">        <span class="dt">xlab =</span> <span class="st">&quot;Miljoner USD&quot;</span>,</a>
-<a class="sourceLine" id="cb281-9" title="9">        <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
-<a class="sourceLine" id="cb281-10" title="10">        <span class="dt">border =</span><span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))
+boxoffice2019_decreasing  &lt;-<span class="st"> </span>boxoffice2019[<span class="kw">order</span>(boxoffice2019[,<span class="dv">2</span>], <span class="dt">decreasing=</span><span class="ot">FALSE</span>), ]
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">2</span>))
+<span class="kw">barplot</span>(boxoffice2019_decreasing<span class="op">$</span>amount<span class="op">/</span><span class="dv">1000000</span>, 
+        <span class="dt">names.arg=</span>boxoffice2019_decreasing<span class="op">$</span>title, 
+        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, 
+        <span class="dt">las=</span><span class="dv">1</span>, 
+        <span class="dt">xlab =</span> <span class="st">&quot;Miljoner USD&quot;</span>,
+        <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>,
+        <span class="dt">border =</span><span class="st">&quot;white&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-249-4.png" width="768" /></p>
 <p>När man har mångra kategorier lämpar sig dotcharts bättre. Vi ska se ett exempel på detta. I paketet dslabs fick datasetet gapminder. Vi läser in detta dataset för att jämföra europeiska förväntade livslängd. Vi ser också här ett exempel på när olika färger kan tillföra information gällande kategoritillhörighet.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1"><span class="kw">library</span>(<span class="st">&quot;dslabs&quot;</span>)</a>
-<a class="sourceLine" id="cb282-2" title="2">gapminderEurope2015 &lt;-<span class="st"> </span>gapminder[(gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gapminder<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>), ]</a>
-<a class="sourceLine" id="cb282-3" title="3">gapminderEurope2015<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">factor</span>(gapminderEurope2015<span class="op">$</span>region)</a>
-<a class="sourceLine" id="cb282-4" title="4"><span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Eastern Europe&quot;</span>] &lt;-<span class="st"> &quot;coral2&quot;</span></a>
-<a class="sourceLine" id="cb282-5" title="5"><span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Western Europe&quot;</span>] &lt;-<span class="st"> &quot;palegreen2&quot;</span></a>
-<a class="sourceLine" id="cb282-6" title="6"><span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Southern Europe&quot;</span>] &lt;-<span class="st"> &quot;tan2&quot;</span></a>
-<a class="sourceLine" id="cb282-7" title="7"><span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Northern Europe&quot;</span>] &lt;-<span class="st"> &quot;deepskyblue2&quot;</span></a>
-<a class="sourceLine" id="cb282-8" title="8">gapminderEurope2015decreasing &lt;-<span class="st"> </span>gapminderEurope2015[<span class="kw">order</span>(gapminderEurope2015<span class="op">$</span>life_expectancy),]</a>
-<a class="sourceLine" id="cb282-9" title="9"></a>
-<a class="sourceLine" id="cb282-10" title="10"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb282-11" title="11"><span class="kw">barplot</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, </a>
-<a class="sourceLine" id="cb282-12" title="12">        <span class="dt">names.arg =</span> gapminderEurope2015decreasing<span class="op">$</span>country,  </a>
-<a class="sourceLine" id="cb282-13" title="13">        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb282-14" title="14">        <span class="dt">las =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb282-15" title="15">        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), </a>
-<a class="sourceLine" id="cb282-16" title="16">        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>,</a>
-<a class="sourceLine" id="cb282-17" title="17">        <span class="dt">col =</span> <span class="kw">as.character</span>(gapminderEurope2015<span class="op">$</span>color),</a>
-<a class="sourceLine" id="cb282-18" title="18">        <span class="dt">border =</span><span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;dslabs&quot;</span>)</code></pre></div>
+<pre><code>## Warning: package &#39;dslabs&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dslabs&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:psych&#39;:
+## 
+##     heights</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminderEurope2015 &lt;-<span class="st"> </span>gapminder[(gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gapminder<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>), ]
+gapminderEurope2015<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">factor</span>(gapminderEurope2015<span class="op">$</span>region)
+<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Eastern Europe&quot;</span>] &lt;-<span class="st"> &quot;coral2&quot;</span>
+<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Western Europe&quot;</span>] &lt;-<span class="st"> &quot;palegreen2&quot;</span>
+<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Southern Europe&quot;</span>] &lt;-<span class="st"> &quot;tan2&quot;</span>
+<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color)[<span class="kw">levels</span>(gapminderEurope2015<span class="op">$</span>color) <span class="op">==</span><span class="st"> &quot;Northern Europe&quot;</span>] &lt;-<span class="st"> &quot;deepskyblue2&quot;</span>
+gapminderEurope2015decreasing &lt;-<span class="st"> </span>gapminderEurope2015[<span class="kw">order</span>(gapminderEurope2015<span class="op">$</span>life_expectancy),]
+
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">barplot</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, 
+        <span class="dt">names.arg =</span> gapminderEurope2015decreasing<span class="op">$</span>country,  
+        <span class="dt">horiz =</span> <span class="ot">TRUE</span>, 
+        <span class="dt">las =</span> <span class="dv">2</span>,
+        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), 
+        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>,
+        <span class="dt">col =</span> <span class="kw">as.character</span>(gapminderEurope2015<span class="op">$</span>color),
+        <span class="dt">border =</span><span class="st">&quot;white&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-250-1.png" width="768" /></p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb283-2" title="2"><span class="kw">dotchart</span>(gapminderEurope2015<span class="op">$</span>life_expectancy, </a>
-<a class="sourceLine" id="cb283-3" title="3">        <span class="dt">labels=</span> gapminderEurope2015<span class="op">$</span>country,  </a>
-<a class="sourceLine" id="cb283-4" title="4">        <span class="dt">las =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb283-5" title="5">        <span class="dt">cex =</span> <span class="fl">0.8</span>, </a>
-<a class="sourceLine" id="cb283-6" title="6">        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>),</a>
-<a class="sourceLine" id="cb283-7" title="7">        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>)</a>
-<a class="sourceLine" id="cb283-8" title="8"></a>
-<a class="sourceLine" id="cb283-9" title="9"><span class="kw">dotchart</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, </a>
-<a class="sourceLine" id="cb283-10" title="10">        <span class="dt">labels=</span> gapminderEurope2015decreasing<span class="op">$</span>country,  </a>
-<a class="sourceLine" id="cb283-11" title="11">        <span class="dt">las =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb283-12" title="12">        <span class="dt">cex =</span> <span class="fl">0.8</span>, </a>
-<a class="sourceLine" id="cb283-13" title="13">        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>),</a>
-<a class="sourceLine" id="cb283-14" title="14">        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">dotchart</span>(gapminderEurope2015<span class="op">$</span>life_expectancy, 
+        <span class="dt">labels=</span> gapminderEurope2015<span class="op">$</span>country,  
+        <span class="dt">las =</span> <span class="dv">2</span>,
+        <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>),
+        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>)
+
+<span class="kw">dotchart</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, 
+        <span class="dt">labels=</span> gapminderEurope2015decreasing<span class="op">$</span>country,  
+        <span class="dt">las =</span> <span class="dv">2</span>,
+        <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>),
+        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-250-2.png" width="768" /></p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" title="1"><span class="kw">dotchart</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, </a>
-<a class="sourceLine" id="cb284-2" title="2">        <span class="dt">labels=</span> gapminderEurope2015decreasing<span class="op">$</span>country,  </a>
-<a class="sourceLine" id="cb284-3" title="3">        <span class="dt">las =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb284-4" title="4">        <span class="dt">cex =</span> <span class="fl">0.8</span>,</a>
-<a class="sourceLine" id="cb284-5" title="5">        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>,<span class="dt">col =</span> <span class="kw">as.character</span>(gapminderEurope2015<span class="op">$</span>color))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dotchart</span>(gapminderEurope2015decreasing<span class="op">$</span>life_expectancy, 
+        <span class="dt">labels=</span> gapminderEurope2015decreasing<span class="op">$</span>country,  
+        <span class="dt">las =</span> <span class="dv">2</span>,
+        <span class="dt">cex =</span> <span class="fl">0.8</span>,
+        <span class="dt">xlab =</span> <span class="st">&quot;Life expectancy (years)&quot;</span>,<span class="dt">col =</span> <span class="kw">as.character</span>(gapminderEurope2015<span class="op">$</span>color))</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-250-3.png" width="768" /></p>
 </div>
 </div>
@@ -560,27 +545,26 @@ Visa figurkod
 <div id="figurer-för-fördelningar" class="section level2">
 <h2><span class="header-section-number">8.4</span> Figurer för fördelningar</h2>
 <p>Histogram används för att visualisera en kontinuerlig variabel. Funktionen hist() skapar ett histogram. Nackdelen med histogram är att den är känslig för antalet klasser. Testa därför olika antal klasser.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb285-2" title="2"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">main=</span><span class="st">&quot;7 klasser&quot;</span>)</a>
-<a class="sourceLine" id="cb285-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">14</span>, <span class="dt">main=</span><span class="st">&quot;14 klasser&quot;</span>)</a>
-<a class="sourceLine" id="cb285-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">28</span>, <span class="dt">main=</span><span class="st">&quot;28 klasser&quot;</span>)</a>
-<a class="sourceLine" id="cb285-5" title="5"><span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">56</span>, <span class="dt">main=</span><span class="st">&quot;56 klasser&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">main=</span><span class="st">&quot;7 klasser&quot;</span>)
+<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">14</span>, <span class="dt">main=</span><span class="st">&quot;14 klasser&quot;</span>)
+<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">28</span>, <span class="dt">main=</span><span class="st">&quot;28 klasser&quot;</span>)
+<span class="kw">hist</span>(df<span class="op">$</span>gripstrength, <span class="dt">xlab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Antal&quot;</span>, <span class="dt">breaks=</span><span class="dv">56</span>, <span class="dt">main=</span><span class="st">&quot;56 klasser&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-251-1.png" width="768" /></p>
 </div>
 <div id="lådagram" class="section level2">
 <h2><span class="header-section-number">8.5</span> Lådagram</h2>
-<p>Lådagram används främst när vi ska jämföra fördelningar uppdelat på kategorier.
-Att använda lådagram för en enda variabel är inte optimalt, utan histogram ger då mer information.</p>
+<p>Lådagram används främst när vi ska jämföra fördelningar uppdelat på kategorier. Att använda lådagram för en enda variabel är inte optimalt, utan histogram ger då mer information.</p>
 <p>Vi vill studera testresultat uppdelat på psykologisk bedämning</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1"><span class="kw">boxplot</span>(df<span class="op">$</span>gripstrength<span class="op">~</span>df<span class="op">$</span>psych, <span class="dt">xlab=</span><span class="st">&quot;Psykologisk bedömning (1-9)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(df<span class="op">$</span>gripstrength<span class="op">~</span>df<span class="op">$</span>psych, <span class="dt">xlab=</span><span class="st">&quot;Psykologisk bedömning (1-9)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Greppstyrka (Newton)&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
 </div>
 <div id="spridningsdiagram" class="section level2">
 <h2><span class="header-section-number">8.6</span> Spridningsdiagram</h2>
 <p>Den vanligaste funktionen i R för att skapa figurer är <strong>plot</strong>. Det finns många argument och i de närmaste obegränsade möjligher att anpassa figurerna. Nedan visar vi ett problem som kan uppkomma med spridningsdiagram, nämligen när vi har väldigt många datapunkter. Det första diagrammet redovisar de 500 första individerna i INSARK. Det andra diagrammet redovisar data från alla 709869 individer.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1"><span class="kw">plot</span>(df<span class="op">$</span>legstrength[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>], df<span class="op">$</span>armstrength[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>], <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(df<span class="op">$</span>legstrength[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>], df<span class="op">$</span>armstrength[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>], <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1"><span class="kw">plot</span>(df<span class="op">$</span>legstrength, df<span class="op">$</span>armstrength, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(df<span class="op">$</span>legstrength, df<span class="op">$</span>armstrength, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Armstyrka (Newton)&quot;</span>)</code></pre></div>
 <p><img src="dpk_files/figure-html/unnamed-chunk-253-2.png" width="672" /></p>
 </div>
 <div id="exportera-figurer" class="section level2">
@@ -591,33 +575,33 @@ Att använda lådagram för en enda variabel är inte optimalt, utan histogram g
 <li>Formatet png är bitmap-baserat format som är utmärkt för webben. Ofta krävs, tyvärr, också png för ordbehandlingsprogram, vilket gör exxport av figurer med hög kvalitet krångligare, jämfört med PDF. Använd aldrig jpg, som är alternativet.</li>
 </ul>
 <p>Det finns dock ganska få inställningar i Export. Ett alternativ som ger mer flexibilitet är att skapa en PDF eller png från R och sen rita figuren på denna. Vi tittar på två exempel nedan, först ett för PDF och sedan ett för png.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" title="1"><span class="co"># Skapa en PDF att rita. Storleken anges med width och height och dimensionen är tum. </span></a>
-<a class="sourceLine" id="cb289-2" title="2"><span class="kw">pdf</span>(<span class="st">&quot;data/rplot.pdf&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">6</span>) </a>
-<a class="sourceLine" id="cb289-3" title="3"><span class="co"># Börja rita figuren på filen</span></a>
-<a class="sourceLine" id="cb289-4" title="4"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) </a>
-<a class="sourceLine" id="cb289-5" title="5"> <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb289-6" title="6"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb289-7" title="7"> <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb289-8" title="8"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb289-9" title="9"> <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb289-10" title="10"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb289-11" title="11"> <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb289-12" title="12"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb289-13" title="13"><span class="co"># Stänger plot och sparar. Den sparas enligt sökvägen ovan.</span></a>
-<a class="sourceLine" id="cb289-14" title="14"> <span class="kw">dev.off</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" title="1"><span class="co"># Skapar en png att rita på. Storleken anges med width och height och dimensionen är cm (units). </span></a>
-<a class="sourceLine" id="cb290-2" title="2"><span class="co"># Upplösningen (dpi) är viktig för en bitmap-baserad fil. Förslagsvis används res = 1200 för utskrift och res = 72 webben eller skärmen. type = &quot;cairo&quot; anger att kantutjämning (antialias) ska användas, vilket ger snyggare utseende.</span></a>
-<a class="sourceLine" id="cb290-3" title="3"><span class="kw">png</span>(<span class="st">&quot;data/rplot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">14</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">res =</span> <span class="dv">1200</span>, <span class="dt">type=</span><span class="st">&#39;cairo&#39;</span>)</a>
-<a class="sourceLine" id="cb290-4" title="4"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) </a>
-<a class="sourceLine" id="cb290-5" title="5"> <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb290-6" title="6"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb290-7" title="7"> <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb290-8" title="8"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb290-9" title="9"> <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb290-10" title="10"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb290-11" title="11"> <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))</a>
-<a class="sourceLine" id="cb290-12" title="12"> <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb290-13" title="13"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapa en PDF att rita. Storleken anges med width och height och dimensionen är tum. </span>
+<span class="kw">pdf</span>(<span class="st">&quot;data/rplot.pdf&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">6</span>) 
+<span class="co"># Börja rita figuren på filen</span>
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) 
+ <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="co"># Stänger plot och sparar. Den sparas enligt sökvägen ovan.</span>
+ <span class="kw">dev.off</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Skapar en png att rita på. Storleken anges med width och height och dimensionen är cm (units). </span>
+<span class="co"># Upplösningen (dpi) är viktig för en bitmap-baserad fil. Förslagsvis används res = 1200 för utskrift och res = 72 webben eller skärmen. type = &quot;cairo&quot; anger att kantutjämning (antialias) ska användas, vilket ger snyggare utseende.</span>
+<span class="kw">png</span>(<span class="st">&quot;data/rplot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">14</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">res =</span> <span class="dv">1200</span>, <span class="dt">type=</span><span class="st">&#39;cairo&#39;</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) 
+ <span class="kw">plot</span>(x1, y1, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x2, y2, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x3, y3, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+ <span class="kw">plot</span>(x4, y4, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">13</span>))
+ <span class="kw">lines</span>(x, Ey, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">dev.off</span>()</code></pre></div>
 <p>Avslutningsvis några tips:</p>
 <ul>
 <li>Bestäm bredd-höjd-relationen (aspect ratio) redan när du skapar figuren i R. Stretcha inte figuren efter att du skapat figuren! Kvaliteten kan försämras betydligt. Du kan dock eventuellt förminska och förstora figuren, så länge bredd-höjd-relationen bibehålls.</li>
@@ -652,11 +636,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -668,10 +653,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
@@ -688,7 +669,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

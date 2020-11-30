@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 7 Tabeller | Tillämpad statistik med R</title>
   <meta name="description" content="Kapitel 7 Tabeller | Tillämpad statistik med R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 7 Tabeller | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel och Valentin Zulj" />
 
 
-<meta name="date" content="2020-11-28" />
+<meta name="date" content="2020-11-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -307,6 +282,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.27"><i class="fa fa-check"></i>Övning 7.27</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="experiment.html"><a href="experiment.html"><i class="fa fa-check"></i><b>10</b> Experiment</a><ul>
+<li class="chapter" data-level="10.1" data-path="experiment.html"><a href="experiment.html#det-klassiska-experimentet"><i class="fa fa-check"></i><b>10.1</b> Det klassiska experimentet</a></li>
+<li class="chapter" data-level="10.2" data-path="experiment.html"><a href="experiment.html#stratifiering"><i class="fa fa-check"></i><b>10.2</b> Stratifiering</a></li>
+<li class="chapter" data-level="10.3" data-path="experiment.html"><a href="experiment.html#tabell-1-vid-randomiserade-försök"><i class="fa fa-check"></i><b>10.3</b> Tabell 1 vid randomiserade försök</a></li>
+<li class="chapter" data-level="10.4" data-path="experiment.html"><a href="experiment.html#anova"><i class="fa fa-check"></i><b>10.4</b> ANOVA</a></li>
+<li class="chapter" data-level="10.5" data-path="experiment.html"><a href="experiment.html#jämförelse-med-t-test"><i class="fa fa-check"></i><b>10.5</b> Jämförelse med t-test</a></li>
+<li class="chapter" data-level="10.6" data-path="experiment.html"><a href="experiment.html#experimentella-designer"><i class="fa fa-check"></i><b>10.6</b> Experimentella designer</a></li>
+<li class="chapter" data-level="10.7" data-path="experiment.html"><a href="experiment.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.7</b> Aspekter som inte ingår i detta block</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -336,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Exportera tabeller till html</h2>
 <p>Det kan vara omständligt att exportera data från R till Word. En smidig lösning är att spara tabellerna i html-format, vilket gör tabellerna plattformsoberoende. Kom ihåg att det inte är nödvändigt att lägga in tabellerna i Word förrän manuset närmar sig att bli klart. Den stora fördelen är att man slipper för hand kopiera resultat, vilket både är tidsödande och för med sig en stor risk fel.</p>
 <p>För att exportera tabeller gjorda med <strong>table()</strong> används paketet <strong>xtable</strong> och funktionen <strong>xtable()</strong> tillsammans med funktionen <strong>print()</strong> (som finns i basversionen av R). Installera därför nödvändigt paket</p>
-<p><code>install.packages("xtable")</code></p>
+<p><code>install.packages(&quot;xtable&quot;)</code></p>
 <p>och kör sedan nedanstående kod med någon tabell som exempelvis skapat i kapitlet som kategorivariabler. Du måste ange i sökvägen var filen ska sparas.</p>
 <p>För att sedan föra in tabellerna i ordbehandlingsprogram öppnas tabellen i en webläsare, du högerklickar någonstans i webläsaren och väljer <strong>markera allt</strong>, kopiera, och klistra in. Alternativt väljer du Ctrl+A i Windows eller Kommad-A på MacOS. Sedan tillkommer en del arbete med att fixa till tabellen i ordbehandlingsprogrammet.</p>
 </div>
@@ -347,69 +331,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Alla rapporter eller vetenskapliga artiklar bör inkludera en beskrivning av urvalet, dvs variablerna fördelning i stickprovet. Frågan som då besvaras är ‘’Vilka är det vi vi undersöker?’’. Ibland är denna beskrivning placeread i början, ibland i en bilaga. Inom en del vetenskapliga artiklar benämns en sådan tabell <strong>Tabell 1</strong> eller <strong>Table 1</strong>.</p>
 <p>Observera att syftet <strong>inte</strong> är att göra inferens utan enbart att beskriva urval. Detta innebär normalt sett att medelfel, konfidensintervall eller <span class="math inline">\(p\)</span>-värden inte redovisas i denna tabell.</p>
 <p>För att skapa en sådan tabell är det enklast att i R skapa en tabell separat för kvantitativa variabler som redovisas medelvärde, standardavvikelse och evenuellt andra mått och en för kategorivariabler. Därefter kan man kombinera tabellerna i Word.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1"><span class="co"># I studien krävs en variabel som indikerar högt blodtryck.</span></a>
-<a class="sourceLine" id="cb273-2" title="2"><span class="co"># För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset: </span></a>
-<a class="sourceLine" id="cb273-3" title="3"><span class="co"># 1. en binär 0-1 variabel som är numerisk</span></a>
-<a class="sourceLine" id="cb273-4" title="4"><span class="co"># 2. en binär variabel som R hanterar som en faktor med namngivna nivåer. </span></a>
-<a class="sourceLine" id="cb273-5" title="5">df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-6" title="6">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb273-7" title="7">df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb273-8" title="8">df<span class="op">$</span>sbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>sbp_bin)</a>
-<a class="sourceLine" id="cb273-9" title="9"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
-<a class="sourceLine" id="cb273-10" title="10"><span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
-<a class="sourceLine" id="cb273-11" title="11">df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-12" title="12">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb273-13" title="13">df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb273-14" title="14">df<span class="op">$</span>dbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>dbp_bin)</a>
-<a class="sourceLine" id="cb273-15" title="15"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> </a>
-<a class="sourceLine" id="cb273-16" title="16"><span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> </a>
-<a class="sourceLine" id="cb273-17" title="17"></a>
-<a class="sourceLine" id="cb273-18" title="18"><span class="co"># Skapa Tabell 1a. Kvantitativa variabler</span></a>
-<a class="sourceLine" id="cb273-19" title="19">xbar_height &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb273-20" title="20">Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>height)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span></a>
-<a class="sourceLine" id="cb273-21" title="21">returning <span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-22" title="22">sd_height &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb273-23" title="23">xbar_weight &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb273-24" title="24">Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>weight)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span></a>
-<a class="sourceLine" id="cb273-25" title="25">returning <span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-26" title="26">sd_weight &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb273-27" title="27">xbar_sbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>sbp)</a>
-<a class="sourceLine" id="cb273-28" title="28">Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>sbp)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span><span class="st"> </span>returning</a>
-<a class="sourceLine" id="cb273-29" title="29"><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-30" title="30">sd_sbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>sbp)</a>
-<a class="sourceLine" id="cb273-31" title="31">xbar_dbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>dbp)</a>
-<a class="sourceLine" id="cb273-32" title="32">Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>dbp)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span><span class="st"> </span>returning</a>
-<a class="sourceLine" id="cb273-33" title="33"><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb273-34" title="34">sd_dbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>dbp)</a>
-<a class="sourceLine" id="cb273-35" title="35">means &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb273-36" title="36">sds &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(sd_height, sd_weight, sd_sbp, sd_dbp), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb273-37" title="37">table1_cont_vars &lt;-<span class="st"> </span><span class="kw">cbind</span>(means, sds)</a>
-<a class="sourceLine" id="cb273-38" title="38"><span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)</a>
-<a class="sourceLine" id="cb273-39" title="39"><span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, </a>
-<a class="sourceLine" id="cb273-40" title="40">                               <span class="st">&quot;Vikt (kg)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-41" title="41">                               <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-42" title="42">                               <span class="st">&quot;Diastoliskt blodtryck (mmHg)&quot;</span>)</a>
-<a class="sourceLine" id="cb273-43" title="43"></a>
-<a class="sourceLine" id="cb273-44" title="44"><span class="co"># Skapa Tabell 1b. Kategorivariabler</span></a>
-<a class="sourceLine" id="cb273-45" title="45">desc_sbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin)))</a>
-<a class="sourceLine" id="cb273-46" title="46">desc_dbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin)))</a>
-<a class="sourceLine" id="cb273-47" title="47">desc_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>psych), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>psych)))</a>
-<a class="sourceLine" id="cb273-48" title="48">table1_cat_vars &lt;-<span class="st"> </span><span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)</a>
-<a class="sourceLine" id="cb273-49" title="49"><span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)</a>
-<a class="sourceLine" id="cb273-50" title="50"><span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-51" title="51">                      <span class="st">&quot;Systoliskt  blodtryck (mmHG &gt;= 130)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-52" title="52">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &lt; 80)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-53" title="53">                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &gt;= 80)&quot;</span>,</a>
-<a class="sourceLine" id="cb273-54" title="54">                      <span class="st">&quot;Psykologisk bedömning: Kat 1&quot;</span>, </a>
-<a class="sourceLine" id="cb273-55" title="55">                      <span class="st">&quot;Psykologisk bedömning: Kat 2&quot;</span>, </a>
-<a class="sourceLine" id="cb273-56" title="56">                      <span class="st">&quot;Psykologisk bedömning: Kat 3&quot;</span>, </a>
-<a class="sourceLine" id="cb273-57" title="57">                      <span class="st">&quot;Psykologisk bedömning: Kat 4&quot;</span>, </a>
-<a class="sourceLine" id="cb273-58" title="58">                      <span class="st">&quot;Psykologisk bedömning: Kat 5&quot;</span>, </a>
-<a class="sourceLine" id="cb273-59" title="59">                      <span class="st">&quot;Psykologisk bedömning: Kat 6&quot;</span>, </a>
-<a class="sourceLine" id="cb273-60" title="60">                      <span class="st">&quot;Psykologisk bedömning: Kat 7&quot;</span>, </a>
-<a class="sourceLine" id="cb273-61" title="61">                      <span class="st">&quot;Psykologisk bedömning: Kat 8&quot;</span>, </a>
-<a class="sourceLine" id="cb273-62" title="62">                      <span class="st">&quot;Psykologisk bedömning: Kat 9&quot;</span>) </a>
-<a class="sourceLine" id="cb273-63" title="63">Error <span class="cf">in</span> <span class="kw">dimnames</span>(x) &lt;-<span class="st"> </span>dn<span class="op">:</span><span class="st"> </span>length of <span class="st">&#39;dimnames&#39;</span> [<span class="dv">1</span>] not equal to array extent</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I studien krävs en variabel som indikerar högt blodtryck.</span>
+<span class="co"># För varje blodtrycksvariabel skapas 2 nya varibler till vårt dataset: </span>
+<span class="co"># 1. en binär 0-1 variabel som är numerisk</span>
+<span class="co"># 2. en binär variabel som R hanterar som en faktor med namngivna nivåer. </span>
+df<span class="op">$</span>sbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+df<span class="op">$</span>sbp_bin[df<span class="op">$</span>sbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">130</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>sbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>sbp_bin)
+<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> 
+<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>sbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> 
+df<span class="op">$</span>dbp_bin &lt;-<span class="st"> </span><span class="ot">NA</span>
+df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+df<span class="op">$</span>dbp_bin[df<span class="op">$</span>dbp <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+df<span class="op">$</span>dbp_cat &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>dbp_bin)
+<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;0&quot;</span>] &lt;-<span class="st"> &quot;Normalt&quot;</span> 
+<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat)[<span class="kw">levels</span>(df<span class="op">$</span>dbp_cat) <span class="op">==</span><span class="st"> &quot;1&quot;</span>] &lt;-<span class="st"> &quot;Högt&quot;</span> 
+
+<span class="co"># Skapa Tabell 1a. Kvantitativa variabler</span>
+xbar_height &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>height)
+Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>height)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span>
+returning <span class="ot">NA</span>
+sd_height &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>height)
+xbar_weight &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>weight)
+Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>weight)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span>
+returning <span class="ot">NA</span>
+sd_weight &lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>weight)
+xbar_sbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>sbp)
+Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>sbp)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span>
+returning <span class="ot">NA</span>
+sd_sbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>sbp)
+xbar_dbp &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>dbp)
+Warning <span class="cf">in</span> <span class="kw">mean.default</span>(df<span class="op">$</span>dbp)<span class="op">:</span><span class="st"> </span>argument is not numeric or logical<span class="op">:</span>
+returning <span class="ot">NA</span>
+sd_dbp&lt;-<span class="st"> </span><span class="kw">sd</span>(df<span class="op">$</span>dbp)
+means &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(xbar_height, xbar_weight, xbar_sbp, xbar_dbp ), <span class="dv">1</span>)
+sds &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">c</span>(sd_height, sd_weight, sd_sbp, sd_dbp), <span class="dv">2</span>)
+table1_cont_vars &lt;-<span class="st"> </span><span class="kw">cbind</span>(means, sds)
+<span class="kw">colnames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Medelvärde&quot;</span>, <span class="st">&quot;SD&quot;</span>)
+<span class="kw">rownames</span>(table1_cont_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Längd (cm)&quot;</span>, 
+                               <span class="st">&quot;Vikt (kg)&quot;</span>,
+                               <span class="st">&quot;Systoliskt blodtryck (mmHg)&quot;</span>,
+                               <span class="st">&quot;Diastoliskt blodtryck (mmHg)&quot;</span>)
+
+<span class="co"># Skapa Tabell 1b. Kategorivariabler</span>
+desc_sbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>sbp_bin)))
+desc_dbp_bin &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>dbp_bin)))
+desc_psych_cat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">table</span>(df<span class="op">$</span>psych), <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>psych)))
+table1_cat_vars &lt;-<span class="st"> </span><span class="kw">rbind</span>(desc_sbp_bin, desc_dbp_bin, desc_psych_cat)
+<span class="kw">colnames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Antal&quot;</span>, <span class="st">&quot;%&quot;</span>)
+<span class="kw">rownames</span>(table1_cat_vars) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Systoliskt  blodtryck (mmHG &lt; 130)&quot;</span>,
+                      <span class="st">&quot;Systoliskt  blodtryck (mmHG &gt;= 130)&quot;</span>,
+                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &lt; 80)&quot;</span>,
+                      <span class="st">&quot;Diastoliskt  blodtryck (mmHG &gt;= 80)&quot;</span>,
+                      <span class="st">&quot;Psykologisk bedömning: Kat 1&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 2&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 3&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 4&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 5&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 6&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 7&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 8&quot;</span>, 
+                      <span class="st">&quot;Psykologisk bedömning: Kat 9&quot;</span>) 
+Error <span class="cf">in</span> <span class="kw">dimnames</span>(x) &lt;-<span class="st"> </span>dn<span class="op">:</span><span class="st"> </span>length of <span class="st">&#39;dimnames&#39;</span> [<span class="dv">1</span>] not equal to array extent</code></pre></div>
 </div>
 </div>
 <div id="principer-för-tabeller" class="section level2">
@@ -461,11 +445,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -477,10 +462,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
@@ -497,7 +478,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
