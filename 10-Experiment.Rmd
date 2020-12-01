@@ -3,8 +3,188 @@
 
 
 ## Det klassiska experimentet
+
+### Randomiseringen
+
+I det klassiska experimentet allokeras $n$ objekt (individer) slumpmässigt till en behandlingsgrupp bestående av $n_t$ objekt eller en kontrollgrupp bestående av $n_c$ objekt. Sannolikheten för ett objekt att hamna i behandlingsgruppen är $\Pr(T=1) = n_t/n$ och sannolikhet att hamna i kontrollgruppen är $1-\Pr(T=1) = \Pr(T=0) = n_c/n$.
+
+För att i praktiken allokera objekten genomförs en slumpmässig permutation av objekt i en identifieringsvariabel (som vi kan kalla *id_nr*). Permutationen görs med **sample()** och utan återläggning. Objekten allokeras sedan till behandlingsgruppen och kontrollgruppen genom att skapa en binär behandlingsvariabel, *w*, där de första $n_t$ elementen består av 1or (eller ett annat värde som syftar på behandlingsgruppen) och de resterande $n_c$ elementen är 0or (eller något annat värde som syftar på kontrollgruppen). 
+
+Allokeringen kan genomföras oavsett om det finns en komplett lista på objekt (motsvarande en urvalsram i urvalsmetoder) eller om rekrytering sker löpande där id-nr relaterar till när ett objekt rekryteras till studiens.  Det enda som krävs för allokeringen är kunskap om antalet objekt i behandlingsgruppen och kontrollgruppen. Traditionellt har man då haft kuvert med id-nummer innehållande en lapp som indikerar allokering.
+
+**Exempel 1**
+
+*Adman och  Larsson Taghizadeh (2020) ville bland annat undersöka om det finns en effekt av avsändarens yrkestitel i e-post på skoladministratörers respons vad gäller en frågor om skolval. Utifrån en lista baserat på alla Sveriges 290 kommuner gjordes en allokering till olika behandlingsgrupper.* 
+
+
+**Exempel 2**
+
+*Selin et al. undersökte effekten av det värkstimulerade medlet oxytocin bland gravida med utdragen förlossning. Avsikten var att se om det fanns en effekt av dos oxytocin (låg vs hög dos) på tid till att barnet var fött. Rekryteringen till det här experimentet skedde löpande på ett antal förlossningsavdelningar i Sverige. En kvinna på förlossningen blev tillfrågad om hon ville delta i experimentet. Om hon tackade ja tilldelades hon ett id-nummer och en enkät fylldes in. Därefter öppnades ett kuvert med id-numret och i kuvertet fanns stod A eller B. Eftersom blindning är viktigt vet endast den som gjort randomiseringen vilken dos A eller B refererar till. Av 1296 kvinnor som tackade ja allokerades 647 till hög dos och 648 till låg dos.* 
+
+**Exempel 3**
+
+*Anta att vi i Uppsala kommun rekryterar 40 individer till att delta i ett randomiserat försök. Individerna som valt att delta i experimentet slumpas till en av två grupper. Listan med allokeringen sparas. Id-nummer skrivs ner på ett kuvert och en lapp som indikerar behandlingsgrupp läggs i kuvertet.* 
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment=''} 
+# Antal objekt (individer) i experimentet
+ n <- 40
+# Antal objekt i behandlingsgrupp
+ n_t <- 22
+# Antal objekt i kontrollgrupp 
+ n_c <- 18
+# Lista med id-nr
+ id_nr <- 1:40
+# Skapa en slumpmässig permutation (Ni kommer få en annan fördelning om vi inte sätter slumptalsfröet).
+ set.seed(8)
+ id <- sample(id_nr, replace = FALSE)
+# Skapa en behandlingsvariabel 
+ w <- c(rep(1, n_t), rep(0, n_c))
+# Dataframe för data 
+ df_trt <- data.frame(id = id, trt = w)
+ df_trt
+```
+
+Det är dock mycket vanligt att vid rekryteringen eller före randomseringen samla in data om individerna/objekten. Denna information kan vara mycket användbar på många sätt och är ofta nödvändig för att skapa sig en helhetsbild i en studie. En oerhört viktig princip är att baslinjevariabler mäts **före randomiseringen** eller åtminstone före man öppnar kuvertet som anger allokeringen. 
+
+**Exempel 3 forts.**
+
+*Anta att vi i vårt exempel mäter ålder, kön och utbildning före öppnandet av kuvertet. Vi erhåller ett mer omfattande dataset med bakgrundvariabler.*
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment=''} 
+df <- df_trt[order(df_trt$id),]
+# Variablerna mäts efterhand som individerna deltar i studien. 
+df$alder <- c(34,56,59,34,37,46,43,45,66,55,29,55,67,66,54,67,45,32,44,45,29,33,66,55,34,22,66,23,34,25,26,48,56,33,61,60,30,40,66,43)
+df$kon <- factor(c("kvinna", "man", "man", "kvinna", "man", "kvinna", "man", "kvinna", "man", "man", "man", "kvinna", "kvinna", "kvinna", "man", "kvinna", "kvinna",  "kvinna", "man", "kvinna","kvinna", "man", "kvinna", "man", "man", "man","man", "kvinna", "kvinna", "man", "kvinna","man", "man", "kvinna", "kvinna",  "kvinna", "man", "kvinna","man","kvinna"), 
+              levels = c("kvinna", "man"))
+df$utbildning <- factor(c("mellan", "mellan", "mellan", "låg", "hög", "mellan", "låg", "låg", "mellan", "mellan", "låg", "mellan", "mellan", "mellan", "låg", "låg", "mellan", "mellan", "hög", "låg", "hög", "mellan", "mellan", "mellan", "låg", "mellan", "låg", "låg", "hög", "låg", "mellan", "hög", "hög", "mellan",   "låg", "mellan", "låg", "hög", "mellan", "mellan"), 
+                     levels = c("låg", "mellan", "hög") )
+df
+```
+
+### Balans av baslinjemätningar
+
+När randomiseringen blivit genomförd undersöker vi om randomseringen har fungerat. Detta görs genom att redovisa beskrivande statistik för **baslinjemätningen** i behandlingsgrupp respektive kontrollgrupp. Notera att vi inte genomför någon hypotesprövning vid en jämförelse av baslinjemätningarna. Eftersom behandlingen är slumpmässig vet vi de facto att populationen inte finns någon skillnad mellan behandlingsgrupperna. En hypotesprövning är därför ologisk att genomföra eftersom vi testar en hypotes som vi vet är sann.
+
+Däremot är det viktigt att deskriptivt se på hur det ser ut i data och det gör vi genom vi genom att ställa upp deskriptiv statistik i en tabell. För kvantitativa variabler redovisar man i regel antingen medelvärde och median samt tillhörande spridning mått standardavvikelse eller kvartilavstånd. För kategorivariabler redovisas oftast antal och procent.
+
+**Exempel 3 forts.**
+
+*Vi vill nu i vårt randomiserade försök studera om det finns en skillnad i stickprovet mellan behandlingsgrupperna. För att undersöka detta skapar vi en tabell. Tabellen kan man sedan exportera till html-format för vidare import till ett ordbehandlingsprogram.*
+
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment='', results='asis'}
+# Ålder
+alder_balans <- c(mean(df$alder[df$trt == 1]), sd(df$alder[df$trt == 1]),         
+                  mean(df$alder[df$trt == 0]), sd(df$alder[df$trt == 0]))
+# Kön
+kon_balans_kvinna <- c(table(df$kon[df$trt == 1])[1],  100*prop.table(table(df$kon[df$trt == 1]))[1], 
+                       table(df$kon[df$trt == 0])[1],  100*prop.table(table(df$kon[df$trt == 0]))[1])
+kon_balans_man <- c(table(df$kon[df$trt == 1])[2],  100*prop.table(table(df$kon[df$trt == 1]))[2], 
+                       table(df$kon[df$trt == 0])[2],  100*prop.table(table(df$kon[df$trt == 0]))[2])
+# Utbildning
+utbildning_balans_lag <-   c(table(df$utbildning[df$trt == 1])[1],  100*prop.table(table(df$utbildning[df$trt == 1]))[1], 
+                             table(df$utbildning[df$trt == 0])[1],  100*prop.table(table(df$utbildning[df$trt == 0]))[1])
+utbildning_balans_mellan <-   c(table(df$utbildning[df$trt == 1])[2],  100*prop.table(table(df$utbildning[df$trt == 1]))[2], 
+                                table(df$utbildning[df$trt == 0])[2],  100*prop.table(table(df$utbildning[df$trt == 0]))[2])
+utbildning_balans_hog <-   c(table(df$utbildning[df$trt == 1])[3],  100*prop.table(table(df$utbildning[df$trt == 1]))[3], 
+                                table(df$utbildning[df$trt == 0])[3],  100*prop.table(table(df$utbildning[df$trt == 0]))[3])
+# Antal i behandlingsgrupper samt NA eftersom vi har fyra kolumner.
+n <- c(n_t,NA,n_c,NA)
+
+# Sammanfoga vektorerna och ange sedan kolumnnamn och radnanmn
+Tabell1 <- rbind(n,
+                 alder_balans,
+                 kon_balans_kvinna,
+                 kon_balans_man,
+                 utbildning_balans_lag,
+                 utbildning_balans_mellan,
+                 utbildning_balans_hog)
+colnames(Tabell1) <- c("Behandlingsgrupp", "", "Kontrollgrupp", "")
+rownames(Tabell1) <- c("n",
+                      "Ålder (medelvärde (sd))", 
+                      "Kön: Kvinna (antal (%))", 
+                      "Kön: Man (antal (%))", 
+                      "Utbildning: låg (antal (%))", 
+                      "Utbildning: mellan (antal (%))", 
+                      "Utbildning: hög (antal (%))")
+# Exportera tabellen till html. Digits anger antal decimaler i respektive kolumna
+library("xtable")
+print(xtable(Tabell1, digits = c(0,1,1,1,1)), type = "html")
+```
+
+
+**Exempel 4**
+
+*Vi använder National Supported Work Demonstration project, som är att arbetsstödsprogram för långtidsarbetslösa som riktade sig till fyra grupper: tidigare dömda för brott, tidigare narkomaner, kvinnor som under en lång tid fått ekonomiskt bistånd samt avhoppare från skola. Programmet pågick i 12-18 månader på 15 ställen i USA. 6600 invivider allokerades slumpmässigt till antingen deltagande i arbetsstödsprogram eller till en kontrollgrupp. Vi har här ett urval av originaldata bestående av 722 individer. Variablerna är*
+
++ treat: 1 jobbsupport, 0 ingen support
++ age: Ålder år
++ ed: Utbildningsår 
++ black: 1 afro-amerikan, 0 annars.
++ hisp: 1 hispanic, 0 annars.
++ married: 1 gift, 0 annars
++ nodel: 1 collegeexamen, 0 annars.
++ re75: reel inkomst 1975 (efter randomiseringen och start av programmet)
++ re78: reel inkomst 1978 (huvudutfallet)
+
+*Vi skapar nu en Tabell 1 för att studera om randomiseringen har fungerat.*
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment='', results = 'asis'} 
+ library("ATE")
+ data(nsw)
+ alder_balans <- c(mean(nsw$age[nsw$treat == 1]), sd(nsw$age[nsw$treat == 1]), 
+                 mean(nsw$age[nsw$treat == 0]), sd(nsw$age[nsw$treat == 0]))
+ utb_balans <- c(mean(nsw$ed[nsw$treat == 1]), sd(nsw$ed[nsw$treat == 1]), 
+                 mean(nsw$ed[nsw$treat == 0]), sd(nsw$ed[nsw$treat == 0]))
+ etnicitet_balans_black<- c(table(nsw$black[nsw$treat == 1])[1],  100*prop.table(table(nsw$black[nsw$treat == 1]))[1], 
+                            table(nsw$black[nsw$treat == 0])[1],  100*prop.table(table(nsw$black[nsw$treat == 0]))[1])
+ etnicitet_balans_hisp <- c(table(nsw$hisp[nsw$treat == 1])[1],  100*prop.table(table(nsw$hisp[nsw$treat == 1]))[1], 
+                            table(nsw$hisp[nsw$treat == 0])[1],  100*prop.table(table(nsw$hisp[nsw$treat == 0]))[1])
+ civilstand_balans_gift<- c(table(nsw$married[nsw$treat == 1])[1],  100*prop.table(table(nsw$married[nsw$treat == 1]))[1],                                      table(nsw$married[nsw$treat == 0])[1],  100*prop.table(table(nsw$married[nsw$treat == 0]))[1])
+ examen_balans_nodeg <- c(table(nsw$nodeg[nsw$treat == 1])[1],  100*prop.table(table(nsw$nodeg[nsw$treat == 1]))[1], 
+                            table(nsw$nodeg[nsw$treat == 0])[1],  100*prop.table(table(nsw$nodeg[nsw$treat == 0]))[1])
+ n_t <- sum(nsw$treat == 1)
+ n_c <- sum(nsw$treat == 0)
+ n <- c(n_t, NA, n_c, NA)
+ 
+ # Sammanfoga vektorerna och ange sedan kolumnnamn och radnanmn
+Tabell1 <- rbind(n,
+                 alder_balans,
+                 utb_balans,
+                 etnicitet_balans_black,
+                 etnicitet_balans_hisp,
+                 civilstand_balans_gift,
+                 examen_balans_nodeg)
+colnames(Tabell1) <- c("Behandlingsgrupp", "", "Kontrollgrupp", "")
+rownames(Tabell1) <- c("n",
+                      "Ålder (medelvärde (sd))", 
+                      "Utbildningsår: (medelvärde (sd))", 
+                      "Etnicitet: Afro-amerikan (antal (%))", 
+                      "Etnicitet: Hispanic (antal (%))",
+                      "Civilstånd: Gift (medelvärde (sd))",
+                      "Examen: Ingen examen (antal (%))")
+# Exportera tabellen till html. Digits anger antal decimaler i respektive kolumna
+library("xtable")
+print(xtable(Tabell1, digits = c(0,1,1,1,1)), type = "html")
+``` 
+
+För att få tabellerna estetiskt tilltalande i en rapport är det enklare för nybörjaren att modifiera dem i ordbehandlingsprogrammet när rapport närmar sig att bli färdig. Nedan finns ett exempel på hur en sådan tabell kan se ut.
+
+```{r, echo = FALSE, out.width = "65%", dpi = 120}
+knitr::include_graphics("docs/images/baslinjensw.png")
+```
+
+Det bör avslutningsvis nämnas att det finns paket i R som skapar tabeller som jämför baslinjemätningar i behandlingsgrupp och i kontrollgrupp. 
+
+
+
+
+### Analys 
+
+
 Anta att målet är att jämföra två stycken populationer med avseende på medelvärden. I populationen har vi
  $$\delta = \mu_t - \mu_c$$
+
 För att skatta denna skillnad använder vi
 $$\hat{\delta} = \bar{y}_t - \bar{y}_c$$
 där $\bar{y}_t = \dfrac{1}{n_t}\sum_{i=1}^{n_t} y_{t,i}$ och $\bar{y}_c = \dfrac{1}{n_c}\sum_{i=1}^{n_c} y_{c,i}$.
@@ -15,10 +195,9 @@ $$\hat{V}(\hat{\delta}) = \dfrac{s^2_t}{n_t} +  \dfrac{s^2_c}{n_c}$$
 $\hat{\delta}$ är approximativt normalfördelad i stora stickprov. 
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment=''} 
-
-library("Matching")
- data(lalonde)
- df <- lalonde
+ library("ATE")
+ data(nsw)
+ df <- nsw
  n_t <- sum(df$treat == 1)
  n_c <- sum(df$treat == 0)
  ybar_t <- mean(df$re78[df$treat == 1])
@@ -31,7 +210,6 @@ library("Matching")
  KI_delta <- c(deltahat - 1.96*sqrt(vhatdeltahat), deltahat + 1.96*sqrt(vhatdeltahat))
  zobs <- deltahat/sqrt(vhatdeltahat)
  p_value <- 2*(1 -  pnorm(abs(zobs)))
- 
  deltahat
  se_hatdelta
  KI_delta
@@ -50,6 +228,10 @@ Lika eller olika varianser?
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, fig.height = 12, fig.width = 4, comment=''} 
 t.test(df$re78 ~ df$treat, var.equal = TRUE)
 ```
+
+
+
+
 
 
 ## Stratifiering
@@ -114,9 +296,6 @@ $$\hat{V}\left(\hat{\delta}_{st}\right) = \sum_{g=1}^G\left(\dfrac{n_g}{n}\right
  vhatdeltahat/vhatdeltahat_st
 ```
  
-
-## Tabell 1 vid randomiserade försök
-
 
 
 
@@ -300,7 +479,7 @@ abline(h=c(Fobs))
 
 
  
-Det finns även inbygg funktion i R för att beräkna
+Det finns även inbyggd funktion i R för att beräkna.
 
  
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE, prompt=FALSE, comment='',  fig.height = 4, fig.width = 5}  
@@ -351,10 +530,15 @@ I praktiken om experimenten är någotlunda stora, ingen skillnad.
 + En tydlig åtskillnad mellan block och strata.
 + Flera mätningar per individ.
 + Icke-parametriskt alternativ
++ Icke-normalitet
 
 
 
+# Referenser
 
+Adman, P., & Taghizadeh, J. L. (2020) Offentliga tjänstemäns bemötande av minoritetsklienter.  IFAU Rapport Serie.
+
+Selin, Lotta, Ulla-Britt Wennerholm, Maria Jonsson, Anna Dencker, Gunnar Wallin, Eva Wiberg-Itzel, Elisabeth Almström, Max Petzold, and Marie Berg (2019). High-dose versus low-dose of oxytocin for labour augmentation: a randomised controlled trial. Women and Birth, 32(4), 356-363
 
 
 

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 2 Att börja använda R | Tillämpad statistik med R</title>
+  <meta name="description" content="Kapitel 2 Att börja använda R | Tillämpad statistik med R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 2 Att börja använda R | Tillämpad statistik med R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 2 Att börja använda R | Tillämpad statistik med R" />
+  
+  
+  
+
+<meta name="author" content="Ronnie Pingel och Valentin Zulj" />
+
+
+<meta name="date" content="2020-12-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="data-objekt-och-funktioner.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#om-statistisk-programmering-med-r"><i class="fa fa-check"></i><b>1.1</b> Om statistisk programmering med R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#allmänna-tips-om-r-på-kursen"><i class="fa fa-check"></i><b>1.2</b> Allmänna tips om R på kursen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#sammanfattning"><i class="fa fa-check"></i><b>1.3</b> Sammanfattning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referenser"><i class="fa fa-check"></i><b>1.4</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html"><i class="fa fa-check"></i><b>2</b> Att börja använda R</a><ul>
+<li class="chapter" data-level="2.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-och-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installation av R och RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-macos"><i class="fa fa-check"></i><b>2.1.1</b> Installation av R på MacOS</a></li>
+<li class="chapter" data-level="2.1.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-r-på-windows"><i class="fa fa-check"></i><b>2.1.2</b> Installation av R på Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#installation-av-rstudio"><i class="fa fa-check"></i><b>2.2</b> Installation av RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#första-sessionen"><i class="fa fa-check"></i><b>2.3</b> Första sessionen</a></li>
+<li class="chapter" data-level="2.4" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#paket"><i class="fa fa-check"></i><b>2.4</b> Paket</a></li>
+<li class="chapter" data-level="2.5" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#sammanfattning-1"><i class="fa fa-check"></i><b>2.5</b> Sammanfattning</a></li>
+<li class="chapter" data-level="2.6" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övningar"><i class="fa fa-check"></i><b>2.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.1"><i class="fa fa-check"></i>Övning 2.1</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.2"><i class="fa fa-check"></i>Övning 2.2</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.3"><i class="fa fa-check"></i>Övning 2.3</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.4"><i class="fa fa-check"></i>Övning 2.4</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.5"><i class="fa fa-check"></i>Övning 2.5</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.6"><i class="fa fa-check"></i>Övning 2.6</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.7"><i class="fa fa-check"></i>Övning 2.7</a></li>
+<li class="chapter" data-level="" data-path="att-börja-använda-r.html"><a href="att-börja-använda-r.html#övning-2.8"><i class="fa fa-check"></i>Övning 2.8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html"><i class="fa fa-check"></i><b>3</b> Data, objekt och funktioner</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-och-objekt"><i class="fa fa-check"></i><b>3.1</b> Data och objekt</a></li>
+<li class="chapter" data-level="3.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer"><i class="fa fa-check"></i><b>3.2</b> Vektorer</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-indexering"><i class="fa fa-check"></i><b>3.2.1</b> Vektorer och indexering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#vektorer-och-logiska-operatorer"><i class="fa fa-check"></i><b>3.2.2</b> Vektorer och logiska operatorer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#matriser"><i class="fa fa-check"></i><b>3.3</b> Matriser</a></li>
+<li class="chapter" data-level="3.4" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+<li class="chapter" data-level="3.5" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#funktioner"><i class="fa fa-check"></i><b>3.5</b> Funktioner</a></li>
+<li class="chapter" data-level="3.6" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#sammanfattning-2"><i class="fa fa-check"></i><b>3.6</b> Sammanfattning</a></li>
+<li class="chapter" data-level="3.7" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övningar-1"><i class="fa fa-check"></i><b>3.7</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.1"><i class="fa fa-check"></i>Övning 3.1</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.2"><i class="fa fa-check"></i>Övning 3.2</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.3"><i class="fa fa-check"></i>Övning 3.3</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.4"><i class="fa fa-check"></i>Övning 3.4</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.5"><i class="fa fa-check"></i>Övning 3.5</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.6"><i class="fa fa-check"></i>Övning 3.6</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.7"><i class="fa fa-check"></i>Övning 3.7</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.8"><i class="fa fa-check"></i>Övning 3.8</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.9"><i class="fa fa-check"></i>Övning 3.9</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.10"><i class="fa fa-check"></i>Övning 3.10</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.11"><i class="fa fa-check"></i>Övning 3.11</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.12"><i class="fa fa-check"></i>Övning 3.12</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.13"><i class="fa fa-check"></i>Övning 3.13</a></li>
+<li class="chapter" data-level="" data-path="data-objekt-och-funktioner.html"><a href="data-objekt-och-funktioner.html#övning-3.14"><i class="fa fa-check"></i>Övning 3.14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html"><i class="fa fa-check"></i><b>4</b> Läsa in och spara data</a><ul>
+<li class="chapter" data-level="4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#principer-för-organiserade-datamaterial"><i class="fa fa-check"></i><b>4.1</b> Principer för organiserade datamaterial</a></li>
+<li class="chapter" data-level="4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#working-directory"><i class="fa fa-check"></i><b>4.2</b> Working directory</a></li>
+<li class="chapter" data-level="4.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-kod"><i class="fa fa-check"></i><b>4.3</b> Läsa in datamaterial med hjälp av kod</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#text--och-csv-filer"><i class="fa fa-check"></i><b>4.3.1</b> Text- och CSV-filer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#excel-filer"><i class="fa fa-check"></i><b>4.3.2</b> Excel-filer</a></li>
+<li class="chapter" data-level="4.3.3" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övriga-format"><i class="fa fa-check"></i><b>4.3.3</b> Övriga format</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-datamaterial-med-hjälp-av-menyerna-i-rstudio"><i class="fa fa-check"></i><b>4.4</b> Läsa in datamaterial med hjälp av menyerna i RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-från-working-directory"><i class="fa fa-check"></i><b>4.4.1</b> Läsa in data från working directory</a></li>
+<li class="chapter" data-level="4.4.2" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#läsa-in-data-med-import-dataset"><i class="fa fa-check"></i><b>4.4.2</b> Läsa in data med “Import Dataset”</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#spara-datamaterial-med-hjälp-av-r"><i class="fa fa-check"></i><b>4.5</b> Spara datamaterial med hjälp av R</a></li>
+<li class="chapter" data-level="4.6" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övningar-2"><i class="fa fa-check"></i><b>4.6</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.1"><i class="fa fa-check"></i>Övning 4.1</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.2"><i class="fa fa-check"></i>Övning 4.2</a></li>
+<li class="chapter" data-level="" data-path="läsa-in-och-spara-data.html"><a href="läsa-in-och-spara-data.html#övning-4.3"><i class="fa fa-check"></i>Övning 4.3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="kategorivariabler.html"><a href="kategorivariabler.html"><i class="fa fa-check"></i><b>5</b> Kategorivariabler</a><ul>
+<li class="chapter" data-level="5.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#en-binär-variabel"><i class="fa fa-check"></i><b>5.1</b> En binär variabel</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kodning"><i class="fa fa-check"></i><b>5.1.1</b> Kodning</a></li>
+<li class="chapter" data-level="5.1.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer"><i class="fa fa-check"></i><b>5.1.2</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens"><i class="fa fa-check"></i><b>5.1.3</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#två-binära-variabler"><i class="fa fa-check"></i><b>5.2</b> Två binära variabler</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller"><i class="fa fa-check"></i><b>5.2.1</b> Tabeller</a></li>
+<li class="chapter" data-level="5.2.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kvantifiering-av-samband"><i class="fa fa-check"></i><b>5.2.2</b> Kvantifiering av samband</a></li>
+<li class="chapter" data-level="5.2.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#figurer"><i class="fa fa-check"></i><b>5.2.3</b> Figurer</a></li>
+<li class="chapter" data-level="5.2.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-1"><i class="fa fa-check"></i><b>5.2.4</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tre-kategorier-eller-fler"><i class="fa fa-check"></i><b>5.3</b> Tre kategorier eller fler</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#kodning-1"><i class="fa fa-check"></i><b>5.3.1</b> Kodning</a></li>
+<li class="chapter" data-level="5.3.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer-1"><i class="fa fa-check"></i><b>5.3.2</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.3.3" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-2"><i class="fa fa-check"></i><b>5.3.3</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="kategorivariabler.html"><a href="kategorivariabler.html#samband-mellan-kategorivariabler"><i class="fa fa-check"></i><b>5.4</b> Samband mellan kategorivariabler</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="kategorivariabler.html"><a href="kategorivariabler.html#tabeller-och-figurer-2"><i class="fa fa-check"></i><b>5.4.1</b> Tabeller och figurer</a></li>
+<li class="chapter" data-level="5.4.2" data-path="kategorivariabler.html"><a href="kategorivariabler.html#inferens-3"><i class="fa fa-check"></i><b>5.4.2</b> Inferens</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övningar-3"><i class="fa fa-check"></i><b>5.5</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.1"><i class="fa fa-check"></i>Övning 5.1</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.2"><i class="fa fa-check"></i>Övning 5.2</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.3"><i class="fa fa-check"></i>Övning 5.3</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.4"><i class="fa fa-check"></i>Övning 5.4</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.5"><i class="fa fa-check"></i>Övning 5.5</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.6"><i class="fa fa-check"></i>Övning 5.6</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.7"><i class="fa fa-check"></i>Övning 5.7</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.8"><i class="fa fa-check"></i>Övning 5.8</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.9"><i class="fa fa-check"></i>Övning 5.9</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.10"><i class="fa fa-check"></i>Övning 5.10</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.11"><i class="fa fa-check"></i>Övning 5.11</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.12"><i class="fa fa-check"></i>Övning 5.12</a></li>
+<li class="chapter" data-level="" data-path="kategorivariabler.html"><a href="kategorivariabler.html#övning-5.13"><i class="fa fa-check"></i>Övning 5.13</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="kategorivariabler.html"><a href="kategorivariabler.html#referenser-1"><i class="fa fa-check"></i><b>5.6</b> Referenser</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="kvantitativa-variabler-kommer-ej-uppdateras-ht20.html"><a href="kvantitativa-variabler-kommer-ej-uppdateras-ht20.html"><i class="fa fa-check"></i><b>6</b> Kvantitativa variabler (Kommer ej uppdateras HT20)</a></li>
+<li class="chapter" data-level="7" data-path="tabeller-1.html"><a href="tabeller-1.html"><i class="fa fa-check"></i><b>7</b> Tabeller</a><ul>
+<li class="chapter" data-level="7.1" data-path="tabeller-1.html"><a href="tabeller-1.html#exportera-tabeller-till-html"><i class="fa fa-check"></i><b>7.1</b> Exportera tabeller till html</a></li>
+<li class="chapter" data-level="7.2" data-path="tabeller-1.html"><a href="tabeller-1.html#några-vanliga-tabeller"><i class="fa fa-check"></i><b>7.2</b> Några vanliga tabeller</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="tabeller-1.html"><a href="tabeller-1.html#tabell-för-att-beskriva-urvalet"><i class="fa fa-check"></i><b>7.2.1</b> Tabell för att beskriva urvalet</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tabeller-1.html"><a href="tabeller-1.html#principer-för-tabeller"><i class="fa fa-check"></i><b>7.3</b> Principer för tabeller</a></li>
+<li class="chapter" data-level="7.4" data-path="tabeller-1.html"><a href="tabeller-1.html#paket-för-tabeller"><i class="fa fa-check"></i><b>7.4</b> Paket för tabeller</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figurer-1.html"><a href="figurer-1.html"><i class="fa fa-check"></i><b>8</b> Figurer</a><ul>
+<li class="chapter" data-level="8.1" data-path="figurer-1.html"><a href="figurer-1.html#grundläggande-figurhantering"><i class="fa fa-check"></i><b>8.1</b> Grundläggande figurhantering</a></li>
+<li class="chapter" data-level="8.2" data-path="figurer-1.html"><a href="figurer-1.html#färger-och-figurer"><i class="fa fa-check"></i><b>8.2</b> Färger och figurer</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="figurer-1.html"><a href="figurer-1.html#presentation-av-aggregerade-data"><i class="fa fa-check"></i><b>8.2.1</b> Presentation av aggregerade data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="figurer-1.html"><a href="figurer-1.html#cirkeldigram"><i class="fa fa-check"></i><b>8.3</b> Cirkeldigram</a></li>
+<li class="chapter" data-level="8.4" data-path="figurer-1.html"><a href="figurer-1.html#figurer-för-fördelningar"><i class="fa fa-check"></i><b>8.4</b> Figurer för fördelningar</a></li>
+<li class="chapter" data-level="8.5" data-path="figurer-1.html"><a href="figurer-1.html#lådagram"><i class="fa fa-check"></i><b>8.5</b> Lådagram</a></li>
+<li class="chapter" data-level="8.6" data-path="figurer-1.html"><a href="figurer-1.html#spridningsdiagram"><i class="fa fa-check"></i><b>8.6</b> Spridningsdiagram</a></li>
+<li class="chapter" data-level="8.7" data-path="figurer-1.html"><a href="figurer-1.html#exportera-figurer"><i class="fa fa-check"></i><b>8.7</b> Exportera figurer</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html"><i class="fa fa-check"></i><b>9</b> Urvalsmetoder</a><ul>
+<li class="chapter" data-level="9.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#obundet-slumpmässigt-urval-utan-återläggning"><i class="fa fa-check"></i><b>9.1</b> Obundet slumpmässigt urval utan återläggning</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsmedelvärdet-mu"><i class="fa fa-check"></i><b>9.1.1</b> Inferens för populationsmedelvärdet, <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.1.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationsandelen-p"><i class="fa fa-check"></i><b>9.1.2</b> Inferens för populationsandelen, <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-populationstotalen-tau"><i class="fa fa-check"></i><b>9.1.3</b> Inferens för populationstotalen, <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#beräkningar-av-stickprovstorlek"><i class="fa fa-check"></i><b>9.1.4</b> Beräkningar av stickprovstorlek</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#stratifierat-urval"><i class="fa fa-check"></i><b>9.2</b> Stratifierat urval</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu"><i class="fa fa-check"></i><b>9.2.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p"><i class="fa fa-check"></i><b>9.2.2</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau"><i class="fa fa-check"></i><b>9.2.3</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#allokering-av-n"><i class="fa fa-check"></i><b>9.2.4</b> Allokering av <span class="math inline">\(n\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#gruppurval"><i class="fa fa-check"></i><b>9.3</b> Gruppurval</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-mu-1"><i class="fa fa-check"></i><b>9.3.1</b> Inferens för <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="9.3.2" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-tau-1"><i class="fa fa-check"></i><b>9.3.2</b> Inferens för <span class="math inline">\(\tau\)</span></a></li>
+<li class="chapter" data-level="9.3.3" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#inferens-för-p-1"><i class="fa fa-check"></i><b>9.3.3</b> Inferens för <span class="math inline">\(p\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#efterstratifiering"><i class="fa fa-check"></i><b>9.4</b> Efterstratifiering</a></li>
+<li class="chapter" data-level="9.5" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övningar-4"><i class="fa fa-check"></i><b>9.5</b> Övningar</a><ul>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.1"><i class="fa fa-check"></i>Övning 7.1</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.2"><i class="fa fa-check"></i>Övning 7.2</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.3"><i class="fa fa-check"></i>Övning 7.3</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.4"><i class="fa fa-check"></i>Övning 7.4</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.5"><i class="fa fa-check"></i>Övning 7.5</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.6"><i class="fa fa-check"></i>Övning 7.6</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.7"><i class="fa fa-check"></i>Övning 7.7</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.8"><i class="fa fa-check"></i>Övning 7.8</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.9"><i class="fa fa-check"></i>Övning 7.9</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.10"><i class="fa fa-check"></i>Övning 7.10</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.11"><i class="fa fa-check"></i>Övning 7.11</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.12"><i class="fa fa-check"></i>Övning 7.12</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.13"><i class="fa fa-check"></i>Övning 7.13</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.14"><i class="fa fa-check"></i>Övning 7.14</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.15"><i class="fa fa-check"></i>Övning 7.15</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.16-1"><i class="fa fa-check"></i>Övning 7.16</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.17"><i class="fa fa-check"></i>Övning 7.17</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.18"><i class="fa fa-check"></i>Övning 7.18</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.19"><i class="fa fa-check"></i>Övning 7.19</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.20"><i class="fa fa-check"></i>Övning 7.20</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.21"><i class="fa fa-check"></i>Övning 7.21</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.22"><i class="fa fa-check"></i>Övning 7.22</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.23"><i class="fa fa-check"></i>Övning 7.23</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.24"><i class="fa fa-check"></i>Övning 7.24</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.25"><i class="fa fa-check"></i>Övning 7.25</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.26"><i class="fa fa-check"></i>Övning 7.26</a></li>
+<li class="chapter" data-level="" data-path="urvalsmetoder.html"><a href="urvalsmetoder.html#övning-7.27"><i class="fa fa-check"></i>Övning 7.27</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="experiment.html"><a href="experiment.html"><i class="fa fa-check"></i><b>10</b> Experiment</a><ul>
+<li class="chapter" data-level="10.1" data-path="experiment.html"><a href="experiment.html#det-klassiska-experimentet"><i class="fa fa-check"></i><b>10.1</b> Det klassiska experimentet</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="experiment.html"><a href="experiment.html#randomiseringen"><i class="fa fa-check"></i><b>10.1.1</b> Randomiseringen</a></li>
+<li class="chapter" data-level="10.1.2" data-path="experiment.html"><a href="experiment.html#balans-av-baslinjemätningar"><i class="fa fa-check"></i><b>10.1.2</b> Balans av baslinjemätningar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="experiment.html"><a href="experiment.html#analys"><i class="fa fa-check"></i><b>10.1.3</b> Analys</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="experiment.html"><a href="experiment.html#stratifiering"><i class="fa fa-check"></i><b>10.2</b> Stratifiering</a></li>
+<li class="chapter" data-level="10.3" data-path="experiment.html"><a href="experiment.html#anova"><i class="fa fa-check"></i><b>10.3</b> ANOVA</a></li>
+<li class="chapter" data-level="10.4" data-path="experiment.html"><a href="experiment.html#jämförelse-med-t-test"><i class="fa fa-check"></i><b>10.4</b> Jämförelse med t-test</a></li>
+<li class="chapter" data-level="10.5" data-path="experiment.html"><a href="experiment.html#experimentella-designer"><i class="fa fa-check"></i><b>10.5</b> Experimentella designer</a></li>
+<li class="chapter" data-level="10.6" data-path="experiment.html"><a href="experiment.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.6</b> Aspekter som inte ingår i detta block</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="referenser-2.html"><a href="referenser-2.html"><i class="fa fa-check"></i><b>11</b> Referenser</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tillämpad statistik med R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="att-börja-använda-r" class="section level1">
+<h1><span class="header-section-number">Kapitel 2</span> Att börja använda R</h1>
+<p>I detta kapitel ska du inledningsvis installera R samt ett gränssnitt som kallas för RStudio. RStudio kan liknas vid en avancerad textredigerare som underlättar arbetet med R. Det går visserligen alldeles utmärkt att använda R som det är, men RStudio förenklar i många avseenden programmeringen.</p>
+<div id="installation-av-r-och-rstudio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Installation av R och RStudio</h2>
+<p>Vid programmering är det mycket viktigt att noga följa instruktioner. Du ska nu <strong>först</strong> installera R.
+<strong>Därefter</strong> ska du installera RStudio.</p>
+<div id="installation-av-r-på-macos" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Installation av R på MacOS</h3>
+<ol style="list-style-type: decimal">
+<li>Ladda ner den senaste versionen från <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>.</li>
+</ol>
+<p>Notera att versionen
+måste passa för ditt MacOS. Leta upp den version som passar till ditt MacOS
+om du har en äldre Mac.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Ladda ner pkg-filen under <em>Latest release</em>. Öppna den nedladdade .pkg-filen och installera R.</li>
+</ol>
+</div>
+<div id="installation-av-r-på-windows" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Installation av R på Windows</h3>
+<ol style="list-style-type: decimal">
+<li><p>Gå till hemsidan <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>.</p></li>
+<li><p>Klicka på ‘’Download R (versionnummer) for Windows’’. Eventuellt fungerar inte den senaste versionen ditt Window om du har en äldre Windows-versions. Prova då en tidigare version av R. Du kanske även upptäcker att senaste versionnummer på Rs hemsida inte är samma som används i detta exempel eftersom det kan ha kommit senare versioner. För din del saknar just detta praktisk betydelse.</p></li>
+</ol>
+<p><img src="docs/images/installR.png" width="70%" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Dubbelklicka på ‘’R installer’’ för att starta installationen.</p></li>
+<li><p>Välj språk och tryck <strong>OK</strong>.</p></li>
+</ol>
+<p><img src="docs/images/languageR.png" width="70%" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Välj <strong>Next</strong>.</li>
+</ol>
+<p><img src="docs/images/licenseR.png" width="70%" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Välj sökväg för din installation. Låt default vara. Klicka <strong>Next</strong>.</li>
+</ol>
+<p><img src="docs/images/destinationR.png" width="70%" /></p>
+<ol start="7" style="list-style-type: decimal">
+<li>För att förenkla, välj alla komponenter för installation. Klicka <strong>Next</strong>.</li>
+</ol>
+<p><img src="docs/images/componentsR.png" width="70%" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Klicka <strong>No (accept defaults)</strong>.</li>
+</ol>
+<p><img src="docs/images/customizeR.png" width="80%" /></p>
+<ol start="9" style="list-style-type: decimal">
+<li>För att lägga till R i Startmenyn, klicka bort kryssrutan nedan. Klicka <strong>Next</strong>.</li>
+</ol>
+<p><img src="docs/images/startmenuR.png" width="70%" /></p>
+<ol start="10" style="list-style-type: decimal">
+<li>Välj om du vill ha genvägar. Klicka <strong>Next</strong>.</li>
+</ol>
+<p><img src="docs/images/tasksR.png" width="80%" /></p>
+<ol start="11" style="list-style-type: decimal">
+<li>Installation börjar! Starta R när den är klar.</li>
+</ol>
+<p><img src="docs/images/installingR.png" width="70%" /></p>
+<ol start="12" style="list-style-type: decimal">
+<li>Starta R för första gången.
+På Windows ser det ut så här.</li>
+</ol>
+<p><img src="docs/images/firstR.PNG" width="70%" /></p>
+<p><img src="docs/images/firstR2.PNG" width="70%" /></p>
+</div>
+</div>
+<div id="installation-av-rstudio" class="section level2">
+<h2><span class="header-section-number">2.2</span> Installation av RStudio</h2>
+<p>Av olika anledningar väljer vi att inte arbeta i R Editor utan vi väljer RStudio. Stäng därför ner R.</p>
+<ol style="list-style-type: decimal">
+<li>Gå till <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a>}.
+2 Välj RStudio Desktop Free.
+3 Välj sedan den version stämmer överens med ditt operativsystem.</li>
+<li>Installera (på Windows) genom att klicka <strong>Next-&gt;Next-&gt;Install</strong></li>
+<li>Starta RStudio.</li>
+</ol>
+<p>Du ska nu fått upp nedanstående. Vi ska i detalj beskriva vad de olika panelerna till höger kommer vi återkomma till när det är aktuellt.</p>
+<p><img src="docs/images/Rstudio1.png" width="80%" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Avsluta RStudio.</li>
+</ol>
+<p><img src="docs/images/tip.png" width="5%" /></p>
+<p>Om du mot förmodan inte skulle lyckas installera R och RStudio, så finns möjligheten att koppla upp sig till Statistiska institutionens datorer via fjärrskrivbordet och på så sätt få tillgång nödvändig programvara.</p>
+</div>
+<div id="första-sessionen" class="section level2">
+<h2><span class="header-section-number">2.3</span> Första sessionen</h2>
+<p>I denna session ska du bekanta dig med R och prova använda R som en miniräknare. Starta RStudio. Till vänster ska du ha en panel som heter <strong>Console</strong>. I denna panel redovisas resultat. Vad övriga paneler gör kommer vi återkomma till när det blir aktuellt. Välj i menyn <strong>File &gt; New File &gt; R Script</strong>. Ett nytt fönster (Untitled1) öppnas ovanför <strong>Console</strong></p>
+<p><img src="docs/images/Rstudio2.PNG" width="80%" /></p>
+<p>Detta är ett script-fönster eller en <strong>editor</strong>. I editorn skrivs kommandon in som sedan kan utvärderas av R. Resultaten redovisas i <strong>Console</strong>. Ha för vana att <strong>aldrig</strong> skriva kod direkt i R Console. I princip är en script-fil inte annorlunda än en vanlig textfil, förutom att filen har tillägget <em>.R</em>. Spara script med jämna mellanrum eftersom det är önskvärt att inte förlora sin kod ifall något oförutsett händer. Skapa därför en mapp med namnet <strong>A5Rkod</strong> på din dator. Välj <strong>File &gt; Save As…</strong> och spara i <strong>A5Rkod</strong> scriptet <strong>Untitled</strong> med namnet <strong>myfirstscript.R</strong>.</p>
+<p>Efter att vi har skrivit koden i editorn måste vi meddela R att koden ska utvärderas. Kod i scriptfilen körs (exekveras) på tre olika sätt:</p>
+<ol style="list-style-type: decimal">
+<li>En rad: Raden där markören är placerad körs med Ctrl+Enter (command + Enter på Mac) eller Run ovanför scriptet.</li>
+<li>Flera rader: Markera kodavsnittet och tryck Ctrl+Enter (command + Enter på Mac) eller Run.</li>
+<li>Hela scriptet: Ctrl+Shift+Enter</li>
+</ol>
+<p>Det finns några viktiga punkter att ha i åtanke:</p>
+<ul>
+<li>Om avsikten är att köra kod som sträcker
+sig över flera rader måste man avsluta raden med räknetecken <span class="math inline">\((+,-,*,/)\)</span>, kommatecken <span class="math inline">\(,\)</span> eller vänsterparentes <span class="math inline">\((\)</span>.</li>
+<li>En rad inleds aldrig med räknetecken eller kommatecken.</li>
+<li>En rad som inleds med <strong>#</strong> exekveras inte. Tecknet <strong>#</strong> används för att kommentera koden, vilket viktigt eftersom vi då i text kan förklara vad koden gör.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Skriv in nedanstående script till <strong>myfirstscript.R</strong>. Spara.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># I detta script använder jag R som miniräknare samt </span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># exekverar kod från scriptet.</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="dv">2-7</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Använd R som miniräknare genom att prova alla <strong>tre</strong> sätt att köra kod. Det är nödvändigt att bekanta sig med hur kod körs för att bli bekväm med att simultant arbeta i script-fönstret och se resultat i Console. Återigen, skriv <strong>aldrig</strong> i Console.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-2" title="2">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb2-4" title="4">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="dv">2-7</span></a>
+<a class="sourceLine" id="cb2-6" title="6">[<span class="dv">1</span>] <span class="dv">-5</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb2-8" title="8">[<span class="dv">1</span>] <span class="dv">6</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-10" title="10">[<span class="dv">1</span>] <span class="fl">0.8</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-12" title="12">[<span class="dv">1</span>] <span class="dv">9</span></a></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Matematiska funktioner, t ex kvadratroten, finns implementerade i R. Skriv <code>sqrt(6)</code> i scriptet och spara. Kör koden och erhåll följande i Console.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">sqrt</span>(<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">[<span class="dv">1</span>] <span class="fl">2.44949</span></a></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Även exponentialfunktionen <span class="math inline">\(\exp(x)\)</span> finns i R. Skriv <code>exp(3)</code> i script-filen, spara och kör.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">exp</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2">[<span class="dv">1</span>] <span class="fl">20.08554</span></a></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Konstanten <span class="math inline">\(\pi\)</span> finns i R. Skriv <code>pi</code> i script-filen, spara och kör.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">pi</a>
+<a class="sourceLine" id="cb5-2" title="2">[<span class="dv">1</span>] <span class="fl">3.141593</span></a></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Kod finns ofta på flera rader. Anta att vi önskar beräkna <span class="math inline">\(2 + 2+ 3+ 5\)</span> men att koden inte får plats på en rad utan måste delas upp på två rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Kod över 2 rader</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<p>Följande resultat ska presenteras i Console.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Kod över 2 rader</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb7-4" title="4">[<span class="dv">1</span>] <span class="dv">12</span></a></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Kod finns ofta på flera rader. Skriv in följande rader i scriptet, spara, markera bägge raderna och kör. Jämför resultatet med punkt 6!</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<p>Nu utvärderas raderna var för sig, vilket inte var avsikten med analysen.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
+<a class="sourceLine" id="cb9-2" title="2">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb9-4" title="4">[<span class="dv">1</span>] <span class="dv">8</span></a></code></pre></div>
+<p><strong>Grattis!</strong> Du har nu genomfört din första session i R. Scriptet ska se ut enligt nedan. Spara och stäng R.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Detta är mitt första R-script som heter myfirstscript.R. </span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="co"># I detta script använder jag R som miniräknare samt </span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="co"># exekverar kod från scriptet.</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="dv">2-7</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="dv">4</span><span class="op">/</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co"># Kvadratroten</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="kw">sqrt</span>(<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="co"># Exponentialfunktionen </span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="kw">exp</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co"># Pi </span></a>
+<a class="sourceLine" id="cb10-15" title="15">pi</a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="co"># Kod över 2 rader</span></a>
+<a class="sourceLine" id="cb10-17" title="17"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-18" title="18"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb10-19" title="19"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> </a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="op">+</span><span class="st">  </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+</div>
+<div id="paket" class="section level2">
+<h2><span class="header-section-number">2.4</span> Paket</h2>
+<p>En viktig styrka med R är det stora antalet tillgängliga paket utvecklade av användare. Grundinstallationen av R är nämligen tämligen begränsad vad gäller funktionalitet, men med alla paket utvidgas den statistiska verktygslådan, de grafiska möjligheterna och förmågan att hantera olika typer av data rejält. Det finns ungefär 15000 paket på “The Comprehensive R Archive Network” (CRAN) som är Rs arkiv för paket:</p>
+<p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="uri">https://cran.r-project.org/web/packages/available_packages_by_name.html</a></p>
+<p>Det finns ytterligare tusentals andra paket som dock inte genomgått samma granskning som paketen på CRAN, till exempel på github. Eftersom antalet paket är överväldigande för nybörjaren kan det vara ett stöd att känna till de vanligaste paketen. Ett förslag på en lista över viktiga paket finns här:</p>
+<p><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages" class="uri">https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages</a></p>
+<p>För att installera ett paket skriver man in paketnamnet med ett kommando alternativt använda menyn i RStudio under *Tools &gt; Install Packages**.</p>
+<p>Vi exemplifierar nu med ett paket som hjälper oss att läsa data från Excel-filer. Funktionalitet för inläsning från Excel-filer finns inte i basversionen av R, därför är detta paket nödvändigt om data är sparat i en Excelfil.</p>
+<p>Vi installerar paketet <strong>readxl</strong> genom att i Console skriva in <code>install.packages("readxl")</code> och trycka enter.
+Som tidigare nämnt går det även att installera paket via menyn.
+Efter installationen finns paketet sparat på din dator. R har emellertid inte ännu aktiverat det. Genom att skriva <code>library("readxl")</code> och trycka enter aktiveras paketet.
+Nu kan analyser i R utnyttja paketets funktionalitet.</p>
+<p>Observera att ett paket måste aktiveras på nytt varje gång RStudio öppnas. Dock behövs det bara installeras en enda gång.</p>
+<hr />
+</div>
+<div id="sammanfattning-1" class="section level2">
+<h2><span class="header-section-number">2.5</span> Sammanfattning</h2>
+<style>
+div.red{ background-color:#F5B7B1; border-radius: 5px; padding: 20px;}
+</style>
+<div class="red">
+<p><font size="5"> </font>
+Du ska kunna</p>
+<ul>
+<li>installera R och Rstudio och starta det utan felmeddelanden.</li>
+<li>använda R som miniräknare och använda de olika metoderna för att exekvera kod i editorn.</li>
+<li>installera ett R-paket och aktivera det.</li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="övningar" class="section level2">
+<h2><span class="header-section-number">2.6</span> Övningar</h2>
+<div id="övning-2.1" class="section level3 unnumbered">
+<h3>Övning 2.1</h3>
+<p>Du har ett stickprov betående av observationerna <span class="math inline">\(4,-2,5,6,8\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Beräkna medelvärdet.</li>
+<li>Beräkna standardavvikelsen.</li>
+<li>Beräkna variationsbredden.</li>
+<li>Beräkna det geometriska medelvärdet för de positiva värden <span class="math inline">\(4, 5, 6, 8\)</span>.</li>
+<li>Beräkna det geometriska medelvärdet för alla värden <span class="math inline">\(4, -2, 5, 6, 8\)</span>.</li>
+</ol>
+<button title="q201" type="button" onclick="if(document.getElementById(&#39;q201&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q201&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q201&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q201" style="display:none">
+<div class="alert alert-info">
+<ol style="list-style-type: lower-alpha">
+<li>Medelvärdet <span class="math inline">\(\bar{x}\)</span> beräknas i R i editorn med</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
+<p>vilket i Console ger svaret</p>
+<pre><code>## [1] 4.2</code></pre>
+<ul>
+<li>Svar: Medelvärdet är 4.2</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Standardavvikelsen <span class="math inline">\(s\)</span> beräknas i R i editorn antingen genom att direkt tillämpa formeln för stickprovets standardavvikelse</li>
+</ol>
+<p><span class="math display">\[s=\sqrt{\dfrac{\sum_{i=1}^n (x_i -\bar{x})^2}{n-1}}\]</span></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">sqrt</span>( ( ( <span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="st">      </span>( (<span class="op">-</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">      </span>( <span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="st">      </span>( <span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="st">      </span>( <span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>) )</a></code></pre></div>
+<p>eller genom att använda beräkningsformeln <span class="math display">\[s=\sqrt{\dfrac{\sum_{i=1}^{n}x_i ^2 - (\sum_{i=1}^n x_i)^2/n}{n-1}}\]</span>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>) )</a></code></pre></div>
+<p>Oavsett formel erhålls i Console svaret</p>
+<pre><code>## [1] 3.768289</code></pre>
+<ul>
+<li>Svar: Standardavvikelsen är 3.768</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Variationsbredden, dvs skillnaden mellan det största och det minsta värdet är</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="dv">8</span> <span class="op">-</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<ul>
+<li>Svar: Variationsbredden är är 10.</li>
+</ul>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Det geometriska medelvärdet <span class="math display">\[\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}\]</span> kan i R beräknas med</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</a></code></pre></div>
+<pre><code>## [1] 5.566315</code></pre>
+<ul>
+<li>Svar: Det geometriska medelvärdet är 3.95.</li>
+</ul>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Det geometriska medelvärdet <span class="math display">\[\bar{x}_g=(x_1\cdot x_2 \cdot \cdots \cdot x_n)^{1/n}\]</span> kan i R beräknas med</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">(<span class="dv">4</span>  <span class="op">*</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<ul>
+<li>Svar: Eftersom en observation är negativ blir NaN, vilket betyder ‘’Not a Number’’. Det går alltså inte att beräkna.</li>
+</ul>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.2" class="section level3 unnumbered">
+<h3>Övning 2.2</h3>
+<p>Ett slumpmässigt urval ger följande observationer <span class="math inline">\(0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1\)</span>,där <span class="math inline">\(1=Arbetslös\)</span> och <span class="math inline">\(0=Förvärvsarbetande\)</span>.
+Beräkna andelen arbetslösa i stickprovet.</p>
+<button title="q202" type="button" onclick="if(document.getElementById(&#39;q202&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q202&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q202&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q202" style="display:none">
+<div class="alert alert-info">
+<p>Andelen arbetslösa beräkna i R med</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">(<span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="dv">13</span> </a></code></pre></div>
+<pre><code>## [1] 0.3846154</code></pre>
+<ul>
+<li>Svar: Andelen arbetslösa i stickprovet är 0.38.</li>
+</ul>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.3" class="section level3 unnumbered">
+<h3>Övning 2.3</h3>
+<p>Kosumentpriset 2006-2011 är</p>
+<table>
+<caption><span id="tab:unnamed-chunk-37">Table 2.1: </span>Konsumentprisindex (KPI) 2006-2011</caption>
+<tbody>
+<tr class="odd">
+<td align="right">2006</td>
+<td align="right">284.2</td>
+</tr>
+<tr class="even">
+<td align="right">2007</td>
+<td align="right">290.5</td>
+</tr>
+<tr class="odd">
+<td align="right">2008</td>
+<td align="right">300.6</td>
+</tr>
+<tr class="even">
+<td align="right">2009</td>
+<td align="right">299.7</td>
+</tr>
+<tr class="odd">
+<td align="right">2010</td>
+<td align="right">303.5</td>
+</tr>
+<tr class="even">
+<td align="right">2011</td>
+<td align="right">311.4</td>
+</tr>
+</tbody>
+</table>
+<p>Med hur många procent har prisnivån förändrats från 2007 till 2010?</p>
+<button title="q203" type="button" onclick="if(document.getElementById(&#39;q203&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q203&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q203&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q203" style="display:none">
+<div class="alert alert-info">
+<p>Beräkning i R ger</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="fl">303.46</span><span class="op">/</span><span class="fl">290.51</span></a></code></pre></div>
+<pre><code>## [1] 1.044577</code></pre>
+<ul>
+<li>Svar: Prisnivån har ökat med 4.5%.</li>
+</ul>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.4" class="section level3 unnumbered">
+<h3>Övning 2.4</h3>
+<p>Denna övningar handlar om potentslagarna. Då <span class="math inline">\(x\)</span> och <span class="math inline">\(y\)</span> är reella och <span class="math inline">\(a,b&gt;0\)</span> gäller följande likheter:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(a^x\cdot a^y=a^{x+y}\)</span></li>
+<li><span class="math inline">\((a^x)^y=a^{xy}\)</span></li>
+<li><span class="math inline">\(\left(\frac{a}{b}\right)^x=\frac{a^x}{b^x}\)</span></li>
+<li><span class="math inline">\(\frac{a^x}{a^y}=a^{x-y}\)</span></li>
+<li><span class="math inline">\(a^x \cdot b^x=(ab)^x\)</span></li>
+<li><span class="math inline">\(a^0=1\)</span></li>
+</ol>
+<p>Beräkna nedanstående uttryck relatera svaren till potenslagarna.</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(4^2 + 4^3\)</span></li>
+<li><span class="math inline">\(4^2*4^3\)</span></li>
+<li><span class="math inline">\(4^5\)</span></li>
+<li><span class="math inline">\((4^2)^3\)</span></li>
+<li><span class="math inline">\(4^15\)</span></li>
+<li><span class="math inline">\(4^2/4^3\)</span></li>
+<li><span class="math inline">\(4^{-1}\)</span></li>
+<li><span class="math inline">\(4^{-2}\)</span></li>
+<li><span class="math inline">\(1/(4^2)\)</span></li>
+<li><span class="math inline">\(1/16\)</span></li>
+<li><span class="math inline">\(3^4*4^4\)</span></li>
+<li><span class="math inline">\(12^4\)</span></li>
+</ol>
+<button title="q204" type="button" onclick="if(document.getElementById(&#39;q204&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q204&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q204&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q204" style="display:none">
+<div class="alert alert-info">
+<p>I R kan uttrycken enkelt beräknas.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb26-2" title="2">[<span class="dv">1</span>] <span class="dv">80</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb26-4" title="4">[<span class="dv">1</span>] <span class="dv">1024</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="dv">4</span><span class="op">^</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb26-6" title="6">[<span class="dv">1</span>] <span class="dv">1024</span></a>
+<a class="sourceLine" id="cb26-7" title="7">(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb26-8" title="8">[<span class="dv">1</span>] <span class="dv">4096</span></a>
+<a class="sourceLine" id="cb26-9" title="9"><span class="dv">4</span><span class="op">^</span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb26-10" title="10">[<span class="dv">1</span>] <span class="dv">1073741824</span></a>
+<a class="sourceLine" id="cb26-11" title="11"><span class="dv">4</span><span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span><span class="op">^</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb26-12" title="12">[<span class="dv">1</span>] <span class="fl">0.25</span></a>
+<a class="sourceLine" id="cb26-13" title="13"><span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>}</a>
+<a class="sourceLine" id="cb26-14" title="14">[<span class="dv">1</span>] <span class="fl">0.25</span></a>
+<a class="sourceLine" id="cb26-15" title="15"><span class="dv">4</span><span class="op">^</span>{<span class="op">-</span><span class="dv">2</span>}</a>
+<a class="sourceLine" id="cb26-16" title="16">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
+<a class="sourceLine" id="cb26-17" title="17"><span class="dv">1</span><span class="op">/</span>(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb26-18" title="18">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
+<a class="sourceLine" id="cb26-19" title="19"><span class="dv">1</span><span class="op">/</span><span class="dv">16</span></a>
+<a class="sourceLine" id="cb26-20" title="20">[<span class="dv">1</span>] <span class="fl">0.0625</span></a>
+<a class="sourceLine" id="cb26-21" title="21"><span class="dv">3</span><span class="op">^</span><span class="dv">4</span><span class="op">*</span><span class="dv">4</span><span class="op">^</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb26-22" title="22">[<span class="dv">1</span>] <span class="dv">20736</span></a>
+<a class="sourceLine" id="cb26-23" title="23"><span class="dv">12</span><span class="op">^</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb26-24" title="24">[<span class="dv">1</span>] <span class="dv">20736</span></a></code></pre></div>
+<p>Vi ser att för <span class="math inline">\(b= c\)</span> pga 1. <span class="math inline">\(d= e\)</span> pga 2. <span class="math inline">\(k=l\)</span> pga 5. Vidare gäller…</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.5" class="section level3 unnumbered">
+<h3>Övning 2.5</h3>
+<p>Den naturliga logaritmen, dvs logaritmen med
+basen <span class="math inline">\(e \approx 2.718282\)</span>, används ofta i statistiska beräkningar. Några logaratimlagar som gäller för naturliga logaritmen är:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\ln\, \left (x\cdot y \right )=\ln\,x+\ln\,y\)</span></li>
+<li><span class="math inline">\(\ln\, \left (x/ y \right )=\ln\,x-\ln\,y\)</span></li>
+<li><span class="math inline">\(\ln\,x^{a}=a\cdot \ln\,x\)</span></li>
+<li><span class="math inline">\(\ln e = 1\)</span></li>
+<li><span class="math inline">\(e^{\ln x} = x\)</span></li>
+<li><span class="math inline">\(\ln^{e^x} = x\)</span></li>
+</ol>
+<p>Beräkna nedanstående uttryck och relatera svaren till logaritmlagarna</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\ln(3*4)\)</span></li>
+<li><span class="math inline">\(\ln(3) + \ln(4)\)</span></li>
+<li><span class="math inline">\(\ln(3/4)\)</span></li>
+<li><span class="math inline">\(\ln(3) - \ln(4)\)</span></li>
+<li><span class="math inline">\(\ln e\)</span></li>
+<li><span class="math inline">\(\ln e^5\)</span></li>
+<li><span class="math inline">\(e^{5+6}\)</span></li>
+<li><span class="math inline">\(e^5*e^6\)</span></li>
+<li>$5 5 + 6 6</li>
+</ol>
+<button title="q205" type="button" onclick="if(document.getElementById(&#39;q205&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q205&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q205&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q205" style="display:none">
+<div class="alert alert-info">
+<p>I R kan uttrycken enkelt beräknas.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">log</span>(<span class="dv">3</span><span class="op">*</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb27-2" title="2">[<span class="dv">1</span>] <span class="fl">2.484907</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">log</span>(<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb27-4" title="4">[<span class="dv">1</span>] <span class="fl">2.484907</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="kw">log</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb27-6" title="6">[<span class="dv">1</span>] <span class="fl">-0.2876821</span></a>
+<a class="sourceLine" id="cb27-7" title="7"><span class="kw">log</span>(<span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb27-8" title="8">[<span class="dv">1</span>] <span class="fl">-0.2876821</span></a>
+<a class="sourceLine" id="cb27-9" title="9"><span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb27-10" title="10">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb27-11" title="11"><span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb27-12" title="12">[<span class="dv">1</span>] <span class="dv">5</span></a>
+<a class="sourceLine" id="cb27-13" title="13"><span class="kw">exp</span>(<span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb27-14" title="14">[<span class="dv">1</span>] <span class="fl">59874.14</span></a>
+<a class="sourceLine" id="cb27-15" title="15"><span class="kw">exp</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb27-16" title="16">[<span class="dv">1</span>] <span class="fl">59874.14</span></a>
+<a class="sourceLine" id="cb27-17" title="17"><span class="dv">5</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb27-18" title="18">[<span class="dv">1</span>] <span class="fl">18.79775</span></a></code></pre></div>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.6" class="section level3 unnumbered">
+<h3>Övning 2.6</h3>
+<p>Låt observationerna <span class="math inline">\(4,-2,5,6,8\)</span> vara obundet slumpmässigt urval från en normalfördelad population. Genomför en hypotesprövning på 5% signifikansnivå för att testa medelvärdet i population är skild från 1.</p>
+<button title="q206" type="button" onclick="if(document.getElementById(&#39;q206&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q206&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q206&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q206" style="display:none">
+<div class="alert alert-info">
+<ol style="list-style-type: decimal">
+<li>Vi observerar <span class="math inline">\(x=\{4,-2,5,6,8\}.\)</span></li>
+<li>Hypoteser: <span class="math inline">\(H_0:\mu=0\)</span> vs <span class="math inline">\(H_1:\mu \neq 0\)</span></li>
+<li>Antaganden: Variabeln <span class="math inline">\(x\)</span> är normalfördelad i populationen. Populationsvariansen <span class="math inline">\(\sigma^2\)</span> är okänd i populationen. Vi har ett litet stickprov, <span class="math inline">\(n=5\)</span>.</li>
+<li>Testfunktionen ges av <span class="math inline">\(t=\dfrac{\bar{x}-\mu}{\sqrt{s^2/n}}\)</span>. Denna teststatistika är <span class="math inline">\(t\)</span>-fördelad med <span class="math inline">\(n-1\)</span> frihetsgrader om nollhypotesen är sann.</li>
+<li>Beslutregel: <span class="math inline">\(\alpha=0.05\)</span>. Tvåsidigt test, förkasta därför <span class="math inline">\(H_0\)</span> om <span class="math inline">\(|t_{obs}| &gt; t_{krit} = t_{4,\alpha/2=0.025} = 2.776\)</span></li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">( (<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> )<span class="op">/</span><span class="kw">sqrt</span>( ( <span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )<span class="op">/</span><span class="st"> </span>(<span class="dv">5-1</span>)<span class="op">/</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb28-2" title="2">[<span class="dv">1</span>] <span class="fl">1.898851</span></a></code></pre></div>
+<p>Eftersom <span class="math inline">\(t_{obs}=\)</span> 1.8988507 <span class="math inline">\(&lt; 2.776 = t_{krit}\)</span> kan vi inte förkasta nollhypotesen.</p>
+<ul>
+<li>Svar: Vi kan på 5% signifikansnivå inte påvisa att medelvärdet i populationen är skilt från 1. Notera att detta <strong>inte</strong> innebär att vi visar att medelvärdet är 1.</li>
+</ul>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.7" class="section level3 unnumbered">
+<h3>Övning 2.7</h3>
+<p>Du observerar följande datapunkter <span class="math inline">\(x = \{4,7,2,4,6\}\)</span> och $y={7,3, 2, 5,6}$.</p>
+<p><img src="dpk_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<ol style="list-style-type: lower-alpha">
+<li>Använd minsta-kvadratmetoden och beräkna koefficienterna <span class="math inline">\(a\)</span> och <span class="math inline">\(b\)</span> i regressionslinjen <span class="math inline">\(y=a + bx\)</span>.</li>
+<li>Använd koefficienterna och ge en prediktion för <span class="math inline">\(y\)</span> givet att <span class="math inline">\(x=7\)</span>.</li>
+<li>Beräkna residualen för <span class="math inline">\(x=7\)</span></li>
+<li>Beräkna residualspridningen.</li>
+</ol>
+<button title="q207" type="button" onclick="if(document.getElementById(&#39;q207&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q207&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q207&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q207" style="display:none">
+<div class="alert alert-info">
+<ol style="list-style-type: lower-alpha">
+<li>Riktningskoefficienten ges av
+<span class="math display">\[b=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}\]</span></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># Direkt tillämpning av formeln ger </span></a>
+<a class="sourceLine" id="cb29-2" title="2">( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>) ) <span class="op">/</span></a>
+<a class="sourceLine" id="cb29-7" title="7">( (<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-8" title="8"><span class="st">  </span>(<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-10" title="10"><span class="st">  </span>(<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-11" title="11"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb29-12" title="12">[<span class="dv">1</span>] <span class="fl">0.2105263</span></a>
+<a class="sourceLine" id="cb29-13" title="13"><span class="co"># Det går att räkna ut detta i flera steg genom att </span></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="co"># t ex beräkna täljare och nämnare separat. </span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="co"># Alternativt använda beräkningsformeln</span></a>
+<a class="sourceLine" id="cb29-16" title="16"></a>
+<a class="sourceLine" id="cb29-17" title="17">( <span class="dv">4</span><span class="op">*</span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">*</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">*</span><span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">4</span><span class="op">+</span><span class="dv">7</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">4</span><span class="op">+</span><span class="dv">6</span>)<span class="op">*</span>(<span class="dv">7</span><span class="op">+</span><span class="dv">3</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span><span class="op">+</span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> )<span class="op">/</span></a>
+<a class="sourceLine" id="cb29-18" title="18">( (<span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st">  </span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span> )  </a>
+<a class="sourceLine" id="cb29-19" title="19">[<span class="dv">1</span>] <span class="fl">0.2105263</span></a>
+<a class="sourceLine" id="cb29-20" title="20"></a>
+<a class="sourceLine" id="cb29-21" title="21"><span class="co"># En kommentar: Dessa beräkningar kommer förenklas betydligt i R, vilket vi ska se senare.</span></a></code></pre></div>
+<p>Interceptet är <span class="math inline">\(a=\bar{y} - b\bar{x}\)</span></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">(<span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2105</span><span class="op">*</span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>)<span class="op">/</span><span class="dv">5</span>  </a>
+<a class="sourceLine" id="cb30-2" title="2">[<span class="dv">1</span>] <span class="fl">3.6317</span></a></code></pre></div>
+<ul>
+<li>Svar: Riktningskoefficienten beräknas till <span class="math inline">\(b=0.2105\)</span>, vilket tolkas som att om <span class="math inline">\(x\)</span> ökar en enhet så ökar <span class="math inline">\(y\)</span> i <em>genomsnitt</em> med <span class="math inline">\(0.2105\)</span>
+enheter. Interceptet beräknas till <span class="math inline">\(a=3.632\)</span>, vilket tolkas som medelvärdet för <span class="math inline">\(y\)</span> när <span class="math inline">\(x=0\)</span>.</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Använd koefficienterna från regressionslinjen och sätt in värdet <span class="math inline">\(x=7\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>  </a>
+<a class="sourceLine" id="cb31-2" title="2">[<span class="dv">1</span>] <span class="fl">5.1051</span></a></code></pre></div>
+<ul>
+<li>Svar: Prediktionen <span class="math inline">\(\hat{y}=\)</span> 5.1051. Detta är punkten på regressionslinjen när <span class="math inline">\(x=7\)</span> och vår bästa gissning för det <span class="math inline">\(y\)</span>-värde en individ med värdet <span class="math inline">\(x=7\)</span> kommer att ha.</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>En residual är skillnaden mellan ett predicerat värde och det faktiska observerade värdet, <span class="math inline">\(\hat{\varepsilon}=y_i - \hat{y}\)</span>.
+Eftersom <span class="math inline">\(y=3\)</span> när <span class="math inline">\(x=7\)</span> så residualen</li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>) </a>
+<a class="sourceLine" id="cb32-2" title="2">[<span class="dv">1</span>] <span class="fl">-2.1051</span></a></code></pre></div>
+<ul>
+<li>Svar: Residualen för <span class="math inline">\(x=7\)</span> är -2.1051.</li>
+</ul>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Residualspridningen ges av <span class="math display">\[s_\varepsilon=\sqrt{\dfrac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2}}= \sqrt{\dfrac{\sum_{i=1}^n\hat{\varepsilon}_i^2}{n-2}}\]</span>. Vi beräknar på samma sätt som i c) övriga residualer, kvadrerar och summerar.</li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">sqrt</span>(</a>
+<a class="sourceLine" id="cb33-2" title="2">( (<span class="dv">7</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="st">  </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">7</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="st">  </span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">2</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-5" title="5"><span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">4</span>))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="st">  </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span>(<span class="fl">3.6316</span>   <span class="op">+</span><span class="st">    </span><span class="fl">0.2105</span><span class="op">*</span><span class="dv">6</span>))<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-7" title="7"><span class="st">  </span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) )</a>
+<a class="sourceLine" id="cb33-8" title="8">[<span class="dv">1</span>] <span class="fl">2.347077</span></a></code></pre></div>
+<ul>
+<li>Svar: Residualspridningen är 2.347</li>
+</ul>
+<p>(Notera att <span class="math inline">\(\sum_{i=1}^n \hat{\varepsilon}_i^2\)</span> kallas för <em>residualkvadratsumman</em>.)</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="övning-2.8" class="section level3 unnumbered">
+<h3>Övning 2.8</h3>
+<ol style="list-style-type: decimal">
+<li>Installera paketet <strong>MASS</strong> som innehåller funktioner som kan vara användbara senare på kursen.</li>
+<li>Aktivera det installerade paketet <strong>MASS</strong>.</li>
+</ol>
+<button title="q208" type="button" onclick="if(document.getElementById(&#39;q208&#39;) .style.display==&#39;none&#39;)
+              {document.getElementById(&#39;q208&#39;) .style.display=&#39;&#39;}
+            else{document.getElementById(&#39;q208&#39;) .style.display=&#39;none&#39;}">
+Visa svar
+</button>
+<div id="q208" style="display:none">
+<div class="alert alert-info">
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># Installera paket</span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="co"># Aktivera paket</span></a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+<p></br></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-objekt-och-funktioner.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

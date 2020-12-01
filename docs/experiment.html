@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 10 Experiment | Tillämpad statistik med R</title>
   <meta name="description" content="Kapitel 10 Experiment | Tillämpad statistik med R" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 10 Experiment | Tillämpad statistik med R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ronnie Pingel och Valentin Zulj" />
 
 
-<meta name="date" content="2020-11-30" />
+<meta name="date" content="2020-12-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="urvalsmetoder.html"/>
-
+<link rel="next" href="referenser-2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -283,14 +308,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="experiment.html"><a href="experiment.html"><i class="fa fa-check"></i><b>10</b> Experiment</a><ul>
-<li class="chapter" data-level="10.1" data-path="experiment.html"><a href="experiment.html#det-klassiska-experimentet"><i class="fa fa-check"></i><b>10.1</b> Det klassiska experimentet</a></li>
-<li class="chapter" data-level="10.2" data-path="experiment.html"><a href="experiment.html#stratifiering"><i class="fa fa-check"></i><b>10.2</b> Stratifiering</a></li>
-<li class="chapter" data-level="10.3" data-path="experiment.html"><a href="experiment.html#tabell-1-vid-randomiserade-försök"><i class="fa fa-check"></i><b>10.3</b> Tabell 1 vid randomiserade försök</a></li>
-<li class="chapter" data-level="10.4" data-path="experiment.html"><a href="experiment.html#anova"><i class="fa fa-check"></i><b>10.4</b> ANOVA</a></li>
-<li class="chapter" data-level="10.5" data-path="experiment.html"><a href="experiment.html#jämförelse-med-t-test"><i class="fa fa-check"></i><b>10.5</b> Jämförelse med t-test</a></li>
-<li class="chapter" data-level="10.6" data-path="experiment.html"><a href="experiment.html#experimentella-designer"><i class="fa fa-check"></i><b>10.6</b> Experimentella designer</a></li>
-<li class="chapter" data-level="10.7" data-path="experiment.html"><a href="experiment.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.7</b> Aspekter som inte ingår i detta block</a></li>
+<li class="chapter" data-level="10.1" data-path="experiment.html"><a href="experiment.html#det-klassiska-experimentet"><i class="fa fa-check"></i><b>10.1</b> Det klassiska experimentet</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="experiment.html"><a href="experiment.html#randomiseringen"><i class="fa fa-check"></i><b>10.1.1</b> Randomiseringen</a></li>
+<li class="chapter" data-level="10.1.2" data-path="experiment.html"><a href="experiment.html#balans-av-baslinjemätningar"><i class="fa fa-check"></i><b>10.1.2</b> Balans av baslinjemätningar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="experiment.html"><a href="experiment.html#analys"><i class="fa fa-check"></i><b>10.1.3</b> Analys</a></li>
 </ul></li>
+<li class="chapter" data-level="10.2" data-path="experiment.html"><a href="experiment.html#stratifiering"><i class="fa fa-check"></i><b>10.2</b> Stratifiering</a></li>
+<li class="chapter" data-level="10.3" data-path="experiment.html"><a href="experiment.html#anova"><i class="fa fa-check"></i><b>10.3</b> ANOVA</a></li>
+<li class="chapter" data-level="10.4" data-path="experiment.html"><a href="experiment.html#jämförelse-med-t-test"><i class="fa fa-check"></i><b>10.4</b> Jämförelse med t-test</a></li>
+<li class="chapter" data-level="10.5" data-path="experiment.html"><a href="experiment.html#experimentella-designer"><i class="fa fa-check"></i><b>10.5</b> Experimentella designer</a></li>
+<li class="chapter" data-level="10.6" data-path="experiment.html"><a href="experiment.html#aspekter-som-inte-ingår-i-detta-block"><i class="fa fa-check"></i><b>10.6</b> Aspekter som inte ingår i detta block</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="referenser-2.html"><a href="referenser-2.html"><i class="fa fa-check"></i><b>11</b> Referenser</a></li>
 </ul>
 
       </nav>
@@ -312,172 +341,671 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Kapitel 10</span> Experiment</h1>
 <div id="det-klassiska-experimentet" class="section level2">
 <h2><span class="header-section-number">10.1</span> Det klassiska experimentet</h2>
-<p>Anta att målet är att jämföra två stycken populationer med avseende på medelvärden. I populationen har vi <span class="math display">\[\delta = \mu_t - \mu_c\]</span> För att skatta denna skillnad använder vi <span class="math display">\[\hat{\delta} = \bar{y}_t - \bar{y}_c\]</span> där <span class="math inline">\(\bar{y}_t = \dfrac{1}{n_t}\sum_{i=1}^{n_t} y_{t,i}\)</span> och <span class="math inline">\(\bar{y}_c = \dfrac{1}{n_c}\sum_{i=1}^{n_c} y_{c,i}\)</span>.</p>
-<p>För att skatta variansen för denna estimator använder vi <span class="math display">\[\hat{V}(\hat{\delta}) = \dfrac{s^2_t}{n_t} +  \dfrac{s^2_c}{n_c}\]</span></p>
+<div id="randomiseringen" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Randomiseringen</h3>
+<p>I det klassiska experimentet allokeras <span class="math inline">\(n\)</span> objekt (individer) slumpmässigt till en behandlingsgrupp bestående av <span class="math inline">\(n_t\)</span> objekt eller en kontrollgrupp bestående av <span class="math inline">\(n_c\)</span> objekt. Sannolikheten för ett objekt att hamna i behandlingsgruppen är <span class="math inline">\(\Pr(T=1) = n_t/n\)</span> och sannolikhet att hamna i kontrollgruppen är <span class="math inline">\(1-\Pr(T=1) = \Pr(T=0) = n_c/n\)</span>.</p>
+<p>För att i praktiken allokera objekten genomförs en slumpmässig permutation av objekt i en identifieringsvariabel (som vi kan kalla <em>id_nr</em>). Permutationen görs med <strong>sample()</strong> och utan återläggning. Objekten allokeras sedan till behandlingsgruppen och kontrollgruppen genom att skapa en binär behandlingsvariabel, <em>w</em>, där de första <span class="math inline">\(n_t\)</span> elementen består av 1or (eller ett annat värde som syftar på behandlingsgruppen) och de resterande <span class="math inline">\(n_c\)</span> elementen är 0or (eller något annat värde som syftar på kontrollgruppen).</p>
+<p>Allokeringen kan genomföras oavsett om det finns en komplett lista på objekt (motsvarande en urvalsram i urvalsmetoder) eller om rekrytering sker löpande där id-nr relaterar till när ett objekt rekryteras till studiens. Det enda som krävs för allokeringen är kunskap om antalet objekt i behandlingsgruppen och kontrollgruppen. Traditionellt har man då haft kuvert med id-nummer innehållande en lapp som indikerar allokering.</p>
+<p><strong>Exempel 1</strong></p>
+<p><em>Adman och Larsson Taghizadeh (2020) ville bland annat undersöka om det finns en effekt av avsändarens yrkestitel i e-post på skoladministratörers respons vad gäller en frågor om skolval. Utifrån en lista baserat på alla Sveriges 290 kommuner gjordes en allokering till olika behandlingsgrupper.</em></p>
+<p><strong>Exempel 2</strong></p>
+<p><em>Selin et al. undersökte effekten av det värkstimulerade medlet oxytocin bland gravida med utdragen förlossning. Avsikten var att se om det fanns en effekt av dos oxytocin (låg vs hög dos) på tid till att barnet var fött. Rekryteringen till det här experimentet skedde löpande på ett antal förlossningsavdelningar i Sverige. En kvinna på förlossningen blev tillfrågad om hon ville delta i experimentet. Om hon tackade ja tilldelades hon ett id-nummer och en enkät fylldes in. Därefter öppnades ett kuvert med id-numret och i kuvertet fanns stod A eller B. Eftersom blindning är viktigt vet endast den som gjort randomiseringen vilken dos A eller B refererar till. Av 1296 kvinnor som tackade ja allokerades 647 till hög dos och 648 till låg dos.</em></p>
+<p><strong>Exempel 3</strong></p>
+<p><em>Anta att vi i Uppsala kommun rekryterar 40 individer till att delta i ett randomiserat försök. Individerna som valt att delta i experimentet slumpas till en av två grupper. Listan med allokeringen sparas. Id-nummer skrivs ner på ett kuvert och en lapp som indikerar behandlingsgrupp läggs i kuvertet.</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Antal objekt (individer) i experimentet</span></a>
+<a class="sourceLine" id="cb1-2" title="2"> n &lt;-<span class="st"> </span><span class="dv">40</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># Antal objekt i behandlingsgrupp</span></a>
+<a class="sourceLine" id="cb1-4" title="4"> n_t &lt;-<span class="st"> </span><span class="dv">22</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co"># Antal objekt i kontrollgrupp </span></a>
+<a class="sourceLine" id="cb1-6" title="6"> n_c &lt;-<span class="st"> </span><span class="dv">18</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co"># Lista med id-nr</span></a>
+<a class="sourceLine" id="cb1-8" title="8"> id_nr &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">40</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co"># Skapa en slumpmässig permutation (Ni kommer få en annan fördelning om vi inte sätter slumptalsfröet).</span></a>
+<a class="sourceLine" id="cb1-10" title="10"> <span class="kw">set.seed</span>(<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb1-11" title="11"> id &lt;-<span class="st"> </span><span class="kw">sample</span>(id_nr, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co"># Skapa en behandlingsvariabel </span></a>
+<a class="sourceLine" id="cb1-13" title="13"> w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, n_t), <span class="kw">rep</span>(<span class="dv">0</span>, n_c))</a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co"># Dataframe för data </span></a>
+<a class="sourceLine" id="cb1-15" title="15"> df_trt &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> id, <span class="dt">trt =</span> w)</a>
+<a class="sourceLine" id="cb1-16" title="16"> df_trt</a>
+<a class="sourceLine" id="cb1-17" title="17">   id trt</a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="dv">1</span>  <span class="dv">32</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="dv">2</span>  <span class="dv">34</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="dv">3</span>  <span class="dv">15</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="dv">4</span>  <span class="dv">12</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="dv">5</span>   <span class="dv">1</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-23" title="23"><span class="dv">6</span>  <span class="dv">29</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-24" title="24"><span class="dv">7</span>   <span class="dv">3</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="dv">8</span>   <span class="dv">6</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-26" title="26"><span class="dv">9</span>  <span class="dv">22</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-27" title="27"><span class="dv">10</span> <span class="dv">20</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-28" title="28"><span class="dv">11</span> <span class="dv">11</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-29" title="29"><span class="dv">12</span>  <span class="dv">8</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-30" title="30"><span class="dv">13</span>  <span class="dv">4</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="dv">14</span> <span class="dv">14</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="dv">15</span>  <span class="dv">9</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="dv">16</span> <span class="dv">26</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="dv">17</span> <span class="dv">37</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-35" title="35"><span class="dv">18</span>  <span class="dv">7</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-36" title="36"><span class="dv">19</span> <span class="dv">35</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-37" title="37"><span class="dv">20</span> <span class="dv">19</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-38" title="38"><span class="dv">21</span> <span class="dv">33</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-39" title="39"><span class="dv">22</span> <span class="dv">23</span>   <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-40" title="40"><span class="dv">23</span>  <span class="dv">2</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-41" title="41"><span class="dv">24</span> <span class="dv">38</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-42" title="42"><span class="dv">25</span> <span class="dv">17</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-43" title="43"><span class="dv">26</span> <span class="dv">10</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-44" title="44"><span class="dv">27</span> <span class="dv">13</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-45" title="45"><span class="dv">28</span> <span class="dv">31</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-46" title="46"><span class="dv">29</span> <span class="dv">25</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-47" title="47"><span class="dv">30</span> <span class="dv">16</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-48" title="48"><span class="dv">31</span> <span class="dv">40</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-49" title="49"><span class="dv">32</span>  <span class="dv">5</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-50" title="50"><span class="dv">33</span> <span class="dv">18</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-51" title="51"><span class="dv">34</span> <span class="dv">21</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-52" title="52"><span class="dv">35</span> <span class="dv">27</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-53" title="53"><span class="dv">36</span> <span class="dv">24</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-54" title="54"><span class="dv">37</span> <span class="dv">28</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-55" title="55"><span class="dv">38</span> <span class="dv">36</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-56" title="56"><span class="dv">39</span> <span class="dv">30</span>   <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-57" title="57"><span class="dv">40</span> <span class="dv">39</span>   <span class="dv">0</span></a></code></pre></div>
+<p>Det är dock mycket vanligt att vid rekryteringen eller före randomseringen samla in data om individerna/objekten. Denna information kan vara mycket användbar på många sätt och är ofta nödvändig för att skapa sig en helhetsbild i en studie. En oerhört viktig princip är att baslinjevariabler mäts <strong>före randomiseringen</strong> eller åtminstone före man öppnar kuvertet som anger allokeringen.</p>
+<p><strong>Exempel 3 forts.</strong></p>
+<p><em>Anta att vi i vårt exempel mäter ålder, kön och utbildning före öppnandet av kuvertet. Vi erhåller ett mer omfattande dataset med bakgrundvariabler.</em></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">df &lt;-<span class="st"> </span>df_trt[<span class="kw">order</span>(df_trt<span class="op">$</span>id),]</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co"># Variablerna mäts efterhand som individerna deltar i studien. </span></a>
+<a class="sourceLine" id="cb2-3" title="3">df<span class="op">$</span>alder &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>,<span class="dv">56</span>,<span class="dv">59</span>,<span class="dv">34</span>,<span class="dv">37</span>,<span class="dv">46</span>,<span class="dv">43</span>,<span class="dv">45</span>,<span class="dv">66</span>,<span class="dv">55</span>,<span class="dv">29</span>,<span class="dv">55</span>,<span class="dv">67</span>,<span class="dv">66</span>,<span class="dv">54</span>,<span class="dv">67</span>,<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">44</span>,<span class="dv">45</span>,<span class="dv">29</span>,<span class="dv">33</span>,<span class="dv">66</span>,<span class="dv">55</span>,<span class="dv">34</span>,<span class="dv">22</span>,<span class="dv">66</span>,<span class="dv">23</span>,<span class="dv">34</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">48</span>,<span class="dv">56</span>,<span class="dv">33</span>,<span class="dv">61</span>,<span class="dv">60</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">66</span>,<span class="dv">43</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">df<span class="op">$</span>kon &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;kvinna&quot;</span>,  <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>,<span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>,<span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>,<span class="st">&quot;man&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;kvinna&quot;</span>,  <span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>, <span class="st">&quot;kvinna&quot;</span>,<span class="st">&quot;man&quot;</span>,<span class="st">&quot;kvinna&quot;</span>), </a>
+<a class="sourceLine" id="cb2-5" title="5">              <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;kvinna&quot;</span>, <span class="st">&quot;man&quot;</span>))</a>
+<a class="sourceLine" id="cb2-6" title="6">df<span class="op">$</span>utbildning &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;mellan&quot;</span>,   <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;låg&quot;</span>, <span class="st">&quot;hög&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;mellan&quot;</span>), </a>
+<a class="sourceLine" id="cb2-7" title="7">                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;låg&quot;</span>, <span class="st">&quot;mellan&quot;</span>, <span class="st">&quot;hög&quot;</span>) )</a>
+<a class="sourceLine" id="cb2-8" title="8">df</a>
+<a class="sourceLine" id="cb2-9" title="9">   id trt alder    kon utbildning</a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="dv">5</span>   <span class="dv">1</span>   <span class="dv">1</span>    <span class="dv">34</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="dv">23</span>  <span class="dv">2</span>   <span class="dv">0</span>    <span class="dv">56</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="dv">7</span>   <span class="dv">3</span>   <span class="dv">1</span>    <span class="dv">59</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="dv">13</span>  <span class="dv">4</span>   <span class="dv">1</span>    <span class="dv">34</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="dv">32</span>  <span class="dv">5</span>   <span class="dv">0</span>    <span class="dv">37</span>    man        hög</a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="dv">8</span>   <span class="dv">6</span>   <span class="dv">1</span>    <span class="dv">46</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="dv">18</span>  <span class="dv">7</span>   <span class="dv">1</span>    <span class="dv">43</span>    man        låg</a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="dv">12</span>  <span class="dv">8</span>   <span class="dv">1</span>    <span class="dv">45</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="dv">15</span>  <span class="dv">9</span>   <span class="dv">1</span>    <span class="dv">66</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="dv">26</span> <span class="dv">10</span>   <span class="dv">0</span>    <span class="dv">55</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="dv">11</span> <span class="dv">11</span>   <span class="dv">1</span>    <span class="dv">29</span>    man        låg</a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="dv">4</span>  <span class="dv">12</span>   <span class="dv">1</span>    <span class="dv">55</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="dv">27</span> <span class="dv">13</span>   <span class="dv">0</span>    <span class="dv">67</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="dv">14</span> <span class="dv">14</span>   <span class="dv">1</span>    <span class="dv">66</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="dv">3</span>  <span class="dv">15</span>   <span class="dv">1</span>    <span class="dv">54</span>    man        låg</a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="dv">30</span> <span class="dv">16</span>   <span class="dv">0</span>    <span class="dv">67</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="dv">25</span> <span class="dv">17</span>   <span class="dv">0</span>    <span class="dv">45</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="dv">33</span> <span class="dv">18</span>   <span class="dv">0</span>    <span class="dv">32</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="dv">20</span> <span class="dv">19</span>   <span class="dv">1</span>    <span class="dv">44</span>    man        hög</a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="dv">10</span> <span class="dv">20</span>   <span class="dv">1</span>    <span class="dv">45</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-30" title="30"><span class="dv">34</span> <span class="dv">21</span>   <span class="dv">0</span>    <span class="dv">29</span> kvinna        hög</a>
+<a class="sourceLine" id="cb2-31" title="31"><span class="dv">9</span>  <span class="dv">22</span>   <span class="dv">1</span>    <span class="dv">33</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-32" title="32"><span class="dv">22</span> <span class="dv">23</span>   <span class="dv">1</span>    <span class="dv">66</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-33" title="33"><span class="dv">36</span> <span class="dv">24</span>   <span class="dv">0</span>    <span class="dv">55</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-34" title="34"><span class="dv">29</span> <span class="dv">25</span>   <span class="dv">0</span>    <span class="dv">34</span>    man        låg</a>
+<a class="sourceLine" id="cb2-35" title="35"><span class="dv">16</span> <span class="dv">26</span>   <span class="dv">1</span>    <span class="dv">22</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-36" title="36"><span class="dv">35</span> <span class="dv">27</span>   <span class="dv">0</span>    <span class="dv">66</span>    man        låg</a>
+<a class="sourceLine" id="cb2-37" title="37"><span class="dv">37</span> <span class="dv">28</span>   <span class="dv">0</span>    <span class="dv">23</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-38" title="38"><span class="dv">6</span>  <span class="dv">29</span>   <span class="dv">1</span>    <span class="dv">34</span> kvinna        hög</a>
+<a class="sourceLine" id="cb2-39" title="39"><span class="dv">39</span> <span class="dv">30</span>   <span class="dv">0</span>    <span class="dv">25</span>    man        låg</a>
+<a class="sourceLine" id="cb2-40" title="40"><span class="dv">28</span> <span class="dv">31</span>   <span class="dv">0</span>    <span class="dv">26</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-41" title="41"><span class="dv">1</span>  <span class="dv">32</span>   <span class="dv">1</span>    <span class="dv">48</span>    man        hög</a>
+<a class="sourceLine" id="cb2-42" title="42"><span class="dv">21</span> <span class="dv">33</span>   <span class="dv">1</span>    <span class="dv">56</span>    man        hög</a>
+<a class="sourceLine" id="cb2-43" title="43"><span class="dv">2</span>  <span class="dv">34</span>   <span class="dv">1</span>    <span class="dv">33</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-44" title="44"><span class="dv">19</span> <span class="dv">35</span>   <span class="dv">1</span>    <span class="dv">61</span> kvinna        låg</a>
+<a class="sourceLine" id="cb2-45" title="45"><span class="dv">38</span> <span class="dv">36</span>   <span class="dv">0</span>    <span class="dv">60</span> kvinna     mellan</a>
+<a class="sourceLine" id="cb2-46" title="46"><span class="dv">17</span> <span class="dv">37</span>   <span class="dv">1</span>    <span class="dv">30</span>    man        låg</a>
+<a class="sourceLine" id="cb2-47" title="47"><span class="dv">24</span> <span class="dv">38</span>   <span class="dv">0</span>    <span class="dv">40</span> kvinna        hög</a>
+<a class="sourceLine" id="cb2-48" title="48"><span class="dv">40</span> <span class="dv">39</span>   <span class="dv">0</span>    <span class="dv">66</span>    man     mellan</a>
+<a class="sourceLine" id="cb2-49" title="49"><span class="dv">31</span> <span class="dv">40</span>   <span class="dv">0</span>    <span class="dv">43</span> kvinna     mellan</a></code></pre></div>
+</div>
+<div id="balans-av-baslinjemätningar" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> Balans av baslinjemätningar</h3>
+<p>När randomiseringen blivit genomförd undersöker vi om randomseringen har fungerat. Detta görs genom att redovisa beskrivande statistik för <strong>baslinjemätningen</strong> i behandlingsgrupp respektive kontrollgrupp. Notera att vi inte genomför någon hypotesprövning vid en jämförelse av baslinjemätningarna. Eftersom behandlingen är slumpmässig vet vi de facto att populationen inte finns någon skillnad mellan behandlingsgrupperna. En hypotesprövning är därför ologisk att genomföra eftersom vi testar en hypotes som vi vet är sann.</p>
+<p>Däremot är det viktigt att deskriptivt se på hur det ser ut i data och det gör vi genom vi genom att ställa upp deskriptiv statistik i en tabell. För kvantitativa variabler redovisar man i regel antingen medelvärde och median samt tillhörande spridning mått standardavvikelse eller kvartilavstånd. För kategorivariabler redovisas oftast antal och procent.</p>
+<p><strong>Exempel 3 forts.</strong></p>
+<p><em>Vi vill nu i vårt randomiserade försök studera om det finns en skillnad i stickprovet mellan behandlingsgrupperna. För att undersöka detta skapar vi en tabell. Tabellen kan man sedan exportera till html-format för vidare import till ett ordbehandlingsprogram.</em></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Ålder</span></a>
+<a class="sourceLine" id="cb3-2" title="2">alder_balans &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(df<span class="op">$</span>alder[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]), <span class="kw">sd</span>(df<span class="op">$</span>alder[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]),         </a>
+<a class="sourceLine" id="cb3-3" title="3">                  <span class="kw">mean</span>(df<span class="op">$</span>alder[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]), <span class="kw">sd</span>(df<span class="op">$</span>alder[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># Kön</span></a>
+<a class="sourceLine" id="cb3-5" title="5">kon_balans_kvinna &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb3-6" title="6">                       <span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb3-7" title="7">kon_balans_man &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">2</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb3-8" title="8">                       <span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">2</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>kon[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co"># Utbildning</span></a>
+<a class="sourceLine" id="cb3-10" title="10">utbildning_balans_lag &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb3-11" title="11">                             <span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb3-12" title="12">utbildning_balans_mellan &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">2</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb3-13" title="13">                                <span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">2</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb3-14" title="14">utbildning_balans_hog &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">3</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">3</span>], </a>
+<a class="sourceLine" id="cb3-15" title="15">                                <span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">3</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>utbildning[df<span class="op">$</span>trt <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co"># Antal i behandlingsgrupper samt NA eftersom vi har fyra kolumner.</span></a>
+<a class="sourceLine" id="cb3-17" title="17">n &lt;-<span class="st"> </span><span class="kw">c</span>(n_t,<span class="ot">NA</span>,n_c,<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb3-18" title="18"></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co"># Sammanfoga vektorerna och ange sedan kolumnnamn och radnanmn</span></a>
+<a class="sourceLine" id="cb3-20" title="20">Tabell1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(n,</a>
+<a class="sourceLine" id="cb3-21" title="21">                 alder_balans,</a>
+<a class="sourceLine" id="cb3-22" title="22">                 kon_balans_kvinna,</a>
+<a class="sourceLine" id="cb3-23" title="23">                 kon_balans_man,</a>
+<a class="sourceLine" id="cb3-24" title="24">                 utbildning_balans_lag,</a>
+<a class="sourceLine" id="cb3-25" title="25">                 utbildning_balans_mellan,</a>
+<a class="sourceLine" id="cb3-26" title="26">                 utbildning_balans_hog)</a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="kw">colnames</span>(Tabell1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Behandlingsgrupp&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;Kontrollgrupp&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="kw">rownames</span>(Tabell1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb3-29" title="29">                      <span class="st">&quot;Ålder (medelvärde (sd))&quot;</span>, </a>
+<a class="sourceLine" id="cb3-30" title="30">                      <span class="st">&quot;Kön: Kvinna (antal (%))&quot;</span>, </a>
+<a class="sourceLine" id="cb3-31" title="31">                      <span class="st">&quot;Kön: Man (antal (%))&quot;</span>, </a>
+<a class="sourceLine" id="cb3-32" title="32">                      <span class="st">&quot;Utbildning: låg (antal (%))&quot;</span>, </a>
+<a class="sourceLine" id="cb3-33" title="33">                      <span class="st">&quot;Utbildning: mellan (antal (%))&quot;</span>, </a>
+<a class="sourceLine" id="cb3-34" title="34">                      <span class="st">&quot;Utbildning: hög (antal (%))&quot;</span>)</a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co"># Exportera tabellen till html. Digits anger antal decimaler i respektive kolumna</span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)</a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="kw">print</span>(<span class="kw">xtable</span>(Tabell1, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)), <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<!-- html table generated in R 3.6.3 by xtable 1.8-4 package -->
+<!-- Tue Dec 01 02:25:38 2020 -->
+<table border="1">
+<tr>
+<th>
+</th>
+<th>
+Behandlingsgrupp
+</th>
+<th>
+V2
+</th>
+<th>
+Kontrollgrupp
+</th>
+<th>
+V4
+</th>
+</tr>
+<tr>
+<td align="right">
+n
+</td>
+<td align="right">
+22.0
+</td>
+<td align="right">
+</td>
+<td align="right">
+18.0
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+Ålder (medelvärde (sd))
+</td>
+<td align="right">
+45.6
+</td>
+<td align="right">
+13.4
+</td>
+<td align="right">
+45.9
+</td>
+<td align="right">
+15.8
+</td>
+</tr>
+<tr>
+<td align="right">
+Kön: Kvinna (antal (%))
+</td>
+<td align="right">
+11.0
+</td>
+<td align="right">
+50.0
+</td>
+<td align="right">
+10.0
+</td>
+<td align="right">
+55.6
+</td>
+</tr>
+<tr>
+<td align="right">
+Kön: Man (antal (%))
+</td>
+<td align="right">
+11.0
+</td>
+<td align="right">
+50.0
+</td>
+<td align="right">
+8.0
+</td>
+<td align="right">
+44.4
+</td>
+</tr>
+<tr>
+<td align="right">
+Utbildning: låg (antal (%))
+</td>
+<td align="right">
+8.0
+</td>
+<td align="right">
+36.4
+</td>
+<td align="right">
+5.0
+</td>
+<td align="right">
+27.8
+</td>
+</tr>
+<tr>
+<td align="right">
+Utbildning: mellan (antal (%))
+</td>
+<td align="right">
+10.0
+</td>
+<td align="right">
+45.5
+</td>
+<td align="right">
+10.0
+</td>
+<td align="right">
+55.6
+</td>
+</tr>
+<tr>
+<td align="right">
+Utbildning: hög (antal (%))
+</td>
+<td align="right">
+4.0
+</td>
+<td align="right">
+18.2
+</td>
+<td align="right">
+3.0
+</td>
+<td align="right">
+16.7
+</td>
+</tr>
+</table>
+<p><strong>Exempel 4</strong></p>
+<p><em>Vi använder National Supported Work Demonstration project, som är att arbetsstödsprogram för långtidsarbetslösa som riktade sig till fyra grupper: tidigare dömda för brott, tidigare narkomaner, kvinnor som under en lång tid fått ekonomiskt bistånd samt avhoppare från skola. Programmet pågick i 12-18 månader på 15 ställen i USA. 6600 invivider allokerades slumpmässigt till antingen deltagande i arbetsstödsprogram eller till en kontrollgrupp. Vi har här ett urval av originaldata bestående av 722 individer. Variablerna är</em></p>
+<ul>
+<li>treat: 1 jobbsupport, 0 ingen support</li>
+<li>age: Ålder år</li>
+<li>ed: Utbildningsår</li>
+<li>black: 1 afro-amerikan, 0 annars.</li>
+<li>hisp: 1 hispanic, 0 annars.</li>
+<li>married: 1 gift, 0 annars</li>
+<li>nodel: 1 collegeexamen, 0 annars.</li>
+<li>re75: reel inkomst 1975 (efter randomiseringen och start av programmet)</li>
+<li>re78: reel inkomst 1978 (huvudutfallet)</li>
+</ul>
+<p><em>Vi skapar nu en Tabell 1 för att studera om randomiseringen har fungerat.</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"> <span class="kw">library</span>(<span class="st">&quot;ATE&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"> <span class="kw">data</span>(nsw)</a>
+<a class="sourceLine" id="cb4-3" title="3"> alder_balans &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(nsw<span class="op">$</span>age[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]), <span class="kw">sd</span>(nsw<span class="op">$</span>age[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]), </a>
+<a class="sourceLine" id="cb4-4" title="4">                 <span class="kw">mean</span>(nsw<span class="op">$</span>age[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]), <span class="kw">sd</span>(nsw<span class="op">$</span>age[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb4-5" title="5"> utb_balans &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(nsw<span class="op">$</span>ed[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]), <span class="kw">sd</span>(nsw<span class="op">$</span>ed[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]), </a>
+<a class="sourceLine" id="cb4-6" title="6">                 <span class="kw">mean</span>(nsw<span class="op">$</span>ed[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]), <span class="kw">sd</span>(nsw<span class="op">$</span>ed[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb4-7" title="7"> etnicitet_balans_black&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(nsw<span class="op">$</span>black[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>black[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb4-8" title="8">                            <span class="kw">table</span>(nsw<span class="op">$</span>black[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>black[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb4-9" title="9"> etnicitet_balans_hisp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(nsw<span class="op">$</span>hisp[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>hisp[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb4-10" title="10">                            <span class="kw">table</span>(nsw<span class="op">$</span>hisp[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>hisp[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb4-11" title="11"> civilstand_balans_gift&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(nsw<span class="op">$</span>married[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>married[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>],                                      <span class="kw">table</span>(nsw<span class="op">$</span>married[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>married[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb4-12" title="12"> examen_balans_nodeg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">table</span>(nsw<span class="op">$</span>nodeg[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>nodeg[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))[<span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb4-13" title="13">                            <span class="kw">table</span>(nsw<span class="op">$</span>nodeg[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])[<span class="dv">1</span>],  <span class="dv">100</span><span class="op">*</span><span class="kw">prop.table</span>(<span class="kw">table</span>(nsw<span class="op">$</span>nodeg[nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb4-14" title="14"> n_t &lt;-<span class="st"> </span><span class="kw">sum</span>(nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-15" title="15"> n_c &lt;-<span class="st"> </span><span class="kw">sum</span>(nsw<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb4-16" title="16"> n &lt;-<span class="st"> </span><span class="kw">c</span>(n_t, <span class="ot">NA</span>, n_c, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb4-17" title="17"> </a>
+<a class="sourceLine" id="cb4-18" title="18"> <span class="co"># Sammanfoga vektorerna och ange sedan kolumnnamn och radnanmn</span></a>
+<a class="sourceLine" id="cb4-19" title="19">Tabell1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(n,</a>
+<a class="sourceLine" id="cb4-20" title="20">                 alder_balans,</a>
+<a class="sourceLine" id="cb4-21" title="21">                 utb_balans,</a>
+<a class="sourceLine" id="cb4-22" title="22">                 etnicitet_balans_black,</a>
+<a class="sourceLine" id="cb4-23" title="23">                 etnicitet_balans_hisp,</a>
+<a class="sourceLine" id="cb4-24" title="24">                 civilstand_balans_gift,</a>
+<a class="sourceLine" id="cb4-25" title="25">                 examen_balans_nodeg)</a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="kw">colnames</span>(Tabell1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Behandlingsgrupp&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;Kontrollgrupp&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="kw">rownames</span>(Tabell1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb4-28" title="28">                      <span class="st">&quot;Ålder (medelvärde (sd))&quot;</span>, </a>
+<a class="sourceLine" id="cb4-29" title="29">                      <span class="st">&quot;Utbildningsår: (medelvärde (sd))&quot;</span>, </a>
+<a class="sourceLine" id="cb4-30" title="30">                      <span class="st">&quot;Etnicitet: Afro-amerikan (antal (%))&quot;</span>, </a>
+<a class="sourceLine" id="cb4-31" title="31">                      <span class="st">&quot;Etnicitet: Hispanic (antal (%))&quot;</span>,</a>
+<a class="sourceLine" id="cb4-32" title="32">                      <span class="st">&quot;Civilstånd: Gift (medelvärde (sd))&quot;</span>,</a>
+<a class="sourceLine" id="cb4-33" title="33">                      <span class="st">&quot;Examen: Ingen examen (antal (%))&quot;</span>)</a>
+<a class="sourceLine" id="cb4-34" title="34"><span class="co"># Exportera tabellen till html. Digits anger antal decimaler i respektive kolumna</span></a>
+<a class="sourceLine" id="cb4-35" title="35"><span class="kw">library</span>(<span class="st">&quot;xtable&quot;</span>)</a>
+<a class="sourceLine" id="cb4-36" title="36"><span class="kw">print</span>(<span class="kw">xtable</span>(Tabell1, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)), <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<!-- html table generated in R 3.6.3 by xtable 1.8-4 package -->
+<!-- Tue Dec 01 02:25:39 2020 -->
+<table border="1">
+<tr>
+<th>
+</th>
+<th>
+Behandlingsgrupp
+</th>
+<th>
+V2
+</th>
+<th>
+Kontrollgrupp
+</th>
+<th>
+V4
+</th>
+</tr>
+<tr>
+<td align="right">
+n
+</td>
+<td align="right">
+297.0
+</td>
+<td align="right">
+</td>
+<td align="right">
+425.0
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+Ålder (medelvärde (sd))
+</td>
+<td align="right">
+24.6
+</td>
+<td align="right">
+6.7
+</td>
+<td align="right">
+24.4
+</td>
+<td align="right">
+6.6
+</td>
+</tr>
+<tr>
+<td align="right">
+Utbildningsår: (medelvärde (sd))
+</td>
+<td align="right">
+10.4
+</td>
+<td align="right">
+1.8
+</td>
+<td align="right">
+10.2
+</td>
+<td align="right">
+1.6
+</td>
+</tr>
+<tr>
+<td align="right">
+Etnicitet: Afro-amerikan (antal (%))
+</td>
+<td align="right">
+59.0
+</td>
+<td align="right">
+19.9
+</td>
+<td align="right">
+85.0
+</td>
+<td align="right">
+20.0
+</td>
+</tr>
+<tr>
+<td align="right">
+Etnicitet: Hispanic (antal (%))
+</td>
+<td align="right">
+269.0
+</td>
+<td align="right">
+90.6
+</td>
+<td align="right">
+377.0
+</td>
+<td align="right">
+88.7
+</td>
+</tr>
+<tr>
+<td align="right">
+Civilstånd: Gift (medelvärde (sd))
+</td>
+<td align="right">
+247.0
+</td>
+<td align="right">
+83.2
+</td>
+<td align="right">
+358.0
+</td>
+<td align="right">
+84.2
+</td>
+</tr>
+<tr>
+<td align="right">
+Examen: Ingen examen (antal (%))
+</td>
+<td align="right">
+80.0
+</td>
+<td align="right">
+26.9
+</td>
+<td align="right">
+79.0
+</td>
+<td align="right">
+18.6
+</td>
+</tr>
+</table>
+<p>För att få tabellerna estetiskt tilltalande i en rapport är det enklare för nybörjaren att modifiera dem i ordbehandlingsprogrammet när rapport närmar sig att bli färdig. Nedan finns ett exempel på hur en sådan tabell kan se ut.</p>
+<p><img src="docs/images/baslinjensw.png" width="65%" /></p>
+<p>Det bör avslutningsvis nämnas att det finns paket i R som skapar tabeller som jämför baslinjemätningar i behandlingsgrupp och i kontrollgrupp.</p>
+</div>
+<div id="analys" class="section level3">
+<h3><span class="header-section-number">10.1.3</span> Analys</h3>
+<p>Anta att målet är att jämföra två stycken populationer med avseende på medelvärden. I populationen har vi
+<span class="math display">\[\delta = \mu_t - \mu_c\]</span></p>
+<p>För att skatta denna skillnad använder vi
+<span class="math display">\[\hat{\delta} = \bar{y}_t - \bar{y}_c\]</span>
+där <span class="math inline">\(\bar{y}_t = \dfrac{1}{n_t}\sum_{i=1}^{n_t} y_{t,i}\)</span> och <span class="math inline">\(\bar{y}_c = \dfrac{1}{n_c}\sum_{i=1}^{n_c} y_{c,i}\)</span>.</p>
+<p>För att skatta variansen för denna estimator använder vi
+<span class="math display">\[\hat{V}(\hat{\delta}) = \dfrac{s^2_t}{n_t} +  \dfrac{s^2_c}{n_c}\]</span></p>
 <p><span class="math inline">\(\hat{\delta}\)</span> är approximativt normalfördelad i stora stickprov.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">library</span>(<span class="st">&quot;Matching&quot;</span>)
-Warning<span class="op">:</span><span class="st"> </span>package <span class="st">&#39;Matching&#39;</span> was built under R version <span class="fl">3.6</span>.<span class="dv">3</span>
-Loading required package<span class="op">:</span><span class="st"> </span>MASS
-## 
-##  Matching (Version 4.9-7, Build Date: 2020-02-05)
-##  See http://sekhon.berkeley.edu/matching for additional documentation.
-##  Please cite software as:
-##   Jasjeet S. Sekhon. 2011. ``Multivariate and Propensity Score Matching
-##   Software with Automated Balance Optimization: The Matching package for R.&#39;&#39;
-##   Journal of Statistical Software, 42(7): 1-52. 
-##
- <span class="kw">data</span>(lalonde)
- df &lt;-<span class="st"> </span>lalonde
- n_t &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
- n_c &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
- ybar_t &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- ybar_c &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- deltahat &lt;-<span class="st"> </span>ybar_t  <span class="op">-</span>ybar_c
- s2_t &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- s2_c &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- vhatdeltahat &lt;-<span class="st"> </span>s2_t<span class="op">/</span>n_t <span class="op">+</span><span class="st"> </span>s2_c<span class="op">/</span>n_c
- se_hatdelta &lt;-<span class="st"> </span><span class="kw">sqrt</span>(vhatdeltahat)
- KI_delta &lt;-<span class="st"> </span><span class="kw">c</span>(deltahat <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat), deltahat <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat))
- zobs &lt;-<span class="st"> </span>deltahat<span class="op">/</span><span class="kw">sqrt</span>(vhatdeltahat)
- p_value &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(zobs)))
- 
- deltahat
-[<span class="dv">1</span>] <span class="fl">1794.343</span>
- se_hatdelta
-[<span class="dv">1</span>] <span class="fl">670.9967</span>
- KI_delta
-[<span class="dv">1</span>]  <span class="fl">479.1895</span> <span class="fl">3109.4967</span>
- zobs
-[<span class="dv">1</span>] <span class="fl">2.674146</span>
- p_value
-[<span class="dv">1</span>] <span class="fl">0.007491987</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"> <span class="kw">library</span>(<span class="st">&quot;ATE&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"> <span class="kw">data</span>(nsw)</a>
+<a class="sourceLine" id="cb5-3" title="3"> df &lt;-<span class="st"> </span>nsw</a>
+<a class="sourceLine" id="cb5-4" title="4"> n_t &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"> n_c &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6"> ybar_t &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb5-7" title="7"> ybar_c &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb5-8" title="8"> deltahat &lt;-<span class="st"> </span>ybar_t  <span class="op">-</span>ybar_c</a>
+<a class="sourceLine" id="cb5-9" title="9"> s2_t &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb5-10" title="10"> s2_c &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb5-11" title="11"> vhatdeltahat &lt;-<span class="st"> </span>s2_t<span class="op">/</span>n_t <span class="op">+</span><span class="st"> </span>s2_c<span class="op">/</span>n_c</a>
+<a class="sourceLine" id="cb5-12" title="12"> se_hatdelta &lt;-<span class="st"> </span><span class="kw">sqrt</span>(vhatdeltahat)</a>
+<a class="sourceLine" id="cb5-13" title="13"> KI_delta &lt;-<span class="st"> </span><span class="kw">c</span>(deltahat <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat), deltahat <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat))</a>
+<a class="sourceLine" id="cb5-14" title="14"> zobs &lt;-<span class="st"> </span>deltahat<span class="op">/</span><span class="kw">sqrt</span>(vhatdeltahat)</a>
+<a class="sourceLine" id="cb5-15" title="15"> p_value &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(zobs)))</a>
+<a class="sourceLine" id="cb5-16" title="16"> deltahat</a>
+<a class="sourceLine" id="cb5-17" title="17">[<span class="dv">1</span>] <span class="fl">886.3037</span></a>
+<a class="sourceLine" id="cb5-18" title="18"> se_hatdelta</a>
+<a class="sourceLine" id="cb5-19" title="19">[<span class="dv">1</span>] <span class="fl">488.2045</span></a>
+<a class="sourceLine" id="cb5-20" title="20"> KI_delta</a>
+<a class="sourceLine" id="cb5-21" title="21">[<span class="dv">1</span>]  <span class="fl">-70.57715</span> <span class="fl">1843.18461</span></a>
+<a class="sourceLine" id="cb5-22" title="22"> zobs</a>
+<a class="sourceLine" id="cb5-23" title="23">[<span class="dv">1</span>] <span class="fl">1.815435</span></a>
+<a class="sourceLine" id="cb5-24" title="24"> p_value</a>
+<a class="sourceLine" id="cb5-25" title="25">[<span class="dv">1</span>] <span class="fl">0.06945704</span></a></code></pre></div>
 <p>I R används Welchs <span class="math inline">\(t\)</span>-test</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>re78 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>treat, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)
-
-    Welch Two Sample t<span class="op">-</span>test
-
-data<span class="op">:</span><span class="st">  </span>df<span class="op">$</span>re78 by df<span class="op">$</span>treat
-t =<span class="st"> </span><span class="op">-</span><span class="fl">2.6741</span>, df =<span class="st"> </span><span class="fl">307.13</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.007893</span>
-alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
-<span class="dv">95</span> percent confidence interval<span class="op">:</span>
-<span class="st"> </span><span class="op">-</span><span class="fl">3114.6754</span>  <span class="op">-</span><span class="fl">474.0108</span>
-sample estimates<span class="op">:</span>
-mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
-       <span class="fl">4554.802</span>        <span class="fl">6349.145</span> </code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">t.test</span>(df<span class="op">$</span>re78 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>treat, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3">    Welch Two Sample t<span class="op">-</span>test</a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5">data<span class="op">:</span><span class="st">  </span>df<span class="op">$</span>re78 by df<span class="op">$</span>treat</a>
+<a class="sourceLine" id="cb6-6" title="6">t =<span class="st"> </span><span class="fl">-1.8154</span>, df =<span class="st"> </span><span class="fl">557.06</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.06999</span></a>
+<a class="sourceLine" id="cb6-7" title="7">alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="dv">95</span> percent confidence interval<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="st"> </span><span class="fl">-1845.25051</span>    <span class="fl">72.64305</span></a>
+<a class="sourceLine" id="cb6-10" title="10">sample estimates<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-11" title="11">mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb6-12" title="12">       <span class="fl">5090.048</span>        <span class="fl">5976.352</span> </a></code></pre></div>
 <p>Lika eller olika varianser?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>re78 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>treat, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
-
-    Two Sample t<span class="op">-</span>test
-
-data<span class="op">:</span><span class="st">  </span>df<span class="op">$</span>re78 by df<span class="op">$</span>treat
-t =<span class="st"> </span><span class="op">-</span><span class="fl">2.8353</span>, df =<span class="st"> </span><span class="dv">443</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.004788</span>
-alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
-<span class="dv">95</span> percent confidence interval<span class="op">:</span>
-<span class="st"> </span><span class="op">-</span><span class="fl">3038.1113</span>  <span class="op">-</span><span class="fl">550.5749</span>
-sample estimates<span class="op">:</span>
-mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
-       <span class="fl">4554.802</span>        <span class="fl">6349.145</span> </code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">t.test</span>(df<span class="op">$</span>re78 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>treat, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3">    Two Sample t<span class="op">-</span>test</a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5">data<span class="op">:</span><span class="st">  </span>df<span class="op">$</span>re78 by df<span class="op">$</span>treat</a>
+<a class="sourceLine" id="cb7-6" title="6">t =<span class="st"> </span><span class="fl">-1.8774</span>, df =<span class="st"> </span><span class="dv">720</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.06086</span></a>
+<a class="sourceLine" id="cb7-7" title="7">alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="dv">95</span> percent confidence interval<span class="op">:</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="st"> </span><span class="fl">-1813.13381</span>    <span class="fl">40.52635</span></a>
+<a class="sourceLine" id="cb7-10" title="10">sample estimates<span class="op">:</span></a>
+<a class="sourceLine" id="cb7-11" title="11">mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb7-12" title="12">       <span class="fl">5090.048</span>        <span class="fl">5976.352</span> </a></code></pre></div>
+</div>
 </div>
 <div id="stratifiering" class="section level2">
 <h2><span class="header-section-number">10.2</span> Stratifiering</h2>
-<p>Utgå från att vi har <span class="math inline">\(G\)</span> strata eller block där stratum <span class="math inline">\(g\)</span> består <span class="math inline">\(n_g\)</span> observationer. Vi utför inom varje stratum en randomisering, enligt det klassiska experimentet. Vi har nu en stratumspecifik medelvärdesskillnad <span class="math display">\[\delta_g = \mu_{t,g} - \mu_{c,g}\]</span> vilken skattas med <span class="math display">\[\hat{\delta}_g = \bar{y}_{t,g} - \bar{y}_{c,g}\]</span> {y}_{t,g}</p>
+<p>Utgå från att vi har <span class="math inline">\(G\)</span> strata eller block där stratum <span class="math inline">\(g\)</span> består <span class="math inline">\(n_g\)</span> observationer. Vi utför inom varje stratum en randomisering, enligt det klassiska experimentet. Vi har nu en stratumspecifik medelvärdesskillnad
+<span class="math display">\[\delta_g = \mu_{t,g} - \mu_{c,g}\]</span>
+vilken skattas med
+<span class="math display">\[\hat{\delta}_g = \bar{y}_{t,g} - \bar{y}_{c,g}\]</span>
+{y}_{t,g}</p>
 <p>Variansen för denna skattas med</p>
 <p><span class="math display">\[\hat{V}(\hat{\delta}_g) = \dfrac{s^2_{t,g}}{n_{t,g}} +  \dfrac{s^2_{c,g}}{n_{c,g}}\]</span></p>
 <p>Skattningarna vi får är nu</p>
-<p><span class="math display">\[\hat{\delta}_{st} = \sum_{g=1}^G\left(\dfrac{n_g}{n}\right)\hat{\delta}_g\]</span> vars varians skattas med <span class="math display">\[\hat{V}\left(\hat{\delta}_{st}\right) = \sum_{g=1}^G\left(\dfrac{n_g}{n}\right)^2\hat{V}(\hat{\delta}_g)\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Stratum (block) 1</span>
- n_t1 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
- n_c1 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
- n_<span class="dv">1</span> &lt;-<span class="st">  </span>n_t1 <span class="op">+</span><span class="st">  </span>n_c1
- ybar_t1 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- ybar_c1 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- deltahat_<span class="dv">1</span> &lt;-<span class="st"> </span>ybar_t1 <span class="op">-</span><span class="st"> </span>ybar_c1
- s2_t1 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- s2_c1 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
- vhatdeltahat_<span class="dv">1</span> &lt;-<span class="st"> </span>s2_t1<span class="op">/</span>n_t1 <span class="op">+</span><span class="st"> </span>s2_c1<span class="op">/</span>n_c1
- 
- <span class="co"># Stratum (block) 2</span>
- n_t2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
- n_c2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
- n_<span class="dv">2</span> &lt;-<span class="st">  </span>n_t2 <span class="op">+</span><span class="st">  </span>n_c2
- ybar_t2 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- ybar_c2 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- deltahat_<span class="dv">2</span> &lt;-<span class="st"> </span>ybar_t2 <span class="op">-</span><span class="st"> </span>ybar_c2
- s2_t2 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- s2_c2 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
- vhatdeltahat_<span class="dv">2</span> &lt;-<span class="st"> </span>s2_t2<span class="op">/</span>n_t2 <span class="op">+</span><span class="st"> </span>s2_c2<span class="op">/</span>n_c2
-
- n &lt;-<span class="st"> </span>n_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span>
- <span class="co"># Effekt</span>
- deltahat_st &lt;-<span class="st"> </span>(n_<span class="dv">1</span><span class="op">/</span>n)<span class="op">*</span>deltahat_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(n_<span class="dv">2</span><span class="op">/</span>n)<span class="op">*</span>deltahat_<span class="dv">2</span> 
- vhatdeltahat_st &lt;-<span class="st"> </span>(n_<span class="dv">1</span><span class="op">/</span>n)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>vhatdeltahat_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(n_<span class="dv">2</span><span class="op">/</span>n)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>vhatdeltahat_<span class="dv">2</span> 
- se_hatdelta_st &lt;-<span class="st"> </span><span class="kw">sqrt</span>(vhatdeltahat_st)
- zobs_st &lt;-<span class="st">  </span>deltahat_st<span class="op">/</span><span class="kw">sqrt</span>(vhatdeltahat_st)
- p_value_st &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(zobs_st)))
- 
- KI_delta_st &lt;-<span class="st"> </span><span class="kw">c</span>(deltahat_st <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat_st), deltahat_st <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat_st))
-
- 
- deltahat_st
-[<span class="dv">1</span>] <span class="fl">1704.384</span>
- se_hatdelta_st
-[<span class="dv">1</span>] <span class="fl">664.0103</span>
- KI_delta_st
-[<span class="dv">1</span>]  <span class="fl">402.9236</span> <span class="fl">3005.8441</span>
- p_value_st
-[<span class="dv">1</span>] <span class="fl">0.01026408</span>
-
-<span class="co"># Jämförelse av variansskattningar  </span>
- vhatdeltahat<span class="op">/</span>vhatdeltahat_st
-[<span class="dv">1</span>] <span class="fl">1.021154</span></code></pre></div>
-</div>
-<div id="tabell-1-vid-randomiserade-försök" class="section level2">
-<h2><span class="header-section-number">10.3</span> Tabell 1 vid randomiserade försök</h2>
+<p><span class="math display">\[\hat{\delta}_{st} = \sum_{g=1}^G\left(\dfrac{n_g}{n}\right)\hat{\delta}_g\]</span>
+vars varians skattas med
+<span class="math display">\[\hat{V}\left(\hat{\delta}_{st}\right) = \sum_{g=1}^G\left(\dfrac{n_g}{n}\right)^2\hat{V}(\hat{\delta}_g)\]</span></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Stratum (block) 1</span></a>
+<a class="sourceLine" id="cb8-2" title="2"> n_t1 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"> n_c1 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4"> n_<span class="dv">1</span> &lt;-<span class="st">  </span>n_t1 <span class="op">+</span><span class="st">  </span>n_c1</a>
+<a class="sourceLine" id="cb8-5" title="5"> ybar_t1 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb8-6" title="6"> ybar_c1 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb8-7" title="7"> deltahat_<span class="dv">1</span> &lt;-<span class="st"> </span>ybar_t1 <span class="op">-</span><span class="st"> </span>ybar_c1</a>
+<a class="sourceLine" id="cb8-8" title="8"> s2_t1 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb8-9" title="9"> s2_c1 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb8-10" title="10"> vhatdeltahat_<span class="dv">1</span> &lt;-<span class="st"> </span>s2_t1<span class="op">/</span>n_t1 <span class="op">+</span><span class="st"> </span>s2_c1<span class="op">/</span>n_c1</a>
+<a class="sourceLine" id="cb8-11" title="11"> </a>
+<a class="sourceLine" id="cb8-12" title="12"> <span class="co"># Stratum (block) 2</span></a>
+<a class="sourceLine" id="cb8-13" title="13"> n_t2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb8-14" title="14"> n_c2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb8-15" title="15"> n_<span class="dv">2</span> &lt;-<span class="st">  </span>n_t2 <span class="op">+</span><span class="st">  </span>n_c2</a>
+<a class="sourceLine" id="cb8-16" title="16"> ybar_t2 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb8-17" title="17"> ybar_c2 &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb8-18" title="18"> deltahat_<span class="dv">2</span> &lt;-<span class="st"> </span>ybar_t2 <span class="op">-</span><span class="st"> </span>ybar_c2</a>
+<a class="sourceLine" id="cb8-19" title="19"> s2_t2 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb8-20" title="20"> s2_c2 &lt;-<span class="st"> </span><span class="kw">var</span>(df<span class="op">$</span>re78[df<span class="op">$</span>treat <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>u75 <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb8-21" title="21"> vhatdeltahat_<span class="dv">2</span> &lt;-<span class="st"> </span>s2_t2<span class="op">/</span>n_t2 <span class="op">+</span><span class="st"> </span>s2_c2<span class="op">/</span>n_c2</a>
+<a class="sourceLine" id="cb8-22" title="22"></a>
+<a class="sourceLine" id="cb8-23" title="23"> n &lt;-<span class="st"> </span>n_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb8-24" title="24"> <span class="co"># Effekt</span></a>
+<a class="sourceLine" id="cb8-25" title="25"> deltahat_st &lt;-<span class="st"> </span>(n_<span class="dv">1</span><span class="op">/</span>n)<span class="op">*</span>deltahat_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(n_<span class="dv">2</span><span class="op">/</span>n)<span class="op">*</span>deltahat_<span class="dv">2</span> </a>
+<a class="sourceLine" id="cb8-26" title="26"> vhatdeltahat_st &lt;-<span class="st"> </span>(n_<span class="dv">1</span><span class="op">/</span>n)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>vhatdeltahat_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(n_<span class="dv">2</span><span class="op">/</span>n)<span class="op">^</span><span class="dv">2</span><span class="op">*</span>vhatdeltahat_<span class="dv">2</span> </a>
+<a class="sourceLine" id="cb8-27" title="27"> se_hatdelta_st &lt;-<span class="st"> </span><span class="kw">sqrt</span>(vhatdeltahat_st)</a>
+<a class="sourceLine" id="cb8-28" title="28"> zobs_st &lt;-<span class="st">  </span>deltahat_st<span class="op">/</span><span class="kw">sqrt</span>(vhatdeltahat_st)</a>
+<a class="sourceLine" id="cb8-29" title="29"> p_value_st &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(zobs_st)))</a>
+<a class="sourceLine" id="cb8-30" title="30"> </a>
+<a class="sourceLine" id="cb8-31" title="31"> KI_delta_st &lt;-<span class="st"> </span><span class="kw">c</span>(deltahat_st <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat_st), deltahat_st <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span><span class="kw">sqrt</span>(vhatdeltahat_st))</a>
+<a class="sourceLine" id="cb8-32" title="32"></a>
+<a class="sourceLine" id="cb8-33" title="33"> </a>
+<a class="sourceLine" id="cb8-34" title="34"> deltahat_st</a>
+<a class="sourceLine" id="cb8-35" title="35">[<span class="dv">1</span>] <span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb8-36" title="36"> se_hatdelta_st</a>
+<a class="sourceLine" id="cb8-37" title="37">[<span class="dv">1</span>] <span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb8-38" title="38"> KI_delta_st</a>
+<a class="sourceLine" id="cb8-39" title="39">[<span class="dv">1</span>] <span class="ot">NaN</span> <span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb8-40" title="40"> p_value_st</a>
+<a class="sourceLine" id="cb8-41" title="41">[<span class="dv">1</span>] <span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb8-42" title="42"></a>
+<a class="sourceLine" id="cb8-43" title="43"><span class="co"># Jämförelse av variansskattningar  </span></a>
+<a class="sourceLine" id="cb8-44" title="44"> vhatdeltahat<span class="op">/</span>vhatdeltahat_st</a>
+<a class="sourceLine" id="cb8-45" title="45">[<span class="dv">1</span>] <span class="ot">NaN</span></a></code></pre></div>
 </div>
 <div id="anova" class="section level2">
-<h2><span class="header-section-number">10.4</span> ANOVA</h2>
+<h2><span class="header-section-number">10.3</span> ANOVA</h2>
 <p>För att introducera Analysis of Variance (ANOVA) och få en förståelse för en del underliggande koncept ska vi se på mönstringsdatat INSARK. Framför allt fokuserar vi på benstyrkan hos unga män födda år 1962, 1968 och 1974 som mönstrade. Populationsdata som består av 52347 stycken 1962, 48771 år 1968 samt 43741 år 1974 presenteras nedan.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))
-<span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,  <span class="dt">freq =</span> <span class="ot">FALSE</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
-<span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Tre populationner?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)
-<span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">40</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">main =</span><span class="st">&quot;En population?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-388-1.png" width="384" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;data/conscriptiondata.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,  <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="kw">hist</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Tre populationner?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="kw">lines</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">15</span>), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>legstrength[df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1962</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>year <span class="op">==</span><span class="st"> </span><span class="dv">1974</span>], <span class="dt">bw =</span> <span class="dv">40</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">main =</span><span class="st">&quot;En population?&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-10-1.png" width="384" /></p>
 <p>Börja nu med att anta att vi inte kan observera all data. Vi önskar dock få en uppfattning om benstyrkan i populationen och om denna skiljer sig åt mellan åren. För att besvara denna fråga drar vi ett OSU från respektive födelseår med storlekarna <span class="math inline">\(n_1=120\)</span>, <span class="math inline">\(n_2=300\)</span>, <span class="math inline">\(n_3=200\)</span>. Dessa individers benstyrka mäts och data lägga in i ett dataframe.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">467.4</span>,<span class="fl">590.5</span>,<span class="fl">599.7</span>,<span class="fl">546.7</span>,<span class="fl">615.9</span>,<span class="fl">508.3</span>,<span class="fl">780.3</span>,<span class="fl">563.4</span>,<span class="dv">782</span>,<span class="fl">625.9</span>,<span class="fl">709.2</span>,<span class="fl">471.9</span>,<span class="fl">623.9</span>,<span class="fl">636.6</span>,<span class="fl">706.8</span>,<span class="fl">740.6</span>,<span class="fl">580.3</span>,<span class="fl">518.1</span>,<span class="fl">526.6</span>,<span class="fl">584.8</span>,<span class="fl">470.5</span>,<span class="fl">463.8</span>,<span class="fl">627.5</span>,<span class="fl">448.1</span>,<span class="fl">464.5</span>,<span class="fl">365.2</span>,<span class="fl">603.8</span>,<span class="fl">541.6</span>,<span class="fl">612.6</span>,<span class="fl">457.1</span>,<span class="fl">472.3</span>,<span class="fl">568.6</span>,<span class="fl">479.2</span>,<span class="fl">584.1</span>,<span class="dv">303</span>,<span class="fl">673.8</span>,<span class="fl">397.6</span>,<span class="fl">513.2</span>,<span class="fl">529.6</span>,<span class="fl">766.1</span>,<span class="dv">696</span>,<span class="fl">430.3</span>,<span class="fl">452.4</span>,<span class="fl">540.8</span>,<span class="fl">641.8</span>,<span class="fl">480.2</span>,<span class="fl">411.3</span>,<span class="fl">726.2</span>,<span class="fl">577.5</span>,<span class="fl">421.5</span>,<span class="fl">515.7</span>,<span class="fl">833.8</span>,<span class="fl">512.2</span>,<span class="fl">509.3</span>,<span class="fl">420.9</span>,<span class="fl">704.2</span>,<span class="fl">467.8</span>,<span class="fl">400.7</span>,<span class="dv">419</span>,<span class="fl">427.3</span>,<span class="fl">565.9</span>,<span class="fl">564.2</span>,<span class="fl">204.2</span>,<span class="fl">490.5</span>,<span class="fl">448.9</span>,<span class="dv">792</span>,<span class="fl">389.9</span>,<span class="fl">437.7</span>,<span class="fl">440.2</span>,<span class="fl">581.2</span>,<span class="fl">465.1</span>,<span class="fl">569.1</span>,<span class="fl">698.7</span>,<span class="fl">632.1</span>,<span class="fl">336.2</span>,<span class="fl">485.5</span>,<span class="fl">452.2</span>,<span class="fl">695.1</span>,<span class="fl">394.7</span>,<span class="fl">566.1</span>,<span class="fl">628.6</span>,<span class="fl">513.7</span>,<span class="fl">692.2</span>,<span class="fl">624.7</span>,<span class="dv">664</span>,<span class="fl">482.7</span>,<span class="fl">586.8</span>,<span class="dv">651</span>,<span class="dv">530</span>,<span class="fl">683.9</span>,<span class="fl">440.5</span>,<span class="dv">548</span>,<span class="dv">563</span>,<span class="fl">592.3</span>,<span class="dv">750</span>,<span class="fl">515.9</span>,<span class="fl">685.4</span>,<span class="dv">522</span>,<span class="fl">750.1</span>,<span class="fl">778.5</span>,<span class="fl">591.8</span>,<span class="fl">635.9</span>,<span class="fl">524.9</span>,<span class="fl">356.2</span>,<span class="fl">379.3</span>,<span class="fl">455.4</span>,<span class="fl">656.4</span>,<span class="fl">587.2</span>,<span class="fl">600.9</span>,<span class="fl">623.4</span>,<span class="fl">526.3</span>,<span class="fl">550.4</span>,<span class="fl">748.2</span>,<span class="dv">518</span>,<span class="fl">594.7</span>,<span class="fl">696.7</span>,<span class="fl">829.4</span>,<span class="fl">362.9</span>,<span class="fl">679.9</span>,<span class="fl">421.8</span>,<span class="fl">626.4</span>,<span class="dv">830</span>,<span class="fl">680.2</span>,<span class="fl">400.8</span>,<span class="fl">725.5</span>,<span class="fl">472.5</span>,<span class="fl">456.9</span>,<span class="dv">640</span>,<span class="fl">710.8</span>,<span class="fl">755.6</span>,<span class="fl">643.1</span>,<span class="fl">481.6</span>,<span class="fl">794.9</span>,<span class="fl">501.1</span>,<span class="fl">597.1</span>,<span class="fl">615.3</span>,<span class="dv">524</span>,<span class="fl">732.2</span>,<span class="fl">475.6</span>,<span class="fl">641.2</span>,<span class="fl">571.4</span>,<span class="fl">721.9</span>,<span class="fl">545.8</span>,<span class="fl">487.9</span>,<span class="fl">646.1</span>,<span class="fl">546.7</span>,<span class="dv">857</span>,<span class="fl">472.1</span>,<span class="fl">497.6</span>,<span class="fl">565.2</span>,<span class="dv">835</span>,<span class="fl">478.7</span>,<span class="fl">650.7</span>,<span class="fl">564.2</span>,<span class="fl">631.5</span>,<span class="fl">636.2</span>,<span class="fl">767.6</span>,<span class="fl">437.9</span>,<span class="fl">664.7</span>,<span class="fl">592.8</span>,<span class="fl">534.3</span>,<span class="fl">465.2</span>,<span class="dv">651</span>,<span class="fl">566.8</span>,<span class="fl">608.9</span>,<span class="fl">517.3</span>,<span class="fl">582.2</span>,<span class="fl">498.9</span>,<span class="fl">616.7</span>,<span class="fl">728.5</span>,<span class="fl">541.3</span>,<span class="fl">466.1</span>,<span class="fl">449.2</span>,<span class="fl">518.9</span>,<span class="fl">702.9</span>,<span class="fl">547.9</span>,<span class="fl">582.1</span>,<span class="fl">595.4</span>,<span class="fl">532.6</span>,<span class="fl">826.1</span>,<span class="fl">633.6</span>,<span class="fl">518.5</span>,<span class="fl">500.3</span>,<span class="fl">550.6</span>,<span class="fl">635.8</span>,<span class="fl">459.2</span>,<span class="fl">777.1</span>,<span class="fl">631.4</span>,<span class="fl">578.4</span>,<span class="fl">485.9</span>,<span class="fl">855.1</span>,<span class="fl">634.8</span>,<span class="fl">816.6</span>,<span class="fl">546.8</span>,<span class="fl">555.5</span>,<span class="fl">602.4</span>,<span class="fl">501.3</span>,<span class="fl">590.5</span>,<span class="dv">518</span>,<span class="fl">634.4</span>,<span class="fl">701.2</span>,<span class="fl">762.5</span>,<span class="fl">436.8</span>,<span class="fl">497.6</span>,<span class="fl">520.6</span>,<span class="fl">556.4</span>,<span class="fl">686.6</span>,<span class="fl">553.2</span>,<span class="fl">614.2</span>,<span class="fl">580.5</span>,<span class="fl">463.3</span>,<span class="fl">707.5</span>,<span class="fl">677.5</span>,<span class="fl">773.4</span>,<span class="dv">570</span>,<span class="fl">530.9</span>,<span class="fl">524.5</span>,<span class="fl">377.8</span>,<span class="fl">467.9</span>,<span class="fl">753.2</span>,<span class="fl">705.8</span>,<span class="fl">436.4</span>,<span class="fl">732.1</span>,<span class="fl">450.2</span>,<span class="fl">699.9</span>,<span class="fl">586.2</span>,<span class="fl">464.4</span>,<span class="fl">535.9</span>,<span class="fl">632.2</span>,<span class="dv">642</span>,<span class="fl">557.7</span>,<span class="dv">436</span>,<span class="fl">604.3</span>,<span class="fl">324.8</span>,<span class="fl">496.3</span>,<span class="fl">494.5</span>,<span class="fl">576.1</span>,<span class="fl">615.4</span>,<span class="fl">439.6</span>,<span class="fl">325.9</span>,<span class="fl">589.9</span>,<span class="fl">683.2</span>,<span class="fl">513.3</span>,<span class="dv">376</span>,<span class="dv">549</span>,<span class="fl">806.1</span>,<span class="fl">463.5</span>,<span class="dv">591</span>,<span class="dv">529</span>,<span class="fl">577.3</span>,<span class="fl">567.7</span>,<span class="fl">469.4</span>,<span class="fl">408.6</span>,<span class="dv">659</span>,<span class="fl">928.6</span>,<span class="fl">679.3</span>,<span class="fl">525.9</span>,<span class="fl">427.4</span>,<span class="fl">882.2</span>,<span class="fl">528.1</span>,<span class="fl">539.5</span>,<span class="fl">656.5</span>,<span class="fl">612.4</span>,<span class="dv">629</span>,<span class="fl">370.4</span>,<span class="fl">590.9</span>,<span class="fl">582.9</span>,<span class="fl">394.5</span>,<span class="fl">590.4</span>,<span class="fl">529.7</span>,<span class="fl">401.5</span>,<span class="fl">489.3</span>,<span class="fl">826.5</span>,<span class="fl">588.6</span>,<span class="fl">659.4</span>,<span class="fl">501.5</span>,<span class="fl">598.2</span>,<span class="fl">226.1</span>,<span class="fl">446.7</span>,<span class="fl">738.5</span>,<span class="fl">738.9</span>,<span class="fl">504.9</span>,<span class="fl">440.6</span>,<span class="fl">448.6</span>,<span class="fl">733.6</span>,<span class="fl">508.4</span>,<span class="fl">560.2</span>,<span class="fl">516.5</span>,<span class="dv">784</span>,<span class="fl">549.7</span>,<span class="fl">566.8</span>,<span class="fl">582.5</span>,<span class="fl">730.7</span>,<span class="fl">623.4</span>,<span class="fl">688.2</span>,<span class="fl">746.1</span>,<span class="dv">574</span>,<span class="fl">655.1</span>,<span class="fl">690.8</span>,<span class="fl">728.5</span>,<span class="fl">489.4</span>,<span class="fl">557.2</span>,<span class="fl">622.6</span>,<span class="fl">644.8</span>,<span class="fl">586.7</span>,<span class="fl">748.9</span>,<span class="dv">900</span>,<span class="fl">649.2</span>,<span class="fl">474.3</span>,<span class="fl">485.1</span>,<span class="fl">667.3</span>,<span class="dv">667</span>,<span class="fl">457.1</span>,<span class="fl">988.4</span>,<span class="fl">445.3</span>,<span class="fl">452.1</span>,<span class="dv">691</span>,<span class="fl">556.8</span>,<span class="fl">764.6</span>,<span class="fl">615.5</span>,<span class="fl">351.7</span>,<span class="fl">436.6</span>,<span class="fl">576.8</span>,<span class="fl">553.6</span>,<span class="fl">302.5</span>,<span class="fl">586.1</span>,<span class="fl">556.1</span>,<span class="fl">601.8</span>,<span class="fl">458.7</span>,<span class="fl">704.1</span>,<span class="fl">644.5</span>,<span class="fl">471.7</span>,<span class="fl">689.4</span>,<span class="dv">482</span>,<span class="fl">728.1</span>,<span class="fl">389.4</span>,<span class="fl">723.4</span>,<span class="fl">519.5</span>,<span class="fl">761.1</span>,<span class="fl">559.6</span>,<span class="fl">635.3</span>,<span class="fl">544.8</span>,<span class="fl">750.6</span>,<span class="fl">556.4</span>,<span class="fl">498.1</span>,<span class="fl">607.5</span>,<span class="fl">576.7</span>,<span class="fl">533.2</span>,<span class="fl">536.5</span>,<span class="fl">454.6</span>,<span class="fl">625.7</span>,<span class="fl">580.3</span>,<span class="fl">499.5</span>,<span class="fl">631.5</span>,<span class="fl">396.4</span>,<span class="fl">505.1</span>,<span class="fl">616.7</span>,<span class="fl">696.5</span>,<span class="fl">694.8</span>,<span class="fl">536.7</span>,<span class="fl">435.4</span>,<span class="fl">553.1</span>,<span class="dv">484</span>,<span class="dv">561</span>,<span class="dv">575</span>,<span class="fl">487.4</span>,<span class="fl">575.6</span>,<span class="fl">567.4</span>,<span class="fl">604.6</span>,<span class="fl">453.6</span>,<span class="fl">794.4</span>,<span class="fl">557.7</span>,<span class="fl">633.8</span>,<span class="fl">635.4</span>,<span class="fl">705.6</span>,<span class="fl">504.4</span>,<span class="fl">966.9</span>,<span class="fl">463.3</span>,<span class="fl">580.2</span>,<span class="fl">502.1</span>,<span class="fl">549.1</span>,<span class="fl">668.9</span>,<span class="dv">686</span>,<span class="fl">618.6</span>,<span class="fl">458.5</span>,<span class="fl">762.3</span>,<span class="fl">388.3</span>,<span class="fl">645.9</span>,<span class="fl">483.9</span>,<span class="fl">704.9</span>,<span class="fl">561.9</span>,<span class="fl">726.9</span>,<span class="fl">535.9</span>,<span class="fl">701.6</span>,<span class="fl">611.8</span>,<span class="fl">434.7</span>,<span class="fl">668.3</span>,<span class="fl">500.9</span>,<span class="fl">617.1</span>,<span class="fl">433.5</span>,<span class="fl">682.1</span>,<span class="fl">520.5</span>,<span class="fl">709.5</span>,<span class="fl">678.8</span>,<span class="fl">699.9</span>,<span class="fl">412.6</span>,<span class="fl">857.7</span>,<span class="fl">733.1</span>,<span class="fl">643.9</span>,<span class="fl">773.4</span>,<span class="fl">662.8</span>,<span class="fl">573.8</span>,<span class="fl">673.9</span>,<span class="fl">509.7</span>,<span class="fl">608.4</span>,<span class="fl">966.8</span>,<span class="fl">628.5</span>,<span class="fl">727.7</span>,<span class="fl">542.2</span>,<span class="fl">540.4</span>,<span class="fl">625.1</span>,<span class="fl">668.2</span>,<span class="fl">645.6</span>,<span class="fl">637.1</span>,<span class="fl">554.2</span>,<span class="fl">677.3</span>,<span class="fl">562.1</span>,<span class="fl">626.8</span>,<span class="fl">742.3</span>,<span class="fl">587.1</span>,<span class="fl">903.6</span>,<span class="fl">418.5</span>,<span class="fl">895.8</span>,<span class="fl">604.1</span>,<span class="fl">378.7</span>,<span class="fl">444.8</span>,<span class="fl">526.6</span>,<span class="fl">546.4</span>,<span class="fl">751.4</span>,<span class="fl">616.7</span>,<span class="fl">723.6</span>,<span class="fl">621.7</span>,<span class="fl">786.4</span>,<span class="fl">780.3</span>,<span class="fl">622.9</span>,<span class="fl">579.2</span>,<span class="fl">744.1</span>,<span class="fl">820.4</span>,<span class="fl">792.3</span>,<span class="fl">835.9</span>,<span class="fl">563.9</span>,<span class="fl">405.1</span>,<span class="fl">671.8</span>,<span class="fl">494.6</span>,<span class="fl">735.4</span>,<span class="fl">540.7</span>,<span class="fl">605.4</span>,<span class="dv">523</span>,<span class="fl">504.5</span>,<span class="fl">697.8</span>,<span class="fl">854.2</span>,<span class="fl">580.1</span>,<span class="fl">440.3</span>,<span class="dv">480</span>,<span class="fl">415.1</span>,<span class="fl">731.8</span>,<span class="fl">489.5</span>,<span class="fl">545.8</span>,<span class="fl">460.5</span>,<span class="fl">587.5</span>,<span class="fl">689.3</span>,<span class="fl">509.2</span>,<span class="fl">798.3</span>,<span class="fl">614.1</span>,<span class="fl">661.4</span>,<span class="dv">706</span>,<span class="fl">547.9</span>,<span class="fl">663.1</span>,<span class="fl">918.8</span>,<span class="fl">724.9</span>,<span class="fl">680.4</span>,<span class="fl">744.2</span>,<span class="fl">469.7</span>,<span class="fl">360.4</span>,<span class="fl">781.5</span>,<span class="fl">700.2</span>,<span class="fl">560.4</span>,<span class="fl">591.5</span>,<span class="fl">661.4</span>,<span class="dv">697</span>,<span class="fl">595.4</span>,<span class="fl">783.1</span>,<span class="dv">570</span>,<span class="dv">630</span>,<span class="fl">1011.9</span>,<span class="fl">584.2</span>,<span class="fl">572.7</span>,<span class="fl">611.4</span>,<span class="fl">543.5</span>,<span class="fl">687.2</span>,<span class="dv">666</span>,<span class="fl">435.7</span>,<span class="fl">775.8</span>,<span class="fl">709.3</span>,<span class="fl">441.8</span>,<span class="fl">723.2</span>,<span class="dv">874</span>,<span class="fl">767.6</span>,<span class="fl">555.3</span>,<span class="fl">595.6</span>,<span class="fl">497.3</span>,<span class="fl">722.2</span>,<span class="fl">589.8</span>,<span class="fl">607.3</span>,<span class="fl">673.2</span>,<span class="fl">616.3</span>,<span class="dv">537</span>,<span class="fl">645.6</span>,<span class="fl">622.5</span>,<span class="dv">666</span>,<span class="fl">659.5</span>,<span class="fl">731.3</span>,<span class="fl">621.6</span>,<span class="fl">426.3</span>,<span class="fl">638.4</span>,<span class="fl">686.8</span>,<span class="fl">661.7</span>,<span class="fl">615.5</span>,<span class="fl">606.2</span>,<span class="fl">565.2</span>,<span class="fl">585.9</span>,<span class="fl">461.9</span>,<span class="fl">646.6</span>,<span class="fl">847.2</span>,<span class="fl">590.7</span>,<span class="dv">707</span>,<span class="fl">574.1</span>,<span class="fl">711.4</span>,<span class="fl">501.1</span>,<span class="fl">621.3</span>,<span class="fl">618.3</span>,<span class="fl">569.1</span>,<span class="fl">680.4</span>,<span class="fl">541.7</span>,<span class="dv">729</span>,<span class="dv">577</span>,<span class="fl">702.8</span>,<span class="fl">608.5</span>,<span class="fl">690.5</span>,<span class="fl">442.7</span>,<span class="fl">613.7</span>,<span class="fl">541.6</span>,<span class="fl">568.6</span>,<span class="fl">598.2</span>,<span class="fl">577.8</span>,<span class="fl">505.5</span>,<span class="fl">507.3</span>,<span class="fl">722.8</span>,<span class="fl">482.4</span>,<span class="fl">640.7</span>,<span class="dv">554</span>,<span class="fl">789.2</span>,<span class="fl">661.4</span>,<span class="fl">680.1</span>,<span class="fl">525.4</span>,<span class="fl">645.4</span>,<span class="fl">650.1</span>,<span class="fl">499.4</span>,<span class="fl">826.5</span>,<span class="fl">493.2</span>,<span class="fl">580.1</span>,<span class="fl">728.4</span>,<span class="fl">511.8</span>,<span class="fl">711.7</span>,<span class="fl">813.2</span>,<span class="fl">610.9</span>,<span class="fl">385.2</span>,<span class="fl">604.5</span>,<span class="fl">516.6</span>,<span class="fl">737.1</span>,<span class="fl">489.7</span>,<span class="fl">674.7</span>,<span class="fl">643.4</span>,<span class="fl">641.3</span>,<span class="fl">1018.2</span>,<span class="fl">698.8</span>,<span class="fl">572.6</span>,<span class="fl">774.5</span>,<span class="fl">687.2</span>,<span class="fl">417.1</span>,<span class="fl">661.6</span>,<span class="fl">817.2</span>,<span class="fl">732.5</span>,<span class="fl">451.3</span>,<span class="fl">488.1</span>,<span class="fl">653.3</span>,<span class="fl">577.9</span>,<span class="fl">494.4</span>,<span class="fl">659.9</span>,<span class="fl">457.5</span>,<span class="fl">487.8</span>,<span class="fl">641.2</span>,<span class="fl">499.5</span>,<span class="fl">611.4</span>,<span class="dv">473</span>,<span class="fl">699.3</span>,<span class="fl">518.8</span>,<span class="fl">961.8</span>,<span class="fl">774.9</span>,<span class="fl">602.5</span>,<span class="fl">539.5</span>,<span class="fl">558.8</span>,<span class="dv">638</span>,<span class="fl">421.2</span>,<span class="fl">392.6</span>,<span class="fl">640.8</span>,<span class="dv">450</span>,<span class="fl">591.7</span>,<span class="fl">530.1</span>,<span class="fl">698.5</span>),
-<span class="dt">year =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;1962&quot;</span>, <span class="dv">120</span>), <span class="kw">rep</span>(<span class="st">&quot;1968&quot;</span>, <span class="dv">300</span>), <span class="kw">rep</span>(<span class="st">&quot;1974&quot;</span>, <span class="dv">200</span>)))</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">467.4</span>,<span class="fl">590.5</span>,<span class="fl">599.7</span>,<span class="fl">546.7</span>,<span class="fl">615.9</span>,<span class="fl">508.3</span>,<span class="fl">780.3</span>,<span class="fl">563.4</span>,<span class="dv">782</span>,<span class="fl">625.9</span>,<span class="fl">709.2</span>,<span class="fl">471.9</span>,<span class="fl">623.9</span>,<span class="fl">636.6</span>,<span class="fl">706.8</span>,<span class="fl">740.6</span>,<span class="fl">580.3</span>,<span class="fl">518.1</span>,<span class="fl">526.6</span>,<span class="fl">584.8</span>,<span class="fl">470.5</span>,<span class="fl">463.8</span>,<span class="fl">627.5</span>,<span class="fl">448.1</span>,<span class="fl">464.5</span>,<span class="fl">365.2</span>,<span class="fl">603.8</span>,<span class="fl">541.6</span>,<span class="fl">612.6</span>,<span class="fl">457.1</span>,<span class="fl">472.3</span>,<span class="fl">568.6</span>,<span class="fl">479.2</span>,<span class="fl">584.1</span>,<span class="dv">303</span>,<span class="fl">673.8</span>,<span class="fl">397.6</span>,<span class="fl">513.2</span>,<span class="fl">529.6</span>,<span class="fl">766.1</span>,<span class="dv">696</span>,<span class="fl">430.3</span>,<span class="fl">452.4</span>,<span class="fl">540.8</span>,<span class="fl">641.8</span>,<span class="fl">480.2</span>,<span class="fl">411.3</span>,<span class="fl">726.2</span>,<span class="fl">577.5</span>,<span class="fl">421.5</span>,<span class="fl">515.7</span>,<span class="fl">833.8</span>,<span class="fl">512.2</span>,<span class="fl">509.3</span>,<span class="fl">420.9</span>,<span class="fl">704.2</span>,<span class="fl">467.8</span>,<span class="fl">400.7</span>,<span class="dv">419</span>,<span class="fl">427.3</span>,<span class="fl">565.9</span>,<span class="fl">564.2</span>,<span class="fl">204.2</span>,<span class="fl">490.5</span>,<span class="fl">448.9</span>,<span class="dv">792</span>,<span class="fl">389.9</span>,<span class="fl">437.7</span>,<span class="fl">440.2</span>,<span class="fl">581.2</span>,<span class="fl">465.1</span>,<span class="fl">569.1</span>,<span class="fl">698.7</span>,<span class="fl">632.1</span>,<span class="fl">336.2</span>,<span class="fl">485.5</span>,<span class="fl">452.2</span>,<span class="fl">695.1</span>,<span class="fl">394.7</span>,<span class="fl">566.1</span>,<span class="fl">628.6</span>,<span class="fl">513.7</span>,<span class="fl">692.2</span>,<span class="fl">624.7</span>,<span class="dv">664</span>,<span class="fl">482.7</span>,<span class="fl">586.8</span>,<span class="dv">651</span>,<span class="dv">530</span>,<span class="fl">683.9</span>,<span class="fl">440.5</span>,<span class="dv">548</span>,<span class="dv">563</span>,<span class="fl">592.3</span>,<span class="dv">750</span>,<span class="fl">515.9</span>,<span class="fl">685.4</span>,<span class="dv">522</span>,<span class="fl">750.1</span>,<span class="fl">778.5</span>,<span class="fl">591.8</span>,<span class="fl">635.9</span>,<span class="fl">524.9</span>,<span class="fl">356.2</span>,<span class="fl">379.3</span>,<span class="fl">455.4</span>,<span class="fl">656.4</span>,<span class="fl">587.2</span>,<span class="fl">600.9</span>,<span class="fl">623.4</span>,<span class="fl">526.3</span>,<span class="fl">550.4</span>,<span class="fl">748.2</span>,<span class="dv">518</span>,<span class="fl">594.7</span>,<span class="fl">696.7</span>,<span class="fl">829.4</span>,<span class="fl">362.9</span>,<span class="fl">679.9</span>,<span class="fl">421.8</span>,<span class="fl">626.4</span>,<span class="dv">830</span>,<span class="fl">680.2</span>,<span class="fl">400.8</span>,<span class="fl">725.5</span>,<span class="fl">472.5</span>,<span class="fl">456.9</span>,<span class="dv">640</span>,<span class="fl">710.8</span>,<span class="fl">755.6</span>,<span class="fl">643.1</span>,<span class="fl">481.6</span>,<span class="fl">794.9</span>,<span class="fl">501.1</span>,<span class="fl">597.1</span>,<span class="fl">615.3</span>,<span class="dv">524</span>,<span class="fl">732.2</span>,<span class="fl">475.6</span>,<span class="fl">641.2</span>,<span class="fl">571.4</span>,<span class="fl">721.9</span>,<span class="fl">545.8</span>,<span class="fl">487.9</span>,<span class="fl">646.1</span>,<span class="fl">546.7</span>,<span class="dv">857</span>,<span class="fl">472.1</span>,<span class="fl">497.6</span>,<span class="fl">565.2</span>,<span class="dv">835</span>,<span class="fl">478.7</span>,<span class="fl">650.7</span>,<span class="fl">564.2</span>,<span class="fl">631.5</span>,<span class="fl">636.2</span>,<span class="fl">767.6</span>,<span class="fl">437.9</span>,<span class="fl">664.7</span>,<span class="fl">592.8</span>,<span class="fl">534.3</span>,<span class="fl">465.2</span>,<span class="dv">651</span>,<span class="fl">566.8</span>,<span class="fl">608.9</span>,<span class="fl">517.3</span>,<span class="fl">582.2</span>,<span class="fl">498.9</span>,<span class="fl">616.7</span>,<span class="fl">728.5</span>,<span class="fl">541.3</span>,<span class="fl">466.1</span>,<span class="fl">449.2</span>,<span class="fl">518.9</span>,<span class="fl">702.9</span>,<span class="fl">547.9</span>,<span class="fl">582.1</span>,<span class="fl">595.4</span>,<span class="fl">532.6</span>,<span class="fl">826.1</span>,<span class="fl">633.6</span>,<span class="fl">518.5</span>,<span class="fl">500.3</span>,<span class="fl">550.6</span>,<span class="fl">635.8</span>,<span class="fl">459.2</span>,<span class="fl">777.1</span>,<span class="fl">631.4</span>,<span class="fl">578.4</span>,<span class="fl">485.9</span>,<span class="fl">855.1</span>,<span class="fl">634.8</span>,<span class="fl">816.6</span>,<span class="fl">546.8</span>,<span class="fl">555.5</span>,<span class="fl">602.4</span>,<span class="fl">501.3</span>,<span class="fl">590.5</span>,<span class="dv">518</span>,<span class="fl">634.4</span>,<span class="fl">701.2</span>,<span class="fl">762.5</span>,<span class="fl">436.8</span>,<span class="fl">497.6</span>,<span class="fl">520.6</span>,<span class="fl">556.4</span>,<span class="fl">686.6</span>,<span class="fl">553.2</span>,<span class="fl">614.2</span>,<span class="fl">580.5</span>,<span class="fl">463.3</span>,<span class="fl">707.5</span>,<span class="fl">677.5</span>,<span class="fl">773.4</span>,<span class="dv">570</span>,<span class="fl">530.9</span>,<span class="fl">524.5</span>,<span class="fl">377.8</span>,<span class="fl">467.9</span>,<span class="fl">753.2</span>,<span class="fl">705.8</span>,<span class="fl">436.4</span>,<span class="fl">732.1</span>,<span class="fl">450.2</span>,<span class="fl">699.9</span>,<span class="fl">586.2</span>,<span class="fl">464.4</span>,<span class="fl">535.9</span>,<span class="fl">632.2</span>,<span class="dv">642</span>,<span class="fl">557.7</span>,<span class="dv">436</span>,<span class="fl">604.3</span>,<span class="fl">324.8</span>,<span class="fl">496.3</span>,<span class="fl">494.5</span>,<span class="fl">576.1</span>,<span class="fl">615.4</span>,<span class="fl">439.6</span>,<span class="fl">325.9</span>,<span class="fl">589.9</span>,<span class="fl">683.2</span>,<span class="fl">513.3</span>,<span class="dv">376</span>,<span class="dv">549</span>,<span class="fl">806.1</span>,<span class="fl">463.5</span>,<span class="dv">591</span>,<span class="dv">529</span>,<span class="fl">577.3</span>,<span class="fl">567.7</span>,<span class="fl">469.4</span>,<span class="fl">408.6</span>,<span class="dv">659</span>,<span class="fl">928.6</span>,<span class="fl">679.3</span>,<span class="fl">525.9</span>,<span class="fl">427.4</span>,<span class="fl">882.2</span>,<span class="fl">528.1</span>,<span class="fl">539.5</span>,<span class="fl">656.5</span>,<span class="fl">612.4</span>,<span class="dv">629</span>,<span class="fl">370.4</span>,<span class="fl">590.9</span>,<span class="fl">582.9</span>,<span class="fl">394.5</span>,<span class="fl">590.4</span>,<span class="fl">529.7</span>,<span class="fl">401.5</span>,<span class="fl">489.3</span>,<span class="fl">826.5</span>,<span class="fl">588.6</span>,<span class="fl">659.4</span>,<span class="fl">501.5</span>,<span class="fl">598.2</span>,<span class="fl">226.1</span>,<span class="fl">446.7</span>,<span class="fl">738.5</span>,<span class="fl">738.9</span>,<span class="fl">504.9</span>,<span class="fl">440.6</span>,<span class="fl">448.6</span>,<span class="fl">733.6</span>,<span class="fl">508.4</span>,<span class="fl">560.2</span>,<span class="fl">516.5</span>,<span class="dv">784</span>,<span class="fl">549.7</span>,<span class="fl">566.8</span>,<span class="fl">582.5</span>,<span class="fl">730.7</span>,<span class="fl">623.4</span>,<span class="fl">688.2</span>,<span class="fl">746.1</span>,<span class="dv">574</span>,<span class="fl">655.1</span>,<span class="fl">690.8</span>,<span class="fl">728.5</span>,<span class="fl">489.4</span>,<span class="fl">557.2</span>,<span class="fl">622.6</span>,<span class="fl">644.8</span>,<span class="fl">586.7</span>,<span class="fl">748.9</span>,<span class="dv">900</span>,<span class="fl">649.2</span>,<span class="fl">474.3</span>,<span class="fl">485.1</span>,<span class="fl">667.3</span>,<span class="dv">667</span>,<span class="fl">457.1</span>,<span class="fl">988.4</span>,<span class="fl">445.3</span>,<span class="fl">452.1</span>,<span class="dv">691</span>,<span class="fl">556.8</span>,<span class="fl">764.6</span>,<span class="fl">615.5</span>,<span class="fl">351.7</span>,<span class="fl">436.6</span>,<span class="fl">576.8</span>,<span class="fl">553.6</span>,<span class="fl">302.5</span>,<span class="fl">586.1</span>,<span class="fl">556.1</span>,<span class="fl">601.8</span>,<span class="fl">458.7</span>,<span class="fl">704.1</span>,<span class="fl">644.5</span>,<span class="fl">471.7</span>,<span class="fl">689.4</span>,<span class="dv">482</span>,<span class="fl">728.1</span>,<span class="fl">389.4</span>,<span class="fl">723.4</span>,<span class="fl">519.5</span>,<span class="fl">761.1</span>,<span class="fl">559.6</span>,<span class="fl">635.3</span>,<span class="fl">544.8</span>,<span class="fl">750.6</span>,<span class="fl">556.4</span>,<span class="fl">498.1</span>,<span class="fl">607.5</span>,<span class="fl">576.7</span>,<span class="fl">533.2</span>,<span class="fl">536.5</span>,<span class="fl">454.6</span>,<span class="fl">625.7</span>,<span class="fl">580.3</span>,<span class="fl">499.5</span>,<span class="fl">631.5</span>,<span class="fl">396.4</span>,<span class="fl">505.1</span>,<span class="fl">616.7</span>,<span class="fl">696.5</span>,<span class="fl">694.8</span>,<span class="fl">536.7</span>,<span class="fl">435.4</span>,<span class="fl">553.1</span>,<span class="dv">484</span>,<span class="dv">561</span>,<span class="dv">575</span>,<span class="fl">487.4</span>,<span class="fl">575.6</span>,<span class="fl">567.4</span>,<span class="fl">604.6</span>,<span class="fl">453.6</span>,<span class="fl">794.4</span>,<span class="fl">557.7</span>,<span class="fl">633.8</span>,<span class="fl">635.4</span>,<span class="fl">705.6</span>,<span class="fl">504.4</span>,<span class="fl">966.9</span>,<span class="fl">463.3</span>,<span class="fl">580.2</span>,<span class="fl">502.1</span>,<span class="fl">549.1</span>,<span class="fl">668.9</span>,<span class="dv">686</span>,<span class="fl">618.6</span>,<span class="fl">458.5</span>,<span class="fl">762.3</span>,<span class="fl">388.3</span>,<span class="fl">645.9</span>,<span class="fl">483.9</span>,<span class="fl">704.9</span>,<span class="fl">561.9</span>,<span class="fl">726.9</span>,<span class="fl">535.9</span>,<span class="fl">701.6</span>,<span class="fl">611.8</span>,<span class="fl">434.7</span>,<span class="fl">668.3</span>,<span class="fl">500.9</span>,<span class="fl">617.1</span>,<span class="fl">433.5</span>,<span class="fl">682.1</span>,<span class="fl">520.5</span>,<span class="fl">709.5</span>,<span class="fl">678.8</span>,<span class="fl">699.9</span>,<span class="fl">412.6</span>,<span class="fl">857.7</span>,<span class="fl">733.1</span>,<span class="fl">643.9</span>,<span class="fl">773.4</span>,<span class="fl">662.8</span>,<span class="fl">573.8</span>,<span class="fl">673.9</span>,<span class="fl">509.7</span>,<span class="fl">608.4</span>,<span class="fl">966.8</span>,<span class="fl">628.5</span>,<span class="fl">727.7</span>,<span class="fl">542.2</span>,<span class="fl">540.4</span>,<span class="fl">625.1</span>,<span class="fl">668.2</span>,<span class="fl">645.6</span>,<span class="fl">637.1</span>,<span class="fl">554.2</span>,<span class="fl">677.3</span>,<span class="fl">562.1</span>,<span class="fl">626.8</span>,<span class="fl">742.3</span>,<span class="fl">587.1</span>,<span class="fl">903.6</span>,<span class="fl">418.5</span>,<span class="fl">895.8</span>,<span class="fl">604.1</span>,<span class="fl">378.7</span>,<span class="fl">444.8</span>,<span class="fl">526.6</span>,<span class="fl">546.4</span>,<span class="fl">751.4</span>,<span class="fl">616.7</span>,<span class="fl">723.6</span>,<span class="fl">621.7</span>,<span class="fl">786.4</span>,<span class="fl">780.3</span>,<span class="fl">622.9</span>,<span class="fl">579.2</span>,<span class="fl">744.1</span>,<span class="fl">820.4</span>,<span class="fl">792.3</span>,<span class="fl">835.9</span>,<span class="fl">563.9</span>,<span class="fl">405.1</span>,<span class="fl">671.8</span>,<span class="fl">494.6</span>,<span class="fl">735.4</span>,<span class="fl">540.7</span>,<span class="fl">605.4</span>,<span class="dv">523</span>,<span class="fl">504.5</span>,<span class="fl">697.8</span>,<span class="fl">854.2</span>,<span class="fl">580.1</span>,<span class="fl">440.3</span>,<span class="dv">480</span>,<span class="fl">415.1</span>,<span class="fl">731.8</span>,<span class="fl">489.5</span>,<span class="fl">545.8</span>,<span class="fl">460.5</span>,<span class="fl">587.5</span>,<span class="fl">689.3</span>,<span class="fl">509.2</span>,<span class="fl">798.3</span>,<span class="fl">614.1</span>,<span class="fl">661.4</span>,<span class="dv">706</span>,<span class="fl">547.9</span>,<span class="fl">663.1</span>,<span class="fl">918.8</span>,<span class="fl">724.9</span>,<span class="fl">680.4</span>,<span class="fl">744.2</span>,<span class="fl">469.7</span>,<span class="fl">360.4</span>,<span class="fl">781.5</span>,<span class="fl">700.2</span>,<span class="fl">560.4</span>,<span class="fl">591.5</span>,<span class="fl">661.4</span>,<span class="dv">697</span>,<span class="fl">595.4</span>,<span class="fl">783.1</span>,<span class="dv">570</span>,<span class="dv">630</span>,<span class="fl">1011.9</span>,<span class="fl">584.2</span>,<span class="fl">572.7</span>,<span class="fl">611.4</span>,<span class="fl">543.5</span>,<span class="fl">687.2</span>,<span class="dv">666</span>,<span class="fl">435.7</span>,<span class="fl">775.8</span>,<span class="fl">709.3</span>,<span class="fl">441.8</span>,<span class="fl">723.2</span>,<span class="dv">874</span>,<span class="fl">767.6</span>,<span class="fl">555.3</span>,<span class="fl">595.6</span>,<span class="fl">497.3</span>,<span class="fl">722.2</span>,<span class="fl">589.8</span>,<span class="fl">607.3</span>,<span class="fl">673.2</span>,<span class="fl">616.3</span>,<span class="dv">537</span>,<span class="fl">645.6</span>,<span class="fl">622.5</span>,<span class="dv">666</span>,<span class="fl">659.5</span>,<span class="fl">731.3</span>,<span class="fl">621.6</span>,<span class="fl">426.3</span>,<span class="fl">638.4</span>,<span class="fl">686.8</span>,<span class="fl">661.7</span>,<span class="fl">615.5</span>,<span class="fl">606.2</span>,<span class="fl">565.2</span>,<span class="fl">585.9</span>,<span class="fl">461.9</span>,<span class="fl">646.6</span>,<span class="fl">847.2</span>,<span class="fl">590.7</span>,<span class="dv">707</span>,<span class="fl">574.1</span>,<span class="fl">711.4</span>,<span class="fl">501.1</span>,<span class="fl">621.3</span>,<span class="fl">618.3</span>,<span class="fl">569.1</span>,<span class="fl">680.4</span>,<span class="fl">541.7</span>,<span class="dv">729</span>,<span class="dv">577</span>,<span class="fl">702.8</span>,<span class="fl">608.5</span>,<span class="fl">690.5</span>,<span class="fl">442.7</span>,<span class="fl">613.7</span>,<span class="fl">541.6</span>,<span class="fl">568.6</span>,<span class="fl">598.2</span>,<span class="fl">577.8</span>,<span class="fl">505.5</span>,<span class="fl">507.3</span>,<span class="fl">722.8</span>,<span class="fl">482.4</span>,<span class="fl">640.7</span>,<span class="dv">554</span>,<span class="fl">789.2</span>,<span class="fl">661.4</span>,<span class="fl">680.1</span>,<span class="fl">525.4</span>,<span class="fl">645.4</span>,<span class="fl">650.1</span>,<span class="fl">499.4</span>,<span class="fl">826.5</span>,<span class="fl">493.2</span>,<span class="fl">580.1</span>,<span class="fl">728.4</span>,<span class="fl">511.8</span>,<span class="fl">711.7</span>,<span class="fl">813.2</span>,<span class="fl">610.9</span>,<span class="fl">385.2</span>,<span class="fl">604.5</span>,<span class="fl">516.6</span>,<span class="fl">737.1</span>,<span class="fl">489.7</span>,<span class="fl">674.7</span>,<span class="fl">643.4</span>,<span class="fl">641.3</span>,<span class="fl">1018.2</span>,<span class="fl">698.8</span>,<span class="fl">572.6</span>,<span class="fl">774.5</span>,<span class="fl">687.2</span>,<span class="fl">417.1</span>,<span class="fl">661.6</span>,<span class="fl">817.2</span>,<span class="fl">732.5</span>,<span class="fl">451.3</span>,<span class="fl">488.1</span>,<span class="fl">653.3</span>,<span class="fl">577.9</span>,<span class="fl">494.4</span>,<span class="fl">659.9</span>,<span class="fl">457.5</span>,<span class="fl">487.8</span>,<span class="fl">641.2</span>,<span class="fl">499.5</span>,<span class="fl">611.4</span>,<span class="dv">473</span>,<span class="fl">699.3</span>,<span class="fl">518.8</span>,<span class="fl">961.8</span>,<span class="fl">774.9</span>,<span class="fl">602.5</span>,<span class="fl">539.5</span>,<span class="fl">558.8</span>,<span class="dv">638</span>,<span class="fl">421.2</span>,<span class="fl">392.6</span>,<span class="fl">640.8</span>,<span class="dv">450</span>,<span class="fl">591.7</span>,<span class="fl">530.1</span>,<span class="fl">698.5</span>),</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="dt">year =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;1962&quot;</span>, <span class="dv">120</span>), <span class="kw">rep</span>(<span class="st">&quot;1968&quot;</span>, <span class="dv">300</span>), <span class="kw">rep</span>(<span class="st">&quot;1974&quot;</span>, <span class="dv">200</span>)))</a></code></pre></div>
 <p>Som sig bör tittar vi på data, även om vi har formulerat vår frågeställning och eventuella statistiska hypoteser i förväg. Figurerna ger inte särskilt vägledning. Det verkar finnas ganska mycket överlapp mellan åren.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>))
-<span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1962&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span><span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1962&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1968&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1968&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1974&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1974&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">boxplot</span>(df<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>year, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-390-1.png" width="384" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1962&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span><span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1962&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1968&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1968&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw">hist</span>(df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1974&quot;</span>], <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">freq=</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1974&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="kw">boxplot</span>(df<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>year, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Benstyrka (Newton)&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-12-1.png" width="384" /></p>
 <p>Det är tur att vi redan bestämt oss för att undersöka detta formellt och inte utifrån att vi tittat på data. Vi inleder med att konstatera att en individs värde kan delas upp i två delar</p>
 <p><span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span></p>
 <p>där <span class="math inline">\(\mu_i\)</span> är medelvärdet i population <span class="math inline">\(i\)</span> från vilket individen är vald och <span class="math inline">\(\varepsilon_{ij}\)</span> som är skillnaden mellan en populations medelvärde och individens värde. För en kontinuerlig variabel har alla individer i given population <span class="math inline">\(i\)</span> olika avvikelser. Eftersom individer väljs slumpmässigt med ett osu är denna avvikelse slumpmässig.</p>
-<p>Nu kommer vi till en stort steg vad gäller målet för inferens. Vi slutar nämligen just här att intressera oss för just denna ändliga population. Visserligen skulle vi med vårt stickprov undersöka om det finns en skillnad i medelvärden i den ändliga populationen, men vid närmare eftertanke är denna hypotes tämligen ointressant. Undersökte vi alla så skulle det förmodligen finnas skillnader mellan medelvärden, om än kanske liten! UDessutom vet vi att det finns en slumpmässig naturlig variation. Det finns ingen anledning att tänka sig att benstyrkan i populationen är exakt samma varje år, utan den kommer naturligtvis att variera.</p>
+<p>Nu kommer vi till en stort steg vad gäller målet för inferens. Vi slutar nämligen just här att intressera oss för just denna ändliga population.
+Visserligen skulle vi med vårt stickprov undersöka om det finns en skillnad i medelvärden i den ändliga populationen, men vid närmare eftertanke är denna hypotes tämligen ointressant. Undersökte vi alla så skulle det förmodligen finnas skillnader mellan medelvärden, om än kanske liten! UDessutom vet vi att det finns en slumpmässig naturlig variation. Det finns ingen anledning att tänka sig att benstyrkan i populationen är exakt samma varje år, utan den kommer naturligtvis att variera.</p>
 <p>För att en jämförelse ska bli användbar så att en intressant frågeställning kan besvaras, t ex har benstyrkan bland ungan män förändrats mellan åren, modifierar vi ovanstående ekvation. Istället för att ha ändliga populationen som utgångspunkt ställer vi upp populationen som en statistisk fördelning. Även om skulle observera alla individer varje år så antar vi att det är dessa statistiska fördelningar som gett upphov till individernas värden.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">1200</span>
-<span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">583.8242</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">main=</span> <span class="st">&quot;Nollhypotes&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">552.1966</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Mothypotes&quot;</span>)
-<span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">592.1725</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">612.3662</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-391-2.png" width="672" /></p>
-<p>Nollhypotesen är den översta populationen, dvs vi tänker att benstyrkan är samma för alla år och följer samma fördelning. Mothypotesen är att minst något att medelvärdena skiljer sig åt, dvs populationerna har olika parametervärden. Och det är just detta vi vill undersöka, det vill säga har det skett än förändring i dessa underliggare fördelningar?</p>
-<p>För att besvara detta ställer vi ekvation som förut <span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span></p>
-<p>där vi nu antar att <span class="math inline">\(\varepsilon_{ij}\)</span> är en oberoende slumpvariabel som är normalfördelad med medelvärde 0 och varians <span class="math inline">\(\sigma^2_{\varepsilon}\)</span>. Oberoende innebär intuitivt att en slumpmässig dragning från denna modell inte påverkas av en tidigare dragning. Vi skriver detta som att <span class="math display">\[\varepsilon_{ij} \sim $N(0,\sigma^2_{\varepsilon})\]</span>. Detta kan tyckas vara ett stort antagande att göra, men vi ska se att modellen trots detta är användbar.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">1200</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">583.8242</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1200</span>), <span class="dt">main=</span> <span class="st">&quot;Nollhypotes&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">plot</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">552.1966</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Mothypotes&quot;</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">592.1725</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="fl">612.3662</span>, <span class="dv">120</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p>Nollhypotesen är den översta populationen, dvs vi tänker att benstyrkan är samma för alla år och följer samma fördelning.
+Mothypotesen är att minst något att medelvärdena skiljer sig åt, dvs populationerna har olika parametervärden. Och det är just detta vi vill undersöka, det vill säga har det skett än förändring i dessa underliggare fördelningar?</p>
+<p>För att besvara detta ställer vi ekvation som förut
+<span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span></p>
+<p>där vi nu antar att <span class="math inline">\(\varepsilon_{ij}\)</span> är en oberoende slumpvariabel som är normalfördelad med medelvärde 0 och varians <span class="math inline">\(\sigma^2_{\varepsilon}\)</span>. Oberoende innebär intuitivt att en slumpmässig dragning från denna modell inte påverkas av en tidigare dragning. Vi skriver detta som att
+<span class="math display">\[\varepsilon_{ij} \sim $N(0,\sigma^2_{\varepsilon})\]</span>. Detta kan tyckas vara ett stort antagande att göra, men vi ska se att modellen trots detta är användbar.</p>
 <p>Medelvärdena syftar nu på medelvärdena i dessa fördelningar, inte i den ändliga populationen och vi formulerar hypoteserna som</p>
-<p><span class="math display">\[H_0: \mu_{1962} = \mu_{1968}  = \mu_{1974}\]</span> vs <span class="math display">\[H_0: \text{Minst ett av medelvärdena skiljer sig åt}\]</span></p>
+<p><span class="math display">\[H_0: \mu_{1962} = \mu_{1968}  = \mu_{1974}\]</span>
+vs
+<span class="math display">\[H_0: \text{Minst ett av medelvärdena skiljer sig åt}\]</span></p>
 <p>Detta är en <strong>modellbaserad ansats</strong> där vi utgår från att data kommer från statistisk modell, och vårt mål i detta fall är att med hjälp av detta data uttala oss om något om parametrarna i modellen.</p>
 <ul>
-<li>Vi <span class="math inline">\(a\)</span> stycken grupper. <span class="math display">\[H_0: \mu_{1} = \mu_{2}  = \cdots =  \mu_{a}\]</span> vs</li>
+<li>Vi <span class="math inline">\(a\)</span> stycken grupper.
+<span class="math display">\[H_0: \mu_{1} = \mu_{2}  = \cdots =  \mu_{a}\]</span>
+vs</li>
 </ul>
 <p><span class="math display">\[H_1: \text{Minst en}\,\, \mu_{i} \neq \mu_{j}\]</span></p>
 <p>Vi observerar <span class="math inline">\(y_{ij}\)</span>, där</p>
@@ -489,108 +1017,120 @@ mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class
 <li><span class="math inline">\(j = 1,\ldots,n_{i}\)</span> indexerer individer i grupp <span class="math inline">\(i\)</span></li>
 <li><span class="math inline">\(n = \sum_{1=i}^3 n_i\)</span> är antalet indivder i studien.</li>
 </ul>
-<p>För att undersöka detta studeras variationen mellan grupperna och inom grupper. Vi förkastar <span class="math inline">\(H_0\)</span> om variationen mellan grupperna är stor i relation till variationen inom grupperna (som vi antar är samma).</p>
+<p>För att undersöka detta studeras variationen mellan grupperna och inom grupper. Vi förkastar <span class="math inline">\(H_0\)</span> om variationen mellan grupperna är stor i relation till
+variationen inom grupperna (som vi antar är samma).</p>
 <p>Variationen <strong>mellan</strong> grupper mäter vi med</p>
-<p><span class="math display">\[SSA = \sum_{i=1}^a n_i(\bar{y}_i - \bar{y})^2\]</span> Variationen <strong>inom</strong> grupperna är <span class="math display">\[SSE = \sum_{i=1}^a \sum_{j}^{n_i}(y_{ij} - \bar{y}_i)^2\]</span> Den <strong>totala</strong> variation är <span class="math display">\[SST = \sum_{i=1}^a \sum_{j}^{n_i}(y_{ij} - \bar{y})^2\]</span></p>
+<p><span class="math display">\[SSA = \sum_{i=1}^a n_i(\bar{y}_i - \bar{y})^2\]</span>
+Variationen <strong>inom</strong> grupperna är
+<span class="math display">\[SSE = \sum_{i=1}^a \sum_{j}^{n_i}(y_{ij} - \bar{y}_i)^2\]</span>
+Den <strong>totala</strong> variation är
+<span class="math display">\[SST = \sum_{i=1}^a \sum_{j}^{n_i}(y_{ij} - \bar{y})^2\]</span></p>
 <p>Man kan visa att <span class="math inline">\(SST = SSA + SSE\)</span>! Detta är ett mycket viktigt resultat och kallas för kvadratsummeuppdelning.</p>
 <p>Det visar sig att dessa kvadratsummor följer statistiska fördelningar. Vi har att</p>
 <p><span class="math display">\[\dfrac{SST}{\sigma^2} \sim \chi^2_{n-1}\,\,\,\,\,\,\,\,\dfrac{SSA}{\sigma^2} \sim \chi^2_{a-1}\,\,\,\,\,\,\,\,\ \dfrac{SSE}{\sigma^2} \sim \chi^2_{n-a}\]</span></p>
 <p>Om SSA och SSE är oberoende så är</p>
 <p><span class="math display">\[\dfrac{SSA/(a-1)}{SSE/(n-a)} = \dfrac{MSA}{MSE}\sim F_{a-1,n-a}\]</span></p>
-<p>Eftersom dessa kvadratsummor följer en fördelning under nollhypotesen så kan vi beräkna <span class="math display">\[F_{obs} =\dfrac{MSA}{MSE}\]</span> och jämföra med denna fördelning. Om <span class="math inline">\(F_{obs} &gt; F_{a-1,n-a, \alpha}\)</span>, förkasta <span class="math inline">\(H_0\)</span>. Intutionen bakom testet är att om variationen mellan behandlingarna är stor relativt variationen inom behandlingarna så är <span class="math inline">\(F_{obs}\)</span> stort. Då är det troligt att det finns en underliggare skillnad mellan populationernan. Om <span class="math inline">\(F_{obs}\)</span> är litet så är det med överensstämmelde med att det inte finns någon skillnad mellan grupperna.</p>
+<p>Eftersom dessa kvadratsummor följer en fördelning under nollhypotesen så kan vi beräkna <span class="math display">\[F_{obs} =\dfrac{MSA}{MSE}\]</span>
+och jämföra med denna fördelning. Om <span class="math inline">\(F_{obs} &gt; F_{a-1,n-a, \alpha}\)</span>, förkasta <span class="math inline">\(H_0\)</span>. Intutionen bakom testet är att om variationen mellan behandlingarna är stor relativt variationen inom behandlingarna så är <span class="math inline">\(F_{obs}\)</span> stort. Då är det troligt att det finns en underliggare skillnad mellan populationernan.
+Om <span class="math inline">\(F_{obs}\)</span> är litet så är det med överensstämmelde med att det inte finns någon skillnad mellan grupperna.</p>
 <p>F-fördelningen?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.1</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,4)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">40</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,40)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">400</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,400)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,4)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">40</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,40)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">400</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,400)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-392-1.png" width="576" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb14-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,4)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">40</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,40)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">2</span>, <span class="dv">400</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(2,400)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">4</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,4)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">40</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,40)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, <span class="dv">5</span>, <span class="dv">400</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;F(5,400)&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Täthet&quot;</span>)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-14-1.png" width="576" /></p>
 <p>Stegen för en ANOVA är alltså:</p>
 <ul>
-<li>Ställ upp modellen <span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span> där <span class="math inline">\(\varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon)\)</span>.</li>
+<li>Ställ upp modellen
+<span class="math display">\[y_{ij} = \mu_i + \varepsilon_{ij}\]</span>
+där <span class="math inline">\(\varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon)\)</span>.</li>
 <li>Ställ upp hypoteserna enligt ovan.</li>
 <li>Beräkna F-statisikan.</li>
 <li>Jämför observerade <span class="math inline">\(F\)</span>-värdet med <span class="math inline">\(F\)</span>-fördelningen under nollhypotesen.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Illustration</span>
- a &lt;-<span class="st"> </span><span class="dv">3</span>
- y_<span class="dv">1</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1962&quot;</span>]
- y_<span class="dv">2</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1968&quot;</span>]
- y_<span class="dv">3</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1974&quot;</span>]
- y &lt;-<span class="st"> </span>df<span class="op">$</span>y
- n_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">1</span>)
- n_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">2</span>)
- n_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">3</span>)
- ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)
- ybar_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">1</span>)
- ybar_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">2</span>)
- ybar_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">3</span>)
- n &lt;-<span class="st"> </span>n_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">3</span>
- SSA &lt;-<span class="st"> </span>n_<span class="dv">1</span><span class="op">*</span>(ybar_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span><span class="op">*</span>(ybar_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">3</span><span class="op">*</span>(ybar_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span>
- SSE &lt;-<span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">3</span>)<span class="op">^</span><span class="dv">2</span>)
- SST &lt;-<span class="st"> </span><span class="kw">sum</span>((y <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span>)
- fg1 &lt;-<span class="st"> </span>a<span class="op">-</span><span class="dv">1</span>
- fg2 &lt;-<span class="st"> </span>n<span class="op">-</span>a
- MSA &lt;-<span class="st"> </span>SSA<span class="op">/</span>fg1
- MSE &lt;-<span class="st"> </span>SSE<span class="op">/</span>fg2
- Fobs &lt;-<span class="st"> </span>MSA<span class="op">/</span>MSE
- p_value &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fobs, fg1, fg2)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)
-<span class="kw">df</span>(x, fg1, fg2)
-  [<span class="dv">1</span>] <span class="fl">1.000000e+00</span> <span class="fl">9.045589e-01</span> <span class="fl">8.182533e-01</span> <span class="fl">7.402064e-01</span> <span class="fl">6.696255e-01</span>
-  [<span class="dv">6</span>] <span class="fl">6.057944e-01</span> <span class="fl">5.480656e-01</span> <span class="fl">4.958541e-01</span> <span class="fl">4.486311e-01</span> <span class="fl">4.059185e-01</span>
- [<span class="dv">11</span>] <span class="fl">3.672843e-01</span> <span class="fl">3.323380e-01</span> <span class="fl">3.007264e-01</span> <span class="fl">2.721305e-01</span> <span class="fl">2.462616e-01</span>
- [<span class="dv">16</span>] <span class="fl">2.228591e-01</span> <span class="fl">2.016870e-01</span> <span class="fl">1.825322e-01</span> <span class="fl">1.652019e-01</span> <span class="fl">1.495218e-01</span>
- [<span class="dv">21</span>] <span class="fl">1.353343e-01</span> <span class="fl">1.224970e-01</span> <span class="fl">1.108809e-01</span> <span class="fl">1.003695e-01</span> <span class="fl">9.085757e-02</span>
- [<span class="dv">26</span>] <span class="fl">8.224968e-02</span> <span class="fl">7.445968e-02</span> <span class="fl">6.740964e-02</span> <span class="fl">6.102907e-02</span> <span class="fl">5.525421e-02</span>
- [<span class="dv">31</span>] <span class="fl">5.002739e-02</span> <span class="fl">4.529645e-02</span> <span class="fl">4.101421e-02</span> <span class="fl">3.713798e-02</span> <span class="fl">3.362917e-02</span>
- [<span class="dv">36</span>] <span class="fl">3.045284e-02</span> <span class="fl">2.757739e-02</span> <span class="fl">2.497425e-02</span> <span class="fl">2.261755e-02</span> <span class="fl">2.048388e-02</span>
- [<span class="dv">41</span>] <span class="fl">1.855209e-02</span> <span class="fl">1.680302e-02</span> <span class="fl">1.521932e-02</span> <span class="fl">1.378533e-02</span> <span class="fl">1.248685e-02</span>
- [<span class="dv">46</span>] <span class="fl">1.131103e-02</span> <span class="fl">1.024626e-02</span> <span class="fl">9.282008e-03</span> <span class="fl">8.408768e-03</span> <span class="fl">7.617922e-03</span>
- [<span class="dv">51</span>] <span class="fl">6.901673e-03</span> <span class="fl">6.252963e-03</span> <span class="fl">5.665406e-03</span> <span class="fl">5.133220e-03</span> <span class="fl">4.651172e-03</span>
- [<span class="dv">56</span>] <span class="fl">4.214524e-03</span> <span class="fl">3.818988e-03</span> <span class="fl">3.460682e-03</span> <span class="fl">3.136091e-03</span> <span class="fl">2.842034e-03</span>
- [<span class="dv">61</span>] <span class="fl">2.575630e-03</span> <span class="fl">2.334271e-03</span> <span class="fl">2.115596e-03</span> <span class="fl">1.917466e-03</span> <span class="fl">1.737945e-03</span>
- [<span class="dv">66</span>] <span class="fl">1.575282e-03</span> <span class="fl">1.427887e-03</span> <span class="fl">1.294324e-03</span> <span class="fl">1.173291e-03</span> <span class="fl">1.063609e-03</span>
- [<span class="dv">71</span>] <span class="fl">9.642099e-04</span> <span class="fl">8.741275e-04</span> <span class="fl">7.924858e-04</span> <span class="fl">7.184916e-04</span> <span class="fl">6.514265e-04</span>
- [<span class="dv">76</span>] <span class="fl">5.906396e-04</span> <span class="fl">5.355415e-04</span> <span class="fl">4.855984e-04</span> <span class="fl">4.403264e-04</span> <span class="fl">3.992874e-04</span>
- [<span class="dv">81</span>] <span class="fl">3.620846e-04</span> <span class="fl">3.283582e-04</span> <span class="fl">2.977824e-04</span> <span class="fl">2.700621e-04</span> <span class="fl">2.449298e-04</span>
- [<span class="dv">86</span>] <span class="fl">2.221432e-04</span> <span class="fl">2.014827e-04</span> <span class="fl">1.827493e-04</span> <span class="fl">1.657629e-04</span> <span class="fl">1.503599e-04</span>
- [<span class="dv">91</span>] <span class="fl">1.363924e-04</span> <span class="fl">1.237262e-04</span> <span class="fl">1.122397e-04</span> <span class="fl">1.018227e-04</span> <span class="fl">9.237538e-05</span>
- [<span class="dv">96</span>] <span class="fl">8.380713e-05</span> <span class="fl">7.603596e-05</span> <span class="fl">6.898749e-05</span> <span class="fl">6.259432e-05</span> <span class="fl">5.679536e-05</span>
-[<span class="dv">101</span>] <span class="fl">5.153520e-05</span>
-<span class="kw">plot</span>(x, <span class="kw">df</span>(x, fg1, fg2), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(Fobs))</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-394-1.png" width="384" /></p>
-<p>Det finns även inbygg funktion i R för att beräkna</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lm()</span>
-  model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(df<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>year)
-  <span class="kw">anova</span>(model1)
-Analysis of Variance Table
-
-Response<span class="op">:</span><span class="st"> </span>df<span class="op">$</span>y
-           Df  Sum Sq Mean Sq F value    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
-df<span class="op">$</span>year     <span class="dv">2</span>  <span class="dv">338372</span>  <span class="dv">169186</span>  <span class="fl">11.393</span> <span class="fl">1.384e-05</span> <span class="op">**</span><span class="er">*</span>
-Residuals <span class="dv">617</span> <span class="dv">9162495</span>   <span class="dv">14850</span>                      
-<span class="op">---</span>
-Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
-  <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
-  <span class="kw">qqnorm</span>(model1<span class="op">$</span>residuals)
-  <span class="kw">hist</span>(model1<span class="op">$</span>residuals)</code></pre></div>
-<p><img src="dpk_files/figure-html/unnamed-chunk-395-1.png" width="480" /></p>
-<p>Under förutsättning av variansen är samma kan vi även beräkna ett konfidensintervall. För det första skattas <span class="math inline">\(\mu_i\)</span> med <span class="math inline">\(\bar{y}_i\)</span>. Eftersom <span class="math inline">\(\varepsilon_{ij} \sim N(0, \sigma^2_{\varepsilon})\)</span> så är <span class="math display">\[V(\bar{y}_i) = \dfrac{\sigma^2_\varepsilon}{n_i} \approx \dfrac{MSE}{n_i}\]</span></p>
-<p>Ett konfidensintervall för <span class="math inline">\(\mu_i\)</span> ges då av <span class="math display">\[\bar{y}_i \pm t_{\alpha/2,n-a}\sqrt{\dfrac{MSE}{n_i}}\]</span>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Illustration</span></a>
+<a class="sourceLine" id="cb15-2" title="2"> a &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb15-3" title="3"> y_<span class="dv">1</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1962&quot;</span>]</a>
+<a class="sourceLine" id="cb15-4" title="4"> y_<span class="dv">2</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1968&quot;</span>]</a>
+<a class="sourceLine" id="cb15-5" title="5"> y_<span class="dv">3</span> &lt;-<span class="st"> </span>df<span class="op">$</span>y[df<span class="op">$</span>year <span class="op">==</span><span class="st"> &quot;1974&quot;</span>]</a>
+<a class="sourceLine" id="cb15-6" title="6"> y &lt;-<span class="st"> </span>df<span class="op">$</span>y</a>
+<a class="sourceLine" id="cb15-7" title="7"> n_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb15-8" title="8"> n_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb15-9" title="9"> n_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">length</span>(y_<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb15-10" title="10"> ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)</a>
+<a class="sourceLine" id="cb15-11" title="11"> ybar_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb15-12" title="12"> ybar_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb15-13" title="13"> ybar_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(y_<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb15-14" title="14"> n &lt;-<span class="st"> </span>n_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">3</span></a>
+<a class="sourceLine" id="cb15-15" title="15"> SSA &lt;-<span class="st"> </span>n_<span class="dv">1</span><span class="op">*</span>(ybar_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span><span class="op">*</span>(ybar_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">3</span><span class="op">*</span>(ybar_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb15-16" title="16"> SSE &lt;-<span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>((y_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>ybar_<span class="dv">3</span>)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb15-17" title="17"> SST &lt;-<span class="st"> </span><span class="kw">sum</span>((y <span class="op">-</span><span class="st"> </span>ybar)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb15-18" title="18"> fg1 &lt;-<span class="st"> </span>a<span class="dv">-1</span></a>
+<a class="sourceLine" id="cb15-19" title="19"> fg2 &lt;-<span class="st"> </span>n<span class="op">-</span>a</a>
+<a class="sourceLine" id="cb15-20" title="20"> MSA &lt;-<span class="st"> </span>SSA<span class="op">/</span>fg1</a>
+<a class="sourceLine" id="cb15-21" title="21"> MSE &lt;-<span class="st"> </span>SSE<span class="op">/</span>fg2</a>
+<a class="sourceLine" id="cb15-22" title="22"> Fobs &lt;-<span class="st"> </span>MSA<span class="op">/</span>MSE</a>
+<a class="sourceLine" id="cb15-23" title="23"> p_value &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fobs, fg1, fg2)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">df</span>(x, fg1, fg2)</a>
+<a class="sourceLine" id="cb16-3" title="3">  [<span class="dv">1</span>] <span class="fl">1.000000e+00</span> <span class="fl">9.045589e-01</span> <span class="fl">8.182533e-01</span> <span class="fl">7.402064e-01</span> <span class="fl">6.696255e-01</span></a>
+<a class="sourceLine" id="cb16-4" title="4">  [<span class="dv">6</span>] <span class="fl">6.057944e-01</span> <span class="fl">5.480656e-01</span> <span class="fl">4.958541e-01</span> <span class="fl">4.486311e-01</span> <span class="fl">4.059185e-01</span></a>
+<a class="sourceLine" id="cb16-5" title="5"> [<span class="dv">11</span>] <span class="fl">3.672843e-01</span> <span class="fl">3.323380e-01</span> <span class="fl">3.007264e-01</span> <span class="fl">2.721305e-01</span> <span class="fl">2.462616e-01</span></a>
+<a class="sourceLine" id="cb16-6" title="6"> [<span class="dv">16</span>] <span class="fl">2.228591e-01</span> <span class="fl">2.016870e-01</span> <span class="fl">1.825322e-01</span> <span class="fl">1.652019e-01</span> <span class="fl">1.495218e-01</span></a>
+<a class="sourceLine" id="cb16-7" title="7"> [<span class="dv">21</span>] <span class="fl">1.353343e-01</span> <span class="fl">1.224970e-01</span> <span class="fl">1.108809e-01</span> <span class="fl">1.003695e-01</span> <span class="fl">9.085757e-02</span></a>
+<a class="sourceLine" id="cb16-8" title="8"> [<span class="dv">26</span>] <span class="fl">8.224968e-02</span> <span class="fl">7.445968e-02</span> <span class="fl">6.740964e-02</span> <span class="fl">6.102907e-02</span> <span class="fl">5.525421e-02</span></a>
+<a class="sourceLine" id="cb16-9" title="9"> [<span class="dv">31</span>] <span class="fl">5.002739e-02</span> <span class="fl">4.529645e-02</span> <span class="fl">4.101421e-02</span> <span class="fl">3.713798e-02</span> <span class="fl">3.362917e-02</span></a>
+<a class="sourceLine" id="cb16-10" title="10"> [<span class="dv">36</span>] <span class="fl">3.045284e-02</span> <span class="fl">2.757739e-02</span> <span class="fl">2.497425e-02</span> <span class="fl">2.261755e-02</span> <span class="fl">2.048388e-02</span></a>
+<a class="sourceLine" id="cb16-11" title="11"> [<span class="dv">41</span>] <span class="fl">1.855209e-02</span> <span class="fl">1.680302e-02</span> <span class="fl">1.521932e-02</span> <span class="fl">1.378533e-02</span> <span class="fl">1.248685e-02</span></a>
+<a class="sourceLine" id="cb16-12" title="12"> [<span class="dv">46</span>] <span class="fl">1.131103e-02</span> <span class="fl">1.024626e-02</span> <span class="fl">9.282008e-03</span> <span class="fl">8.408768e-03</span> <span class="fl">7.617922e-03</span></a>
+<a class="sourceLine" id="cb16-13" title="13"> [<span class="dv">51</span>] <span class="fl">6.901673e-03</span> <span class="fl">6.252963e-03</span> <span class="fl">5.665406e-03</span> <span class="fl">5.133220e-03</span> <span class="fl">4.651172e-03</span></a>
+<a class="sourceLine" id="cb16-14" title="14"> [<span class="dv">56</span>] <span class="fl">4.214524e-03</span> <span class="fl">3.818988e-03</span> <span class="fl">3.460682e-03</span> <span class="fl">3.136091e-03</span> <span class="fl">2.842034e-03</span></a>
+<a class="sourceLine" id="cb16-15" title="15"> [<span class="dv">61</span>] <span class="fl">2.575630e-03</span> <span class="fl">2.334271e-03</span> <span class="fl">2.115596e-03</span> <span class="fl">1.917466e-03</span> <span class="fl">1.737945e-03</span></a>
+<a class="sourceLine" id="cb16-16" title="16"> [<span class="dv">66</span>] <span class="fl">1.575282e-03</span> <span class="fl">1.427887e-03</span> <span class="fl">1.294324e-03</span> <span class="fl">1.173291e-03</span> <span class="fl">1.063609e-03</span></a>
+<a class="sourceLine" id="cb16-17" title="17"> [<span class="dv">71</span>] <span class="fl">9.642099e-04</span> <span class="fl">8.741275e-04</span> <span class="fl">7.924858e-04</span> <span class="fl">7.184916e-04</span> <span class="fl">6.514265e-04</span></a>
+<a class="sourceLine" id="cb16-18" title="18"> [<span class="dv">76</span>] <span class="fl">5.906396e-04</span> <span class="fl">5.355415e-04</span> <span class="fl">4.855984e-04</span> <span class="fl">4.403264e-04</span> <span class="fl">3.992874e-04</span></a>
+<a class="sourceLine" id="cb16-19" title="19"> [<span class="dv">81</span>] <span class="fl">3.620846e-04</span> <span class="fl">3.283582e-04</span> <span class="fl">2.977824e-04</span> <span class="fl">2.700621e-04</span> <span class="fl">2.449298e-04</span></a>
+<a class="sourceLine" id="cb16-20" title="20"> [<span class="dv">86</span>] <span class="fl">2.221432e-04</span> <span class="fl">2.014827e-04</span> <span class="fl">1.827493e-04</span> <span class="fl">1.657629e-04</span> <span class="fl">1.503599e-04</span></a>
+<a class="sourceLine" id="cb16-21" title="21"> [<span class="dv">91</span>] <span class="fl">1.363924e-04</span> <span class="fl">1.237262e-04</span> <span class="fl">1.122397e-04</span> <span class="fl">1.018227e-04</span> <span class="fl">9.237538e-05</span></a>
+<a class="sourceLine" id="cb16-22" title="22"> [<span class="dv">96</span>] <span class="fl">8.380713e-05</span> <span class="fl">7.603596e-05</span> <span class="fl">6.898749e-05</span> <span class="fl">6.259432e-05</span> <span class="fl">5.679536e-05</span></a>
+<a class="sourceLine" id="cb16-23" title="23">[<span class="dv">101</span>] <span class="fl">5.153520e-05</span></a>
+<a class="sourceLine" id="cb16-24" title="24"><span class="kw">plot</span>(x, <span class="kw">df</span>(x, fg1, fg2), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a>
+<a class="sourceLine" id="cb16-25" title="25"><span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(Fobs))</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-16-1.png" width="384" /></p>
+<p>Det finns även inbyggd funktion i R för att beräkna.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># lm()</span></a>
+<a class="sourceLine" id="cb17-2" title="2">  model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(df<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>year)</a>
+<a class="sourceLine" id="cb17-3" title="3">  <span class="kw">anova</span>(model1)</a>
+<a class="sourceLine" id="cb17-4" title="4">Analysis of Variance Table</a>
+<a class="sourceLine" id="cb17-5" title="5"></a>
+<a class="sourceLine" id="cb17-6" title="6">Response<span class="op">:</span><span class="st"> </span>df<span class="op">$</span>y</a>
+<a class="sourceLine" id="cb17-7" title="7">           Df  Sum Sq Mean Sq F value    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    </a>
+<a class="sourceLine" id="cb17-8" title="8">df<span class="op">$</span>year     <span class="dv">2</span>  <span class="dv">338372</span>  <span class="dv">169186</span>  <span class="fl">11.393</span> <span class="fl">1.384e-05</span> <span class="op">**</span><span class="er">*</span></a>
+<a class="sourceLine" id="cb17-9" title="9">Residuals <span class="dv">617</span> <span class="dv">9162495</span>   <span class="dv">14850</span>                      </a>
+<a class="sourceLine" id="cb17-10" title="10"><span class="op">---</span></a>
+<a class="sourceLine" id="cb17-11" title="11">Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb17-12" title="12">  <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb17-13" title="13">  <span class="kw">qqnorm</span>(model1<span class="op">$</span>residuals)</a>
+<a class="sourceLine" id="cb17-14" title="14">  <span class="kw">hist</span>(model1<span class="op">$</span>residuals)</a></code></pre></div>
+<p><img src="dpk_files/figure-html/unnamed-chunk-17-1.png" width="480" /></p>
+<p>Under förutsättning av variansen är samma kan vi även beräkna ett konfidensintervall. För det första skattas
+<span class="math inline">\(\mu_i\)</span> med <span class="math inline">\(\bar{y}_i\)</span>. Eftersom <span class="math inline">\(\varepsilon_{ij} \sim N(0, \sigma^2_{\varepsilon})\)</span> så är
+<span class="math display">\[V(\bar{y}_i) = \dfrac{\sigma^2_\varepsilon}{n_i} \approx \dfrac{MSE}{n_i}\]</span></p>
+<p>Ett konfidensintervall för <span class="math inline">\(\mu_i\)</span> ges då av
+<span class="math display">\[\bar{y}_i \pm t_{\alpha/2,n-a}\sqrt{\dfrac{MSE}{n_i}}\]</span>.</p>
 </div>
 <div id="jämförelse-med-t-test" class="section level2">
-<h2><span class="header-section-number">10.5</span> Jämförelse med t-test</h2>
+<h2><span class="header-section-number">10.4</span> Jämförelse med t-test</h2>
 <p>ANOVA med två grupper är samma som t-test med lika varianser.</p>
 <p>ANOVA är ett annat sätt att formulera regressionsanalys</p>
 <p>I praktiken om experimenten är någotlunda stora, ingen skillnad.</p>
 </div>
 <div id="experimentella-designer" class="section level2">
-<h2><span class="header-section-number">10.6</span> Experimentella designer</h2>
+<h2><span class="header-section-number">10.5</span> Experimentella designer</h2>
 <ul>
 <li>Completely randomized expreiment (analogt med OSU)</li>
 <li>Strafifierat randomized exerpiment (analogit med stratifierat urval)</li>
@@ -598,7 +1138,7 @@ Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv"
 </ul>
 </div>
 <div id="aspekter-som-inte-ingår-i-detta-block" class="section level2">
-<h2><span class="header-section-number">10.7</span> Aspekter som inte ingår i detta block</h2>
+<h2><span class="header-section-number">10.6</span> Aspekter som inte ingår i detta block</h2>
 <ul>
 <li>Hantering av bortfall.</li>
 <li>Jämförelse av medelvärden vid ANOVA med mer än 2 behandling, t ex Tukeys eller Dunnets metod.</li>
@@ -610,8 +1150,8 @@ Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv"
 <li>En tydlig åtskillnad mellan block och strata.</li>
 <li>Flera mätningar per individ.</li>
 <li>Icke-parametriskt alternativ</li>
+<li>Icke-normalitet</li>
 </ul>
-
 </div>
 </div>
             </section>
@@ -619,8 +1159,8 @@ Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv"
           </div>
         </div>
       </div>
-<a href="urvalsmetoder.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="urvalsmetoder.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referenser-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -639,12 +1179,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -656,6 +1195,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -672,7 +1215,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
